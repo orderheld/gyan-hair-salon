@@ -161,6 +161,14 @@ Icons liegen in `public/icons/`, die App-Daten in `app/site.webmanifest/route.ts
 - **Hinweise:** Bucht so ein Kunde wieder, erscheint der Termin oben unter «Hinweise zu kommenden Terminen», und die Admin-E-Mail enthält eine Zeile «Achtung». Der Kunde selbst sieht davon nichts.
 - **Datenbank:** Neue Spalten und Tabellen legt die Webseite beim Start selbst an. `npm run db:setup` ist nach diesem Update nicht nötig.
 
+## 11. Preisliste mit und ohne Termin
+
+Die Leistungen entsprechen der Preisliste vom Oktober 2026 (Haarschnitt, Bart, Face, Pakete). Beim ersten Start nach dem Update ersetzt die Seite die alten Beispiel-Leistungen automatisch durch diese Liste, einmalig. Danach änderst du alles wie gewohnt unter **Admin → Preise**:
+
+- **Preis** = mit Termin, **Ohne Termin** = Walk-in-Preis (leer lassen, wenn es die Leistung ohne Termin nicht extra gibt)
+- **Weitere Einstellungen**: Gruppe (Haarschnitt, Bart, Face, Pakete) und «Beliebt»-Hinweis
+- Dauer anpassen: die Startwerte sind Schätzungen (Haarschnitt 30, Signature Cut 45, Bart Trim 20, Rasur 30, Face 20, Classic 50, Premium 60, Full Service 80 Minuten)
+
 ## Inhalte anpassen
 
 | Was | Wo |
@@ -178,7 +186,7 @@ Icons liegen in `public/icons/`, die App-Daten in `app/site.webmanifest/route.ts
 ## Neuen Blogartikel hinzufügen
 
 1. Eine bestehende Datei in `content/blog/` kopieren, z. B. `wie-oft-zum-coiffeur.ts` → `mein-neuer-artikel.ts`.
-2. `key`, `slug` (pro Sprache), `date`, `image`, `title`, `description` und `body` anpassen. Im Text funktionieren `## Zwischentitel`, `- Listen`, `**fett**` und interne Links wie `[Termin buchen](page:booking)`, `[Skin Fade](service:skin-fade-biel)`, `[Coiffeur Nidau](seo:nidau)`.
+2. `key`, `slug` (pro Sprache), `date`, `image`, `title`, `description` und `body` anpassen. Im Text funktionieren `## Zwischentitel`, `- Listen`, `**fett**` und interne Links wie `[Termin buchen](page:booking)`, `[Haarschnitt](service:haarschnitt-biel)`, `[Coiffeur Nidau](seo:nidau)`.
 3. In `content/blog/index.ts` importieren und **zuoberst** in die Liste setzen.
 4. `git add . ; git commit -m "Neuer Artikel" ; git push` → Vercel veröffentlicht automatisch, Sitemap und Footer sind sofort aktuell.
 

@@ -1,0 +1,234 @@
+[
+  {
+    "sort": 10,
+    "category": "cut",
+    "duration_min": 30,
+    "price_chf": 40,
+    "walkin_price_chf": 35,
+    "popular": false,
+    "image": "/images/cut-standard.jpg",
+    "slug": {
+      "de": "haarschnitt-biel",
+      "fr": "coupe-homme-bienne",
+      "en": "mens-haircut-biel"
+    },
+    "name": {
+      "de": "Herren Haarschnitt",
+      "fr": "Coupe homme",
+      "en": "Men’s haircut"
+    },
+    "short": {
+      "de": "Beratung, Schnitt mit Schere und Maschine, saubere Konturen.",
+      "fr": "Conseil, coupe aux ciseaux et à la tondeuse, contours nets.",
+      "en": "Consultation, scissor and clipper cut, clean outlines."
+    },
+    "long": {
+      "de": "Ein guter Haarschnitt beginnt vor dem ersten Schnitt. Zana schaut sich an, wie dein Haar wächst, wo die Wirbel sitzen und wie viel Zeit du morgens investieren willst. Erst dann entscheidet er, wo die Schere arbeitet und wo die Maschine.\n\nOb klassischer Seitenscheitel, Low Fade oder Skin Fade: Das Ergebnis ist ein Schnitt, der nicht nur am ersten Tag gut aussieht, sondern auch nach drei Wochen noch Form hat. Sauber konturiert und mit Feingefühl an den Übergängen.",
+      "fr": "Une belle coupe commence avant le premier coup de ciseaux. Zana observe la façon dont tes cheveux poussent, la position des épis et le temps que tu veux consacrer à ta coiffure le matin. Ce n’est qu’ensuite qu’il décide où travaillent les ciseaux et où intervient la tondeuse.\n\nRaie sur le côté classique, low fade ou skin fade : le résultat est une coupe qui n’est pas seulement belle le premier jour, mais qui garde sa forme trois semaines plus tard. Contours nets et transitions travaillées avec précision.",
+      "en": "A great haircut starts before the first snip. Zana looks at how your hair grows, where the crowns sit and how much time you want to spend on it in the morning. Only then does he decide where the scissors work and where the clippers take over.\n\nClassic side part, low fade or skin fade: the result is a cut that looks good not just on day one but still holds its shape three weeks later. Clean outlines and careful transitions."
+    }
+  },
+  {
+    "sort": 20,
+    "category": "cut",
+    "duration_min": 45,
+    "price_chf": 45,
+    "walkin_price_chf": null,
+    "popular": false,
+    "image": "/images/signatur.jpg",
+    "slug": {
+      "de": "gyan-signature",
+      "fr": "gyan-signature",
+      "en": "gyan-signature"
+    },
+    "name": {
+      "de": "GYAN Signature Cut",
+      "fr": "GYAN Signature Cut",
+      "en": "GYAN Signature Cut"
+    },
+    "short": {
+      "de": "Haarschnitt plus individuelles Styling und Tipps, wie du es selbst stylst.",
+      "fr": "Coupe, coiffage personnalisé et conseils pour te coiffer toi-même.",
+      "en": "Haircut plus individual styling and tips on how to style it yourself."
+    },
+    "long": {
+      "de": "Der Signature Cut ist der Herren Haarschnitt mit einem Schritt mehr. Nach dem Schnitt stylt Zana deine Haare und zeigt dir dabei, wie du den Look selbst hinbekommst: welches Produkt, wie viel davon und mit welchen Handgriffen.\n\nJeder Kopf ist anders, deshalb gibt es keine Standardanleitung. Du bekommst Tipps, die zu deinem Haar, deinem Schnitt und deinem Alltag passen. So sieht deine Frisur nicht nur beim Verlassen des Salons gut aus, sondern auch am nächsten Morgen.",
+      "fr": "Le Signature Cut, c’est la coupe homme avec une étape de plus. Après la coupe, Zana coiffe tes cheveux et te montre comment refaire le look toi-même : quel produit, quelle quantité et quels gestes.\n\nChaque tête est différente, il n’y a donc pas de mode d’emploi standard. Tu reçois des conseils adaptés à tes cheveux, à ta coupe et à ton quotidien. Ta coiffure n’est pas seulement belle en sortant du salon, mais aussi le lendemain matin.",
+      "en": "The Signature Cut is the men’s haircut with one extra step. After the cut, Zana styles your hair and shows you how to get the look yourself: which product, how much and which moves.\n\nEvery head is different, so there is no standard manual. You get tips that suit your hair, your cut and your routine. That way your hair looks good not only when you leave the salon, but the next morning too."
+    }
+  },
+  {
+    "sort": 30,
+    "category": "beard",
+    "duration_min": 20,
+    "price_chf": 20,
+    "walkin_price_chf": null,
+    "popular": false,
+    "image": "/images/cut-bart.jpg",
+    "slug": {
+      "de": "bart-trimmen-biel",
+      "fr": "taille-de-barbe-bienne",
+      "en": "beard-trim-biel"
+    },
+    "name": {
+      "de": "Bart Trim",
+      "fr": "Taille de barbe",
+      "en": "Beard trim"
+    },
+    "short": {
+      "de": "Bart in Form gebracht, Konturen mit der Klinge.",
+      "fr": "Barbe mise en forme, contours au rasoir.",
+      "en": "Beard shaped, outlines finished with the razor."
+    },
+    "long": {
+      "de": "Ein gepflegter Bart verändert das ganze Gesicht. Zana bringt deinen Bart in eine Form, die zu deiner Gesichtsform und zu deinem Stil passt, egal ob kurzer Stoppelbart, gepflegter Vollbart oder klare Kontur.\n\nDie Länge wird mit Maschine und Schere angepasst, die Linien an Wange und Hals mit der Klinge gezogen. Ideal auch zwischen zwei Haarschnitten.",
+      "fr": "Une barbe soignée change tout le visage. Zana donne à ta barbe une forme adaptée à ton visage et à ton style, qu’il s’agisse d’une barbe de trois jours, d’une barbe pleine entretenue ou de contours bien nets.\n\nLa longueur est ajustée à la tondeuse et aux ciseaux, les lignes des joues et du cou sont tracées au rasoir. Idéal aussi entre deux coupes.",
+      "en": "A well-kept beard changes your whole face. Zana shapes your beard to suit your face and your style, whether that is light stubble, a groomed full beard or a crisp outline.\n\nLength is adjusted with clippers and scissors, the cheek and neck lines are set with the razor. Ideal between two haircuts as well."
+    }
+  },
+  {
+    "sort": 40,
+    "category": "beard",
+    "duration_min": 30,
+    "price_chf": 28,
+    "walkin_price_chf": null,
+    "popular": false,
+    "image": "/images/salon-spiegel.jpg",
+    "slug": {
+      "de": "nassrasur-biel",
+      "fr": "rasage-traditionnel-bienne",
+      "en": "hot-towel-shave-biel"
+    },
+    "name": {
+      "de": "Bart Rasur (Hot Towel)",
+      "fr": "Rasage à la serviette chaude",
+      "en": "Hot towel shave"
+    },
+    "short": {
+      "de": "Nassrasur mit heissem Tuch, Schaum und Pflege.",
+      "fr": "Rasage à l'ancienne avec serviette chaude et soin.",
+      "en": "Traditional wet shave with hot towel and aftercare."
+    },
+    "long": {
+      "de": "Die klassische Nassrasur ist ein Ritual. Ein heisses Tuch bereitet die Haut vor, warmer Rasierschaum wird mit dem Pinsel aufgetragen, und dann folgt die Klinge, ruhig und präzise, Zug um Zug.\n\nNach der Rasur beruhigt ein kühles Tuch die Haut, ein Balsam pflegt nach. Das Ergebnis ist eine Glätte, die man mit keinem Rasierer zu Hause erreicht. Ideal vor einem besonderen Anlass oder einfach, um sich eine halbe Stunde Ruhe zu gönnen.",
+      "fr": "Le rasage traditionnel est un rituel. Une serviette chaude prépare la peau, la mousse chaude est appliquée au blaireau, puis vient la lame, calme et précise, passage après passage.\n\nAprès le rasage, une serviette fraîche apaise la peau et un baume la nourrit. Le résultat : une douceur qu'aucun rasoir ne permet d'obtenir à la maison. Idéal avant une occasion spéciale ou simplement pour s'offrir une demi-heure de calme.",
+      "en": "The classic wet shave is a ritual. A hot towel prepares the skin, warm lather is applied with a brush, and then comes the blade, calm and precise, stroke by stroke.\n\nAfterwards a cool towel soothes the skin and a balm finishes the care. The result is a smoothness no razor at home can match. Perfect before a special occasion, or simply to treat yourself to half an hour of calm."
+    }
+  },
+  {
+    "sort": 50,
+    "category": "face",
+    "duration_min": 20,
+    "price_chf": 25,
+    "walkin_price_chf": null,
+    "popular": false,
+    "image": "/images/salon-wasch.jpg",
+    "slug": {
+      "de": "gesichtspflege-biel",
+      "fr": "soin-visage-bienne",
+      "en": "face-treatment-biel"
+    },
+    "name": {
+      "de": "GYAN Face Treatment",
+      "fr": "GYAN Face Treatment",
+      "en": "GYAN Face Treatment"
+    },
+    "short": {
+      "de": "Hot Towel, Reinigung, Pflege.",
+      "fr": "Serviette chaude, nettoyage, soin.",
+      "en": "Hot towel, cleansing, care."
+    },
+    "long": {
+      "de": "Ein heisses Tuch öffnet die Poren und entspannt das Gesicht. Danach wird die Haut gereinigt und mit Pflege versorgt, damit sie frisch und ruhig wirkt.\n\nDas Face Treatment gibt es einzeln oder im GYAN Full Service zusammen mit Haarschnitt, Bart, Wäsche und Styling.",
+      "fr": "Une serviette chaude ouvre les pores et détend le visage. La peau est ensuite nettoyée et soignée pour qu’elle paraisse fraîche et apaisée.\n\nLe Face Treatment se réserve seul ou dans le GYAN Full Service, avec coupe, barbe, shampooing et coiffage.",
+      "en": "A hot towel opens the pores and relaxes the face. Then the skin is cleansed and cared for so it looks fresh and calm.\n\nThe Face Treatment is available on its own or as part of the GYAN Full Service, together with haircut, beard, wash and styling."
+    }
+  },
+  {
+    "sort": 60,
+    "category": "package",
+    "duration_min": 50,
+    "price_chf": 65,
+    "walkin_price_chf": 60,
+    "popular": false,
+    "image": "/images/cut-mulet.jpg",
+    "slug": {
+      "de": "haarschnitt-und-bart",
+      "fr": "coupe-et-barbe",
+      "en": "haircut-and-beard"
+    },
+    "name": {
+      "de": "GYAN Classic Paket",
+      "fr": "Formule GYAN Classic",
+      "en": "GYAN Classic package"
+    },
+    "short": {
+      "de": "Haarschnitt + Bart.",
+      "fr": "Coupe + barbe.",
+      "en": "Haircut + beard."
+    },
+    "long": {
+      "de": "Haar und Bart gehören zusammen. Wenn beides im selben Termin entsteht, passt der Übergang von den Schläfen in den Bart perfekt, und das Gesicht bekommt eine klare, ausgewogene Linie.\n\nZana schneidet zuerst die Haare, dann wird der Bart auf die neue Form abgestimmt: Länge, Dichte, Wangenlinie und Hals. Die Konturen werden mit der Klinge gesetzt.",
+      "fr": "Cheveux et barbe vont ensemble. Quand les deux sont réalisés lors du même rendez-vous, la transition entre les tempes et la barbe est parfaite et le visage gagne une ligne claire et équilibrée.\n\nZana coupe d’abord les cheveux, puis adapte la barbe à la nouvelle forme : longueur, densité, ligne des joues et du cou. Les contours sont tracés au rasoir.",
+      "en": "Hair and beard belong together. When both are done in the same appointment, the transition from the temples into the beard is seamless and your face gets a clear, balanced line.\n\nZana cuts the hair first, then shapes the beard to match: length, density, cheek line and neck. Outlines are set with the razor."
+    }
+  },
+  {
+    "sort": 70,
+    "category": "package",
+    "duration_min": 60,
+    "price_chf": 75,
+    "walkin_price_chf": 70,
+    "popular": true,
+    "image": "/images/salon-spiegel.jpg",
+    "slug": {
+      "de": "gyan-premium-paket",
+      "fr": "formule-gyan-premium",
+      "en": "gyan-premium-package"
+    },
+    "name": {
+      "de": "GYAN Premium Paket",
+      "fr": "Formule GYAN Premium",
+      "en": "GYAN Premium package"
+    },
+    "short": {
+      "de": "Haarschnitt + Bart + Wäsche + Styling.",
+      "fr": "Coupe + barbe + shampooing + coiffage.",
+      "en": "Haircut + beard + wash + styling."
+    },
+    "long": {
+      "de": "Das Premium Paket ist der komplette Auftritt. Zuerst eine Haarwäsche, dann Schnitt und Bart aus einer Hand, damit alles zusammenpasst.\n\nZum Schluss wird gestylt, sodass du direkt bereit bist für den Abend, das Date oder den wichtigen Termin.",
+      "fr": "La formule Premium, c’est l’allure complète. D’abord un shampooing, puis la coupe et la barbe par la même main, pour que tout s’accorde.\n\nPour finir, le coiffage : tu es prêt tout de suite pour la soirée, le rendez-vous ou l’entretien important.",
+      "en": "The Premium package is the full look. First a wash, then cut and beard by the same hands, so everything fits together.\n\nFinally your hair is styled, so you are ready straight away for the evening, the date or the important meeting."
+    }
+  },
+  {
+    "sort": 80,
+    "category": "package",
+    "duration_min": 80,
+    "price_chf": 90,
+    "walkin_price_chf": 85,
+    "popular": false,
+    "image": "/images/salon-lounge.jpg",
+    "slug": {
+      "de": "gyan-full-service",
+      "fr": "formule-gyan-full-service",
+      "en": "gyan-full-service"
+    },
+    "name": {
+      "de": "GYAN Full Service",
+      "fr": "GYAN Full Service",
+      "en": "GYAN Full Service"
+    },
+    "short": {
+      "de": "Haarschnitt + Bart + Face Treatment + Wäsche + Styling.",
+      "fr": "Coupe + barbe + Face Treatment + shampooing + coiffage.",
+      "en": "Haircut + beard + Face Treatment + wash + styling."
+    },
+    "long": {
+      "de": "Alles, was GYAN zu bieten hat, in einem Termin. Haarwäsche, Haarschnitt und Bart, dazu das Face Treatment mit heissem Tuch, Reinigung und Pflege.\n\nZum Schluss wird gestylt. Du gehst nicht nur mit frischem Schnitt nach Hause, sondern fühlst dich auch so.",
+      "fr": "Tout ce que GYAN propose, en un seul rendez-vous. Shampooing, coupe et barbe, plus le Face Treatment avec serviette chaude, nettoyage et soin.\n\nPour finir, le coiffage. Tu repars avec une coupe nette et la sensation qui va avec.",
+      "en": "Everything GYAN has to offer, in one appointment. Wash, haircut and beard, plus the Face Treatment with hot towel, cleansing and care.\n\nFinally your hair is styled. You leave not only with a fresh cut, but feeling like it too."
+    }
+  }
+]
