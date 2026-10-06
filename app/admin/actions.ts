@@ -30,7 +30,8 @@ export async function login(_: { error?: string } | undefined, fd: FormData) {
   const { t } = await getAdminText();
   if (!checkPassword(str(fd, "password", 200))) return { error: t.login.wrong };
   await startSession();
-  redirect("/admin");
+  const next = str(fd, "next", 200);
+  redirect(/^\/(de|fr|en)(\/[\w-]*)*$/.test(next) ? next : "/admin");
 }
 
 export async function logout() {

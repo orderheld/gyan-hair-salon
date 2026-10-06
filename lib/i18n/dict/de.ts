@@ -62,6 +62,16 @@ const de = {
   intro: {
     line: "Herren Coiffeur · Biel/Bienne",
   },
+  soon: {
+    metaTitle: "GYAN Hair Salon Biel/Bienne · Bald online",
+    eyebrow: "Herren Coiffeur & Barbier · Biel/Bienne",
+    title: ["Bald", "online."],
+    text: "Unsere neue Webseite mit Online-Buchung bei Zana ist gleich fertig. Bis dahin sind wir im Salon für dich da: einfach vorbeikommen oder anrufen.",
+    call: "Anrufen",
+    route: "Route planen",
+    hours: "Öffnungszeiten",
+    login: "Login",
+  },
   home: {
     heroEyebrow: "Herren Coiffeur & Barbier · Biel/Bienne",
     heroTitle: { lead: "Dein", words: ["Fade,", "Bart,", "Schnitt,", "Auftritt,"], tail: "perfektioniert." },

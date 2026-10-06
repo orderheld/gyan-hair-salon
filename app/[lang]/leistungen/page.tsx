@@ -1,5 +1,5 @@
+import { ServiceIcon } from "@/components/site/ServiceIcon";
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import type { Locale } from "@/content/types";
 import { CtaBand, FaqList, PageHero } from "@/components/site/Blocks";
@@ -33,8 +33,8 @@ export default async function Services({ params }: Props) {
         <div className="container svc-grid">
           {services.map((s, i) => (
             <article key={s.id} className="svc-card" data-reveal style={{ transitionDelay: `${(i % 3) * 80}ms` }}>
-              <Link href={href(locale, "services", s.slug)} className="svc-card-img" tabIndex={-1} aria-hidden>
-                <Image src={s.image || "/images/salon-spiegel.jpg"} alt="" fill sizes="(max-width: 760px) 92vw, 33vw" />
+              <Link href={href(locale, "services", s.slug)} className="svc-card-icon" tabIndex={-1} aria-hidden>
+                <ServiceIcon name={s.icon} />
               </Link>
               <div className="svc-card-body">
                 <h2 className="h3">

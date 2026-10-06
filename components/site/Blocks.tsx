@@ -1,3 +1,4 @@
+import { ServiceIcon } from "./ServiceIcon";
 import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
@@ -106,16 +107,22 @@ export function ServiceRows({ services, locale, d, feature = false }: { services
       {services.map((s, i) => (
         <li key={s.id} className={`svc-tile${feature && i === 0 ? " wide" : ""}`} data-reveal style={{ transitionDelay: `${(i % 4) * 70}ms` }}>
           <Link href={href(locale, "services", s.slug)}>
-            <span className="svc-tile-img">
-              <Image src={s.image} alt={`${s.name} · GYAN Hair Salon Biel`} fill sizes={feature && i === 0 ? "(max-width: 1040px) 50vw, 50vw" : "(max-width: 1040px) 50vw, 25vw"} />
+            <span className="svc-tile-top">
+              <span className="svc-tile-no">{String(i + 1).padStart(2, "0")}</span>
               <span className="svc-tile-price">
                 {s.priceFrom ? `${d.common.from} ` : ""}
                 {formatChf(s.priceChf)}
               </span>
             </span>
-            <span className="svc-tile-name">{s.name}<i aria-hidden>→</i></span>
-            <span className="svc-tile-short">{s.short}</span>
-            <span className="svc-tile-meta">{formatDuration(s.durationMin, locale)}</span>
+            <ServiceIcon name={s.icon} />
+            <span className="svc-tile-text">
+              <span className="svc-tile-name">{s.name}</span>
+              <span className="svc-tile-short">{s.short}</span>
+            </span>
+            <span className="svc-tile-foot">
+              <span className="svc-tile-meta">{formatDuration(s.durationMin, locale)}</span>
+              <i aria-hidden>→</i>
+            </span>
           </Link>
         </li>
       ))}

@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { ADMIN_COOKIE, comingSoon, hasAdminCookie } from "@/lib/coming-soon";
 import { canonicalSegment, DEFAULT_LOCALE, isLocale, toInternalSegment, type Locale } from "@/lib/i18n/config";
 
 function preferredLocale(request: NextRequest): Locale {
@@ -15,9 +16,19 @@ function preferredLocale(request: NextRequest): Locale {
   return ranked.find((r) => isLocale(r.lang))?.lang as Locale | undefined ?? DEFAULT_LOCALE;
 }
 
-export function proxy(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const [, first, second, ...rest] = pathname.split("/");
+
+  // Coming soon: Besucher sehen nur /bald, eingeloggte Admins die ganze Seite
+  if (comingSoon() && !(await hasAdminCookie(request.cookies.get(ADMIN_COOKIE)?.value))) {
+    const url = request.nextUrl.clone();
+    url.pathname = "/bald";
+    url.search = `?l=${isLocale(first) ? first : preferredLocale(request)}`;
+    const res = NextResponse.rewrite(url);
+    res.headers.set("X-Robots-Tag", "noindex");
+    return res;
+  }
 
   // Ohne Sprache: auf die passende Sprache weiterleiten
   if (!isLocale(first)) {
@@ -48,6 +59,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   // Nicht für Admin, API, Next-Dateien und Dateien mit Endung (Bilder, robots.txt, sitemap.xml …)
-  matcher: ["/((?!admin|api|_next|.*\\..*).*)"],
+  matcher: ["/((?!admin|api|bald|_next|.*\\..*).*)"],
 };
 

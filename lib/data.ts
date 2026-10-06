@@ -1,6 +1,7 @@
 import "server-only";
 import { site } from "@/content/site";
 import { getSql, type Row } from "./db";
+import { iconFor } from "./service-icon";
 import type { L, Locale } from "@/content/types";
 import { hm, toDate } from "./time";
 
@@ -11,6 +12,8 @@ export type Service = {
   short: L;
   long: L;
   image: string;
+  /** Symbol für Listen, siehe lib/service-icon.ts */
+  icon: string;
   durationMin: number;
   priceChf: number;
   priceFrom: boolean;
@@ -67,6 +70,7 @@ const mapService = (r: Row): Service => ({
   name: tri(r, "name"),
   short: tri(r, "short"),
   long: tri(r, "long"),
+  icon: iconFor(String(r.slug_de ?? "")),
   image: r.image || site.images.serviceFallback.find(([k]) => String(r.slug_de ?? "").includes(k))![1],
   durationMin: Number(r.duration_min),
   priceChf: Number(r.price_chf),

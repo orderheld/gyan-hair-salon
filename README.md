@@ -81,7 +81,7 @@ Alternative: In Vercel unter **Storage → Neon** verbinden, dann setzt Vercel `
 
 ## 5. Veröffentlichen (Vercel)
 
-**Im Browser:** <https://vercel.com/new> → GitHub-Repository importieren → unter **Environment Variables** alle Werte aus `.env.local` eintragen → **Deploy**.
+**Im Browser:** <https://vercel.com/new> → GitHub-Repository importieren → unter **Environment Variables** alle Werte aus `.env.local` eintragen, dazu `COMING_SOON` = `1` (siehe Schritt 8) → **Deploy**.
 
 **Oder per PowerShell:**
 
@@ -97,6 +97,7 @@ vercel env add ADMIN_PASSWORD production
 vercel env add ADMIN_SECRET production
 vercel env add NEXT_PUBLIC_SITE_URL production
 vercel env add CRON_SECRET production
+vercel env add COMING_SOON production
 vercel --prod
 ```
 
@@ -133,6 +134,14 @@ Vercel Hobby führt Cronjobs nur einmal pro Tag aus. Darum ruft der kostenlose D
 4. Testen: Die Adresse im Browser öffnen, es erscheint `{"ok":true,...}`.
 
 Zusätzlich prüft die Webseite bei Besuchen selbst, ob Mails fällig sind. Der Cronjob sorgt dafür, dass es auch nachts pünktlich klappt.
+
+## 8. Coming soon und Livegang
+
+Solange `COMING_SOON=1` in Vercel gesetzt ist, sehen Besucher auf jeder Adresse nur die Seite «Bald online» (mit Telefon, Route, Öffnungszeiten, DE/FR/EN). Google wird gebeten, nichts zu indexieren, und Online-Buchungen sind für Besucher gesperrt.
+
+**Du und Zana sehen die echte Seite:** unten rechts auf «Login» tippen, Admin-Passwort eingeben. Danach ist die ganze Webseite offen (30 Tage, pro Gerät). Ihr könnt so auch echte Testbuchungen machen und die E-Mails prüfen.
+
+**Livegang:** Vercel → Projekt → **Settings → Environment Variables** → `COMING_SOON` auf `0` setzen (oder löschen) → **Deployments → … → Redeploy**. Danach in der Google Search Console die Sitemap `https://www.deine-domain.ch/sitemap.xml` einreichen.
 
 ---
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { Locale } from "@/content/types";
 import { formatChf, formatDuration } from "@/lib/format";
 import type { Dict } from "@/lib/i18n/dict/de";
@@ -82,10 +82,24 @@ export function BookingFlow({ locale, t, common, services, initialServiceId, pho
     return keys.length ? { first: keys[0], last: keys[keys.length - 1] } : null;
   }, [available]);
 
+  // Bei jedem Schritt an den Anfang der Buchung springen (sonst landet man im Footer)
+  const rootRef = useRef<HTMLDivElement>(null);
+  const firstStep = useRef(true);
+  useEffect(() => {
+    if (firstStep.current) { firstStep.current = false; return; }
+    const el = rootRef.current;
+    if (!el) return;
+    const header = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-h")) || 72;
+    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + window.scrollY - header - 16), behavior: "smooth" });
+  }, [step]);
+
+  /** Sanft zum nächsten Bedienelement scrollen, nur wenn es nicht schon sichtbar ist */
+  const reveal = (selector: string) =>
+    requestAnimationFrame(() => rootRef.current?.querySelector(selector)?.scrollIntoView({ behavior: "smooth", block: "nearest" }));
+
   function chooseService(s: Service) {
     setService(s);
     setStep(2);
-    window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
   async function submit(e: React.FormEvent) {
@@ -139,7 +153,7 @@ export function BookingFlow({ locale, t, common, services, initialServiceId, pho
   ].filter((g) => g.items.length);
 
   return (
-    <div className="booking">
+    <div className="booking" ref={rootRef}>
       <ol className="steps" aria-label={t.eyebrow}>
         {t.steps.map((label, i) => (
           <li key={label} className={step === i + 1 ? "active" : step > i + 1 ? "done" : ""}>
@@ -202,7 +216,7 @@ export function BookingFlow({ locale, t, common, services, initialServiceId, pho
                             type="button"
                             className={`cal-day ${date === k ? "selected" : ""}`}
                             disabled={!open}
-                            onClick={() => { setDate(k); setTime(null); }}
+                            onClick={() => { setDate(k); setTime(null); reveal(".times"); }}
                             aria-label={longDate(k)}
                           >
                             {d}
@@ -218,7 +232,7 @@ export function BookingFlow({ locale, t, common, services, initialServiceId, pho
                         <span className="time-label">{g.label}</span>
                         <div className="time-grid">
                           {g.items.map((t) => (
-                            <button key={t} type="button" className={`time ${time === t ? "selected" : ""}`} onClick={() => setTime(t)}>
+                            <button key={t} type="button" className={`time ${time === t ? "selected" : ""}`} onClick={() => { setTime(t); reveal(".picker > .step-actions"); }}>
                               {t}
                             </button>
                           ))}

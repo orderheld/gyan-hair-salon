@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-const COOKIE = "gyan_admin";
+import { ADMIN_COOKIE as COOKIE, comingSoon } from "./coming-soon";
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 Tage
 
 function secret() {
@@ -56,4 +56,9 @@ export async function isAdmin() {
 
 export async function requireAdmin() {
   if (!(await isAdmin())) redirect("/admin/login");
+}
+
+/** Im Coming-soon-Modus dürfen nur eingeloggte Admins buchen oder Zeiten abfragen. */
+export async function siteLocked() {
+  return comingSoon() && !(await isAdmin());
 }

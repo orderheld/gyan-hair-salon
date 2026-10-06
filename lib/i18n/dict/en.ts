@@ -64,6 +64,16 @@ const en: Dict = {
   intro: {
     line: "Men's hairdresser · Biel/Bienne",
   },
+  soon: {
+    metaTitle: "GYAN Hair Salon Biel/Bienne · Coming soon",
+    eyebrow: "Men's hairdresser & barber · Biel/Bienne",
+    title: ["Coming", "soon."],
+    text: "Our new website with online booking for Zana is almost ready. Until then, we're here for you at the salon: just drop by or give us a call.",
+    call: "Call us",
+    route: "Get directions",
+    hours: "Opening hours",
+    login: "Login",
+  },
   home: {
     heroEyebrow: "Men's hairdresser & barber · Biel/Bienne",
     heroTitle: { lead: "Your", words: ["fade,", "beard,", "cut,", "look,"], tail: "perfected." },

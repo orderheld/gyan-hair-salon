@@ -64,6 +64,16 @@ const fr: Dict = {
   intro: {
     line: "Coiffeur homme · Biel/Bienne",
   },
+  soon: {
+    metaTitle: "GYAN Hair Salon Biel/Bienne · Bientôt en ligne",
+    eyebrow: "Coiffeur homme & barbier · Biel/Bienne",
+    title: ["Bientôt", "en ligne."],
+    text: "Notre nouveau site avec réservation en ligne chez Zana est presque prêt. D’ici là, on t’accueille au salon : passe nous voir ou appelle-nous.",
+    call: "Appeler",
+    route: "Itinéraire",
+    hours: "Horaires",
+    login: "Login",
+  },
   home: {
     heroEyebrow: "Coiffeur homme & barbier · Biel/Bienne",
     heroTitle: { lead: "L’art du", words: ["dégradé,", "rasoir,", "détail,", "style,"], tail: "à Bienne." },

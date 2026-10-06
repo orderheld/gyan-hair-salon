@@ -1,3 +1,4 @@
+import { siteLocked } from "@/lib/auth";
 import { after, NextResponse } from "next/server";
 import { isSlotAvailable } from "@/lib/availability";
 import { createBooking, SlotTakenError } from "@/lib/booking";
@@ -14,6 +15,7 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const clean = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
 
 export async function POST(request: Request) {
+  if (await siteLocked()) return NextResponse.json({ error: "Coming soon" }, { status: 403 });
   let body: Record<string, unknown>;
   try {
     body = await request.json();

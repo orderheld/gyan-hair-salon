@@ -1,3 +1,4 @@
+import { siteLocked } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import { getAvailability } from "@/lib/availability";
 import { getService } from "@/lib/data";
@@ -5,6 +6,7 @@ import { getService } from "@/lib/data";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: Request) {
+  if (await siteLocked()) return NextResponse.json({ error: "Coming soon" }, { status: 403 });
   const id = Number(new URL(request.url).searchParams.get("service"));
   const service = Number.isInteger(id) ? await getService(id) : null;
   if (!service || !service.active) {
