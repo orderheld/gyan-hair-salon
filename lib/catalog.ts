@@ -2,20 +2,40 @@ import services from "@/db/services.json";
 
 /**
  * Bringt die Leistungen einmalig auf die Preisliste aus db/services.json (Stand Oktober 2026).
- * Läuft beim Start, solange settings.catalog_version kleiner ist als CATALOG_VERSION:
+ * Läuft beim Start, solange settings.catalog_version kleiner ist als CATALOG_VERSION.
+ * Version 2 (alles ersetzen):
  * - gleiche Leistung (gleicher deutscher Slug): Name, Texte, Preise und Dauer werden überschrieben
  * - neue Leistungen werden angelegt
  * - alte Leistungen werden gelöscht, oder nur ausgeblendet, wenn schon Termine darauf gebucht sind
  * Danach gehören die Leistungen wieder ganz dem Admin-Panel.
  */
-export const CATALOG_VERSION = 2;
+export const CATALOG_VERSION = 3;
 
 type Query = (text: string, params?: unknown[]) => Promise<Record<string, unknown>[]>;
 
 export async function syncCatalog(query: Query) {
   const [row] = await query(`SELECT value FROM settings WHERE key = 'catalog_version'`);
-  if (row && Number(row.value) >= CATALOG_VERSION) return;
+  const version = row ? Number(row.value) : 0;
+  if (version >= CATALOG_VERSION) return;
+  if (version < 2) await replaceAll(query);
+  // Version 3: echte Dauer pro Leistung (Oktober 2026), sonst bleibt alles, wie es im Admin steht
+  for (const s of services) {
+    await query(`UPDATE services SET duration_min = $2 WHERE slug_de = $1`, [s.slug.de, s.duration_min]);
+  }
+  // Rasur-Text sprach von «einer halben Stunde»
+  const shave = services.find((s) => s.slug.de === "nassrasur-biel");
+  if (shave) {
+    await query(`UPDATE services SET long_de = $2, long_fr = $3, long_en = $4 WHERE slug_de = $1 AND long_de LIKE '%halbe Stunde%'`,
+      [shave.slug.de, shave.long.de, shave.long.fr, shave.long.en]);
+  }
+  await query(
+    `INSERT INTO settings (key, value) VALUES ('catalog_version', $1::jsonb)
+     ON CONFLICT (key) DO UPDATE SET value = excluded.value, updated_at = now()`,
+    [String(CATALOG_VERSION)],
+  );
+}
 
+async function replaceAll(query: Query) {
   for (const s of services) {
     await query(
       `INSERT INTO services (slug_de, slug_fr, slug_en, name_de, name_fr, name_en, short_de, short_fr, short_en,
@@ -38,9 +58,4 @@ export async function syncCatalog(query: Query) {
     [keep],
   );
   await query(`UPDATE services SET active = false WHERE NOT (slug_de = ANY($1::text[]))`, [keep]);
-  await query(
-    `INSERT INTO settings (key, value) VALUES ('catalog_version', $1::jsonb)
-     ON CONFLICT (key) DO UPDATE SET value = excluded.value, updated_at = now()`,
-    [String(CATALOG_VERSION)],
-  );
 }

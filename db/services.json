@@ -2,7 +2,7 @@
   {
     "sort": 10,
     "category": "cut",
-    "duration_min": 30,
+    "duration_min": 20,
     "price_chf": 40,
     "walkin_price_chf": 35,
     "popular": false,
@@ -31,7 +31,7 @@
   {
     "sort": 20,
     "category": "cut",
-    "duration_min": 45,
+    "duration_min": 25,
     "price_chf": 45,
     "walkin_price_chf": null,
     "popular": false,
@@ -60,7 +60,7 @@
   {
     "sort": 30,
     "category": "beard",
-    "duration_min": 20,
+    "duration_min": 15,
     "price_chf": 20,
     "walkin_price_chf": null,
     "popular": false,
@@ -89,7 +89,7 @@
   {
     "sort": 40,
     "category": "beard",
-    "duration_min": 30,
+    "duration_min": 20,
     "price_chf": 28,
     "walkin_price_chf": null,
     "popular": false,
@@ -110,9 +110,9 @@
       "en": "Traditional wet shave with hot towel and aftercare."
     },
     "long": {
-      "de": "Die klassische Nassrasur ist ein Ritual. Ein heisses Tuch bereitet die Haut vor, warmer Rasierschaum wird mit dem Pinsel aufgetragen, und dann folgt die Klinge, ruhig und präzise, Zug um Zug.\n\nNach der Rasur beruhigt ein kühles Tuch die Haut, ein Balsam pflegt nach. Das Ergebnis ist eine Glätte, die man mit keinem Rasierer zu Hause erreicht. Ideal vor einem besonderen Anlass oder einfach, um sich eine halbe Stunde Ruhe zu gönnen.",
-      "fr": "Le rasage traditionnel est un rituel. Une serviette chaude prépare la peau, la mousse chaude est appliquée au blaireau, puis vient la lame, calme et précise, passage après passage.\n\nAprès le rasage, une serviette fraîche apaise la peau et un baume la nourrit. Le résultat : une douceur qu'aucun rasoir ne permet d'obtenir à la maison. Idéal avant une occasion spéciale ou simplement pour s'offrir une demi-heure de calme.",
-      "en": "The classic wet shave is a ritual. A hot towel prepares the skin, warm lather is applied with a brush, and then comes the blade, calm and precise, stroke by stroke.\n\nAfterwards a cool towel soothes the skin and a balm finishes the care. The result is a smoothness no razor at home can match. Perfect before a special occasion, or simply to treat yourself to half an hour of calm."
+      "de": "Die klassische Nassrasur ist ein Ritual. Ein heisses Tuch bereitet die Haut vor, warmer Rasierschaum wird mit dem Pinsel aufgetragen, und dann folgt die Klinge, ruhig und präzise, Zug um Zug.\n\nNach der Rasur beruhigt ein kühles Tuch die Haut, ein Balsam pflegt nach. Das Ergebnis ist eine Glätte, die man mit keinem Rasierer zu Hause erreicht. Ideal vor einem besonderen Anlass oder einfach, um sich einen Moment Ruhe zu gönnen.",
+      "fr": "Le rasage traditionnel est un rituel. Une serviette chaude prépare la peau, la mousse chaude est appliquée au blaireau, puis vient la lame, calme et précise, passage après passage.\n\nAprès le rasage, une serviette fraîche apaise la peau et un baume la nourrit. Le résultat : une douceur qu'aucun rasoir ne permet d'obtenir à la maison. Idéal avant une occasion spéciale ou simplement pour s'offrir un moment de calme.",
+      "en": "The classic wet shave is a ritual. A hot towel prepares the skin, warm lather is applied with a brush, and then comes the blade, calm and precise, stroke by stroke.\n\nAfterwards a cool towel soothes the skin and a balm finishes the care. The result is a smoothness no razor at home can match. Perfect before a special occasion, or simply to treat yourself to a moment of calm."
     }
   },
   {
@@ -147,7 +147,7 @@
   {
     "sort": 60,
     "category": "package",
-    "duration_min": 50,
+    "duration_min": 30,
     "price_chf": 65,
     "walkin_price_chf": 60,
     "popular": false,
@@ -176,7 +176,7 @@
   {
     "sort": 70,
     "category": "package",
-    "duration_min": 60,
+    "duration_min": 40,
     "price_chf": 75,
     "walkin_price_chf": 70,
     "popular": true,
@@ -205,7 +205,7 @@
   {
     "sort": 80,
     "category": "package",
-    "duration_min": 80,
+    "duration_min": 50,
     "price_chf": 90,
     "walkin_price_chf": 85,
     "popular": false,

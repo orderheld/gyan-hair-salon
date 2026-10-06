@@ -167,7 +167,7 @@ Die Leistungen entsprechen der Preisliste vom Oktober 2026 (Haarschnitt, Bart, F
 
 - **Preis** = mit Termin, **Ohne Termin** = Walk-in-Preis (leer lassen, wenn es die Leistung ohne Termin nicht extra gibt)
 - **Weitere Einstellungen**: Gruppe (Haarschnitt, Bart, Face, Pakete) und «Beliebt»-Hinweis
-- Dauer anpassen: die Startwerte sind Schätzungen (Haarschnitt 30, Signature Cut 45, Bart Trim 20, Rasur 30, Face 20, Classic 50, Premium 60, Full Service 80 Minuten)
+- Dauer: Haarschnitt 20, Signature Cut 25, Bart Trim 15, Rasur 20, Face 20, Classic 30, Premium 40, Full Service 50 Minuten (beim Update automatisch gesetzt)
 
 ## Inhalte anpassen
 
