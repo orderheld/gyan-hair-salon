@@ -77,6 +77,13 @@ const adminFr: AdminDict = {
     overlap: "Un rendez-vous (tampon inclus) ou un blocage existe déjà à cette heure.",
   },
   services: {
+    texts: "Textes & traductions",
+    more: "Autres réglages",
+    unsaved: "Non enregistré",
+    less: "Moins",
+    plus: "Plus",
+    online: "En ligne",
+    perVisit: "par visite",
     priceFromShort: "dès",
     inactive: "masquée",
     imageAuto: "Image automatique",

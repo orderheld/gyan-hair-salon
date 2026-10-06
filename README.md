@@ -145,6 +145,14 @@ Solange `COMING_SOON=1` in Vercel gesetzt ist, sehen Besucher auf jeder Adresse 
 
 ---
 
+## 9. Als App auf dem Home-Bildschirm
+
+**Webseite (für Kunden):** Auf dem iPhone in Safari «Teilen» → «Zum Home-Bildschirm». Auf Android in Chrome «⋮» → «App installieren». GYAN startet dann ohne Browserleiste, mit eigenem Icon (beiges GA-Monogramm), unterer Tab-Leiste (Start, Leistungen, Buchen, Zana, Kontakt) und Zurück-Pfeil auf Unterseiten. Ohne Internet erscheint eine kleine Offline-Seite mit der Telefonnummer.
+
+**Admin (für dich):** `/admin` im Browser öffnen, einloggen und genauso «Zum Home-Bildschirm». Das Admin hat ein eigenes dunkelbraunes Icon mit «ADMIN» und startet direkt bei den Terminen. Die Anmeldung bleibt 30 Tage gültig.
+
+Icons liegen in `public/icons/`, die App-Daten in `app/site.webmanifest/route.ts` und `app/admin/app.webmanifest/route.ts`.
+
 ## Inhalte anpassen
 
 | Was | Wo |

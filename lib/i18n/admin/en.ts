@@ -77,6 +77,13 @@ const adminEn: AdminDict = {
     overlap: "There is already an appointment (including buffer) or a block at this time.",
   },
   services: {
+    texts: "Texts & translations",
+    more: "More settings",
+    unsaved: "Unsaved changes",
+    less: "Less",
+    plus: "More",
+    online: "Online",
+    perVisit: "per visit",
     priceFromShort: "from",
     inactive: "hidden",
     imageAuto: "Automatic image",

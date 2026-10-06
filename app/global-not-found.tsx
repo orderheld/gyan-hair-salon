@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./styles/base.css";
+import { APP_ICONS } from "@/lib/app-icons";
 
-export const metadata: Metadata = { title: "404 · GYAN Hair Salon", robots: { index: false } };
+export const metadata: Metadata = { title: "404 · GYAN Hair Salon", robots: { index: false }, icons: APP_ICONS };
 
 export default function GlobalNotFound() {
   return (

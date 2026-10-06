@@ -15,6 +15,8 @@ import { SCHEMA_DAYS } from "@/lib/hours";
 import { getDict } from "@/lib/i18n";
 import { href, isLocale } from "@/lib/i18n/config";
 import { runEmailJobsThrottled } from "@/lib/jobs";
+import { APP_ICONS } from "@/lib/app-icons";
+import { AppShell } from "@/components/site/AppShell";
 import "../styles/base.css";
 import "../styles/site.css";
 
@@ -36,6 +38,9 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     description: d.meta.siteDescription,
     applicationName: site.name,
     formatDetection: { telephone: false },
+    manifest: `/site.webmanifest?l=${isLocale(lang) ? lang : "de"}`,
+    icons: APP_ICONS,
+    appleWebApp: { capable: true, title: "GYAN", statusBarStyle: "default" },
   };
 }
 
@@ -117,12 +122,21 @@ export default async function LangLayout({ children, params }: { children: React
           locale={locale}
           nav={nav}
           bookHref={href(locale, "booking")}
-          labels={{ book: d.common.book, bookShort: d.common.bookShort, menu: d.common.menu, close: d.common.close, language: d.common.language }}
+          labels={{ back: d.common.back, book: d.common.book, bookShort: d.common.bookShort, menu: d.common.menu, close: d.common.close, language: d.common.language }}
           slugIndex={slugIndex}
           phone={site.phone}
           phoneHref={site.phoneHref}
         />
         <main id="main">{children}</main>
+        <AppShell
+          tabs={[
+            { href: `/${locale}`, label: d.nav.home, icon: "home", exact: true },
+            { href: href(locale, "services"), label: d.nav.services, icon: "services" },
+            { href: href(locale, "booking"), label: d.common.bookShort, icon: "book" },
+            { href: href(locale, "zana"), label: d.nav.zana, icon: "zana" },
+            { href: href(locale, "contact"), label: d.nav.contact, icon: "contact" },
+          ]}
+        />
         <Footer locale={locale} d={d} services={services.map((s) => localize(s, locale))} hours={hours} />
         <JsonLd data={business} />
       </body>

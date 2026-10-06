@@ -75,6 +75,13 @@ const adminDe = {
     overlap: "Zu dieser Zeit ist bereits ein Termin (inkl. Puffer) oder eine Sperrzeit eingetragen.",
   },
   services: {
+    texts: "Texte & Übersetzungen",
+    more: "Weitere Einstellungen",
+    unsaved: "Nicht gespeichert",
+    less: "Weniger",
+    plus: "Mehr",
+    online: "Online",
+    perVisit: "pro Besuch",
     priceFromShort: "ab",
     inactive: "ausgeblendet",
     imageAuto: "Automatisch passendes Bild",

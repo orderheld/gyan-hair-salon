@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import type { L, Locale } from "@/content/types";
 import { LOCALES, ROUTES, type RouteKey } from "@/lib/i18n/config";
@@ -12,7 +12,7 @@ type Props = {
   locale: Locale;
   nav: NavItem[];
   bookHref: string;
-  labels: { book: string; bookShort: string; menu: string; close: string; language: string };
+  labels: { back: string; book: string; bookShort: string; menu: string; close: string; language: string };
   slugIndex: L[];
   phone: string;
   phoneHref: string;
@@ -35,6 +35,13 @@ function translatePath(pathname: string, from: Locale, to: Locale, slugIndex: L[
 export function Header({ locale, nav, bookHref, labels, slugIndex, phone, phoneHref }: Props) {
   const pathname = usePathname() ?? `/${locale}`;
   const [open, setOpen] = useState(false);
+  const router = useRouter();
+  // In der Home-Bildschirm-App gibt es keinen Zurück-Knopf des Browsers: ab der zweiten Ebene selber anbieten
+  const depth = pathname.split("/").filter(Boolean).length;
+  const goBack = () => {
+    if (window.history.length > 1) router.back();
+    else router.push(pathname.split("/").slice(0, -1).join("/") || `/${locale}`);
+  };
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
@@ -66,9 +73,16 @@ export function Header({ locale, nav, bookHref, labels, slugIndex, phone, phoneH
     <>
       <header className="site-header">
         <div className="header-inner">
+          <div className="brand-wrap">
+          {depth > 2 && (
+            <button type="button" className="app-back" onClick={goBack} aria-label={labels.back}>
+              <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><path d="M15 5l-7 7 7 7" /></svg>
+            </button>
+          )}
           <Link href={`/${locale}`} className="brand" aria-label="GYAN Hair Salon">
             <Wordmark className="brand-mark" />
           </Link>
+          </div>
           <nav className="nav-desktop" aria-label="Hauptnavigation">
             {nav.map((n) => (
               <Link key={n.href} href={n.href} aria-current={pathname.startsWith(n.href) ? "page" : undefined}>

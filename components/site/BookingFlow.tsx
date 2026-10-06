@@ -159,7 +159,7 @@ export function BookingFlow({ locale, t, common, services, initialServiceId, pho
           <li key={label} className={step === i + 1 ? "active" : step > i + 1 ? "done" : ""}>
             <button type="button" disabled={i + 1 > step} onClick={() => setStep((i + 1) as 1 | 2 | 3)}>
               <span className="dot">{i + 1}</span>
-              {label}
+              <span className="step-lbl">{label}</span>
             </button>
           </li>
         ))}
