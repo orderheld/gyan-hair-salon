@@ -14,7 +14,6 @@ import { getDict } from "@/lib/i18n";
 import { href, type Locale as Lc } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { Wordmark } from "@/components/brand/Logo";
-import { formatChf } from "@/lib/format";
 import { LiveChip, LiveSlot } from "@/components/site/LiveInfo";
 
 type Props = { params: Promise<{ lang: string }> };
@@ -118,7 +117,6 @@ export default async function Home({ params }: Props) {
                 {local.map((s) => (
                   <span key={s.id}>
                     {s.name}
-                    <em>{s.priceFrom ? `${d.common.from} ` : ""}{formatChf(s.priceChf)}</em>
                   </span>
                 ))}
               </div>
