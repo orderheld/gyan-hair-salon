@@ -13,6 +13,10 @@ import { href } from "@/lib/i18n/config";
 import { servicePath } from "@/lib/i18n/paths";
 import { absolute, pageMetadata } from "@/lib/seo";
 
+
+export function generateStaticParams() {
+  return [];
+}
 type Props = { params: Promise<{ lang: string; slug: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

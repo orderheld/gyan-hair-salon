@@ -15,8 +15,7 @@ import { href, type Locale as Lc } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { Wordmark } from "@/components/brand/Logo";
 import { formatChf } from "@/lib/format";
-import { nextFreeSlot, openState } from "@/lib/live";
-import { formatShortDate, formatTime } from "@/lib/time";
+import { LiveChip, LiveSlot } from "@/components/site/LiveInfo";
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -42,20 +41,6 @@ export default async function Home({ params }: Props) {
   const h = d.home;
   const [services, hours] = await Promise.all([getServices(), getOpeningHours()]);
   const local = services.map((s) => localize(s, locale));
-  const now = new Date();
-  const open = openState(hours, now);
-  const live = d.home.live;
-  const statusText =
-    open.kind === "open" ? live.open.replace("{t}", open.until)
-    : open.kind === "later" ? live.later.replace("{t}", open.from)
-    : open.kind === "closed" ? live.closed.replace("{d}", d.common.weekdays[open.weekday]).replace("{t}", open.from)
-    : null;
-  const shortest = Math.min(...services.map((s) => s.durationMin).filter((n) => n > 0), 30);
-  const slot = await nextFreeSlot(shortest, now);
-  const slotText = !slot
-    ? live.none
-    : `${slot.dayOffset === 0 ? live.today : slot.dayOffset === 1 ? live.tomorrow : formatShortDate(slot.date, locale)}, ${formatTime(slot.date, locale)}`;
-
   return (
     <>
       <Intro line={d.intro.line} />
@@ -65,12 +50,7 @@ export default async function Home({ params }: Props) {
           <div className="hero-head">
             <div className="hero-top hero-in" style={{ ["--i" as string]: 0 }}>
               <h1 className="eyebrow">{h.heroEyebrow}</h1>
-              {statusText && (
-                <span className={`live-chip${open.kind === "open" ? " is-open" : ""}`}>
-                  <i aria-hidden />
-                  {statusText}
-                </span>
-              )}
+              <LiveChip locale={locale} />
             </div>
             <p className="hero-title">
               <span className="line">
@@ -124,7 +104,7 @@ export default async function Home({ params }: Props) {
               <span className="sticky-dot" aria-hidden />
               <span className="hero-slot-text">
                 <small>{d.home.live.next}</small>
-                <strong>{slotText}</strong>
+                <LiveSlot locale={locale} fallback={d.home.live.none} />
               </span>
               <span className="hero-slot-go" aria-hidden>→</span>
             </Link>
@@ -265,7 +245,10 @@ export default async function Home({ params }: Props) {
           <p className="stars stars-lg" aria-hidden>★★★★★</p>
           <h2 className="h2">{h.reviewsTitle}</h2>
           <p className="lead">{h.reviewsText}</p>
-          <a className="btn btn-light" href={site.googleReviewsUrl} target="_blank" rel="noopener">{h.reviewsCta}</a>
+          <div className="btn-row reviews-btns">
+            <a className="btn btn-light" href={site.googleReviewsUrl} target="_blank" rel="noopener">{h.reviewsCta}</a>
+            <a className="btn btn-dark" href={site.googleWriteReviewUrl} target="_blank" rel="noopener">★ {h.reviewsWrite}</a>
+          </div>
         </div>
       </section>
 

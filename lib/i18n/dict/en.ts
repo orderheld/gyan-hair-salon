@@ -125,6 +125,7 @@ const en: Dict = {
     salonCta: "Discover the salon",
     reviewsTitle: "What clients say",
     reviewsText: "Over 290 reviews on Google. Read for yourself what clients say about their visit to GYAN.",
+    reviewsWrite: "Write a review",
     reviewsCta: "Reviews on Google",
     journalEyebrow: "Journal",
     journalTitle: "Style, grooming, Biel.",

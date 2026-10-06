@@ -14,6 +14,10 @@ import { href } from "@/lib/i18n/config";
 import { seoPath } from "@/lib/i18n/paths";
 import { pageMetadata } from "@/lib/seo";
 
+
+export function generateStaticParams() {
+  return [];
+}
 type Props = { params: Promise<{ lang: string; slug: string[] }> };
 type Page = { kind: "topic"; page: SeoTopic } | { kind: "place"; page: SeoPlace };
 

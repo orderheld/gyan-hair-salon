@@ -13,9 +13,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(251, 248, 243, 0.94);
-  backdrop-filter: saturate(160%) blur(18px);
-  -webkit-backdrop-filter: saturate(160%) blur(18px);
+  /* deckend statt Unschärfe: spart beim Scrollen am Handy viel Rechenarbeit */
+  background: var(--ivory);
   border-bottom: 1px solid rgba(217, 207, 192, 0.6);
   transition: opacity 0.5s var(--ease);
 }
@@ -433,7 +432,7 @@ html.no-intro { --intro-delay: 0.1s; }
 /* ---------- Bewertungen ---------- */
 .rating-big { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.06em; font-size: clamp(120px, 30vw, 220px); line-height: 0.85; margin: 0; letter-spacing: -0.04em; }
 .stars-lg { font-size: 22px; margin: 18px 0 28px; letter-spacing: 6px; }
-.reviews .btn { margin-top: 32px; }
+.reviews > .container > .btn { margin-top: 32px; }
 
 /* ---------- Journal ---------- */
 .post-grid { display: grid; gap: 40px; }
@@ -535,6 +534,7 @@ html.no-intro { --intro-delay: 0.1s; }
 .svc-prices small { font-size: 12.5px; color: var(--stone); }
 .svc-card.is-popular { border-color: var(--accent); }
 .svc-badge { position: absolute; top: 14px; left: 14px; z-index: 1; padding: 5px 11px; border-radius: 999px; background: var(--ink); color: var(--ivory); font-size: 12px; font-weight: 600; letter-spacing: 0.04em; }
+.section-tight.after-hero { padding-top: 0; }
 .price-note { margin: 0 0 8px; color: var(--taupe); font-size: 15px; max-width: 62ch; }
 .svc-group { margin-top: 40px; }
 .svc-group-title { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; font-size: clamp(24px, 3vw, 32px); margin: 0 0 18px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
@@ -778,7 +778,8 @@ html.app .app-back:active { background: var(--cream); }
   .footer-col a { display: inline-flex; align-items: center; min-height: 36px; }
   .footer-brand address a, .footer-legal a { display: inline-flex; align-items: center; min-height: 32px; }
   .crumbs a { display: inline-flex; align-items: center; min-height: 32px; padding-right: 2px; }
-  .crumbs { margin-bottom: 18px; }
+  .crumbs { margin-bottom: 18px; align-items: center; }
+  .crumbs > span { display: inline-flex; align-items: center; min-height: 32px; }
 }
 
 /* ---------- Zeitauswahl: Tagesleiste + Raster ---------- */
@@ -858,3 +859,8 @@ html.app .app-back:active { background: var(--cream); }
   .seg-n { min-width: 18px; height: 18px; padding: 0 5px; font-size: 10.5px; }
 }
 @media (max-width: 370px) { .seg-n { display: none; } }
+
+.reviews-btns { justify-content: center; gap: 12px; margin-top: 28px; }
+
+.live-fade { animation: liveIn .5s var(--ease) both; }
+@keyframes liveIn { from { opacity: 0; } to { opacity: 1; } }

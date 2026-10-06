@@ -1,4 +1,5 @@
 import "server-only";
+import { site } from "@/content/site";
 import { cache } from "react";
 import type { Locale } from "@/content/types";
 import { getSql } from "./db";
@@ -31,7 +32,7 @@ export const DEFAULT_SETTINGS: Settings = {
   cancelNoticeHours: 12,
   reminderHoursBefore: 3,
   followupHoursAfter: 5,
-  reviewUrl: "https://search.google.com/local/writereview?placeid=PLATZHALTER",
+  reviewUrl: site.googleWriteReviewUrl,
   instagramUrl: "https://www.instagram.com/gyan_hair_salon/",
   notifyEmail: process.env.SALON_NOTIFY_EMAIL ?? "",
   emailEnabled: {
@@ -56,6 +57,8 @@ export const getSettings = cache(async (): Promise<Settings> => {
     ...DEFAULT_SETTINGS,
     ...stored,
     notifyEmail: stored.notifyEmail || DEFAULT_SETTINGS.notifyEmail,
+    // alter Platzhalter aus früheren Versionen → echter Link
+    reviewUrl: !stored.reviewUrl || String(stored.reviewUrl).includes("PLATZHALTER") ? DEFAULT_SETTINGS.reviewUrl : stored.reviewUrl,
     emailEnabled: { ...DEFAULT_SETTINGS.emailEnabled, ...(stored.emailEnabled ?? {}) },
     emailTemplates: stored.emailTemplates ?? {},
   };

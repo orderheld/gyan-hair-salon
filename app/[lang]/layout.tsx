@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight, Instrument_Serif, Mrs_Saint_Delafield } from "next/font/google";
+import { Inter, Inter_Tight, Instrument_Serif } from "next/font/google";
 import { notFound } from "next/navigation";
-import { after } from "next/server";
 import { posts } from "@/content/blog";
 import { places } from "@/content/seo/places";
 import { topics } from "@/content/seo/topics";
@@ -14,18 +13,22 @@ import { getOpeningHours, getServices, localize } from "@/lib/data";
 import { SCHEMA_DAYS } from "@/lib/hours";
 import { getDict } from "@/lib/i18n";
 import { href, isLocale } from "@/lib/i18n/config";
-import { runEmailJobsThrottled } from "@/lib/jobs";
 import { APP_ICONS } from "@/lib/app-icons";
 import { AppShell } from "@/components/site/AppShell";
 import "../styles/base.css";
 import "../styles/site.css";
 
-export const dynamic = "force-dynamic";
+// Seiten werden zwischengespeichert und nach Änderungen im Admin sofort neu erzeugt (revalidatePath).
+// Spätestens alle 10 Minuten frisch, damit z. B. Öffnungszeiten im Footer stimmen.
+export const revalidate = 600;
+// Leere Liste: nichts beim Build vorrendern, aber jede Seite nach dem ersten Aufruf zwischenspeichern
+export function generateStaticParams() {
+  return [];
+}
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const display = Inter_Tight({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-tight", display: "swap" });
-const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif-i", display: "swap" });
-const script = Mrs_Saint_Delafield({ subsets: ["latin"], weight: "400", variable: "--font-signature", display: "swap" });
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", variable: "--font-serif-i", display: "swap" });
 
 export const viewport: Viewport = { themeColor: "#fbf8f3", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
@@ -50,7 +53,6 @@ export default async function LangLayout({ children, params }: { children: React
   const locale = lang;
   const d = getDict(locale);
   const [services, hours] = await Promise.all([getServices(), getOpeningHours()]);
-  after(runEmailJobsThrottled);
 
   const nav = [
     { href: href(locale, "zana"), label: d.nav.zana },
@@ -114,7 +116,7 @@ export default async function LangLayout({ children, params }: { children: React
   };
 
   return (
-    <html suppressHydrationWarning data-scroll-behavior="smooth" lang={locale === "de" ? "de-CH" : locale === "fr" ? "fr-CH" : "en"} className={`${inter.variable} ${display.variable} ${serif.variable} ${script.variable}`}>
+    <html suppressHydrationWarning data-scroll-behavior="smooth" lang={locale === "de" ? "de-CH" : locale === "fr" ? "fr-CH" : "en"} className={`${inter.variable} ${display.variable} ${serif.variable}`}>
       <body>
         <a className="skip" href="#main">{d.common.skip}</a>
         <Motion />

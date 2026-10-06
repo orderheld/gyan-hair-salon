@@ -31,6 +31,9 @@ async function cancel(formData: FormData) {
   redirect(`${back}?ok=1`);
 }
 
+
+// Immer frisch (Buchungsstatus, Auswahl aus der Adresse)
+export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ lang: string; token: string }>; searchParams: Promise<{ ok?: string }> };
 
 export default async function Storno({ params, searchParams }: Props) {

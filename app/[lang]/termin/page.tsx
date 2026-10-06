@@ -8,6 +8,9 @@ import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
 
+
+// Immer frisch (Buchungsstatus, Auswahl aus der Adresse)
+export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ lang: string }>; searchParams: Promise<{ service?: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

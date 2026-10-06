@@ -20,6 +20,8 @@ export const site = {
   instagram: "https://www.instagram.com/gyan_hair_salon/",
   instagramHandle: "@gyan_hair_salon",
   googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=GYAN+Hair+Salon+Biel",
+  /** Direktlink «Bewertung schreiben» aus dem Google-Unternehmensprofil */
+  googleWriteReviewUrl: "https://g.page/r/Cf88NjkyEn2REBM/review",
   rating: { value: "4.9", count: "290" }, // vor Livegang mit Google abgleichen
 
   // Bilder unter public/images

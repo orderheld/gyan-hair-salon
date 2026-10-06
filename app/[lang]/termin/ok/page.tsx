@@ -11,6 +11,9 @@ import { TIMEZONE } from "@/lib/config";
 
 export const metadata: Metadata = { robots: { index: false } };
 
+
+// Immer frisch (Buchungsstatus, Auswahl aus der Adresse)
+export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ lang: string }>; searchParams: Promise<{ id?: string }> };
 
 export default async function Confirmed({ params, searchParams }: Props) {

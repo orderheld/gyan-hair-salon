@@ -211,3 +211,9 @@ lib/jobs.ts            Erinnerungen und Feedback-E-Mails
 ## Update von Version 1
 
 Falls du Version 1 lokal laufen hattest: den Ordner `.pglite` löschen (`Remove-Item -Recurse -Force .pglite`), die Datenbank hat neue Felder. Falls Neon schon mit Version 1 eingerichtet war: dort am einfachsten ein neues Projekt anlegen und `npm run db:setup` ausführen.
+
+## 12. Tempo und Zwischenspeicher
+
+Die öffentlichen Seiten werden fertig gerechnet zwischengespeichert und kommen dadurch sofort. Änderungen im Admin (Preise, Zeiten, Texte) erscheinen gleich nach dem Speichern auf der Website. Spätestens alle 10 Minuten wird zusätzlich automatisch aufgefrischt.
+
+Die Live-Angaben auf der Startseite (offen/geschlossen, nächster freier Termin) werden bei jedem Besuch frisch über `/api/live` geladen. Buchung, Bestätigung und Stornierung sind nie zwischengespeichert.

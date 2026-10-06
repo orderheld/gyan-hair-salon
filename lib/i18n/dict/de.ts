@@ -123,6 +123,7 @@ const de = {
     salonCta: "Salon entdecken",
     reviewsTitle: "Was Kunden sagen",
     reviewsText: "Über 290 Bewertungen auf Google. Lies selbst, was Kunden über ihren Besuch bei GYAN schreiben.",
+    reviewsWrite: "Bewertung schreiben",
     reviewsCta: "Bewertungen auf Google",
     journalEyebrow: "Journal",
     journalTitle: "Stil, Pflege, Biel.",

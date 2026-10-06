@@ -43,31 +43,40 @@ export function Motion() {
     }));
 
     let raf = 0;
+    let lastScrolled = "";
     const update = () => {
       raf = 0;
       const vh = window.innerHeight;
-      root.dataset.scrolled = window.scrollY > vh * 0.6 ? "2" : window.scrollY > 24 ? "1" : "0";
-      if (!reduce) {
-        for (const el of parallax) {
-          const r = (el.parentElement ?? el).getBoundingClientRect();
-          if (r.bottom < -200 || r.top > vh + 200) continue;
-          const speed = Number(el.dataset.parallax) || 0.15;
-          const max = r.height * 0.1;
-          const py = Math.max(-max, Math.min(max, (r.top + r.height / 2 - vh / 2) * -speed));
-          el.style.setProperty("--py", `${py.toFixed(1)}px`);
+      // Erst alles messen, dann schreiben: sonst erzwingt jede Zeile ein neues Layout (Ruckeln)
+      const scrolled = window.scrollY > vh * 0.6 ? "2" : window.scrollY > 24 ? "1" : "0";
+      const pRects = reduce ? [] : parallax.map((el) => (el.parentElement ?? el).getBoundingClientRect());
+      const gRects = progress.map((el) => el.getBoundingClientRect());
+      const wRects = words.map(({ el }) => el.getBoundingClientRect());
+
+      if (scrolled !== lastScrolled) root.dataset.scrolled = lastScrolled = scrolled;
+      pRects.forEach((r, i) => {
+        if (r.bottom < -200 || r.top > vh + 200) return;
+        const el = parallax[i];
+        const speed = Number(el.dataset.parallax) || 0.15;
+        const max = r.height * 0.1;
+        const py = Math.max(-max, Math.min(max, (r.top + r.height / 2 - vh / 2) * -speed)).toFixed(1);
+        if (el.dataset.py !== py) {
+          el.dataset.py = py;
+          el.style.setProperty("--py", `${py}px`);
         }
-      }
-      for (const el of progress) {
-        const r = el.getBoundingClientRect();
-        if (r.bottom < -100 || r.top > vh + 100) continue;
-        el.style.setProperty("--p", clamp((vh - r.top) / (vh + r.height)).toFixed(3));
-      }
-      for (const { el, spans } of words) {
-        const r = el.getBoundingClientRect();
+      });
+      gRects.forEach((r, i) => {
+        if (r.bottom < -100 || r.top > vh + 100) return;
+        progress[i].style.setProperty("--p", clamp((vh - r.top) / (vh + r.height)).toFixed(3));
+      });
+      wRects.forEach((r, i) => {
+        const { spans } = words[i];
         const p = reduce ? 1 : clamp((vh * 0.88 - r.top) / (vh * 0.5));
         const n = Math.round(p * spans.length);
-        spans.forEach((s, i) => s.classList.toggle("on", i < n));
-      }
+        spans.forEach((s, j) => {
+          if (s.classList.contains("on") !== j < n) s.classList.toggle("on", j < n);
+        });
+      });
     };
     const onScroll = () => {
       if (!raf) raf = requestAnimationFrame(update);

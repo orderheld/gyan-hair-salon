@@ -13,6 +13,10 @@ import { href } from "@/lib/i18n/config";
 import { postPath } from "@/lib/i18n/paths";
 import { absolute, pageMetadata } from "@/lib/seo";
 
+
+export function generateStaticParams() {
+  return [];
+}
 type Props = { params: Promise<{ lang: string; slug: string }> };
 
 const find = (slug: string) => posts.find((p) => Object.values(p.slug).includes(decodeURIComponent(slug)));

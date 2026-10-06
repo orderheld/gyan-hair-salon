@@ -29,7 +29,7 @@ export default async function Services({ params }: Props) {
         lead={d.services.lead}
         crumbs={[{ label: d.nav.home, href: href(locale, "home") }, { label: d.nav.services, href: href(locale, "services") }]}
       />
-      <section className="section-tight">
+      <section className="section-tight after-hero">
         <div className="container">
           <p className="price-note" data-reveal>{d.services.priceNote}</p>
           {SERVICE_CATEGORIES.map((cat) => {

@@ -125,6 +125,7 @@ const fr: Dict = {
     salonCta: "Découvrir le salon",
     reviewsTitle: "Ce que disent nos clients",
     reviewsText: "Plus de 290 avis sur Google. Découvre ce que nos clients racontent de leur passage chez GYAN.",
+    reviewsWrite: "Laisser un avis",
     reviewsCta: "Avis sur Google",
     journalEyebrow: "Journal",
     journalTitle: "Style, soin, Bienne.",
