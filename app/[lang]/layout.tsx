@@ -1,0 +1,131 @@
+import type { Metadata, Viewport } from "next";
+import { Inter, Inter_Tight, Instrument_Serif, Mrs_Saint_Delafield } from "next/font/google";
+import { notFound } from "next/navigation";
+import { after } from "next/server";
+import { posts } from "@/content/blog";
+import { places } from "@/content/seo/places";
+import { topics } from "@/content/seo/topics";
+import { site } from "@/content/site";
+import { Motion } from "@/components/motion/Motion";
+import { Footer } from "@/components/site/Footer";
+import { Header } from "@/components/site/Header";
+import { JsonLd } from "@/components/site/Blocks";
+import { getOpeningHours, getServices, localize } from "@/lib/data";
+import { SCHEMA_DAYS } from "@/lib/hours";
+import { getDict } from "@/lib/i18n";
+import { href, isLocale } from "@/lib/i18n/config";
+import { runEmailJobsThrottled } from "@/lib/jobs";
+import "../styles/base.css";
+import "../styles/site.css";
+
+export const dynamic = "force-dynamic";
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const display = Inter_Tight({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-tight", display: "swap" });
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: ["normal", "italic"], variable: "--font-serif-i", display: "swap" });
+const script = Mrs_Saint_Delafield({ subsets: ["latin"], weight: "400", variable: "--font-signature", display: "swap" });
+
+export const viewport: Viewport = { themeColor: "#fbf8f3", width: "device-width", initialScale: 1, viewportFit: "cover" };
+
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  const d = getDict(isLocale(lang) ? lang : "de");
+  return {
+    metadataBase: new URL(site.url),
+    title: { default: d.meta.siteTitle, template: `%s · ${d.meta.titleSuffix}` },
+    description: d.meta.siteDescription,
+    applicationName: site.name,
+    formatDetection: { telephone: false },
+  };
+}
+
+export default async function LangLayout({ children, params }: { children: React.ReactNode; params: Promise<{ lang: string }> }) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+  const locale = lang;
+  const d = getDict(locale);
+  const [services, hours] = await Promise.all([getServices(), getOpeningHours()]);
+  after(runEmailJobsThrottled);
+
+  const nav = [
+    { href: href(locale, "zana"), label: d.nav.zana },
+    { href: href(locale, "services"), label: d.nav.services },
+    { href: href(locale, "salon"), label: d.nav.salon },
+    { href: href(locale, "blog"), label: d.nav.blog },
+    { href: href(locale, "faq"), label: d.nav.faq },
+    { href: href(locale, "contact"), label: d.nav.contact },
+  ];
+  const slugIndex = [...services, ...posts, ...topics, ...places].map((x) => x.slug);
+
+  const business = {
+    "@context": "https://schema.org",
+    "@type": ["HairSalon", "BarberShop"],
+    "@id": `${site.url}/#salon`,
+    name: site.name,
+    description: d.meta.siteDescription,
+    url: `${site.url}/${locale}`,
+    image: [`${site.url}${site.images.hero}`, `${site.url}${site.images.lounge}`],
+    logo: `${site.url}/brand/logo-email.png`,
+    telephone: site.phone,
+    email: site.email,
+    priceRange: services.length ? `CHF ${Math.min(...services.map((s) => s.priceChf))}–${Math.max(...services.map((s) => s.priceChf))}` : undefined,
+    currenciesAccepted: "CHF",
+    foundingDate: String(site.founded),
+    founder: { "@type": "Person", name: site.owner },
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: site.address.street,
+      postalCode: site.address.zip,
+      addressLocality: "Biel/Bienne",
+      addressRegion: site.address.region,
+      addressCountry: site.address.country,
+    },
+    hasMap: site.address.mapsUrl,
+    areaServed: ["Biel/Bienne", "Nidau", "Brügg", "Port", "Ipsach", "Evilard", "Orpund", "Lyss", "Pieterlen", "Studen", "Seeland"].map((n) => ({ "@type": "City", name: n })),
+    knowsLanguage: ["de", "fr", "en"],
+    sameAs: [site.instagram],
+    openingHoursSpecification: hours
+      .filter((h) => h.isOpen)
+      .map((h) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: SCHEMA_DAYS[h.weekday], opens: h.openTime, closes: h.closeTime })),
+    potentialAction: {
+      "@type": "ReserveAction",
+      target: { "@type": "EntryPoint", urlTemplate: `${site.url}${href(locale, "booking")}`, inLanguage: locale },
+      result: { "@type": "Reservation", name: d.common.bookCta },
+    },
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: d.nav.services,
+      itemListElement: services.map((s) => {
+        const l = localize(s, locale);
+        return {
+          "@type": "Offer",
+          price: s.priceChf,
+          priceCurrency: "CHF",
+          url: `${site.url}${href(locale, "services", l.slug)}`,
+          itemOffered: { "@type": "Service", name: l.name, description: l.short },
+        };
+      }),
+    },
+  };
+
+  return (
+    <html suppressHydrationWarning data-scroll-behavior="smooth" lang={locale === "de" ? "de-CH" : locale === "fr" ? "fr-CH" : "en"} className={`${inter.variable} ${display.variable} ${serif.variable} ${script.variable}`}>
+      <body>
+        <a className="skip" href="#main">{d.common.skip}</a>
+        <Motion />
+        <Header
+          locale={locale}
+          nav={nav}
+          bookHref={href(locale, "booking")}
+          labels={{ book: d.common.book, bookShort: d.common.bookShort, menu: d.common.menu, close: d.common.close, language: d.common.language }}
+          slugIndex={slugIndex}
+          phone={site.phone}
+          phoneHref={site.phoneHref}
+        />
+        <main id="main">{children}</main>
+        <Footer locale={locale} d={d} services={services.map((s) => localize(s, locale))} hours={hours} />
+        <JsonLd data={business} />
+      </body>
+    </html>
+  );
+}

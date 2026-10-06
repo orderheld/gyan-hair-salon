@@ -1,0 +1,184 @@
+[
+  {
+    "sort": 10,
+    "duration_min": 30,
+    "price_chf": 40,
+    "image": "/images/cut-standard.jpg",
+    "slug": {
+      "de": "haarschnitt-biel",
+      "fr": "coupe-homme-bienne",
+      "en": "mens-haircut-biel"
+    },
+    "name": {
+      "de": "Haarschnitt",
+      "fr": "Coupe homme",
+      "en": "Men's haircut"
+    },
+    "short": {
+      "de": "Beratung, Schnitt mit Schere und Maschine, Styling.",
+      "fr": "Conseil, coupe aux ciseaux et à la tondeuse, coiffage.",
+      "en": "Consultation, scissor and clipper cut, styling."
+    },
+    "long": {
+      "de": "Ein guter Haarschnitt beginnt vor dem ersten Schnitt. Zana schaut sich an, wie dein Haar wächst, wo die Wirbel sitzen und wie viel Zeit du morgens investieren willst. Erst dann entscheidet er, wo die Schere arbeitet und wo die Maschine.\n\nDas Ergebnis ist ein Schnitt, der nicht nur am ersten Tag gut aussieht, sondern auch nach drei Wochen noch Form hat. Vom klassischen Seitenscheitel bis zum modernen Mulet: sauber konturiert, mit Feingefühl an den Übergängen und zum Schluss mit dem passenden Produkt gestylt, damit du es zu Hause nachmachen kannst.",
+      "fr": "Une belle coupe commence avant le premier coup de ciseaux. Zana observe la façon dont tes cheveux poussent, la position des épis et le temps que tu veux consacrer à ta coiffure le matin. Ce n'est qu'ensuite qu'il décide où travaillent les ciseaux et où intervient la tondeuse.\n\nLe résultat : une coupe qui n'est pas seulement belle le premier jour, mais qui garde sa forme trois semaines plus tard. Du classique avec raie sur le côté au mulet moderne : contours nets, transitions travaillées avec précision et coiffage final avec le bon produit, pour que tu puisses le refaire chez toi.",
+      "en": "A great haircut starts before the first snip. Zana looks at how your hair grows, where the crowns sit and how much time you want to spend on it in the morning. Only then does he decide where the scissors work and where the clippers take over.\n\nThe result is a cut that looks good not just on day one but still holds its shape three weeks later. From a classic side part to a modern mullet: clean outlines, careful transitions and a final styling with the right product, so you can recreate it at home."
+    }
+  },
+  {
+    "sort": 20,
+    "duration_min": 45,
+    "price_chf": 45,
+    "image": "/images/cut-fade.jpg",
+    "slug": {
+      "de": "skin-fade-biel",
+      "fr": "degrade-americain-bienne",
+      "en": "skin-fade-biel"
+    },
+    "name": {
+      "de": "Skin Fade",
+      "fr": "Dégradé américain",
+      "en": "Skin fade"
+    },
+    "short": {
+      "de": "Präziser Übergang bis auf die Haut, sauber konturiert.",
+      "fr": "Dégradé précis jusqu'à la peau, contours nets.",
+      "en": "Precise blend down to the skin, sharp outlines."
+    },
+    "long": {
+      "de": "Beim Skin Fade entscheidet jeder Millimeter. Der Übergang von der Haut zur Länge muss nahtlos verlaufen, ohne Kanten, ohne Schatten, aus jedem Blickwinkel. Genau dafür nimmt sich Zana die Zeit: Aufsatz für Aufsatz, Zone für Zone, bis der Verlauf sitzt.\n\nOb Low, Mid oder High Fade, ob mit Textur oben oder klassisch kurz: Die Höhe wird auf deine Kopfform abgestimmt, nicht auf einen Trend. Zum Abschluss werden Nacken und Konturen mit der Klinge nachgezogen. Das Resultat wirkt frisch, gepflegt und hält länger, als man es von einem Fade erwartet.",
+      "fr": "Pour un dégradé américain, chaque millimètre compte. Le passage de la peau à la longueur doit être parfaitement fondu, sans démarcation ni ombre, quel que soit l'angle. C'est exactement pour cela que Zana prend son temps : sabot après sabot, zone après zone, jusqu'à ce que le dégradé soit parfait.\n\nLow, mid ou high fade, avec de la texture sur le dessus ou classique et court : la hauteur est adaptée à la forme de ta tête, pas à une tendance. Pour finir, la nuque et les contours sont repris au rasoir. Le résultat est net, soigné et tient plus longtemps qu'on ne l'attend d'un dégradé.",
+      "en": "With a skin fade, every millimetre counts. The transition from skin to length has to be seamless, without lines or shadows, from every angle. That is exactly why Zana takes his time: guard by guard, zone by zone, until the blend is right.\n\nLow, mid or high fade, textured on top or classic and short: the height is matched to the shape of your head, not to a trend. To finish, the neckline and outlines are refined with a straight razor. The result looks fresh, groomed and lasts longer than you would expect from a fade."
+    }
+  },
+  {
+    "sort": 30,
+    "duration_min": 60,
+    "price_chf": 65,
+    "image": "/images/cut-mulet.jpg",
+    "slug": {
+      "de": "haarschnitt-und-bart",
+      "fr": "coupe-et-barbe",
+      "en": "haircut-and-beard"
+    },
+    "name": {
+      "de": "Haarschnitt & Bart",
+      "fr": "Coupe & barbe",
+      "en": "Haircut & beard"
+    },
+    "short": {
+      "de": "Der komplette Look: Schnitt, Bartform und Konturen.",
+      "fr": "Le look complet : coupe, forme de barbe et contours.",
+      "en": "The complete look: cut, beard shape and outlines."
+    },
+    "long": {
+      "de": "Haar und Bart gehören zusammen. Wenn beides im selben Termin entsteht, passt der Übergang von den Schläfen in den Bart perfekt, und das Gesicht bekommt eine klare, ausgewogene Linie.\n\nZana schneidet zuerst die Haare, dann wird der Bart auf die neue Form abgestimmt: Länge, Dichte, Wangenlinie und Hals. Die Konturen werden mit der Klinge gesetzt, ein heisses Tuch beruhigt die Haut, zum Schluss pflegt ein Bartöl. Eine Stunde, nach der du dich komplett neu fühlst.",
+      "fr": "Cheveux et barbe vont ensemble. Quand les deux sont réalisés lors du même rendez-vous, la transition entre les tempes et la barbe est parfaite et le visage gagne une ligne claire et équilibrée.\n\nZana coupe d'abord les cheveux, puis adapte la barbe à la nouvelle forme : longueur, densité, ligne des joues et du cou. Les contours sont tracés au rasoir, une serviette chaude apaise la peau et une huile à barbe termine le soin. Une heure après laquelle tu te sens comme neuf.",
+      "en": "Hair and beard belong together. When both are done in the same appointment, the transition from the temples into the beard is seamless and your face gets a clear, balanced line.\n\nZana cuts the hair first, then shapes the beard to match: length, density, cheek line and neck. Outlines are set with the razor, a hot towel calms the skin and beard oil finishes the job. One hour, and you walk out feeling brand new."
+    }
+  },
+  {
+    "sort": 40,
+    "duration_min": 30,
+    "price_chf": 30,
+    "image": "/images/cut-bart.jpg",
+    "slug": {
+      "de": "bart-trimmen-biel",
+      "fr": "taille-de-barbe-bienne",
+      "en": "beard-trim-biel"
+    },
+    "name": {
+      "de": "Bart trimmen & formen",
+      "fr": "Taille de barbe",
+      "en": "Beard trim & shaping"
+    },
+    "short": {
+      "de": "Bart in Form gebracht, Konturen mit der Klinge.",
+      "fr": "Barbe mise en forme, contours au rasoir.",
+      "en": "Beard shaped, outlines finished with the razor."
+    },
+    "long": {
+      "de": "Ein gepflegter Bart verändert das ganze Gesicht. Zana bringt deinen Bart in eine Form, die zu deiner Gesichtsform und zu deinem Stil passt, egal ob kurzer Stoppelbart, gepflegter Vollbart oder klare Kontur.\n\nDie Länge wird mit Maschine und Schere angepasst, die Linien an Wange und Hals mit der Klinge gezogen. Ein heisses Tuch öffnet die Poren, Bartöl und Balsam sorgen dafür, dass Haut und Bart weich bleiben. Ideal auch zwischen zwei Haarschnitten.",
+      "fr": "Une barbe soignée change tout le visage. Zana donne à ta barbe une forme adaptée à ton visage et à ton style, qu'il s'agisse d'une barbe de trois jours, d'une barbe pleine entretenue ou de contours bien nets.\n\nLa longueur est ajustée à la tondeuse et aux ciseaux, les lignes des joues et du cou sont tracées au rasoir. Une serviette chaude ouvre les pores, l'huile et le baume gardent la peau et la barbe douces. Idéal aussi entre deux coupes.",
+      "en": "A well-kept beard changes your whole face. Zana shapes your beard to suit your face and your style, whether that is light stubble, a groomed full beard or a crisp outline.\n\nLength is adjusted with clippers and scissors, the cheek and neck lines are set with the razor. A hot towel opens the pores, beard oil and balm keep skin and beard soft. Ideal between two haircuts as well."
+    }
+  },
+  {
+    "sort": 50,
+    "duration_min": 30,
+    "price_chf": 35,
+    "image": "/images/salon-spiegel.jpg",
+    "slug": {
+      "de": "nassrasur-biel",
+      "fr": "rasage-traditionnel-bienne",
+      "en": "hot-towel-shave-biel"
+    },
+    "name": {
+      "de": "Klassische Nassrasur",
+      "fr": "Rasage traditionnel",
+      "en": "Classic hot towel shave"
+    },
+    "short": {
+      "de": "Nassrasur mit heissem Tuch, Schaum und Pflege.",
+      "fr": "Rasage à l'ancienne avec serviette chaude et soin.",
+      "en": "Traditional wet shave with hot towel and aftercare."
+    },
+    "long": {
+      "de": "Die klassische Nassrasur ist ein Ritual. Ein heisses Tuch bereitet die Haut vor, warmer Rasierschaum wird mit dem Pinsel aufgetragen, und dann folgt die Klinge, ruhig und präzise, Zug um Zug.\n\nNach der Rasur beruhigt ein kühles Tuch die Haut, ein Balsam pflegt nach. Das Ergebnis ist eine Glätte, die man mit keinem Rasierer zu Hause erreicht. Ideal vor einem besonderen Anlass oder einfach, um sich eine halbe Stunde Ruhe zu gönnen.",
+      "fr": "Le rasage traditionnel est un rituel. Une serviette chaude prépare la peau, la mousse chaude est appliquée au blaireau, puis vient la lame, calme et précise, passage après passage.\n\nAprès le rasage, une serviette fraîche apaise la peau et un baume la nourrit. Le résultat : une douceur qu'aucun rasoir ne permet d'obtenir à la maison. Idéal avant une occasion spéciale ou simplement pour s'offrir une demi-heure de calme.",
+      "en": "The classic wet shave is a ritual. A hot towel prepares the skin, warm lather is applied with a brush, and then comes the blade, calm and precise, stroke by stroke.\n\nAfterwards a cool towel soothes the skin and a balm finishes the care. The result is a smoothness no razor at home can match. Perfect before a special occasion, or simply to treat yourself to half an hour of calm."
+    }
+  },
+  {
+    "sort": 60,
+    "duration_min": 30,
+    "price_chf": 30,
+    "image": "/images/cut-nacken.jpg",
+    "slug": {
+      "de": "kinderhaarschnitt-biel",
+      "fr": "coupe-enfant-bienne",
+      "en": "kids-haircut-biel"
+    },
+    "name": {
+      "de": "Kinderhaarschnitt",
+      "fr": "Coupe enfant",
+      "en": "Kids' haircut"
+    },
+    "short": {
+      "de": "Für Jungs bis 12 Jahre, mit Geduld und Ruhe.",
+      "fr": "Pour les garçons jusqu'à 12 ans, avec patience.",
+      "en": "For boys up to 12, with patience and care."
+    },
+    "long": {
+      "de": "Auch die Kleinen verdienen einen richtig guten Schnitt. Zana nimmt sich Zeit, erklärt, was passiert, und sorgt dafür, dass sich Kinder auf dem Stuhl wohlfühlen.\n\nOb kurz und pflegeleicht für den Schulalltag oder ein moderner Fade wie beim Papa: Der Schnitt wird so gemacht, dass er auch mit wildem Spielplatz-Alltag gut aussieht. Für Kinder bis 12 Jahre.",
+      "fr": "Les plus petits méritent aussi une vraie belle coupe. Zana prend son temps, explique ce qu'il fait et veille à ce que les enfants se sentent à l'aise sur le fauteuil.\n\nCourte et facile à entretenir pour l'école ou dégradé moderne comme papa : la coupe est pensée pour rester belle même après une journée de jeux. Pour les enfants jusqu'à 12 ans.",
+      "en": "Little ones deserve a really good cut too. Zana takes his time, explains what is happening and makes sure kids feel comfortable in the chair.\n\nWhether short and low-maintenance for school or a modern fade just like dad's: the cut is made to look good even after a wild day at the playground. For children up to 12 years."
+    }
+  },
+  {
+    "sort": 70,
+    "duration_min": 75,
+    "price_chf": 95,
+    "image": "/images/signatur.jpg",
+    "slug": {
+      "de": "gyan-signature",
+      "fr": "gyan-signature",
+      "en": "gyan-signature"
+    },
+    "name": {
+      "de": "GYAN Signature",
+      "fr": "GYAN Signature",
+      "en": "GYAN Signature"
+    },
+    "short": {
+      "de": "Beratung, Wäsche, Schnitt, Bart, heisses Tuch, Styling. Die volle Zeit mit Zana.",
+      "fr": "Conseil, shampooing, coupe, barbe, serviette chaude, coiffage. Tout le temps avec Zana.",
+      "en": "Consultation, wash, cut, beard, hot towel, styling. Zana's full attention."
+    },
+    "long": {
+      "de": "Die GYAN Signature ist das Beste, was der Salon zu bieten hat, in einem einzigen Termin. Sie beginnt mit einem ausführlichen Gespräch über deinen Stil, dann folgt eine Haarwäsche mit Kopfmassage im Waschsessel.\n\nZana schneidet, formt den Bart, setzt die Konturen mit der Klinge und beruhigt die Haut mit heissen Tüchern. Zum Schluss wird gestylt und du bekommst Tipps für die Pflege zu Hause. 75 Minuten, in denen sich alles um dich dreht. Das ist der GYAN Standard.",
+      "fr": "Le GYAN Signature, c'est le meilleur du salon en un seul rendez-vous. Il commence par un échange approfondi sur ton style, suivi d'un shampooing avec massage du cuir chevelu au bac.\n\nZana coupe, façonne la barbe, trace les contours au rasoir et apaise la peau avec des serviettes chaudes. Pour finir, coiffage et conseils pour l'entretien à la maison. 75 minutes entièrement consacrées à toi. C'est le standard GYAN.",
+      "en": "The GYAN Signature is the best the salon has to offer, in a single appointment. It starts with an in-depth conversation about your style, followed by a wash with scalp massage at the basin.\n\nZana cuts, shapes the beard, sets the outlines with the razor and calms the skin with hot towels. Finally your hair is styled and you get tips for care at home. 75 minutes that are all about you. This is the GYAN Standard."
+    }
+  }
+]
