@@ -153,6 +153,14 @@ Solange `COMING_SOON=1` in Vercel gesetzt ist, sehen Besucher auf jeder Adresse 
 
 Icons liegen in `public/icons/`, die App-Daten in `app/site.webmanifest/route.ts` und `app/admin/app.webmanifest/route.ts`.
 
+## 10. Kunden, E-Mail-Code und Stornos
+
+- **E-Mail-Code:** Vor dem Buchen bekommt der Kunde einen 6-stelligen Code per E-Mail (10 Minuten gültig). Danach merkt sich sein Browser die Adresse 6 Monate, beim nächsten Mal geht es ohne Code. Ohne `RESEND_API_KEY` steht der Code lokal im Terminal.
+- **Einwilligung:** Kunden bestätigen mit einem Haken, dass GYAN ihre Angaben auch für eigene Werbung nutzen darf. Admin → Kunden → «Werbe-Liste als CSV» lädt alle Adressen mit Einwilligung herunter (ohne Abgemeldete und Gesperrte).
+- **Späte Stornierung:** Bis 12 Stunden vorher (Buchungsregeln) ist Stornieren gratis. Danach geht es trotzdem, der Kunde sieht aber den Hinweis, dass die Kosten beim nächsten Besuch verrechnet werden. Dasselbe gilt für «Nicht gekommen». Beides steht im Admin unter «Offene Kosten», bis du «Verrechnet» antippst.
+- **Hinweise:** Bucht so ein Kunde wieder, erscheint der Termin oben unter «Hinweise zu kommenden Terminen», und die Admin-E-Mail enthält eine Zeile «Achtung». Der Kunde selbst sieht davon nichts.
+- **Datenbank:** Neue Spalten und Tabellen legt die Webseite beim Start selbst an. `npm run db:setup` ist nach diesem Update nicht nötig.
+
 ## Inhalte anpassen
 
 | Was | Wo |
