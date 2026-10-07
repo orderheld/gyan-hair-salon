@@ -35,6 +35,6 @@ export async function POST(request: Request) {
       ? NextResponse.json({ error: fill(e.wait, { s: result.seconds ?? RESEND_SECONDS }), seconds: result.seconds }, { status: 429 })
       : NextResponse.json({ error: e.tooMany }, { status: 429 });
   }
-  await sendVerifyCode(email, result.code, locale);
+  if (await sendVerifyCode(email, result.code, locale)) return NextResponse.json({ error: e.codeSend }, { status: 502 });
   return NextResponse.json({ sent: true, resendIn: RESEND_SECONDS });
 }

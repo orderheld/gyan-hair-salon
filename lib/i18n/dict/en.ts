@@ -292,6 +292,7 @@ const en: Dict = {
       codeWrong: "That code is not right. Please check it again.",
       codeExpired: "The code has expired. Please request a new one.",
       tooMany: "Too many attempts. Please wait a while or give us a call.",
+      codeSend: "We couldn’t send the code by email. Please try again later or give us a call.",
       wait: "Please wait {s} more seconds before requesting a new code.",
       blocked: "Online booking is not possible with these details. Please give us a call.",
       consent: "Please confirm your consent to book.",

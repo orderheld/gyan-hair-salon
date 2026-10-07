@@ -290,6 +290,7 @@ const de = {
       codeWrong: "Der Code stimmt nicht. Bitte nochmals prüfen.",
       codeExpired: "Der Code ist abgelaufen. Bitte fordere einen neuen an.",
       tooMany: "Zu viele Versuche. Bitte warte eine Weile oder ruf uns an.",
+      codeSend: "Der Code konnte nicht per E-Mail gesendet werden. Bitte versuch es später nochmals oder ruf uns an.",
       wait: "Bitte warte noch {s} Sekunden, dann kannst du einen neuen Code anfordern.",
       blocked: "Eine Online-Buchung ist mit diesen Angaben leider nicht möglich. Bitte ruf uns an.",
       consent: "Bitte bestätige die Einwilligung, um zu buchen.",

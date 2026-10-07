@@ -217,3 +217,11 @@ Falls du Version 1 lokal laufen hattest: den Ordner `.pglite` löschen (`Remove-
 Die öffentlichen Seiten werden fertig gerechnet zwischengespeichert und kommen dadurch sofort. Änderungen im Admin (Preise, Zeiten, Texte) erscheinen gleich nach dem Speichern auf der Website. Spätestens alle 10 Minuten wird zusätzlich automatisch aufgefrischt.
 
 Die Live-Angaben auf der Startseite (offen/geschlossen, nächster freier Termin) werden bei jedem Besuch frisch über `/api/live` geladen. Buchung, Bestätigung und Stornierung sind nie zwischengespeichert.
+
+## 13. Wenn E-Mails nicht ankommen
+
+- Im Admin unter **Termine** erscheint oben eine Warnung mit der genauen Meldung von Resend, wenn eine E-Mail nicht rausging.
+- Häufigste Ursache: Die Absender-Domain ist in Resend nicht verifiziert. Ohne verifizierte Domain schickt Resend nur an die eigene Konto-Adresse, Kunden bekommen nichts (auch keinen Buchungscode). Lösung: Schritt 4 und 6 (DNS-Einträge bei cyon, **Verify** in Resend, `EMAIL_FROM` auf diese Domain, Redeploy).
+- Kommt der Buchungscode nicht an, sieht der Kunde jetzt direkt eine Meldung mit der Bitte anzurufen.
+- Unter **E-Mails** zeigt die Test-E-Mail bei einem Fehler die Meldung von Resend an.
+- Vercel → **Logs**, Suche nach `E-Mail-Fehler`, zeigt jeden Fehler mit Empfänger.

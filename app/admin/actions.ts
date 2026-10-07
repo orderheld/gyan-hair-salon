@@ -348,6 +348,7 @@ export async function sendEmailTest(lang: string, fd: FormData) {
   const s = await getSettings();
   if (!s.notifyEmail) back(`/admin/emails#${type}`, t.emails.testNoEmail, "error");
   if (!isType(type) || !isLocale(lang)) back("/admin/emails", t.common.checkInput, "error");
-  await sendTestEmail(type as EmailType, lang as Locale, s.notifyEmail);
+  const failed = await sendTestEmail(type as EmailType, lang as Locale, s.notifyEmail);
+  if (failed) back(`/admin/emails#${type}`, fill(t.emails.testFailed, { error: failed }), "error");
   back(`/admin/emails#${type}`, fill(t.emails.testSent, { email: s.notifyEmail }));
 }

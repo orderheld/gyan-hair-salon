@@ -11,6 +11,7 @@ import { fill, type AdminDict } from "@/lib/i18n";
 import { LOCALE_NAMES } from "@/lib/i18n/config";
 import { formatChf } from "@/lib/format";
 import { addDays, formatLongDate, formatShortDate, formatTime, isDateKey, toDateKey, zurichToDate } from "@/lib/time";
+import { getEmailLastError } from "@/lib/email";
 import {
   adminCancelBooking,
   adminCreateBooking,
@@ -143,13 +144,16 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
   const upcomingStart = zurichToDate(addDays(todayKey, 0), "00:00");
   const upcomingEnd = zurichToDate(addDays(todayKey, 15), "00:00");
 
-  const [dayBookings, upcoming, stats, services, fees] = await Promise.all([
+  const [dayBookings, upcoming, stats, services, fees, mailError] = await Promise.all([
     getBookingsBetween(dayStart, dayEnd, { includeCancelled: true }),
     getBookingsBetween(new Date(Math.max(Date.now(), upcomingStart.getTime())), upcomingEnd),
     getBookingStats(),
     getServices({ includeInactive: true }),
     getOpenFeeBookings(),
+    getEmailLastError().catch(() => null),
   ]);
+  // Versandfehler der letzten 3 Tage oben anzeigen
+  const showMailError = !!mailError && Date.now() - new Date(mailError.at).getTime() < 3 * 24 * 3600 * 1000;
   const infos = await getCustomerInfos([...dayBookings, ...upcoming, ...fees].map(keyOf));
   const info = (b: Booking) => infos.get(keyOf(b));
   const returnTo = `/admin?datum=${day}`;
@@ -165,6 +169,19 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
         <h1 className="h2">{t.bookings.title}</h1>
       </div>
       <Flash ok={ok} error={error} />
+
+      {showMailError && mailError && (
+        <section className="panel attn" role="alert">
+          <h2 className="h3">⚠ {t.bookings.mailErrorTitle}</h2>
+          <p className="small" style={{ margin: "8px 0 0", overflowWrap: "anywhere" }}>
+            {fill(t.bookings.mailErrorText, {
+              when: `${formatShortDate(new Date(mailError.at), locale)} ${formatTime(new Date(mailError.at), locale)}`,
+              to: mailError.to,
+              message: mailError.message,
+            })}
+          </p>
+        </section>
+      )}
 
       {attention.length > 0 && (
         <section className="panel attn">

@@ -9,6 +9,7 @@ import { getService } from "./data";
 import { EMAIL_LOGO_BASE64 } from "./email-logo";
 import { formatChf, formatDuration } from "./format";
 import { customerKey, getCustomerInfos } from "./customers";
+import { getSql } from "./db";
 import { getSettings, type EmailTemplate, type EmailType, type Settings } from "./settings";
 import { TIMEZONE } from "./config";
 
@@ -17,12 +18,35 @@ const FROM = process.env.EMAIL_FROM ?? `${site.name} <termine@gyan-hairsalon.ch>
 
 type Mail = { to: string; subject: string; html: string; text: string; ics?: string; replyTo?: string };
 
-async function send(mail: Mail) {
+/** Letzter Versandfehler (für die Warnung im Admin) */
+async function rememberError(mail: Mail, message: string) {
+  try {
+    const sql = await getSql();
+    const value = JSON.stringify({ at: new Date().toISOString(), to: mail.to, subject: mail.subject, message: message.slice(0, 300) });
+    await sql`
+      INSERT INTO settings (key, value, updated_at) VALUES ('emailLastError', ${value}::jsonb, now())
+      ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = now()`;
+  } catch (e) {
+    console.error("[GYAN] Versandfehler konnte nicht gespeichert werden:", e);
+  }
+}
+
+export type EmailError = { at: string; to: string; subject: string; message: string };
+
+export async function getEmailLastError(): Promise<EmailError | null> {
+  const sql = await getSql();
+  const rows = await sql`SELECT value FROM settings WHERE key = 'emailLastError'`;
+  return (rows[0]?.value as EmailError | undefined) ?? null;
+}
+
+/** Schickt eine E-Mail. Gibt null zurück, wenn sie raus ist, sonst die Fehlermeldung. */
+async function send(mail: Mail): Promise<string | null> {
   if (!resend) {
     console.log(`[GYAN] E-Mail (nicht versendet, RESEND_API_KEY fehlt) an ${mail.to}: ${mail.subject}`);
-    return;
+    if (process.env.VERCEL) await rememberError(mail, "RESEND_API_KEY fehlt in Vercel");
+    return process.env.VERCEL ? "RESEND_API_KEY fehlt" : null;
   }
-  const { error } = await resend.emails.send({
+  const payload = {
     from: FROM,
     to: mail.to,
     subject: mail.subject,
@@ -33,8 +57,28 @@ async function send(mail: Mail) {
       { filename: "gyan-logo.png", content: EMAIL_LOGO_BASE64, contentType: "image/png", contentId: "gyan-logo" },
       ...(mail.ics ? [{ filename: "gyan-termin.ics", content: Buffer.from(mail.ics).toString("base64"), contentType: "text/calendar" }] : []),
     ],
-  });
-  if (error) console.error("[GYAN] E-Mail-Fehler:", error);
+  };
+  let error: { message: string; name?: string } | null = null;
+  for (let attempt = 0; attempt < 3; attempt++) {
+    try {
+      ({ error } = await resend.emails.send(payload));
+    } catch (e) {
+      error = { message: e instanceof Error ? e.message : String(e) };
+    }
+    // Resend erlaubt nur wenige Mails pro Sekunde: kurz warten und nochmals
+    if (!error || error.name !== "rate_limit_exceeded") break;
+    await new Promise((r) => setTimeout(r, 1100));
+  }
+  if (!error) {
+    // Warnung im Admin löschen, sobald wieder eine Mail an einen Kunden rausgeht
+    // (an die eigene Adresse klappt es bei Resend auch ohne verifizierte Domain)
+    const own = (await getSettings().catch(() => null))?.notifyEmail;
+    if (mail.to !== own) await getSql().then((sql) => sql`DELETE FROM settings WHERE key = 'emailLastError'`).catch(() => {});
+    return null;
+  }
+  console.error("[GYAN] E-Mail-Fehler:", mail.to, error);
+  await rememberError(mail, `${error.name ? `${error.name}: ` : ""}${error.message}`);
+  return error.message;
 }
 
 const esc = (s: string) =>
@@ -240,7 +284,7 @@ export async function resendConfirmationToCustomer(b: Booking) {
 
 export async function sendCancellation(b: Booking, by: "customer" | "salon") {
   const settings = await getSettings();
-  const tasks = [sendType(by === "salon" ? "cancellationBySalon" : "cancellation", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined })];
+  const tasks: Promise<unknown>[] = [sendType(by === "salon" ? "cancellationBySalon" : "cancellation", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined })];
   if (by === "customer" && settings.emailEnabled.adminNotify && settings.notifyEmail) {
     const mail = await buildEmail("cancellation", b, { settings, locale: "de" });
     tasks.push(send({ to: settings.notifyEmail, ...mail, ics: undefined, subject: `${b.lateCancel ? "Zu spät storniert" : "Storniert"}: ${mail.subject}` }));
@@ -265,13 +309,13 @@ export async function sendVerifyCode(to: string, code: string, locale: Locale) {
   const body = v.mailBody;
   const highlight = `<div style="margin:0 0 24px;text-align:center"><span style="display:inline-block;padding:16px 22px 16px 30px;border-radius:16px;background:#f3ece1;font-size:34px;font-weight:700;letter-spacing:.32em;color:#141210;font-family:SFMono-Regular,Menlo,Consolas,monospace">${code}</span></div>`;
   const html = layout({ locale, preheader: subject, heading: v.mailHeading, body, logoSrc: "cid:gyan-logo", highlight });
-  await send({ to, subject, html, text: `${v.mailHeading}\n\n${code}\n\n${body}` });
+  return send({ to, subject, html, text: `${v.mailHeading}\n\n${code}\n\n${body}` });
 }
 
 /** Test-E-Mail aus dem Admin (unabhängig davon, ob der Typ aktiv ist). */
 export async function sendTestEmail(type: EmailType, locale: Locale, to: string) {
   const mail = await buildEmail(type, sampleBooking(locale), { locale });
-  await send({ to, ...mail, subject: `[Test] ${mail.subject}` });
+  return send({ to, ...mail, subject: `[Test] ${mail.subject}` });
 }
 
 /** Beispielwerte für die Platzhalter-Legende im Admin */
