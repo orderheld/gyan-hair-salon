@@ -54,7 +54,7 @@ export default async function Salon({ params }: Props) {
         <div className="container">
           <h2 className="h2" data-reveal>{d.salon.galleryTitle}</h2>
           <div className="gallery">
-            {[site.images.reception, site.images.signature, "/images/cut-mulet.jpg", "/images/cut-standard.jpg"].map((src, i) => (
+            {[site.images.washSeat, site.images.barbershop, site.images.slickBack, site.images.bag].map((src, i) => (
               <div key={src} className="gallery-item" data-reveal style={{ transitionDelay: `${i * 70}ms` }}>
                 <Image src={src} alt={site.imageAlt[src][locale]} fill sizes="(max-width: 760px) 50vw, 25vw" />
               </div>

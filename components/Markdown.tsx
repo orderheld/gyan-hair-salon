@@ -21,6 +21,8 @@ const PAGE_KEYS: Record<string, RouteKey> = {
   contact: "contact",
   booking: "booking",
   blog: "blog",
+  gutschein: "voucher",
+  voucher: "voucher",
 };
 
 export async function linkResolver(locale: Locale): Promise<Resolver> {

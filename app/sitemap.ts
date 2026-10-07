@@ -33,6 +33,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["contact", 0.8, [site.images.reception]],
     ["faq", 0.6],
     ["blog", 0.7],
+    ["voucher", 0.6, ["/images/gutschein-kuverts.jpg"]],
     ["loyalty", 0.4],
     ["social", 0.4],
   ];

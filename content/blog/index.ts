@@ -1,4 +1,5 @@
 import type { BlogPost } from "../types";
+import { post as gutscheinVerschenken } from "./gutschein-verschenken-biel";
 import { post as hochzeitBewerbungHaarschnitt } from "./haarschnitt-hochzeit-bewerbung-biel";
 import { post as fadePflegeZuhause } from "./fade-frisur-pflege-tipps";
 import { post as barberOderCoiffeur } from "./barber-oder-coiffeur-biel";
@@ -9,6 +10,7 @@ import { post as wieOftZumCoiffeur } from "./wie-oft-zum-coiffeur";
 
 // Neueste zuerst
 export const posts: BlogPost[] = [
+  gutscheinVerschenken,
   hochzeitBewerbungHaarschnitt,
   fadePflegeZuhause,
   barberOderCoiffeur,

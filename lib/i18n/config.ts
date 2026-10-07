@@ -20,6 +20,7 @@ export const ROUTES = {
   contact: { de: "kontakt", fr: "contact", en: "contact" },
   social: { de: "social-media", fr: "reseaux-sociaux", en: "social-media" },
   loyalty: { de: "stempelkarte", fr: "carte-fidelite", en: "loyalty-card" },
+  voucher: { de: "gutschein", fr: "bon-cadeau", en: "gift-card" },
   booking: { de: "termin", fr: "reservation", en: "booking" },
   account: { de: "meine-termine", fr: "mes-rendez-vous", en: "my-bookings" },
   imprint: { de: "impressum", fr: "mentions-legales", en: "imprint" },

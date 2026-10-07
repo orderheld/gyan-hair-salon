@@ -65,6 +65,12 @@ export const site = {
     /** Grosses Bild im Zana-Teil (Startseite und Zana-Seite) */
     zanaMain: "/images/zana-barbershop.jpg",
     signature: "/images/signatur.jpg",
+    voucher: "/images/gutschein-kuverts.jpg",
+    washSeat: "/images/salon-waschplatz.jpg",
+    barbershop: "/images/salon-barbershop.jpg",
+    bag: "/images/gyan-tasche.jpg",
+    luxury: "/images/gyan-time-for-luxury.jpg",
+    slickBack: "/images/cut-slick-back.jpg",
     work: ["/images/cut-mulet.jpg", "/images/cut-standard.jpg", "/images/cut-fade.jpg", "/images/cut-bart.jpg", "/images/cut-nacken.jpg", "/images/signatur.jpg"],
     // Bild pro Leistung, falls im Admin keines gesetzt ist (Stichwort im deutschen Slug)
     serviceFallback: [
@@ -102,6 +108,12 @@ export const site = {
     "/images/zana-barbershop.jpg": { de: "Barbershop-Ecke im GYAN Hair Salon mit Pflanzen und Teppichbild", fr: "Coin barbershop chez GYAN Hair Salon avec plantes et tapis encadré", en: "Barbershop corner at GYAN Hair Salon with plants and a framed rug" },
     "/images/zana-illustration.jpg": { de: "Illustration von Zana, Inhaber von GYAN Hair Salon", fr: "Illustration de Zana, propriétaire de GYAN Hair Salon", en: "Illustration of Zana, owner of GYAN Hair Salon" },
     "/images/zana-portrait-art.jpg": { de: "GYAN-Logo mit Zanas Porträt als Kunstwerk", fr: "Logo GYAN avec le portrait de Zana en œuvre d'art", en: "GYAN logo with Zana's portrait as artwork" },
+    "/images/gutschein-kuverts.jpg": { de: "GYAN Gutscheinkarten aus Kraftpapier mit geprägtem GA-Monogramm, Kuverts und Siegel", fr: "Cartes cadeaux GYAN en papier kraft avec monogramme GA embossé, enveloppes et cachet", en: "GYAN gift cards in kraft paper with embossed GA monogram, envelopes and a wax seal" },
+    "/images/salon-waschplatz.jpg": { de: "Waschplatz mit braunem Ledersessel und GYAN-Logo am Bildschirm", fr: "Bac à shampoing avec fauteuil en cuir brun et logo GYAN à l'écran", en: "Wash station with a brown leather chair and the GYAN logo on screen" },
+    "/images/salon-barbershop.jpg": { de: "Barbershop-Ecke mit grosser Pflanze, Teppichbild und Lounge", fr: "Coin barbershop avec grande plante, tapis encadré et lounge", en: "Barbershop corner with a large plant, framed rug and lounge" },
+    "/images/gyan-tasche.jpg": { de: "Kunde mit brauner GYAN-Tasche in der hellen Lounge des Salons", fr: "Client avec un sac GYAN brun dans le lounge lumineux du salon", en: "Customer holding a brown GYAN bag in the bright salon lounge" },
+    "/images/gyan-time-for-luxury.jpg": { de: "GYAN-Plakat «Time for Luxury» mit Linienzeichnung auf Beige", fr: "Affiche GYAN «Time for Luxury» avec dessin au trait sur fond beige", en: "GYAN poster «Time for Luxury» with a line drawing on beige" },
+    "/images/cut-slick-back.jpg": { de: "Slick Back mit Fade von hinten, frisch geschnitten bei GYAN", fr: "Slick back avec dégradé vu de dos, fraîchement coupé chez GYAN", en: "Slick back with a fade from behind, freshly cut at GYAN" },
   } as Record<string, L>,
 };
 

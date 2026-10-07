@@ -51,6 +51,7 @@ export function Footer({ locale, d, services, hours }: { locale: Locale; d: Dict
             <Link href={href(locale, "salon")}>{d.nav.salon}</Link>
             <Link href={href(locale, "services")}>{d.nav.services}</Link>
             <Link href={href(locale, "booking")}>{d.common.book}</Link>
+            <Link href={href(locale, "voucher")}>{d.nav.voucher}</Link>
             <Link href={href(locale, "loyalty")}>{d.nav.loyalty}</Link>
             <Link href={href(locale, "social")}>{d.nav.social}</Link>
             <Link href={href(locale, "faq")}>{d.nav.faq}</Link>

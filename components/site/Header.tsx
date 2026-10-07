@@ -51,8 +51,8 @@ export function Header({ locale, nav, bookHref, accountHref, cardHref, labels, s
     // Tipps aufs Menü vor dem Start von React übernimmt ein kleines Inline-Skript (Layout)
     const w = window as Window & { __gyanMenuEarly?: () => boolean };
     if (w.__gyanMenuEarly?.()) setOpen(true);
-    // breiter als 1200px gibt es kein Burger-Menü: sonst bliebe die Seite gesperrt
-    const mq = window.matchMedia("(min-width: 1200px)");
+    // breiter als 1360px gibt es kein Burger-Menü: sonst bliebe die Seite gesperrt
+    const mq = window.matchMedia("(min-width: 1360px)");
     const onWide = () => mq.matches && setOpen(false);
     mq.addEventListener("change", onWide);
     return () => mq.removeEventListener("change", onWide);
