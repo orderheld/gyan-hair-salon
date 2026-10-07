@@ -165,3 +165,9 @@ button, input, select, textarea { font: inherit; color: inherit; }
 @keyframes toast-in { from { opacity: 0; transform: translateY(-10px) scale(0.98); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .toast { animation: none; } }
 @media print { .toasts { display: none !important; } }
+/* iOS Safari: Datums- und Zeitfelder sind sonst breiter als die Karte und leer niedriger als andere Felder */
+input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"]) { -webkit-appearance: none; appearance: none; min-width: 0; max-width: 100%; box-sizing: border-box; text-align: left; }
+.input:where([type="date"], [type="time"], [type="datetime-local"], [type="month"]) { display: block; }
+input[type="date"]::-webkit-date-and-time-value, input[type="time"]::-webkit-date-and-time-value, input[type="datetime-local"]::-webkit-date-and-time-value { text-align: left; margin: 0; min-height: 1.4em; }
+input[type="date"]::-webkit-calendar-picker-indicator, input[type="time"]::-webkit-calendar-picker-indicator { opacity: 0.55; }
+.field { min-width: 0; }
