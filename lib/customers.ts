@@ -175,6 +175,12 @@ export async function updateCustomerContact(key: string, contact: { name: string
   return newKey;
 }
 
+/** Geburtsdatum bei allen Terminen ohne Geburtsdatum nachtragen */
+export async function fillBirthDate(key: string, birthDate: string) {
+  if (!key || !birthDate) return;
+  await query(`UPDATE bookings SET birth_date = $2 WHERE ${KEY_SQL} = $1 AND birth_date = ''`, [key, birthDate]);
+}
+
 /** Kunde vollständig löschen: alle Termine, Notizen und Codes (Datenschutz) */
 export async function deleteCustomer(key: string): Promise<number> {
   if (!key) return 0;

@@ -4,7 +4,9 @@ import { siteLocked } from "@/lib/auth";
 import { sendVerifyCode } from "@/lib/email";
 import { fill, getDict } from "@/lib/i18n";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n/config";
-import { checkCode, cookieMatches, createCode, CUSTOMER_COOKIE, RESEND_SECONDS, rememberCustomer, VERIFIED_COOKIE } from "@/lib/verify";
+import { getCustomer, updateCustomerContact } from "@/lib/customers";
+import { isBirthDate } from "@/lib/time";
+import { checkCode, cookieMatches, createCode, CUSTOMER_COOKIE, readCustomerCookie, RESEND_SECONDS, rememberCustomer, VERIFIED_COOKIE } from "@/lib/verify";
 
 export const dynamic = "force-dynamic";
 
@@ -61,5 +63,33 @@ export async function DELETE() {
   const jar = await cookies();
   jar.delete(CUSTOMER_COOKIE);
   jar.delete(VERIFIED_COOKIE);
+  return NextResponse.json({ ok: true });
+}
+
+/**
+ * Angemeldete Kunden ändern ihre Angaben (Name, Telefon, Geburtsdatum) für ihr ganzes Konto.
+ * Die E-Mail ist das Konto und bleibt fix.
+ */
+export async function PATCH(request: Request) {
+  if (await siteLocked()) return NextResponse.json({ error: "Coming soon" }, { status: 403 });
+  const email = readCustomerCookie((await cookies()).get(CUSTOMER_COOKIE)?.value);
+  if (!email) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  let body: Record<string, unknown>;
+  try {
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: "Bad request" }, { status: 400 });
+  }
+  const locale = isLocale(String(body.locale)) ? (body.locale as "de" | "fr" | "en") : DEFAULT_LOCALE;
+  const e = getDict(locale).booking.errors;
+  const text = (v: unknown, max: number) => (typeof v === "string" ? v.trim().slice(0, max) : "");
+  const name = text(body.name, 80);
+  const phone = text(body.phone, 30);
+  const birthDate = text(body.birthDate, 10);
+  if (name.length < 2) return NextResponse.json({ error: e.name }, { status: 400 });
+  if (phone.replace(/\D/g, "").length < 9) return NextResponse.json({ error: e.phone }, { status: 400 });
+  if (!isBirthDate(birthDate)) return NextResponse.json({ error: e.birthDate }, { status: 400 });
+  if (!(await getCustomer(email))) return NextResponse.json({ error: e.generic }, { status: 404 });
+  await updateCustomerContact(email, { name, email, phone, birthDate });
   return NextResponse.json({ ok: true });
 }

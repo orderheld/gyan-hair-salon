@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { after, NextResponse } from "next/server";
 import { siteLocked } from "@/lib/auth";
-import { isBlocked } from "@/lib/customers";
+import { fillBirthDate, getCustomer, isBlocked } from "@/lib/customers";
 import { checkCode, cookieMatches, CUSTOMER_COOKIE, readCustomerCookie, rememberCustomer, VERIFIED_COOKIE } from "@/lib/verify";
 import { isSlotAvailable } from "@/lib/availability";
 import { createBooking, SlotTakenError } from "@/lib/booking";
@@ -34,12 +34,17 @@ export async function POST(request: Request) {
   const serviceId = Number(body.serviceId);
   const date = clean(body.date, 10);
   const time = clean(body.time, 5);
-  const name = clean(body.name, 80);
-  const email = clean(body.email, 120).toLowerCase();
-  const phone = clean(body.phone, 30);
+  const jar = await cookies();
+  // Angemeldet: die E-Mail ist das Konto und kommt aus dem Cookie, nicht aus dem Formular
+  const account = readCustomerCookie(jar.get(CUSTOMER_COOKIE)?.value);
+  const email = account || clean(body.email, 120).toLowerCase();
+  // Ein Konto hat immer dieselben Angaben: Gespeichertes gilt, das Formular füllt nur Lücken (z. B. Geburtsdatum einmalig)
+  const profile = EMAIL.test(email) ? await getCustomer(email) : null;
+  const name = profile?.name || clean(body.name, 80);
+  const phone = profile?.phone || clean(body.phone, 30);
+  const birthDate = profile?.birthDate || clean(body.birthDate, 10);
   const note = clean(body.note, 500);
   const code = clean(body.code, 6);
-  const birthDate = clean(body.birthDate, 10);
 
   let error = "";
   if (!isDateKey(date) || !isTimeKey(time)) error = e.dateTime;
@@ -58,7 +63,6 @@ export async function POST(request: Request) {
   if (blocked) return NextResponse.json({ error: e.blocked }, { status: 403 });
 
   // E-Mail muss bestätigt sein: per Code oder weil dieser Browser sie schon bestätigt hat
-  const jar = await cookies();
   if (!cookieMatches(jar.get(VERIFIED_COOKIE)?.value, email)) {
     if (!code) return NextResponse.json({ error: e.codeExpired, needCode: true }, { status: 400 });
     const check = await checkCode(email, code);
@@ -95,6 +99,8 @@ export async function POST(request: Request) {
     });
     // Mails und Push erst nach der Antwort senden: der Kunde sieht sofort die Bestätigung
     after(async () => {
+      // Geburtsdatum zum ersten Mal hinterlegt: für das ganze Konto übernehmen
+      if (profile && !profile.birthDate) await fillBirthDate(email, birthDate).catch(() => {});
       await sendBookingConfirmation(booking).catch((err) => console.error("[GYAN] Bestätigung:", err));
       await runEmailJobsThrottled();
     });

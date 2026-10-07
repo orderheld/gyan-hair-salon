@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
+import { AccountDetails } from "@/components/site/AccountDetails";
 import { AccountLogin, AccountLogout } from "@/components/site/AccountLogin";
 import { TIMEZONE } from "@/lib/config";
 import { getCustomerBookings } from "@/lib/customers";
@@ -115,6 +116,22 @@ export default async function MyBookings({ params }: Props) {
               {t.changeHint} <a className="link" href={site.phoneHref}>{site.phone}</a>
             </p>
             <Link className="btn btn-dark" href={href(locale, "booking")}>{t.book}</Link>
+          </>
+        )}
+
+        {bookings.length > 0 && (
+          <>
+            <h2 className="h3 account-h" id="angaben">{t.details}</h2>
+            <AccountDetails
+              locale={locale}
+              email={email}
+              t={{ details: t.details, detailsHint: t.detailsHint, detailsSave: t.detailsSave, detailsSaving: t.detailsSaving, detailsSaved: t.detailsSaved, emailFixed: t.emailFixed, name: d.booking.name, phone: d.booking.phone, birthDate: d.booking.birthDate }}
+              initial={{
+                name: bookings[0]?.customerName ?? "",
+                phone: bookings.find((b) => b.customerPhone)?.customerPhone ?? "",
+                birthDate: bookings.find((b) => b.birthDate)?.birthDate ?? "",
+              }}
+            />
           </>
         )}
 

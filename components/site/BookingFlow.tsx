@@ -26,6 +26,8 @@ type Props = {
   privacyHref: string;
   /** Angemeldeter Kunde («Meine Termine»): Kontaktdaten schon ausgefüllt */
   known?: { name: string; email: string; phone: string; birthDate?: string };
+  /** «Meine Termine»: dort ändern angemeldete Kunden ihre Angaben */
+  accountHref: string;
   /** Freie Zeiten pro Dauer, schon vom Server mitgeliefert (spart eine Anfrage) */
   initialAvailability?: ByDuration;
   availabilityAt?: number;
@@ -53,7 +55,7 @@ const PARTS = [
   { key: "evening", test: (t: string) => t >= "17:00" },
 ] as const;
 
-export function BookingFlow({ locale, t, common, services, serviceGroups, popularLabel, initialServiceId, phone, phoneHref, owner, cancelHours, okHref, privacyHref, known, initialAvailability, availabilityAt }: Props) {
+export function BookingFlow({ locale, t, common, services, serviceGroups, popularLabel, initialServiceId, phone, phoneHref, owner, cancelHours, okHref, privacyHref, known, accountHref, initialAvailability, availabilityAt }: Props) {
   const router = useRouter();
   const MONTHS = common.months;
   const intl = locale === "de" ? "de-CH" : locale === "fr" ? "fr-CH" : "en-GB";
@@ -457,22 +459,30 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
 
           {step === 3 && service && date && time && stage === "form" && (
             <form className="details" onSubmit={submitForm}>
+              {known && (
+                <p className="locked-note">
+                  {t.locked.split("{account}")[0]}
+                  <a className="link" href={accountHref}>{t.lockedAccount}</a>
+                  {t.locked.split("{account}")[1]}
+                </p>
+              )}
               <div className="form-grid">
                 <div className="field">
                   <label htmlFor="name">{t.name}</label>
-                  <input id="name" className="input" required autoComplete="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                  <input id="name" className="input" required autoComplete="name" readOnly={!!known?.name} value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
                 </div>
                 <div className="field">
                   <label htmlFor="birthDate">{t.birthDate}</label>
-                  <input id="birthDate" type="date" className="input" required autoComplete="bday" min="1900-01-01" max={todayZurich()} value={form.birthDate} onChange={(e) => setForm({ ...form, birthDate: e.target.value })} />
+                  <input id="birthDate" type="date" className="input" required autoComplete="bday" min="1900-01-01" max={todayZurich()} readOnly={!!known?.birthDate} value={form.birthDate} onChange={(e) => setForm({ ...form, birthDate: e.target.value })} />
+                  {known && !known.birthDate && <small className="field-hint">{t.birthOnce}</small>}
                 </div>
                 <div className="field">
                   <label htmlFor="email">{t.email}</label>
-                  <input id="email" type="email" className="input" required autoComplete="email" inputMode="email" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                  <input id="email" type="email" className="input" required autoComplete="email" inputMode="email" readOnly={!!known} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
                 </div>
                 <div className="field">
                   <label htmlFor="phone">{t.phone}</label>
-                  <input id="phone" type="tel" className="input" required autoComplete="tel" placeholder="079 123 45 67" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                  <input id="phone" type="tel" className="input" required autoComplete="tel" placeholder="079 123 45 67" readOnly={!!known?.phone} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
                 </div>
                 <div className="field full">
                   <label htmlFor="note">{t.note}</label>
