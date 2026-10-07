@@ -64,14 +64,17 @@ export const DEFAULT_SETTINGS: Settings = {
   emailTemplates: {},
 };
 
+/** Geheime Werte in der settings-Tabelle, die nie über getSettings() an Seiten gehen */
+const PRIVATE_KEYS = new Set(["kassePin", "kassePassword", "googleReviews", "googleReviewsSyncedAt"]);
+
 export const SLOT_STEPS = [5, 10, 15, 20, 30, 45, 60];
 
 /** Alle Einstellungen (pro Anfrage einmal geladen). */
 export const getSettings = cache(async (): Promise<Settings> => {
   const sql = await getSql();
   const rows = await sql`SELECT key, value FROM settings`;
-  // PIN-Prüfsumme der Kasse gehört nicht in die allgemeinen Einstellungen
-  const stored = Object.fromEntries(rows.filter((r) => r.key !== "kassePin" && r.key !== "kassePassword").map((r) => [r.key, r.value]));
+  // PIN-Prüfsumme der Kasse und der Google-Zugang (Refresh-Token) gehören nicht in die allgemeinen Einstellungen
+  const stored = Object.fromEntries(rows.filter((r) => !PRIVATE_KEYS.has(String(r.key))).map((r) => [r.key, r.value]));
   return {
     ...DEFAULT_SETTINGS,
     ...stored,

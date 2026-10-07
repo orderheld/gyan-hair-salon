@@ -161,4 +161,18 @@ export const MIGRATIONS = [
   `ALTER TABLE customers ADD COLUMN IF NOT EXISTS name text NOT NULL DEFAULT ''`,
   `ALTER TABLE customers ADD COLUMN IF NOT EXISTS phone text NOT NULL DEFAULT ''`,
   `ALTER TABLE customers ADD COLUMN IF NOT EXISTS birth_date text NOT NULL DEFAULT ''`,
+  // Google-Bewertungen (Oktober 2026): nur Name, Sterne, Text und Datum, zum Zuordnen des Bewertungs-Stempels
+  `CREATE TABLE IF NOT EXISTS google_reviews (
+    review_id     text PRIMARY KEY,
+    reviewer_name text NOT NULL DEFAULT '',
+    star_rating   text NOT NULL DEFAULT '',
+    comment       text NOT NULL DEFAULT '',
+    create_time   timestamptz,
+    update_time   timestamptz,
+    card_id       integer REFERENCES loyalty_cards(id) ON DELETE SET NULL,
+    status        text NOT NULL DEFAULT 'new' CHECK (status IN ('new', 'stamped', 'dismissed')),
+    handled_at    timestamptz,
+    fetched_at    timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE INDEX IF NOT EXISTS google_reviews_status_idx ON google_reviews (status, create_time DESC)`,
 ];
