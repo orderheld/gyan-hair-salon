@@ -76,7 +76,7 @@ Alternative: In Vercel unter **Storage → Neon** verbinden, dann setzt Vercel `
 1. Auf <https://resend.com> anmelden → **Domains → Add Domain** → deine Domain, Region **Ireland (eu-west-1)**.
 2. Resend zeigt 3–4 DNS-Einträge (TXT/MX für `send` und `resend._domainkey`). Diese bei cyon eintragen (siehe Schritt 6). Nach ein paar Minuten auf **Verify** klicken.
 3. **API Keys → Create** (Sending access) und in `.env.local` als `RESEND_API_KEY` eintragen.
-4. `EMAIL_FROM` auf eine Adresse dieser Domain setzen, z. B. `GYAN Hair Salon <termine@gyanhairsalon.ch>`.
+4. `EMAIL_FROM` auf eine Adresse dieser Domain setzen, z. B. `GYAN Hair Salon <termin@gyanhairsalon.ch>`.
 5. `SALON_NOTIFY_EMAIL` = Zanas E-Mail. Dorthin geht jede neue Buchung und Stornierung.
 
 ## 5. Veröffentlichen (Vercel)

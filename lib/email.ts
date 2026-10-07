@@ -15,7 +15,7 @@ import { getSettings, type EmailTemplate, type EmailType, type Settings } from "
 import { TIMEZONE } from "./config";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const FROM = process.env.EMAIL_FROM ?? `${site.name} <termine@gyanhairsalon.ch>`;
+const FROM = process.env.EMAIL_FROM ?? `${site.name} <termin@gyanhairsalon.ch>`;
 
 type Mail = { to: string; subject: string; html: string; text: string; ics?: string; replyTo?: string };
 
