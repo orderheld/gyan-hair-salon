@@ -117,4 +117,44 @@ export const MIGRATIONS = [
    ('hikmet', 3, true, '09:00', '19:00'), ('hikmet', 4, true, '09:00', '20:00'), ('hikmet', 5, true, '09:00', '20:00'),
    ('hikmet', 6, true, '08:30', '18:00')
    ON CONFLICT (staff_id, weekday) DO NOTHING`,
+  // Stempelkarte (Oktober 2026): Karte pro Kunde (E-Mail), Stempel-Protokoll nur anhängen, Empfehlungen
+  `CREATE TABLE IF NOT EXISTS loyalty_cards (
+    id                     serial PRIMARY KEY,
+    customer_key           text NOT NULL UNIQUE,
+    token                  text NOT NULL UNIQUE,
+    ref_code               text NOT NULL UNIQUE,
+    name                   text NOT NULL DEFAULT '',
+    birth_date             text NOT NULL DEFAULT '',
+    birthday_notified_year integer,
+    created_at             timestamptz NOT NULL DEFAULT now()
+  )`,
+  // seq ist pro Karte fortlaufend: zwei gleichzeitige Buchungen auf dieselbe Karte schliessen sich aus (kein Doppelstempel)
+  `CREATE TABLE IF NOT EXISTS loyalty_stamps (
+    id          bigserial PRIMARY KEY,
+    card_id     integer NOT NULL REFERENCES loyalty_cards(id) ON DELETE CASCADE,
+    seq         integer NOT NULL,
+    kind        text NOT NULL CHECK (kind IN ('visit', 'referral', 'review', 'birthday', 'redeem', 'correction')),
+    delta       integer NOT NULL,
+    actor       text NOT NULL DEFAULT '',
+    reason      text NOT NULL DEFAULT '',
+    ref_card_id integer,
+    year        integer,
+    created_at  timestamptz NOT NULL DEFAULT now(),
+    UNIQUE (card_id, seq)
+  )`,
+  `CREATE INDEX IF NOT EXISTS loyalty_stamps_created_idx ON loyalty_stamps (created_at)`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS loyalty_stamps_review_once ON loyalty_stamps (card_id) WHERE kind = 'review'`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS loyalty_stamps_birthday_once ON loyalty_stamps (card_id, year) WHERE kind = 'birthday'`,
+  // Einträge sind nie änderbar; Löschen nur mit der ganzen Karte (Datenschutz)
+  `CREATE OR REPLACE FUNCTION loyalty_stamps_locked() RETURNS trigger LANGUAGE plpgsql AS $$
+    BEGIN RAISE EXCEPTION 'Stempel können nicht geändert werden (Korrektur nur als neuer Eintrag)'; END $$`,
+  `CREATE OR REPLACE TRIGGER loyalty_stamps_lock BEFORE UPDATE ON loyalty_stamps FOR EACH ROW EXECUTE FUNCTION loyalty_stamps_locked()`,
+  `CREATE TABLE IF NOT EXISTS loyalty_referrals (
+    referred_card_id integer PRIMARY KEY REFERENCES loyalty_cards(id) ON DELETE CASCADE,
+    referrer_card_id integer NOT NULL REFERENCES loyalty_cards(id) ON DELETE CASCADE,
+    created_at       timestamptz NOT NULL DEFAULT now(),
+    rewarded_at      timestamptz,
+    CHECK (referred_card_id <> referrer_card_id)
+  )`,
+  `CREATE INDEX IF NOT EXISTS loyalty_referrals_referrer_idx ON loyalty_referrals (referrer_card_id)`,
 ];

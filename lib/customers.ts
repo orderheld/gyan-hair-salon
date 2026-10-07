@@ -171,6 +171,8 @@ export async function updateCustomerContact(key: string, contact: { name: string
     const taken = await sql`SELECT 1 FROM customers WHERE key = ${newKey}`;
     if (taken.length) await sql`DELETE FROM customers WHERE key = ${key}`;
     else await sql`UPDATE customers SET key = ${newKey}, updated_at = now() WHERE key = ${key}`;
+    // Stempelkarte zieht mit, ausser unter der neuen E-Mail gibt es schon eine
+    await sql`UPDATE loyalty_cards SET customer_key = ${newKey} WHERE customer_key = ${key} AND NOT EXISTS (SELECT 1 FROM loyalty_cards WHERE customer_key = ${newKey})`.catch(() => []);
   }
   return newKey;
 }
@@ -188,5 +190,6 @@ export async function deleteCustomer(key: string): Promise<number> {
   const rows = await query(`DELETE FROM bookings WHERE ${KEY_SQL} = $1 RETURNING id`, [key]);
   await sql`DELETE FROM customers WHERE key = ${key}`;
   if (!key.startsWith("tel:")) await sql`DELETE FROM email_codes WHERE email = ${key}`.catch(() => []);
+  await sql`DELETE FROM loyalty_cards WHERE customer_key = ${key}`.catch(() => []); // Stempelkarte mit allen Stempeln
   return rows.length;
 }

@@ -13,7 +13,7 @@ import { leaveArea, logout, setAdminLanguage } from "@/app/admin/actions";
  * «start» = Auswahl Termine oder Kasse, «pin» = Sperrbildschirm der Kasse, «termine» = Termine mit allen Einstellungen, «kasse» = Kasse (mit PIN).
  * In Termine und Kasse führt «Verlassen» zurück zur Auswahl.
  */
-export async function AdminShell({ mode, children }: { mode: "start" | "pin" | "termine" | "kasse"; children: React.ReactNode }) {
+export async function AdminShell({ mode, children }: { mode: "start" | "pin" | "termine" | "kasse" | "stempel"; children: React.ReactNode }) {
   const { locale, t } = await getAdminText();
   const links = [
     { href: "/admin", label: t.nav.bookings, short: t.nav.short[0] },
@@ -30,7 +30,7 @@ export async function AdminShell({ mode, children }: { mode: "start" | "pin" | "
         <div className="container admin-header-inner">
           <Link href="/admin/start" className="admin-brand" aria-label="GYAN Admin">
             <Monogram className="admin-mono" />
-            <span>{mode === "kasse" ? t.nav.pos : mode === "termine" ? t.nav.bookings : "Admin"}</span>
+            <span>{mode === "kasse" ? t.nav.pos : mode === "termine" ? t.nav.bookings : mode === "stempel" ? t.loyalty.title : "Admin"}</span>
           </Link>
           {mode === "termine" && <AdminNav links={links} />}
           <div className="admin-header-actions">

@@ -197,3 +197,11 @@ export async function pushDigestToAdmins(title: string, body: string) {
   const rows = await sql`SELECT * FROM push_subscriptions WHERE role = 'admin'`;
   return deliver(rows, { title, body, url: "/admin/kalender?ansicht=day", tag: "gyan-admin-digest" });
 }
+
+/** Stempelkarte: Nachricht an alle Geräte eines Kunden (z. B. Geburtstagsgruss) */
+export async function pushToCustomerKey(key: string, payload: Payload) {
+  if (!pushEnabled || !key) return 0;
+  const sql = await getSql();
+  const rows = await sql`SELECT * FROM push_subscriptions WHERE role = 'customer' AND customer_key = ${key}`;
+  return deliver(rows, payload);
+}

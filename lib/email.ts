@@ -397,3 +397,15 @@ export async function sendDailyDigest(bookings: Booking[], to: string) {
   const text = `${subject}\n\n${details.map(([a, b]) => `${a}  ${b}`).join("\n")}`;
   return send({ to, subject, html, text });
 }
+
+/** Stempelkarte: Geburtstagsgruss (fester Text aus lib/i18n/dict, loyalty.birthdayMail) */
+export async function sendBirthdayGreeting(to: string, name: string, locale: Locale) {
+  const m = getDict(locale).loyalty.birthdayMail;
+  const vars = { firstName: name.trim().split(" ")[0] ?? "" };
+  const subject = fill(m.subject, vars);
+  const body = fill(m.body, vars);
+  const buttons = [{ label: m.button, href: `${site.url}${href(locale, "booking")}`, primary: true }];
+  const html = layout({ locale, preheader: subject, heading: m.heading, body, buttons, logoSrc: "cid:gyan-logo" });
+  const replyTo = (await getSettings().catch(() => null))?.notifyEmail || undefined;
+  return send({ to, subject, html, replyTo, text: `${m.heading}\n\n${body}\n\n${m.button}: ${buttons[0].href}` });
+}

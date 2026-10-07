@@ -24,6 +24,11 @@ export default async function Start() {
             <strong>{t.start.pos}</strong>
             <span>{t.start.posHint}</span>
           </Link>
+          <Link href="/admin/stempel" className="start-tile">
+            <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5" /><circle cx="7.5" cy="10.5" r="1.4" /><circle cx="12" cy="10.5" r="1.4" /><circle cx="16.5" cy="10.5" r="1.4" /><circle cx="7.5" cy="14.5" r="1.4" /><circle cx="12" cy="14.5" r="1.4" /><path d="m15.3 14.4 1 1 1.9-2" /></svg>
+            <strong>{t.loyalty.tile}</strong>
+            <span>{t.loyalty.tileHint}</span>
+          </Link>
         </div>
       </div>
     </AdminShell>
