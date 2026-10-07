@@ -46,4 +46,43 @@ export const MIGRATIONS = [
   // Oktober 2026: Zana online nur Dienstag bis Samstag (einmalig, danach im Admin frei änderbar)
   `UPDATE opening_hours SET is_open = false WHERE weekday = 1 AND NOT EXISTS (SELECT 1 FROM settings WHERE key = 'zanaTueSat')`,
   `INSERT INTO settings (key, value) VALUES ('zanaTueSat', 'true'::jsonb) ON CONFLICT (key) DO NOTHING`,
+  // Kasse (Oktober 2026): Team, Produkte und Belege
+  `CREATE TABLE IF NOT EXISTS staff (
+    id     text PRIMARY KEY,
+    name   text NOT NULL,
+    sort   integer NOT NULL DEFAULT 0,
+    active boolean NOT NULL DEFAULT true
+  )`,
+  `INSERT INTO staff (id, name, sort) VALUES ('zana', 'Zana', 1), ('hikmet', 'Hikmet', 2), ('staff3', 'Mitarbeiter 3', 3) ON CONFLICT (id) DO NOTHING`,
+  `CREATE TABLE IF NOT EXISTS pos_products (
+    id        serial PRIMARY KEY,
+    name      text NOT NULL,
+    price_chf numeric(8,2) NOT NULL CHECK (price_chf >= 0),
+    active    boolean NOT NULL DEFAULT true,
+    sort      integer NOT NULL DEFAULT 0
+  )`,
+  // Belege: fortlaufend nummeriert, mit Prüfsumme verkettet, nie änderbar (Korrektur nur per Storno-Beleg)
+  `CREATE TABLE IF NOT EXISTS pos_sales (
+    no         integer PRIMARY KEY,
+    created_at timestamptz NOT NULL,
+    staff_id   text NOT NULL,
+    staff_name text NOT NULL,
+    payment    text NOT NULL CHECK (payment IN ('cash', 'card', 'twint')),
+    items      jsonb NOT NULL,
+    total_chf  numeric(10,2) NOT NULL,
+    vat_rate   numeric(4,2) NOT NULL DEFAULT 0,
+    vat_chf    numeric(10,2) NOT NULL DEFAULT 0,
+    given_chf  numeric(10,2),
+    booking_id uuid,
+    storno_of  integer REFERENCES pos_sales(no),
+    note       text NOT NULL DEFAULT '',
+    prev_hash  text NOT NULL,
+    hash       text NOT NULL
+  )`,
+  `CREATE UNIQUE INDEX IF NOT EXISTS pos_sales_storno_idx ON pos_sales (storno_of) WHERE storno_of IS NOT NULL`,
+  `CREATE INDEX IF NOT EXISTS pos_sales_created_idx ON pos_sales (created_at)`,
+  `CREATE OR REPLACE FUNCTION pos_sales_locked() RETURNS trigger LANGUAGE plpgsql AS $$
+    BEGIN RAISE EXCEPTION 'Kassenbelege können nicht geändert oder gelöscht werden'; END $$`,
+  `CREATE OR REPLACE TRIGGER pos_sales_lock BEFORE UPDATE OR DELETE ON pos_sales FOR EACH ROW EXECUTE FUNCTION pos_sales_locked()`,
+  `CREATE OR REPLACE TRIGGER pos_sales_no_truncate BEFORE TRUNCATE ON pos_sales FOR EACH STATEMENT EXECUTE FUNCTION pos_sales_locked()`,
 ];

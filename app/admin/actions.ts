@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { LOCALES, type Locale } from "@/content/types";
 import { ADMIN_LANG_COOKIE, getAdminText, slugify } from "@/lib/admin";
-import { checkPassword, endSession, requireAdmin, startSession } from "@/lib/auth";
+import { checkKassePassword, checkPassword, endSession, requireAdmin, startKasseSession, startSession } from "@/lib/auth";
 import { cancelBooking, createBooking, deleteBooking, rescheduleBooking, SlotTakenError } from "@/lib/booking";
 import { getBookingById, getBookingsBetween, getService, SERVICE_CATEGORIES } from "@/lib/data";
 import { getSql } from "@/lib/db";
@@ -30,7 +30,12 @@ const refreshSite = () => revalidatePath("/", "layout");
 export async function login(_: { error?: string } | undefined, fd: FormData) {
   await new Promise((r) => setTimeout(r, 400)); // bremst Rateversuche
   const { t } = await getAdminText();
-  if (!checkPassword(str(fd, "password", 200))) return { error: t.login.wrong };
+  const password = str(fd, "password", 200);
+  if (!checkPassword(password)) {
+    if (!(await checkKassePassword(password))) return { error: t.login.wrong };
+    await startKasseSession();
+    redirect("/admin/kasse");
+  }
   await startSession();
   const next = str(fd, "next", 200);
   redirect(/^\/(de|fr|en)(\/[\w-]*)*$/.test(next) ? next : "/admin");

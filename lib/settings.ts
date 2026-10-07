@@ -24,6 +24,9 @@ export type Settings = {
   /** Morgen-Übersicht der heutigen Termine (Push und E-Mail an den Salon) */
   digestEnabled: boolean;
   digestTime: string;
+  /** Kasse: MWST-Nummer (leer = nicht MWST-pflichtig, dann keine MWST auf den Belegen) */
+  vatNumber: string;
+  vatRate: number;
   reviewUrl: string;
   instagramUrl: string;
   notifyEmail: string;
@@ -45,6 +48,8 @@ export const DEFAULT_SETTINGS: Settings = {
   nightLeadMin: 120,
   digestEnabled: true,
   digestTime: "07:30",
+  vatNumber: "",
+  vatRate: 8.1,
   reviewUrl: site.googleWriteReviewUrl,
   instagramUrl: "https://www.instagram.com/gyan_hair_salon/",
   notifyEmail: process.env.SALON_NOTIFY_EMAIL || site.email,
@@ -65,7 +70,8 @@ export const SLOT_STEPS = [5, 10, 15, 20, 30, 45, 60];
 export const getSettings = cache(async (): Promise<Settings> => {
   const sql = await getSql();
   const rows = await sql`SELECT key, value FROM settings`;
-  const stored = Object.fromEntries(rows.map((r) => [r.key, r.value]));
+  // Passwort-Prüfsumme der Kasse gehört nicht in die allgemeinen Einstellungen
+  const stored = Object.fromEntries(rows.filter((r) => r.key !== "kassePassword").map((r) => [r.key, r.value]));
   return {
     ...DEFAULT_SETTINGS,
     ...stored,
