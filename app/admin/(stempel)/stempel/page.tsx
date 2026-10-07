@@ -3,10 +3,11 @@ import { redirect } from "next/navigation";
 import { SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { QrScanner } from "@/components/admin/QrScanner";
+import { LoyaltyLiveSwitch } from "@/components/admin/LoyaltyLiveSwitch";
 import { StempelNav } from "@/components/admin/StempelNav";
 import { getAdminText } from "@/lib/admin";
 import { fill } from "@/lib/i18n";
-import { getCardByKey, getCardByRef, getCardByToken, listCards, recentStamps } from "@/lib/loyalty";
+import { getCardByKey, getCardByRef, getCardByToken, getLoyaltySettings, listCards, recentStamps } from "@/lib/loyalty";
 import { parseCardPayload } from "@/lib/loyalty-qr";
 import { formatShortDate, formatTime } from "@/lib/time";
 import { loyaltyCreate } from "@/app/admin/loyalty-actions";
@@ -31,7 +32,7 @@ export default async function StempelScanner({ searchParams }: { searchParams: S
     if (direct) redirect(`/admin/stempel/karte/${encodeURIComponent(direct.token)}`);
     results = await listCards(query);
   }
-  const recent = query ? [] : await recentStamps(8);
+  const [recent, settings] = await Promise.all([query ? [] : recentStamps(8), getLoyaltySettings()]);
   const newEmail = EMAIL.test(query) ? query.toLowerCase() : "";
 
   return (
@@ -41,6 +42,7 @@ export default async function StempelScanner({ searchParams }: { searchParams: S
         <StempelNav active="scan" t={t.nav} />
       </div>
       <Flash ok={ok} error={error} />
+      <LoyaltyLiveSwitch on={settings.loyaltyPublic} back="/admin/stempel" t={t} pending={all.common.saving} />
 
       <section className="panel lc-scan-panel">
         <h2 className="h3">{t.scanTitle}</h2>

@@ -14,6 +14,7 @@ import {
   linkReferral,
   redeemBirthday,
   redeemReward,
+  getLoyaltySettings,
   saveLoyaltySettings,
   setCardBirthDate,
   stampReview,
@@ -123,8 +124,23 @@ export async function loyaltySaveSettings(fd: FormData) {
       referralEnabled: fd.get("referralEnabled") === "on",
       reviewEnabled: fd.get("reviewEnabled") === "on",
     },
-    fd.get("loyaltyPublic") === "on",
+    (await getLoyaltySettings()).loyaltyPublic,
   );
   revalidatePath("/", "layout");
   go("/admin/stempel/einstellungen", { ok: t.loyalty.saved });
+}
+
+/** Ein/Aus für Kunden: ein Tipp, alle anderen Einstellungen bleiben */
+export async function loyaltySetPublic(fd: FormData) {
+  await requireAdmin();
+  const { t } = await getAdminText();
+  const on = fd.get("on") === "1";
+  const s = await getLoyaltySettings();
+  await saveLoyaltySettings(
+    { stampsNeeded: s.stampsNeeded, birthdayEnabled: s.birthdayEnabled, birthdayNotify: s.birthdayNotify, referralEnabled: s.referralEnabled, reviewEnabled: s.reviewEnabled },
+    on,
+  );
+  revalidatePath("/", "layout");
+  const back = String(fd.get("back") ?? "");
+  go(back.startsWith("/admin/stempel") ? back : "/admin/stempel", { ok: on ? t.loyalty.turnedOn : t.loyalty.turnedOff });
 }

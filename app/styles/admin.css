@@ -771,3 +771,11 @@ form[data-dirty] .svc-unsaved { display: inline; }
 }
 /* «Stempelkarte» ist im Kopf länger als «Termine»: auf schmalen Handys nur das Logo zeigen */
 @media (max-width: 480px) { .admin-mode-stempel .admin-brand span { display: none; } }
+
+/* Stempelkarte: Ein/Aus für Kunden */
+.lc-live { display: flex; align-items: center; justify-content: space-between; gap: 14px 18px; flex-wrap: wrap; margin-bottom: 18px; }
+.lc-live-text { flex: 1 1 240px; min-width: 0; }
+.lc-live-text strong { display: inline-flex; align-items: center; gap: 8px; font-size: 16px; }
+.lc-live-text strong i { width: 9px; height: 9px; border-radius: 50%; background: var(--greige); }
+.lc-live.is-on .lc-live-text strong i { background: #7fc28e; }
+.lc-live-text p { margin: 4px 0 0; }
