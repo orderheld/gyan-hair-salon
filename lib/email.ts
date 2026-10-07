@@ -309,7 +309,8 @@ export async function sendVerifyCode(to: string, code: string, locale: Locale) {
   const body = v.mailBody;
   const highlight = `<div style="margin:0 0 24px;text-align:center"><span style="display:inline-block;padding:16px 22px 16px 30px;border-radius:16px;background:#f3ece1;font-size:34px;font-weight:700;letter-spacing:.32em;color:#141210;font-family:SFMono-Regular,Menlo,Consolas,monospace">${code}</span></div>`;
   const html = layout({ locale, preheader: subject, heading: v.mailHeading, body, logoSrc: "cid:gyan-logo", highlight });
-  return send({ to, subject, html, text: `${v.mailHeading}\n\n${code}\n\n${body}` });
+  const replyTo = (await getSettings().catch(() => null))?.notifyEmail || undefined;
+  return send({ to, subject, html, replyTo, text: `${v.mailHeading}\n\n${code}\n\n${body}` });
 }
 
 /** Test-E-Mail aus dem Admin (unabhängig davon, ob der Typ aktiv ist). */

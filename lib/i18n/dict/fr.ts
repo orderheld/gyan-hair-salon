@@ -255,7 +255,7 @@ const fr: Dict = {
       change: "Modifier l’e-mail",
       mailSubject: "{code} est ton code GYAN",
       mailHeading: "Ton code de confirmation",
-      mailBody: "Saisis ce code sur le site pour finaliser ta réservation. Il est valable 10 minutes.\n\nTu n’as rien réservé ? Tu peux simplement ignorer cet e-mail.",
+      mailBody: "Saisis ce code sur le site pour finaliser ta réservation. Il est valable 10 minutes.\n\nDès que tu as saisi le code, tu reçois une confirmation avec tous les détails de ton rendez-vous chez GYAN Hair Salon à Bienne. Des questions ? Appelle-nous au +41 76 505 74 47 ou réponds simplement à cet e-mail.\n\nTu n’as rien réservé ? Tu peux simplement ignorer cet e-mail.",
     },
     loading: "Chargement des créneaux libres …",
     noSlotsTitle: "Tout est complet pour le moment.",

@@ -253,7 +253,7 @@ const de = {
       change: "E-Mail ändern",
       mailSubject: "{code} ist dein GYAN-Code",
       mailHeading: "Dein Bestätigungscode",
-      mailBody: "Gib diesen Code auf der Webseite ein, um deine Buchung abzuschliessen. Er ist 10 Minuten gültig.\n\nDu hast nichts gebucht? Dann kannst du diese E-Mail einfach ignorieren.",
+      mailBody: "Gib diesen Code auf der Webseite ein, um deine Buchung abzuschliessen. Er ist 10 Minuten gültig.\n\nSobald du den Code eingegeben hast, bekommst du sofort eine Bestätigung mit allen Details zu deinem Termin bei GYAN Hair Salon in Biel. Fragen? Ruf uns an unter +41 76 505 74 47 oder antworte einfach auf diese E-Mail.\n\nDu hast nichts gebucht? Dann kannst du diese E-Mail einfach ignorieren.",
     },
     loading: "Freie Zeiten werden geladen …",
     noSlotsTitle: "Im Moment ist alles ausgebucht.",
