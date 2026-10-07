@@ -19,7 +19,7 @@ export function Motion() {
   useEffect(() => {
     const root = document.documentElement;
     root.classList.add("js");
-    const introTimer = window.setTimeout(() => root.classList.add("no-intro"), 3200);
+    const introTimer = window.setTimeout(() => root.classList.add("no-intro"), 2000);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     const io = new IntersectionObserver(
