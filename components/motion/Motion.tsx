@@ -18,7 +18,15 @@ export function Motion() {
 
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.add("js");
+    if (!root.classList.contains("js")) {
+      // Was beim Laden schon sichtbar ist, nicht erst ausblenden und wieder einblenden
+      const vh = window.innerHeight;
+      document.querySelectorAll("[data-reveal]").forEach((el) => {
+        const r = el.getBoundingClientRect();
+        if (r.top < vh && r.bottom > 0) el.classList.add("in");
+      });
+      root.classList.add("js");
+    }
     const introTimer = window.setTimeout(() => root.classList.add("no-intro"), 2000);
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 

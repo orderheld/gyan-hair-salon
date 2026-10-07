@@ -57,7 +57,7 @@ export default async function PostPage({ params }: Props) {
             <p className="lead rise" style={{ animationDelay: "160ms" }}>{post.description[locale]}</p>
           </div>
           <div className="container post-cover rise" style={{ animationDelay: "220ms" }}>
-            <Image src={post.image} alt={post.title[locale]} fill priority sizes="(max-width: 1200px) 100vw, 1120px" />
+            <Image src={post.image} alt={post.title[locale]} fill preload sizes="(max-width: 1200px) 100vw, 1120px" />
           </div>
         </header>
         <div className="section-tight">

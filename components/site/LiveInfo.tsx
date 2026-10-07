@@ -30,14 +30,17 @@ function useLive(locale: string) {
   return live;
 }
 
-/** «Jetzt offen · bis 19:00», erscheint sanft, sobald die Angabe da ist */
+/** «Jetzt offen · bis 19:00», erscheint sanft, sobald die Angabe da ist. Der Platz ist reserviert, damit nichts springt. */
 export function LiveChip({ locale }: { locale: string }) {
   const live = useLive(locale);
-  if (!live?.status) return null;
   return (
-    <span className={`live-chip live-fade${live.isOpen ? " is-open" : ""}`}>
-      <i aria-hidden />
-      {live.status}
+    <span className="live-chip-slot">
+      {live?.status && (
+        <span className={`live-chip live-fade${live.isOpen ? " is-open" : ""}`}>
+          <i aria-hidden />
+          {live.status}
+        </span>
+      )}
     </span>
   );
 }

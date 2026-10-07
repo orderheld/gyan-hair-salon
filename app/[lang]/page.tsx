@@ -83,7 +83,7 @@ export default async function Home({ params }: Props) {
 
           <div className="hero-visual">
             <div className="hero-arch">
-              <Image src={site.images.hero} alt={`GYAN Hair Salon Biel/Bienne`} fill priority sizes="(max-width: 900px) 80vw, 40vw" />
+              <Image src={site.images.hero} alt={`GYAN Hair Salon Biel/Bienne`} fill preload sizes="(max-width: 900px) 80vw, 40vw" />
             </div>
             <div className="hero-small">
               <Image src="/images/hero-fade.jpg" alt={FILM[2].caption[locale]} fill sizes="(max-width: 900px) 40vw, 18vw" />

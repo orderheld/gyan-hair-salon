@@ -38,7 +38,7 @@ export default async function ComingSoon({ searchParams }: Props) {
   const status =
     open.kind === "open" ? live.open.replace("{t}", open.until)
     : open.kind === "later" ? live.later.replace("{t}", open.from)
-    : open.kind === "closed" ? live.closed.replace("{d}", d.common.weekdays[open.weekday]).replace("{t}", open.from)
+    : open.kind === "closed" ? live.closed.replace("{d}", locale === "fr" ? d.common.weekdays[open.weekday].toLowerCase() : d.common.weekdays[open.weekday]).replace("{t}", open.from)
     : null;
 
   return (
@@ -77,7 +77,7 @@ export default async function ComingSoon({ searchParams }: Props) {
 
         <div className="soon-visual">
           <div className="hero-arch">
-            <Image src={site.images.hero} alt="GYAN Hair Salon Biel/Bienne" fill priority sizes="(max-width: 900px) 90vw, 40vw" />
+            <Image src={site.images.hero} alt="GYAN Hair Salon Biel/Bienne" fill preload sizes="(max-width: 900px) 90vw, 40vw" />
           </div>
         </div>
       </section>

@@ -49,7 +49,7 @@ export default async function ServicePage({ params }: Props) {
       <section className="svc-hero">
         <div className="svc-hero-media">
           <div className="parallax-img" data-parallax="0.12">
-            <Image src={site.images.large[s.image] ?? (s.image || site.images.hero)} alt={`${l.name} · GYAN Hair Salon Biel`} fill priority sizes="100vw" />
+            <Image src={site.images.large[s.image] ?? (s.image || site.images.hero)} alt={`${l.name} · GYAN Hair Salon Biel`} fill preload sizes="100vw" />
           </div>
           <div className="hero-shade" />
         </div>

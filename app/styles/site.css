@@ -16,12 +16,13 @@
   /* deckend statt Unschärfe: spart beim Scrollen am Handy viel Rechenarbeit */
   background: var(--ivory);
   border-bottom: 1px solid rgba(217, 207, 192, 0.6);
-  transition: opacity 0.5s var(--ease);
+  transition: opacity 0.5s var(--ease), border-color 0.3s var(--ease);
 }
 html[data-scrolled="1"] body .site-header,
 html[data-scrolled="2"] body .site-header,
 html.menu-open body .site-header { color: var(--ink) !important; }
-html.menu-open .site-header::before { opacity: 0 !important; }
+/* Kopfleiste bleibt beim Menü deckend, nur die Linie verschwindet: sonst blitzt die Seite durch */
+html.menu-open .site-header::before { opacity: 1 !important; border-bottom-color: transparent; }
 .header-inner {
   position: relative;
   height: 100%;
@@ -57,6 +58,8 @@ html.menu-open .site-header::before { opacity: 0 !important; }
   place-content: center;
   gap: 7px;
   color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .burger span { display: block; width: 24px; height: 1.5px; background: currentColor; transition: transform 0.5s var(--ease); }
 .burger.is-open span:first-child { transform: translateY(4.25px) rotate(45deg); }
@@ -83,11 +86,14 @@ html.menu-open .site-header::before { opacity: 0 !important; }
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-y: auto;
+  overscroll-behavior: contain;
   clip-path: inset(0 0 100% 0);
-  transition: clip-path 0.7s var(--ease-in-out);
+  /* sichtbar bleiben, bis das Zuklappen fertig ist */
+  transition: clip-path 0.7s var(--ease-in-out), visibility 0s linear 0.7s;
   visibility: hidden;
 }
-.menu.open { clip-path: inset(0 0 0 0); visibility: visible; }
+.menu.open { clip-path: inset(0 0 0 0); visibility: visible; transition: clip-path 0.7s var(--ease-in-out), visibility 0s; }
 .menu-links { display: grid; gap: 4px; }
 .menu-links a {
   font-family: var(--font-display);
@@ -218,6 +224,7 @@ html.no-intro { --intro-delay: 0.1s; }
 .hero-head { grid-area: head; } .hero-body { grid-area: body; } .hero-visual { grid-area: visual; }
 .hero-top { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-bottom: clamp(18px, 3svh, 28px); }
 .hero-top .eyebrow { margin: 0; color: var(--accent); font-size: 11px; }
+.live-chip-slot { display: flex; flex-basis: 100%; min-height: 36px; }
 .live-chip { display: inline-flex; align-items: center; gap: 8px; font-size: 12.5px; font-weight: 500; padding: 7px 12px 7px 10px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); color: var(--taupe); white-space: nowrap; }
 .live-chip i { width: 7px; height: 7px; border-radius: 50%; background: var(--greige); }
 .live-chip.is-open { color: var(--ink); }

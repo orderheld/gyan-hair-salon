@@ -22,6 +22,9 @@ import "../styles/site.css";
 // Spätestens alle 10 Minuten frisch, damit z. B. Öffnungszeiten im Footer stimmen.
 export const revalidate = 600;
 // Leere Liste: nichts beim Build vorrendern, aber jede Seite nach dem ersten Aufruf zwischenspeichern
+/* Burger-Menü schon vor dem Start von React bedienbar; der Header übernimmt danach den Zustand */
+const MENU_EARLY = `(function(){var b=document.querySelector(".burger"),m=document.getElementById("menu");if(!b||!m)return;var o=false;function t(){o=!o;m.classList.toggle("open",o);b.classList.toggle("is-open",o);document.documentElement.classList.toggle("menu-open",o)}b.addEventListener("click",t);window.__gyanMenuEarly=function(){b.removeEventListener("click",t);return o}})()`;
+
 export function generateStaticParams() {
   return [];
 }
@@ -135,6 +138,7 @@ export default async function LangLayout({ children, params }: { children: React
           phone={site.phone}
           phoneHref={site.phoneHref}
         />
+        <script dangerouslySetInnerHTML={{ __html: MENU_EARLY }} />
         <main id="main">{children}</main>
         <AppShell
           tabs={[

@@ -46,6 +46,17 @@ export function Header({ locale, nav, bookHref, accountHref, labels, slugIndex, 
 
   useEffect(() => setOpen(false), [pathname]);
   useEffect(() => {
+    // Tipps aufs Menü vor dem Start von React übernimmt ein kleines Inline-Skript (Layout)
+    const w = window as Window & { __gyanMenuEarly?: () => boolean };
+    if (w.__gyanMenuEarly?.()) setOpen(true);
+    // breiter als 1200px gibt es kein Burger-Menü: sonst bliebe die Seite gesperrt
+    const mq = window.matchMedia("(min-width: 1200px)");
+    const onWide = () => mq.matches && setOpen(false);
+    mq.addEventListener("change", onWide);
+    return () => mq.removeEventListener("change", onWide);
+  }, []);
+  const close = () => setOpen(false);
+  useEffect(() => {
     document.documentElement.classList.toggle("menu-open", open);
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     window.addEventListener("keydown", onKey);
@@ -61,7 +72,7 @@ export function Header({ locale, nav, bookHref, accountHref, labels, slugIndex, 
       href={translatePath(pathname, locale, l, slugIndex)}
       hrefLang={l}
       lang={l}
-      onClick={() => setLang(l)}
+      onClick={() => { setLang(l); setOpen(false); }}
       aria-current={l === locale ? "true" : undefined}
       className={l === locale ? "active" : ""}
     >
@@ -115,15 +126,15 @@ export function Header({ locale, nav, bookHref, accountHref, labels, slugIndex, 
       <div id="menu" className={`menu ${open ? "open" : ""}`} aria-hidden={!open}>
         <nav className="menu-links">
           {nav.map((n, i) => (
-            <Link key={n.href} href={n.href} style={{ transitionDelay: open ? `${120 + i * 50}ms` : "0ms" }} tabIndex={open ? 0 : -1}>
+            <Link key={n.href} href={n.href} onClick={close} style={{ transitionDelay: open ? `${120 + i * 50}ms` : "0ms" }} tabIndex={open ? 0 : -1}>
               <span className="menu-no">{String(i + 1).padStart(2, "0")}</span>
               {n.label}
             </Link>
           ))}
         </nav>
         <div className="menu-foot">
-          <Link href={bookHref} className="btn btn-red" tabIndex={open ? 0 : -1}>{labels.book}</Link>
-          <Link href={accountHref} className="menu-account" tabIndex={open ? 0 : -1}>{labels.account}</Link>
+          <Link href={bookHref} onClick={close} className="btn btn-red" tabIndex={open ? 0 : -1}>{labels.book}</Link>
+          <Link href={accountHref} onClick={close} className="menu-account" tabIndex={open ? 0 : -1}>{labels.account}</Link>
           <a href={phoneHref} className="menu-phone" tabIndex={open ? 0 : -1}>{phone}</a>
           <div className="lang lang-lg">{langLinks}</div>
         </div>

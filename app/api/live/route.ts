@@ -24,7 +24,7 @@ export async function GET(request: Request) {
   const status =
     open.kind === "open" ? live.open.replace("{t}", open.until)
     : open.kind === "later" ? live.later.replace("{t}", open.from)
-    : open.kind === "closed" ? live.closed.replace("{d}", d.common.weekdays[open.weekday]).replace("{t}", open.from)
+    : open.kind === "closed" ? live.closed.replace("{d}", locale === "fr" ? d.common.weekdays[open.weekday].toLowerCase() : d.common.weekdays[open.weekday]).replace("{t}", open.from)
     : null;
   const shortest = Math.min(...services.map((s) => s.durationMin).filter((n) => n > 0), 30);
   const slot = await nextFreeSlot(shortest, now);

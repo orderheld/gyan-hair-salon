@@ -15,9 +15,12 @@ import { CUSTOMER_COOKIE, readCustomerCookie } from "@/lib/verify";
 
 // Persönlich: nie zwischenspeichern, nie bei Google
 export const dynamic = "force-dynamic";
-export const metadata: Metadata = { robots: { index: false } };
-
 type Props = { params: Promise<{ lang: string }> };
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const d = getDict((await params).lang as Locale);
+  return { title: d.account.nav, robots: { index: false } };
+}
 
 export default async function MyBookings({ params }: Props) {
   const locale = (await params).lang as Locale;

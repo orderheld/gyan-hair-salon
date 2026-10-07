@@ -76,7 +76,7 @@ export function PageHero({
       {image && (
         <div className="page-hero-media">
           <div className="parallax-img" data-parallax="0.12">
-            <Image src={image} alt={imageAlt} fill priority sizes="100vw" />
+            <Image src={image} alt={imageAlt} fill preload sizes="100vw" />
           </div>
         </div>
       )}
