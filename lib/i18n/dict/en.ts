@@ -51,6 +51,7 @@ const en: Dict = {
     contact: "Contact",
   },
   footer: {
+    credit: "Web design by",
     tagline: "Men's hairdresser & barber in the heart of Biel/Bienne. Since 2025.",
     salon: "Salon",
     services: "Services",

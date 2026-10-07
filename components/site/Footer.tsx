@@ -81,6 +81,9 @@ export function Footer({ locale, d, services, hours }: { locale: Locale; d: Dict
 
         <div className="footer-bottom">
           <span>© {year} {site.name} · Biel/Bienne</span>
+          <span className="footer-credit">
+            {d.footer.credit} <a href="https://webnova.ch" target="_blank" rel="noopener">webnova.ch</a>
+          </span>
           <span className="footer-legal">
             <Link href={href(locale, "imprint")}>{d.footer.imprint}</Link>
             <Link href={href(locale, "privacy")}>{d.footer.privacy}</Link>

@@ -49,6 +49,7 @@ const de = {
     contact: "Kontakt",
   },
   footer: {
+    credit: "Webdesign by",
     tagline: "Herren Coiffeur & Barbier im Zentrum von Biel/Bienne. Seit 2025.",
     salon: "Salon",
     services: "Leistungen",

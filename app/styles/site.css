@@ -487,6 +487,8 @@ html.no-intro { --intro-delay: 0.1s; }
 .footer-note { margin: 56px 0 0; padding-top: 24px; border-top: 1px solid var(--greige); }
 .footer-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; margin-top: 18px; font-size: 13px; color: var(--stone); }
 .footer-legal { display: flex; gap: 18px; flex-wrap: wrap; }
+.footer-credit a { color: var(--taupe); text-underline-offset: 3px; text-decoration-color: var(--greige); }
+.footer-credit a:hover { color: var(--ink); }
 @media (min-width: 760px) { .footer-top { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1100px) {
   .footer { padding-bottom: 32px; }

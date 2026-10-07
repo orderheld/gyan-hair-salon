@@ -51,6 +51,7 @@ const fr: Dict = {
     contact: "Contact",
   },
   footer: {
+    credit: "Webdesign par",
     tagline: "Coiffeur homme & barbier au centre de Biel/Bienne. Depuis 2025.",
     salon: "Salon",
     services: "Prestations",
