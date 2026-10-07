@@ -1,4 +1,5 @@
 import "server-only";
+import { formatTime } from "./time";
 import { Resend } from "resend";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
@@ -377,4 +378,21 @@ export function sampleBooking(locale: Locale): Booking {
     lateCancel: false,
     feeOpen: false,
   };
+}
+
+/** Morgen-Übersicht an den Salon: alle heutigen Termine auf einen Blick */
+export async function sendDailyDigest(bookings: Booking[], to: string) {
+  if (!to) return null;
+  const time = (d: Date) => formatTime(d, "de");
+  const subject = bookings.length
+    ? `Heute ${bookings.length} ${bookings.length === 1 ? "Termin" : "Termine"}, erster um ${time(bookings[0].startsAt)}`
+    : "Heute keine Online-Termine";
+  const body = bookings.length
+    ? "Guten Morgen! Das sind die Termine von heute. Neue Buchungen kommen wie immer zusätzlich per Push und E-Mail."
+    : "Guten Morgen! Für heute sind noch keine Termine eingetragen.";
+  const details: [string, string][] = bookings.map((b) => [`${time(b.startsAt)}–${time(b.endsAt)}`, `${b.customerName} · ${b.serviceName}`]);
+  const buttons = [{ label: "Kalender öffnen", href: `${site.url}/admin/kalender?ansicht=day`, primary: true }];
+  const html = layout({ locale: "de", preheader: subject, heading: "Deine Termine heute", body, details, buttons, logoSrc: "cid:gyan-logo" });
+  const text = `${subject}\n\n${details.map(([a, b]) => `${a}  ${b}`).join("\n")}`;
+  return send({ to, subject, html, text });
 }

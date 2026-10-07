@@ -64,6 +64,32 @@ export default async function Rules({ searchParams }: { searchParams: Promise<{ 
           <p className="muted small rule-note">{r.durationHint}</p>
         </section>
 
+        <section className="panel rules-grid">
+          <h2 className="h3 rules-sub">{r.nightTitle}</h2>
+          <div className="rule">
+            <div><span className="rule-label">{r.night}</span><p className="muted small">{r.nightHint}</p></div>
+            <div className="unit">
+              <input name="nightStart" type="time" step={900} defaultValue={s.nightStart} className="input" aria-label={r.night} />
+              <span>{r.until}</span>
+              <input name="nightEnd" type="time" step={900} defaultValue={s.nightEnd} className="input" aria-label={r.until} />
+            </div>
+          </div>
+          <div className="rule">
+            <div><label htmlFor="nightLeadMin" className="rule-label">{r.nightLead}</label><p className="muted small">{r.nightLeadHint}</p></div>
+            <select id="nightLeadMin" name="nightLeadMin" defaultValue={s.nightLeadMin} className="select">
+              {[0, 30, 60, 90, 120, 180, 240].map((n) => <option key={n} value={n}>{n === 0 ? r.off : mins(n)}</option>)}
+            </select>
+          </div>
+          <div className="rule">
+            <div><label htmlFor="digestTime" className="rule-label">{r.digest}</label><p className="muted small">{r.digestHint}</p></div>
+            <div className="unit">
+              <input type="checkbox" name="digestEnabled" defaultChecked={s.digestEnabled} className="tgl" aria-label={r.digest} />
+              <span>{r.at}</span>
+              <input id="digestTime" name="digestTime" type="time" step={900} defaultValue={s.digestTime} className="input" />
+            </div>
+          </div>
+        </section>
+
         <section className="panel stack">
           <h2 className="h3">{r.links}</h2>
           <div className="field"><label htmlFor="reviewUrl">{r.reviewUrl}</label><input id="reviewUrl" name="reviewUrl" type="url" defaultValue={s.reviewUrl} className="input" /></div>

@@ -189,3 +189,11 @@ export async function countAdminDevices() {
   const rows = await sql`SELECT count(*)::int AS n FROM push_subscriptions WHERE role = 'admin'`;
   return Number(rows[0]?.n ?? 0);
 }
+
+/** Morgen-Übersicht als Push an alle Admin-Geräte */
+export async function pushDigestToAdmins(title: string, body: string) {
+  if (!pushEnabled) return 0;
+  const sql = await getSql();
+  const rows = await sql`SELECT * FROM push_subscriptions WHERE role = 'admin'`;
+  return deliver(rows, { title, body, url: "/admin/kalender?ansicht=day", tag: "gyan-admin-digest" });
+}

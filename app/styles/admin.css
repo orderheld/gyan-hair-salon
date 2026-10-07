@@ -517,3 +517,4 @@ form[data-dirty] .svc-unsaved { display: inline; }
   .admin-push-btns .btn { flex: 1; min-height: 42px; }
 }
 .push-panel-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; }
+.rules-grid > .rules-sub { grid-column: 1 / -1; margin: 0 0 4px; }

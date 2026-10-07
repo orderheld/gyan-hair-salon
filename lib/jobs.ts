@@ -1,7 +1,9 @@
 import "server-only";
 import { getSql } from "./db";
 import { mapBooking } from "./data";
-import { sendFollowup, sendReminder } from "./email";
+import { sendDailyDigest, sendFollowup, sendReminder } from "./email";
+import { pushDigestToAdmins } from "./push";
+import { formatTime, toDateKey, toTimeKey, zurichToDate, addDays } from "./time";
 import { getSettings } from "./settings";
 
 let lastRun = 0;
@@ -43,7 +45,38 @@ export async function runEmailJobs() {
       result.followups++;
     }
   }
+  await runDailyDigest(s).catch((e) => console.error("[GYAN] Morgen-Übersicht:", e));
   return result;
+}
+
+/**
+ * Morgen-Übersicht: einmal pro Tag ab digestTime (bis 12 Uhr) Push und E-Mail mit allen heutigen Terminen.
+ * Der Tag wird vorher atomar in settings.digestSentOn eingetragen, so geht sie nie doppelt raus.
+ */
+async function runDailyDigest(s: Awaited<ReturnType<typeof getSettings>>) {
+  if (!s.digestEnabled) return;
+  const now = new Date();
+  const today = toDateKey(now);
+  const t = toTimeKey(now);
+  if (t < s.digestTime || t >= "12:00") return;
+  const sql = await getSql();
+  const claimed = await sql`
+    INSERT INTO settings (key, value, updated_at) VALUES ('digestSentOn', ${JSON.stringify(today)}::jsonb, now())
+    ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = now()
+      WHERE settings.value IS DISTINCT FROM EXCLUDED.value
+    RETURNING key`;
+  if (!claimed.length) return;
+  const rows = await sql`
+    SELECT * FROM bookings WHERE status = 'confirmed'
+      AND starts_at >= ${zurichToDate(today, "00:00").toISOString()}::timestamptz
+      AND starts_at < ${zurichToDate(addDays(today, 1), "00:00").toISOString()}::timestamptz
+    ORDER BY starts_at`;
+  const list = rows.map(mapBooking);
+  const title = list.length ? `Heute ${list.length} ${list.length === 1 ? "Termin" : "Termine"}` : "Heute keine Termine";
+  const body = list.length
+    ? list.slice(0, 4).map((b) => `${formatTime(b.startsAt, "de")} ${b.customerName.split(" ")[0]}`).join(" · ") + (list.length > 4 ? ` · +${list.length - 4}` : "")
+    : "Für heute ist noch nichts gebucht.";
+  await Promise.allSettled([pushDigestToAdmins(`☀ ${title}`, body), sendDailyDigest(list, s.notifyEmail)]);
 }
 
 /** Läuft zusätzlich nach Seitenaufrufen, höchstens alle 10 Minuten pro Server-Instanz. */

@@ -16,6 +16,14 @@ export type Settings = {
   cancelNoticeHours: number;
   reminderHoursBefore: number;
   followupHoursAfter: number;
+  /** Nachtruhe: wer zwischen nightStart und nightEnd bucht, bekommt frühestens nightEnd + nightLeadMin */
+  nightStart: string;
+  nightEnd: string;
+  /** 0 = aus */
+  nightLeadMin: number;
+  /** Morgen-Übersicht der heutigen Termine (Push und E-Mail an den Salon) */
+  digestEnabled: boolean;
+  digestTime: string;
   reviewUrl: string;
   instagramUrl: string;
   notifyEmail: string;
@@ -32,6 +40,11 @@ export const DEFAULT_SETTINGS: Settings = {
   cancelNoticeHours: 12,
   reminderHoursBefore: 3,
   followupHoursAfter: 5,
+  nightStart: "21:00",
+  nightEnd: "08:00",
+  nightLeadMin: 120,
+  digestEnabled: true,
+  digestTime: "07:30",
   reviewUrl: site.googleWriteReviewUrl,
   instagramUrl: "https://www.instagram.com/gyan_hair_salon/",
   notifyEmail: process.env.SALON_NOTIFY_EMAIL || site.email,

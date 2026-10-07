@@ -1,7 +1,7 @@
 import "server-only";
 import { getBlockedBetween, getBookingsBetween, getOpeningHours, getServices, type OpeningDay } from "./data";
 import { getSettings } from "./settings";
-import { addDays, toDateKey, toTimeKey, weekdayOf, zurichToDate } from "./time";
+import { addDays, isTimeKey, toDateKey, toTimeKey, weekdayOf, zurichToDate } from "./time";
 
 type Interval = { start: number; end: number };
 
@@ -13,6 +13,21 @@ const overlaps = (a: Interval, b: Interval) => a.start < b.end && b.start < a.en
  * Zeitraster, Mindestvorlauf und maximalen Buchungshorizont aus den Einstellungen.
  */
 export type Days = Record<string, string[]>;
+
+/**
+ * Nachtruhe: Bucht jemand nachts (z. B. 21:00 bis 08:00), ist der früheste Termin
+ * nightEnd + nightLeadMin am nächsten Morgen. So sieht der Salon jeden Frühtermin rechtzeitig.
+ */
+export function nightEarliest(now: Date, s: { nightStart: string; nightEnd: string; nightLeadMin: number }): number {
+  if (!s.nightLeadMin || !isTimeKey(s.nightStart) || !isTimeKey(s.nightEnd)) return 0;
+  const t = toTimeKey(now);
+  const overnight = s.nightStart > s.nightEnd; // z. B. 21:00 bis 08:00
+  const inNight = overnight ? t >= s.nightStart || t < s.nightEnd : t >= s.nightStart && t < s.nightEnd;
+  if (!inNight) return 0;
+  const today = toDateKey(now);
+  const wakeDay = overnight && t >= s.nightStart ? addDays(today, 1) : today;
+  return zurichToDate(wakeDay, s.nightEnd).getTime() + s.nightLeadMin * 60_000;
+}
 
 /**
  * Freie Startzeiten pro Tag für mehrere Dauern auf einmal.
@@ -47,7 +62,7 @@ export async function getAvailabilityFor(
     ...blocked.map((b) => ({ start: b.startsAt.getTime(), end: b.endsAt.getTime() })),
   ];
   const byWeekday = new Map<number, OpeningDay>(hours.map((h) => [h.weekday, h]));
-  const earliest = now.getTime() + settings.minNoticeMin * 60_000;
+  const earliest = Math.max(now.getTime() + settings.minNoticeMin * 60_000, nightEarliest(now, settings));
   const step = settings.slotStepMin * 60_000;
 
   const out: Record<number, Days> = {};
