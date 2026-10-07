@@ -8,6 +8,7 @@ export const post: BlogPost = {
     en: "how-often-haircut-men-biel",
   },
   date: "2026-09-15",
+  related: { services: ["haarschnitt-biel", "gyan-signature", "haarschnitt-und-bart"], seo: ["coiffeur", "herrencoiffeur"] },
   image: "/images/salon-spiegel.jpg",
   title: {
     de: "Wie oft zum Coiffeur? Der Rhythmus für Männer in Biel",
@@ -15,9 +16,9 @@ export const post: BlogPost = {
     en: "How Often Should Men Get a Haircut? A Guide for Biel",
   },
   description: {
-    de: "Wie oft solltest du als Mann zum Coiffeur? Der richtige Rhythmus je nach Schnitt, plus Tipps, wie du in Biel smart buchst: online buchen oder spontan vorbeikommen.",
+    de: "Wie oft solltest du als Mann zum Coiffeur? Der richtige Rhythmus je nach Schnitt und wie du in Biel smart buchst: online oder spontan ohne Termin.",
     fr: "À quelle fréquence un homme doit-il aller chez le coiffeur ? Le bon rythme selon ta coupe et comment réserver malin à Bienne : en ligne ou sans rendez-vous.",
-    en: "How often should a man get a haircut? The right rhythm for each cut, plus how to book smart in Biel: online or as a walk-in.",
+    en: "How often should a man get a haircut? The right rhythm for each cut, from skin fade to mullet, plus how to book smart in Biel: online or as a walk-in.",
   },
   body: {
     de: `Die ehrliche Antwort auf die Frage "Wie oft zum Coiffeur?" lautet: Es kommt auf deinen Schnitt an. Ein scharfer Skin Fade verliert seine Kontur viel schneller als ein Seitenscheitel mit etwas Länge. Hier ist unser Leitfaden, damit dein Haar immer so aussieht, wie du es willst, ohne dass du zu oft oder zu selten kommst.
@@ -50,7 +51,7 @@ Damit du deinen Rhythmus auch wirklich einhältst, hilft ein bisschen Planung:
 
 ## Mitten in Biel, schnell erreichbar
 
-Unser Salon liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Ob du aus Mett, Madretsch, Bözingen oder aus dem Seeland kommst, etwa aus [Nidau](seo:nidau): Ein Termin lässt sich gut in den Alltag einbauen. Alle Leistungen findest du in unserer Übersicht der Services.
+Unser Salon liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Ob du aus Mett, Madretsch, Bözingen oder aus dem Seeland kommst, etwa aus [Nidau](seo:nidau): Ein Termin lässt sich gut in den Alltag einbauen. Alle Leistungen und Preise findest du in unserer [Übersicht der Leistungen](page:services).
 
 ## Dein nächster Termin
 
@@ -85,7 +86,7 @@ Pour tenir ton rythme, un peu d'organisation aide :
 
 ## Au cœur de Bienne, facile d'accès
 
-Notre salon se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Que tu viennes de Mâche, de Madretsch, de Boujean ou du Seeland, par exemple de [Nidau](seo:nidau), un rendez-vous s'intègre facilement dans ton quotidien. Tu trouveras toutes nos prestations dans l'aperçu de nos services.
+Notre salon se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Que tu viennes de Mâche, de Madretsch, de Boujean ou du Seeland, par exemple de [Nidau](seo:nidau), un rendez-vous s'intègre facilement dans ton quotidien. Tu trouveras toutes nos prestations et nos prix dans l'[aperçu des prestations](page:services).
 
 ## Ton prochain rendez-vous
 
@@ -120,7 +121,7 @@ A little planning makes it easy to stick to your rhythm:
 
 ## In the heart of Biel, easy to reach
 
-Our salon is at Zentralstrasse 22, a few minutes' walk from Biel station. Whether you are coming from Mett, Madretsch, Bözingen or from elsewhere in the Seeland, such as [Nidau](seo:nidau), an appointment fits easily into your day. You can find all our treatments in our services overview.
+Our salon is at Zentralstrasse 22, a few minutes' walk from Biel station. Whether you are coming from Mett, Madretsch, Bözingen or from elsewhere in the Seeland, such as [Nidau](seo:nidau), an appointment fits easily into your day. You can find all our services and prices in our [services overview](page:services).
 
 ## Your next appointment
 

@@ -8,6 +8,7 @@ export const post: BlogPost = {
     en: "beard-care-tips-lake-biel",
   },
   date: "2026-09-22",
+  related: { services: ["bart-trimmen-biel", "nassrasur-biel", "haarschnitt-und-bart", "gesichtspflege-biel"], seo: ["bart", "barbier"] },
   image: "/images/salon-wasch.jpg",
   title: {
     de: "Bartpflege am Bielersee: Tipps für jede Jahreszeit in Biel",

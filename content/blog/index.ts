@@ -11,3 +11,19 @@ export const posts: BlogPost[] = [
   bartpflegeTippsBielersee,
   wieOftZumCoiffeur,
 ];
+
+/**
+ * Lesetipps für eine Leistung oder lokale Seite: zuerst Beiträge, die genau dazu passen,
+ * dann solche zu den gezeigten Leistungen, aufgefüllt mit den neuesten.
+ */
+export function relatedPosts({ seo, service, services = [] }: { seo?: string; service?: string; services?: string[] }, count = 3): BlogPost[] {
+  const score = (p: BlogPost) =>
+    (seo && p.related?.seo?.includes(seo) ? 4 : 0) +
+    (service && p.related?.services?.includes(service) ? 4 : 0) +
+    services.filter((s) => p.related?.services?.includes(s)).length;
+  return posts
+    .map((p, i) => ({ p, i, s: score(p) }))
+    .sort((a, b) => b.s - a.s || a.i - b.i)
+    .slice(0, count)
+    .map((x) => x.p);
+}

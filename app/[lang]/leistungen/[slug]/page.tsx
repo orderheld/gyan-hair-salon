@@ -4,7 +4,9 @@ import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
+import { relatedPosts } from "@/content/blog";
 import { Markdown } from "@/components/Markdown";
+import { PostCard } from "@/components/site/PostCard";
 import { Breadcrumbs, CtaBand, JsonLd, ServiceRows } from "@/components/site/Blocks";
 import { getServiceBySlug, getServices, localize } from "@/lib/data";
 import { formatChf, formatDuration } from "@/lib/format";
@@ -27,10 +29,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const l = localize(s, locale);
   const d = getDict(locale);
   const short = /[.!?]$/.test(l.short.trim()) ? l.short.trim() : `${l.short.trim()}.`;
-  const description = clampDescription(
-    fill(d.meta.serviceDesc, { short, price: `${s.priceFrom ? `${d.common.from} ` : ""}${formatChf(s.priceChf)}`, duration: formatDuration(s.durationMin, locale).replace(/\.$/, ""), street: site.address.street }),
-  );
-  return pageMetadata({ locale, title: l.name, description, path: (x) => servicePath(x, s), image: s.image || undefined });
+  const price = `${s.priceFrom ? `${d.common.from} ` : ""}${formatChf(s.priceChf)}`;
+  const base = fill(d.meta.serviceDesc, { short, price, duration: formatDuration(s.durationMin, locale).replace(/\.$/, ""), street: site.address.street });
+  // Aufruf zum Buchen und Zahlungsarten anhängen, solange es in die rund 160 Zeichen passt
+  const description = clampDescription([d.meta.serviceCta, d.meta.servicePay].reduce((t, extra) => (`${t} ${extra}`.length <= 160 ? `${t} ${extra}` : t), base));
+  return pageMetadata({ locale, title: fill(d.meta.serviceTitle, { name: l.name, price }), description, path: (x) => servicePath(x, s), image: s.image || undefined });
 }
 
 export default async function ServicePage({ params }: Props) {
@@ -43,6 +46,7 @@ export default async function ServicePage({ params }: Props) {
   if (l.slug !== decodeURIComponent(slug)) permanentRedirect(servicePath(locale, s));
   const others = (await getServices()).filter((x) => x.id !== s.id).slice(0, 4).map((x) => localize(x, locale));
   const bookHref = `${href(locale, "booking")}?service=${s.id}`;
+  const reading = relatedPosts({ service: s.slug.de });
 
   return (
     <>
@@ -101,6 +105,19 @@ export default async function ServicePage({ params }: Props) {
           <ServiceRows services={others} locale={locale} d={d} />
         </div>
       </section>
+      <section className="section">
+        <div className="container">
+          <div className="section-head-row">
+            <h2 className="h2" data-reveal>{d.blog.fromJournal}</h2>
+            <Link className="arrow-link" href={href(locale, "blog")}>{d.nav.blog} →</Link>
+          </div>
+          <div className="post-grid">
+            {reading.map((p, i) => (
+              <PostCard key={p.key} post={p} locale={locale} d={d} delay={i * 80} />
+            ))}
+          </div>
+        </div>
+      </section>
       <CtaBand locale={locale} d={d} />
       <JsonLd
         data={{
@@ -113,7 +130,13 @@ export default async function ServicePage({ params }: Props) {
           url: absolute(servicePath(locale, s)),
           areaServed: { "@type": "City", name: "Biel/Bienne" },
           provider: { "@id": `${site.url}/#salon` },
-          offers: { "@type": "Offer", price: s.priceChf, priceCurrency: "CHF", url: absolute(bookHref) },
+          offers: {
+            "@type": "Offer",
+            ...(s.priceFrom ? { priceSpecification: { "@type": "PriceSpecification", minPrice: s.priceChf, priceCurrency: "CHF" } } : { price: s.priceChf }),
+            priceCurrency: "CHF",
+            availability: "https://schema.org/InStock",
+            url: absolute(bookHref),
+          },
         }}
       />
     </>
