@@ -53,7 +53,7 @@ async function send(mail: Mail): Promise<string | null> {
     subject: mail.subject,
     html: mail.html,
     text: mail.text,
-    replyTo: mail.replyTo,
+    replyTo: mail.replyTo || site.email, // Antworten landen immer im Salon-Postfach
     attachments: [
       { filename: "gyan-logo.png", content: EMAIL_LOGO_BASE64, contentType: "image/png", contentId: "gyan-logo" },
       ...(mail.ics ? [{ filename: "gyan-termin.ics", content: Buffer.from(mail.ics).toString("base64"), contentType: "text/calendar" }] : []),

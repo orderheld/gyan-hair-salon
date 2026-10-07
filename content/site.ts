@@ -20,7 +20,7 @@ export const site = {
   },
   phone: "+41 76 505 74 47",
   phoneHref: "tel:+41765057447",
-  email: "info@gyanhairsalon.ch", // PLATZHALTER
+  email: "contact@gyanhairsalon.ch",
   instagram: "https://www.instagram.com/gyan_hair_salon/",
   instagramHandle: "@gyan_hair_salon",
   googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=GYAN+Hair+Salon+Biel",

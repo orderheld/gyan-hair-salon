@@ -34,7 +34,7 @@ export const DEFAULT_SETTINGS: Settings = {
   followupHoursAfter: 5,
   reviewUrl: site.googleWriteReviewUrl,
   instagramUrl: "https://www.instagram.com/gyan_hair_salon/",
-  notifyEmail: process.env.SALON_NOTIFY_EMAIL ?? "",
+  notifyEmail: process.env.SALON_NOTIFY_EMAIL || site.email,
   emailEnabled: {
     confirmation: true,
     reminder: true,
