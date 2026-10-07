@@ -5,7 +5,7 @@ const fr: Dict = {
   meta: {
     siteTitle: "GYAN Hair Salon · Coiffeur homme & barbier à Biel/Bienne",
     siteDescription:
-      "Coiffeur homme et barbier au centre de Biel/Bienne : coupe, skin fade, barbe et rasage. Réservation en ligne, confirmée tout de suite, ou passage sans rendez-vous.",
+      "Coiffeur homme et barbier au centre de Biel/Bienne : coupe, skin fade, barbe et rasage. Réserve en ligne, confirmé tout de suite, ou passe sans rendez-vous.",
     titleSuffix: "GYAN Hair Salon Bienne",
     serviceDesc: "{short} Chez GYAN Hair Salon, coiffeur homme à la {street} à Bienne. {price} · {duration}.",
     serviceCta: "Réserve en ligne ou passe sans rendez-vous.",
@@ -63,7 +63,7 @@ const fr: Dict = {
     tiktok: "Vidéos courtes : des coupes du début à la fin, des conseils et des moments du salon.",
     facebook: "Actualités, horaires et offres de GYAN Hair Salon à Bienne.",
     follow: "Suivre",
-    metaTitle: "Réseaux sociaux : Instagram, TikTok, Facebook | GYAN Bienne",
+    metaTitle: "Réseaux sociaux : Instagram, TikTok, Facebook · GYAN Bienne",
     metaDescription: "Suis GYAN Hair Salon à Bienne sur Instagram, TikTok et Facebook : coupes fraîches, dégradés et barbes, coulisses du salon et offres du moment.",
   },
   loyalty: {
@@ -74,7 +74,7 @@ const fr: Dict = {
     free: "Offerte",
     cardTitle: "Chaque {nth} coupe offerte",
     cardText: "La carte de fidélité GYAN est en préparation. Dès son lancement, tu le sauras ici.",
-    metaTitle: "Carte de fidélité : chaque {nth} coupe offerte | GYAN Bienne",
+    metaTitle: "Carte de fidélité : chaque {nth} coupe offerte · GYAN Bienne",
     metaDescription: "La carte de fidélité de GYAN Hair Salon à Bienne : chaque {nth} coupe est offerte, plus un cadeau d’anniversaire et un bonus pour chaque ami invité.",
     howTitle: "Comment ça marche",
     perkCut: "Chaque {nth} coupe offerte",

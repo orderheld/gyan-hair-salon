@@ -61,7 +61,7 @@ const de = {
     tiktok: "Kurze Videos: Schnitte von Anfang bis Ende, Tipps und Momente aus dem Salon.",
     facebook: "News, Öffnungszeiten und Aktionen von GYAN Hair Salon in Biel/Bienne.",
     follow: "Folgen",
-    metaTitle: "Social Media: Instagram, TikTok, Facebook | GYAN Biel",
+    metaTitle: "Social Media: Instagram, TikTok, Facebook · GYAN Biel",
     metaDescription: "Folge GYAN Hair Salon in Biel/Bienne auf Instagram, TikTok und Facebook: frische Schnitte, Fades und Bärte, Einblicke in den Salon und aktuelle Aktionen.",
   },
   loyalty: {
@@ -72,7 +72,7 @@ const de = {
     free: "Gratis",
     cardTitle: "Jeder {nth} Haarschnitt gratis",
     cardText: "Die GYAN Stempelkarte ist in Vorbereitung. Sobald sie startet, erfährst du es hier.",
-    metaTitle: "Stempelkarte: jeder {nth} Haarschnitt gratis | GYAN Biel",
+    metaTitle: "Stempelkarte: jeder {nth} Haarschnitt gratis · GYAN Biel",
     metaDescription: "Die Stempelkarte von GYAN Hair Salon in Biel/Bienne: Jeder {nth} Haarschnitt ist gratis, dazu ein Geburtstagsgeschenk und ein Bonus fürs Einladen.",
     howTitle: "So funktioniert es",
     perkCut: "Jeder {nth} Haarschnitt gratis",
