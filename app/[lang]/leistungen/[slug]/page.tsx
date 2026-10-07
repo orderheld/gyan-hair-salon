@@ -71,7 +71,6 @@ export default async function ServicePage({ params }: Props) {
             <span>{d.common.duration}: {formatDuration(s.durationMin, locale)}</span>
             <span>{d.common.price}: {s.priceFrom ? `${d.common.from} ` : ""}{formatChf(s.priceChf)}</span>
             {s.walkinPriceChf != null && <span>{d.services.walkin}: {formatChf(s.walkinPriceChf)}</span>}
-            <span>{d.common.withZana}</span>
           </div>
           <div className="btn-row rise" style={{ animationDelay: "240ms" }}>
             <Link className="btn btn-dark" href={bookHref}>{d.services.detailCta}</Link>
@@ -90,7 +89,6 @@ export default async function ServicePage({ params }: Props) {
                 <div><dt>{d.common.duration}</dt><dd>{formatDuration(s.durationMin, locale)}</dd></div>
                 <div><dt>{d.services.withAppt}</dt><dd>{s.priceFrom ? `${d.common.from} ` : ""}{formatChf(s.priceChf)}</dd></div>
                 {s.walkinPriceChf != null && <div><dt>{d.services.walkin}</dt><dd>{formatChf(s.walkinPriceChf)}</dd></div>}
-                <div><dt>{d.booking.with}</dt><dd>{site.owner}</dd></div>
               </dl>
               <Link className="btn btn-dark btn-block" href={bookHref}>{d.common.book}</Link>
               <a className="btn btn-light btn-block" href={site.phoneHref}>{site.phone}</a>

@@ -1,7 +1,7 @@
 import "server-only";
 import { formatTime } from "./time";
 import { Resend } from "resend";
-import { site } from "@/content/site";
+import { site, staffName } from "@/content/site";
 import type { Locale } from "@/content/types";
 import type { Booking } from "./data";
 import { fill, getDict } from "./i18n";
@@ -178,7 +178,7 @@ function ics(b: Booking, summary: string) {
     `DTEND:${fmt(b.endsAt)}`,
     `SUMMARY:${summary} · GYAN Hair Salon`,
     `LOCATION:${site.address.street}\\, ${site.address.zip} ${site.address.city}`,
-    `DESCRIPTION:${site.owner} · ${site.phone}`,
+    `DESCRIPTION:${staffName(b.staffId)} · ${site.phone}`,
     "BEGIN:VALARM",
     "TRIGGER:-PT2H",
     "ACTION:DISPLAY",
@@ -205,7 +205,7 @@ export async function buildEmail(type: EmailType, b: Booking, opts: { locale?: L
     [d.emails.detailsDate, vars.date],
     [d.emails.detailsTime, `${vars.time} – ${vars.endTime}`],
     [d.emails.detailsDuration, vars.duration],
-    [d.emails.detailsWith, site.owner],
+    [d.emails.detailsWith, staffName(b.staffId)],
   ];
   if (vars.price) details.push([d.emails.detailsPrice, vars.price]);
   details.push([d.emails.detailsAddress, vars.address], [d.emails.detailsPayment, vars.payment]);

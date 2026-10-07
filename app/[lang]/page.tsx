@@ -204,7 +204,7 @@ export default async function Home({ params }: Props) {
           <SectionHead eyebrow={h.waysEyebrow} title={h.waysTitle} center />
           <div className="ways-grid">
             <div className="way way-accent" data-reveal>
-              <span className="way-tag">{d.common.withZana}</span>
+              <span className="way-tag">{d.services.withAppt}</span>
               <h3 className="h2">{h.wayBookTitle}</h3>
               <p>{h.wayBookText}</p>
               <Link className="btn btn-dark" href={href(locale, "booking")}>{d.common.book}</Link>

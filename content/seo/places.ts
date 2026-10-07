@@ -40,7 +40,7 @@ Mit dem Auto bist du in wenigen Minuten im Bieler Stadtzentrum, wo es öffentlic
 
 Kurze Wege sind das eine. Das andere ist, was dich im Salon erwartet: Zeit für ein Gespräch, saubere Übergänge beim [Skin Fade](service:haarschnitt-biel) und eine ruhige Atmosphäre mit braunen Lederstühlen und einem roten Perserteppich an der Wand. Wenn du Haar und Bart kombinieren willst, frag nach [Haarschnitt und Bart](service:haarschnitt-und-bart).
 
-Für einen Termin bei Zana [buchst du online](page:booking) – die Bestätigung kommt sofort. Spontan geht auch: Während der Öffnungszeiten bedienen Zana und das Team auch Walk-in-Kunden. Wohnst du etwas weiter am Seeufer, lohnt sich auch ein Blick auf unsere Seite für [Ipsach](seo:ipsach).
+Einen Termin [buchst du online](page:booking) – die Bestätigung kommt sofort. Spontan geht auch: Während der Öffnungszeiten bedienen Zana und das Team auch Walk-in-Kunden. Wohnst du etwas weiter am Seeufer, lohnt sich auch ein Blick auf unsere Seite für [Ipsach](seo:ipsach).
 
 Und weil die Wege so kurz sind, passt ein Termin bei uns problemlos in eine lange Mittagspause. Nach dem Schnitt lohnt sich an schönen Tagen ein Abstecher ans Seeufer – frisch geschnitten ein schöner Abschluss für den Tag.`,
       fr: `## Deux villes qui se touchent
@@ -55,7 +55,7 @@ En voiture, tu es au centre de Bienne en quelques minutes, où se trouvent des p
 
 La proximité, c'est une chose. L'autre, c'est ce qui t'attend au salon : du temps pour discuter, des transitions propres pour un [skin fade](service:haarschnitt-biel) et une ambiance calme avec des fauteuils en cuir brun et un tapis persan rouge au mur. Si tu veux combiner cheveux et barbe, demande la formule [coupe et barbe](service:haarschnitt-und-bart).
 
-Pour un rendez-vous avec Zana, [réserve en ligne](page:booking) – la confirmation est immédiate. Tu peux aussi passer spontanément : pendant les heures d'ouverture, Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites un peu plus loin sur la rive ? Jette un œil à notre page pour [Ipsach](seo:ipsach).
+Pour un rendez-vous, [réserve en ligne](page:booking) – la confirmation est immédiate. Tu peux aussi passer spontanément : pendant les heures d'ouverture, Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites un peu plus loin sur la rive ? Jette un œil à notre page pour [Ipsach](seo:ipsach).
 
 Et comme le trajet est si court, un rendez-vous chez nous tient facilement dans une longue pause de midi. Après la coupe, par beau temps, un détour par les rives du lac est une belle façon de finir la journée.`,
       en: `## Two towns that have grown together
@@ -116,7 +116,7 @@ Mit dem Auto fährst du ins Bieler Zentrum und nutzt die öffentlichen Parkplät
 
 Viele unserer Kunden aus Brügg kommen wegen der Bartpflege. Beim [Bart-Trimmen](service:bart-trimmen-biel) setzen wir klare Linien an Hals und Wangen und bringen die Länge in eine Form, die zu deinem Gesicht passt. Wer es klassisch mag, gönnt sich die Nassrasur mit heissem Tuch. Alles Wissenswerte dazu findest du auf unserer Seite zur [Bartpflege in Biel](seo:bart).
 
-Im Salon erwarten dich skulpturale, cremeweisse Spiegelrahmen, Lederstühle und eine ruhige Lounge mit Kunstbüchern. Termine bei Zana [buchst du online](page:booking) und erhältst sofort eine Bestätigung. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Kommst du aus der Nachbarschaft, schau auch bei [Port](seo:port) vorbei.
+Im Salon erwarten dich skulpturale, cremeweisse Spiegelrahmen, Lederstühle und eine ruhige Lounge mit Kunstbüchern. Termine [buchst du online](page:booking) und erhältst sofort eine Bestätigung. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Kommst du aus der Nachbarschaft, schau auch bei [Port](seo:port) vorbei.
 
 Praktisch für Pendler: Donnerstag und Freitag haben wir bis 20 Uhr geöffnet. So kommst du nach der Arbeit in Biel noch vorbei und bist trotzdem rechtzeitig zum Abendessen zurück in Brügg. Samstags öffnen wir bereits um 8:30 Uhr.`,
       fr: `## Entre canal et ville
@@ -131,7 +131,7 @@ En voiture, tu rejoins le centre de Bienne et ses places de parc publiques. En t
 
 Beaucoup de nos clients de Brügg viennent pour la barbe. Lors de la [taille de barbe](service:bart-trimmen-biel), on trace des lignes nettes dans le cou et sur les joues et on donne à la longueur une forme adaptée à ton visage. Pour les amateurs de classique, il y a le rasage à la serviette chaude. Tout est expliqué sur notre page [taille de barbe à Bienne](seo:bart).
 
-Au salon t'attendent des cadres de miroir sculptés blanc crème, des fauteuils en cuir et un lounge calme avec des livres d'art. Les rendez-vous avec Zana se [réservent en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites dans les environs ? Jette aussi un œil à la page pour [Port](seo:port).
+Au salon t'attendent des cadres de miroir sculptés blanc crème, des fauteuils en cuir et un lounge calme avec des livres d'art. Les rendez-vous se [réservent en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites dans les environs ? Jette aussi un œil à la page pour [Port](seo:port).
 
 Pratique pour les pendulaires : le jeudi et le vendredi, on est ouverts jusqu'à 20 h. Tu peux donc passer après le travail à Bienne et être quand même de retour à Brügg pour le souper. Le samedi, on ouvre dès 8 h 30.`,
       en: `## Between canal and city
@@ -146,7 +146,7 @@ By car, head into Biel city centre and use the public parking there. By train or
 
 Many of our clients from Brügg come for beard care. During a [beard trim](service:bart-trimmen-biel) we set clean lines at the neck and cheeks and shape the length to suit your face. If you like the classics, treat yourself to a hot towel shave. Everything you need to know is on our [beard barber in Biel](seo:bart) page.
 
-In the salon you'll find sculpted cream-white mirror frames, leather chairs and a calm lounge with art books. Appointments with Zana are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Live nearby? Have a look at our page for [Port](seo:port) too.
+In the salon you'll find sculpted cream-white mirror frames, leather chairs and a calm lounge with art books. Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Live nearby? Have a look at our page for [Port](seo:port) too.
 
 Handy for commuters: on Thursdays and Fridays we're open until 8pm. So you can stop by after work in Biel and still be back in Brügg in time for dinner. On Saturdays we open as early as 8:30am.`,
     },
@@ -192,7 +192,7 @@ Mit dem Auto geht es über Nidau ins Zentrum von Biel, wo du öffentliche Parkpl
 
 Besonders junge Kunden aus Port kommen zu uns für den [Skin Fade](service:haarschnitt-biel). Wir arbeiten den Übergang Schritt für Schritt aus – vom Nacken bis zum Deckhaar, ohne sichtbare Kante. Was die Unterschiede zwischen Low, Mid und High Fade sind, erklären wir auf unserer Seite zum [Fade-Haarschnitt in Biel](seo:fade).
 
-Wer Haar und Bart in einem Termin erledigen will, wählt das [GYAN Classic Paket](service:haarschnitt-und-bart). Einen Termin bei Zana [buchst du online](page:booking) – er wird sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du näher am Seeufer? Dann schau auf unserer Seite für [Nidau](seo:nidau) vorbei.
+Wer Haar und Bart in einem Termin erledigen will, wählt das [GYAN Classic Paket](service:haarschnitt-und-bart). Einen Termin [buchst du online](page:booking) – er wird sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du näher am Seeufer? Dann schau auf unserer Seite für [Nidau](seo:nidau) vorbei.
 
 Ein Tipp für Frühaufsteher: Samstags öffnen wir bereits um 8:30 Uhr. Wer früh kommt, hat den Coiffeur erledigt, bevor das Wochenende richtig losgeht – und kann danach noch einen Spaziergang am Kanal machen.`,
       fr: `## Vivre au bord de l'eau, se faire couper en ville
@@ -207,7 +207,7 @@ En voiture, tu passes par Nidau jusqu'au centre de Bienne, où se trouvent des p
 
 Beaucoup de jeunes clients de Port viennent chez nous pour le [skin fade](service:haarschnitt-biel). On travaille la transition étape par étape – de la nuque jusqu'au dessus, sans aucune marque visible. Les différences entre low, mid et high fade sont expliquées sur notre page [dégradé à Bienne](seo:fade).
 
-Pour régler cheveux et barbe en un seul rendez-vous, choisis la [formule GYAN Classic](service:haarschnitt-und-bart). Pour un rendez-vous avec Zana, [réserve en ligne](page:booking) – il est confirmé immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites plus près du lac ? Va voir notre page pour [Nidau](seo:nidau).
+Pour régler cheveux et barbe en un seul rendez-vous, choisis la [formule GYAN Classic](service:haarschnitt-und-bart). Pour un rendez-vous, [réserve en ligne](page:booking) – il est confirmé immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites plus près du lac ? Va voir notre page pour [Nidau](seo:nidau).
 
 Un conseil pour les lève-tôt : le samedi, on ouvre dès 8 h 30. En venant tôt, le coiffeur est fait avant que le week-end ne commence vraiment – et il reste du temps pour une balade le long du canal.`,
       en: `## Living by the water, getting cut in town
@@ -270,9 +270,9 @@ Unsere Kunden aus Ipsach schätzen vor allem eines: dass bei uns nichts gehetzt 
 
 Dazu kommt der Raum selbst: braune Lederstühle, skulpturale Spiegelrahmen in Cremeweiss, ein roter Perserteppich an der Wand und eine Lounge mit Kunstbüchern. Mehr über die Arbeit als [Barbier in Biel](seo:barbier) erfährst du auf unserer Themenseite.
 
-Termine bei Zana [buchst du online](page:booking) und erhältst sofort eine Bestätigung. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden.
+Termine [buchst du online](page:booking) und erhältst sofort eine Bestätigung. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden.
 
-Weil du dir beim GYAN Full Service Zeit lassen solltest, planst du ihn am besten für einen ruhigen Nachmittag oder einen Samstag. Danach bist du schnell wieder am Südufer – frisch geschnitten, frisch rasiert und entspannt. Online siehst du sofort, welche Zeiten bei Zana noch frei sind.`,
+Weil du dir beim GYAN Full Service Zeit lassen solltest, planst du ihn am besten für einen ruhigen Nachmittag oder einen Samstag. Danach bist du schnell wieder am Südufer – frisch geschnitten, frisch rasiert und entspannt. Online siehst du sofort, welche Zeiten noch frei sind.`,
       fr: `## Chez soi sur la rive sud
 
 Ipsach est une commune lacustre avec son chemin riverain et une vue sur le lac de Bienne jusqu'aux pentes du Jura. Ceux qui y vivent apprécient le calme – et la proximité de Bienne, accessible en quelques minutes via Nidau.
@@ -287,9 +287,9 @@ Nos clients d'Ipsach apprécient surtout une chose : chez nous, rien n'est préc
 
 S'y ajoute le lieu lui-même : fauteuils en cuir brun, cadres de miroir sculptés blanc crème, tapis persan rouge au mur et lounge avec livres d'art. Pour en savoir plus sur notre travail de [barbier à Bienne](seo:barbier), visite notre page dédiée.
 
-Les rendez-vous avec Zana se [réservent en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous.
+Les rendez-vous se [réservent en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous.
 
-Comme le GYAN Full Service se savoure sans se presser, le mieux est de le prévoir pour un après-midi tranquille ou un samedi. Ensuite, tu es vite de retour sur la rive sud – coupé, rasé et détendu. En ligne, tu vois tout de suite quels créneaux sont encore libres chez Zana.`,
+Comme le GYAN Full Service se savoure sans se presser, le mieux est de le prévoir pour un après-midi tranquille ou un samedi. Ensuite, tu es vite de retour sur la rive sud – coupé, rasé et détendu. En ligne, tu vois tout de suite quels créneaux sont encore libres.`,
       en: `## At home on the south shore
 
 Ipsach is a lakeside community with a shore path and views across Lake Biel to the Jura slopes. People who live here value the peace and quiet – and how close Biel is, just a few minutes away via Nidau.
@@ -304,9 +304,9 @@ Our clients from Ipsach appreciate one thing above all: nothing is rushed here. 
 
 Then there's the space itself: brown leather chairs, sculpted cream-white mirror frames, a red Persian carpet on the wall and a lounge with art books. Find out more about our work as a [barber in Biel](seo:barbier) on our dedicated page.
 
-Appointments with Zana are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too.
+Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too.
 
-Since the GYAN Full Service is best enjoyed without rushing, it's best planned for a quiet afternoon or a Saturday. Afterwards you're quickly back on the south shore – freshly cut, freshly shaved and relaxed. Online you can see straight away which slots Zana still has free.`,
+Since the GYAN Full Service is best enjoyed without rushing, it's best planned for a quiet afternoon or a Saturday. Afterwards you're quickly back on the south shore – freshly cut, freshly shaved and relaxed. Online you can see straight away which slots are still free.`,
     },
     neighbors: ["nidau", "port", "sutz-lattrigen", "taeuffelen"],
   },
@@ -350,7 +350,7 @@ Am bequemsten nimmst du die Standseilbahn hinunter nach Biel und gehst von der T
 
 Wer in einer zweisprachigen Gemeinde lebt, schätzt es, wenn auch der Coiffeur mitzieht: Unsere Website, die Online-Buchung und alle E-Mails gibt es auf Deutsch, Französisch und Englisch. Im Salon selbst erwartet dich ein präziser [Haarschnitt](service:haarschnitt-biel), auf Wunsch kombiniert mit Bart – in einem ruhigen Raum mit Lederstühlen und einem roten Perserteppich an der Wand.
 
-Mehr über unser Angebot als [Coiffeur in Biel](seo:coiffeur) findest du auf unserer Themenseite. Termine bei Zana [buchst du online](page:booking) – sofort bestätigt. Ohne Termin kannst du während der Öffnungszeiten einfach vorbeikommen; Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du eher Richtung Seeufer, schau bei [Nidau](seo:nidau) vorbei.
+Mehr über unser Angebot als [Coiffeur in Biel](seo:coiffeur) findest du auf unserer Themenseite. Termine [buchst du online](page:booking) – sofort bestätigt. Ohne Termin kannst du während der Öffnungszeiten einfach vorbeikommen; Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du eher Richtung Seeufer, schau bei [Nidau](seo:nidau) vorbei.
 
 Ein kleiner Tipp: Wenn du online buchst, siehst du direkt, welche Zeiten frei sind, und kannst deine Fahrt mit der Standseilbahn danach planen. So wartest du oben nicht unnötig und musst unten in der Stadt nicht hetzen.`,
       fr: `## Au-dessus de la ville, reliée à la ville
@@ -365,7 +365,7 @@ Le plus pratique : descendre en funiculaire jusqu'à Bienne, puis rejoindre la g
 
 Quand on vit dans une commune bilingue, on apprécie que son coiffeur suive le mouvement : notre site, la réservation en ligne et tous les e-mails sont disponibles en allemand, en français et en anglais. Au salon t'attend une [coupe](service:haarschnitt-biel) précise, combinée avec la barbe si tu le souhaites – dans un espace calme avec des fauteuils en cuir et un tapis persan rouge au mur.
 
-Découvre toute notre offre sur la page [coiffeur à Bienne](seo:coiffeur). Les rendez-vous avec Zana se [réservent en ligne](page:booking) – confirmés immédiatement. Sans rendez-vous, tu peux passer pendant les heures d'ouverture ; Zana et l'équipe accueillent aussi les clients spontanés. Tu habites plutôt du côté du lac ? Va voir la page pour [Nidau](seo:nidau).
+Découvre toute notre offre sur la page [coiffeur à Bienne](seo:coiffeur). Les rendez-vous se [réservent en ligne](page:booking) – confirmés immédiatement. Sans rendez-vous, tu peux passer pendant les heures d'ouverture ; Zana et l'équipe accueillent aussi les clients spontanés. Tu habites plutôt du côté du lac ? Va voir la page pour [Nidau](seo:nidau).
 
 Un petit conseil : en réservant en ligne, tu vois directement les créneaux libres et tu peux planifier ton trajet en funiculaire en conséquence. Pas d'attente inutile en haut, pas de course en bas.`,
       en: `## Above the city, connected to it
@@ -380,7 +380,7 @@ The easiest way is to ride the funicular down to Biel, then walk or take a short
 
 If you live in a bilingual community, you'll appreciate a barber that keeps up: our website, online booking and all emails are available in German, French and English. In the salon, a precise [haircut](service:haarschnitt-biel) awaits you, combined with a beard trim if you like – in a calm room with leather chairs and a red Persian carpet on the wall.
 
-Find out more about everything we offer as a [hairdresser in Biel](seo:coiffeur). Appointments with Zana are [booked online](page:booking) and confirmed instantly. Without an appointment you can walk in during opening hours; Zana and the team serve walk-in clients too. Living closer to the lake? See our page for [Nidau](seo:nidau).
+Find out more about everything we offer as a [hairdresser in Biel](seo:coiffeur). Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment you can walk in during opening hours; Zana and the team serve walk-in clients too. Living closer to the lake? See our page for [Nidau](seo:nidau).
 
 A small tip: when you book online, you see free slots right away and can plan your funicular ride around them. No needless waiting up the hill, no rushing down in town.`,
     },
@@ -426,7 +426,7 @@ Mit dem Auto fährst du in rund zehn Minuten ins Bieler Zentrum, wo es öffentli
 
 Viele Orpunder kombinieren gerne: den klassischen oder modernen [Haarschnitt](service:haarschnitt-biel), auf Wunsch mit Bart im [GYAN Classic Paket](service:haarschnitt-und-bart). Wer zusätzlich Waschen und Styling möchte, wählt das [GYAN Premium Paket](service:gyan-premium-paket). Wartet ein Freund, blättert er in der Lounge in einem Kunstbuch.
 
-Was uns als [Herrencoiffeur in Biel](seo:herrencoiffeur) ausmacht, liest du auf unserer Themenseite. Am einfachsten [buchst du online](page:booking) deinen Termin bei Zana – die Bestätigung kommt sofort. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Samstags öffnen wir schon um 8:30 Uhr – ideal vor dem Wochenendeinkauf. Aus der Nachbarschaft? Schau auch bei [Brügg](seo:bruegg) vorbei.
+Was uns als [Herrencoiffeur in Biel](seo:herrencoiffeur) ausmacht, liest du auf unserer Themenseite. Am einfachsten [buchst du online](page:booking) deinen Termin – die Bestätigung kommt sofort. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Samstags öffnen wir schon um 8:30 Uhr – ideal vor dem Wochenendeinkauf. Aus der Nachbarschaft? Schau auch bei [Brügg](seo:bruegg) vorbei.
 
 Zur Planung: Für zwei Haarschnitte hintereinander wählst du bei der Online-Buchung einfach zwei freie Zeiten direkt nacheinander. Beide Termine werden sofort bestätigt – so wisst ihr genau, wann ihr in Orpund losfahren müsst.`,
       fr: `## Entre ville et campagne
@@ -441,7 +441,7 @@ En voiture, tu rejoins le centre de Bienne en une dizaine de minutes ; des place
 
 Beaucoup de clients d'Orpund aiment combiner : une [coupe](service:haarschnitt-biel) classique ou moderne, avec la barbe si souhaité dans la [formule GYAN Classic](service:haarschnitt-und-bart). Pour ajouter lavage et coiffage, il y a la [formule GYAN Premium](service:gyan-premium-paket). Un ami attend ? Il feuillette un livre d'art dans le lounge.
 
-Ce qui fait de nous un [coiffeur homme à Bienne](seo:herrencoiffeur) est expliqué sur notre page dédiée. Le plus simple : [réserver en ligne](page:booking) ton rendez-vous avec Zana – la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Le samedi, on ouvre dès 8 h 30 – idéal avant les courses du week-end. Tu habites à côté ? Jette aussi un œil à la page pour [Brügg](seo:bruegg).
+Ce qui fait de nous un [coiffeur homme à Bienne](seo:herrencoiffeur) est expliqué sur notre page dédiée. Le plus simple : [réserver en ligne](page:booking) ton rendez-vous – la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Le samedi, on ouvre dès 8 h 30 – idéal avant les courses du week-end. Tu habites à côté ? Jette aussi un œil à la page pour [Brügg](seo:bruegg).
 
 Côté organisation : pour deux coupes à la suite, choisis simplement deux créneaux libres consécutifs lors de la réservation en ligne. Les deux rendez-vous sont confirmés immédiatement – vous savez ainsi exactement quand partir d'Orpund.`,
       en: `## Between town and country
@@ -456,7 +456,7 @@ By car you'll reach Biel city centre in around ten minutes, where there is publi
 
 Many clients from Orpund like to combine services: a classic or modern [haircut](service:haarschnitt-biel), with the beard if wanted in the [GYAN Classic package](service:haarschnitt-und-bart). For a wash and styling on top, there's the [GYAN Premium package](service:gyan-premium-paket). If a friend is waiting, he can leaf through an art book in the lounge.
 
-Read what makes us a [men's hairdresser in Biel](seo:herrencoiffeur) on our dedicated page. The easiest way is to [book online](page:booking) your appointment with Zana – confirmation is instant. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. On Saturdays we open at 8:30am – ideal before your weekend errands. Live nearby? Have a look at our page for [Brügg](seo:bruegg) too.
+Read what makes us a [men's hairdresser in Biel](seo:herrencoiffeur) on our dedicated page. The easiest way is to [book online](page:booking) your appointment – confirmation is instant. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. On Saturdays we open at 8:30am – ideal before your weekend errands. Live nearby? Have a look at our page for [Brügg](seo:bruegg) too.
 
 A note on planning: for two haircuts in a row, just pick two consecutive free slots when booking online. Both appointments are confirmed instantly – so you know exactly when to leave Orpund.`,
     },
@@ -654,7 +654,7 @@ Mit dem Zug oder Bus fährst du zum Bahnhof Biel und gehst von dort in wenigen M
 
 Viele Kunden aus Studen kombinieren bei uns Haar und Bart. Beim [Bart-Trimmen](service:bart-trimmen-biel) bringen wir Länge und Konturen in Form, beim Skin Fade arbeiten wir den Übergang sauber bis auf die Haut aus. Mehr Tipps für zwischen den Besuchen gibt es auf unserer Seite zur [Bartpflege in Biel](seo:bart).
 
-Und dann ist da der Salon selbst: Lederstühle, skulpturale Spiegelrahmen, ein roter Perserteppich an der Wand – ein Ort, an dem du für einen Moment abschalten kannst. Termine bei Zana [buchst du online](page:booking), sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du weiter Richtung Bern? Schau bei [Lyss](seo:lyss) vorbei.
+Und dann ist da der Salon selbst: Lederstühle, skulpturale Spiegelrahmen, ein roter Perserteppich an der Wand – ein Ort, an dem du für einen Moment abschalten kannst. Termine [buchst du online](page:booking), sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du weiter Richtung Bern? Schau bei [Lyss](seo:lyss) vorbei.
 
 Und nach dem Termin? Wer am Wochenende kommt, verbindet den Besuch vielleicht mit einem Spaziergang am Jensberg. Frisch geschnitten und mit gepflegtem Bart macht der Ausflug gleich doppelt Freude.`,
       fr: `## Le Seeland avec une colline
@@ -669,7 +669,7 @@ En train ou en bus, tu rejoins la gare de Bienne, puis quelques minutes à pied 
 
 Beaucoup de clients de Studen combinent cheveux et barbe chez nous. Avec la [taille de barbe](service:bart-trimmen-biel), on met en forme la longueur et les contours ; avec le skin fade, on travaille la transition proprement jusqu'à la peau. D'autres conseils pour entre deux visites se trouvent sur notre page [taille de barbe à Bienne](seo:bart).
 
-Et puis il y a le salon lui-même : fauteuils en cuir, cadres de miroir sculptés, tapis persan rouge au mur – un endroit où tu peux décrocher un instant. Les rendez-vous avec Zana se [réservent en ligne](page:booking), confirmés immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites plus loin en direction de Berne ? Va voir la page pour [Lyss](seo:lyss).
+Et puis il y a le salon lui-même : fauteuils en cuir, cadres de miroir sculptés, tapis persan rouge au mur – un endroit où tu peux décrocher un instant. Les rendez-vous se [réservent en ligne](page:booking), confirmés immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites plus loin en direction de Berne ? Va voir la page pour [Lyss](seo:lyss).
 
 Et après le rendez-vous ? Si tu viens le week-end, tu peux combiner ta visite avec une balade sur le Jensberg. Avec une coupe fraîche et une barbe soignée, la sortie n'en est que plus agréable.`,
       en: `## Seeland with a hill
@@ -684,7 +684,7 @@ By train or bus, head to Biel station and walk a few minutes to Zentralstrasse 2
 
 Many clients from Studen combine hair and beard with us. With a [beard trim](service:bart-trimmen-biel) we shape length and lines; with a skin fade we work the blend cleanly down to the skin. More tips for between visits are on our [beard barber in Biel](seo:bart) page.
 
-And then there's the salon itself: leather chairs, sculpted mirror frames, a red Persian carpet on the wall – a place where you can switch off for a moment. Appointments with Zana are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Living further towards Bern? Check out our page for [Lyss](seo:lyss).
+And then there's the salon itself: leather chairs, sculpted mirror frames, a red Persian carpet on the wall – a place where you can switch off for a moment. Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Living further towards Bern? Check out our page for [Lyss](seo:lyss).
 
 And after your appointment? If you come at the weekend, you might combine the visit with a walk on the Jensberg. With a fresh cut and a groomed beard, the outing is twice as nice.`,
     },
@@ -730,7 +730,7 @@ Der Regionalzug bringt dich via Pieterlen in wenigen Minuten zum Bahnhof Biel. V
 
 Weil der Salon so nah am Bahnhof liegt, lässt sich ein Haarschnitt gut vor oder nach der Arbeit einplanen. Donnerstag und Freitag haben wir bis 20 Uhr offen, am Samstag ab 8.30 Uhr. Beliebt sind der [Herren Haarschnitt](service:haarschnitt-biel) und das [GYAN Classic Paket](service:haarschnitt-und-bart) mit Haarschnitt und Bart.
 
-Deinen Termin bei Zana [buchst du online](page:booking), die Bestätigung kommt sofort. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei. Bezahlt wird bar, mit Karte oder mit TWINT. Kommst du eher aus der Nachbargemeinde? Dann schau auf unserer Seite für [Pieterlen](seo:pieterlen) vorbei.`,
+Deinen Termin [buchst du online](page:booking), die Bestätigung kommt sofort. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei. Bezahlt wird bar, mit Karte oder mit TWINT. Kommst du eher aus der Nachbargemeinde? Dann schau auf unserer Seite für [Pieterlen](seo:pieterlen) vorbei.`,
       fr: `## Le dernier village bernois avant Granges
 
 Longeau se trouve juste à la frontière avec le canton de Soleure, à côté de Granges. Le village a sa propre gare sur la ligne du pied du Jura, et beaucoup d'habitants font chaque jour la navette vers Bienne pour le travail, l'école ou les courses.
@@ -743,7 +743,7 @@ Le train régional t'amène via Perles en quelques minutes à la gare de Bienne.
 
 Comme le salon est tout près de la gare, une coupe se planifie facilement avant ou après le travail. Le jeudi et le vendredi, nous sommes ouverts jusqu'à 20 h, le samedi dès 8 h 30. Les plus demandés : la [coupe homme](service:haarschnitt-biel) et la [formule GYAN Classic](service:haarschnitt-und-bart) avec coupe et barbe.
 
-[Réserve en ligne](page:booking) ton rendez-vous avec Zana, la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu viens plutôt de la commune voisine ? Jette un œil à notre page pour [Perles](seo:pieterlen).`,
+[Réserve en ligne](page:booking) ton rendez-vous, la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu viens plutôt de la commune voisine ? Jette un œil à notre page pour [Perles](seo:pieterlen).`,
       en: `## The last Bernese village before Grenchen
 
 Lengnau sits right on the border with the canton of Solothurn, next to Grenchen. The village has its own station on the line along the foot of the Jura, and many people from Lengnau commute to Biel every day for work, school or shopping.
@@ -756,7 +756,7 @@ The regional train takes you via Pieterlen to Biel station in a few minutes. Fro
 
 Because the salon is so close to the station, a haircut is easy to plan before or after work. On Thursdays and Fridays we're open until 8 pm, on Saturdays from 8:30 am. Popular choices are the [men's haircut](service:haarschnitt-biel) and the [GYAN Classic package](service:haarschnitt-und-bart) with haircut and beard.
 
-[Book your appointment with Zana online](page:booking) and get instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live closer to the next village? Have a look at our page for [Pieterlen](seo:pieterlen).`,
+[Book your appointment online](page:booking) and get instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live closer to the next village? Have a look at our page for [Pieterlen](seo:pieterlen).`,
     },
     neighbors: ["pieterlen", "grenchen", "safnern"],
   },
@@ -798,9 +798,9 @@ Grenchen hat zwei Bahnhöfe: Ab Grenchen Nord fahren die Fernverkehrszüge Richt
 
 ## Fade und Bart in Ruhe
 
-Bei GYAN nimmt sich Zana Zeit für jeden Schnitt. Beim [Fade](seo:fade) arbeiten wir den Übergang sauber aus, beim [Bart Trim](service:bart-trimmen-biel) kommen Länge und Konturen in Form. Wer sich etwas Gutes tun will, gönnt sich die [Bart Rasur mit heissem Tuch](service:nassrasur-biel).
+Bei GYAN nehmen wir uns Zeit für jeden Schnitt. Beim [Fade](seo:fade) arbeiten wir den Übergang sauber aus, beim [Bart Trim](service:bart-trimmen-biel) kommen Länge und Konturen in Form. Wer sich etwas Gutes tun will, gönnt sich die [Bart Rasur mit heissem Tuch](service:nassrasur-biel).
 
-Termine bei Zana [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Auf dem Weg nach Biel liegt übrigens [Lengnau](seo:lengnau), auch dafür haben wir eine eigene Seite.`,
+Termine [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Auf dem Weg nach Biel liegt übrigens [Lengnau](seo:lengnau), auch dafür haben wir eine eigene Seite.`,
       fr: `## Deux villes horlogères, étroitement liées
 
 Granges et Bienne partagent une longue histoire horlogère, et aujourd'hui encore, beaucoup de gens font la navette entre les deux villes. Granges se trouve au pied sud du Jura, avec le Grenchenberg en toile de fond et l'aérodrome régional dans la plaine.
@@ -811,9 +811,9 @@ Granges a deux gares : depuis Granges-Nord partent les trains grandes lignes ver
 
 ## Dégradé et barbe en toute tranquillité
 
-Chez GYAN, Zana prend le temps pour chaque coupe. Pour un [dégradé](seo:fade), nous travaillons la transition avec soin ; avec la [taille de barbe](service:bart-trimmen-biel), longueur et contours sont remis en forme. Pour te faire plaisir, offre-toi le [rasage à la serviette chaude](service:nassrasur-biel).
+Chez GYAN, on prend le temps pour chaque coupe. Pour un [dégradé](seo:fade), nous travaillons la transition avec soin ; avec la [taille de barbe](service:bart-trimmen-biel), longueur et contours sont remis en forme. Pour te faire plaisir, offre-toi le [rasage à la serviette chaude](service:nassrasur-biel).
 
-[Réserve en ligne](page:booking) ton rendez-vous avec Zana, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h, samedi de 8 h 30 à 18 h. Sur la route de Bienne se trouve [Longeau](seo:lengnau), qui a aussi sa propre page.`,
+[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h, samedi de 8 h 30 à 18 h. Sur la route de Bienne se trouve [Longeau](seo:lengnau), qui a aussi sa propre page.`,
       en: `## Two watchmaking towns, closely linked
 
 Grenchen and Biel share a long history in watchmaking, and to this day many people commute between the two towns. Grenchen lies at the foot of the Jura, with the Grenchenberg behind it and the regional airfield on the plain.
@@ -824,9 +824,9 @@ Grenchen has two stations: long-distance trains to Biel leave from Grenchen Nord
 
 ## Fades and beards without the rush
 
-At GYAN, Zana takes his time with every cut. On a [fade](seo:fade) we blend the transition carefully, and with the [beard trim](service:bart-trimmen-biel) length and lines get back into shape. If you want to treat yourself, try the [hot towel shave](service:nassrasur-biel).
+At GYAN we take our time with every cut. On a [fade](seo:fade) we blend the transition carefully, and with the [beard trim](service:bart-trimmen-biel) length and lines get back into shape. If you want to treat yourself, try the [hot towel shave](service:nassrasur-biel).
 
-[Book your appointment with Zana online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours: Monday to Wednesday 9 am to 7 pm, Thursday and Friday until 8 pm, Saturday 8:30 am to 6 pm. On the way to Biel you'll pass [Lengnau](seo:lengnau), which has its own page too.`,
+[Book your appointment online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours: Monday to Wednesday 9 am to 7 pm, Thursday and Friday until 8 pm, Saturday 8:30 am to 6 pm. On the way to Biel you'll pass [Lengnau](seo:lengnau), which has its own page too.`,
     },
     neighbors: ["lengnau", "pieterlen"],
   },
@@ -938,7 +938,7 @@ Die Regionalzüge auf der Linie Biel–Neuenburg halten in Twann und bringen dic
 
 ## Zeit für Haar und Bart
 
-Wer zu uns kommt, soll nicht durchgeschleust werden. Zana nimmt sich Zeit für die Beratung und den Feinschliff mit der Klinge. Für Haar und Bart zusammen gibt es das [GYAN Classic Paket](service:haarschnitt-und-bart), für die volle Pflege den [GYAN Full Service](service:gyan-full-service) mit Face Treatment, Wäsche und Styling.
+Wer zu uns kommt, soll nicht durchgeschleust werden. Wir nehmen uns Zeit für die Beratung und den Feinschliff mit der Klinge. Für Haar und Bart zusammen gibt es das [GYAN Classic Paket](service:haarschnitt-und-bart), für die volle Pflege den [GYAN Full Service](service:gyan-full-service) mit Face Treatment, Wäsche und Styling.
 
 Deinen Termin [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Wanderst du lieber von oben herunter? Dann wirf einen Blick auf unsere Seite für [Magglingen](seo:magglingen).`,
       fr: `## Villages viticoles de la rive nord
@@ -951,7 +951,7 @@ Les trains régionaux de la ligne Bienne–Neuchâtel s'arrêtent à Douanne et 
 
 ## Du temps pour les cheveux et la barbe
 
-Chez nous, tu ne passes pas à la chaîne. Zana prend le temps du conseil et des finitions au rasoir. Pour cheveux et barbe ensemble, il y a la [formule GYAN Classic](service:haarschnitt-und-bart) ; pour un soin complet, le [GYAN Full Service](service:gyan-full-service) avec Face Treatment, shampoing et coiffage.
+Chez nous, tu ne passes pas à la chaîne. On prend le temps du conseil et des finitions au rasoir. Pour cheveux et barbe ensemble, il y a la [formule GYAN Classic](service:haarschnitt-und-bart) ; pour un soin complet, le [GYAN Full Service](service:gyan-full-service) avec Face Treatment, shampoing et coiffage.
 
 [Réserve en ligne](page:booking), confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu préfères descendre à pied depuis les hauteurs ? Jette un œil à notre page pour [Macolin](seo:magglingen).`,
       en: `## Wine villages on the north shore
@@ -964,7 +964,7 @@ Regional trains on the Biel–Neuchâtel line stop in Twann and take you to Biel
 
 ## Time for hair and beard
 
-You won't be rushed through here. Zana takes time for the consultation and the finishing touches with the razor. For hair and beard together there's the [GYAN Classic package](service:haarschnitt-und-bart), and for the full treatment the [GYAN Full Service](service:gyan-full-service) with Face Treatment, wash and styling.
+You won't be rushed through here. We take time for the consultation and the finishing touches with the razor. For hair and beard together there's the [GYAN Classic package](service:haarschnitt-und-bart), and for the full treatment the [GYAN Full Service](service:gyan-full-service) with Face Treatment, wash and styling.
 
 [Book online](page:booking) with instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Prefer hiking down from above? Take a look at our page for [Magglingen](seo:magglingen).`,
     },
@@ -1010,7 +1010,7 @@ Die Bahn der Aare Seeland mobil zwischen Biel und Ins hält in Sutz-Lattrigen un
 
 Ob [Herren Haarschnitt](service:haarschnitt-biel) oder [Bart Trim](service:bart-trimmen-biel) mit Konturen an der Klinge: Bei GYAN bekommst du einen Schnitt, der zu dir passt, mit Beratung und Ruhe. Und wer im Sommer viel draussen ist, wählt oft einen kurzen, pflegeleichten [Fade](seo:fade).
 
-Für einen Termin bei Zana [buchst du online](page:booking), sofort bestätigt. Spontan geht auch: Während der Öffnungszeiten sind Walk-ins willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du näher an der Stadt? Dann schau bei [Ipsach](seo:ipsach) vorbei.`,
+Einen Termin [buchst du online](page:booking), sofort bestätigt. Spontan geht auch: Während der Öffnungszeiten sind Walk-ins willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du näher an der Stadt? Dann schau bei [Ipsach](seo:ipsach) vorbei.`,
       fr: `## Sur la rive sud, avec une longue histoire
 
 Sutz-Lattrigen est un village calme avec rive, champs et vue sur la chaîne du Jura. Au large, on a trouvé des vestiges de villages palafittiques préhistoriques, inscrits au patrimoine mondial de l'UNESCO. Aujourd'hui, les habitants apprécient surtout la proximité du lac et les trajets courts vers Bienne.
@@ -1023,7 +1023,7 @@ Le train d'Aare Seeland mobil entre Bienne et Anet s'arrête à Sutz-Lattrigen e
 
 [Coupe homme](service:haarschnitt-biel) ou [taille de barbe](service:bart-trimmen-biel) avec contours au rasoir : chez GYAN, tu repars avec une coupe qui te correspond, avec conseil et calme. Et ceux qui passent beaucoup de temps dehors en été choisissent souvent un [dégradé](seo:fade) court et facile à entretenir.
 
-[Réserve en ligne](page:booking) ton rendez-vous avec Zana, confirmé tout de suite. Tu peux aussi venir spontanément : pendant les heures d'ouverture, les clients sans rendez-vous sont les bienvenus. Paiement en espèces, par carte ou avec TWINT. Tu habites plus près de la ville ? Jette un œil à notre page pour [Ipsach](seo:ipsach).`,
+[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Tu peux aussi venir spontanément : pendant les heures d'ouverture, les clients sans rendez-vous sont les bienvenus. Paiement en espèces, par carte ou avec TWINT. Tu habites plus près de la ville ? Jette un œil à notre page pour [Ipsach](seo:ipsach).`,
       en: `## On the south shore, with a long history
 
 Sutz-Lattrigen is a quiet village with lakeshore, fields and views of the Jura range. Remains of prehistoric pile-dwelling settlements were found offshore and are part of a UNESCO World Heritage site. Today, residents mainly value the closeness of the lake and the short trip to Biel.
@@ -1036,7 +1036,7 @@ The Aare Seeland mobil train between Biel and Ins stops in Sutz-Lattrigen and ru
 
 Whether it's a [men's haircut](service:haarschnitt-biel) or a [beard trim](service:bart-trimmen-biel) with razor lines: at GYAN you get a cut that suits you, with a proper consultation and no rush. And if you spend a lot of time outdoors in summer, a short, low-maintenance [fade](seo:fade) is a popular choice.
 
-[Book your appointment with Zana online](page:booking), confirmed instantly. Walking in works too: walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live closer to town? Have a look at our page for [Ipsach](seo:ipsach).`,
+[Book your appointment online](page:booking), confirmed instantly. Walking in works too: walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live closer to town? Have a look at our page for [Ipsach](seo:ipsach).`,
     },
     neighbors: ["ipsach", "taeuffelen", "nidau"],
   },
@@ -1078,9 +1078,9 @@ Täuffelen liegt an der Bahnlinie der Aare Seeland mobil zwischen Biel und Ins. 
 
 ## Lohnt sich die Fahrt?
 
-Wir finden: ja. Bei GYAN schneidet der Inhaber selbst, mit Zeit für die Beratung und sauberen Übergängen. Wer schon einmal in der Stadt ist, verbindet oft Haar und Bart im [GYAN Classic Paket](service:haarschnitt-und-bart) oder gönnt sich das [GYAN Premium Paket](service:gyan-premium-paket) mit Wäsche und Styling.
+Wir finden: ja. Bei GYAN nehmen wir uns Zeit für die Beratung und achten auf saubere Übergänge. Wer schon einmal in der Stadt ist, verbindet oft Haar und Bart im [GYAN Classic Paket](service:haarschnitt-und-bart) oder gönnt sich das [GYAN Premium Paket](service:gyan-premium-paket) mit Wäsche und Styling.
 
-Deinen Termin bei Zana [buchst du online](page:booking), sofort bestätigt, so musst du nach der Anreise nicht warten. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Auf dem Weg liegt [Sutz-Lattrigen](seo:sutz-lattrigen), auch dafür gibt es eine eigene Seite.`,
+Deinen Termin [buchst du online](page:booking), sofort bestätigt, so musst du nach der Anreise nicht warten. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Auf dem Weg liegt [Sutz-Lattrigen](seo:sutz-lattrigen), auch dafür gibt es eine eigene Seite.`,
       fr: `## Entre lac et champs de légumes
 
 Täuffelen comprend aussi Gerolfingen, directement au bord du lac. Tout autour, les vastes champs du Seeland marquent le paysage, et non loin de là, l'Aar se jette dans le lac de Bienne par le canal de Hagneck. Pour tout ce que le village n'offre pas, on va à Bienne.
@@ -1091,9 +1091,9 @@ Täuffelen se trouve sur la ligne d'Aare Seeland mobil entre Bienne et Anet. Le 
 
 ## Le trajet en vaut-il la peine ?
 
-Nous pensons que oui. Chez GYAN, c'est le propriétaire lui-même qui coupe, avec du temps pour le conseil et des transitions nettes. Une fois en ville, beaucoup combinent cheveux et barbe avec la [formule GYAN Classic](service:haarschnitt-und-bart) ou s'offrent la [formule GYAN Premium](service:gyan-premium-paket) avec shampoing et coiffage.
+Nous pensons que oui. Chez GYAN, on prend le temps du conseil et on soigne les transitions. Une fois en ville, beaucoup combinent cheveux et barbe avec la [formule GYAN Classic](service:haarschnitt-und-bart) ou s'offrent la [formule GYAN Premium](service:gyan-premium-paket) avec shampoing et coiffage.
 
-[Réserve en ligne](page:booking) ton rendez-vous avec Zana, confirmé tout de suite : pas d'attente après le trajet. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Sur le chemin se trouve [Sutz-Lattrigen](seo:sutz-lattrigen), qui a aussi sa propre page.`,
+[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite : pas d'attente après le trajet. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Sur le chemin se trouve [Sutz-Lattrigen](seo:sutz-lattrigen), qui a aussi sa propre page.`,
       en: `## Between lake and vegetable fields
 
 Täuffelen also includes Gerolfingen, right on the lake. All around, the wide fields of the Seeland shape the landscape, and not far away the Aare flows into Lake Biel through the Hagneck canal. For anything the village doesn't offer, people head to Biel.
@@ -1104,9 +1104,9 @@ Täuffelen is on the Aare Seeland mobil line between Biel and Ins. The train run
 
 ## Is the trip worth it?
 
-We think so. At GYAN the owner cuts himself, with time for a consultation and clean blends. Once in town, many combine hair and beard in the [GYAN Classic package](service:haarschnitt-und-bart) or treat themselves to the [GYAN Premium package](service:gyan-premium-paket) with wash and styling.
+We think so. At GYAN we take time for a consultation and pay attention to clean blends. Once in town, many combine hair and beard in the [GYAN Classic package](service:haarschnitt-und-bart) or treat themselves to the [GYAN Premium package](service:gyan-premium-paket) with wash and styling.
 
-[Book your appointment with Zana online](page:booking), confirmed instantly, so there's no waiting after the journey. Walk-ins are welcome during opening hours too. Pay in cash, by card or with TWINT. On the way you'll pass [Sutz-Lattrigen](seo:sutz-lattrigen), which has its own page as well.`,
+[Book your appointment online](page:booking), confirmed instantly, so there's no waiting after the journey. Walk-ins are welcome during opening hours too. Pay in cash, by card or with TWINT. On the way you'll pass [Sutz-Lattrigen](seo:sutz-lattrigen), which has its own page as well.`,
     },
     neighbors: ["sutz-lattrigen", "ipsach"],
   },
@@ -1218,9 +1218,9 @@ Mit dem Bus fährst du nach Biel bis zum Bahnhof. Von dort sind es wenige Gehmin
 
 ## Was dich bei GYAN erwartet
 
-Im Salon arbeitet Zana mit Schere, Maschine und Klinge, und nimmt sich Zeit für die Beratung. Für den Bart gibt es den [Bart Trim](service:bart-trimmen-biel), für einen klassischen Moment die [Bart Rasur mit heissem Tuch](service:nassrasur-biel). Mehr über unsere Arbeit als [Herrencoiffeur in Biel](seo:herrencoiffeur) liest du auf der eigenen Seite.
+Im Salon arbeiten wir mit Schere, Maschine und Klinge und nehmen uns Zeit für die Beratung. Für den Bart gibt es den [Bart Trim](service:bart-trimmen-biel), für einen klassischen Moment die [Bart Rasur mit heissem Tuch](service:nassrasur-biel). Mehr über unsere Arbeit als [Herrencoiffeur in Biel](seo:herrencoiffeur) liest du auf der eigenen Seite.
 
-Deinen Termin bei Zana [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Auf dem Weg liegt [Orpund](seo:orpund), auch dafür gibt es eine Seite.`,
+Deinen Termin [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Auf dem Weg liegt [Orpund](seo:orpund), auch dafür gibt es eine Seite.`,
       fr: `## Vivre à la campagne, près de la ville
 
 Safnern est un village calme entre le Büttenberg boisé et la plaine de l'Aar. On y vit à la campagne, tout en étant à Bienne en quelques minutes, pour le travail, les courses ou un rendez-vous au salon.
@@ -1231,9 +1231,9 @@ En bus, tu rejoins la gare de Bienne. De là, quelques minutes à pied jusqu'à 
 
 ## Ce qui t'attend chez GYAN
 
-Au salon, Zana travaille aux ciseaux, à la tondeuse et au rasoir, et prend le temps du conseil. Pour la barbe, il y a la [taille de barbe](service:bart-trimmen-biel) ; pour un moment classique, le [rasage à la serviette chaude](service:nassrasur-biel). Pour en savoir plus sur notre travail de [coiffeur homme à Bienne](seo:herrencoiffeur), consulte la page dédiée.
+Au salon, on travaille aux ciseaux, à la tondeuse et au rasoir, en prenant le temps du conseil. Pour la barbe, il y a la [taille de barbe](service:bart-trimmen-biel) ; pour un moment classique, le [rasage à la serviette chaude](service:nassrasur-biel). Pour en savoir plus sur notre travail de [coiffeur homme à Bienne](seo:herrencoiffeur), consulte la page dédiée.
 
-[Réserve en ligne](page:booking) ton rendez-vous avec Zana, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h, samedi de 8 h 30 à 18 h. Sur le chemin se trouve [Orpund](seo:orpund), qui a aussi sa page.`,
+[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h, samedi de 8 h 30 à 18 h. Sur le chemin se trouve [Orpund](seo:orpund), qui a aussi sa page.`,
       en: `## Country living, close to town
 
 Safnern is a quiet village between the wooded Büttenberg and the Aare plain. Life here feels rural, yet you're in Biel within minutes, for work, shopping or an appointment at the salon.
@@ -1244,9 +1244,9 @@ Take the bus to Biel station. From there it's a few minutes' walk to Zentralstra
 
 ## What to expect at GYAN
 
-In the salon Zana works with scissors, clippers and razor, and takes time for the consultation. For your beard there's the [beard trim](service:bart-trimmen-biel), and for a classic moment the [hot towel shave](service:nassrasur-biel). Read more about our work as a [men's hairdresser in Biel](seo:herrencoiffeur) on its own page.
+In the salon we work with scissors, clippers and razor, and take time for the consultation. For your beard there's the [beard trim](service:bart-trimmen-biel), and for a classic moment the [hot towel shave](service:nassrasur-biel). Read more about our work as a [men's hairdresser in Biel](seo:herrencoiffeur) on its own page.
 
-[Book your appointment with Zana online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours: Monday to Wednesday 9 am to 7 pm, Thursday and Friday until 8 pm, Saturday 8:30 am to 6 pm. On the way you'll pass [Orpund](seo:orpund), which has a page too.`,
+[Book your appointment online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours: Monday to Wednesday 9 am to 7 pm, Thursday and Friday until 8 pm, Saturday 8:30 am to 6 pm. On the way you'll pass [Orpund](seo:orpund), which has a page too.`,
     },
     neighbors: ["orpund", "pieterlen", "lengnau"],
   },
@@ -1358,9 +1358,9 @@ Mit dem Bus fährst du von Orvin und Frinvillier hinunter nach Biel bis zum Bahn
 
 ## Für Kunden aus dem Jura
 
-Zana nimmt sich Zeit für jeden Kunden, und Webseite, Buchung und E-Mails gibt es auch auf Französisch. Ob [Herren Haarschnitt](service:haarschnitt-biel), [Bart Trim](service:bart-trimmen-biel) oder beides im [GYAN Classic Paket](service:haarschnitt-und-bart): Du kommst frisch geschnitten zurück ins Tal.
+Wir nehmen uns Zeit für jeden Kunden, und Webseite, Buchung und E-Mails gibt es auch auf Französisch. Ob [Herren Haarschnitt](service:haarschnitt-biel), [Bart Trim](service:bart-trimmen-biel) oder beides im [GYAN Classic Paket](service:haarschnitt-und-bart): Du kommst frisch geschnitten zurück ins Tal.
 
-Deinen Termin bei Zana [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Fährst du über Leubringen? Dann passt auch unsere Seite für [Leubringen](seo:evilard).`,
+Deinen Termin [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Fährst du über Leubringen? Dann passt auch unsere Seite für [Leubringen](seo:evilard).`,
       fr: `## Le Jura francophone, juste derrière la ville
 
 Orvin est un village francophone du Jura bernois, entouré de prés et de forêts, avec les Prés-d'Orvin au-dessus du village. Frinvillier se trouve au sommet des gorges du Taubenloch, que traverse un sentier connu jusqu'à Bienne-Boujean. Pour les deux villages, Bienne est le centre le plus proche.
@@ -1371,9 +1371,9 @@ En bus, tu descends d'Orvin et de Frinvillier jusqu'à la gare de Bienne. De là
 
 ## Pour les clients du Jura
 
-Zana prend le temps pour chaque client, et le site, la réservation et les e-mails existent aussi en français. [Coupe homme](service:haarschnitt-biel), [taille de barbe](service:bart-trimmen-biel) ou les deux avec la [formule GYAN Classic](service:haarschnitt-und-bart) : tu rentres au vallon fraîchement coiffé.
+On prend le temps pour chaque client, et le site, la réservation et les e-mails existent aussi en français. [Coupe homme](service:haarschnitt-biel), [taille de barbe](service:bart-trimmen-biel) ou les deux avec la [formule GYAN Classic](service:haarschnitt-und-bart) : tu rentres au vallon fraîchement coiffé.
 
-[Réserve en ligne](page:booking) ton rendez-vous avec Zana, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu passes par Evilard ? Alors notre page pour [Evilard](seo:evilard) te concerne aussi.`,
+[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu passes par Evilard ? Alors notre page pour [Evilard](seo:evilard) te concerne aussi.`,
       en: `## French-speaking Jura, just behind the city
 
 Orvin is a French-speaking village in the Bernese Jura, surrounded by meadows and forest, with the Prés-d'Orvin above the village. Frinvillier, Friedliswart in German, sits at the top of the Taubenloch gorge, through which a well-known trail leads down to Biel-Bözingen. For both villages, Biel is the nearest centre.
@@ -1384,9 +1384,9 @@ Take the bus from Orvin and Frinvillier down to Biel station. From there it's a 
 
 ## For clients from the Jura
 
-Zana takes time for every client, and the website, booking and emails are available in French too. Whether it's a [men's haircut](service:haarschnitt-biel), a [beard trim](service:bart-trimmen-biel) or both in the [GYAN Classic package](service:haarschnitt-und-bart): you'll head back to the valley freshly cut.
+We take time for every client, and the website, booking and emails are available in French too. Whether it's a [men's haircut](service:haarschnitt-biel), a [beard trim](service:bart-trimmen-biel) or both in the [GYAN Classic package](service:haarschnitt-und-bart): you'll head back to the valley freshly cut.
 
-[Book your appointment with Zana online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Driving via Evilard? Then our page for [Evilard](seo:evilard) is for you too.`,
+[Book your appointment online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Driving via Evilard? Then our page for [Evilard](seo:evilard) is for you too.`,
     },
     neighbors: ["evilard", "magglingen"],
   },

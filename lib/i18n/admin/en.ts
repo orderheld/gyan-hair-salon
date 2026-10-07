@@ -391,7 +391,7 @@ const adminEn: AdminDict = {
   },
   rules: {
     title: "Booking rules",
-    hint: "How online booking with Zana works. Changes apply immediately to new bookings.",
+    hint: "How online booking works. Changes apply immediately to new bookings.",
     slotStep: "Time slot interval",
     slotStepHint: "The intervals at which start times are offered.",
     minNotice: "Minimum notice",

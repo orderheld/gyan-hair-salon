@@ -68,7 +68,7 @@ Alle weiteren Angebote findest du in der [Übersicht der Leistungen](page:servic
 
 ## Termin oder spontan
 
-Du kannst deinen Termin bei Zana [online buchen](page:booking) und bekommst die Bestätigung sofort per E-Mail. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag 9 bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Bezahlt wird im Salon, bar, mit Karte oder mit TWINT.
+Du kannst deinen Termin [online buchen](page:booking) und bekommst die Bestätigung sofort per E-Mail. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag 9 bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Bezahlt wird im Salon, bar, mit Karte oder mit TWINT.
 
 Ob du es Barber oder Coiffeur nennst: Am Ende zählt, dass der Schnitt zu dir passt. Wir freuen uns auf deinen Besuch an der Zentralstrasse 22.`,
     fr: `Quand on tape « coiffeur » ou « barbier » à Bienne, on trouve les deux, souvent côte à côte. Mais quelle est vraiment la différence ? Et est-ce que ça compte pour ta prochaine coupe ? Voici un aperçu honnête pour savoir à quoi faire attention.
@@ -118,7 +118,7 @@ Toutes les autres offres se trouvent dans l'[aperçu des prestations](page:servi
 
 ## Avec ou sans rendez-vous
 
-Tu peux [réserver en ligne](page:booking) ton rendez-vous avec Zana et tu reçois la confirmation tout de suite par e-mail. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h, samedi de 8 h 30 à 18 h. Le paiement se fait au salon, en espèces, par carte ou avec TWINT.
+Tu peux [réserver en ligne](page:booking) ton rendez-vous et tu reçois la confirmation tout de suite par e-mail. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h, samedi de 8 h 30 à 18 h. Le paiement se fait au salon, en espèces, par carte ou avec TWINT.
 
 Barbier ou coiffeur, peu importe le nom : ce qui compte, c'est que la coupe te corresponde. Au plaisir de te recevoir à la Zentralstrasse 22.`,
     en: `Search for "hairdresser" or "barber" in Biel and you will find both, often side by side. But what is actually the difference? And does it matter for your next haircut? Here is an honest overview so you know what to look for.
@@ -168,7 +168,7 @@ You can find everything else in our [services overview](page:services). To read 
 
 ## Booked or walk-in
 
-You can [book your appointment with Zana online](page:booking) and get your confirmation by email straight away. Walk-ins are welcome during opening hours too: Monday to Wednesday 9 am to 7 pm, Thursday and Friday 9 am to 8 pm, Saturday 8:30 am to 6 pm. You pay at the salon, in cash, by card or with TWINT.
+You can [book your appointment online](page:booking) and get your confirmation by email straight away. Walk-ins are welcome during opening hours too: Monday to Wednesday 9 am to 7 pm, Thursday and Friday 9 am to 8 pm, Saturday 8:30 am to 6 pm. You pay at the salon, in cash, by card or with TWINT.
 
 Whether you call it barber or hairdresser, what counts in the end is a cut that suits you. We look forward to seeing you at Zentralstrasse 22.`,
   },

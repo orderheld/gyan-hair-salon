@@ -52,7 +52,7 @@ Auch die beste Pflege ersetzt keinen sauberen Schnitt. Konturen an Wange und Hal
 
 ## Gönn deinem Bart den Profi-Schnitt
 
-Dein Bart verdient mehr als den Rasierer im Badezimmer. [Buche deinen Termin bei Zana](page:booking) an der Zentralstrasse 22 und lass dir Form, Konturen und Pflege auf deinen Typ abstimmen. Während der Öffnungszeiten sind Zana und das Team auch ohne Termin für dich da.`,
+Dein Bart verdient mehr als den Rasierer im Badezimmer. [Buche deinen Termin](page:booking) an der Zentralstrasse 22 und lass dir Form, Konturen und Pflege auf deinen Typ abstimmen. Während der Öffnungszeiten sind Zana und das Team auch ohne Termin für dich da.`,
     fr: `Porter la barbe à Bienne, c'est connaître tout le cycle : en hiver, l'air du chauffage dessèche tout ; en automne, le brouillard s'installe pendant des jours sur le Seeland ; en été, le soleil tape fort au bord du lac de Bienne. Ta barbe vit tout cela avec toi. Avec la bonne routine, elle reste pourtant douce, soignée et bien dessinée. Voici nos conseils.
 
 ## Automne et hiver : brouillard dehors, air sec dedans
@@ -84,7 +84,7 @@ Même le meilleur soin ne remplace pas une coupe nette. Les contours sur les jou
 
 ## Offre à ta barbe la main d'un pro
 
-Ta barbe mérite mieux que le rasoir de la salle de bain. [Réserve ton rendez-vous avec Zana](page:booking) à la Zentralstrasse 22 et fais adapter forme, contours et soins à ton style. Pendant les heures d'ouverture, Zana et l'équipe t'accueillent aussi sans rendez-vous.`,
+Ta barbe mérite mieux que le rasoir de la salle de bain. [Réserve ton rendez-vous](page:booking) à la Zentralstrasse 22 et fais adapter forme, contours et soins à ton style. Pendant les heures d'ouverture, Zana et l'équipe t'accueillent aussi sans rendez-vous.`,
     en: `If you wear a beard in Biel, you know the drill: in winter the heating dries everything out, in autumn the fog sits over the Seeland for days, and in summer the sun beats down on Lake Biel. Your beard goes through all of it with you. With the right routine, it still stays soft, groomed and in shape. Here are our tips.
 
 ## Autumn and winter: fog outside, dry air inside
@@ -116,6 +116,6 @@ Even the best care cannot replace a clean cut. The lines on your cheeks and neck
 
 ## Give your beard a professional touch
 
-Your beard deserves more than the razor in your bathroom. [Book your appointment with Zana](page:booking) at Zentralstrasse 22 and have the shape, lines and care tailored to you. During opening hours, Zana and the team are also there for you without an appointment.`,
+Your beard deserves more than the razor in your bathroom. [Book your appointment](page:booking) at Zentralstrasse 22 and have the shape, lines and care tailored to you. During opening hours, Zana and the team are also there for you without an appointment.`,
   },
 };

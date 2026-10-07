@@ -391,7 +391,7 @@ const adminFr: AdminDict = {
   },
   rules: {
     title: "Règles de réservation",
-    hint: "Voici comment fonctionne la réservation en ligne chez Zana. Les modifications s’appliquent immédiatement aux nouvelles réservations.",
+    hint: "Voici comment fonctionne la réservation en ligne. Les modifications s’appliquent immédiatement aux nouvelles réservations.",
     slotStep: "Intervalle des créneaux",
     slotStepHint: "À quels intervalles les heures de début sont proposées.",
     minNotice: "Délai minimum",

@@ -16,14 +16,14 @@ export const topics: SeoTopic[] = [
       en: "Hairdresser Biel – men's cuts in the centre | GYAN",
     },
     description: {
-      de: "Coiffeur in Biel an der Zentralstrasse 22: Haarschnitt, Fade und Bart, 4.9 Sterne auf Google. Online Termin bei Zana buchen oder spontan vorbeikommen.",
-      fr: "Coiffeur à Bienne, Zentralstrasse 22 : coupe, dégradé et barbe, 4.9 étoiles sur Google. Réserve avec Zana en ligne ou passe sans rendez-vous.",
-      en: "Hairdresser in Biel at Zentralstrasse 22: haircuts, fades and beards, rated 4.9 on Google. Book online with Zana or simply walk in during opening hours.",
+      de: "Coiffeur in Biel an der Zentralstrasse 22: Haarschnitt, Fade und Bart, 4.9 Sterne auf Google. Online Termin buchen oder spontan vorbeikommen.",
+      fr: "Coiffeur à Bienne, Zentralstrasse 22 : coupe, dégradé et barbe, 4.9 étoiles sur Google. Réserve en ligne ou passe sans rendez-vous.",
+      en: "Hairdresser in Biel at Zentralstrasse 22: haircuts, fades and beards, rated 4.9 on Google. Book online or simply walk in during opening hours.",
     },
     intro: {
-      de: "GYAN Hair Salon ist dein Coiffeur mitten in Biel – an der Zentralstrasse 22, nur wenige Gehminuten vom Bahnhof. Seit 2025 schneiden wir hier Haare mit Ruhe, Präzision und einem Auge fürs Detail. Buch online einen Termin bei Zana oder komm spontan vorbei.",
-      fr: "GYAN Hair Salon est ton coiffeur au cœur de Bienne – à la Zentralstrasse 22, à quelques minutes à pied de la gare. Depuis 2025, on y coupe avec calme, précision et un vrai sens du détail. Réserve en ligne avec Zana ou passe spontanément.",
-      en: "GYAN Hair Salon is your hairdresser right in the centre of Biel – at Zentralstrasse 22, just a few minutes' walk from the station. Since 2025 we have been cutting hair here with calm, precision and an eye for detail. Book online with Zana or simply drop in.",
+      de: "GYAN Hair Salon ist dein Coiffeur mitten in Biel – an der Zentralstrasse 22, nur wenige Gehminuten vom Bahnhof. Seit 2025 schneiden wir hier Haare mit Ruhe, Präzision und einem Auge fürs Detail. Buch online einen Termin oder komm spontan vorbei.",
+      fr: "GYAN Hair Salon est ton coiffeur au cœur de Bienne – à la Zentralstrasse 22, à quelques minutes à pied de la gare. Depuis 2025, on y coupe avec calme, précision et un vrai sens du détail. Réserve en ligne ou passe spontanément.",
+      en: "GYAN Hair Salon is your hairdresser right in the centre of Biel – at Zentralstrasse 22, just a few minutes' walk from the station. Since 2025 we have been cutting hair here with calm, precision and an eye for detail. Book online or simply drop in.",
     },
     body: {
       de: `## Ein Coiffeur, der zuhört
@@ -122,9 +122,9 @@ With a 4.9 rating from around 290 Google reviews, it's fair to say our clients l
       en: "Barber Biel – fades, beards & hot towel shaves | GYAN",
     },
     description: {
-      de: "Barbier in Biel: Fades, Bartpflege und Nassrasur mit heissem Tuch an der Zentralstrasse 22. 4.9 Sterne auf Google – buch jetzt deinen Termin bei Zana.",
-      fr: "Barbier à Bienne : dégradés, taille de barbe et rasage à la serviette chaude, Zentralstrasse 22. Noté 4.9 sur Google – réserve ton rendez-vous avec Zana.",
-      en: "Barber in Biel: fades, beard trims and hot towel shaves at Zentralstrasse 22. Rated 4.9 on Google – book your appointment with Zana online today.",
+      de: "Barbier in Biel: Fades, Bartpflege und Nassrasur mit heissem Tuch an der Zentralstrasse 22. 4.9 Sterne auf Google – buch jetzt deinen Termin.",
+      fr: "Barbier à Bienne : dégradés, taille de barbe et rasage à la serviette chaude, Zentralstrasse 22. Noté 4.9 sur Google – réserve ton rendez-vous.",
+      en: "Barber in Biel: fades, beard trims and hot towel shaves at Zentralstrasse 22. Rated 4.9 on Google – book your appointment online today.",
     },
     intro: {
       de: "Bei GYAN in Biel verbinden wir das klassische Barbier-Handwerk mit modernen Schnitten. Heisse Tücher, scharfe Konturen und saubere Übergänge – in einem Salon, in dem du dir Zeit nehmen darfst.",
@@ -258,7 +258,7 @@ Unser [Salon](page:salon) ist bewusst ruhig gestaltet: cremeweisse, skulpturale 
 
 Die Zentralstrasse 22 liegt im Zentrum von Biel, wenige Gehminuten vom Bahnhof. Viele unserer Kunden kommen aus Mett, Madretsch oder Bözingen, aber auch aus [Pieterlen](seo:pieterlen), [Orpund](seo:orpund) und dem übrigen Seeland. Im Stadtzentrum gibt es öffentliche Parkplätze.
 
-Termine bei Zana buchst du [online](page:booking) und bekommst sofort eine Bestätigung. Ohne Termin bist du während der Öffnungszeiten trotzdem willkommen – Zana und das Team bedienen auch Walk-in-Kunden.`,
+Termine buchst du [online](page:booking) und bekommst sofort eine Bestätigung. Ohne Termin bist du während der Öffnungszeiten trotzdem willkommen – Zana und das Team bedienen auch Walk-in-Kunden.`,
       fr: `## Des coupes homme avec méthode
 
 Les cheveux d'homme pardonnent peu. Quelques millimètres de trop sur le côté, une transition approximative à l'arrière – et la coupe paraît déjà négligée au bout d'une semaine. En tant que coiffeur homme à Bienne, on se concentre justement sur ces détails. On observe la forme de ta tête, le sens de pousse et tes habitudes, puis on construit la [coupe](service:haarschnitt-biel) pour qu'elle reste belle en repoussant.
@@ -279,7 +279,7 @@ Notre [salon](page:salon) est volontairement calme : cadres de miroir sculptés 
 
 La Zentralstrasse 22 se trouve au centre de Bienne, à quelques minutes à pied de la gare. Beaucoup de nos clients viennent de Mâche, Madretsch ou Boujean, mais aussi de [Perles](seo:pieterlen), d'[Orpund](seo:orpund) et du reste du Seeland. Le centre-ville dispose de places de parc publiques.
 
-Les rendez-vous avec Zana se réservent [en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, tu es tout de même le bienvenu pendant les heures d'ouverture – Zana et l'équipe accueillent aussi les clients spontanés.`,
+Les rendez-vous se réservent [en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, tu es tout de même le bienvenu pendant les heures d'ouverture – Zana et l'équipe accueillent aussi les clients spontanés.`,
       en: `## Men's cuts done properly
 
 Men's hair is unforgiving. A few millimetres too much at the sides, a sloppy transition at the back – and the cut already looks grown out after a week. As a men's hairdresser in Biel, we focus on exactly these details. We look at your head shape, growth direction and habits, then build the [haircut](service:haarschnitt-biel) so it still looks good as it grows out.
@@ -300,26 +300,26 @@ Our [salon](page:salon) is deliberately calm: sculpted cream-white mirror frames
 
 Zentralstrasse 22 is in the centre of Biel, a few minutes' walk from the station. Many of our clients come from Mett, Madretsch or Bözingen, but also from [Pieterlen](seo:pieterlen), [Orpund](seo:orpund) and the rest of the Seeland. There is public parking in the city centre.
 
-Appointments with Zana are booked [online](page:booking) and confirmed instantly. Without an appointment you're still welcome during opening hours – Zana and the team serve walk-in clients too.`,
+Appointments are booked [online](page:booking) and confirmed instantly. Without an appointment you're still welcome during opening hours – Zana and the team serve walk-in clients too.`,
     },
     faq: {
       de: [
         { q: "Schneidet ihr nur Männer?", a: "Ja, GYAN ist ein Salon für Männer: Haarschnitte inklusive Fades, der GYAN Signature Cut mit Styling-Beratung, Bart-Trimm, Nassrasur mit heissem Tuch, das GYAN Face Treatment und Pakete." },
         { q: "Was ist der Unterschied zwischen Haarschnitt und GYAN Signature Cut?", a: "Der GYAN Signature Cut ist der Herrenhaarschnitt plus individuelles Styling. Dazu erklären wir dir, wie du deine Haare zu Hause selbst am besten stylst, abgestimmt auf dein Haar." },
         { q: "Was, wenn ich nicht genau weiss, welcher Schnitt passt?", a: "Kein Problem. Vor jedem Schnitt besprechen wir Haarstruktur, Kopfform und deinen Alltag und schlagen dir einen Schnitt vor, der zu dir passt." },
-        { q: "Bekomme ich eine Bestätigung meines Termins?", a: "Ja. Online-Termine bei Zana werden sofort bestätigt, und du erhältst eine E-Mail – auf Deutsch, Französisch oder Englisch, je nachdem, in welcher Sprache du gebucht hast." },
+        { q: "Bekomme ich eine Bestätigung meines Termins?", a: "Ja. Online-Termine werden sofort bestätigt, und du erhältst eine E-Mail – auf Deutsch, Französisch oder Englisch, je nachdem, in welcher Sprache du gebucht hast." },
       ],
       fr: [
         { q: "Coupez-vous uniquement les hommes ?", a: "Oui, GYAN est un salon pour hommes : coupes, dégradés compris, le GYAN Signature Cut avec conseils de coiffage, taille de barbe, rasage à la serviette chaude, le GYAN Face Treatment et des formules." },
         { q: "Quelle différence entre la coupe homme et le GYAN Signature Cut ?", a: "Le GYAN Signature Cut, c'est la coupe homme plus un coiffage personnalisé. On t'explique aussi comment coiffer toi-même tes cheveux au mieux, selon ta nature de cheveux." },
         { q: "Et si je ne sais pas quelle coupe me va ?", a: "Pas de souci. Avant chaque coupe, on parle de la nature de tes cheveux, de la forme de ta tête et de ton quotidien, puis on te propose une coupe adaptée." },
-        { q: "Est-ce que je reçois une confirmation ?", a: "Oui. Les rendez-vous en ligne avec Zana sont confirmés immédiatement et tu reçois un e-mail – en allemand, en français ou en anglais, selon la langue de ta réservation." },
+        { q: "Est-ce que je reçois une confirmation ?", a: "Oui. Les rendez-vous en ligne sont confirmés immédiatement et tu reçois un e-mail – en allemand, en français ou en anglais, selon la langue de ta réservation." },
       ],
       en: [
         { q: "Do you only cut men's hair?", a: "Yes, GYAN is a salon for men: haircuts including fades, the GYAN Signature Cut with styling advice, beard trims, hot towel shaves, the GYAN Face Treatment and packages." },
         { q: "What's the difference between a haircut and the GYAN Signature Cut?", a: "The GYAN Signature Cut is our men's haircut plus individual styling. We also show you how best to style your hair yourself at home, tailored to your hair." },
         { q: "What if I'm not sure which cut suits me?", a: "No problem. Before every cut we talk about your hair type, head shape and routine, and suggest a style that works for you." },
-        { q: "Will I get a booking confirmation?", a: "Yes. Online appointments with Zana are confirmed instantly and you'll receive an email – in German, French or English, depending on the language you booked in." },
+        { q: "Will I get a booking confirmation?", a: "Yes. Online appointments are confirmed instantly and you'll receive an email – in German, French or English, depending on the language you booked in." },
       ],
     },
     services: ["haarschnitt-biel", "gyan-signature", "haarschnitt-und-bart", "gyan-premium-paket"],
@@ -368,7 +368,7 @@ Damit dein Fade auch zwischen den Besuchen gut aussieht, helfen ein paar einfach
 
 GYAN liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Unsere Kunden kommen aus der ganzen Stadt – aus Mett, Madretsch, Bözingen oder Vingelz – und aus den Nachbargemeinden wie [Nidau](seo:nidau), [Port](seo:port) oder Studen. Im Stadtzentrum gibt es öffentliche Parkplätze.
 
-Termine bei Zana buchst du online. Ohne Termin kannst du während der Öffnungszeiten einfach vorbeikommen, Zana und das Team bedienen auch Walk-in-Kunden. Und während du wartest, blätterst du in der Lounge in einem Kunstbuch – unter dem roten Perserteppich an der Wand. Allgemeine Infos zum Salon findest du auf unserer Seite [Coiffeur Biel](seo:coiffeur).`,
+Termine buchst du online. Ohne Termin kannst du während der Öffnungszeiten einfach vorbeikommen, Zana und das Team bedienen auch Walk-in-Kunden. Und während du wartest, blätterst du in der Lounge in einem Kunstbuch – unter dem roten Perserteppich an der Wand. Allgemeine Infos zum Salon findest du auf unserer Seite [Coiffeur Biel](seo:coiffeur).`,
       fr: `## Quel dégradé te correspond ?
 
 Tous les dégradés ne se ressemblent pas. Le **low fade** commence juste au-dessus de l'oreille et reste discret – idéal pour le bureau. Le **mid fade** démarre un peu plus haut et souligne les contours, le **high fade** remonte loin la zone courte pour un contraste marqué. Avec le [skin fade](service:haarschnitt-biel), les cheveux disparaissent jusqu'à la peau. La bonne variante dépend de la forme de ta tête, de ta pousse et du look recherché. On te conseille avant la première coupe.
@@ -387,7 +387,7 @@ Pour que ton dégradé reste beau entre deux visites, quelques habitudes simples
 
 GYAN se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Nos clients viennent de toute la ville – Mâche, Madretsch, Boujean ou Vigneules – et des communes voisines comme [Nidau](seo:nidau), [Port](seo:port) ou Studen. Le centre-ville dispose de places de parc publiques.
 
-Les rendez-vous avec Zana se réservent en ligne. Sans rendez-vous, tu peux passer pendant les heures d'ouverture, Zana et l'équipe accueillent aussi les clients spontanés. Et en attendant, tu feuillettes un livre d'art dans le lounge – sous le tapis persan rouge accroché au mur. Les infos générales sur le salon sont sur notre page [coiffeur à Bienne](seo:coiffeur).`,
+Les rendez-vous se réservent en ligne. Sans rendez-vous, tu peux passer pendant les heures d'ouverture, Zana et l'équipe accueillent aussi les clients spontanés. Et en attendant, tu feuillettes un livre d'art dans le lounge – sous le tapis persan rouge accroché au mur. Les infos générales sur le salon sont sur notre page [coiffeur à Bienne](seo:coiffeur).`,
       en: `## Which fade suits you?
 
 Not all fades are the same. A **low fade** starts just above the ear and stays subtle – ideal for the office. A **mid fade** starts a little higher and emphasises the outline, while a **high fade** takes the short zone far up for strong contrast. With a [skin fade](service:haarschnitt-biel), the hair tapers all the way down to the skin. The right version depends on your head shape, your growth pattern and the look you're after. We'll advise you before the first cut.
@@ -406,7 +406,7 @@ A few simple habits keep your fade looking good between visits. Don't wash the t
 
 GYAN is at Zentralstrasse 22, a few minutes' walk from Biel station. Our clients come from all over the city – Mett, Madretsch, Bözingen or Vingelz – and from neighbouring towns like [Nidau](seo:nidau), [Port](seo:port) and Studen. There is public parking in the city centre.
 
-Appointments with Zana are booked online. Without an appointment you can walk in during opening hours, and Zana and the team serve walk-in clients too. While you wait, leaf through an art book in the lounge – beneath the red Persian carpet on the wall. General info about the salon is on our [hairdresser in Biel](seo:coiffeur) page.`,
+Appointments are booked online. Without an appointment you can walk in during opening hours, and Zana and the team serve walk-in clients too. While you wait, leaf through an art book in the lounge – beneath the red Persian carpet on the wall. General info about the salon is on our [hairdresser in Biel](seo:coiffeur) page.`,
     },
     faq: {
       de: [
@@ -474,7 +474,7 @@ Viele Männer geben beim Bartwachsen in der dritten oder vierten Woche auf, weil
 
 ## Bartpflege im Zentrum von Biel
 
-GYAN liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Unsere Kunden kommen aus der Stadt und dem Seeland, etwa aus [Brügg](seo:bruegg) oder [Lyss](seo:lyss). Termine bei Zana buchst du [online](page:booking) – sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Im Stadtzentrum gibt es öffentliche Parkplätze.`,
+GYAN liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Unsere Kunden kommen aus der Stadt und dem Seeland, etwa aus [Brügg](seo:bruegg) oder [Lyss](seo:lyss). Termine buchst du [online](page:booking) – sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Im Stadtzentrum gibt es öffentliche Parkplätze.`,
       fr: `## La barbe, partie intégrante du look
 
 Une barbe ne prend pas forme toute seule. Elle a besoin d'une ligne nette dans le cou, de contours propres sur les joues et d'une longueur adaptée à ton visage. Un visage rond gagne à avoir un peu plus de longueur au menton, un visage fin plus de volume sur les côtés. Lors de la [taille de barbe](service:bart-trimmen-biel) chez GYAN, on y fait très attention – tout comme à l'harmonie entre ta barbe et ta coupe.
@@ -493,7 +493,7 @@ Beaucoup d'hommes abandonnent leur barbe vers la troisième ou quatrième semain
 
 ## Taille de barbe au centre de Bienne
 
-GYAN se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Nos clients viennent de la ville et du Seeland, par exemple de [Brügg](seo:bruegg) ou de [Lyss](seo:lyss). Les rendez-vous avec Zana se réservent [en ligne](page:booking) – confirmés immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Le centre-ville dispose de places de parc publiques.`,
+GYAN se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Nos clients viennent de la ville et du Seeland, par exemple de [Brügg](seo:bruegg) ou de [Lyss](seo:lyss). Les rendez-vous se réservent [en ligne](page:booking) – confirmés immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Le centre-ville dispose de places de parc publiques.`,
       en: `## The beard as part of the look
 
 A beard doesn't grow into shape on its own. It needs a clean neckline, neat cheek lines and a length that suits your face. A round face benefits from a little more length at the chin, a narrow face from more fullness at the sides. When we do a [beard trim](service:bart-trimmen-biel) at GYAN, we pay close attention to this – and to how your beard works with your haircut.
@@ -512,7 +512,7 @@ Many men give up on growing a beard around week three or four, because it itches
 
 ## Beard care in the centre of Biel
 
-GYAN is at Zentralstrasse 22, a few minutes' walk from Biel station. Our clients come from the city and the Seeland, for example from [Brügg](seo:bruegg) or [Lyss](seo:lyss). Appointments with Zana are booked [online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. There is public parking in the city centre.`,
+GYAN is at Zentralstrasse 22, a few minutes' walk from Biel station. Our clients come from the city and the Seeland, for example from [Brügg](seo:bruegg) or [Lyss](seo:lyss). Appointments are booked [online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. There is public parking in the city centre.`,
     },
     faq: {
       de: [

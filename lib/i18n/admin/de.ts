@@ -389,7 +389,7 @@ const adminDe = {
   },
   rules: {
     title: "Buchungsregeln",
-    hint: "So funktioniert die Online-Buchung bei Zana. Änderungen gelten sofort für neue Buchungen.",
+    hint: "So funktioniert die Online-Buchung. Änderungen gelten sofort für neue Buchungen.",
     slotStep: "Zeitraster",
     slotStepHint: "In welchen Abständen Startzeiten angeboten werden.",
     minNotice: "Mindestvorlauf",

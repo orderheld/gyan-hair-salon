@@ -56,7 +56,7 @@ Mehr Hintergrund rund um den Übergang findest du auch auf unserer Seite zum [Fa
 
 ## Lass dich beraten
 
-Du bist unsicher, welche Höhe und welcher Kontrast zu dir passen? Genau dafür sind wir da. [Buche deinen Termin bei Zana](page:booking) im Salon an der Zentralstrasse 22, mitten in Biel. Wir schauen uns Kopfform, Haarwuchs und deinen Alltag an und schneiden den Fade, der wirklich zu dir passt.`,
+Du bist unsicher, welche Höhe und welcher Kontrast zu dir passen? Genau dafür sind wir da. [Buche deinen Termin](page:booking) im Salon an der Zentralstrasse 22, mitten in Biel. Wir schauen uns Kopfform, Haarwuchs und deinen Alltag an und schneiden den Fade, der wirklich zu dir passt.`,
     fr: `« Un dégradé, s'il te plaît » paraît clair, mais ne l'est pas vraiment. Derrière ce mot se cachent plusieurs variantes au rendu très différent. Pour que tu saches exactement quoi demander lors de ta prochaine visite, voici les termes essentiels expliqués le plus simplement possible.
 
 ## C'est quoi, un fade ?
@@ -92,7 +92,7 @@ Tu trouveras aussi plus d'informations sur notre page consacrée au [dégradé �
 
 ## Laisse-toi conseiller
 
-Tu hésites sur la hauteur et le contraste qui te conviennent ? C'est justement notre métier. [Réserve ton rendez-vous avec Zana](page:booking) au salon de la Zentralstrasse 22, au cœur de Bienne. Nous regardons la forme de ton crâne, la pousse de tes cheveux et ton quotidien, puis nous coupons le dégradé qui te correspond vraiment.`,
+Tu hésites sur la hauteur et le contraste qui te conviennent ? C'est justement notre métier. [Réserve ton rendez-vous](page:booking) au salon de la Zentralstrasse 22, au cœur de Bienne. Nous regardons la forme de ton crâne, la pousse de tes cheveux et ton quotidien, puis nous coupons le dégradé qui te correspond vraiment.`,
     en: `"A fade, please" sounds clear enough, but it isn't. The word covers several variations that look very different once they are cut. So you know exactly what to ask for on your next visit, here are the key terms explained as simply as possible.
 
 ## What exactly is a fade?
@@ -128,6 +128,6 @@ You will also find more background on our page about the [fade in Biel](seo:fade
 
 ## Get expert advice
 
-Not sure which height and contrast suit you? That is exactly what we are here for. [Book your appointment with Zana](page:booking) at our salon on Zentralstrasse 22, right in the centre of Biel. We look at your head shape, how your hair grows and your daily routine, then cut the fade that genuinely works for you.`,
+Not sure which height and contrast suit you? That is exactly what we are here for. [Book your appointment](page:booking) at our salon on Zentralstrasse 22, right in the centre of Biel. We look at your head shape, how your hair grows and your daily routine, then cut the fade that genuinely works for you.`,
   },
 };

@@ -50,7 +50,7 @@ Am Ende zählt nicht, was gerade auf Social Media läuft, sondern was an dir gut
 
 ## Dein nächster Look
 
-Du willst einen dieser Trends ausprobieren oder deinen Schnitt einfach auf das nächste Level bringen? [Buche deinen Termin online bei Zana](page:booking) und wir finden gemeinsam die Form, die zu dir passt. Wenn du spontan bist: Zana und das Team empfangen dich während der Öffnungszeiten auch ohne Termin, wenige Gehminuten vom Bahnhof Biel.`,
+Du willst einen dieser Trends ausprobieren oder deinen Schnitt einfach auf das nächste Level bringen? [Buche deinen Termin online](page:booking) und wir finden gemeinsam die Form, die zu dir passt. Wenn du spontan bist: Zana und das Team empfangen dich während der Öffnungszeiten auch ohne Termin, wenige Gehminuten vom Bahnhof Biel.`,
     fr: `Bienne ne rentre jamais tout à fait dans une case : bilingue, créative, horlogère et tournée vers le lac. Les coupes que nous réalisons chaque jour au salon de la Zentralstrasse 22 sont à son image. Pourtant, quelques grandes tendances se dessinent clairement en 2026. Voici notre tour d'horizon de ce qui se porte, et pour qui.
 
 ## Les tendances 2026 en bref
@@ -80,7 +80,7 @@ Au final, ce qui compte n'est pas ce qui tourne sur les réseaux, mais ce qui te
 
 ## Ton prochain look
 
-Envie de tester l'une de ces tendances ou simplement de faire passer ta coupe au niveau supérieur ? [Réserve ton rendez-vous en ligne avec Zana](page:booking) et nous trouverons ensemble la forme qui te correspond. Si tu préfères la spontanéité, Zana et l'équipe t'accueillent sans rendez-vous pendant les heures d'ouverture, à quelques minutes à pied de la gare de Bienne.`,
+Envie de tester l'une de ces tendances ou simplement de faire passer ta coupe au niveau supérieur ? [Réserve ton rendez-vous en ligne](page:booking) et nous trouverons ensemble la forme qui te correspond. Si tu préfères la spontanéité, Zana et l'équipe t'accueillent sans rendez-vous pendant les heures d'ouverture, à quelques minutes à pied de la gare de Bienne.`,
     en: `Biel never quite fits into one box: bilingual, creative, rooted in watchmaking and facing the lake. The haircuts we do every day at our salon on Zentralstrasse 22 are just as varied. Still, a few clear directions are shaping 2026. Here is our take on what men are wearing right now, and who each look suits.
 
 ## The 2026 trends at a glance
@@ -110,6 +110,6 @@ In the end, what matters is not what is trending online but what looks good on y
 
 ## Your next look
 
-Want to try one of these trends or simply take your cut to the next level? [Book your appointment online with Zana](page:booking) and we will find the shape that fits you. Prefer to be spontaneous? Zana and the team welcome walk-in clients during opening hours, just a few minutes' walk from Biel station.`,
+Want to try one of these trends or simply take your cut to the next level? [Book your appointment online](page:booking) and we will find the shape that fits you. Prefer to be spontaneous? Zana and the team welcome walk-in clients during opening hours, just a few minutes' walk from Biel station.`,
   },
 };

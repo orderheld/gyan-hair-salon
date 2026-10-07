@@ -1,6 +1,6 @@
 import "server-only";
 import webpush from "web-push";
-import { site } from "@/content/site";
+import { site, staffName } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { customerKey } from "./customers";
 import type { Booking } from "./data";
@@ -130,7 +130,7 @@ async function customerPayload(kind: CustomerKind, b: Booking, locale: Locale): 
     service: b.serviceName,
     date: formatShortDate(b.startsAt, locale),
     time: formatTime(b.startsAt, locale),
-    owner: site.owner,
+    owner: staffName(b.staffId),
     street: site.address.street,
     phone: site.phone,
     when: day === today ? t.today : day === tomorrow ? t.tomorrow : formatShortDate(b.startsAt, locale),

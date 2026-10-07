@@ -106,3 +106,6 @@ export const site = {
 };
 
 export type Site = typeof site;
+
+/** Name der Person, bei der ein Termin gebucht ist (Standard: Inhaber) */
+export const staffName = (id: string | null | undefined) => site.team.find((t) => t.id === id)?.name ?? site.owner;

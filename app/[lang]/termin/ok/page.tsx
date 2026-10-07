@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { site } from "@/content/site";
+import { site, staffName } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { getBookingById, getService, localize } from "@/lib/data";
 import { formatChf, formatDuration } from "@/lib/format";
@@ -44,7 +44,7 @@ export default async function Confirmed({ params, searchParams }: Props) {
             <div><dt>{d.booking.service}</dt><dd>{service ? localize(service, locale).name : booking.serviceName}</dd></div>
             <div><dt>{d.booking.date}</dt><dd>{fmt({ weekday: "long", day: "numeric", month: "long", year: "numeric" }).format(booking.startsAt)}</dd></div>
             <div><dt>{d.booking.time}</dt><dd>{time.format(booking.startsAt)} – {time.format(booking.endsAt)}</dd></div>
-            <div><dt>{d.booking.with}</dt><dd>{site.owner}</dd></div>
+            <div><dt>{d.booking.with}</dt><dd>{staffName(booking.staffId)}</dd></div>
             <div><dt>{d.common.address}</dt><dd>{site.address.street}, {site.address.city}</dd></div>
             {booking.priceChf != null && <div><dt>{d.common.price}</dt><dd>{formatChf(booking.priceChf)}</dd></div>}
             <div><dt>{d.booking.duration}</dt><dd>{formatDuration(booking.durationMin, locale)}</dd></div>

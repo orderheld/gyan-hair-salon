@@ -55,7 +55,7 @@ Unser Salon liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. 
 
 ## Dein nächster Termin
 
-Du weisst jetzt, wie oft dein Schnitt Pflege braucht. Jetzt fehlt nur noch der Termin. [Buche jetzt online bei Zana](page:booking) und sichere dir deinen fixen Rhythmus im Salon an der Zentralstrasse 22. Wir freuen uns auf dich.`,
+Du weisst jetzt, wie oft dein Schnitt Pflege braucht. Jetzt fehlt nur noch der Termin. [Buche jetzt online](page:booking) und sichere dir deinen fixen Rhythmus im Salon an der Zentralstrasse 22. Wir freuen uns auf dich.`,
     fr: `La réponse honnête à la question « Tous les combien aller chez le coiffeur ? » est simple : tout dépend de ta coupe. Un skin fade bien net perd sa netteté bien plus vite qu'une raie de côté avec un peu de longueur. Voici notre guide pour que tes cheveux aient toujours l'allure que tu veux, sans venir trop souvent ni trop rarement.
 
 ## Pourquoi le rythme compte
@@ -90,7 +90,7 @@ Notre salon se trouve à la Zentralstrasse 22, à quelques minutes à pied de la
 
 ## Ton prochain rendez-vous
 
-Tu sais maintenant à quel rythme ta coupe a besoin d'attention. Il ne manque plus que le rendez-vous. [Réserve maintenant en ligne avec Zana](page:booking) et installe ton rythme au salon de la Zentralstrasse 22. Nous nous réjouissons de te recevoir.`,
+Tu sais maintenant à quel rythme ta coupe a besoin d'attention. Il ne manque plus que le rendez-vous. [Réserve maintenant en ligne](page:booking) et installe ton rythme au salon de la Zentralstrasse 22. Nous nous réjouissons de te recevoir.`,
     en: `The honest answer to "How often should I get a haircut?" is: it depends on your cut. A sharp skin fade loses its edge much faster than a side part with some length. Here is our guide to keeping your hair looking exactly the way you want, without coming in too often or too rarely.
 
 ## Why rhythm matters
@@ -125,6 +125,6 @@ Our salon is at Zentralstrasse 22, a few minutes' walk from Biel station. Whethe
 
 ## Your next appointment
 
-Now you know how often your cut needs attention. All that's missing is the appointment. [Book online with Zana now](page:booking) and lock in your rhythm at our salon on Zentralstrasse 22. We look forward to seeing you.`,
+Now you know how often your cut needs attention. All that's missing is the appointment. [Book online now](page:booking) and lock in your rhythm at our salon on Zentralstrasse 22. We look forward to seeing you.`,
   },
 };

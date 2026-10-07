@@ -62,7 +62,7 @@ Eine Nassrasur am Morgen des grossen Tages klingt gut, kann bei empfindlicher Ha
 
 ## Bereit für deinen Termin
 
-Der GYAN Hair Salon liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Geöffnet ist Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag 9 bis 20 Uhr und Samstag 8.30 bis 18 Uhr. Ohne Termin bist du während der Öffnungszeiten willkommen, bezahlt wird bar, mit Karte oder mit TWINT. [Buche jetzt deinen Termin bei Zana](page:booking), damit an deinem grossen Tag alles sitzt.`,
+Der GYAN Hair Salon liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Geöffnet ist Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag 9 bis 20 Uhr und Samstag 8.30 bis 18 Uhr. Ohne Termin bist du während der Öffnungszeiten willkommen, bezahlt wird bar, mit Karte oder mit TWINT. [Buche jetzt deinen Termin](page:booking), damit an deinem grossen Tag alles sitzt.`,
     fr: `Mariage, entretien d'embauche, baptême ou présentation importante : ces jours-là, tout doit être impeccable. L'erreur la plus fréquente n'est pas la mauvaise coupe, mais le mauvais timing. Avec ce planning, tu arrives détendu et fraîchement coupé à ton grand jour.
 
 ## Pourquoi pas la veille ?
@@ -104,7 +104,7 @@ Un rasage traditionnel le matin du grand jour semble une bonne idée, mais sur u
 
 ## Prêt pour ton rendez-vous
 
-GYAN Hair Salon se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Ouvert du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h et samedi de 8 h 30 à 18 h. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture, et le paiement se fait en espèces, par carte ou avec TWINT. [Réserve maintenant ton rendez-vous avec Zana](page:booking) pour que tout soit parfait le jour J.`,
+GYAN Hair Salon se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Ouvert du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h et samedi de 8 h 30 à 18 h. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture, et le paiement se fait en espèces, par carte ou avec TWINT. [Réserve maintenant ton rendez-vous](page:booking) pour que tout soit parfait le jour J.`,
     en: `Wedding, job interview, christening or an important presentation: on days like these everything should be just right. The most common mistake is not the wrong cut but the wrong timing. With this timeline you will arrive relaxed and freshly cut for your big day.
 
 ## Why not the day before?
@@ -146,6 +146,6 @@ A wet shave on the morning of the big day sounds good, but on sensitive skin it 
 
 ## Ready for your appointment
 
-GYAN Hair Salon is at Zentralstrasse 22, a few minutes' walk from Biel station. We are open Monday to Wednesday 9 am to 7 pm, Thursday and Friday 9 am to 8 pm, and Saturday 8:30 am to 6 pm. Walk-ins are welcome during opening hours, and you can pay in cash, by card or with TWINT. [Book your appointment with Zana now](page:booking) so everything is just right on your big day.`,
+GYAN Hair Salon is at Zentralstrasse 22, a few minutes' walk from Biel station. We are open Monday to Wednesday 9 am to 7 pm, Thursday and Friday 9 am to 8 pm, and Saturday 8:30 am to 6 pm. Walk-ins are welcome during opening hours, and you can pay in cash, by card or with TWINT. [Book your appointment now](page:booking) so everything is just right on your big day.`,
   },
 };
