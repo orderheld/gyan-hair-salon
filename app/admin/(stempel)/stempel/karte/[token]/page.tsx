@@ -167,15 +167,15 @@ export default async function StempelCard({ params, searchParams }: Props) {
           {hidden}
           {actorHidden}
           <p className="muted small">{t.correctionHint}</p>
-          <div className="seg-radio" role="radiogroup" aria-label={t.delta}>
-            <label><input type="radio" name="dir" value="minus" defaultChecked /><span>{t.corrMinus}</span></label>
-            <label><input type="radio" name="dir" value="plus" /><span>{t.corrPlus}</span></label>
+          <div className="lc-pm">
+            <ConfirmButton name="dir" value="minus" className="lc-pm-btn" disabled={s.balance < 1} message={t.corrConfirmMinus} ariaLabel={t.corrMinus}>
+              <span aria-hidden>−</span><small>1</small>
+            </ConfirmButton>
+            <ConfirmButton name="dir" value="plus" className="lc-pm-btn" message={t.corrConfirmPlus} ariaLabel={t.corrPlus}>
+              <span aria-hidden>+</span><small>1</small>
+            </ConfirmButton>
           </div>
-          <div className="lc-corr">
-            <div className="field"><label htmlFor="lc-amount">{t.delta}</label><input id="lc-amount" name="amount" type="number" className="input" inputMode="numeric" min={1} max={20} step={1} defaultValue={1} required /></div>
-            <div className="field"><label htmlFor="lc-reason">{t.reason}</label><input id="lc-reason" name="reason" className="input" maxLength={300} placeholder={t.reasonPlaceholder} required /></div>
-          </div>
-          <SubmitButton className="btn btn-dark btn-sm">{t.saveCorrection}</SubmitButton>
+          <div className="field"><label htmlFor="lc-reason">{t.reason}</label><input id="lc-reason" name="reason" className="input" maxLength={300} placeholder={t.reasonPlaceholder} /></div>
         </form>
         {s.settings.referralEnabled && !s.referredBy && s.isNew && (
           <form action={loyaltyReferral} className="stack lc-sep">

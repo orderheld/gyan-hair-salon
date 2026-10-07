@@ -859,3 +859,9 @@ form[data-dirty] .svc-unsaved { display: inline; }
   .admin-mode-stempel .kasse-nav a { flex: 1 1 auto; text-align: center; padding: 8px 8px; font-size: 13px; }
   .gr-cand form, .gr-cand form .btn { width: 100%; }
 }
+.lc-pm { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; max-width: 420px; }
+.lc-pm-btn { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 64px; border-radius: 16px; border: 1px solid var(--line); background: var(--cream); color: var(--ink); cursor: pointer; font: inherit; }
+.lc-pm-btn span { font-size: 30px; line-height: 1; font-weight: 500; }
+.lc-pm-btn small { font-size: 16px; font-weight: 600; }
+.lc-pm-btn:active { background: var(--ink); color: var(--ivory); }
+.lc-pm-btn:disabled { opacity: 0.4; cursor: default; }

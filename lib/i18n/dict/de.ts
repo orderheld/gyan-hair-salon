@@ -107,6 +107,7 @@ const de = {
     homeHint: "Tipp: Leg die Webseite auf deinen Home-Bildschirm (im Browser «Teilen» und «Zum Home-Bildschirm»). Deine Karte öffnest du dann oben mit dem Karten-Symbol neben dem Konto. Oder speichere den QR-Code als Bild in deinen Fotos.",
     appleWallet: "Zu Apple Wallet hinzufügen",
     googleWallet: "In Google Wallet speichern",
+    iphoneWallet: {"title": "Auf dem iPhone in Apple Wallet legen", "intro": "Mit der kostenlosen App «Pass2U Wallet» legst du deine Karte selber in Apple Wallet.", "steps": ["«Pass2U Wallet» im App Store laden und öffnen.", "Eine neue Karte mit Barcode erstellen und als Format «QR-Code» wählen.", "Den Code unten kopieren und in der App als Barcode-Inhalt einfügen, Name zum Beispiel «GYAN».", "Speichern und «Zu Apple Wallet hinzufügen» tippen."], "code": "Dein Karten-Code", "copy": "Kopieren", "copied": "Kopiert", "note": "An der Kasse zeigst du einfach den QR-Code in Wallet. Deinen aktuellen Stempelstand siehst du immer hier auf der Webseite."},
     inviteTitle: "Freunde einladen",
     inviteText: "Teile deinen Link mit so vielen Freunden, wie du willst. Für jeden, der zum ersten Mal zu GYAN kommt und den ersten Stempel bekommt, erhältst du einen Bonusstempel.",
     inviteCode: "Dein Einladungscode",

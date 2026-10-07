@@ -2,13 +2,16 @@
 
 import { useFormStatus } from "react-dom";
 
-export function ConfirmButton({ children, message, className = "btn btn-light btn-sm" }: { children: React.ReactNode; message: string; className?: string }) {
+export function ConfirmButton({ children, message, className = "btn btn-light btn-sm", name, value, disabled = false, ariaLabel }: { children: React.ReactNode; message: string; className?: string; name?: string; value?: string; disabled?: boolean; ariaLabel?: string }) {
   const { pending } = useFormStatus();
   return (
     <button
       type="submit"
       className={className}
-      disabled={pending}
+      name={name}
+      value={value}
+      aria-label={ariaLabel}
+      disabled={pending || disabled}
       onClick={(e) => {
         if (!window.confirm(message)) e.preventDefault();
       }}

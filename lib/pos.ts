@@ -107,6 +107,9 @@ async function insertSale(data: Omit<Sale, "no" | "createdAt" | "hash">): Promis
     // Millisekunden weg: so liest die Datenbank exakt denselben Zeitpunkt zurück wie gehasht
     createdAt.setMilliseconds(0);
     const iso = createdAt.toISOString();
+    // Pro Termin nur ein gültiger Beleg. Hier im Wiederholungs-Loop: zwei gleichzeitige Versuche kollidieren
+    // an der Belegnummer, der zweite sieht beim nächsten Durchgang den ersten Beleg.
+    if (data.bookingId && data.stornoOf === null && (await billedBookingIds([data.bookingId])).size) throw new PosError("billed");
     const hash = hashOf(prev, { ...data, no, createdAt: iso });
     try {
       const rows = await sql`

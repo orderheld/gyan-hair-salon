@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter, Inter_Tight } from "next/font/google";
+import { AdminResume } from "@/components/admin/AdminResume";
 import { getAdminLocale } from "@/lib/admin";
 import "../styles/base.css";
 import "../styles/admin.css";
@@ -26,7 +27,10 @@ export default async function AdminRoot({ children }: { children: React.ReactNod
   const locale = await getAdminLocale();
   return (
     <html data-scroll-behavior="smooth" lang={locale} className={`${inter.variable} ${display.variable}`}>
-      <body>{children}</body>
+      <body>
+        <AdminResume />
+        {children}
+      </body>
     </html>
   );
 }

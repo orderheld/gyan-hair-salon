@@ -46,8 +46,13 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
   const setQty = (key: string, d: number) =>
     setLines((ls) => ls.flatMap((l) => (l.key !== key ? [l] : l.qty + d < 1 ? [] : [{ ...l, qty: Math.min(99, l.qty + d) }])));
 
+  // Pro Termin höchstens ein Eintrag: nochmals tippen wählt ab, ein anderer Termin ersetzt den vorherigen
   function pickBooking(b: Bk) {
     if (b.billed) return;
+    const prev = bookings.find((x) => x.id === bookingId);
+    const prevKey = prev ? `s${prev.serviceId}a` : null;
+    if (prevKey) setQty(prevKey, -1);
+    if (bookingId === b.id) { setBookingId(null); return; }
     setBookingId(b.id);
     if (staff.some((s) => s.id === b.staffId)) setStaffId(b.staffId);
     const s = services.find((x) => x.id === b.serviceId);
@@ -103,7 +108,7 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
             <h2 className="pos-h">{t.todayBookings}</h2>
             <div className="pos-bookings">
               {bookings.map((b) => (
-                <button key={b.id} type="button" className={`pos-bk${bookingId === b.id ? " on" : ""}`} disabled={b.billed} onClick={() => pickBooking(b)}>
+                <button key={b.id} type="button" className={`pos-bk${bookingId === b.id ? " on" : ""}`} disabled={b.billed || pending} aria-pressed={bookingId === b.id} onClick={() => pickBooking(b)}>
                   <strong>{b.time}</strong>
                   <span>{b.label}</span>
                   {b.billed && <em>✓ {t.billed}</em>}
