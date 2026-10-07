@@ -33,7 +33,7 @@ export const site = {
     hero: "/images/salon-spiegel.jpg",
     lounge: "/images/salon-lounge.jpg",
     wash: "/images/salon-wasch.jpg",
-    reception: "/images/salon-empfang.jpg",
+    reception: "/images/salon-empfang-2.jpg",
     zana: "/images/zana-portrait-art.jpg",
     signature: "/images/signatur.jpg",
     work: ["/images/cut-mulet.jpg", "/images/cut-standard.jpg", "/images/cut-fade.jpg", "/images/cut-bart.jpg", "/images/cut-nacken.jpg", "/images/signatur.jpg"],
