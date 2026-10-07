@@ -137,13 +137,14 @@ const de = {
   },
   zana: {
     metaTitle: "Zana, Inhaber und Barbier",
-    metaDescription: "Lerne Zana kennen, den Inhaber von GYAN Hair Salon in Biel. Herren Coiffeur mit Leidenschaft für Präzision, Ruhe und den perfekten Übergang.",
+    metaDescription: "Lerne Zana kennen, den Inhaber von GYAN Hair Salon in Biel. Kurdische Wurzeln, ein neues Zuhause in Biel/Bienne und ein Herrensalon mit Liebe zur Präzision.",
     eyebrow: "Die Geschichte",
     title: "Zana.",
     lead: "Für Zana war Haareschneiden nie einfach ein Beruf. Es ist die Art, wie er Menschen begegnet: aufmerksam, ruhig und mit einem Auge für das Detail, das andere übersehen.",
     paragraphs: [
+      "Zanas Wurzeln liegen in Kurdistan. Der Krieg hat ihn gezwungen, seine Heimat zu verlassen. In der Schweiz, in Biel/Bienne, hat er sich Schritt für Schritt ein neues Leben aufgebaut.",
       "Sein Handwerk hat er sich Schnitt für Schnitt erarbeitet, mit Geduld, Neugier und dem Anspruch, jeden Kunden besser aus dem Stuhl aufstehen zu lassen, als er sich hingesetzt hat.",
-      "2025 hat er mit GYAN in Biel einen Ort geschaffen, der genau das spiegelt. Keine Hektik, kein Fliessband. Ein Salon, in dem man sich Zeit nimmt: für ein Gespräch, für die richtige Form, für den letzten Feinschliff mit der Klinge.",
+      "2025 hat er mit GYAN mitten in seiner neuen Heimat einen eigenen Ort geschaffen, der genau das spiegelt. Keine Hektik, kein Fliessband. Ein Salon, in dem man sich Zeit nimmt: für ein Gespräch, für die richtige Form, für den letzten Feinschliff mit der Klinge.",
       "Wer bei Zana einen Termin bucht, sitzt bei ihm persönlich auf dem Stuhl. Vom ersten Wort der Beratung bis zum letzten Blick in den Spiegel.",
     ],
     valuesTitle: "Woran Zana glaubt",

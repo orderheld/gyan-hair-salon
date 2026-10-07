@@ -139,13 +139,14 @@ const fr: Dict = {
   },
   zana: {
     metaTitle: "Zana, propriétaire et barbier",
-    metaDescription: "Fais connaissance avec Zana, propriétaire de GYAN Hair Salon à Bienne. Coiffeur homme passionné de précision, de calme et du dégradé parfait.",
+    metaDescription: "Fais connaissance avec Zana, propriétaire de GYAN Hair Salon à Bienne. Des racines kurdes, un nouveau chez-soi à Biel/Bienne et un salon homme qui aime la précision.",
     eyebrow: "L’histoire",
     title: "Zana.",
     lead: "Pour Zana, couper les cheveux n’a jamais été un simple métier. C’est sa façon d’aller vers les gens : attentif, posé, avec un œil pour le détail que d’autres ne voient pas.",
     paragraphs: [
+      "Les racines de Zana sont au Kurdistan. La guerre l’a obligé à quitter son pays. En Suisse, à Biel/Bienne, il s’est construit pas à pas une nouvelle vie.",
       "Il a forgé son savoir-faire coupe après coupe, avec patience, curiosité et une exigence : que chaque client se lève du fauteuil mieux qu’il ne s’y est assis.",
-      "En 2025, il a créé GYAN à Bienne, un lieu qui reflète exactement cela. Pas de précipitation, pas de travail à la chaîne. Un salon où l’on prend le temps : pour échanger, pour trouver la bonne forme, pour la dernière finition au rasoir.",
+      "En 2025, il a créé GYAN au cœur de sa nouvelle ville, un lieu qui reflète exactement cela. Pas de précipitation, pas de travail à la chaîne. Un salon où l’on prend le temps : pour échanger, pour trouver la bonne forme, pour la dernière finition au rasoir.",
       "Quand tu réserves chez Zana, c’est lui qui s’occupe de toi. Du premier mot du conseil au dernier regard dans le miroir.",
     ],
     valuesTitle: "Ce en quoi Zana croit",

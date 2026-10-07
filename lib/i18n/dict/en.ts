@@ -139,13 +139,14 @@ const en: Dict = {
   },
   zana: {
     metaTitle: "Zana, owner and barber",
-    metaDescription: "Meet Zana, owner of GYAN Hair Salon in Biel. A men's hairdresser with a passion for precision, calm and the perfect fade.",
+    metaDescription: "Meet Zana, owner of GYAN Hair Salon in Biel. Kurdish roots, a new home in Biel/Bienne and a men's salon built on precision and calm.",
     eyebrow: "The story",
     title: "Zana.",
     lead: "For Zana, cutting hair has never been just a job. It's the way he meets people: attentive, calm and with an eye for the details others overlook.",
     paragraphs: [
+      "Zana's roots are in Kurdistan. War forced him to leave his homeland. In Switzerland, in Biel/Bienne, he built a new life step by step.",
       "He built his craft cut by cut, with patience, curiosity and one ambition: that every client leaves the chair feeling better than when he sat down.",
-      "In 2025 he created GYAN in Biel, a place that reflects exactly that. No rush, no production line. A salon where people take their time: for a conversation, for the right shape, for the final finish with the blade.",
+      "In 2025 he created GYAN in the heart of his new home town, a place that reflects exactly that. No rush, no production line. A salon where people take their time: for a conversation, for the right shape, for the final finish with the blade.",
       "When you book with Zana, he's the one in the chair with you. From the first word of the consultation to the last look in the mirror.",
     ],
     valuesTitle: "What Zana believes in",
