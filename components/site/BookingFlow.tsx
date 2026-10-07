@@ -485,10 +485,14 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
               </div>
               <label className="consent">
                 <input type="checkbox" required checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} />
-                <span>{t.consent}</span>
+                <span>
+                  {t.consent.split("{privacy}")[0]}
+                  <a className="link" href={privacyHref} target="_blank" rel="noopener">{t.consentPrivacy}</a>
+                  {t.consent.split("{privacy}")[1]}
+                </span>
               </label>
               <p className="muted small" style={{ margin: "14px 0 0" }}>
-                <a className="link" href={privacyHref} target="_blank" rel="noopener">{t.privacyNote}</a>
+                {t.privacyNote}
               </p>
               <div className="step-actions">
                 <button type="button" className="btn btn-light" onClick={() => setStep(2)}>{common.back}</button>
