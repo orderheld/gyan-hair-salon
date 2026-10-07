@@ -5,6 +5,7 @@ import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { AccountDetails } from "@/components/site/AccountDetails";
 import { AccountLogin, AccountLogout } from "@/components/site/AccountLogin";
+import { LoyaltySummary } from "@/components/loyalty/LoyaltySummary";
 import { TIMEZONE } from "@/lib/config";
 import { getCustomerBookings } from "@/lib/customers";
 import { getServices, localize, type Booking } from "@/lib/data";
@@ -118,6 +119,8 @@ export default async function MyBookings({ params }: Props) {
             <Link className="btn btn-dark" href={href(locale, "booking")}>{t.book}</Link>
           </>
         )}
+
+        <LoyaltySummary email={email} locale={locale} />
 
         {bookings.length > 0 && (
           <>

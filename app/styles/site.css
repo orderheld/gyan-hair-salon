@@ -961,3 +961,61 @@ html.app .app-back:active { background: var(--cream); }
 .account-details .muted { margin: 0; }
 .account-details .btn { justify-self: start; }
 .account-details .input[readonly] { background: var(--cream); color: var(--taupe); }
+
+/* ---------- Stempelkarte: Stempel-Kreise (gleich im Admin und auf der Webseite) ---------- */
+.lc-stamps { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(8px, 2.4vw, 14px); max-width: 440px; width: 100%; }
+.lc-stamps.is-compact { gap: 8px; max-width: 340px; margin: 0; }
+.lc-stamp { aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; border: 1.5px dashed var(--greige); color: var(--stone); font-size: 13px; background: var(--ivory); }
+.lc-stamp.is-on { border: 1.5px solid var(--accent-deep); background: var(--accent-deep); color: var(--ivory); }
+.lc-stamp.is-on svg { width: 54%; height: 54%; }
+.lc-stamp.is-free { border: 1.5px solid var(--accent-deep); color: var(--accent-deep); font-size: 10.5px; font-weight: 600; letter-spacing: 0.02em; text-align: center; line-height: 1.1; padding: 2px; }
+.lc-stamp.is-free.is-ready { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
+.lc-count { display: grid; gap: 2px; margin: 14px 0 0; }
+.lc-count strong { font-size: 18px; font-weight: 600; letter-spacing: -0.01em; }
+.lc-gift { margin: 10px 0 0; padding: 10px 14px; border-radius: 14px; background: var(--cream); color: var(--accent-deep); font-size: 14.5px; }
+.lc-qr { background: var(--white); border-radius: 18px; padding: 10px; border: 1px solid var(--line); width: min(260px, 100%); margin: 0 auto; }
+.lc-qr svg { display: block; width: 100%; height: auto; }
+.lc-page { display: grid; gap: 22px; }
+.lc-page .account-head { margin-bottom: 0; }
+.lc-how { display: grid; gap: 14px; margin-top: 30px; }
+.lc-how .h3 { margin: 0; }
+.lc-perks { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.lc-perks li { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: start; padding: 16px 18px; border-radius: 18px; background: var(--paper); border: 1px solid var(--line); }
+.lc-perks strong { display: block; font-weight: 600; margin-bottom: 2px; }
+.lc-perks p { margin: 0; font-size: 15px; }
+.lc-perk-icon { display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--cream); color: var(--accent-deep); font-size: 18px; }
+.lc-rules { margin: 0; }
+.lc-privacy { margin: 0; }
+.lc-login .h3 { margin: 0 0 4px; }
+.lc-login .account-login { text-align: left; }
+.lc-invited { margin: 0 0 14px; padding: 10px 14px; border-radius: 14px; background: var(--cream); color: var(--accent-deep); }
+.lc-alert { background: var(--cream); color: var(--accent-deep); margin: 0; }
+.lc-pass { position: relative; padding: clamp(20px, 5vw, 32px); border-radius: 26px; background: var(--cream); border: 1px solid var(--line); box-shadow: 0 24px 50px -40px rgba(40, 30, 20, 0.5); text-align: center; }
+.lc-pass-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 18px; text-align: left; }
+.lc-brand { font-family: var(--font-display); font-weight: 600; letter-spacing: 0.32em; font-size: 15px; color: var(--ink); }
+.lc-pass-name { color: var(--taupe); font-size: 14px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.lc-qr-box { display: grid; gap: 12px; justify-items: center; text-align: center; padding: clamp(20px, 5vw, 30px); border-radius: 22px; background: var(--paper); border: 1px solid var(--line); }
+.lc-qr-box .h3, .lc-qr-box p { margin: 0; }
+.lc-wallets { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
+.lc-tip { max-width: 44ch; }
+.lc-note-box { margin: 0; padding: 14px 16px; border-radius: 16px; border: 1px dashed var(--greige); color: var(--taupe); }
+.lc-invite { display: grid; gap: 10px; padding: clamp(20px, 5vw, 28px); border-radius: 22px; background: var(--white); border: 1px solid var(--line); }
+.lc-invite .h3, .lc-invite p { margin: 0; }
+.lc-share { display: grid; gap: 10px; }
+.lc-share .input { font-size: 14px; }
+.lc-share-btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.lc-history .h3 { margin: 0 0 10px; }
+.lc-history ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.lc-history li { display: grid; grid-template-columns: 1fr auto 44px; gap: 12px; padding: 11px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; align-items: baseline; }
+.lc-history strong { text-align: right; font-weight: 600; }
+.lc-summary { display: grid; grid-template-columns: 1fr 150px; gap: 18px; align-items: center; padding: 18px 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); margin-bottom: 18px; }
+.lc-summary-main { display: grid; gap: 12px; justify-items: start; }
+.lc-summary .lc-count { margin: 0; }
+.lc-summary .lc-gift { margin: 0; }
+.lc-qr-sm { width: 150px; padding: 6px; border-radius: 12px; }
+@media (max-width: 560px) {
+  .lc-summary { grid-template-columns: 1fr; }
+  .lc-qr-sm { justify-self: center; width: 180px; }
+  .lc-perks li { grid-template-columns: 36px 1fr; padding: 14px; gap: 12px; }
+  .lc-perk-icon { width: 36px; height: 36px; font-size: 16px; }
+}
