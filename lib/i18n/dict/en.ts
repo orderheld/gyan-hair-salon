@@ -260,6 +260,7 @@ const en: Dict = {
     title: "Your time with Zana.",
     lead: "Online bookings are with owner Zana. If the time is free, it's confirmed instantly. Or simply drop in during opening hours without an appointment.",
     steps: ["Service", "Date & time", "Details"],
+    team: { title: "With whom?", zana: "Bookable online · Tuesday to Saturday", hikmet: "Online booking coming soon. Until then, just drop in.", chosen: "Selected" },
     morning: "Morning",
     afternoon: "Afternoon",
     evening: "Evening",

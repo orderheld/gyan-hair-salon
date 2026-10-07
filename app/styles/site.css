@@ -936,3 +936,18 @@ html.app .app-back:active { background: var(--cream); }
 .footer-social { display: inline-flex; gap: 14px; margin-top: 6px; }
 .footer-social a { display: inline-grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); }
 .footer-social svg { width: 18px; height: 18px; }
+
+/* Online-Buchung: bei wem (Zana buchbar, Hikmet bald) */
+.team-pick { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 760px; margin: -12px 0 32px; }
+.team-pick-title { grid-column: 1 / -1; margin: 0; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--stone); }
+.team-card { display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 16px; border: 1px solid var(--line); background: var(--white); }
+.team-card.is-on { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink) inset; }
+.team-card:not(.is-on) { background: transparent; }
+.team-av { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.team-av-init { display: grid; place-items: center; background: var(--sand); color: var(--taupe); font-family: var(--font-display); font-size: 20px; }
+.team-txt { display: grid; gap: 2px; min-width: 0; }
+.team-txt strong { font-weight: 600; font-size: 16px; }
+.team-txt small { font-size: 13px; color: var(--taupe); line-height: 1.35; }
+.team-chosen { font-size: 12px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+@media (max-width: 640px) { .team-pick { grid-template-columns: 1fr; margin-top: -16px; } }
+.team-av:not(.team-av-init) { background: #fff; border: 1px solid var(--line); }

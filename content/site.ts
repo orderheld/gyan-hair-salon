@@ -46,6 +46,12 @@ export const site = {
   googleWriteReviewUrl: "https://g.page/r/Cf88NjkyEn2REBM/review",
   rating: { value: "4.9", count: "290" }, // vor Livegang mit Google abgleichen
 
+  /** Online-Buchung: nur Zana buchbar, Hikmet folgt (bis dahin spontan) */
+  team: [
+    { id: "zana", name: "Zana", bookable: true },
+    { id: "hikmet", name: "Hikmet", bookable: false },
+  ] as { id: "zana" | "hikmet"; name: string; bookable: boolean }[],
+
   // Bilder unter public/images
   images: {
     hero: "/images/salon-spiegel.jpg",

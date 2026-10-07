@@ -19,7 +19,7 @@ export async function seed(query, root = process.cwd()) {
     }
   }
   const hours = [
-    [1, true, "09:00", "19:00"], [2, true, "09:00", "19:00"], [3, true, "09:00", "19:00"],
+    [1, false, "09:00", "19:00"], [2, true, "09:00", "19:00"], [3, true, "09:00", "19:00"],
     [4, true, "09:00", "20:00"], [5, true, "09:00", "20:00"], [6, true, "08:30", "18:00"], [0, false, "09:00", "18:00"],
   ];
   for (const h of hours) {

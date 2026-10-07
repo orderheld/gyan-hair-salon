@@ -260,6 +260,7 @@ const fr: Dict = {
     title: "Ton moment avec Zana.",
     lead: "Les rendez-vous en ligne sont avec Zana, le propriétaire. Si le créneau est libre, il est confirmé immédiatement. Sans rendez-vous, passe simplement pendant les heures d’ouverture.",
     steps: ["Prestation", "Date & heure", "Coordonnées"],
+    team: { title: "Avec qui ?", zana: "Réservable en ligne · mardi à samedi", hikmet: "Rendez-vous en ligne bientôt. D’ici là, passe simplement sans rendez-vous.", chosen: "Choisi" },
     morning: "Matin",
     afternoon: "Après-midi",
     evening: "Soir",

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { cookies } from "next/headers";
+import Image from "next/image";
 import Link from "next/link";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
@@ -55,6 +56,21 @@ export default async function Booking({ params, searchParams }: Props) {
           <p className="account-link rise" style={{ animationDelay: "200ms" }}>
             <Link className="link" href={href(locale, "account")}>{email ? d.account.nav : d.account.hint}</Link>
           </p>
+        </div>
+        <div className="team-pick" role="group" aria-label={d.booking.team.title}>
+          <p className="team-pick-title">{d.booking.team.title}</p>
+          {site.team.map((m) => (
+            <div key={m.id} className={`team-card${m.bookable ? " is-on" : ""}`} aria-current={m.bookable ? "true" : undefined}>
+              {m.id === "zana"
+                ? <Image className="team-av" src={site.images.zana} alt="" width={96} height={96} sizes="48px" />
+                : <span className="team-av team-av-init" aria-hidden>{m.name[0]}</span>}
+              <span className="team-txt">
+                <strong>{m.name}</strong>
+                <small>{d.booking.team[m.id]}</small>
+              </span>
+              {m.bookable && <span className="team-chosen">✓ {d.booking.team.chosen}</span>}
+            </div>
+          ))}
         </div>
         <BookingFlow
           locale={locale}

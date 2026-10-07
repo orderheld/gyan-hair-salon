@@ -258,6 +258,7 @@ const de = {
     title: "Deine Zeit bei Zana.",
     lead: "Online buchbar sind Termine beim Inhaber Zana. Ist die Zeit frei, ist sie sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei.",
     steps: ["Leistung", "Datum & Zeit", "Angaben"],
+    team: { title: "Bei wem?", zana: "Online buchbar · Dienstag bis Samstag", hikmet: "Online-Termine kommen bald. Bis dahin einfach spontan vorbeikommen.", chosen: "Gewählt" },
     morning: "Vormittag",
     afternoon: "Nachmittag",
     evening: "Abend",

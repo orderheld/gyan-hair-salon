@@ -43,4 +43,7 @@ export const MIGRATIONS = [
   `CREATE INDEX IF NOT EXISTS push_customer_idx ON push_subscriptions (customer_key)`,
   // Geburtsdatum (JJJJ-MM-TT), bei Online-Buchungen Pflicht
   `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS birth_date text NOT NULL DEFAULT ''`,
+  // Oktober 2026: Zana online nur Dienstag bis Samstag (einmalig, danach im Admin frei änderbar)
+  `UPDATE opening_hours SET is_open = false WHERE weekday = 1 AND NOT EXISTS (SELECT 1 FROM settings WHERE key = 'zanaTueSat')`,
+  `INSERT INTO settings (key, value) VALUES ('zanaTueSat', 'true'::jsonb) ON CONFLICT (key) DO NOTHING`,
 ];
