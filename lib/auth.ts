@@ -17,6 +17,16 @@ function secret() {
 
 const sign = (value: string) => createHmac("sha256", secret()).update(value).digest("base64url");
 
+/** Signatur für kurzlebige Werte (z. B. OAuth-State), mit eigenem Präfix getrennt von der Sitzung */
+export const signValue = (purpose: string, value: string) => sign(`${purpose}:${value}`);
+export const checkSignedValue = (purpose: string, value: string, signature: string) => {
+  try {
+    return safeEqual(signature, signValue(purpose, value));
+  } catch {
+    return false;
+  }
+};
+
 function safeEqual(a: string, b: string) {
   const ab = Buffer.from(a);
   const bb = Buffer.from(b);

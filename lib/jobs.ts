@@ -4,6 +4,7 @@ import { mapBooking } from "./data";
 import { sendDailyDigest, sendFollowup, sendReminder } from "./email";
 import { pushDigestToAdmins } from "./push";
 import { runLoyaltyJobs } from "./loyalty-jobs";
+import { syncGoogleReviewsThrottled } from "./google-reviews";
 import { formatTime, toDateKey, toTimeKey, zurichToDate, addDays } from "./time";
 import { getSettings } from "./settings";
 
@@ -48,6 +49,8 @@ export async function runEmailJobs() {
   }
   await runDailyDigest(s).catch((e) => console.error("[GYAN] Morgen-Übersicht:", e));
   await runLoyaltyJobs().catch((e) => console.error("[GYAN] Stempelkarte:", e));
+  // Google-Bewertungen: nur wenn verbunden, höchstens alle 6 Stunden
+  await syncGoogleReviewsThrottled().catch((e) => console.error("[GYAN] Google-Bewertungen:", e));
   return result;
 }
 

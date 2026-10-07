@@ -96,6 +96,13 @@ export async function getCardByKey(key: string): Promise<Card | null> {
   return r ? mapCard(r) : null;
 }
 
+export async function getCardById(id: number): Promise<Card | null> {
+  if (!Number.isInteger(id) || id <= 0) return null;
+  const sql = await getSql();
+  const [r] = await sql`SELECT * FROM loyalty_cards WHERE id = ${id}`;
+  return r ? mapCard(r) : null;
+}
+
 export async function getCardByRef(code: string): Promise<Card | null> {
   const c = normalizeRefCode(code);
   if (c.length < 4) return null;
