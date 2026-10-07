@@ -109,7 +109,6 @@ const fr: Dict = {
     homeHint: "Astuce : ajoute le site à ton écran d’accueil (dans le navigateur « Partager » puis « Sur l’écran d’accueil »). Ta carte s’ouvre ensuite en haut avec le symbole de carte à côté du compte. Ou enregistre le code QR en image dans tes photos.",
     appleWallet: "Ajouter à Apple Wallet",
     googleWallet: "Enregistrer dans Google Wallet",
-    iphoneWallet: {"title": "Ajouter à Apple Wallet sur iPhone", "intro": "Avec l'app gratuite «Pass2U Wallet», tu ajoutes toi-même ta carte à Apple Wallet.", "steps": ["Télécharge et ouvre «Pass2U Wallet» dans l'App Store.", "Crée une nouvelle carte avec code-barres et choisis le format «QR code».", "Copie le code ci-dessous et colle-le dans l'app comme contenu du code-barres, nom par exemple «GYAN».", "Enregistre et touche «Ajouter à Apple Wallet»."], "code": "Ton code de carte", "copy": "Copier", "copied": "Copié", "note": "À la caisse, montre simplement le QR code dans Wallet. Ton nombre de tampons actuel est toujours visible ici sur le site."},
     inviteTitle: "Inviter des amis",
     inviteText: "Partage ton lien avec autant d’amis que tu veux. Pour chaque personne qui vient pour la première fois chez GYAN et reçoit son premier tampon, tu reçois un tampon bonus.",
     inviteCode: "Ton code d’invitation",

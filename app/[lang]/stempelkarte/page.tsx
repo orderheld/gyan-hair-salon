@@ -9,8 +9,6 @@ import { ProfileGate } from "@/components/site/ProfileGate";
 import { getAccountProfile, profileComplete } from "@/lib/customers";
 import { RefCapture } from "@/components/loyalty/RefCapture";
 import { SaveQr } from "@/components/loyalty/SaveQr";
-import { IphoneWallet } from "@/components/loyalty/IphoneWallet";
-import { cardQrPayload } from "@/lib/loyalty-qr";
 import { ShareInvite } from "@/components/loyalty/ShareInvite";
 import { Stamps } from "@/components/loyalty/Stamps";
 import { fill, getDict, type Dict } from "@/lib/i18n";
@@ -216,7 +214,6 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
                 {google && <a className="btn btn-light btn-sm" href={`/api/loyalty/google?l=${locale}`}>{t.googleWallet}</a>}
               </div>
             )}
-            {!apple && <IphoneWallet code={cardQrPayload(state.card.token)} t={t.iphoneWallet} />}
             <p className="lc-tip small muted">{t.homeHint}</p>
           </div>
 

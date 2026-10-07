@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "@/components/ui/Toast";
 
 type Texts = { details: string; detailsHint: string; detailsSave: string; detailsSaving: string; detailsSaved: string; emailFixed: string; name: string; phone: string; birthDate: string };
 
@@ -20,9 +21,12 @@ export function AccountDetails({ locale, t, email, initial }: { locale: string; 
     try {
       const res = await fetch("/api/account", { method: "PATCH", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...form, locale }) });
       const data = await res.json().catch(() => ({}));
-      if (!res.ok) setMsg({ ok: false, text: data.error ?? "Error" });
-      else {
+      if (!res.ok) {
+        setMsg({ ok: false, text: data.error ?? "Error" });
+        toast(data.error ?? "Error", "error");
+      } else {
         setMsg({ ok: true, text: t.detailsSaved });
+        toast(t.detailsSaved);
         router.refresh();
       }
     } finally {

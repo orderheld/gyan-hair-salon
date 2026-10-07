@@ -114,6 +114,7 @@ const adminDe = {
     },
   },
   common: {
+    close: "Schliessen",
     edit: "Bearbeiten",
     save: "Speichern",
     saving: "Speichert …",

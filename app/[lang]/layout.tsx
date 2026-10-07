@@ -16,6 +16,7 @@ import { getDict } from "@/lib/i18n";
 import { HREFLANG, href, isLocale, LOCALES } from "@/lib/i18n/config";
 import { APP_ICONS } from "@/lib/app-icons";
 import { AppShell } from "@/components/site/AppShell";
+import { Toaster } from "@/components/ui/Toast";
 import "../styles/base.css";
 import "../styles/site.css";
 
@@ -159,6 +160,7 @@ export default async function LangLayout({ children, params }: { children: React
           phoneHref={site.phoneHref}
         />
         <script dangerouslySetInnerHTML={{ __html: MENU_EARLY }} />
+        <Toaster closeLabel={d.common.close} />
         <main id="main">{children}</main>
         <AppShell
           tabs={[

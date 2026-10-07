@@ -116,6 +116,7 @@ const adminEn: AdminDict = {
     },
   },
   common: {
+    close: "Close",
     edit: "Edit",
     save: "Save",
     saving: "Saving …",

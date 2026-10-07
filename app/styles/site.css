@@ -1044,15 +1044,3 @@ html.app .app-back:active { background: var(--cream); }
 .lc-legend li { display: inline-flex; align-items: center; gap: 8px; }
 .lc-legend .lc-stamp { width: 22px; aspect-ratio: 1; }
 .lc-legend .lc-stamp svg { width: 60%; height: 60%; }
-/* iPhone: Karte über Gratis-App selber in Apple Wallet legen */
-.lc-iwallet { width: 100%; max-width: 440px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); text-align: left; }
-.lc-iwallet summary { display: flex; align-items: center; gap: 10px; padding: 14px 16px; cursor: pointer; list-style: none; font-weight: 500; }
-.lc-iwallet summary::-webkit-details-marker { display: none; }
-.lc-iwallet summary svg { width: 22px; height: 22px; flex: none; color: var(--accent-deep); }
-.lc-iwallet summary::after { content: "+"; margin-left: auto; color: var(--stone); font-size: 20px; line-height: 1; }
-.lc-iwallet[open] summary::after { content: "–"; }
-.lc-iwallet-body { display: grid; gap: 10px; padding: 0 16px 16px; }
-.lc-iwallet-body p { margin: 0; }
-.lc-iwallet-body ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 15px; }
-.lc-iwallet-code { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; }
-.lc-iwallet-code .input { font-size: 14px; font-family: ui-monospace, monospace; }

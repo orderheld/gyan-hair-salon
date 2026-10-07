@@ -3,6 +3,9 @@ import { AdminNav } from "@/components/admin/AdminNav";
 import { AdminPush } from "@/components/admin/AdminPush";
 import { pushEnabled } from "@/lib/push";
 import { ReturnHere } from "@/components/admin/ReturnHere";
+import { FreshOnSave } from "@/components/admin/FreshOnSave";
+import { Toaster } from "@/components/ui/Toast";
+import { Suspense } from "react";
 import { Monogram } from "@/components/brand/Logo";
 import { LOCALES } from "@/content/types";
 import { getAdminText } from "@/lib/admin";
@@ -55,9 +58,10 @@ export async function AdminShell({ mode, children }: { mode: "start" | "pin" | "
           </div>
         </div>
       </header>
+      <Toaster closeLabel={t.common.close} />
       <main className="container admin-main">
         {(mode === "start" || mode === "termine") && <AdminPush t={t.push} enabled={pushEnabled} />}
-        {children}
+        <Suspense fallback={children}><FreshOnSave>{children}</FreshOnSave></Suspense>
       </main>
     </div>
   );

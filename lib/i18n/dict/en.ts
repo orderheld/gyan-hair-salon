@@ -109,7 +109,6 @@ const en: Dict = {
     homeHint: "Tip: add the website to your home screen (in the browser \"Share\" and \"Add to Home Screen\"). You then open your card at the top with the card icon next to your account. Or save the QR code as an image in your photos.",
     appleWallet: "Add to Apple Wallet",
     googleWallet: "Save to Google Wallet",
-    iphoneWallet: {"title": "Add to Apple Wallet on iPhone", "intro": "With the free app «Pass2U Wallet» you can add your card to Apple Wallet yourself.", "steps": ["Download and open «Pass2U Wallet» from the App Store.", "Create a new card with a barcode and choose the «QR code» format.", "Copy the code below and paste it into the app as the barcode content, name for example «GYAN».", "Save and tap «Add to Apple Wallet»."], "code": "Your card code", "copy": "Copy", "copied": "Copied", "note": "At the counter, just show the QR code in Wallet. Your current stamp count is always shown here on the website."},
     inviteTitle: "Invite friends",
     inviteText: "Share your link with as many friends as you like. For everyone who comes to GYAN for the first time and gets their first stamp, you receive a bonus stamp.",
     inviteCode: "Your invite code",
