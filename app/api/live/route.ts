@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { after } from "next/server";
-import { getOpeningHours, getServices } from "@/lib/data";
+import { getSalonHours, getServices } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
 import { isLocale } from "@/lib/i18n/config";
 import { runEmailJobsThrottled } from "@/lib/jobs";
@@ -18,7 +18,7 @@ export async function GET(request: Request) {
   const locale = isLocale(l) ? l : "de";
   const d = getDict(locale);
   const live = d.home.live;
-  const [services, hours] = await Promise.all([getServices(), getOpeningHours()]);
+  const [services, hours] = await Promise.all([getServices(), getSalonHours()]);
   const now = new Date();
   const open = openState(hours, now);
   const status =

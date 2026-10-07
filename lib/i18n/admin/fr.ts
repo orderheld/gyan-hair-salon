@@ -256,8 +256,8 @@ const adminFr: AdminDict = {
   },
   hours: {
     title: "Horaires & blocages",
-    hint: "Les horaires d’ouverture s’appliquent au site et aux créneaux réservables chez Zana.",
-    openingHours: "Horaires d’ouverture",
+    hint: "Ces horaires définissent seulement quand on peut réserver Zana en ligne. Les horaires affichés sur le site sont fixes, comme sur Google.",
+    openingHours: "Horaires réservables",
     day: "Jour",
     open: "Ouvert",
     from: "De",

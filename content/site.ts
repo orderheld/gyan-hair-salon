@@ -23,6 +23,24 @@ export const site = {
   email: "contact@gyanhairsalon.ch",
   instagram: "https://www.instagram.com/gyan_hair_salon/",
   instagramHandle: "@gyan_hair_salon",
+  /**
+   * Öffnungszeiten des Salons wie im Google-Unternehmensprofil (0 = Sonntag).
+   * Für die Anzeige auf der Webseite, «Jetzt offen» und Google-Daten.
+   * Die Online-Buchungszeiten stellt das Admin-Panel separat ein.
+   */
+  salonHours: [
+    { weekday: 1, open: "09:00", close: "19:00" },
+    { weekday: 2, open: "09:00", close: "19:00" },
+    { weekday: 3, open: "09:00", close: "19:00" },
+    { weekday: 4, open: "09:00", close: "20:00" },
+    { weekday: 5, open: "09:00", close: "20:00" },
+    { weekday: 6, open: "08:30", close: "18:00" },
+    { weekday: 0, open: null, close: null },
+  ] as { weekday: number; open: string | null; close: string | null }[],
+  tiktok: "https://www.tiktok.com/@gyan_hair_salon",
+  tiktokHandle: "@gyan_hair_salon",
+  facebook: "https://www.facebook.com/GyanHairSalon",
+  facebookHandle: "GyanHairSalon",
   googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=GYAN+Hair+Salon+Biel",
   /** Direktlink «Bewertung schreiben» aus dem Google-Unternehmensprofil */
   googleWriteReviewUrl: "https://g.page/r/Cf88NjkyEn2REBM/review",

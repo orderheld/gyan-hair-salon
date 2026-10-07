@@ -50,6 +50,18 @@ const en: Dict = {
     blog: "Journal",
     contact: "Contact",
     loyalty: "Loyalty card",
+    social: "Social media",
+  },
+  social: {
+    eyebrow: "Follow us",
+    title: "Social media",
+    lead: "New cuts, a look inside the salon and offers: follow GYAN Hair Salon on Instagram, TikTok and Facebook.",
+    instagram: "Photos of fresh cuts, fades and beards, plus stories from the salon.",
+    tiktok: "Short videos: cuts from start to finish, tips and moments from the salon.",
+    facebook: "News, opening hours and offers from GYAN Hair Salon in Biel/Bienne.",
+    follow: "Follow",
+    metaTitle: "Social media: Instagram, TikTok, Facebook | GYAN Biel",
+    metaDescription: "Follow GYAN Hair Salon in Biel/Bienne on Instagram, TikTok and Facebook: new cuts, a look inside and offers.",
   },
   loyalty: {
     eyebrow: "Coming soon",

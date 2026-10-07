@@ -6,7 +6,7 @@ import { Hours } from "@/components/site/Blocks";
 import { Signature } from "@/components/site/Signature";
 import { site } from "@/content/site";
 import { LOCALES, type Locale } from "@/content/types";
-import { getOpeningHours, type OpeningDay } from "@/lib/data";
+import { getSalonHours, type OpeningDay } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
 import { isLocale } from "@/lib/i18n/config";
 import { openState } from "@/lib/live";
@@ -29,7 +29,7 @@ export default async function ComingSoon({ searchParams }: Props) {
   const s = d.soon;
   let hours: OpeningDay[] = [];
   try {
-    hours = await getOpeningHours();
+    hours = await getSalonHours();
   } catch {
     // Ohne Datenbank einfach ohne Öffnungszeiten anzeigen
   }

@@ -50,6 +50,18 @@ const fr: Dict = {
     blog: "Journal",
     contact: "Contact",
     loyalty: "Carte de fidélité",
+    social: "Réseaux sociaux",
+  },
+  social: {
+    eyebrow: "Suis-nous",
+    title: "Réseaux sociaux",
+    lead: "Nouvelles coupes, coulisses du salon et offres : suis GYAN Hair Salon sur Instagram, TikTok et Facebook.",
+    instagram: "Photos de coupes fraîches, de fades et de barbes, et des stories du salon.",
+    tiktok: "Vidéos courtes : des coupes du début à la fin, des conseils et des moments du salon.",
+    facebook: "Actualités, horaires et offres de GYAN Hair Salon à Bienne.",
+    follow: "Suivre",
+    metaTitle: "Réseaux sociaux : Instagram, TikTok, Facebook | GYAN Bienne",
+    metaDescription: "Suis GYAN Hair Salon à Bienne sur Instagram, TikTok et Facebook : nouvelles coupes, coulisses et offres.",
   },
   loyalty: {
     eyebrow: "Bientôt",

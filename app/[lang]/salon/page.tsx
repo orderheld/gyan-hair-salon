@@ -3,7 +3,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { CtaBand, PageHero, Visit } from "@/components/site/Blocks";
-import { getOpeningHours } from "@/lib/data";
+import { getSalonHours } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
@@ -21,7 +21,7 @@ const FEATURE_IMAGES = [site.images.hero, site.images.reception, site.images.lou
 export default async function Salon({ params }: Props) {
   const locale = (await params).lang as Locale;
   const d = getDict(locale);
-  const hours = await getOpeningHours();
+  const hours = await getSalonHours();
   return (
     <>
       <PageHero

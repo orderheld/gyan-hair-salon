@@ -48,6 +48,18 @@ const de = {
     blog: "Journal",
     contact: "Kontakt",
     loyalty: "Stempelkarte",
+    social: "Social Media",
+  },
+  social: {
+    eyebrow: "Folge uns",
+    title: "Social Media",
+    lead: "Neue Schnitte, Einblicke in den Salon und Aktionen: Folge GYAN Hair Salon auf Instagram, TikTok und Facebook.",
+    instagram: "Fotos von frischen Schnitten, Fades und Bärten, dazu Stories aus dem Salon.",
+    tiktok: "Kurze Videos: Schnitte von Anfang bis Ende, Tipps und Momente aus dem Salon.",
+    facebook: "News, Öffnungszeiten und Aktionen von GYAN Hair Salon in Biel/Bienne.",
+    follow: "Folgen",
+    metaTitle: "Social Media: Instagram, TikTok, Facebook | GYAN Biel",
+    metaDescription: "Folge GYAN Hair Salon in Biel/Bienne auf Instagram, TikTok und Facebook: neue Schnitte, Einblicke und Aktionen.",
   },
   loyalty: {
     eyebrow: "Kommt bald",

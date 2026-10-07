@@ -254,8 +254,8 @@ const adminDe = {
   },
   hours: {
     title: "Zeiten & Sperren",
-    hint: "Die Öffnungszeiten gelten für die Webseite und die buchbaren Zeiten bei Zana.",
-    openingHours: "Öffnungszeiten",
+    hint: "Diese Zeiten bestimmen nur, wann online bei Zana gebucht werden kann. Die Öffnungszeiten auf der Webseite sind fix wie bei Google.",
+    openingHours: "Buchbare Zeiten",
     day: "Tag",
     open: "Offen",
     from: "Von",

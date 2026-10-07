@@ -4,7 +4,7 @@ import Link from "next/link";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { CtaBand, Hours, PageHero } from "@/components/site/Blocks";
-import { getOpeningHours } from "@/lib/data";
+import { getSalonHours } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Contact({ params }: Props) {
   const locale = (await params).lang as Locale;
   const d = getDict(locale);
-  const hours = await getOpeningHours();
+  const hours = await getSalonHours();
   return (
     <>
       <PageHero eyebrow={d.contact.eyebrow} title={d.contact.title} lead={d.contact.lead} crumbs={[{ label: d.nav.home, href: href(locale, "home") }, { label: d.nav.contact, href: href(locale, "contact") }]} />

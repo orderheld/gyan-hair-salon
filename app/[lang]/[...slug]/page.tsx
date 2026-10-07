@@ -8,7 +8,7 @@ import { site } from "@/content/site";
 import type { Locale, SeoPlace, SeoTopic } from "@/content/types";
 import { Markdown } from "@/components/Markdown";
 import { CtaBand, FaqList, faqSchema, Hours, JsonLd, PageHero, ServiceRows } from "@/components/site/Blocks";
-import { getOpeningHours, getServices, localize } from "@/lib/data";
+import { getSalonHours, getServices, localize } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { seoPath } from "@/lib/i18n/paths";
@@ -49,7 +49,7 @@ export default async function SeoPage({ params }: Props) {
   const page = hit.page;
   if (page.slug[locale] !== decodeURIComponent(slug[0])) permanentRedirect(seoPath(locale, page));
 
-  const [all, hours] = await Promise.all([getServices(), getOpeningHours()]);
+  const [all, hours] = await Promise.all([getServices(), getSalonHours()]);
   const keys = hit.kind === "topic" ? hit.page.services : [];
   const picked = keys.length ? keys.map((k) => all.find((s) => s.slug.de === k)).filter((s) => !!s) : all.slice(0, 4);
   const services = picked.map((s) => localize(s, locale));

@@ -61,11 +61,11 @@ html.menu-open .site-header::before { opacity: 0 !important; }
 .burger span { display: block; width: 24px; height: 1.5px; background: currentColor; transition: transform 0.5s var(--ease); }
 .burger.is-open span:first-child { transform: translateY(4.25px) rotate(45deg); }
 .burger.is-open span:last-child { transform: translateY(-4.25px) rotate(-45deg); }
-@media (min-width: 1040px) {
+@media (min-width: 1200px) {
   .header-inner { display: grid; grid-template-columns: 1fr auto 1fr; }
   .header-actions { justify-self: end; }
   .nav-desktop { display: flex; gap: clamp(18px, 2.2vw, 30px); font-size: 14px; }
-  .nav-desktop a { text-decoration: none; opacity: 0.78; position: relative; padding: 6px 0; transition: opacity 0.2s; }
+  .nav-desktop a { white-space: nowrap; text-decoration: none; opacity: 0.78; position: relative; padding: 6px 0; transition: opacity 0.2s; }
   .nav-desktop a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform 0.4s var(--ease); }
   .nav-desktop a:hover, .nav-desktop a[aria-current="page"] { opacity: 1; }
   .nav-desktop a:hover::after, .nav-desktop a[aria-current="page"]::after { transform: scaleX(1); }
@@ -111,7 +111,7 @@ html.menu-open .site-header::before { opacity: 0 !important; }
 .menu-account { color: var(--ink); text-underline-offset: 4px; text-decoration-color: var(--greige); }
 .lang-lg { display: flex; font-size: 14px; }
 html.menu-open { overflow: hidden; }
-@media (min-width: 1040px) { .menu { display: none; } }
+@media (min-width: 1200px) { .menu { display: none; } }
 
 /* Schwebender Buchungsknopf auf dem Handy */
 .sticky-book {
@@ -138,7 +138,7 @@ html[data-scrolled="2"] .sticky-book { transform: translate(-50%, 0); }
 html.menu-open .sticky-book { transform: translate(-50%, 140%); }
 .sticky-dot { width: 7px; height: 7px; border-radius: 50%; background: #7fc28e; box-shadow: 0 0 0 0 rgba(127, 194, 142, 0.6); animation: pulse 2.2s infinite; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(127, 194, 142, 0); } 100% { box-shadow: 0 0 0 0 rgba(127, 194, 142, 0); } }
-@media (min-width: 1040px) { .sticky-book { display: none; } }
+@media (min-width: 1200px) { .sticky-book { display: none; } }
 
 main { display: block; }
 
@@ -736,7 +736,7 @@ html.app .app-back {
 }
 html.app .app-back svg { width: 22px; height: 22px; }
 html.app .app-back:active { background: var(--cream); }
-@media (max-width: 1039px) {
+@media (max-width: 1199px) {
   html.app .sticky-book { display: none; }
   html.app .app-tabs {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 55;
@@ -921,3 +921,16 @@ html.app .app-back:active { background: var(--cream); }
 .stamp-grid { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(8px, 2vw, 14px); max-width: 460px; }
 .stamp { aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; border: 1.5px dashed var(--greige, #c9bba8); color: var(--stone); font-size: 14px; background: var(--ivory, #fbf8f3); }
 .stamp.is-free { border: 1.5px solid var(--accent-deep); background: var(--accent-deep); color: var(--ivory, #fbf8f3); font-size: 11px; letter-spacing: 0.04em; font-weight: 600; }
+
+/* Social Media */
+.social-grid { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+@media (min-width: 800px) { .social-grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.social-card { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; height: 100%; padding: 28px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper); color: var(--ink); text-decoration: none; transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease); }
+.social-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.social-icon { width: 34px; height: 34px; color: var(--accent-deep); margin-bottom: 10px; }
+.social-name { font-family: var(--font-display); font-size: 24px; letter-spacing: -0.01em; }
+.social-handle { font-size: 14px; color: var(--accent); }
+.social-text { margin: 6px 0 18px; flex: 1; }
+.footer-social { display: inline-flex; gap: 14px; margin-top: 6px; }
+.footer-social a { display: inline-grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); }
+.footer-social svg { width: 18px; height: 18px; }

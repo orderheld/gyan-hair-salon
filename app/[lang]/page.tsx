@@ -9,7 +9,7 @@ import { Filmstrip } from "@/components/motion/Filmstrip";
 import { CtaBand, SectionHead, ServiceRows, Visit, Words } from "@/components/site/Blocks";
 import { Intro } from "@/components/site/Intro";
 import { PostCard } from "@/components/site/PostCard";
-import { getOpeningHours, getServices, localize } from "@/lib/data";
+import { getSalonHours, getServices, localize } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
 import { href, type Locale as Lc } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
@@ -38,7 +38,7 @@ export default async function Home({ params }: Props) {
   const locale = (await params).lang as Lc;
   const d = getDict(locale);
   const h = d.home;
-  const [services, hours] = await Promise.all([getServices(), getOpeningHours()]);
+  const [services, hours] = await Promise.all([getServices(), getSalonHours()]);
   const local = services.map((s) => localize(s, locale));
   return (
     <>

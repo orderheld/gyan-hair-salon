@@ -16,6 +16,7 @@ export const ROUTES = {
   faq: { de: "faq", fr: "faq", en: "faq" },
   blog: { de: "blog", fr: "blog", en: "blog" },
   contact: { de: "kontakt", fr: "contact", en: "contact" },
+  social: { de: "social-media", fr: "reseaux-sociaux", en: "social-media" },
   loyalty: { de: "stempelkarte", fr: "carte-fidelite", en: "loyalty-card" },
   booking: { de: "termin", fr: "reservation", en: "booking" },
   account: { de: "meine-termine", fr: "mes-rendez-vous", en: "my-bookings" },

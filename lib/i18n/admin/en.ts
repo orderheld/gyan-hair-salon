@@ -256,8 +256,8 @@ const adminEn: AdminDict = {
   },
   hours: {
     title: "Hours & blocks",
-    hint: "Opening hours apply to the website and to Zana's bookable times.",
-    openingHours: "Opening hours",
+    hint: "These times only set when Zana can be booked online. The opening hours on the website are fixed, as on Google.",
+    openingHours: "Bookable times",
     day: "Day",
     open: "Open",
     from: "From",

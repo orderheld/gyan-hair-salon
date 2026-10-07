@@ -1,3 +1,4 @@
+import { SocialIcon } from "@/components/site/SocialIcons";
 import Link from "next/link";
 import { posts } from "@/content/blog";
 import { places } from "@/content/seo/places";
@@ -28,9 +29,12 @@ export function Footer({ locale, d, services, hours }: { locale: Locale; d: Dict
               {site.address.zip} {site.address.city}
               <br />
               <a href={site.phoneHref}>{site.phone}</a>
-              <br />
-              <a href={site.instagram} target="_blank" rel="noopener">{site.instagramHandle}</a>
             </address>
+            <div className="footer-social">
+              <a href={site.instagram} target="_blank" rel="noopener" aria-label="Instagram"><SocialIcon name="instagram" /></a>
+              <a href={site.tiktok} target="_blank" rel="noopener" aria-label="TikTok"><SocialIcon name="tiktok" /></a>
+              <a href={site.facebook} target="_blank" rel="noopener" aria-label="Facebook"><SocialIcon name="facebook" /></a>
+            </div>
             <dl className="footer-hours">
               {groupHours(hours, d.common.weekdaysShort).map((r) => (
                 <div key={r.days}>
@@ -48,6 +52,7 @@ export function Footer({ locale, d, services, hours }: { locale: Locale; d: Dict
             <Link href={href(locale, "services")}>{d.nav.services}</Link>
             <Link href={href(locale, "booking")}>{d.common.book}</Link>
             <Link href={href(locale, "loyalty")}>{d.nav.loyalty}</Link>
+            <Link href={href(locale, "social")}>{d.nav.social}</Link>
             <Link href={href(locale, "faq")}>{d.nav.faq}</Link>
             <Link href={href(locale, "contact")}>{d.nav.contact}</Link>
           </nav>

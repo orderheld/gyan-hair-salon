@@ -164,6 +164,14 @@ export async function getServiceBySlug(slug: string): Promise<Service | null> {
   return rows[0] ? mapService(rows[0]) : null;
 }
 
+/** Öffnungszeiten für die Anzeige (fix wie bei Google, unabhängig von den Buchungszeiten im Admin) */
+export async function getSalonHours(): Promise<OpeningDay[]> {
+  return [...site.salonHours]
+    .sort((a, b) => a.weekday - b.weekday)
+    .map((h) => ({ weekday: h.weekday, isOpen: !!h.open, openTime: h.open ?? "00:00", closeTime: h.close ?? "00:00", breakStart: null, breakEnd: null }));
+}
+
+/** Buchbare Zeiten aus dem Admin-Panel (nur für die Online-Buchung und den Kalender) */
 export async function getOpeningHours(): Promise<OpeningDay[]> {
   const sql = await getSql();
   const rows = await sql`SELECT * FROM opening_hours ORDER BY weekday`;
