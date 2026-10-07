@@ -70,8 +70,8 @@ export const SLOT_STEPS = [5, 10, 15, 20, 30, 45, 60];
 export const getSettings = cache(async (): Promise<Settings> => {
   const sql = await getSql();
   const rows = await sql`SELECT key, value FROM settings`;
-  // Passwort-Prüfsumme der Kasse gehört nicht in die allgemeinen Einstellungen
-  const stored = Object.fromEntries(rows.filter((r) => r.key !== "kassePassword").map((r) => [r.key, r.value]));
+  // PIN-Prüfsumme der Kasse gehört nicht in die allgemeinen Einstellungen
+  const stored = Object.fromEntries(rows.filter((r) => r.key !== "kassePin" && r.key !== "kassePassword").map((r) => [r.key, r.value]));
   return {
     ...DEFAULT_SETTINGS,
     ...stored,

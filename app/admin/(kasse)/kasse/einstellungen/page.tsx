@@ -2,26 +2,26 @@ import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { KasseNav } from "@/components/admin/KasseNav";
 import { getAdminText } from "@/lib/admin";
-import { hasKassePassword, requireAdmin } from "@/lib/auth";
+import { requireKasse } from "@/lib/auth";
 import { getProducts, getStaff } from "@/lib/pos";
 import { getSettings } from "@/lib/settings";
-import { posDeleteProduct, posSaveKassePassword, posSaveProduct, posSaveStaff, posSaveVat } from "@/app/admin/kasse-actions";
+import { posDeleteProduct, posSaveKassePin, posSaveProduct, posSaveStaff, posSaveVat } from "@/app/admin/kasse-actions";
 
 export const dynamic = "force-dynamic";
 
 export default async function KasseSettings({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
-  await requireAdmin();
+  await requireKasse();
   const { ok, error } = await searchParams;
   const { t } = await getAdminText();
   const k = t.kasse;
-  const [staff, products, settings, hasPw] = await Promise.all([getStaff({ includeInactive: true }), getProducts({ includeInactive: true }), getSettings(), hasKassePassword()]);
+  const [staff, products, settings] = await Promise.all([getStaff({ includeInactive: true }), getProducts({ includeInactive: true }), getSettings()]);
 
   return (
     <>
       <div className="admin-title">
         <h1 className="h2">{t.nav.pos}</h1>
       </div>
-      <KasseNav role="admin" active="settings" t={k} />
+      <KasseNav active="settings" t={k} />
       <Flash ok={ok} error={error} />
 
       <section className="panel" id="team">
@@ -77,20 +77,14 @@ export default async function KasseSettings({ searchParams }: { searchParams: Pr
         </form>
       </section>
 
-      <section className="panel" id="login">
-        <h2 className="pos-h">{k.kasseLogin}</h2>
-        <p className="muted small">{k.kasseLoginHint}</p>
-        <p className="small"><strong>{hasPw ? k.kassePasswordSet : k.kassePasswordNone}</strong></p>
-        <form action={posSaveKassePassword} className="kset-row">
-          <input className="input" type="password" name="password" placeholder={k.kassePassword} minLength={6} maxLength={100} autoComplete="new-password" required />
+      <section className="panel" id="pin">
+        <h2 className="pos-h">{k.pinChange}</h2>
+        <p className="muted small">{k.pinChangeHint}</p>
+        <form action={posSaveKassePin} className="kset-row">
+          <input className="input kset-pin" type="password" name="pin" placeholder={k.newPin} inputMode="numeric" pattern="\d{6}" maxLength={6} autoComplete="off" required />
+          <input className="input kset-pin" type="password" name="pin2" placeholder={k.newPin2} inputMode="numeric" pattern="\d{6}" maxLength={6} autoComplete="off" required />
           <SubmitButton>{t.common.save}</SubmitButton>
         </form>
-        {hasPw && (
-          <form action={posSaveKassePassword}>
-            <input type="hidden" name="off" value="1" />
-            <ConfirmButton className="link-danger" message={`${k.kassePasswordOff}?`}>{k.kassePasswordOff}</ConfirmButton>
-          </form>
-        )}
       </section>
     </>
   );

@@ -1,9 +1,7 @@
 import Link from "next/link";
-import type { Role } from "@/lib/auth";
 
-/** Unterteilung der Kasse. Auswertung und Einstellungen nur im vollen Admin. */
-export function KasseNav({ role, active, t }: { role: Role; active: "sell" | "report" | "settings"; t: { sell: string; report: string; settings: string } }) {
-  if (role !== "admin") return null;
+/** Unterteilung der Kasse */
+export function KasseNav({ active, t }: { active: "sell" | "report" | "settings"; t: { sell: string; report: string; settings: string } }) {
   const items = [
     { key: "sell", href: "/admin/kasse", label: t.sell },
     { key: "report", href: "/admin/kasse/auswertung", label: t.report },

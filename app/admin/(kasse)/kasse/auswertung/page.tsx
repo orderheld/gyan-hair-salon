@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { KasseNav } from "@/components/admin/KasseNav";
 import { getAdminText } from "@/lib/admin";
-import { requireAdmin } from "@/lib/auth";
+import { requireKasse } from "@/lib/auth";
 import { fill } from "@/lib/i18n";
 import { getSalesBetween, getStaff, summarize, verifyChain } from "@/lib/pos";
 import { PERIODS, periodRange, rangeDates } from "@/lib/pos-period";
@@ -12,7 +12,7 @@ export const dynamic = "force-dynamic";
 const chf = (n: number) => n.toLocaleString("de-CH", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
 export default async function Report({ searchParams }: { searchParams: Promise<{ zeit?: string; von?: string; bis?: string }> }) {
-  await requireAdmin();
+  await requireKasse();
   const { locale, t } = await getAdminText();
   const k = t.kasse;
   const range = periodRange(await searchParams);
@@ -27,7 +27,7 @@ export default async function Report({ searchParams }: { searchParams: Promise<{
       <div className="admin-title">
         <h1 className="h2">{t.nav.pos}</h1>
       </div>
-      <KasseNav role="admin" active="report" t={k} />
+      <KasseNav active="report" t={k} />
 
       <div className="report-bar">
         <div className="pos-seg" role="group">

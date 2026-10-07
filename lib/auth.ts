@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 import { ADMIN_COOKIE as COOKIE, comingSoon } from "./coming-soon";
 import { getSql } from "./db";
 
-const KASSE_COOKIE = "gyan_kasse";
+const KASSE_COOKIE = "gyan_kasse_pin";
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 Tage
 
 function secret() {
@@ -47,72 +47,72 @@ export async function endSession() {
   jar.delete(KASSE_COOKIE);
 }
 
-/* Kassen-Login: eigenes Passwort (im Admin unter Kasse → Einstellungen gesetzt).
-   Sieht nur die Kasse und den eben erstellten Beleg, keine Umsätze, Auswertungen oder Kundendaten. */
+/* Kasse mit PIN wie ein Handy-Sperrbildschirm: nach dem Admin-Login muss für die Kasse
+   zusätzlich die 6-stellige PIN eingegeben werden. «Verlassen» sperrt die Kasse wieder. */
 
-const kasseSign = (expires: string) => sign(`kasse:${expires}`);
+const DEFAULT_PIN = "020202";
+const PIN_HOURS = 12;
+const pinSign = (expires: string, version: string) => sign(`pin:${expires}:${version}`);
 
-export async function setKassePassword(password: string) {
+type StoredPin = { salt: string; hash: string };
+
+async function storedPin(): Promise<StoredPin | null> {
+  const sql = await getSql();
+  const [row] = await sql`SELECT value FROM settings WHERE key = 'kassePin'`;
+  const v = row?.value as StoredPin | null | undefined;
+  return v?.salt && v.hash ? v : null;
+}
+
+/** Ändert sich die PIN, werden offene Kassen-Freigaben ungültig */
+const pinVersion = (p: StoredPin | null) => (p ? p.hash.slice(0, 12) : "default");
+
+export const isPin = (pin: string) => /^\d{6}$/.test(pin);
+
+export async function setKassePin(pin: string) {
   const sql = await getSql();
   const salt = randomBytes(16).toString("hex");
-  const hash = password ? scryptSync(password, salt, 32).toString("hex") : "";
-  const value = JSON.stringify(password ? { salt, hash } : null);
-  await sql`INSERT INTO settings (key, value, updated_at) VALUES ('kassePassword', ${value}::jsonb, now())
+  const value = JSON.stringify({ salt, hash: scryptSync(pin, salt, 32).toString("hex") });
+  await sql`INSERT INTO settings (key, value, updated_at) VALUES ('kassePin', ${value}::jsonb, now())
             ON CONFLICT (key) DO UPDATE SET value = EXCLUDED.value, updated_at = now()`;
 }
 
-export async function hasKassePassword() {
-  const sql = await getSql();
-  const [row] = await sql`SELECT value FROM settings WHERE key = 'kassePassword'`;
-  return Boolean(row?.value?.hash);
-}
-
-export async function checkKassePassword(input: string) {
-  if (!input) return false;
-  const sql = await getSql();
-  const [row] = await sql`SELECT value FROM settings WHERE key = 'kassePassword'`;
-  const stored = row?.value as { salt?: string; hash?: string } | null;
-  if (!stored?.salt || !stored.hash) return false;
-  return safeEqual(scryptSync(input, stored.salt, 32).toString("hex"), stored.hash);
-}
-
-export async function startKasseSession() {
-  const expires = String(Math.floor(Date.now() / 1000) + MAX_AGE);
-  (await cookies()).set(KASSE_COOKIE, `${expires}.${kasseSign(expires)}`, {
+/** Prüft die PIN und entsperrt bei Erfolg die Kasse in diesem Browser */
+export async function unlockKasse(pin: string): Promise<boolean> {
+  if (!isPin(pin)) return false;
+  const stored = await storedPin();
+  const ok = stored ? safeEqual(scryptSync(pin, stored.salt, 32).toString("hex"), stored.hash) : safeEqual(pin, DEFAULT_PIN);
+  if (!ok) return false;
+  const expires = String(Math.floor(Date.now() / 1000) + PIN_HOURS * 3600);
+  // ohne maxAge: schliesst man den Browser, ist die Kasse wieder gesperrt
+  (await cookies()).set(KASSE_COOKIE, `${expires}.${pinSign(expires, pinVersion(stored))}`, {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",
     path: "/",
-    maxAge: MAX_AGE,
   });
+  return true;
 }
 
-async function isKasse() {
+export async function lockKasse() {
+  (await cookies()).delete(KASSE_COOKIE);
+}
+
+async function isKasseUnlocked() {
   const value = (await cookies()).get(KASSE_COOKIE)?.value;
   if (!value) return false;
   const [expires, signature] = value.split(".");
   if (!expires || !signature || Number(expires) < Date.now() / 1000) return false;
   try {
-    return safeEqual(signature, kasseSign(expires));
+    return safeEqual(signature, pinSign(expires, pinVersion(await storedPin())));
   } catch {
     return false;
   }
 }
 
-export type Role = "admin" | "kasse";
-
-/** Wer ist angemeldet? Der volle Admin geht immer vor. */
-export async function getRole(): Promise<Role | null> {
-  if (await isAdmin()) return "admin";
-  if (await isKasse()) return "kasse";
-  return null;
-}
-
-/** Für die Kasse: Admin oder Kassen-Login. */
-export async function requireKasse(): Promise<Role> {
-  const role = await getRole();
-  if (!role) redirect("/admin/login");
-  return role!;
+/** Für alle Seiten und Aktionen der Kasse: Admin-Login und entsperrte Kasse */
+export async function requireKasse() {
+  await requireAdmin();
+  if (!(await isKasseUnlocked())) redirect("/admin/pin");
 }
 
 export async function isAdmin() {

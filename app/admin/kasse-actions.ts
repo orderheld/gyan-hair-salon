@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { getAdminText } from "@/lib/admin";
-import { checkPassword, requireAdmin, requireKasse, setKassePassword } from "@/lib/auth";
+import { isPin, requireAdmin, requireKasse, setKassePin, unlockKasse } from "@/lib/auth";
 import { createSale, deleteProduct, getStaff, PAYMENTS, PosError, saveProduct, saveStaff, stornoSale, type CartLine, type Payment } from "@/lib/pos";
 import { saveSettings } from "@/lib/settings";
 
@@ -45,7 +45,7 @@ export async function posCheckout(input: CheckoutInput): Promise<{ no?: number; 
 }
 
 export async function posStorno(fd: FormData) {
-  await requireAdmin();
+  await requireKasse();
   const { t } = await getAdminText();
   const no = Number(fd.get("no"));
   const reason = str(fd, "reason");
@@ -62,7 +62,7 @@ export async function posStorno(fd: FormData) {
 }
 
 export async function posSaveStaff(fd: FormData) {
-  await requireAdmin();
+  await requireKasse();
   const { t } = await getAdminText();
   const staff = await getStaff({ includeInactive: true });
   await saveStaff(
@@ -73,7 +73,7 @@ export async function posSaveStaff(fd: FormData) {
 }
 
 export async function posSaveProduct(fd: FormData) {
-  await requireAdmin();
+  await requireKasse();
   const { t } = await getAdminText();
   const id = Number(fd.get("id")) || undefined;
   const name = str(fd, "name", 80);
@@ -85,7 +85,7 @@ export async function posSaveProduct(fd: FormData) {
 }
 
 export async function posDeleteProduct(fd: FormData) {
-  await requireAdmin();
+  await requireKasse();
   const { t } = await getAdminText();
   await deleteProduct(Number(fd.get("id")));
   revalidatePath("/admin/kasse", "layout");
@@ -93,7 +93,7 @@ export async function posDeleteProduct(fd: FormData) {
 }
 
 export async function posSaveVat(fd: FormData) {
-  await requireAdmin();
+  await requireKasse();
   const { t } = await getAdminText();
   const rate = num(fd, "vatRate");
   if (!Number.isFinite(rate) || rate < 0 || rate > 30) back("/admin/kasse/einstellungen#mwst", t.common.checkInput, "error");
@@ -101,16 +101,21 @@ export async function posSaveVat(fd: FormData) {
   back("/admin/kasse/einstellungen#mwst", t.common.saved);
 }
 
-export async function posSaveKassePassword(fd: FormData) {
+/** Sperrbildschirm: PIN prüfen. Kurze Pause bremst Rateversuche. */
+export async function posUnlock(pin: string): Promise<boolean> {
   await requireAdmin();
+  await new Promise((r) => setTimeout(r, 350));
+  return unlockKasse(String(pin ?? ""));
+}
+
+export async function posSaveKassePin(fd: FormData) {
+  await requireKasse();
   const { t } = await getAdminText();
-  const path = "/admin/kasse/einstellungen#login";
-  if (fd.get("off") === "1") {
-    await setKassePassword("");
-    back(path, t.common.saved);
-  }
-  const password = String(fd.get("password") ?? "");
-  if (password.length < 6 || password.length > 100 || checkPassword(password)) back(path, t.kasse.kassePasswordShort, "error");
-  await setKassePassword(password);
-  back(path, t.common.saved);
+  const path = "/admin/kasse/einstellungen#pin";
+  const pin = String(fd.get("pin") ?? "").trim();
+  if (!isPin(pin) || pin !== String(fd.get("pin2") ?? "").trim()) back(path, t.kasse.pinInvalid, "error");
+  await setKassePin(pin);
+  // Die neue PIN macht die bisherige Freigabe ungültig: gleich wieder entsperren
+  await unlockKasse(pin);
+  back(path, t.kasse.pinSaved);
 }

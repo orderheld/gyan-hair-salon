@@ -170,7 +170,7 @@
   .admin-header-inner { padding-bottom: 10px; }
   .admin-tabs {
     position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; margin: 0; overflow: visible;
-    display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 0;
+    display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 0;
     padding: 6px 4px calc(6px + env(safe-area-inset-bottom));
     background: rgba(251, 249, 245, 0.96); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--line);
@@ -494,7 +494,7 @@ form[data-dirty] .svc-unsaved { display: inline; }
   .cust-hist-when { grid-column: 1 / -1; }
   .bd-when { font-size: 15px; }
 }
-/* Acht Menüpunkte: am kleineren Desktop die kurzen Namen, damit alles auf eine Zeile passt */
+/* Sieben Menüpunkte: am kleineren Desktop die kurzen Namen, damit alles auf eine Zeile passt */
 @media (min-width: 761px) and (max-width: 1499px) {
   .admin-tabs .tab-long { display: none; }
   .admin-tabs .tab-short { display: inline; }
@@ -520,7 +520,7 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .rules-grid > .rules-sub { grid-column: 1 / -1; margin: 0 0 4px; }
 
 /* ---------- Kasse ---------- */
-.admin-kasse-only { padding-bottom: 0; }
+.admin-mode-start, .admin-mode-kasse { padding-bottom: 0 !important; }
 .kasse-nav { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); width: fit-content; max-width: 100%; overflow-x: auto; }
 .kasse-nav a { text-decoration: none; padding: 8px 16px; border-radius: 999px; font-size: 14px; color: var(--taupe); white-space: nowrap; }
 .kasse-nav a.active { background: var(--ink); color: var(--ivory); }
@@ -629,7 +629,38 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .pos-float { display: none; }
 @media (max-width: 980px) {
   .pos-float { display: flex; position: fixed; left: 16px; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom)); z-index: 25; justify-content: space-between; align-items: center; min-height: 52px; padding: 0 18px; border: 0; border-radius: 16px; background: var(--ink); color: var(--ivory); font: inherit; font-size: 15px; box-shadow: 0 16px 34px -14px rgba(20, 18, 16, 0.5); cursor: pointer; }
-  .admin-kasse-only .pos-float { bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .admin-mode-kasse .pos-float { bottom: calc(16px + env(safe-area-inset-bottom)); }
   .pos-cart { scroll-margin-top: 80px; }
 }
 @media (min-width: 761px) and (max-width: 980px) { .pos-float { bottom: 20px; } }
+
+/* ---------- Start: Termine oder Kasse ---------- */
+.start { display: grid; gap: 24px; justify-items: center; padding: clamp(10px, 6vh, 60px) 0; }
+.start-title { text-align: center; margin: 0; }
+.start-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 260px)); gap: 16px; width: 100%; justify-content: center; }
+.start-tile { display: grid; justify-items: center; align-content: start; gap: 8px; padding: 34px 20px 28px; border-radius: 28px; background: var(--white); border: 1px solid var(--line); text-decoration: none; color: var(--ink); text-align: center; box-shadow: 0 20px 40px -30px rgba(20, 18, 16, 0.35); transition: transform 0.15s, box-shadow 0.2s; }
+.start-tile:hover { transform: translateY(-2px); box-shadow: 0 26px 46px -28px rgba(20, 18, 16, 0.4); }
+.start-tile:active { transform: scale(0.98); }
+.start-tile svg { width: 64px; height: 64px; padding: 16px; border-radius: 22px; background: var(--ink); color: var(--ivory); box-sizing: content-box; margin-bottom: 6px; }
+.start-tile strong { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+.start-tile span { font-size: 13.5px; color: var(--taupe); line-height: 1.4; }
+@media (max-width: 560px) { .start-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .start-tile { padding: 26px 12px 22px; border-radius: 22px; } .start-tile svg { width: 48px; height: 48px; padding: 14px; } .start-tile strong { font-size: 19px; } }
+.admin-mode-start .admin-tabs, .admin-mode-kasse .admin-tabs { display: none; }
+@media (max-width: 760px) { .admin-site-link { display: none; } }
+/* ---------- PIN ---------- */
+.pin { display: grid; justify-items: center; gap: 14px; padding: clamp(8px, 4vh, 40px) 0 20px; }
+.pin-lock { width: 30px; height: 30px; color: var(--taupe); }
+.pin-title { margin: 0; font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
+.pin-hint { margin: 0; font-size: 14px; color: var(--taupe); min-height: 20px; }
+.pin-hint.bad { color: var(--danger); }
+.pin-dots { display: flex; gap: 16px; margin: 6px 0 14px; }
+.pin-dots span { width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--ink); transition: background 0.12s; }
+.pin-dots span.on { background: var(--ink); }
+.pin-dots.shake { animation: pin-shake 0.4s; }
+@keyframes pin-shake { 20%, 60% { transform: translateX(-10px); } 40%, 80% { transform: translateX(10px); } }
+.pin-keys { display: grid; grid-template-columns: repeat(3, 78px); gap: 16px 24px; }
+.pin-key { width: 78px; height: 78px; border-radius: 50%; border: 0; background: var(--white); box-shadow: 0 0 0 1px var(--line) inset; font-size: 30px; font-weight: 400; color: var(--ink); cursor: pointer; display: grid; place-items: center; text-decoration: none; font-variant-numeric: tabular-nums; -webkit-tap-highlight-color: transparent; }
+.pin-key:active { background: var(--sand); }
+.pin-key-text { background: none; box-shadow: none; font-size: 15px; color: var(--taupe); }
+.pin-key-text:disabled { opacity: 0.3; }
+.kset-pin { flex: 0 1 180px !important; letter-spacing: 0.3em; }

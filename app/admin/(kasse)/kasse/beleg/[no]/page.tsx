@@ -15,16 +15,14 @@ import { posStorno } from "@/app/admin/kasse-actions";
 export const dynamic = "force-dynamic";
 
 const chf = (n: number) => n.toFixed(2);
-/** Mit dem Kassen-Login nur der eben erstellte Beleg (zum Drucken), keine alten Belege */
-const KASSE_WINDOW_MS = 15 * 60 * 1000;
 
 export default async function Receipt({ params, searchParams }: { params: Promise<{ no: string }>; searchParams: Promise<{ ok?: string; error?: string; neu?: string }> }) {
-  const role = await requireKasse();
+  await requireKasse();
   const [{ no }, { ok, error, neu }] = await Promise.all([params, searchParams]);
   const { locale, t } = await getAdminText();
   const k = t.kasse;
   const sale = await getSale(Number(no));
-  if (!sale || (role !== "admin" && Date.now() - sale.createdAt.getTime() > KASSE_WINDOW_MS)) notFound();
+  if (!sale) notFound();
   const [storno, settings] = await Promise.all([sale.stornoOf === null ? getStornoFor(sale.no) : null, getSettings()]);
   const date = new Intl.DateTimeFormat("de-CH", { timeZone: "Europe/Zurich", day: "2-digit", month: "2-digit", year: "numeric" }).format(sale.createdAt);
 
@@ -34,7 +32,7 @@ export default async function Receipt({ params, searchParams }: { params: Promis
       <div className="receipt-actions no-print">
         <Link href="/admin/kasse" className="btn btn-dark">{k.newSale}</Link>
         <PrintButton label={k.print} />
-        {role === "admin" && <Link href="/admin/kasse/auswertung" className="btn btn-light">{k.report}</Link>}
+        <Link href="/admin/kasse/auswertung" className="btn btn-light">{k.report}</Link>
       </div>
 
       <article className={`receipt${neu ? " is-new" : ""}`}>
@@ -71,7 +69,7 @@ export default async function Receipt({ params, searchParams }: { params: Promis
         <p className="receipt-hash">{sale.hash.slice(0, 16)}</p>
       </article>
 
-      {role === "admin" && sale.stornoOf === null && (
+      {sale.stornoOf === null && (
         storno ? (
           <p className="muted small no-print"><Link className="link" href={`/admin/kasse/beleg/${storno.no}`}>{fill(k.stornoed, { no: String(storno.no).padStart(6, "0") })}</Link></p>
         ) : (
