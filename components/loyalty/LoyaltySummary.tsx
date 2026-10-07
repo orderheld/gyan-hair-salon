@@ -24,7 +24,7 @@ export async function LoyaltySummary({ email, locale }: { email: string; locale:
             <strong>{fill(t.stampsOf, { n: s.onCard, total: needed })}</strong>
             <span className="muted">{s.rewardsAvailable ? t.rewardReady : fill(t.toGo, { n: needed - s.onCard })}</span>
           </p>
-          {s.birthdayAvailable && <p className="lc-gift">✦ {t.birthdayReady}</p>}
+          {s.birthdayAvailable && <p className="lc-gift">{t.birthdayReady}</p>}
           <Link className="btn btn-light btn-sm" href={href(locale, "loyalty")}>{t.accountLink}</Link>
         </div>
         <div className="lc-qr lc-qr-sm" role="img" aria-label={t.qrAlt} dangerouslySetInnerHTML={{ __html: qr }} />

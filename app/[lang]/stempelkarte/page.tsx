@@ -5,7 +5,10 @@ import type { Locale } from "@/content/types";
 import { site } from "@/content/site";
 import { CtaBand, PageHero } from "@/components/site/Blocks";
 import { AccountLogin } from "@/components/site/AccountLogin";
+import { ProfileGate } from "@/components/site/ProfileGate";
+import { getAccountProfile, profileComplete } from "@/lib/customers";
 import { RefCapture } from "@/components/loyalty/RefCapture";
+import { SaveQr } from "@/components/loyalty/SaveQr";
 import { ShareInvite } from "@/components/loyalty/ShareInvite";
 import { Stamps } from "@/components/loyalty/Stamps";
 import { fill, getDict, type Dict } from "@/lib/i18n";
@@ -32,16 +35,24 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return pageMetadata({ locale, title: fill(d.loyalty.metaTitle, { nth }), description: fill(d.loyalty.metaDescription, { nth }), path: (l) => href(l, "loyalty") });
 }
 
+/* Schlichte Linien-Symbole wie bei den Leistungen, keine Emojis */
+const PERK_ICONS: Record<string, React.ReactNode> = {
+  cut: <><circle cx="7" cy="17" r="2.6" /><circle cx="17" cy="17" r="2.6" /><path d="M8.9 15.2 17 4.5M15.1 15.2 7 4.5" /></>,
+  birthday: <><path d="M5 11.5h14V20H5z" /><path d="M3.5 8h17v3.5h-17zM12 8v12" /><path d="M12 8c-1.5-3.5-5-3.5-5-1.2C7 8 9.5 8 12 8zM12 8c1.5-3.5 5-3.5 5-1.2C17 8 14.5 8 12 8z" /></>,
+  referral: <><circle cx="9" cy="8.5" r="3.2" /><path d="M3.5 19.5c.7-3.2 2.9-5 5.5-5s4.8 1.8 5.5 5" /><path d="M18 8v6M15 11h6" /></>,
+  review: <path d="M12 4.2l2.3 4.8 5.2.7-3.8 3.6.9 5.2-4.6-2.5-4.6 2.5.9-5.2-3.8-3.6 5.2-.7z" />,
+};
+
 /** Vorteile der Karte (Haarschnitt, Geburtstag, Einladen, Bewertung), je nach Einstellungen */
 async function Perks({ d, s, locale }: { d: Dict; s: LoyaltySettings; locale: Locale }) {
   const t = d.loyalty;
   const nth = freeNth(s.stampsNeeded, locale);
   const reviewUrl = s.reviewEnabled ? (await getSettings()).reviewUrl : "";
   const perks = [
-    { icon: "✂", title: fill(t.perkCut, { nth }), text: fill(t.perkCutText, { n: s.stampsNeeded }) },
-    s.birthdayEnabled && { icon: "✦", title: t.perkBirthday, text: t.perkBirthdayText },
-    s.referralEnabled && { icon: "↗", title: t.perkReferral, text: t.perkReferralText },
-    reviewUrl && { icon: "★", title: t.perkReview, text: t.perkReviewText, link: reviewUrl },
+    { icon: "cut", title: fill(t.perkCut, { nth }), text: fill(t.perkCutText, { n: s.stampsNeeded }) },
+    s.birthdayEnabled && { icon: "birthday", title: t.perkBirthday, text: t.perkBirthdayText },
+    s.referralEnabled && { icon: "referral", title: t.perkReferral, text: t.perkReferralText },
+    reviewUrl && { icon: "review", title: t.perkReview, text: t.perkReviewText, link: reviewUrl },
   ].filter(Boolean) as { icon: string; title: string; text: string; link?: string }[];
   return (
     <div className="lc-how">
@@ -49,7 +60,7 @@ async function Perks({ d, s, locale }: { d: Dict; s: LoyaltySettings; locale: Lo
       <ul className="lc-perks">
         {perks.map((p) => (
           <li key={p.title}>
-            <span className="lc-perk-icon" aria-hidden>{p.icon}</span>
+            <span className="lc-perk-icon" aria-hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">{PERK_ICONS[p.icon]}</svg></span>
             <div>
               <strong>{p.title}</strong>
               <p className="muted">
@@ -153,8 +164,10 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
     );
   }
 
-  // Angemeldet: Karte holen oder anlegen, Einladung (Link oder gemerkter Code) verknüpfen
-  const card = await ensureCard(email);
+  // Angemeldet: zuerst einmalig Name, Telefon und Geburtsdatum, dann Karte holen oder anlegen und Einladung verknüpfen
+  const profile = await getAccountProfile(email);
+  if (!profileComplete(profile)) return <ProfileGate locale={locale} d={d} email={email} profile={profile} />;
+  const card = await ensureCard(email, profile.name);
   const ref = refParam || normalizeRefCode(jar.get("gyan_ref")?.value ?? "");
   const refResult = ref && ref !== card.refCode ? await linkReferral(card, ref) : ref ? "self" : null;
   const [state, qr] = await Promise.all([getCardState(card, { logLimit: 8 }), cardQrSvg(card.token)]);
@@ -186,7 +199,7 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
               <strong>{fill(t.stampsOf, { n: state.onCard, total: needed })}</strong>
               <span>{state.rewardsAvailable ? (state.rewardsAvailable > 1 ? fill(t.rewardsReady, { n: state.rewardsAvailable }) : t.rewardReady) : fill(t.toGo, { n: needed - state.onCard })}</span>
             </p>
-            {s.birthdayEnabled && state.birthdayAvailable && <p className="lc-gift">✦ {t.birthdayReady}</p>}
+            {s.birthdayEnabled && state.birthdayAvailable && <p className="lc-gift">{t.birthdayReady}</p>}
             {s.birthdayEnabled && state.birthdayInMonth && state.birthdayRedeemed && <p className="lc-gift muted">{t.birthdayUsed}</p>}
           </div>
 
@@ -194,6 +207,7 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
             <h2 className="h3">{t.qrTitle}</h2>
             <div className="lc-qr" role="img" aria-label={t.qrAlt} dangerouslySetInnerHTML={{ __html: qr }} />
             <p className="muted">{t.qrHint}</p>
+            <SaveQr svg={qr} label={t.saveQr} fileName="gyan-stempelkarte.png" title="GYAN Stempelkarte" />
             {(apple || google) && (
               <div className="lc-wallets">
                 {apple && <a className="btn btn-dark btn-sm" href={`/api/loyalty/apple?l=${locale}`}>{t.appleWallet}</a>}
@@ -210,7 +224,7 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
               <h2 className="h3">{t.inviteTitle}</h2>
               <p className="muted">{t.inviteText}</p>
               {state.referredBy && <p className="small muted">{fill(t.invitedBy, { name: state.referredBy.name.split(" ")[0] || state.referredBy.refCode })}</p>}
-              <ShareInvite url={inviteUrl} t={{ share: t.share, copy: t.copy, copied: t.copied, shareText: t.shareText, title: t.inviteTitle }} />
+              <ShareInvite url={inviteUrl} t={{ share: t.share, copy: t.copy, copied: t.copied, shareText: t.shareText, title: t.inviteTitle, whatsapp: t.shareWhatsapp, sms: t.shareSms, email: t.shareEmail, more: t.shareMore, subject: t.shareSubject }} />
               <p className="small muted">
                 {t.inviteCode}: <strong>{card.refCode}</strong>
                 {state.referrals.count > 0 && <> · {fill(t.invitedCount, { n: state.referrals.count, m: state.referrals.rewarded })}</>}

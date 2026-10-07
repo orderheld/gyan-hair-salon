@@ -1,6 +1,7 @@
 import "server-only";
 import { mapBooking } from "./data";
 import { getSql } from "./db";
+import { isBirthDate } from "./time";
 
 /**
  * Kunden werden über ihre E-Mail erkannt, ohne E-Mail über die Telefonnummer.
@@ -192,4 +193,36 @@ export async function deleteCustomer(key: string): Promise<number> {
   if (!key.startsWith("tel:")) await sql`DELETE FROM email_codes WHERE email = ${key}`.catch(() => []);
   await sql`DELETE FROM loyalty_cards WHERE customer_key = ${key}`.catch(() => []); // Stempelkarte mit allen Stempeln
   return rows.length;
+}
+
+export type AccountProfile = { name: string; phone: string; birthDate: string };
+
+/** Angaben eines Kundenkontos: was beim Konto steht, sonst vom letzten Termin */
+export async function getAccountProfile(email: string): Promise<AccountProfile> {
+  const key = email.trim().toLowerCase();
+  if (!key) return { name: "", phone: "", birthDate: "" };
+  const sql = await getSql();
+  const [[own], fromBookings] = await Promise.all([
+    sql`SELECT name, phone, birth_date FROM customers WHERE key = ${key}`.catch(() => []),
+    getCustomer(key),
+  ]);
+  const pick = (a: unknown, b: string | undefined) => (typeof a === "string" && a ? a : b ?? "");
+  return {
+    name: pick(own?.name, fromBookings?.name),
+    phone: pick(own?.phone, fromBookings?.phone),
+    birthDate: pick(own?.birth_date, fromBookings?.birthDate),
+  };
+}
+
+/** Sind Name, Telefon und Geburtsdatum vollständig? */
+export const profileComplete = (p: AccountProfile) => p.name.trim().length >= 2 && p.phone.replace(/\D/g, "").length >= 9 && isBirthDate(p.birthDate);
+
+/** Angaben fürs ganze Konto speichern: beim Konto und bei allen Terminen dieser E-Mail */
+export async function saveAccountProfile(email: string, p: AccountProfile) {
+  const key = email.trim().toLowerCase();
+  if (!key) return;
+  const sql = await getSql();
+  await sql`INSERT INTO customers (key, name, phone, birth_date) VALUES (${key}, ${p.name}, ${p.phone}, ${p.birthDate})
+            ON CONFLICT (key) DO UPDATE SET name = EXCLUDED.name, phone = EXCLUDED.phone, birth_date = EXCLUDED.birth_date, updated_at = now()`;
+  if (await getCustomer(key)) await updateCustomerContact(key, { name: p.name, email: key, phone: p.phone, birthDate: p.birthDate });
 }

@@ -10,6 +10,7 @@ import { Footer } from "@/components/site/Footer";
 import { Header } from "@/components/site/Header";
 import { JsonLd } from "@/components/site/Blocks";
 import { getSalonHours, getServices, localize } from "@/lib/data";
+import { isLoyaltyPublic } from "@/lib/loyalty";
 import { SCHEMA_DAYS } from "@/lib/hours";
 import { getDict } from "@/lib/i18n";
 import { HREFLANG, href, isLocale, LOCALES } from "@/lib/i18n/config";
@@ -55,7 +56,7 @@ export default async function LangLayout({ children, params }: { children: React
   if (!isLocale(lang)) notFound();
   const locale = lang;
   const d = getDict(locale);
-  const [services, hours] = await Promise.all([getServices(), getSalonHours()]);
+  const [services, hours, loyaltyOn] = await Promise.all([getServices(), getSalonHours(), isLoyaltyPublic().catch(() => false)]);
 
   const nav = [
     { href: href(locale, "zana"), label: d.nav.zana },
@@ -164,6 +165,8 @@ export default async function LangLayout({ children, params }: { children: React
             { href: href(locale, "services"), label: d.nav.services, icon: "services" },
             { href: href(locale, "booking"), label: d.common.bookShort, icon: "book" },
             { href: href(locale, "zana"), label: d.nav.zana, icon: "zana" },
+            // Stempelkarte immer griffbereit in der Home-Bildschirm-App, sobald sie eingeschaltet ist
+            ...(loyaltyOn ? [{ href: href(locale, "loyalty"), label: d.common.cardShort, icon: "card" as const }] : []),
             { href: href(locale, "contact"), label: d.nav.contact, icon: "contact" },
           ]}
         />

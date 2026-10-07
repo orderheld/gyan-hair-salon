@@ -7,7 +7,8 @@ import { AccountDetails } from "@/components/site/AccountDetails";
 import { AccountLogin, AccountLogout } from "@/components/site/AccountLogin";
 import { LoyaltySummary } from "@/components/loyalty/LoyaltySummary";
 import { TIMEZONE } from "@/lib/config";
-import { getCustomerBookings } from "@/lib/customers";
+import { getAccountProfile, getCustomerBookings, profileComplete } from "@/lib/customers";
+import { ProfileGate } from "@/components/site/ProfileGate";
 import { getServices, localize, type Booking } from "@/lib/data";
 import { formatChf } from "@/lib/format";
 import { fill, getDict } from "@/lib/i18n";
@@ -60,13 +61,14 @@ export default async function MyBookings({ params }: Props) {
     );
   }
 
-  const [bookings, services] = await Promise.all([getCustomerBookings(email), getServices()]);
+  const [bookings, services, profile] = await Promise.all([getCustomerBookings(email), getServices(), getAccountProfile(email)]);
+  if (!profileComplete(profile)) return <ProfileGate locale={locale} d={d} email={email} profile={profile} />;
   const byId = new Map(services.map((s) => [s.id, localize(s, locale)]));
   const now = Date.now();
   const upcoming = bookings.filter((b) => b.status === "confirmed" && b.endsAt.getTime() > now).sort((a, b) => a.startsAt.getTime() - b.startsAt.getTime());
   const past = bookings.filter((b) => !upcoming.includes(b)).slice(0, 12);
   const openFee = bookings.filter((b) => b.feeOpen && b.priceChf != null).reduce((sum, b) => sum + (b.priceChf ?? 0), 0);
-  const name = bookings[0]?.customerName.split(" ")[0];
+  const name = profile.name.split(" ")[0];
 
   const fmt = (o: Intl.DateTimeFormatOptions) => new Intl.DateTimeFormat(INTL_LOCALE[locale], { timeZone: TIMEZONE, ...o });
   const day = fmt({ weekday: "long", day: "numeric", month: "long" });
@@ -125,18 +127,14 @@ export default async function MyBookings({ params }: Props) {
 
         <LoyaltySummary email={email} locale={locale} />
 
-        {bookings.length > 0 && (
+        {(
           <>
             <h2 className="h3 account-h" id="angaben">{t.details}</h2>
             <AccountDetails
               locale={locale}
               email={email}
               t={{ details: t.details, detailsHint: t.detailsHint, detailsSave: t.detailsSave, detailsSaving: t.detailsSaving, detailsSaved: t.detailsSaved, emailFixed: t.emailFixed, name: d.booking.name, phone: d.booking.phone, birthDate: d.booking.birthDate }}
-              initial={{
-                name: bookings[0]?.customerName ?? "",
-                phone: bookings.find((b) => b.customerPhone)?.customerPhone ?? "",
-                birthDate: bookings.find((b) => b.birthDate)?.birthDate ?? "",
-              }}
+              initial={profile}
             />
           </>
         )}

@@ -1026,3 +1026,18 @@ html.app .app-back:active { background: var(--cream); }
   .lc-perks li { grid-template-columns: 36px 1fr; padding: 14px; gap: 12px; }
   .lc-perk-icon { width: 36px; height: 36px; font-size: 16px; }
 }
+
+/* Stempelkarte: Linien-Symbole, Teilen, QR speichern */
+.lc-perk-icon svg { width: 22px; height: 22px; }
+.lc-share-apps { display: grid; grid-template-columns: repeat(auto-fit, minmax(76px, 1fr)); gap: 8px; }
+.lc-share-app { display: grid; justify-items: center; gap: 6px; padding: 12px 6px; border: 1px solid var(--line); border-radius: 16px; background: var(--white); color: var(--ink); font: inherit; font-size: 13px; text-decoration: none; cursor: pointer; transition: background 0.2s, border-color 0.2s; }
+.lc-share-app:hover, .lc-share-app:active { background: var(--cream); border-color: var(--greige); }
+.lc-share-app svg { width: 24px; height: 24px; }
+.lc-share-copy { display: flex; gap: 8px; }
+.lc-share-copy .input { flex: 1; min-width: 0; }
+.lc-save-qr { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; }
+.lc-save-qr svg { width: 18px; height: 18px; }
+
+/* Sechs Tabs (mit Stempelkarte): etwas enger, damit «Leistungen» ganz passt */
+.app-tabs:has(> .app-tab:nth-child(6)) { padding-left: 2px; padding-right: 2px; }
+.app-tabs:has(> .app-tab:nth-child(6)) .app-tab { font-size: 10px; letter-spacing: -0.01em; padding-left: 0; padding-right: 0; }

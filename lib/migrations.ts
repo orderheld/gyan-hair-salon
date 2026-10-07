@@ -157,4 +157,8 @@ export const MIGRATIONS = [
     CHECK (referred_card_id <> referrer_card_id)
   )`,
   `CREATE INDEX IF NOT EXISTS loyalty_referrals_referrer_idx ON loyalty_referrals (referrer_card_id)`,
+  // Kundenkonto ohne Termin (z.B. nur Stempelkarte): Angaben direkt beim Konto
+  `ALTER TABLE customers ADD COLUMN IF NOT EXISTS name text NOT NULL DEFAULT ''`,
+  `ALTER TABLE customers ADD COLUMN IF NOT EXISTS phone text NOT NULL DEFAULT ''`,
+  `ALTER TABLE customers ADD COLUMN IF NOT EXISTS birth_date text NOT NULL DEFAULT ''`,
 ];

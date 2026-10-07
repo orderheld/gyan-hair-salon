@@ -32,7 +32,7 @@ export function AccountDetails({ locale, t, email, initial }: { locale: string; 
 
   return (
     <form className="account-details" onSubmit={save}>
-      <p className="muted small">{t.detailsHint}</p>
+      {t.detailsHint && <p className="muted small">{t.detailsHint}</p>}
       <div className="form-grid">
         <div className="field">
           <label htmlFor="acc-name">{t.name}</label>

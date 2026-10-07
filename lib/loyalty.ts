@@ -104,14 +104,17 @@ export async function getCardByRef(code: string): Promise<Card | null> {
   return r ? mapCard(r) : null;
 }
 
-/** Name und Geburtsdatum aus den Buchungen (neuester Eintrag) */
+/** Name und Geburtsdatum: zuerst die Angaben beim Kundenkonto, sonst aus den Buchungen (neuester Eintrag) */
 async function bookingProfile(key: string): Promise<{ name: string; birthDate: string }> {
   const sql = await getSql();
-  const [r] = await sql`
+  const [[own], [r]] = await Promise.all([
+    sql`SELECT name, birth_date FROM customers WHERE key = ${key}`.catch(() => []),
+    sql`
     SELECT (array_agg(customer_name ORDER BY starts_at DESC))[1] AS name,
            (array_agg(birth_date ORDER BY starts_at DESC) FILTER (WHERE birth_date <> ''))[1] AS birth_date
-    FROM bookings WHERE customer_email <> '' AND lower(customer_email) = ${key}`;
-  return { name: String(r?.name ?? ""), birthDate: String(r?.birth_date ?? "") };
+    FROM bookings WHERE customer_email <> '' AND lower(customer_email) = ${key}`,
+  ]);
+  return { name: String(own?.name || r?.name || ""), birthDate: String(own?.birth_date || r?.birth_date || "") };
 }
 
 /** Karte zur E-Mail holen oder anlegen. Den Namen aus den Buchungen hält sie aktuell. */

@@ -4,7 +4,7 @@ import { siteLocked } from "@/lib/auth";
 import { sendVerifyCode } from "@/lib/email";
 import { fill, getDict } from "@/lib/i18n";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n/config";
-import { getCustomer, updateCustomerContact } from "@/lib/customers";
+import { saveAccountProfile } from "@/lib/customers";
 import { isBirthDate } from "@/lib/time";
 import { checkCode, cookieMatches, createCode, CUSTOMER_COOKIE, readCustomerCookie, RESEND_SECONDS, rememberCustomer, VERIFIED_COOKIE } from "@/lib/verify";
 
@@ -89,7 +89,6 @@ export async function PATCH(request: Request) {
   if (name.length < 2) return NextResponse.json({ error: e.name }, { status: 400 });
   if (phone.replace(/\D/g, "").length < 9) return NextResponse.json({ error: e.phone }, { status: 400 });
   if (!isBirthDate(birthDate)) return NextResponse.json({ error: e.birthDate }, { status: 400 });
-  if (!(await getCustomer(email))) return NextResponse.json({ error: e.generic }, { status: 404 });
-  await updateCustomerContact(email, { name, email, phone, birthDate });
+  await saveAccountProfile(email, { name, phone, birthDate });
   return NextResponse.json({ ok: true });
 }

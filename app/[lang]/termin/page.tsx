@@ -11,7 +11,7 @@ import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
 import { getAvailabilityFor } from "@/lib/availability";
-import { getCustomerBookings } from "@/lib/customers";
+import { getAccountProfile } from "@/lib/customers";
 import { CUSTOMER_COOKIE, readCustomerCookie } from "@/lib/verify";
 
 
@@ -31,18 +31,15 @@ export default async function Booking({ params, searchParams }: Props) {
   const d = getDict(locale);
   const email = readCustomerCookie((await cookies()).get(CUSTOMER_COOKIE)?.value);
   // Alles in einem Schritt laden, die freien Zeiten gleich mit (sonst wartet der Kunde danach nochmals)
-  const [services, settings, mine, availability] = await Promise.all([
+  const [services, settings, profile, availability] = await Promise.all([
     getServices(),
     getSettings(),
-    email ? getCustomerBookings(email) : [],
+    email ? getAccountProfile(email) : null,
     getAvailabilityFor(),
   ]);
   const availabilityAt = Date.now();
-  // Angemeldet: Name und Telefon vom letzten Termin übernehmen
-  const last = mine[0];
-  const known = email
-    ? { name: last?.customerName ?? "", email, phone: mine.find((b) => b.customerPhone)?.customerPhone ?? "", birthDate: mine.find((b) => b.birthDate)?.birthDate ?? "" }
-    : undefined;
+  // Angemeldet: die Angaben des Kontos übernehmen
+  const known = email && profile ? { email, ...profile } : undefined;
   let initial = service && /^\d+$/.test(service) ? Number(service) : undefined;
   if (service && !initial) initial = (await getServiceBySlug(service))?.id;
 

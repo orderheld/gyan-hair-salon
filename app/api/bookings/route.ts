@@ -1,7 +1,7 @@
 import { cookies } from "next/headers";
 import { after, NextResponse } from "next/server";
 import { siteLocked } from "@/lib/auth";
-import { fillBirthDate, getCustomer, isBlocked } from "@/lib/customers";
+import { fillBirthDate, getAccountProfile, isBlocked } from "@/lib/customers";
 import { checkCode, cookieMatches, CUSTOMER_COOKIE, readCustomerCookie, rememberCustomer, VERIFIED_COOKIE } from "@/lib/verify";
 import { isSlotAvailable } from "@/lib/availability";
 import { createBooking, SlotTakenError } from "@/lib/booking";
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   const account = readCustomerCookie(jar.get(CUSTOMER_COOKIE)?.value);
   const email = account || clean(body.email, 120).toLowerCase();
   // Ein Konto hat immer dieselben Angaben: Gespeichertes gilt, das Formular füllt nur Lücken (z. B. Geburtsdatum einmalig)
-  const profile = EMAIL.test(email) ? await getCustomer(email) : null;
+  const profile = EMAIL.test(email) ? await getAccountProfile(email) : null;
   const name = profile?.name || clean(body.name, 80);
   const phone = profile?.phone || clean(body.phone, 30);
   const birthDate = profile?.birthDate || clean(body.birthDate, 10);

@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
-type Tab = { href: string; label: string; icon: "home" | "services" | "book" | "zana" | "contact"; exact?: boolean };
+type Tab = { href: string; label: string; icon: "home" | "services" | "book" | "zana" | "contact" | "card"; exact?: boolean };
 
 const PATHS: Record<Tab["icon"], React.ReactNode> = {
   home: <path d="M4 11.5 12 5l8 6.5V19a1 1 0 0 1-1 1h-4.5v-5.5h-5V20H5a1 1 0 0 1-1-1z" />,
@@ -27,6 +27,15 @@ const PATHS: Record<Tab["icon"], React.ReactNode> = {
       <path d="M7 9.4c2.4-.4 4.4-1.7 5.6-3.6.9 1.6 2.4 2.8 4.4 3.4" />
       <path d="M10 14.6c1.2.7 2.8.7 4 0" />
       <path d="M9.6 19.6 9.3 21.5M14.4 19.6l.3 1.9" />
+    </>
+  ),
+  card: (
+    <>
+      <rect x="3.5" y="5.5" width="17" height="13" rx="2.5" />
+      <circle cx="8" cy="10.5" r="1.4" />
+      <circle cx="12" cy="10.5" r="1.4" />
+      <circle cx="16" cy="10.5" r="1.4" />
+      <path d="M7 15h10" />
     </>
   ),
   contact: (
@@ -57,7 +66,7 @@ export function AppShell({ tabs }: { tabs: Tab[] }) {
   }, []);
 
   return (
-    <nav className="app-tabs" aria-label="App">
+    <nav className="app-tabs" aria-label="App" style={{ gridTemplateColumns: `repeat(${tabs.length}, minmax(0, 1fr))` }}>
       {tabs.map((t) => {
         const active = t.exact ? pathname === t.href : pathname.startsWith(t.href);
         return (

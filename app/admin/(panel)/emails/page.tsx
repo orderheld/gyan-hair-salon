@@ -42,21 +42,6 @@ export default async function Emails({ searchParams }: { searchParams: Promise<{
           </div>
         )}
       </section>
-      <details className="panel legend">
-        <summary className="h3">{e.legendTitle}</summary>
-        <p className="muted small">{e.legendHint}</p>
-        <dl className="legend-list">
-          {(Object.keys(e.vars) as (keyof typeof e.vars)[]).map((k) => (
-            <div key={k}>
-              <dt><code>{`{${k}}`}</code></dt>
-              <dd>
-                {e.vars[k]}
-                <span className="muted small">{e.legendExample}: {examples[k] || "–"}</span>
-              </dd>
-            </div>
-          ))}
-        </dl>
-      </details>
 
       <div className="mail-list">
         {EMAIL_TYPES.map((type) => {
@@ -80,7 +65,7 @@ export default async function Emails({ searchParams }: { searchParams: Promise<{
                 {LOCALES.map((l) => {
                   const tpl = templateFor(s, type, l);
                   return (
-                    <details key={l} className="svc-lang" open={l === locale}>
+                    <details key={l} className="svc-lang">
                       <summary>
                         {LOCALE_NAMES[l]} <span className="muted small">· {tpl.subject}</span>
                       </summary>
@@ -111,6 +96,21 @@ export default async function Emails({ searchParams }: { searchParams: Promise<{
         })}
       </div>
       <p className="muted small">{e.previewNote}</p>
+      <details className="panel legend">
+        <summary className="h3">{e.legendTitle}</summary>
+        <p className="muted small">{e.legendHint}</p>
+        <dl className="legend-list">
+          {(Object.keys(e.vars) as (keyof typeof e.vars)[]).map((k) => (
+            <div key={k}>
+              <dt><code>{`{${k}}`}</code></dt>
+              <dd>
+                {e.vars[k]}
+                <span className="muted small">{e.legendExample}: {examples[k] || "–"}</span>
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </details>
     </>
   );
 }
