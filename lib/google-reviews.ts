@@ -24,7 +24,7 @@ const FIRST_SYNC_KEEP_DAYS = 90;
 
 type StoredLocation = { account: string; location: string; title: string; address: string };
 
-type StoredConfig = {
+export type StoredConfig = {
   refreshToken?: string;
   connectedAt?: string;
   accountId?: string;
@@ -92,7 +92,7 @@ export function authUrl(redirect: string, state: string) {
 
 /* ---------- gespeicherte Verbindung ---------- */
 
-async function readConfig(): Promise<StoredConfig> {
+export async function readConfig(): Promise<StoredConfig> {
   const sql = await getSql();
   const [r] = await sql`SELECT value FROM settings WHERE key = 'googleReviews'`;
   return (r?.value ?? {}) as StoredConfig;
@@ -133,7 +133,7 @@ export async function disconnectGoogle() {
 
 /* ---------- Google-Aufrufe ---------- */
 
-async function googleFetch(url: string, init: RequestInit = {}): Promise<Row> {
+export async function googleFetch(url: string, init: RequestInit = {}): Promise<Row> {
   let res: Response;
   try {
     res = await fetch(url, { ...init, cache: "no-store", signal: AbortSignal.timeout(15000) });
@@ -177,14 +177,14 @@ export async function connectWithCode(code: string, redirect: string): Promise<s
   return String(t.access_token ?? "");
 }
 
-async function accessToken(refreshToken: string) {
+export async function accessToken(refreshToken: string) {
   const t = await tokenRequest({ refresh_token: refreshToken, grant_type: "refresh_token" });
   const token = String(t.access_token ?? "");
   if (!token) throw new GoogleError("auth", "Kein Access-Token erhalten");
   return token;
 }
 
-const auth = (token: string) => ({ headers: { Authorization: `Bearer ${token}` } });
+export const auth = (token: string) => ({ headers: { Authorization: `Bearer ${token}` } });
 
 /** Alle Standorte aller Konten, auf die der verbundene Google-Zugang Zugriff hat */
 async function fetchLocations(token: string): Promise<StoredLocation[]> {

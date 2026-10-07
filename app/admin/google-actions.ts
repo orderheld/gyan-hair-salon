@@ -16,6 +16,7 @@ import {
   syncGoogleReviews,
   undoDismiss,
 } from "@/lib/google-reviews";
+import { syncBusinessProfile } from "@/lib/google-business";
 import { getCardById, getCardState, STAFF_COOKIE, stampReview } from "@/lib/loyalty";
 import { syncGoogleWallet } from "@/lib/wallet";
 
@@ -82,6 +83,8 @@ export async function googleSyncNow() {
   let params: Record<string, string>;
   try {
     const r = await syncGoogleReviews();
+    // Google-Profil gleich mit abgleichen (Öffnungszeiten, Webseite, neuer Journal-Beitrag)
+    await syncBusinessProfile().catch((e) => console.error("[GYAN] Google-Profil:", e));
     params = { ok: fill(t.google.synced, { n: r.added }) };
   } catch (e) {
     console.error("[GYAN] Google-Bewertungen abrufen:", e);

@@ -4,6 +4,7 @@ import { Flash } from "@/components/admin/Flash";
 import { StempelNav } from "@/components/admin/StempelNav";
 import { site } from "@/content/site";
 import { getAdminText } from "@/lib/admin";
+import { getBusinessSyncStatus } from "@/lib/google-business";
 import { getGoogleStatus, listCardCandidates, listGoogleReviews, type StoredReview } from "@/lib/google-reviews";
 import { maskEmail, searchCards, suggestCards, type Suggestion } from "@/lib/review-match";
 import { fill } from "@/lib/i18n";
@@ -48,7 +49,7 @@ export default async function StempelReviews({ searchParams }: { searchParams: S
   const { locale, t: all } = await getAdminText();
   const t = all.loyalty;
   const g = t.google;
-  const [status, settings] = await Promise.all([getGoogleStatus(), getLoyaltySettings()]);
+  const [status, settings, profile] = await Promise.all([getGoogleStatus(), getLoyaltySettings(), getBusinessSyncStatus()]);
   const reviewOff = !settings.reviewEnabled;
   const { fresh, done } = status.connected ? await listGoogleReviews() : { fresh: [], done: [] };
   const cards = fresh.length ? await listCardCandidates() : [];
@@ -122,6 +123,11 @@ export default async function StempelReviews({ searchParams }: { searchParams: S
             {status.lastError && (
               <p className="gr-error small">{g.lastError} {g.errors[status.lastError]}{status.lastErrorDetail ? <span className="muted"> ({status.lastErrorDetail})</span> : null}</p>
             )}
+            <p className="muted small">
+              {g.profileSync} {fill(g.profileAt, { date: profile.profileAt ? fmtDateTime(profile.profileAt, locale) : g.never })}
+              {profile.lastPostAt ? ` · ${fill(g.profilePost, { title: profile.lastPostTitle, date: fmtDateTime(profile.lastPostAt, locale) })}` : ""}
+            </p>
+            {profile.lastError && <p className="gr-error small">{g.lastError} <span className="muted">{profile.lastError}</span></p>}
             {status.fake && <p className="muted small">{g.fakeHint}</p>}
           </>
         ) : (
