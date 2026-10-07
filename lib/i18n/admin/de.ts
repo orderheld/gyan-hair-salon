@@ -399,7 +399,7 @@ const adminDe = {
     buffer: "Puffer nach jedem Termin",
     bufferHint: "Pause nach jedem Termin, bevor der nächste beginnen kann.",
     cancelNotice: "Online-Stornierung bis",
-    cancelNoticeHint: "Bis wie viele Stunden vor dem Termin Kunden selbst stornieren können.",
+    cancelNoticeHint: "Bis wie viele Stunden vor dem Termin Kunden kostenlos stornieren können. Später geht es auch noch, dann wird die Leistung beim nächsten Besuch verrechnet.",
     reminder: "Erinnerung vor dem Termin",
     reminderHint: "Wie viele Stunden vorher die Erinnerungs-E-Mail rausgeht.",
     followup: "Feedback-E-Mail nach dem Termin",

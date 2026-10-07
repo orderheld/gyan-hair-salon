@@ -10,7 +10,7 @@ import { CtaBand, SectionHead, ServiceRows, Visit, Words } from "@/components/si
 import { Intro } from "@/components/site/Intro";
 import { PostCard } from "@/components/site/PostCard";
 import { getSalonHours, getServices, localize } from "@/lib/data";
-import { getDict } from "@/lib/i18n";
+import { fill, getDict } from "@/lib/i18n";
 import { href, type Locale as Lc } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { Wordmark } from "@/components/brand/Logo";
@@ -244,7 +244,7 @@ export default async function Home({ params }: Props) {
           <p className="rating-big">{site.rating.value}</p>
           <p className="stars stars-lg" aria-hidden>★★★★★</p>
           <h2 className="h2">{h.reviewsTitle}</h2>
-          <p className="lead">{h.reviewsText}</p>
+          <p className="lead">{fill(h.reviewsText, { count: site.rating.count })}</p>
           <div className="btn-row reviews-btns">
             <a className="btn btn-light" href={site.googleReviewsUrl} target="_blank" rel="noopener">{h.reviewsCta}</a>
             <a className="btn btn-dark" href={site.googleWriteReviewUrl} target="_blank" rel="noopener">★ {h.reviewsWrite}</a>
