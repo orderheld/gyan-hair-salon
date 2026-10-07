@@ -34,7 +34,8 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { overflow-x: clip; -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+/* kein overflow auf html/body: iOS (Home-Bildschirm-App) verschiebt sonst fixierte Leisten beim Scrollen */
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
 body {
   margin: 0;
   background: var(--ivory);
@@ -45,7 +46,6 @@ body {
   letter-spacing: -0.003em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
-  overflow-x: clip;
 }
 @media (min-width: 760px) { body { font-size: 17px; } }
 img, svg { max-width: 100%; display: block; }

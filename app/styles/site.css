@@ -146,7 +146,7 @@ html.menu-open .sticky-book { transform: translate(-50%, 140%); }
 @keyframes pulse { 70% { box-shadow: 0 0 0 9px rgba(127, 194, 142, 0); } 100% { box-shadow: 0 0 0 0 rgba(127, 194, 142, 0); } }
 @media (min-width: 1200px) { .sticky-book { display: none; } }
 
-main { display: block; }
+main { display: block; overflow-x: clip; }
 
 /* ---------- Intro ---------- */
 .intro { position: fixed; inset: 0; z-index: 100; pointer-events: none; animation: intro-out 0s linear 1.56s forwards; }
@@ -479,7 +479,7 @@ html.no-intro { --intro-delay: 0.1s; }
 .cta-band .lead { color: var(--taupe); }
 
 /* ---------- Footer ---------- */
-.footer { background: var(--cream); color: var(--taupe); border-top: 1px solid var(--sand); font-size: 14px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
+.footer { overflow-x: clip; background: var(--cream); color: var(--taupe); border-top: 1px solid var(--sand); font-size: 14px; padding-bottom: calc(96px + env(safe-area-inset-bottom)); }
 .footer .container { padding-top: 64px; }
 .footer-top { display: grid; gap: 44px; }
 .footer-mark { height: 30px; width: auto; color: var(--ink); margin-bottom: 18px; }
