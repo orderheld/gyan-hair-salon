@@ -53,7 +53,8 @@ export async function POST(request: Request) {
 }
 
 export async function DELETE(request: Request) {
-  const body = (await request.json().catch(() => ({}))) as { endpoint?: string };
-  if (typeof body.endpoint === "string") await removePushSubscription(body.endpoint);
-  return NextResponse.json({ ok: true });
+  const body = (await request.json().catch(() => ({}))) as { endpoint?: string; role?: string };
+  if (typeof body.endpoint !== "string") return NextResponse.json({ ok: true, removed: 0 });
+  const removed = await removePushSubscription(body.endpoint, body.role === "admin" ? "admin" : undefined);
+  return NextResponse.json({ ok: true, removed });
 }

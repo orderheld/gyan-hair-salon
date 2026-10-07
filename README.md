@@ -248,6 +248,13 @@ Die Live-Angaben auf der Startseite (offen/geschlossen, nächster freier Termin)
 - Push und E-Mail laufen immer zusammen und folgen denselben Schaltern unter **E-Mails**. Wer keine Push-Erlaubnis gibt, bekommt einfach nur die E-Mails.
 - Ein Browser darf Benachrichtigungen nie ohne Zustimmung erlauben. Die Abfrage kommt deshalb genau beim Klick auf «Buchen» bzw. «Aktivieren», wo die meisten zustimmen.
 
+### Absender-Zeile («von gyanhairsalon.ch»)
+
+Diese Zeile setzt der Browser, nicht die Webseite. Sie verschwindet, wenn die Seite als App installiert ist:
+- **Admin:** Admin im Browser öffnen, «Zum Startbildschirm hinzufügen» bzw. «App installieren», danach in der App einmal «Aktivieren». Die Meldungen kommen dann von «GYAN Admin».
+- **Kunden:** Wer die Seite als App installiert hat, bekommt die Meldungen von «GYAN». Im normalen Browser zeigen Android und Computer immer den Browser und die Adresse an.
+- Am iPhone gibt es Push nur in der installierten App, dort steht immer der App-Name.
+
 ## 16. Meine Termine (Kunden-Bereich)
 
 Kunden finden oben rechts das Personen-Symbol (im Handy-Menü «Meine Termine»). Pfade: `/de/meine-termine`, `/fr/mes-rendez-vous`, `/en/my-bookings`.

@@ -14,11 +14,22 @@ import { formatShortDate, formatTime, toDateKey } from "./time";
  * Schlüssel einmal erzeugen: npx web-push generate-vapid-keys
  * und in Vercel als VAPID_PUBLIC_KEY und VAPID_PRIVATE_KEY eintragen.
  */
-const PUBLIC = process.env.VAPID_PUBLIC_KEY ?? "";
-const PRIVATE = process.env.VAPID_PRIVATE_KEY ?? "";
-export const pushEnabled = !!(PUBLIC && PRIVATE);
-export const vapidPublicKey = PUBLIC;
-if (pushEnabled) webpush.setVapidDetails(`mailto:${site.email}`, PUBLIC, PRIVATE);
+const PUBLIC = (process.env.VAPID_PUBLIC_KEY ?? "").trim();
+const PRIVATE = (process.env.VAPID_PRIVATE_KEY ?? "").trim();
+
+// Falsch kopierte Schlüssel dürfen nie die Webseite oder das Buchen lahmlegen: dann ist Push einfach aus
+function setup() {
+  if (!PUBLIC || !PRIVATE) return false;
+  try {
+    webpush.setVapidDetails(`mailto:${site.email}`, PUBLIC, PRIVATE);
+    return true;
+  } catch (e) {
+    console.error("[GYAN] Push-Schlüssel ungültig, Push ist aus:", e instanceof Error ? e.message : e);
+    return false;
+  }
+}
+export const pushEnabled = setup();
+export const vapidPublicKey = pushEnabled ? PUBLIC : "";
 
 export type PushSubscriptionJSON = { endpoint: string; keys: { p256dh: string; auth: string } };
 type Payload = { title: string; body: string; url: string; tag?: string; actions?: { action: string; title: string; url: string }[] };
@@ -33,9 +44,12 @@ export async function savePushSubscription(sub: PushSubscriptionJSON, role: "adm
       locale = EXCLUDED.locale`;
 }
 
-export async function removePushSubscription(endpoint: string) {
+export async function removePushSubscription(endpoint: string, role?: "admin" | "customer"): Promise<number> {
   const sql = await getSql();
-  await sql`DELETE FROM push_subscriptions WHERE endpoint = ${endpoint}`;
+  const rows = role
+    ? await sql`DELETE FROM push_subscriptions WHERE endpoint = ${endpoint} AND role = ${role} RETURNING endpoint`
+    : await sql`DELETE FROM push_subscriptions WHERE endpoint = ${endpoint} RETURNING endpoint`;
+  return rows.length;
 }
 
 async function deliver(rows: Record<string, unknown>[], payload: Payload) {

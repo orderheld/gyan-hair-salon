@@ -127,7 +127,7 @@ const adminEn: AdminDict = {
     test: "Send test notification",
     tested: "Test sent to {n} device(s).",
     noDevices: "No device signed up yet. Tap «Turn on» at the top of the admin.",
-    notConfigured: "Push is not set up yet: VAPID keys are missing in Vercel (guide, section 15).",
+    notConfigured: "Push is not set up yet: VAPID keys in Vercel are missing or invalid (guide, section 15).",
   },
   calendar: {
     title: "Calendar",

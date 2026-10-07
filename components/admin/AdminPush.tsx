@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { askPushPermission, pushPermission, subscribePush } from "@/lib/push-client";
+import { askPushPermission, pushPermission, registerWorker, subscribePush } from "@/lib/push-client";
 
 type Texts = { title: string; text: string; button: string; denied: string; later: string };
 
@@ -11,7 +11,7 @@ export function AdminPush({ t, enabled }: { t: Texts; enabled: boolean }) {
 
   useEffect(() => {
     if (!enabled) return;
-    if ("serviceWorker" in navigator) navigator.serviceWorker.register("/sw.js").catch(() => {});
+    if ("serviceWorker" in navigator) registerWorker(true).catch(() => {});
     const perm = pushPermission();
     let snoozed = false;
     try {

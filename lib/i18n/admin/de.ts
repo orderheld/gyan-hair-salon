@@ -125,7 +125,7 @@ const adminDe = {
     test: "Testnachricht senden",
     tested: "Testnachricht an {n} Gerät(e) gesendet.",
     noDevices: "Noch kein Gerät angemeldet. Tippe oben im Admin auf «Aktivieren».",
-    notConfigured: "Push ist noch nicht eingerichtet: VAPID-Schlüssel in Vercel fehlen (Anleitung Abschnitt 15).",
+    notConfigured: "Push ist noch nicht eingerichtet: VAPID-Schlüssel in Vercel fehlen oder sind falsch kopiert (Anleitung Abschnitt 15).",
   },
   calendar: {
     title: "Kalender",

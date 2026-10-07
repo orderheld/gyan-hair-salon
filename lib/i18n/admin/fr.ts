@@ -127,7 +127,7 @@ const adminFr: AdminDict = {
     test: "Envoyer un test",
     tested: "Test envoyé à {n} appareil(s).",
     noDevices: "Aucun appareil inscrit. Touche «Activer» en haut de l’admin.",
-    notConfigured: "Les notifications ne sont pas encore configurées : les clés VAPID manquent dans Vercel (guide, section 15).",
+    notConfigured: "Les notifications ne sont pas encore configurées : les clés VAPID manquent dans Vercel ou sont invalides (guide, section 15).",
   },
   calendar: {
     title: "Calendrier",
