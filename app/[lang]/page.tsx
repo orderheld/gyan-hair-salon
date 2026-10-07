@@ -83,10 +83,10 @@ export default async function Home({ params }: Props) {
 
           <div className="hero-visual">
             <div className="hero-arch">
-              <Image src={site.images.hero} alt={`GYAN Hair Salon Biel/Bienne`} fill preload sizes="(max-width: 900px) 80vw, 40vw" />
+              <Image src={site.images.hero} alt={site.imageAlt[site.images.hero][locale]} fill preload sizes="(max-width: 900px) 80vw, 40vw" />
             </div>
             <div className="hero-small">
-              <Image src="/images/hero-fade.jpg" alt={FILM[2].caption[locale]} fill sizes="(max-width: 900px) 40vw, 18vw" />
+              <Image src="/images/hero-fade.jpg" alt={site.imageAlt["/images/hero-fade.jpg"][locale]} fill sizes="(max-width: 900px) 40vw, 18vw" />
             </div>
             <div className="hero-badge" aria-hidden>
               <svg viewBox="0 0 100 100" className="badge-ring">
@@ -138,11 +138,11 @@ export default async function Home({ params }: Props) {
           <div className="story-media" data-progress>
             <div className="sweep">
               <div className="story-img">
-                <Image src={site.images.zanaMain} alt={`${site.owner}, GYAN Hair Salon Biel`} fill sizes="(max-width: 900px) 90vw, 45vw" />
+                <Image src={site.images.zanaMain} alt={site.imageAlt[site.images.zanaMain][locale]} fill sizes="(max-width: 900px) 90vw, 45vw" />
               </div>
             </div>
             <div className="story-inset sweep-slow">
-              <Image src={site.images.zana} alt={site.owner} fill sizes="260px" />
+              <Image src={site.images.zana} alt={site.imageAlt[site.images.zana][locale]} fill sizes="260px" />
             </div>
           </div>
           <div className="story-text" data-reveal>
@@ -196,7 +196,7 @@ export default async function Home({ params }: Props) {
             <a className="arrow-link" href={site.instagram} target="_blank" rel="noopener">{h.workCta} →</a>
           </div>
         }
-        items={FILM.map((f) => ({ src: f.src, alt: `${f.caption[locale]} · GYAN Hair Salon Biel`, caption: f.caption[locale] }))}
+        items={FILM.map((f) => ({ src: f.src, alt: site.imageAlt[f.src]?.[locale] ?? f.caption[locale], caption: f.caption[locale] }))}
       />
 
       <section className="section ways">
@@ -231,7 +231,7 @@ export default async function Home({ params }: Props) {
             {[site.images.lounge, site.images.reception, site.images.wash].map((src, i) => (
               <div key={src} className={`mosaic-${i}`} data-reveal style={{ transitionDelay: `${i * 100}ms` }}>
                 <div className="parallax-img" data-parallax={String(0.05 + i * 0.05)}>
-                  <Image src={src} alt={`GYAN Hair Salon Biel · ${h.salonEyebrow}`} fill sizes="(max-width: 900px) 50vw, 25vw" />
+                  <Image src={src} alt={site.imageAlt[src][locale]} fill sizes="(max-width: 900px) 50vw, 25vw" />
                 </div>
               </div>
             ))}

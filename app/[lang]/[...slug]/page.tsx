@@ -2,11 +2,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, permanentRedirect } from "next/navigation";
+import { relatedPosts } from "@/content/blog";
 import { places } from "@/content/seo/places";
 import { topics } from "@/content/seo/topics";
 import { site } from "@/content/site";
 import type { Locale, SeoPlace, SeoTopic } from "@/content/types";
 import { Markdown } from "@/components/Markdown";
+import { PostCard } from "@/components/site/PostCard";
 import { CtaBand, FaqList, faqSchema, Hours, JsonLd, PageHero, ServiceRows } from "@/components/site/Blocks";
 import { getSalonHours, getServices, localize } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
@@ -56,6 +58,7 @@ export default async function SeoPage({ params }: Props) {
   const faq = hit.kind === "topic" ? hit.page.faq[locale] : [];
   const neighbors = hit.kind === "place" ? hit.page.neighbors.map((k) => places.find((p) => p.key === k)).filter((p) => !!p) : places.slice(0, 6);
   const otherTopics = topics.filter((t) => t.key !== page.key);
+  const reading = relatedPosts({ seo: page.key, services: keys });
   const crumbs = [
     { label: d.nav.home, href: href(locale, "home") },
     { label: hit.kind === "place" ? `${PLACE_PREFIX[locale]} ${hit.page.name[locale]}` : page.h1[locale].split(" – ")[0], href: seoPath(locale, page) },
@@ -106,6 +109,20 @@ export default async function SeoPage({ params }: Props) {
           <JsonLd data={faqSchema(faq)} />
         </section>
       )}
+
+      <section className={`section${faq.length ? " bg-cream" : ""}`}>
+        <div className="container">
+          <div className="section-head-row">
+            <h2 className="h2" data-reveal>{d.blog.fromJournal}</h2>
+            <Link className="arrow-link" href={href(locale, "blog")}>{d.nav.blog} →</Link>
+          </div>
+          <div className="post-grid">
+            {reading.map((p, i) => (
+              <PostCard key={p.key} post={p} locale={locale} d={d} delay={i * 80} />
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section-tight seo-links">
         <div className="container">

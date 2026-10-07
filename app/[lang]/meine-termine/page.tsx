@@ -12,6 +12,7 @@ import { getServices, localize, type Booking } from "@/lib/data";
 import { formatChf } from "@/lib/format";
 import { fill, getDict } from "@/lib/i18n";
 import { href, INTL_LOCALE } from "@/lib/i18n/config";
+import { privateMetadata } from "@/lib/seo";
 import { CUSTOMER_COOKIE, readCustomerCookie } from "@/lib/verify";
 
 // Persönlich: nie zwischenspeichern, nie bei Google
@@ -19,8 +20,7 @@ export const dynamic = "force-dynamic";
 type Props = { params: Promise<{ lang: string }> };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const d = getDict((await params).lang as Locale);
-  return { title: d.account.nav, robots: { index: false } };
+  return privateMetadata(getDict((await params).lang as Locale).account.metaTitle);
 }
 
 export default async function MyBookings({ params }: Props) {

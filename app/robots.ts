@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic";
 export default function robots(): MetadataRoute.Robots {
   if (comingSoon()) return { rules: { userAgent: "*", disallow: "/" } };
   return {
-    rules: { userAgent: "*", allow: "/", disallow: ["/admin", "/api", "/*/termin/ok", "/*/termin/storno", "/*/reservation/ok", "/*/reservation/storno", "/*/booking/ok", "/*/booking/storno"] },
+    // Konto-Seiten (meine-termine …) bleiben erreichbar, damit Google ihr noindex sieht
+    rules: { userAgent: "*", allow: "/", disallow: ["/admin", "/api", "/bald", "/*/termin/ok", "/*/termin/storno", "/*/reservation/ok", "/*/reservation/storno", "/*/booking/ok", "/*/booking/storno"] },
     sitemap: `${site.url}/sitemap.xml`,
-    host: site.url,
   };
 }

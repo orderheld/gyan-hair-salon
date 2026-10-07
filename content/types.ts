@@ -17,10 +17,13 @@ export type BlogPost = {
   key: string; // = deutscher Slug
   slug: L;
   date: string; // YYYY-MM-DD
+  updated?: string; // YYYY-MM-DD, nur wenn der Text später überarbeitet wurde
   image: string; // Pfad unter /public, z. B. /images/cut-mulet.jpg
   title: L;
-  description: L; // Meta-Beschreibung, max. 155 Zeichen
+  description: L; // Meta-Beschreibung, 140 bis 155 Zeichen
   body: L<Markdown>;
+  /** Passende Leistungen (deutscher Slug) und lokale Seiten (Thema/Ort): dort erscheint der Beitrag als Lesetipp */
+  related?: { services?: string[]; seo?: string[] };
 };
 
 export type Faq = { q: string; a: string };

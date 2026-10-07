@@ -8,6 +8,7 @@ export const post: BlogPost = {
     en: "skin-fade-low-fade-taper-difference-biel",
   },
   date: "2026-09-29",
+  related: { services: ["haarschnitt-biel", "gyan-signature"], seo: ["fade", "barbier", "herrencoiffeur"] },
   image: "/images/cut-standard.jpg",
   title: {
     de: "Skin Fade, Low Fade oder Taper? Der Unterschied – Biel",

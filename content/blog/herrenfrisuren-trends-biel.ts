@@ -8,6 +8,7 @@ export const post: BlogPost = {
     en: "mens-haircut-trends-biel",
   },
   date: "2026-10-06",
+  related: { services: ["haarschnitt-biel", "gyan-signature", "haarschnitt-und-bart"], seo: ["coiffeur", "herrencoiffeur", "fade"] },
   image: "/images/cut-mulet.jpg",
   title: {
     de: "Herrenfrisuren Trends 2026: Was in Biel gerade getragen wird",

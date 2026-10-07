@@ -12,8 +12,12 @@ import { formatChf } from "@/lib/format";
 import { fill, getDict } from "@/lib/i18n";
 import { href, INTL_LOCALE, isLocale } from "@/lib/i18n/config";
 import { getSettings } from "@/lib/settings";
+import { privateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { robots: { index: false } };
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  const { lang } = await params;
+  return privateMetadata(getDict(isLocale(lang) ? lang : "de").booking.cancel.title.replace(/\?$/, ""));
+}
 
 async function cancel(formData: FormData) {
   "use server";

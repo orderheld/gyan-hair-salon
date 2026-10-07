@@ -5,9 +5,12 @@ const en: Dict = {
   meta: {
     siteTitle: "GYAN Hair Salon · Men's Hairdresser & Barber in Biel/Bienne",
     siteDescription:
-      "Men's hairdresser and barber in the heart of Biel/Bienne. Haircuts, skin fades, beards and traditional wet shaves with owner Zana. Book online, confirmed instantly.",
+      "Men's hairdresser and barber in the heart of Biel/Bienne: haircuts, skin fades, beards and hot towel shaves with owner Zana. Book online, confirmed instantly.",
     titleSuffix: "GYAN Barber Biel",
-    serviceDesc: "{short} With Zana at GYAN Hair Salon, {street} in Biel. {price} · {duration}. Book online.",
+    serviceDesc: "{short} At GYAN Hair Salon, men's barber on {street} in Biel/Bienne. {price} · {duration}.",
+    serviceCta: "Book online or walk in.",
+    servicePay: "Pay in cash, by card or with TWINT.",
+    serviceTitle: "{name} in Biel · {price}",
   },
   common: {
     bookCta: "Book with Zana",
@@ -61,7 +64,7 @@ const en: Dict = {
     facebook: "News, opening hours and offers from GYAN Hair Salon in Biel/Bienne.",
     follow: "Follow",
     metaTitle: "Social media: Instagram, TikTok, Facebook | GYAN Biel",
-    metaDescription: "Follow GYAN Hair Salon in Biel/Bienne on Instagram, TikTok and Facebook: new cuts, a look inside and offers.",
+    metaDescription: "Follow GYAN Hair Salon in Biel/Bienne on Instagram, TikTok and Facebook: fresh cuts, fades and beards, a look inside the salon and current offers.",
   },
   loyalty: {
     eyebrow: "Loyalty pays off",
@@ -221,7 +224,7 @@ const en: Dict = {
     finalText: "Booked in under a minute. Confirmed instantly.",
   },
   zana: {
-    metaTitle: "Zana, owner and barber",
+    metaTitle: "Zana – owner and barber in Biel",
     metaDescription: "Meet Zana, owner of GYAN Hair Salon in Biel. Kurdish roots, a new home in Biel/Bienne and a men's salon built on precision and calm.",
     eyebrow: "The story",
     title: "Zana.",
@@ -246,8 +249,8 @@ const en: Dict = {
     withAppt: "With appointment",
     walkin: "Walk-in",
     priceNote: "The large prices apply with an appointment. As a walk-in, the haircut and packages have lower prices.",
-    metaTitle: "Services & prices",
-    metaDescription: "Men's haircut, GYAN Signature Cut, beard, Face Treatment and packages: all services and prices from the men's hairdresser in Biel, with or without an appointment.",
+    metaTitle: "Services & prices: men's barber in Biel",
+    metaDescription: "Men's haircut, GYAN Signature Cut, beard, Face Treatment and packages: all services and prices of the men's barber in Biel, with or without an appointment.",
     eyebrow: "Services & prices",
     title: "The right craft for every style.",
     lead: "All services can be booked online with Zana. You can also drop in without an appointment; the haircut and packages then have walk-in prices.",
@@ -257,8 +260,8 @@ const en: Dict = {
     faqTitle: "Frequently asked questions",
   },
   salon: {
-    metaTitle: "The salon",
-    metaDescription: "A look inside GYAN Hair Salon at {street} in Biel: sculptural mirrors, leather chairs and a calm lounge.",
+    metaTitle: "The salon on Zentralstrasse in Biel",
+    metaDescription: "A look inside GYAN Hair Salon at {street} in Biel: sculptural mirrors, leather chairs, a wash station and a calm lounge, a short walk from the station.",
     eyebrow: "The salon",
     title: "Calm in the heart of Biel.",
     lead: "Bright rooms, warm materials and details you won't forget. The salon is designed so you've arrived before the first cut is made.",
@@ -271,8 +274,8 @@ const en: Dict = {
     galleryTitle: "Impressions",
   },
   faq: {
-    metaTitle: "Frequently asked questions",
-    metaDescription: "Answers about appointments, walk-ins, payment, cancellations and directions to GYAN Hair Salon in Biel/Bienne.",
+    metaTitle: "FAQ – men's hairdresser & barber in Biel",
+    metaDescription: "Answers about online booking, walk-ins, prices, payment (cash, card, TWINT), cancellations and directions to GYAN Hair Salon in Biel/Bienne.",
     eyebrow: "FAQ",
     title: "Frequently asked questions.",
     items: [
@@ -287,8 +290,8 @@ const en: Dict = {
     ],
   },
   contact: {
-    metaTitle: "Contact & directions",
-    metaDescription: "GYAN Hair Salon, Zentralstrasse 22, 2502 Biel/Bienne. Phone, opening hours and directions to the men's hairdresser in central Biel.",
+    metaTitle: "Contact & directions: Zentralstrasse 22, Biel",
+    metaDescription: "GYAN Hair Salon, Zentralstrasse 22, 2502 Biel/Bienne: phone, opening hours and directions to the men's hairdresser and barber, a short walk from the station.",
     eyebrow: "Contact",
     title: "How to find us.",
     lead: "In the centre of Biel, a few minutes' walk from the station. By train, bus or on foot.",
@@ -297,13 +300,14 @@ const en: Dict = {
     mapCta: "Open in Google Maps",
   },
   blog: {
-    metaTitle: "Journal",
-    metaDescription: "Tips on men's hairstyles, fades, beard care and style from the men's hairdresser in Biel/Bienne.",
+    metaTitle: "Journal: hair and beard tips from Biel",
+    metaDescription: "Tips from the men's barber in Biel/Bienne: haircut trends, fade variations, beard care, how often to get a cut and how to look sharp for any occasion.",
     eyebrow: "Journal",
     title: "Style, grooming, Biel.",
     lead: "Tips and know-how from the salon. By Zana and the GYAN team.",
     readTime: "min read",
     related: "More articles",
+    fromJournal: "From the journal",
   },
   seo: {
     servicesHere: "Popular services",
@@ -312,8 +316,8 @@ const en: Dict = {
     faqTitle: "Frequently asked questions",
   },
   booking: {
-    metaTitle: "Book an appointment",
-    metaDescription: "Book your appointment with Zana at GYAN Hair Salon Biel online. Choose a free time, confirmed instantly.",
+    metaTitle: "Book a barber appointment in Biel",
+    metaDescription: "Book your appointment with Zana at GYAN Hair Salon in Biel online: pick a service and a free time, confirmed instantly. Pay at the salon, cash, card or TWINT.",
     eyebrow: "Book an appointment",
     title: "Your time with Zana.",
     lead: "Online bookings are with owner Zana. If the time is free, it's confirmed instantly. Or simply drop in during opening hours without an appointment.",

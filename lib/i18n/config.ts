@@ -6,6 +6,8 @@ export const DEFAULT_LOCALE: Locale = "de";
 export const LOCALE_NAMES: Record<Locale, string> = { de: "Deutsch", fr: "Français", en: "English" };
 export const INTL_LOCALE: Record<Locale, string> = { de: "de-CH", fr: "fr-CH", en: "en-GB" };
 export const OG_LOCALE: Record<Locale, string> = { de: "de_CH", fr: "fr_CH", en: "en_GB" };
+/** hreflang-Codes: Deutsch und Französisch für die Schweiz, Englisch ohne Region */
+export const HREFLANG: Record<Locale, string> = { de: "de-CH", fr: "fr-CH", en: "en" };
 
 /** Seiten und ihre Pfade pro Sprache. Die Ordner in app/[lang]/ heissen wie der deutsche Pfad. */
 export const ROUTES = {
