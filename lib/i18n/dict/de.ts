@@ -111,6 +111,7 @@ const de = {
       tomorrow: "Morgen",
       none: "Termin online wählen",
       book: "Buchen",
+      walkin: "Oder spontan ohne Termin vorbeikommen",
     },
     heroText: "Bei GYAN schneidet der Inhaber selbst. Zana nimmt sich Zeit für dich, für die richtige Form und für den letzten Feinschliff mit der Klinge.",
     scroll: "Entdecken",

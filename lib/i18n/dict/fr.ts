@@ -113,6 +113,7 @@ const fr: Dict = {
       tomorrow: "Demain",
       none: "Choisir un créneau en ligne",
       book: "Réserver",
+      walkin: "Ou passe spontanément, sans rendez-vous",
     },
     heroText: "Chez GYAN, c’est le propriétaire qui coupe. Zana prend le temps : pour toi, pour la bonne forme et pour la dernière finition au rasoir.",
     scroll: "Découvrir",

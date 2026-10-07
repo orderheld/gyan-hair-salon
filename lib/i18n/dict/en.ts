@@ -113,6 +113,7 @@ const en: Dict = {
       tomorrow: "Tomorrow",
       none: "Pick a time online",
       book: "Book",
+      walkin: "Or just drop in, no appointment needed",
     },
     heroText: "At GYAN, the owner cuts your hair himself. Zana takes his time: for you, for the right shape and for the final finish with the blade.",
     scroll: "Discover",

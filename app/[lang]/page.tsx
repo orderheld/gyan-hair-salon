@@ -104,6 +104,7 @@ export default async function Home({ params }: Props) {
               <span className="hero-slot-text">
                 <small>{d.home.live.next}</small>
                 <LiveSlot locale={locale} fallback={d.home.live.none} />
+                <span className="hero-slot-walkin">{d.home.live.walkin}</span>
               </span>
               <span className="hero-slot-go" aria-hidden>→</span>
             </Link>
