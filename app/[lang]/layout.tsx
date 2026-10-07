@@ -59,6 +59,7 @@ export default async function LangLayout({ children, params }: { children: React
     { href: href(locale, "services"), label: d.nav.services },
     { href: href(locale, "salon"), label: d.nav.salon },
     { href: href(locale, "blog"), label: d.nav.blog },
+    { href: href(locale, "loyalty"), label: d.nav.loyalty },
     { href: href(locale, "faq"), label: d.nav.faq },
     { href: href(locale, "contact"), label: d.nav.contact },
   ];

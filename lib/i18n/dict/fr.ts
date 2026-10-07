@@ -49,6 +49,18 @@ const fr: Dict = {
     faq: "FAQ",
     blog: "Journal",
     contact: "Contact",
+    loyalty: "Carte de fidélité",
+  },
+  loyalty: {
+    eyebrow: "Bientôt",
+    title: "Carte de fidélité",
+    lead: "La fidélité est récompensée chez GYAN : chaque 11e coupe est offerte.",
+    soon: "Bientôt",
+    free: "Offerte",
+    cardTitle: "Chaque 11e coupe offerte",
+    cardText: "La carte de fidélité GYAN est en préparation. Dès son lancement, tu le sauras ici.",
+    metaTitle: "Carte de fidélité : chaque 11e coupe offerte | GYAN Bienne",
+    metaDescription: "La carte de fidélité de GYAN Hair Salon à Bienne arrive bientôt : chaque 11e coupe est offerte.",
   },
   footer: {
     credit: "Webdesign par",

@@ -47,6 +47,18 @@ const de = {
     faq: "FAQ",
     blog: "Journal",
     contact: "Kontakt",
+    loyalty: "Stempelkarte",
+  },
+  loyalty: {
+    eyebrow: "Kommt bald",
+    title: "Stempelkarte",
+    lead: "Treue lohnt sich bei GYAN: Jeder 11. Haarschnitt ist gratis.",
+    soon: "Kommt bald",
+    free: "Gratis",
+    cardTitle: "Jeder 11. Haarschnitt gratis",
+    cardText: "Die GYAN Stempelkarte ist in Vorbereitung. Sobald sie startet, erfährst du es hier.",
+    metaTitle: "Stempelkarte: jeder 11. Haarschnitt gratis | GYAN Biel",
+    metaDescription: "Die Stempelkarte von GYAN Hair Salon in Biel/Bienne kommt bald: Jeder 11. Haarschnitt ist gratis.",
   },
   footer: {
     credit: "Webdesign by",

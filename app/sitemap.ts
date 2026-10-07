@@ -29,6 +29,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ["contact", 0.8],
     ["faq", 0.6],
     ["blog", 0.6],
+    ["loyalty", 0.5],
   ];
   return [
     ...pages.flatMap(([key, priority]) => entries((l) => href(l, key), { priority, changeFrequency: "weekly" })),

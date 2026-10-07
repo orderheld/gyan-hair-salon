@@ -912,3 +912,12 @@ html.app .app-back:active { background: var(--cream); }
 /* Geburtsdatum: iPhone zeigt Datumsfelder sonst niedriger und zentriert */
 .details input[type="date"] { -webkit-appearance: none; appearance: none; min-height: 50px; text-align: left; }
 .details input[type="date"]::-webkit-date-and-time-value { text-align: left; }
+
+/* Stempelkarte (kommt bald) */
+.stamp-card { position: relative; background: var(--cream, #f3ece1); border: 1px solid var(--line); border-radius: 24px; padding: clamp(22px, 5vw, 40px); text-align: center; }
+.stamp-card h2 { margin: 22px 0 6px; }
+.stamp-card p { margin: 0 auto; max-width: 42ch; }
+.stamp-soon { display: inline-block; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px; border: 1px solid var(--ink); color: var(--ink); margin-bottom: 22px; }
+.stamp-grid { list-style: none; margin: 0 auto; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: clamp(8px, 2vw, 14px); max-width: 460px; }
+.stamp { aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%; border: 1.5px dashed var(--greige, #c9bba8); color: var(--stone); font-size: 14px; background: var(--ivory, #fbf8f3); }
+.stamp.is-free { border: 1.5px solid var(--accent-deep); background: var(--accent-deep); color: var(--ivory, #fbf8f3); font-size: 11px; letter-spacing: 0.04em; font-weight: 600; }

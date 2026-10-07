@@ -49,6 +49,18 @@ const en: Dict = {
     faq: "FAQ",
     blog: "Journal",
     contact: "Contact",
+    loyalty: "Loyalty card",
+  },
+  loyalty: {
+    eyebrow: "Coming soon",
+    title: "Loyalty card",
+    lead: "Loyalty pays off at GYAN: every 11th haircut is free.",
+    soon: "Coming soon",
+    free: "Free",
+    cardTitle: "Every 11th haircut free",
+    cardText: "The GYAN loyalty card is on its way. As soon as it launches, you'll find out here.",
+    metaTitle: "Loyalty card: every 11th haircut free | GYAN Biel",
+    metaDescription: "The GYAN Hair Salon loyalty card in Biel/Bienne is coming soon: every 11th haircut is free.",
   },
   footer: {
     credit: "Web design by",
