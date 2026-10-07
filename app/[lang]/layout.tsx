@@ -124,7 +124,8 @@ export default async function LangLayout({ children, params }: { children: React
           locale={locale}
           nav={nav}
           bookHref={href(locale, "booking")}
-          labels={{ back: d.common.back, book: d.common.book, bookShort: d.common.bookShort, menu: d.common.menu, close: d.common.close, language: d.common.language }}
+          accountHref={href(locale, "account")}
+          labels={{ account: d.account.nav, back: d.common.back, book: d.common.book, bookShort: d.common.bookShort, menu: d.common.menu, close: d.common.close, language: d.common.language }}
           slugIndex={slugIndex}
           phone={site.phone}
           phoneHref={site.phoneHref}

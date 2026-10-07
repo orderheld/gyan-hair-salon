@@ -2,7 +2,7 @@ import { cookies } from "next/headers";
 import { after, NextResponse } from "next/server";
 import { siteLocked } from "@/lib/auth";
 import { isBlocked } from "@/lib/customers";
-import { checkCode, cookieMatches, VERIFIED_COOKIE, VERIFIED_MAX_AGE, verifiedCookieValue } from "@/lib/verify";
+import { checkCode, cookieMatches, CUSTOMER_COOKIE, readCustomerCookie, rememberCustomer, VERIFIED_COOKIE } from "@/lib/verify";
 import { isSlotAvailable } from "@/lib/availability";
 import { createBooking, SlotTakenError } from "@/lib/booking";
 import { getService } from "@/lib/data";
@@ -60,13 +60,10 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: msg, codeError: check }, { status: 400 });
     }
     // Ab jetzt merkt sich dieser Browser die bestätigte Adresse (auch falls die Zeit gleich vergeben ist)
-    jar.set(VERIFIED_COOKIE, verifiedCookieValue(email), {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "lax",
-      path: "/",
-      maxAge: VERIFIED_MAX_AGE,
-    });
+    rememberCustomer(jar, email);
+  } else if (!readCustomerCookie(jar.get(CUSTOMER_COOKIE)?.value)) {
+    // Schon bestätigt, aber noch nicht für «Meine Termine» gemerkt
+    rememberCustomer(jar, email);
   }
 
   const service = Number.isInteger(serviceId) ? await getService(serviceId) : null;

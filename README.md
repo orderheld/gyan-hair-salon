@@ -247,3 +247,13 @@ Die Live-Angaben auf der Startseite (offen/geschlossen, nächster freier Termin)
 - Kunde: Beim Buchen fragt der Browser direkt nach der Erlaubnis. Danach: «Termin bestätigt», Erinnerung vor dem Termin (gleiche Zeit wie die Erinnerungs-Mail), Dankeschön nach dem Termin mit Knöpfen für Google-Bewertung und Instagram (gleiche Zeit wie die Feedback-Mail), plus Hinweis bei Verschiebung oder Absage durch den Salon.
 - Push und E-Mail laufen immer zusammen und folgen denselben Schaltern unter **E-Mails**. Wer keine Push-Erlaubnis gibt, bekommt einfach nur die E-Mails.
 - Ein Browser darf Benachrichtigungen nie ohne Zustimmung erlauben. Die Abfrage kommt deshalb genau beim Klick auf «Buchen» bzw. «Aktivieren», wo die meisten zustimmen.
+
+## 16. Meine Termine (Kunden-Bereich)
+
+Kunden finden oben rechts das Personen-Symbol (im Handy-Menü «Meine Termine»). Pfade: `/de/meine-termine`, `/fr/mes-rendez-vous`, `/en/my-bookings`.
+
+- **Kein Passwort:** E-Mail eingeben, 6-stelligen Code aus der Mail eintippen, fertig. Wer schon gebucht hat, ist auf diesem Gerät automatisch angemeldet (180 Tage).
+- **Buchen bleibt ohne Konto möglich.** Angemeldete Kunden finden Name, E-Mail und Telefon im Formular schon ausgefüllt.
+- Kunden sehen kommende Termine (mit Route und «Stornieren»), frühere Termine mit «Nochmals buchen» und offene Kosten aus kurzfristigen Stornierungen.
+- Verschieben geht über Stornieren und neu buchen, oder per Telefon. Im Admin verschiebst du wie bisher.
+- «Abmelden» löscht die Anmeldung auf diesem Gerät. Die Seite erscheint nicht bei Google.

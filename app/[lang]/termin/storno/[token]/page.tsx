@@ -66,7 +66,10 @@ export default async function Storno({ params, searchParams }: Props) {
           {cancelled ? (
             <>
               {booking.lateCancel && price && <p className="late-note">{fill(c.doneLate, { price })}</p>}
-              <Link className="btn btn-dark" href={href(locale, "booking")}>{c.rebook}</Link>
+              <div className="btn-row center">
+                <Link className="btn btn-light" href={href(locale, "account")}>{d.account.nav}</Link>
+                <Link className="btn btn-dark" href={href(locale, "booking")}>{c.rebook}</Link>
+              </div>
             </>
           ) : started ? (
             <p className="muted">

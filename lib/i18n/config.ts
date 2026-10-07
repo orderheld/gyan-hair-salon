@@ -17,6 +17,7 @@ export const ROUTES = {
   blog: { de: "blog", fr: "blog", en: "blog" },
   contact: { de: "kontakt", fr: "contact", en: "contact" },
   booking: { de: "termin", fr: "reservation", en: "booking" },
+  account: { de: "meine-termine", fr: "mes-rendez-vous", en: "my-bookings" },
   imprint: { de: "impressum", fr: "mentions-legales", en: "imprint" },
   privacy: { de: "datenschutz", fr: "confidentialite", en: "privacy" },
 } as const satisfies Record<string, Record<Locale, string>>;

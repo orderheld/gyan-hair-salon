@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { cookies } from "next/headers";
+import Link from "next/link";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { BookingFlow } from "@/components/site/BookingFlow";
@@ -7,6 +9,8 @@ import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
+import { getCustomerBookings } from "@/lib/customers";
+import { CUSTOMER_COOKIE, readCustomerCookie } from "@/lib/verify";
 
 
 // Immer frisch (Buchungsstatus, Auswahl aus der Adresse)
@@ -23,7 +27,11 @@ export default async function Booking({ params, searchParams }: Props) {
   const locale = (await params).lang as Locale;
   const { service } = await searchParams;
   const d = getDict(locale);
-  const [services, settings] = await Promise.all([getServices(), getSettings()]);
+  const email = readCustomerCookie((await cookies()).get(CUSTOMER_COOKIE)?.value);
+  const [services, settings, mine] = await Promise.all([getServices(), getSettings(), email ? getCustomerBookings(email) : []]);
+  // Angemeldet: Name und Telefon vom letzten Termin übernehmen
+  const last = mine[0];
+  const known = email ? { name: last?.customerName ?? "", email, phone: last?.customerPhone ?? "" } : undefined;
   let initial = service && /^\d+$/.test(service) ? Number(service) : undefined;
   if (service && !initial) initial = (await getServiceBySlug(service))?.id;
 
@@ -34,6 +42,9 @@ export default async function Booking({ params, searchParams }: Props) {
           <p className="eyebrow rise">{d.booking.eyebrow}</p>
           <h1 className="h1 rise" style={{ animationDelay: "80ms" }}>{d.booking.title}</h1>
           <p className="lead rise" style={{ animationDelay: "160ms" }}>{d.booking.lead}</p>
+          <p className="account-link rise" style={{ animationDelay: "200ms" }}>
+            <Link className="link" href={href(locale, "account")}>{email ? d.account.nav : d.account.hint}</Link>
+          </p>
         </div>
         <BookingFlow
           locale={locale}
@@ -61,6 +72,7 @@ export default async function Booking({ params, searchParams }: Props) {
           cancelHours={settings.cancelNoticeHours}
           okHref={href(locale, "booking", "ok")}
           privacyHref={href(locale, "privacy")}
+          known={known}
         />
       </div>
     </section>

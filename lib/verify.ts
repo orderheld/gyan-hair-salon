@@ -81,3 +81,32 @@ export function cookieMatches(value: string | undefined, email: string) {
   if (!id || !expires || !signature || Number(expires) < Date.now() / 1000) return false;
   return same(id, hmac(`mail:${email}`).slice(0, 22)) && same(signature, hmac(`${id}.${expires}`));
 }
+
+/**
+ * «Meine Termine»: angemeldeter Kunde (E-Mail lesbar, signiert, 180 Tage).
+ * Wird gesetzt, sobald jemand seine E-Mail per Code bestätigt hat.
+ */
+export const CUSTOMER_COOKIE = "gyan_kunde";
+
+export function customerCookieValue(email: string) {
+  const id = Buffer.from(email).toString("base64url");
+  const expires = String(Math.floor(Date.now() / 1000) + VERIFIED_MAX_AGE);
+  return `${id}.${expires}.${hmac(`kunde:${id}.${expires}`)}`;
+}
+
+export function readCustomerCookie(value: string | undefined): string | null {
+  if (!value) return null;
+  const [id, expires, signature] = value.split(".");
+  if (!id || !expires || !signature || Number(expires) < Date.now() / 1000) return null;
+  if (!same(signature, hmac(`kunde:${id}.${expires}`))) return null;
+  return Buffer.from(id, "base64url").toString();
+}
+
+type Jar = { set: (name: string, value: string, opts: Record<string, unknown>) => unknown };
+
+/** Bestätigte E-Mail merken: fürs Buchen ohne Code und für «Meine Termine» */
+export function rememberCustomer(jar: Jar, email: string) {
+  const opts = { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: VERIFIED_MAX_AGE };
+  jar.set(VERIFIED_COOKIE, verifiedCookieValue(email), opts);
+  jar.set(CUSTOMER_COOKIE, customerCookieValue(email), opts);
+}

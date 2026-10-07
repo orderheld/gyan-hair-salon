@@ -24,6 +24,8 @@ type Props = {
   cancelHours: number;
   okHref: string;
   privacyHref: string;
+  /** Angemeldeter Kunde («Meine Termine»): Kontaktdaten schon ausgefüllt */
+  known?: { name: string; email: string; phone: string };
 };
 
 const pad = (n: number) => String(n).padStart(2, "0");
@@ -44,7 +46,7 @@ const PARTS = [
   { key: "evening", test: (t: string) => t >= "17:00" },
 ] as const;
 
-export function BookingFlow({ locale, t, common, services, serviceGroups, popularLabel, initialServiceId, phone, phoneHref, owner, cancelHours, okHref, privacyHref }: Props) {
+export function BookingFlow({ locale, t, common, services, serviceGroups, popularLabel, initialServiceId, phone, phoneHref, owner, cancelHours, okHref, privacyHref, known }: Props) {
   const router = useRouter();
   const MONTHS = common.months;
   const intl = locale === "de" ? "de-CH" : locale === "fr" ? "fr-CH" : "en-GB";
@@ -62,7 +64,7 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
   const [date, setDate] = useState<string | null>(null);
   const [time, setTime] = useState<string | null>(null);
   const [part, setPart] = useState<number>(0);
-  const [form, setForm] = useState({ name: "", email: "", phone: "", note: "", website: "", consent: false });
+  const [form, setForm] = useState({ name: known?.name ?? "", email: known?.email ?? "", phone: known?.phone ?? "", note: "", website: "", consent: false });
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);

@@ -12,7 +12,8 @@ type Props = {
   locale: Locale;
   nav: NavItem[];
   bookHref: string;
-  labels: { back: string; book: string; bookShort: string; menu: string; close: string; language: string };
+  accountHref: string;
+  labels: { back: string; book: string; bookShort: string; menu: string; close: string; language: string; account: string };
   slugIndex: L[];
   phone: string;
   phoneHref: string;
@@ -32,7 +33,7 @@ function translatePath(pathname: string, from: Locale, to: Locale, slugIndex: L[
   return "/" + [to, ...out].filter(Boolean).join("/");
 }
 
-export function Header({ locale, nav, bookHref, labels, slugIndex, phone, phoneHref }: Props) {
+export function Header({ locale, nav, bookHref, accountHref, labels, slugIndex, phone, phoneHref }: Props) {
   const pathname = usePathname() ?? `/${locale}`;
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -92,6 +93,9 @@ export function Header({ locale, nav, bookHref, labels, slugIndex, phone, phoneH
           </nav>
           <div className="header-actions">
             <div className="lang" aria-label={labels.language}>{langLinks}</div>
+            <Link href={accountHref} className="header-account" aria-label={labels.account} title={labels.account} aria-current={pathname.startsWith(accountHref) ? "page" : undefined}>
+              <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8.5" r="3.6" /><path d="M4.8 20c.9-3.6 3.7-5.6 7.2-5.6s6.3 2 7.2 5.6" /></svg>
+            </Link>
             <Link href={bookHref} className="btn btn-dark btn-sm header-book">{labels.book}</Link>
             <button
               type="button"
@@ -119,6 +123,7 @@ export function Header({ locale, nav, bookHref, labels, slugIndex, phone, phoneH
         </nav>
         <div className="menu-foot">
           <Link href={bookHref} className="btn btn-red" tabIndex={open ? 0 : -1}>{labels.book}</Link>
+          <Link href={accountHref} className="menu-account" tabIndex={open ? 0 : -1}>{labels.account}</Link>
           <a href={phoneHref} className="menu-phone" tabIndex={open ? 0 : -1}>{phone}</a>
           <div className="lang lang-lg">{langLinks}</div>
         </div>

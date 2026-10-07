@@ -325,10 +325,11 @@ export async function sendFollowup(b: Booking) {
 }
 
 /** Bestätigungscode für die E-Mail-Adresse (fester Text, kein Termin) */
-export async function sendVerifyCode(to: string, code: string, locale: Locale) {
-  const v = getDict(locale).booking.verify;
+export async function sendVerifyCode(to: string, code: string, locale: Locale, purpose: "booking" | "login" = "booking") {
+  const dict = getDict(locale);
+  const v = dict.booking.verify;
   const subject = fill(v.mailSubject, { code });
-  const body = v.mailBody;
+  const body = purpose === "login" ? dict.account.mailBody : v.mailBody;
   const highlight = `<div style="margin:0 0 24px;text-align:center"><span style="display:inline-block;padding:16px 22px 16px 30px;border-radius:16px;background:#f3ece1;font-size:34px;font-weight:700;letter-spacing:.32em;color:#141210;font-family:SFMono-Regular,Menlo,Consolas,monospace">${code}</span></div>`;
   const html = layout({ locale, preheader: subject, heading: v.mailHeading, body, logoSrc: "cid:gyan-logo", highlight });
   const replyTo = (await getSettings().catch(() => null))?.notifyEmail || undefined;

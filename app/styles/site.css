@@ -43,6 +43,9 @@ html.menu-open .site-header::before { opacity: 0 !important; }
 .lang a:hover, .lang a.active { opacity: 1; }
 .lang a.active { font-weight: 600; }
 .header-book { display: none; }
+.header-account { display: grid; place-items: center; width: 40px; height: 40px; margin-right: -4px; border-radius: 50%; color: inherit; opacity: 0.8; transition: opacity 0.2s, background 0.2s; }
+.header-account svg { width: 22px; height: 22px; }
+.header-account:hover, .header-account[aria-current="page"] { opacity: 1; background: var(--cream); }
 .burger {
   width: 44px;
   height: 44px;
@@ -105,6 +108,7 @@ html.menu-open .site-header::before { opacity: 0 !important; }
 .menu-no { font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.2em; color: var(--stone); }
 .menu-foot { display: grid; gap: 18px; justify-items: start; }
 .menu-phone { text-decoration: none; color: var(--taupe); }
+.menu-account { color: var(--ink); text-underline-offset: 4px; text-decoration-color: var(--greige); }
 .lang-lg { display: flex; font-size: 14px; }
 html.menu-open { overflow: hidden; }
 @media (min-width: 1040px) { .menu { display: none; } }
@@ -871,3 +875,33 @@ html.app .app-back:active { background: var(--cream); }
 .push-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--ivory); color: var(--accent); }
 .push-ico svg { width: 22px; height: 22px; }
 @media (max-width: 520px) { .push-card { grid-template-columns: auto 1fr; } .push-card .btn { grid-column: 1 / -1; width: 100%; } }
+
+/* ---------- Meine Termine ---------- */
+.account-card .account-login { display: grid; gap: 16px; margin-top: 18px; text-align: left; }
+.account-card .account-login.verify { text-align: center; justify-items: center; }
+.account-card .account-login .muted { margin: 0; }
+.account-card .account-login .alert { margin: 0; }
+.account { max-width: 720px; }
+.account-head { margin-bottom: 26px; }
+.account-head .h2 { margin: 6px 0 8px; }
+.account-head .muted { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.account-head .link-btn { min-height: 0; padding: 4px 2px; }
+.account-h { margin: 34px 0 14px; }
+.account-list { list-style: none; margin: 0 0 18px; padding: 0; display: grid; gap: 12px; }
+.account-item { display: grid; grid-template-columns: minmax(150px, 0.9fr) 1.4fr auto; align-items: center; gap: 12px 20px; padding: 18px 20px; border: 1px solid var(--line); border-radius: 18px; background: var(--paper); }
+.account-item.is-next { border-color: var(--greige); box-shadow: 0 10px 30px -22px rgba(40, 30, 20, 0.45); }
+.account-item.is-past { background: transparent; }
+.account-date strong { display: block; font-weight: 600; }
+.account-date span, .account-what .muted { font-size: 14px; color: var(--taupe); }
+.account-what { display: grid; gap: 2px; }
+.account-badge { justify-self: start; margin-top: 4px; padding: 3px 10px; border-radius: 999px; background: var(--cream); color: var(--taupe); font-size: 12px; }
+.account-actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+.account-hint { margin: 0 0 20px; font-size: 14px; }
+.account-empty { display: grid; justify-items: start; gap: 14px; padding: 22px; border: 1px dashed var(--greige); border-radius: 18px; }
+.account-empty .muted { margin: 0; }
+.account-link { margin: 14px 0 0; font-size: 14px; color: var(--taupe); }
+@media (max-width: 640px) {
+  .account-item { grid-template-columns: 1fr; padding: 16px; }
+  .account-actions { justify-content: stretch; }
+  .account-actions .btn { flex: 1; }
+}

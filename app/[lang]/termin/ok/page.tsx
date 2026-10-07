@@ -51,7 +51,7 @@ export default async function Confirmed({ params, searchParams }: Props) {
           {booking.status === "confirmed" && <PushOptIn bookingId={booking.id} locale={locale} t={d.booking.push} />}
           <div className="btn-row center">
             <a className="btn btn-dark" href={site.address.mapsUrl} target="_blank" rel="noopener">{d.common.route}</a>
-            <Link className="btn btn-light" href={href(locale, "home")}>{d.booking.confirmed.home}</Link>
+            <Link className="btn btn-light" href={href(locale, "account")}>{d.account.nav}</Link>
           </div>
         </div>
       </div>
