@@ -33,8 +33,12 @@ export function pageTitle(locale: Locale, title?: string) {
   return candidates.find((t) => t.length <= MAX_TITLE) ?? clean;
 }
 
+const SHARE = "share";
+
 /** Hochformat-Fotos haben unter /og/ eine Querformat-Version (1200 × 630) für Social Media */
 function ogImage(image: string, locale: Locale) {
+  // Eigenes Teilen-Bild mit Logo und Text je Sprache (scripts/og-share.mjs)
+  if (image === SHARE) return { url: `/og/share-${locale}.jpg`, width: 1200, height: 630, alt: getDict(locale).meta.siteTitle, type: "image/jpeg" };
   const og = image.startsWith("/images/") ? image.replace("/images/", "/og/") : null;
   const alt = site.imageAlt[image]?.[locale] ?? site.name;
   return og ? { url: og, width: 1200, height: 630, alt } : { url: image, alt };
@@ -50,7 +54,7 @@ export function languageAlternates(path: (l: Locale) => string, abs = false) {
 
 export function pageMetadata({ locale, title, description, path, image, noindex, type = "website", published }: PageMeta): Metadata {
   const fullTitle = pageTitle(locale, title);
-  const img = ogImage(image ?? site.images.hero, locale);
+  const img = ogImage(image ?? SHARE, locale);
   return {
     title: { absolute: fullTitle },
     description,

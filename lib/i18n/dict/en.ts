@@ -63,7 +63,7 @@ const en: Dict = {
     tiktok: "Short videos: cuts from start to finish, tips and moments from the salon.",
     facebook: "News, opening hours and offers from GYAN Hair Salon in Biel/Bienne.",
     follow: "Follow",
-    metaTitle: "Social media: Instagram, TikTok, Facebook | GYAN Biel",
+    metaTitle: "Social media: Instagram, TikTok, Facebook · GYAN Biel",
     metaDescription: "Follow GYAN Hair Salon in Biel/Bienne on Instagram, TikTok and Facebook: fresh cuts, fades and beards, a look inside the salon and current offers.",
   },
   loyalty: {
@@ -74,7 +74,7 @@ const en: Dict = {
     free: "Free",
     cardTitle: "Every {nth} haircut free",
     cardText: "The GYAN loyalty card is on its way. As soon as it launches, you'll find out here.",
-    metaTitle: "Loyalty card: every {nth} haircut free | GYAN Biel",
+    metaTitle: "Loyalty card: every {nth} haircut free · GYAN Biel",
     metaDescription: "The GYAN Hair Salon loyalty card in Biel/Bienne: every {nth} haircut is free, plus a birthday gift and a bonus for inviting friends.",
     howTitle: "How it works",
     perkCut: "Every {nth} haircut free",

@@ -30,7 +30,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const d = getDict(locale);
   const short = /[.!?]$/.test(l.short.trim()) ? l.short.trim() : `${l.short.trim()}.`;
   const price = `${s.priceFrom ? `${d.common.from} ` : ""}${formatChf(s.priceChf)}`;
-  const base = fill(d.meta.serviceDesc, { short, price, duration: formatDuration(s.durationMin, locale).replace(/\.$/, ""), street: site.address.street });
+  const vars = { short, price, duration: formatDuration(s.durationMin, locale).replace(/\.$/, ""), street: site.address.street };
+  // Lange Leistungstexte: ohne den Satz zum Salon, damit Google nichts abschneidet
+  const full = fill(d.meta.serviceDesc, vars);
+  const base = full.length <= 160 ? full : `${short} ${price} · ${vars.duration}. ${site.name}, ${site.address.street}, Biel/Bienne.`;
   // Aufruf zum Buchen und Zahlungsarten anhängen, solange es in die rund 160 Zeichen passt
   const description = clampDescription([d.meta.serviceCta, d.meta.servicePay].reduce((t, extra) => (`${t} ${extra}`.length <= 160 ? `${t} ${extra}` : t), base));
   return pageMetadata({ locale, title: fill(d.meta.serviceTitle, { name: l.name, price }), description, path: (x) => servicePath(x, s), image: s.image || undefined });
