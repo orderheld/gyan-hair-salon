@@ -9,7 +9,26 @@ import services from "@/db/services.json";
  * - alte Leistungen werden gelöscht, oder nur ausgeblendet, wenn schon Termine darauf gebucht sind
  * Danach gehören die Leistungen wieder ganz dem Admin-Panel.
  */
-export const CATALOG_VERSION = 3;
+export const CATALOG_VERSION = 4;
+
+/** Version 4: zwei Mitarbeiter, die Texte sprechen von «wir» statt von Zana. Nur wo der alte Satz noch so im Admin steht. */
+const TEAM_WORDING: ["de" | "fr" | "en", string, string][] = [
+  ["de", "Zana schaut sich an, wie dein Haar wächst", "Wir schauen uns an, wie dein Haar wächst"],
+  ["de", "Erst dann entscheidet er,", "Erst dann entscheiden wir,"],
+  ["de", "stylt Zana deine Haare und zeigt dir dabei", "stylen wir deine Haare und zeigen dir dabei"],
+  ["de", "Zana bringt deinen Bart", "Wir bringen deinen Bart"],
+  ["de", "Zana schneidet zuerst die Haare, dann wird", "Zuerst werden die Haare geschnitten, dann wird"],
+  ["fr", "Zana observe la façon", "Nous observons la façon"],
+  ["fr", "qu’il décide où", "que nous décidons où"],
+  ["fr", "Zana coiffe tes cheveux et te montre", "nous coiffons tes cheveux et te montrons"],
+  ["fr", "Zana donne à ta barbe", "Nous donnons à ta barbe"],
+  ["fr", "Zana coupe d’abord les cheveux, puis adapte", "Nous coupons d’abord les cheveux, puis adaptons"],
+  ["en", "Zana looks at how", "We look at how"],
+  ["en", "does he decide where", "do we decide where"],
+  ["en", "Zana styles your hair and shows you", "we style your hair and show you"],
+  ["en", "Zana shapes your beard", "We shape your beard"],
+  ["en", "Zana cuts the hair first, then shapes", "We cut the hair first, then shape"],
+];
 
 type Query = (text: string, params?: unknown[]) => Promise<Record<string, unknown>[]>;
 
@@ -18,15 +37,22 @@ export async function syncCatalog(query: Query) {
   const version = row ? Number(row.value) : 0;
   if (version >= CATALOG_VERSION) return;
   if (version < 2) await replaceAll(query);
-  // Version 3: echte Dauer pro Leistung (Oktober 2026), sonst bleibt alles, wie es im Admin steht
-  for (const s of services) {
-    await query(`UPDATE services SET duration_min = $2 WHERE slug_de = $1`, [s.slug.de, s.duration_min]);
+  if (version < 3) {
+    // Version 3: echte Dauer pro Leistung (Oktober 2026), sonst bleibt alles, wie es im Admin steht
+    for (const s of services) {
+      await query(`UPDATE services SET duration_min = $2 WHERE slug_de = $1`, [s.slug.de, s.duration_min]);
+    }
+    // Rasur-Text sprach von «einer halben Stunde»
+    const shave = services.find((s) => s.slug.de === "nassrasur-biel");
+    if (shave) {
+      await query(`UPDATE services SET long_de = $2, long_fr = $3, long_en = $4 WHERE slug_de = $1 AND long_de LIKE '%halbe Stunde%'`,
+        [shave.slug.de, shave.long.de, shave.long.fr, shave.long.en]);
+    }
   }
-  // Rasur-Text sprach von «einer halben Stunde»
-  const shave = services.find((s) => s.slug.de === "nassrasur-biel");
-  if (shave) {
-    await query(`UPDATE services SET long_de = $2, long_fr = $3, long_en = $4 WHERE slug_de = $1 AND long_de LIKE '%halbe Stunde%'`,
-      [shave.slug.de, shave.long.de, shave.long.fr, shave.long.en]);
+  if (version < 4) {
+    for (const [l, from, to] of TEAM_WORDING) {
+      await query(`UPDATE services SET long_${l} = replace(long_${l}, $1, $2) WHERE position($1 in long_${l}) > 0`, [from, to]);
+    }
   }
   await query(
     `INSERT INTO settings (key, value) VALUES ('catalog_version', $1::jsonb)
