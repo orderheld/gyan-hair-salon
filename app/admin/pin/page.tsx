@@ -10,7 +10,7 @@ export default async function Pin() {
   await requireAdmin();
   const { t } = await getAdminText();
   return (
-    <AdminShell mode="start">
+    <AdminShell mode="pin">
       <PinPad t={{ title: t.kasse.pinTitle, hint: t.kasse.pinHint, wrong: t.kasse.pinWrong, back: t.nav.leave, del: t.kasse.pinDelete }} />
     </AdminShell>
   );

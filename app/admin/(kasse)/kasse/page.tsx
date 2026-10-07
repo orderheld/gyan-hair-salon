@@ -31,13 +31,14 @@ export default async function Kasse() {
         staff={staff.map((s) => ({ id: s.id, name: s.name }))}
         services={services.map((s) => ({ id: s.id, name: s.name.de, priceChf: s.priceChf, walkinChf: s.walkinPriceChf }))}
         products={products.map((p) => ({ id: p.id, name: p.name, priceChf: p.priceChf }))}
-        // Termine von heute (online bei Zana)
+        // Termine von heute
         bookings={bookings.map((b) => ({
           id: b.id,
           time: toTimeKey(b.startsAt),
           serviceId: b.serviceId,
           label: `${b.serviceName} · ${b.customerName}`,
           billed: billed.has(b.id),
+          staffId: b.staffId,
         }))}
       />
     </>

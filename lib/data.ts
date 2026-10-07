@@ -48,7 +48,13 @@ export type OpeningDay = {
   breakEnd: string | null;
 };
 
-export type Blocked = { id: number; startsAt: Date; endsAt: Date; reason: string };
+/** staffId leer = ganzes Geschäft (gilt für alle) */
+export type Blocked = { id: number; startsAt: Date; endsAt: Date; reason: string; staffId: string | null };
+
+/** Mitarbeiter mit eigenem Terminplan */
+export const BOOKING_STAFF = ["zana", "hikmet"] as const;
+export type BookingStaff = (typeof BOOKING_STAFF)[number];
+export const isBookingStaff = (v: unknown): v is BookingStaff => (BOOKING_STAFF as readonly unknown[]).includes(v);
 
 export type Booking = {
   id: string;
@@ -77,6 +83,7 @@ export type Booking = {
   emailVerified: boolean;
   lateCancel: boolean;
   feeOpen: boolean;
+  staffId: BookingStaff;
 };
 
 const tri = (r: Row, field: string): L => ({ de: r[`${field}_de`] ?? "", fr: r[`${field}_fr`] ?? "", en: r[`${field}_en`] ?? "" });
@@ -113,6 +120,7 @@ const mapBlocked = (r: Row): Blocked => ({
   startsAt: toDate(r.starts_at),
   endsAt: toDate(r.ends_at),
   reason: r.reason,
+  staffId: r.staff_id ?? null,
 });
 
 export const mapBooking = (r: Row): Booking => ({
@@ -141,6 +149,7 @@ export const mapBooking = (r: Row): Booking => ({
   emailVerified: !!r.email_verified,
   lateCancel: !!r.late_cancel,
   feeOpen: !!r.fee_open,
+  staffId: isBookingStaff(r.staff_id) ? r.staff_id : "zana",
 });
 
 export async function getServices(opts: { includeInactive?: boolean } = {}): Promise<Service[]> {
@@ -171,18 +180,20 @@ export async function getSalonHours(): Promise<OpeningDay[]> {
     .map((h) => ({ weekday: h.weekday, isOpen: !!h.open, openTime: h.open ?? "00:00", closeTime: h.close ?? "00:00", breakStart: null, breakEnd: null }));
 }
 
-/** Buchbare Zeiten aus dem Admin-Panel (nur für die Online-Buchung und den Kalender) */
-export async function getOpeningHours(): Promise<OpeningDay[]> {
+/** Buchbare Zeiten eines Mitarbeiters aus dem Admin-Panel (nur für die Online-Buchung und den Kalender) */
+export async function getOpeningHours(staffId: BookingStaff = "zana"): Promise<OpeningDay[]> {
   const sql = await getSql();
-  const rows = await sql`SELECT * FROM opening_hours ORDER BY weekday`;
+  const rows = await sql`SELECT * FROM staff_hours WHERE staff_id = ${staffId} ORDER BY weekday`;
   return rows.map(mapDay);
 }
 
-export async function getBlockedBetween(from: Date, to: Date): Promise<Blocked[]> {
+/** Sperren im Zeitraum. Mit staffId: Sperren dieses Mitarbeiters und des ganzen Geschäfts. */
+export async function getBlockedBetween(from: Date, to: Date, staffId?: BookingStaff): Promise<Blocked[]> {
   const sql = await getSql();
   const rows = await sql`
     SELECT * FROM blocked_times
     WHERE starts_at < ${to.toISOString()}::timestamptz AND ends_at > ${from.toISOString()}::timestamptz
+      AND (${staffId ?? null}::text IS NULL OR staff_id IS NULL OR staff_id = ${staffId ?? null}::text)
     ORDER BY starts_at`;
   return rows.map(mapBlocked);
 }
@@ -193,12 +204,14 @@ export async function getUpcomingBlocked(): Promise<Blocked[]> {
   return rows.map(mapBlocked);
 }
 
-export async function getBookingsBetween(from: Date, to: Date, opts: { includeCancelled?: boolean } = {}): Promise<Booking[]> {
+/** Termine im Zeitraum, optional nur von einem Mitarbeiter */
+export async function getBookingsBetween(from: Date, to: Date, opts: { includeCancelled?: boolean; staffId?: BookingStaff } = {}): Promise<Booking[]> {
   const sql = await getSql();
   const rows = await sql`
     SELECT * FROM bookings
     WHERE starts_at < ${to.toISOString()}::timestamptz AND busy_until > ${from.toISOString()}::timestamptz
       AND (${opts.includeCancelled ?? false}::boolean OR status = 'confirmed')
+      AND (${opts.staffId ?? null}::text IS NULL OR staff_id = ${opts.staffId ?? null}::text)
     ORDER BY starts_at`;
   return rows.map(mapBooking);
 }
@@ -217,20 +230,19 @@ export async function getBookingByToken(token: string): Promise<Booking | null> 
   return rows[0] ? mapBooking(rows[0]) : null;
 }
 
-export async function getBookingStats() {
+/** Anzahl bestätigter Termine heute, diese Woche (Mo–So) und diesen Monat, optional pro Mitarbeiter */
+export async function getBookingCounts(r: { today: [Date, Date]; week: [Date, Date]; month: [Date, Date] }, staffId?: BookingStaff) {
   const sql = await getSql();
+  const iso = (d: Date) => d.toISOString();
+  const from = new Date(Math.min(r.week[0].getTime(), r.month[0].getTime()));
+  const to = new Date(Math.max(r.week[1].getTime(), r.month[1].getTime()));
   const [row] = await sql`
     SELECT
-      count(*) FILTER (WHERE status = 'confirmed' AND starts_at >= date_trunc('day', now() AT TIME ZONE 'Europe/Zurich') AT TIME ZONE 'Europe/Zurich'
-                         AND starts_at < (date_trunc('day', now() AT TIME ZONE 'Europe/Zurich') + interval '1 day') AT TIME ZONE 'Europe/Zurich') AS today,
-      count(*) FILTER (WHERE status = 'confirmed' AND starts_at >= now() AND starts_at < now() + interval '7 days') AS week,
-      count(*) FILTER (WHERE status = 'confirmed' AND starts_at >= now()) AS upcoming,
-      coalesce(sum(price_chf) FILTER (WHERE status = 'confirmed' AND starts_at >= now() AND starts_at < now() + interval '7 days'), 0) AS week_revenue
-    FROM bookings`;
-  return {
-    today: Number(row.today),
-    week: Number(row.week),
-    upcoming: Number(row.upcoming),
-    weekRevenue: Number(row.week_revenue),
-  };
+      count(*) FILTER (WHERE starts_at >= ${iso(r.today[0])}::timestamptz AND starts_at < ${iso(r.today[1])}::timestamptz) AS today,
+      count(*) FILTER (WHERE starts_at >= ${iso(r.week[0])}::timestamptz AND starts_at < ${iso(r.week[1])}::timestamptz) AS week,
+      count(*) FILTER (WHERE starts_at >= ${iso(r.month[0])}::timestamptz AND starts_at < ${iso(r.month[1])}::timestamptz) AS month
+    FROM bookings
+    WHERE status = 'confirmed' AND starts_at >= ${iso(from)}::timestamptz AND starts_at < ${iso(to)}::timestamptz
+      AND (${staffId ?? null}::text IS NULL OR staff_id = ${staffId ?? null}::text)`;
+  return { today: Number(row.today), week: Number(row.week), month: Number(row.month) };
 }

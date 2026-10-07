@@ -1,5 +1,5 @@
 import "server-only";
-import { getBlockedBetween, getBookingsBetween, getOpeningHours, getServices, type OpeningDay } from "./data";
+import { getBlockedBetween, getBookingsBetween, getOpeningHours, getServices, type BookingStaff, type OpeningDay } from "./data";
 import { getSettings } from "./settings";
 import { addDays, isTimeKey, toDateKey, toTimeKey, weekdayOf, zurichToDate } from "./time";
 
@@ -37,8 +37,10 @@ export function nightEarliest(now: Date, s: { nightStart: string; nightEnd: stri
  */
 export async function getAvailabilityFor(
   durations?: number[],
-  opts: { from?: string; days?: number; now?: Date } = {},
+  opts: { from?: string; days?: number; now?: Date; staffId?: BookingStaff } = {},
 ): Promise<Record<number, Days>> {
+  // Online buchbar ist (noch) nur Zana
+  const staffId = opts.staffId ?? "zana";
   const now = opts.now ?? new Date();
   const todayKey = toDateKey(now);
   const fromKey = opts.from ?? todayKey;
@@ -50,9 +52,9 @@ export async function getAvailabilityFor(
   const [list, settings, hours, bookings, blocked] = await Promise.all([
     durations ?? getServices().then((all) => all.map((s) => s.durationMin)),
     getSettings(),
-    getOpeningHours(),
-    getBookingsBetween(rangeStart, rangeEnd),
-    getBlockedBetween(rangeStart, rangeEnd),
+    getOpeningHours(staffId),
+    getBookingsBetween(rangeStart, rangeEnd, { staffId }),
+    getBlockedBetween(rangeStart, rangeEnd, staffId),
   ]);
 
   const lastKey = addDays(todayKey, settings.horizonDays);
@@ -100,7 +102,7 @@ export async function getAvailabilityFor(
 }
 
 /** Freie Startzeiten pro Tag für eine Leistung mit der gegebenen Dauer. */
-export async function getAvailability(durationMin: number, opts: { from?: string; days?: number; now?: Date } = {}): Promise<Days> {
+export async function getAvailability(durationMin: number, opts: { from?: string; days?: number; now?: Date; staffId?: BookingStaff } = {}): Promise<Days> {
   return (await getAvailabilityFor([durationMin], opts))[durationMin];
 }
 

@@ -8,7 +8,7 @@ import type { CartLine, Payment } from "@/lib/pos";
 
 type Svc = { id: number; name: string; priceChf: number; walkinChf: number | null };
 type Prod = { id: number; name: string; priceChf: number };
-type Bk = { id: string; time: string; serviceId: number | null; label: string; billed: boolean };
+type Bk = { id: string; time: string; serviceId: number | null; label: string; billed: boolean; staffId: string };
 type Line = CartLine & { key: string; name: string; unit: number };
 
 const chf = (n: number) => (Number.isInteger(n) ? `${n}.–` : n.toFixed(2));
@@ -49,7 +49,7 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
   function pickBooking(b: Bk) {
     if (b.billed) return;
     setBookingId(b.id);
-    if (staff.some((s) => s.id === "zana")) setStaffId("zana");
+    if (staff.some((s) => s.id === b.staffId)) setStaffId(b.staffId);
     const s = services.find((x) => x.id === b.serviceId);
     if (s) addService(s, false);
   }

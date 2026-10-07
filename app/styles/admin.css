@@ -520,7 +520,7 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .rules-grid > .rules-sub { grid-column: 1 / -1; margin: 0 0 4px; }
 
 /* ---------- Kasse ---------- */
-.admin-mode-start, .admin-mode-kasse { padding-bottom: 0 !important; }
+.admin-mode-start, .admin-mode-pin, .admin-mode-kasse { padding-bottom: 0 !important; }
 .kasse-nav { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); width: fit-content; max-width: 100%; overflow-x: auto; }
 .kasse-nav a { text-decoration: none; padding: 8px 16px; border-radius: 999px; font-size: 14px; color: var(--taupe); white-space: nowrap; }
 .kasse-nav a.active { background: var(--ink); color: var(--ivory); }
@@ -645,7 +645,7 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .start-tile strong { font-size: 22px; font-weight: 600; letter-spacing: -0.01em; }
 .start-tile span { font-size: 13.5px; color: var(--taupe); line-height: 1.4; }
 @media (max-width: 560px) { .start-grid { grid-template-columns: 1fr 1fr; gap: 12px; } .start-tile { padding: 26px 12px 22px; border-radius: 22px; } .start-tile svg { width: 48px; height: 48px; padding: 14px; } .start-tile strong { font-size: 19px; } }
-.admin-mode-start .admin-tabs, .admin-mode-kasse .admin-tabs { display: none; }
+.admin-mode-start .admin-tabs, .admin-mode-pin .admin-tabs, .admin-mode-kasse .admin-tabs { display: none; }
 @media (max-width: 760px) { .admin-site-link { display: none; } }
 /* ---------- PIN ---------- */
 .pin { display: grid; justify-items: center; gap: 14px; padding: clamp(8px, 4vh, 40px) 0 20px; }
@@ -664,3 +664,30 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .pin-key-text { background: none; box-shadow: none; font-size: 15px; color: var(--taupe); }
 .pin-key-text:disabled { opacity: 0.3; }
 .kset-pin { flex: 0 1 180px !important; letter-spacing: 0.3em; }
+
+/* ---------- Team: Zana, Hikmet, beide ---------- */
+.staff-switch { display: flex; gap: 4px; padding: 4px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); width: fit-content; max-width: 100%; overflow-x: auto; }
+.staff-switch a { text-decoration: none; padding: 9px 18px; border-radius: 999px; font-size: 14.5px; font-weight: 500; color: var(--taupe); white-space: nowrap; min-height: 40px; display: inline-flex; align-items: center; }
+.staff-switch a.on { background: var(--ink); color: var(--ivory); }
+.stats-6 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.stats-6 .stat strong { font-size: 24px; }
+.stat-money strong { font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) {
+  .stats-6 { gap: 8px; }
+  .stats-6 .stat { padding: 12px 12px; gap: 4px; }
+  .stats-6 .stat span { font-size: 11.5px; line-height: 1.25; }
+  .stats-6 .stat strong { font-size: 18px; }
+}
+.pill-staff { background: var(--ink); color: var(--ivory); }
+.pill-staff.pill-hikmet { background: var(--sand); color: var(--ink); box-shadow: 0 0 0 1px var(--ink) inset; }
+.seg-radio { display: flex; gap: 6px; }
+.seg-radio label { flex: 1; cursor: pointer; }
+.seg-radio input { position: absolute; opacity: 0; pointer-events: none; }
+.seg-radio span { display: flex; align-items: center; justify-content: center; min-height: 44px; border-radius: 12px; border: 1px solid var(--line); background: var(--cream); font-weight: 500; }
+.seg-radio input:checked + span { background: var(--ink); color: var(--ivory); border-color: var(--ink); }
+.seg-radio input:focus-visible + span { outline: 2px solid var(--ink); outline-offset: 2px; }
+.cal-bk.staff-hikmet:not(.is-cancelled) { background: var(--sand); color: var(--ink); box-shadow: inset 3px 0 0 var(--ink), 0 2px 8px rgba(20, 18, 16, 0.08); }
+.cal-bk.half-zana, .cal-block.half-zana { right: calc(50% + 1px); }
+.cal-bk.half-hikmet, .cal-block.half-hikmet { left: calc(50% + 1px); }
+.cal-bk-staff { font-size: 10.5px; opacity: 0.75; text-transform: uppercase; letter-spacing: 0.06em; }
+.cal-mitem.staff-hikmet { box-shadow: inset 2px 0 0 var(--ink); padding-left: 4px; }

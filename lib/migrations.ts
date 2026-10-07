@@ -85,4 +85,36 @@ export const MIGRATIONS = [
     BEGIN RAISE EXCEPTION 'Kassenbelege können nicht geändert oder gelöscht werden'; END $$`,
   `CREATE OR REPLACE TRIGGER pos_sales_lock BEFORE UPDATE OR DELETE ON pos_sales FOR EACH ROW EXECUTE FUNCTION pos_sales_locked()`,
   `CREATE OR REPLACE TRIGGER pos_sales_no_truncate BEFORE TRUNCATE ON pos_sales FOR EACH STATEMENT EXECUTE FUNCTION pos_sales_locked()`,
+  // Team (Oktober 2026): Termine, buchbare Zeiten und Sperren pro Mitarbeiter
+  `CREATE EXTENSION IF NOT EXISTS btree_gist`,
+  `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS staff_id text NOT NULL DEFAULT 'zana'`,
+  // Doppelbuchungen nur noch pro Mitarbeiter verhindern (Zana und Hikmet dürfen gleichzeitig)
+  `DO $$ BEGIN
+    IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'bookings_no_overlap' AND pg_get_constraintdef(oid) LIKE '%staff_id%') THEN
+      ALTER TABLE bookings DROP CONSTRAINT IF EXISTS bookings_no_overlap;
+      ALTER TABLE bookings ADD CONSTRAINT bookings_no_overlap EXCLUDE USING gist (staff_id WITH =, tstzrange(starts_at, busy_until, '[)') WITH &&) WHERE (status = 'confirmed');
+    END IF;
+  END $$`,
+  // Sperren: leer = ganzes Geschäft, sonst nur dieser Mitarbeiter
+  `ALTER TABLE blocked_times ADD COLUMN IF NOT EXISTS staff_id text`,
+  `CREATE TABLE IF NOT EXISTS staff_hours (
+    staff_id    text NOT NULL,
+    weekday     integer NOT NULL CHECK (weekday BETWEEN 0 AND 6),
+    is_open     boolean NOT NULL DEFAULT true,
+    open_time   time NOT NULL DEFAULT '09:00',
+    close_time  time NOT NULL DEFAULT '19:00',
+    break_start time,
+    break_end   time,
+    PRIMARY KEY (staff_id, weekday),
+    CHECK (close_time > open_time)
+  )`,
+  // Zana übernimmt die bisherigen buchbaren Zeiten, Hikmet startet mit den Öffnungszeiten des Salons
+  `INSERT INTO staff_hours (staff_id, weekday, is_open, open_time, close_time, break_start, break_end)
+   SELECT 'zana', weekday, is_open, open_time, close_time, break_start, break_end FROM opening_hours
+   ON CONFLICT (staff_id, weekday) DO NOTHING`,
+  `INSERT INTO staff_hours (staff_id, weekday, is_open, open_time, close_time) VALUES
+   ('hikmet', 0, false, '09:00', '18:00'), ('hikmet', 1, true, '09:00', '19:00'), ('hikmet', 2, true, '09:00', '19:00'),
+   ('hikmet', 3, true, '09:00', '19:00'), ('hikmet', 4, true, '09:00', '20:00'), ('hikmet', 5, true, '09:00', '20:00'),
+   ('hikmet', 6, true, '08:30', '18:00')
+   ON CONFLICT (staff_id, weekday) DO NOTHING`,
 ];

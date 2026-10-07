@@ -7,7 +7,7 @@ import { LOCALES, type Locale } from "@/content/types";
 import { ADMIN_LANG_COOKIE, getAdminText, slugify } from "@/lib/admin";
 import { checkPassword, endSession, lockKasse, requireAdmin, startSession } from "@/lib/auth";
 import { cancelBooking, createBooking, deleteBooking, rescheduleBooking, SlotTakenError } from "@/lib/booking";
-import { getBookingById, getBookingsBetween, getService, SERVICE_CATEGORIES } from "@/lib/data";
+import { getBookingById, getBookingsBetween, getService, isBookingStaff, SERVICE_CATEGORIES, type BookingStaff } from "@/lib/data";
 import { getSql } from "@/lib/db";
 import { customerKey, deleteCustomer, updateCustomer, updateCustomerContact } from "@/lib/customers";
 import { resendConfirmationToCustomer, sendBookingConfirmation, sendCancellation, sendRescheduled, sendTestEmail } from "@/lib/email";
@@ -25,6 +25,10 @@ const back = (path: string, msg: string, type: "ok" | "error" = "ok"): never => 
   redirect(`${base}${sep}${type}=${encodeURIComponent(msg)}${hash ? `#${hash}` : ""}`);
 };
 const refreshSite = () => revalidatePath("/", "layout");
+const staffOf = (fd: FormData): BookingStaff => {
+  const v = str(fd, "staff", 20);
+  return isBookingStaff(v) ? v : "zana";
+};
 
 /* Login & Sprache */
 export async function login(_: { error?: string } | undefined, fd: FormData) {
@@ -86,6 +90,7 @@ export async function adminCreateBooking(fd: FormData) {
       note: str(fd, "note"),
       locale: isLocale(lang) ? lang : "de",
       source: "admin",
+      staffId: staffOf(fd),
     });
     if (booking.customerEmail && fd.get("notify") === "on") await sendBookingConfirmation(booking);
   } catch (error) {
@@ -232,44 +237,50 @@ export async function deleteService(fd: FormData) {
 export async function saveOpeningHours(fd: FormData) {
   await requireAdmin();
   const { t } = await getAdminText();
+  const staff = staffOf(fd);
+  const page = `/admin/zeiten?wer=${staff}`;
   const days = [0, 1, 2, 3, 4, 5, 6].map((d) => {
     const bs = str(fd, `bs_${d}`, 5);
     const be = str(fd, `be_${d}`, 5);
     const hasBreak = isTimeKey(bs) && isTimeKey(be) && be > bs;
     return { d, isOpen: fd.get(`open_${d}`) === "on", from: str(fd, `from_${d}`, 5), to: str(fd, `to_${d}`, 5), bs: hasBreak ? bs : null, be: hasBreak ? be : null };
   });
-  if (days.some((x) => !isTimeKey(x.from) || !isTimeKey(x.to) || x.to <= x.from)) back("/admin/zeiten", t.hours.hoursInvalid, "error");
+  if (days.some((x) => !isTimeKey(x.from) || !isTimeKey(x.to) || x.to <= x.from)) back(page, t.hours.hoursInvalid, "error");
   const sql = await getSql();
   for (const x of days) {
     await sql`
-      INSERT INTO opening_hours (weekday, is_open, open_time, close_time, break_start, break_end)
-      VALUES (${x.d}, ${x.isOpen}, ${x.from}::time, ${x.to}::time, ${x.bs}::time, ${x.be}::time)
-      ON CONFLICT (weekday) DO UPDATE SET is_open = EXCLUDED.is_open, open_time = EXCLUDED.open_time,
+      INSERT INTO staff_hours (staff_id, weekday, is_open, open_time, close_time, break_start, break_end)
+      VALUES (${staff}, ${x.d}, ${x.isOpen}, ${x.from}::time, ${x.to}::time, ${x.bs}::time, ${x.be}::time)
+      ON CONFLICT (staff_id, weekday) DO UPDATE SET is_open = EXCLUDED.is_open, open_time = EXCLUDED.open_time,
         close_time = EXCLUDED.close_time, break_start = EXCLUDED.break_start, break_end = EXCLUDED.break_end`;
   }
   refreshSite();
-  back("/admin/zeiten", t.hours.hoursSaved);
+  back(page, t.hours.hoursSaved);
 }
 
 /* Sperrzeiten */
 export async function addBlockedTime(fd: FormData) {
   await requireAdmin();
   const { t } = await getAdminText();
+  // leer = ganzes Geschäft
+  const who = str(fd, "staff", 20);
+  const staff = isBookingStaff(who) ? who : null;
+  const page = `/admin/zeiten?wer=${staff ?? "geschaeft"}`;
   const fromDate = str(fd, "fromDate", 10);
   const toDate = str(fd, "toDate", 10) || fromDate;
   const allDay = fd.get("allDay") === "on";
   const fromTime = allDay ? "00:00" : str(fd, "fromTime", 5);
   const toTime = allDay ? "23:59" : str(fd, "toTime", 5);
-  if (!isDateKey(fromDate) || !isDateKey(toDate) || !isTimeKey(fromTime) || !isTimeKey(toTime)) back("/admin/zeiten", t.hours.blockInvalid, "error");
+  if (!isDateKey(fromDate) || !isDateKey(toDate) || !isTimeKey(fromTime) || !isTimeKey(toTime)) back(page, t.hours.blockInvalid, "error");
   const start = zurichToDate(fromDate, fromTime);
   const end = zurichToDate(toDate, toTime);
-  if (end <= start) back("/admin/zeiten", t.hours.blockInvalid, "error");
+  if (end <= start) back(page, t.hours.blockInvalid, "error");
   const sql = await getSql();
-  await sql`INSERT INTO blocked_times (starts_at, ends_at, reason)
-    VALUES (${start.toISOString()}::timestamptz, ${end.toISOString()}::timestamptz, ${str(fd, "reason", 120) || t.hours.defaultReason})`;
-  const clashes = await getBookingsBetween(start, end);
+  await sql`INSERT INTO blocked_times (starts_at, ends_at, reason, staff_id)
+    VALUES (${start.toISOString()}::timestamptz, ${end.toISOString()}::timestamptz, ${str(fd, "reason", 120) || t.hours.defaultReason}, ${staff})`;
+  const clashes = await getBookingsBetween(start, end, { staffId: staff ?? undefined });
   revalidatePath("/admin/zeiten");
-  back("/admin/zeiten", clashes.length ? `${t.hours.blocked} ${fill(t.hours.conflict, { n: clashes.length })}` : t.hours.blocked);
+  back(page, clashes.length ? `${t.hours.blocked} ${fill(t.hours.conflict, { n: clashes.length })}` : t.hours.blocked);
 }
 
 export async function deleteBlockedTime(fd: FormData) {
@@ -278,7 +289,7 @@ export async function deleteBlockedTime(fd: FormData) {
   const sql = await getSql();
   await sql`DELETE FROM blocked_times WHERE id = ${Number(fd.get("id"))}`;
   revalidatePath("/admin/zeiten");
-  back("/admin/zeiten", t.hours.removed);
+  back(safeReturn(fd).startsWith("/admin/zeiten") ? safeReturn(fd) : "/admin/zeiten", t.hours.removed);
 }
 
 /* Buchungsregeln */
@@ -393,11 +404,12 @@ export async function adminUpdateBooking(fd: FormData) {
   if (fd.has("customerNote")) await updateCustomer(customerKey(email, phone), { note: str(fd, "customerNote", 1000) });
 
   const startsAt = zurichToDate(date, time);
-  const moved = startsAt.getTime() !== before!.startsAt.getTime() || service!.id !== before!.serviceId || price !== before!.priceChf;
+  const staffId = fd.has("staff") ? staffOf(fd) : before!.staffId;
+  const moved = startsAt.getTime() !== before!.startsAt.getTime() || service!.id !== before!.serviceId || price !== before!.priceChf || staffId !== before!.staffId;
   let updated = await getBookingById(id);
   if (moved) {
     try {
-      updated = await rescheduleBooking(id, { service: service!, priceChf: price, startsAt });
+      updated = await rescheduleBooking(id, { service: service!, priceChf: price, startsAt, staffId });
     } catch (error) {
       if (error instanceof SlotTakenError) back(page, t.bookings.overlap, "error");
       throw error;

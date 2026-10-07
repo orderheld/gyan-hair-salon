@@ -3,14 +3,26 @@ import { DayPick } from "@/components/admin/DayPick";
 import { Flash } from "@/components/admin/Flash";
 import type { Locale } from "@/content/types";
 import { getAdminText } from "@/lib/admin";
-import { getBlockedBetween, getBookingsBetween, getOpeningHours, type Blocked, type Booking, type OpeningDay } from "@/lib/data";
+import { StaffSwitch } from "@/components/admin/StaffSwitch";
+import { BOOKING_STAFF, getBlockedBetween, getBookingsBetween, getOpeningHours, isBookingStaff, type Blocked, type Booking, type BookingStaff, type OpeningDay } from "@/lib/data";
 import { fill, type AdminDict } from "@/lib/i18n";
 import { addDays, formatTime, isDateKey, toDateKey, weekdayOf, zurichParts, zurichToDate } from "@/lib/time";
 
 type View = "day" | "week" | "month";
-type Search = Promise<{ datum?: string; ansicht?: string; storniert?: string; ok?: string; error?: string }>;
+type Search = Promise<{ wer?: string; datum?: string; ansicht?: string; storniert?: string; ok?: string; error?: string }>;
 
 const PPM = 1.5; // Pixel pro Minute im Raster
+const STAFF_NAMES: Record<BookingStaff, string> = { zana: "Zana", hikmet: "Hikmet" };
+
+/** Beide zusammen: offen, wenn einer arbeitet (frühester Beginn bis spätestes Ende, ohne Pause) */
+function mergeHours(a: OpeningDay[], b: OpeningDay[]): OpeningDay[] {
+  return [0, 1, 2, 3, 4, 5, 6].map((wd) => {
+    const open = [a, b].map((l) => l.find((h) => h.weekday === wd)).filter((h): h is OpeningDay => !!h?.isOpen);
+    if (!open.length) return { weekday: wd, isOpen: false, openTime: "09:00", closeTime: "18:00", breakStart: null, breakEnd: null };
+    if (open.length === 1) return open[0];
+    return { weekday: wd, isOpen: true, openTime: open.map((h) => h.openTime).sort()[0], closeTime: open.map((h) => h.closeTime).sort().reverse()[0], breakStart: null, breakEnd: null };
+  });
+}
 const INTL: Record<Locale, string> = { de: "de-CH", fr: "fr-CH", en: "en-GB" };
 const toMin = (t: string) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3, 5));
 const hhmm = (m: number) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
@@ -33,10 +45,10 @@ function label(day: string, locale: Locale, o: Intl.DateTimeFormatOptions) {
 }
 
 function DayColumn({
-  day, bookings, blocked, hours, range, today, now, t, locale, wide,
+  day, bookings, blocked, hours, range, today, now, t, locale, wide, staff,
 }: {
   day: string; bookings: Booking[]; blocked: Blocked[]; hours?: OpeningDay; range: [number, number];
-  today: string; now: number; t: AdminDict; locale: Locale; wide: boolean;
+  today: string; now: number; t: AdminDict; locale: Locale; wide: boolean; staff?: BookingStaff;
 }) {
   const [from, to] = range;
   const top = (m: number) => (Math.max(m, from) - from) * PPM;
@@ -57,7 +69,7 @@ function DayColumn({
           key={m}
           className="cal-slot"
           style={{ top: top(m), height: 30 * PPM }}
-          href={`/admin?datum=${day}&zeit=${hhmm(m)}#neu`}
+          href={`/admin?datum=${day}&zeit=${hhmm(m)}${staff ? `&wer=${staff}` : ""}#neu`}
           aria-label={fill(t.calendar.newAt, { date: dateLabel, time: hhmm(m) })}
           prefetch={false}
         />
@@ -67,8 +79,8 @@ function DayColumn({
         const e = minutesIn(day, x.endsAt);
         if (e <= from || s >= to) return null;
         return (
-          <Link key={x.id} href="/admin/zeiten" className="cal-block" style={{ top: top(s), height: Math.max((Math.min(e, to) - Math.max(s, from)) * PPM, 18) }}>
-            <span>{t.calendar.blocked}{x.reason ? ` · ${x.reason}` : ""}</span>
+          <Link key={x.id} href={`/admin/zeiten?wer=${x.staffId ?? "geschaeft"}`} className={`cal-block${!staff && x.staffId ? ` half-${x.staffId}` : ""}`} style={{ top: top(s), height: Math.max((Math.min(e, to) - Math.max(s, from)) * PPM, 18) }}>
+            <span>{t.calendar.blocked}{!staff && x.staffId ? ` · ${STAFF_NAMES[x.staffId as BookingStaff] ?? ""}` : ""}{x.reason ? ` · ${x.reason}` : ""}</span>
           </Link>
         );
       })}
@@ -81,11 +93,12 @@ function DayColumn({
           <Link
             key={b.id}
             href={`/admin/termin/${b.id}`}
-            className={`cal-bk${cancelled ? " is-cancelled" : ""}${b.noShow ? " is-noshow" : ""}${b.source === "admin" ? " is-manual" : ""}${h < 54 ? " is-short" : ""}`}
+            className={`cal-bk staff-${b.staffId}${!staff ? ` half-${b.staffId}` : ""}${cancelled ? " is-cancelled" : ""}${b.noShow ? " is-noshow" : ""}${b.source === "admin" ? " is-manual" : ""}${h < 54 ? " is-short" : ""}`}
             style={{ top: top(s), height: h }}
           >
             <span className="cal-bk-time">{formatTime(b.startsAt, locale)}</span>
             <strong className="cal-bk-name">{b.customerName}</strong>
+            {!staff && <span className="cal-bk-staff">{STAFF_NAMES[b.staffId]}</span>}
             <span className="cal-bk-svc">{b.serviceName}{cancelled ? ` · ${t.calendar.cancelled}` : ""}</span>
             {wide && b.customerPhone && <span className="cal-bk-svc">{b.customerPhone}</span>}
           </Link>
@@ -105,6 +118,9 @@ export default async function CalendarPage({ searchParams }: { searchParams: Sea
   const day = sp.datum && isDateKey(sp.datum) ? sp.datum : today;
   const view: View = sp.ansicht === "day" || sp.ansicht === "month" ? sp.ansicht : "week";
   const showCancelled = sp.storniert === "1";
+  // Zana, Hikmet oder beide
+  const staff: BookingStaff | undefined = isBookingStaff(sp.wer) ? sp.wer : undefined;
+  const werQ = staff ? `&wer=${staff}` : "";
 
   // Sichtbare Tage
   let days: string[];
@@ -117,11 +133,13 @@ export default async function CalendarPage({ searchParams }: { searchParams: Sea
   }
   const from = zurichToDate(days[0], "00:00");
   const to = zurichToDate(addDays(days[days.length - 1], 1), "00:00");
-  const [all, blocked, hours] = await Promise.all([
-    getBookingsBetween(from, to, { includeCancelled: true }),
-    getBlockedBetween(from, to),
-    getOpeningHours(),
+  const [all, blocked, hoursZana, hoursHikmet] = await Promise.all([
+    getBookingsBetween(from, to, { includeCancelled: true, staffId: staff }),
+    getBlockedBetween(from, to, staff),
+    getOpeningHours("zana"),
+    getOpeningHours("hikmet"),
   ]);
+  const hours = staff === "zana" ? hoursZana : staff === "hikmet" ? hoursHikmet : mergeHours(hoursZana, hoursHikmet);
   const bookings = all.filter((b) => showCancelled || b.status === "confirmed");
   const byDay = new Map<string, Booking[]>();
   for (const b of bookings) {
@@ -146,7 +164,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Sea
   const step = view === "day" ? 1 : view === "week" ? 7 : 0;
   const prev = view === "month" ? `${addDays(`${day.slice(0, 8)}01`, -1).slice(0, 8)}01` : addDays(day, -step);
   const next = view === "month" ? addDays(`${day.slice(0, 8)}01`, 32).slice(0, 8) + "01" : addDays(day, step);
-  const q = (d: string, v: View = view) => `/admin/kalender?ansicht=${v}&datum=${d}${showCancelled ? "&storniert=1" : ""}`;
+  const q = (d: string, v: View = view) => `/admin/kalender?ansicht=${v}&datum=${d}${showCancelled ? "&storniert=1" : ""}${werQ}`;
   const confirmedCount = bookings.filter((b) => b.status === "confirmed" && days.includes(toDateKey(b.startsAt))).length;
 
   const title =
@@ -163,6 +181,12 @@ export default async function CalendarPage({ searchParams }: { searchParams: Sea
         <p className="muted">{t.calendar.hint}</p>
       </div>
       <Flash ok={sp.ok} error={sp.error} />
+      <StaffSwitch
+        current={staff ?? "alle"}
+        label={t.bookings.who}
+        options={[{ key: "alle", label: t.bookings.both }, ...BOOKING_STAFF.map((k) => ({ key: k, label: STAFF_NAMES[k] }))]}
+        href={(k) => `/admin/kalender?ansicht=${view}&datum=${day}${showCancelled ? "&storniert=1" : ""}${k === "alle" ? "" : `&wer=${k}`}`}
+      />
 
       <section className="panel cal-panel">
         <div className="cal-bar">
@@ -177,13 +201,13 @@ export default async function CalendarPage({ searchParams }: { searchParams: Sea
             <Link className="btn btn-light btn-sm" href={q(prev)} aria-label={t.calendar.prev}>‹</Link>
             <Link className="btn btn-light btn-sm" href={q(today)}>{t.calendar.today}</Link>
             <Link className="btn btn-light btn-sm" href={q(next)} aria-label={t.calendar.next}>›</Link>
-            <DayPick day={day} label={t.bookings.show} keep={{ ansicht: view, ...(showCancelled ? { storniert: "1" } : {}) }} />
+            <DayPick day={day} label={t.bookings.show} keep={{ ansicht: view, ...(showCancelled ? { storniert: "1" } : {}), ...(staff ? { wer: staff } : {}) }} />
           </div>
         </div>
         <div className="cal-sub">
           <h2 className="h3">{title}</h2>
           <span className="muted small">{confirmedCount === 1 ? t.calendar.countOne : fill(t.calendar.count, { n: confirmedCount })}</span>
-          <Link className="small cal-toggle" href={`/admin/kalender?ansicht=${view}&datum=${day}${showCancelled ? "" : "&storniert=1"}`}>
+          <Link className="small cal-toggle" href={`/admin/kalender?ansicht=${view}&datum=${day}${showCancelled ? "" : "&storniert=1"}${werQ}`}>
             {showCancelled ? t.calendar.hideCancelled : t.calendar.showCancelled}
           </Link>
         </div>
@@ -198,7 +222,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Sea
                 <Link key={d} href={q(d, "day")} className={`cal-mcell${other ? " is-other" : ""}${d === today ? " is-today" : ""}${hoursOf(d)?.isOpen ? "" : " is-closed"}`}>
                   <span className="cal-mday">{Number(d.slice(8))}</span>
                   {list.slice(0, 3).map((b) => (
-                    <span key={b.id} className={`cal-mitem${b.status === "cancelled" ? " is-cancelled" : ""}`}>
+                    <span key={b.id} className={`cal-mitem staff-${b.staffId}${b.status === "cancelled" ? " is-cancelled" : ""}`}>
                       {formatTime(b.startsAt, locale)} {b.customerName.split(" ")[0]}
                     </span>
                   ))}
@@ -236,6 +260,7 @@ export default async function CalendarPage({ searchParams }: { searchParams: Sea
                   t={t}
                   locale={locale}
                   wide={view === "day"}
+                  staff={staff}
                 />
               ))}
             </div>

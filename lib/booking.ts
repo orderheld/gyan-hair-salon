@@ -2,7 +2,7 @@ import "server-only";
 import { randomBytes } from "node:crypto";
 import type { Locale } from "@/content/types";
 import { getSql, isOverlapError } from "./db";
-import { mapBooking, type Booking, type Service } from "./data";
+import { mapBooking, type Booking, type BookingStaff, type Service } from "./data";
 import { getSettings } from "./settings";
 
 export class SlotTakenError extends Error {
@@ -24,6 +24,8 @@ export type NewBooking = {
   source: "online" | "admin";
   marketingConsent?: boolean;
   emailVerified?: boolean;
+  /** Standard: Zana */
+  staffId?: BookingStaff;
 };
 
 /**
@@ -37,20 +39,22 @@ export async function createBooking(input: NewBooking): Promise<Booking> {
   const endsAt = new Date(input.startsAt.getTime() + input.service.durationMin * 60_000);
   const busyUntil = new Date(endsAt.getTime() + bufferMin * 60_000);
   const token = randomBytes(24).toString("base64url");
+  const staffId = input.staffId ?? "zana";
   const start = input.startsAt.toISOString();
   const end = endsAt.toISOString();
   try {
     const rows = await sql`
       INSERT INTO bookings (service_id, service_name, price_chf, duration_min, starts_at, ends_at, busy_until,
                             customer_name, customer_email, customer_phone, note, locale, source, cancel_token,
-                            marketing_consent, email_verified, birth_date)
+                            marketing_consent, email_verified, birth_date, staff_id)
       SELECT ${input.service.id}, ${input.service.name.de}, ${input.service.priceChf}, ${input.service.durationMin},
              ${start}::timestamptz, ${end}::timestamptz, ${busyUntil.toISOString()}::timestamptz,
              ${input.customerName}, ${input.customerEmail}, ${input.customerPhone}, ${input.note}, ${input.locale},
-             ${input.source}, ${token}, ${!!input.marketingConsent}, ${!!input.emailVerified}, ${input.birthDate ?? ""}
+             ${input.source}, ${token}, ${!!input.marketingConsent}, ${!!input.emailVerified}, ${input.birthDate ?? ""}, ${staffId}
       WHERE NOT EXISTS (
         SELECT 1 FROM blocked_times
         WHERE starts_at < ${end}::timestamptz AND ends_at > ${start}::timestamptz
+          AND (staff_id IS NULL OR staff_id = ${staffId})
       )
       RETURNING *`;
     if (!rows[0]) throw new SlotTakenError();
@@ -76,6 +80,8 @@ export type BookingChange = {
   service: Pick<Service, "id" | "name" | "durationMin">;
   priceChf: number | null;
   startsAt: Date;
+  /** leer = Mitarbeiter bleibt */
+  staffId?: BookingStaff;
 };
 
 /**
@@ -96,12 +102,14 @@ export async function rescheduleBooking(id: string, change: BookingChange): Prom
         service_id = ${change.service.id}, service_name = ${change.service.name.de}, price_chf = ${change.priceChf},
         duration_min = ${change.service.durationMin}, starts_at = ${start}::timestamptz, ends_at = ${end}::timestamptz,
         busy_until = ${busyUntil.toISOString()}::timestamptz,
+        staff_id = coalesce(${change.staffId ?? null}::text, staff_id),
         reminder_sent_at = CASE WHEN starts_at = ${start}::timestamptz THEN reminder_sent_at ELSE NULL END,
         followup_sent_at = CASE WHEN starts_at = ${start}::timestamptz THEN followup_sent_at ELSE NULL END
       WHERE id = ${id}::uuid
         AND NOT EXISTS (
-          SELECT 1 FROM blocked_times
-          WHERE starts_at < ${end}::timestamptz AND ends_at > ${start}::timestamptz
+          SELECT 1 FROM blocked_times bt
+          WHERE bt.starts_at < ${end}::timestamptz AND bt.ends_at > ${start}::timestamptz
+            AND (bt.staff_id IS NULL OR bt.staff_id = coalesce(${change.staffId ?? null}::text, bookings.staff_id))
         )
       RETURNING *`;
     if (!rows[0]) {

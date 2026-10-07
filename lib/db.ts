@@ -62,7 +62,8 @@ async function createLocalSql(): Promise<Sql> {
   const { readFile } = await import("node:fs/promises");
   const path = await import("node:path");
   const { seed } = await import("@/db/seed.mjs");
-  const db = new PGlite(path.join(process.cwd(), ".pglite"));
+  const { btree_gist } = await import("@electric-sql/pglite/contrib/btree_gist");
+  const db = new PGlite(path.join(process.cwd(), ".pglite"), { extensions: { btree_gist } });
   await db.exec(await readFile(path.join(process.cwd(), "db", "schema.sql"), "utf8"));
   for (const statement of MIGRATIONS) await db.exec(statement);
   await seed(async (text, params) => (await db.query(text, params)).rows);

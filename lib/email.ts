@@ -353,6 +353,7 @@ export function sampleBooking(locale: Locale): Booking {
   start.setUTCHours(13, 30, 0, 0);
   return {
     id: "00000000-0000-0000-0000-000000000000",
+    staffId: "zana",
     serviceId: null,
     serviceName: "GYAN Signature Cut",
     priceChf: 45,

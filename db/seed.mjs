@@ -27,6 +27,11 @@ export async function seed(query, root = process.cwd()) {
       "INSERT INTO opening_hours (weekday, is_open, open_time, close_time) VALUES ($1,$2,$3,$4) ON CONFLICT (weekday) DO NOTHING",
       h,
     );
+    // Buchbare Zeiten pro Mitarbeiter (Zana wie oben)
+    await query(
+      "INSERT INTO staff_hours (staff_id, weekday, is_open, open_time, close_time) VALUES ('zana',$1,$2,$3,$4) ON CONFLICT (staff_id, weekday) DO NOTHING",
+      h,
+    ).catch(() => {}); // Tabelle entsteht erst mit den Migrationen
   }
 }
 

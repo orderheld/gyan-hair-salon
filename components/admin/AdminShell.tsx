@@ -10,10 +10,10 @@ import { leaveArea, logout, setAdminLanguage } from "@/app/admin/actions";
 
 /**
  * Rahmen des Admins. Drei Bereiche:
- * «start» = Auswahl Termine oder Kasse, «termine» = Termine mit allen Einstellungen, «kasse» = Kasse (mit PIN).
+ * «start» = Auswahl Termine oder Kasse, «pin» = Sperrbildschirm der Kasse, «termine» = Termine mit allen Einstellungen, «kasse» = Kasse (mit PIN).
  * In Termine und Kasse führt «Verlassen» zurück zur Auswahl.
  */
-export async function AdminShell({ mode, children }: { mode: "start" | "termine" | "kasse"; children: React.ReactNode }) {
+export async function AdminShell({ mode, children }: { mode: "start" | "pin" | "termine" | "kasse"; children: React.ReactNode }) {
   const { locale, t } = await getAdminText();
   const links = [
     { href: "/admin", label: t.nav.bookings, short: t.nav.short[0] },
@@ -42,7 +42,7 @@ export async function AdminShell({ mode, children }: { mode: "start" | "termine"
                 </button>
               ))}
             </form>
-            {mode !== "kasse" && <Link href={`/${locale}`} className="small muted admin-site-link" target="_blank">{t.nav.website} ↗</Link>}
+            {(mode === "start" || mode === "termine") && <Link href={`/${locale}`} className="small muted admin-site-link" target="_blank">{t.nav.website} ↗</Link>}
             {mode === "start" ? (
               <form action={logout}>
                 <button className="btn btn-light btn-sm" type="submit">{t.nav.logout}</button>
@@ -56,7 +56,7 @@ export async function AdminShell({ mode, children }: { mode: "start" | "termine"
         </div>
       </header>
       <main className="container admin-main">
-        {mode !== "kasse" && <AdminPush t={t.push} enabled={pushEnabled} />}
+        {(mode === "start" || mode === "termine") && <AdminPush t={t.push} enabled={pushEnabled} />}
         {children}
       </main>
     </div>

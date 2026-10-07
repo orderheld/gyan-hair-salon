@@ -5,7 +5,7 @@ import { Flash } from "@/components/admin/Flash";
 import { LOCALES } from "@/content/types";
 import { getAdminText } from "@/lib/admin";
 import { customerKey, getCustomer } from "@/lib/customers";
-import { getBookingById, getServices, localize } from "@/lib/data";
+import { BOOKING_STAFF, getBookingById, getServices, localize } from "@/lib/data";
 import { formatChf } from "@/lib/format";
 import { fill } from "@/lib/i18n";
 import { LOCALE_NAMES } from "@/lib/i18n/config";
@@ -72,6 +72,14 @@ export default async function BookingDetail({ params, searchParams }: Props) {
           <form action={adminUpdateBooking} className="stack">
             <input type="hidden" name="id" value={b.id} />
             <h2 className="h3">{t.booking.whenTitle}</h2>
+            <div className="field">
+              <label>{t.bookings.staffLabel}</label>
+              <div className="seg-radio">
+                {BOOKING_STAFF.map((k) => (
+                  <label key={k}><input type="radio" name="staff" value={k} defaultChecked={b.staffId === k} /><span>{k === "zana" ? "Zana" : "Hikmet"}</span></label>
+                ))}
+              </div>
+            </div>
             <div className="field">
               <label htmlFor="bd-svc">{t.bookings.service}</label>
               <select id="bd-svc" name="serviceId" className="select" defaultValue={b.serviceId ?? undefined} required>

@@ -6,7 +6,10 @@ import { LOCALES, type Locale } from "@/content/types";
 import { getAdminText } from "@/lib/admin";
 import { CustomerBadges } from "@/components/admin/CustomerBadges";
 import { customerKey, getCustomerInfos, getOpenFeeBookings, needsAttention, type CustomerInfo } from "@/lib/customers";
-import { getBookingsBetween, getBookingStats, getServices, localize, type Booking } from "@/lib/data";
+import { StaffSwitch } from "@/components/admin/StaffSwitch";
+import { BOOKING_STAFF, getBookingCounts, getBookingsBetween, getServices, isBookingStaff, localize, type Booking, type BookingStaff } from "@/lib/data";
+import { getSalesBetween, getStaff, summarize } from "@/lib/pos";
+import { currentPeriods } from "@/lib/pos-period";
 import { fill, type AdminDict } from "@/lib/i18n";
 import { LOCALE_NAMES } from "@/lib/i18n/config";
 import { formatChf } from "@/lib/format";
@@ -22,11 +25,12 @@ import {
   updateBookingDetails,
 } from "../actions";
 
-type Search = Promise<{ datum?: string; zeit?: string; name?: string; tel?: string; mail?: string; ok?: string; error?: string }>;
+type Search = Promise<{ wer?: string; datum?: string; zeit?: string; name?: string; tel?: string; mail?: string; ok?: string; error?: string }>;
 
 const keyOf = (b: Booking) => customerKey(b.customerEmail, b.customerPhone);
+const STAFF_NAMES: Record<BookingStaff, string> = { zana: "Zana", hikmet: "Hikmet" };
 
-function BookingRow({ b, c, returnTo, showDate, t, locale }: { b: Booking; c?: CustomerInfo; returnTo: string; showDate?: boolean; t: AdminDict; locale: Locale }) {
+function BookingRow({ b, c, returnTo, showDate, showStaff, t, locale }: { b: Booking; c?: CustomerInfo; returnTo: string; showDate?: boolean; showStaff?: boolean; t: AdminDict; locale: Locale }) {
   const cancelled = b.status === "cancelled";
   const started = b.startsAt.getTime() <= Date.now();
   const warn = !cancelled && !started && needsAttention(c) && (c!.noShows > 0 || c!.lateCancels > 0 || c!.openCount > 0 || c!.blocked);
@@ -61,6 +65,7 @@ function BookingRow({ b, c, returnTo, showDate, t, locale }: { b: Booking; c?: C
           <Link href={`/admin/termin/${b.id}`} className="bk-name"><strong>{b.customerName}</strong></Link>
           {cancelled && <span className="pill pill-muted">{b.lateCancel ? t.bookings.lateCancel : t.bookings.cancelled}</span>}
           {b.noShow && <span className="pill pill-warn">{t.bookings.noShow}</span>}
+          {showStaff && <span className={`pill pill-staff pill-${b.staffId}`}>{STAFF_NAMES[b.staffId]}</span>}
           {b.source === "admin" && <span className="pill">{t.bookings.manual}</span>}
           <span className="pill pill-lang">{b.locale.toUpperCase()}</span>
           <Link href={`/admin/termin/${b.id}`} className="bk-open small">{t.common.edit} →</Link>
@@ -136,7 +141,10 @@ function BookingRow({ b, c, returnTo, showDate, t, locale }: { b: Booking; c?: C
 }
 
 export default async function AdminBookings({ searchParams }: { searchParams: Search }) {
-  const { datum, zeit, name: preName, tel: preTel, mail: preMail, ok, error } = await searchParams;
+  const { wer, datum, zeit, name: preName, tel: preTel, mail: preMail, ok, error } = await searchParams;
+  // Zana, Hikmet oder beide
+  const staff: BookingStaff | undefined = isBookingStaff(wer) ? wer : undefined;
+  const werQ = staff ? `&wer=${staff}` : "";
   const preTime = zeit && /^([01]\d|2[0-3]):[0-5]\d$/.test(zeit) ? zeit : undefined;
   const { locale, t } = await getAdminText();
   const todayKey = toDateKey(new Date());
@@ -146,10 +154,13 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
   const upcomingStart = zurichToDate(addDays(todayKey, 0), "00:00");
   const upcomingEnd = zurichToDate(addDays(todayKey, 15), "00:00");
 
-  const [dayBookings, upcoming, stats, services, fees, mailError] = await Promise.all([
-    getBookingsBetween(dayStart, dayEnd, { includeCancelled: true }),
-    getBookingsBetween(new Date(Math.max(Date.now(), upcomingStart.getTime())), upcomingEnd),
-    getBookingStats(),
+  const periods = currentPeriods();
+  const [dayBookings, upcoming, counts, sales, staffList, services, fees, mailError] = await Promise.all([
+    getBookingsBetween(dayStart, dayEnd, { includeCancelled: true, staffId: staff }),
+    getBookingsBetween(new Date(Math.max(Date.now(), upcomingStart.getTime())), upcomingEnd, { staffId: staff }),
+    getBookingCounts(periods, staff),
+    getSalesBetween(new Date(Math.min(periods.week[0].getTime(), periods.month[0].getTime())), new Date(Math.max(periods.week[1].getTime(), periods.month[1].getTime()))),
+    getStaff({ includeInactive: true }),
     getServices({ includeInactive: true }),
     getOpenFeeBookings(),
     getEmailLastError().catch(() => null),
@@ -158,7 +169,13 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
   const showMailError = !!mailError && Date.now() - new Date(mailError.at).getTime() < 3 * 24 * 3600 * 1000;
   const infos = await getCustomerInfos([...dayBookings, ...upcoming, ...fees].map(keyOf));
   const info = (b: Booking) => infos.get(keyOf(b));
-  const returnTo = `/admin?datum=${day}`;
+  const returnTo = `/admin?datum=${day}${werQ}`;
+  // Umsatz aus der Kasse (Stornos zählen negativ), bei Auswahl nur dieser Mitarbeiter
+  const revenue = (from: Date, to: Date) => {
+    const list = sales.filter((x) => x.createdAt >= from && x.createdAt < to && (!staff || x.staffId === staff));
+    return summarize(list, staffList).total;
+  };
+  const chf = (n: number) => `CHF ${n.toLocaleString("de-CH", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
   // Kommende Termine von Kunden mit Vorgeschichte: oben gross anzeigen
   const attention = upcoming.filter((b) => {
     const c = info(b);
@@ -193,7 +210,7 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
               const c = info(b)!;
               return (
                 <li key={b.id}>
-                  <Link href={`/admin?datum=${toDateKey(b.startsAt)}#b-${b.id.slice(0, 8)}`}>
+                  <Link href={`/admin?datum=${toDateKey(b.startsAt)}${werQ}#b-${b.id.slice(0, 8)}`}>
                     <span className="attn-when">{formatShortDate(b.startsAt, locale)} · {formatTime(b.startsAt, locale)}</span>
                     <strong>{b.customerName}</strong>
                     <span className="attn-why">
@@ -212,20 +229,29 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
         </section>
       )}
 
-      <div className="stats">
-        <div className="stat"><span>{t.bookings.statToday}</span><strong>{stats.today}</strong></div>
-        <div className="stat"><span>{t.bookings.statWeek}</span><strong>{stats.week}</strong></div>
-        <div className="stat"><span>{t.bookings.statUpcoming}</span><strong>{stats.upcoming}</strong></div>
-        <div className="stat"><span>{t.bookings.statRevenue}</span><strong>{formatChf(stats.weekRevenue)}</strong></div>
+      <StaffSwitch
+        current={staff ?? "alle"}
+        label={t.bookings.who}
+        options={[{ key: "alle", label: t.bookings.both }, ...BOOKING_STAFF.map((k) => ({ key: k, label: STAFF_NAMES[k] }))]}
+        href={(k) => `/admin?${day !== todayKey ? `datum=${day}&` : ""}${k === "alle" ? "" : `wer=${k}`}`.replace(/[?&]$/, "")}
+      />
+
+      <div className="stats stats-6">
+        <div className="stat"><span>{t.bookings.statToday}</span><strong>{counts.today}</strong></div>
+        <div className="stat"><span>{t.bookings.statWeek}</span><strong>{counts.week}</strong></div>
+        <div className="stat"><span>{t.bookings.statMonth}</span><strong>{counts.month}</strong></div>
+        <div className="stat stat-money"><span>{t.bookings.revToday}</span><strong>{chf(revenue(...periods.today))}</strong></div>
+        <div className="stat stat-money"><span>{t.bookings.revWeek}</span><strong>{chf(revenue(...periods.week))}</strong></div>
+        <div className="stat stat-money"><span>{t.bookings.revMonth}</span><strong>{chf(revenue(...periods.month))}</strong></div>
       </div>
 
       <div className="admin-cols">
         <section className="panel">
           <div className="day-nav">
-            <Link className="btn btn-light btn-sm" href={`/admin?datum=${addDays(day, -1)}`} aria-label={t.bookings.prevDay}>‹</Link>
-            <DayPick day={day} label={t.bookings.show} />
-            <Link className="btn btn-light btn-sm" href={`/admin?datum=${addDays(day, 1)}`} aria-label={t.bookings.nextDay}>›</Link>
-            {day !== todayKey && <Link className="btn btn-light btn-sm" href="/admin">{t.bookings.today}</Link>}
+            <Link className="btn btn-light btn-sm" href={`/admin?datum=${addDays(day, -1)}${werQ}`} aria-label={t.bookings.prevDay}>‹</Link>
+            <DayPick day={day} label={t.bookings.show} keep={staff ? { wer: staff } : {}} />
+            <Link className="btn btn-light btn-sm" href={`/admin?datum=${addDays(day, 1)}${werQ}`} aria-label={t.bookings.nextDay}>›</Link>
+            {day !== todayKey && <Link className="btn btn-light btn-sm" href={staff ? `/admin?wer=${staff}` : "/admin"}>{t.bookings.today}</Link>}
           </div>
           <h2 className="h3" style={{ margin: "20px 0 4px" }}>{formatLongDate(dayStart, locale)}</h2>
           <p className="muted small" style={{ margin: 0 }}>
@@ -233,7 +259,7 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
           </p>
           {dayBookings.length ? (
             <ul className="bk-list">
-              {dayBookings.map((b) => <BookingRow key={b.id} b={b} c={info(b)} returnTo={returnTo} t={t} locale={locale} />)}
+              {dayBookings.map((b) => <BookingRow key={b.id} b={b} c={info(b)} returnTo={returnTo} showStaff={!staff} t={t} locale={locale} />)}
             </ul>
           ) : (
             <p className="empty-state">{t.bookings.none}</p>
@@ -244,6 +270,14 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
           <h2 className="h3">{t.bookings.createTitle}</h2>
           <p className="muted small">{t.bookings.createHint}</p>
           <form action={adminCreateBooking} className="stack">
+            <div className="field">
+              <label>{t.bookings.staffLabel}</label>
+              <div className="seg-radio">
+                {BOOKING_STAFF.map((k) => (
+                  <label key={k}><input type="radio" name="staff" value={k} defaultChecked={(staff ?? "zana") === k} /><span>{STAFF_NAMES[k]}</span></label>
+                ))}
+              </div>
+            </div>
             <div className="field">
               <label>{t.bookings.service}</label>
               <select name="serviceId" className="select" required>
@@ -274,7 +308,7 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
         <h2 className="h3">{t.bookings.upcoming}</h2>
         {upcoming.length ? (
           <ul className="bk-list">
-            {upcoming.map((b) => <BookingRow key={b.id} b={b} c={info(b)} returnTo={returnTo} showDate t={t} locale={locale} />)}
+            {upcoming.map((b) => <BookingRow key={b.id} b={b} c={info(b)} returnTo={returnTo} showDate showStaff={!staff} t={t} locale={locale} />)}
           </ul>
         ) : (
           <p className="empty-state">{t.bookings.noneUpcoming}</p>
