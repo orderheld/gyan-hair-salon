@@ -4,6 +4,10 @@ export const site = {
   name: "GYAN Hair Salon",
   shortName: "GYAN",
   owner: "Zana",
+  // Handelsregister (Moneyhouse/Zefix): Einzelfirma, eingetragen 05.09.2025
+  legalName: "GYAN SALON Inh. Ali",
+  ownerFull: "Zana Ali",
+  uid: "CHE-370.741.994",
   founded: 2025,
   url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.gyanhairsalon.ch").replace(/\/$/, ""),
   address: {

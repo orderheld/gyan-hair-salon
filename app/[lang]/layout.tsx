@@ -68,6 +68,8 @@ export default async function LangLayout({ children, params }: { children: React
     "@context": "https://schema.org",
     "@type": ["HairSalon", "BarberShop"],
     "@id": `${site.url}/#salon`,
+    legalName: site.legalName,
+    taxID: site.uid,
     name: site.name,
     description: d.meta.siteDescription,
     url: `${site.url}/${locale}`,

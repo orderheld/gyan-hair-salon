@@ -20,7 +20,6 @@ export default async function Imprint({ params }: Props) {
     <section className="section-tight legal">
       <div className="container narrow prose">
         <h1 className="h1">{d.legal.imprintTitle}</h1>
-        <p className="note">{d.legal.placeholderNote}</p>
         <h2>{d.legal.contact}</h2>
         <p>
           {site.name}
@@ -33,8 +32,16 @@ export default async function Imprint({ params }: Props) {
           <br />
           E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
         </p>
-        <h2>{d.legal.owner}</h2>
-        <p>{site.owner} Ali</p>
+        <h2>{d.legal.company}</h2>
+        <p>
+          {site.legalName}
+          <br />
+          {d.legal.owner}: {site.ownerFull}
+          <br />
+          {d.legal.legalForm}: {d.legal.legalFormValue}
+          <br />
+          {d.legal.uid}: {site.uid}
+        </p>
         <h2>{d.legal.disclaimerTitle}</h2>
         <p>{d.legal.disclaimer}</p>
       </div>

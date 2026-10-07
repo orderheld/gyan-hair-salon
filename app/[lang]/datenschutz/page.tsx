@@ -20,7 +20,6 @@ export default async function Privacy({ params }: Props) {
     <section className="section-tight legal">
       <div className="container narrow prose">
         <h1 className="h1">{d.legal.privacyTitle}</h1>
-        <p className="note">{d.legal.placeholderNote}</p>
         {d.legal.privacy.map((s) => (
           <div key={s.title}>
             <h2>{s.title}</h2>

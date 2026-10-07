@@ -60,12 +60,14 @@ export default async function PostPage({ params }: Props) {
             <Image src={post.image} alt={post.title[locale]} fill priority sizes="(max-width: 1200px) 100vw, 1120px" />
           </div>
         </header>
-        <div className="container narrow section-tight">
+        <div className="section-tight">
+          <div className="container narrow">
           <Markdown text={post.body[locale]} locale={locale} className="prose prose-lg" />
           <div className="post-cta" data-reveal>
             <p className="aside-title">{d.home.finalTitle}</p>
             <p className="muted">{d.home.finalText}</p>
             <Link className="btn btn-dark" href={href(locale, "booking")}>{d.common.bookCta}</Link>
+          </div>
           </div>
         </div>
       </article>
