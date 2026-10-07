@@ -1084,3 +1084,4 @@ html.app .app-back:active { background: var(--cream); }
 .vc-faq-item summary::after { content: "+"; color: var(--stone); }
 .vc-faq-item[open] summary::after { content: "–"; }
 .vc-faq-item p { margin: 0 0 16px; color: var(--taupe); }
+.gate-cancel { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center; gap: 4px 10px; margin: 18px 0 0; text-align: center; }

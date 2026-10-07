@@ -156,17 +156,18 @@ export function AccountLogin({ locale, t }: { locale: string; t: Texts }) {
 }
 
 /** Abmelden-Knopf */
-export function AccountLogout({ label }: { label: string }) {
+export function AccountLogout({ label, to, className = "link-btn" }: { label: string; to?: string; className?: string }) {
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   return (
     <button
       type="button"
-      className="link-btn"
+      className={className}
       disabled={busy}
       onClick={async () => {
         setBusy(true);
         await fetch("/api/account", { method: "DELETE" }).catch(() => null);
+        if (to) router.replace(to);
         router.refresh();
       }}
     >

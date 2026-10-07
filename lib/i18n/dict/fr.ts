@@ -459,6 +459,8 @@ const fr: Dict = {
     completeTitle: "Presque terminé",
     completeHint: "Merci de compléter une seule fois ton nom, ton numéro de téléphone et ta date de naissance. Ensuite tu n’as plus rien à saisir, même pour réserver.",
     completeSave: "Enregistrer et continuer",
+    completeCancel: "Annuler et se déconnecter",
+    completeCancelHint: "Tu peux te reconnecter à tout moment.",
     details: "Mes coordonnées",
     detailsHint: "C’est ainsi que nous te reconnaissons à chaque réservation. L’e-mail est ton compte et ne change pas. Pour un autre e-mail, déconnecte-toi et réserve avec la nouvelle adresse : un nouveau compte est créé.",
     detailsSave: "Enregistrer",

@@ -457,6 +457,8 @@ const de = {
     completeTitle: "Fast geschafft",
     completeHint: "Bitte ergänze einmalig deinen Namen, deine Telefonnummer und dein Geburtsdatum. Danach musst du nichts mehr eintippen, auch nicht beim Buchen.",
     completeSave: "Speichern und weiter",
+    completeCancel: "Abbrechen und abmelden",
+    completeCancelHint: "Du kannst dich jederzeit wieder anmelden.",
     details: "Meine Angaben",
     detailsHint: "So kennen wir dich bei jeder Buchung. Die E-Mail ist dein Konto und bleibt fix. Für eine andere E-Mail meldest du dich ab und buchst mit der neuen Adresse, so entsteht ein neues Konto.",
     detailsSave: "Angaben speichern",

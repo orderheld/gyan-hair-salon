@@ -459,6 +459,8 @@ const en: Dict = {
     completeTitle: "Almost done",
     completeHint: "Please add your name, phone number and date of birth once. After that you never have to type them again, not even when booking.",
     completeSave: "Save and continue",
+    completeCancel: "Cancel and sign out",
+    completeCancelHint: "You can sign in again any time.",
     details: "My details",
     detailsHint: "This is how we know you at every booking. Your email is your account and stays fixed. For a different email, sign out and book with the new address, which creates a new account.",
     detailsSave: "Save details",
