@@ -69,3 +69,54 @@ export async function cancelBooking(id: string, opts: { late?: boolean } = {}): 
     RETURNING *`;
   return rows[0] ? mapBooking(rows[0]) : null;
 }
+
+export type BookingChange = {
+  service: Pick<Service, "id" | "name" | "durationMin">;
+  priceChf: number | null;
+  startsAt: Date;
+};
+
+/**
+ * Verschiebt einen Termin oder ändert die Leistung.
+ * Gleiche Schutzregeln wie beim Anlegen: keine Überschneidung, keine Sperrzeit.
+ * Bei neuer Uhrzeit wird die Erinnerung zurückgesetzt, damit sie zur neuen Zeit kommt.
+ */
+export async function rescheduleBooking(id: string, change: BookingChange): Promise<Booking | null> {
+  const sql = await getSql();
+  const { bufferMin } = await getSettings();
+  const endsAt = new Date(change.startsAt.getTime() + change.service.durationMin * 60_000);
+  const busyUntil = new Date(endsAt.getTime() + bufferMin * 60_000);
+  const start = change.startsAt.toISOString();
+  const end = endsAt.toISOString();
+  try {
+    const rows = await sql`
+      UPDATE bookings SET
+        service_id = ${change.service.id}, service_name = ${change.service.name.de}, price_chf = ${change.priceChf},
+        duration_min = ${change.service.durationMin}, starts_at = ${start}::timestamptz, ends_at = ${end}::timestamptz,
+        busy_until = ${busyUntil.toISOString()}::timestamptz,
+        reminder_sent_at = CASE WHEN starts_at = ${start}::timestamptz THEN reminder_sent_at ELSE NULL END,
+        followup_sent_at = CASE WHEN starts_at = ${start}::timestamptz THEN followup_sent_at ELSE NULL END
+      WHERE id = ${id}::uuid
+        AND NOT EXISTS (
+          SELECT 1 FROM blocked_times
+          WHERE starts_at < ${end}::timestamptz AND ends_at > ${start}::timestamptz
+        )
+      RETURNING *`;
+    if (!rows[0]) {
+      const exists = await sql`SELECT 1 FROM bookings WHERE id = ${id}::uuid`;
+      if (exists.length) throw new SlotTakenError();
+      return null;
+    }
+    return mapBooking(rows[0]);
+  } catch (error) {
+    if (isOverlapError(error)) throw new SlotTakenError();
+    throw error;
+  }
+}
+
+/** Löscht einen Termin endgültig (zum Beispiel ein Test oder ein Versehen) */
+export async function deleteBooking(id: string): Promise<Booking | null> {
+  const sql = await getSql();
+  const rows = await sql`DELETE FROM bookings WHERE id = ${id}::uuid RETURNING *`;
+  return rows[0] ? mapBooking(rows[0]) : null;
+}

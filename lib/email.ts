@@ -14,7 +14,7 @@ import { getSettings, type EmailTemplate, type EmailType, type Settings } from "
 import { TIMEZONE } from "./config";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
-const FROM = process.env.EMAIL_FROM ?? `${site.name} <termine@gyan-hairsalon.ch>`;
+const FROM = process.env.EMAIL_FROM ?? `${site.name} <termine@gyanhairsalon.ch>`;
 
 type Mail = { to: string; subject: string; html: string; text: string; ics?: string; replyTo?: string };
 
@@ -168,8 +168,10 @@ function ics(b: Booking, summary: string) {
     "PRODID:-//GYAN Hair Salon//Termine//DE",
     "METHOD:PUBLISH",
     "BEGIN:VEVENT",
-    `UID:${b.id}@gyan-hairsalon.ch`,
+    `UID:${b.id}@gyanhairsalon.ch`,
     `DTSTAMP:${fmt(new Date())}`,
+    // steigt mit jeder Änderung, damit Kalender-Apps einen verschobenen Termin aktualisieren
+    `SEQUENCE:${Math.floor(Date.now() / 1000)}`,
     `DTSTART:${fmt(b.startsAt)}`,
     `DTEND:${fmt(b.endsAt)}`,
     `SUMMARY:${summary} · GYAN Hair Salon`,
@@ -274,6 +276,16 @@ export async function sendBookingConfirmation(b: Booking) {
     sendType("confirmation", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined }),
     sendType("adminNotify", b, settings.notifyEmail, { replyTo: b.customerEmail || undefined, locale: "de", details: await customerWarning(b) }),
   ]);
+}
+
+const CHANGED: Record<Locale, string> = { de: "Termin geändert", fr: "Rendez-vous modifié", en: "Appointment changed" };
+
+/** Termin verschoben oder geändert: neue Bestätigung mit allen Angaben an den Kunden */
+export async function sendRescheduled(b: Booking) {
+  const settings = await getSettings();
+  if (!b.customerEmail) return null;
+  const mail = await buildEmail("confirmation", b, { settings });
+  return send({ to: b.customerEmail, replyTo: settings.notifyEmail || undefined, ...mail, subject: `${CHANGED[b.locale] ?? CHANGED.de}: ${mail.subject}` });
 }
 
 /** Nur die Bestätigung an den Kunden, nochmals (aus dem Admin) */

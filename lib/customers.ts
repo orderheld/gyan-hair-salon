@@ -134,3 +134,48 @@ export async function getOpenFeeBookings() {
   const rows = await sql`SELECT * FROM bookings WHERE fee_open ORDER BY starts_at DESC LIMIT 200`;
   return rows.map(mapBooking);
 }
+
+/** Ein Kunde mit allen Kennzahlen, oder null */
+export async function getCustomer(key: string): Promise<CustomerInfo | null> {
+  if (!key) return null;
+  return (await getCustomerInfos([key])).get(key) ?? null;
+}
+
+/** Alle Termine eines Kunden, neueste zuerst */
+export async function getCustomerBookings(key: string) {
+  const rows = await query(`SELECT * FROM bookings WHERE ${KEY_SQL} = $1 ORDER BY starts_at DESC LIMIT 300`, [key]);
+  return rows.map(mapBooking);
+}
+
+/**
+ * Name, E-Mail und Telefon bei allen Terminen dieses Kunden ändern.
+ * Ändert sich dadurch der Schlüssel (E-Mail/Telefon), ziehen Notiz und Sperre mit.
+ * Gibt den neuen Schlüssel zurück.
+ */
+export async function updateCustomerContact(key: string, contact: { name: string; email: string; phone: string }): Promise<string> {
+  const newKey = customerKey(contact.email, contact.phone);
+  if (!key || !newKey) return key;
+  await query(`UPDATE bookings SET customer_name = $2, customer_email = $3, customer_phone = $4 WHERE ${KEY_SQL} = $1`, [
+    key,
+    contact.name,
+    contact.email.trim().toLowerCase(),
+    contact.phone,
+  ]);
+  if (newKey !== key) {
+    const sql = await getSql();
+    const taken = await sql`SELECT 1 FROM customers WHERE key = ${newKey}`;
+    if (taken.length) await sql`DELETE FROM customers WHERE key = ${key}`;
+    else await sql`UPDATE customers SET key = ${newKey}, updated_at = now() WHERE key = ${key}`;
+  }
+  return newKey;
+}
+
+/** Kunde vollständig löschen: alle Termine, Notizen und Codes (Datenschutz) */
+export async function deleteCustomer(key: string): Promise<number> {
+  if (!key) return 0;
+  const sql = await getSql();
+  const rows = await query(`DELETE FROM bookings WHERE ${KEY_SQL} = $1 RETURNING id`, [key]);
+  await sql`DELETE FROM customers WHERE key = ${key}`;
+  if (!key.startsWith("tel:")) await sql`DELETE FROM email_codes WHERE email = ${key}`.catch(() => []);
+  return rows.length;
+}

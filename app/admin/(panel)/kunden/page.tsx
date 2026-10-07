@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { CustomerBadges } from "@/components/admin/CustomerBadges";
 import { Flash } from "@/components/admin/Flash";
@@ -60,6 +61,7 @@ export default async function Customers({ searchParams }: { searchParams: Search
                   {x.email && <a className="btn btn-light btn-sm" href={`mailto:${x.email}`}>{x.email}</a>}
                   {x.firstAt && <span className="muted small">{c.firstBooking} {formatShortDate(x.firstAt, locale)}</span>}
                 </div>
+                <Link className="btn btn-dark btn-sm cust-open" href={`/admin/kunden/${encodeURIComponent(x.key)}`}>{c.open} →</Link>
                 <form action={saveCustomer} className="stack" style={{ marginTop: 0 }}>
                   <input type="hidden" name="key" value={x.key} />
                   <input type="hidden" name="returnTo" value={returnTo} />

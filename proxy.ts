@@ -59,6 +59,6 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   // Nicht für Admin, API, Next-Dateien und Dateien mit Endung (Bilder, robots.txt, sitemap.xml …)
-  matcher: ["/((?!admin|api|bald|_next|.*\\..*).*)"],
+  matcher: ["/", "/((?!admin|api|bald|_next|.*\\..*).*)"],
 };
 

@@ -76,7 +76,7 @@ Alternative: In Vercel unter **Storage → Neon** verbinden, dann setzt Vercel `
 1. Auf <https://resend.com> anmelden → **Domains → Add Domain** → deine Domain, Region **Ireland (eu-west-1)**.
 2. Resend zeigt 3–4 DNS-Einträge (TXT/MX für `send` und `resend._domainkey`). Diese bei cyon eintragen (siehe Schritt 6). Nach ein paar Minuten auf **Verify** klicken.
 3. **API Keys → Create** (Sending access) und in `.env.local` als `RESEND_API_KEY` eintragen.
-4. `EMAIL_FROM` auf eine Adresse dieser Domain setzen, z. B. `GYAN Hair Salon <termine@deine-domain.ch>`.
+4. `EMAIL_FROM` auf eine Adresse dieser Domain setzen, z. B. `GYAN Hair Salon <termine@gyanhairsalon.ch>`.
 5. `SALON_NOTIFY_EMAIL` = Zanas E-Mail. Dorthin geht jede neue Buchung und Stornierung.
 
 ## 5. Veröffentlichen (Vercel)
@@ -111,7 +111,7 @@ Jeder `git push` auf `main` veröffentlicht danach automatisch neu.
 
 ## 6. Domain von cyon auf Vercel zeigen
 
-1. Vercel → Projekt → **Settings → Domains** → `deine-domain.ch` und `www.deine-domain.ch` hinzufügen. Vercel zeigt die nötigen DNS-Werte an.
+1. Vercel → Projekt → **Settings → Domains** → `gyanhairsalon.ch` und `www.gyanhairsalon.ch` hinzufügen. Vercel zeigt die nötigen DNS-Werte an.
 2. Bei cyon: <https://my.cyon.ch> → **Domains & SSL → DNS-Zone** der Domain bearbeiten:
 
 | Typ   | Name  | Wert                                   |
@@ -122,7 +122,7 @@ Jeder `git push` auf `main` veröffentlicht danach automatisch neu.
 3. Bestehende **A/AAAA-Einträge für @ und www**, die auf cyon zeigen, löschen. **MX-Einträge nicht anfassen**, falls ihr E-Mail bei cyon habt.
 4. Die Resend-Einträge aus Schritt 4 ebenfalls hier eintragen.
 5. Nach 5–60 Minuten zeigt Vercel «Valid Configuration» und stellt das SSL-Zertifikat automatisch aus.
-6. `NEXT_PUBLIC_SITE_URL` in Vercel auf `https://www.deine-domain.ch` setzen und neu deployen (wird für Links in E-Mails gebraucht).
+6. `NEXT_PUBLIC_SITE_URL` in Vercel auf `https://www.gyanhairsalon.ch` setzen und neu deployen (wird für Links in E-Mails gebraucht).
 
 ## 7. Erinnerungs- und Feedback-E-Mails (cron-job.org)
 
@@ -130,7 +130,7 @@ Vercel Hobby führt Cronjobs nur einmal pro Tag aus. Darum ruft der kostenlose D
 
 1. In Vercel `CRON_SECRET` auf einen langen Zufallswert setzen (siehe Befehl oben) und neu deployen.
 2. Auf <https://cron-job.org> anmelden → **Create cronjob**.
-3. URL: `https://www.deine-domain.ch/api/cron?key=DEIN_CRON_SECRET`, Ausführung **alle 10 Minuten**, speichern.
+3. URL: `https://www.gyanhairsalon.ch/api/cron?key=DEIN_CRON_SECRET`, Ausführung **alle 10 Minuten**, speichern.
 4. Testen: Die Adresse im Browser öffnen, es erscheint `{"ok":true,...}`.
 
 Zusätzlich prüft die Webseite bei Besuchen selbst, ob Mails fällig sind. Der Cronjob sorgt dafür, dass es auch nachts pünktlich klappt.
@@ -141,7 +141,7 @@ Solange `COMING_SOON=1` in Vercel gesetzt ist, sehen Besucher auf jeder Adresse 
 
 **Du und Zana sehen die echte Seite:** unten rechts auf «Login» tippen, Admin-Passwort eingeben. Danach ist die ganze Webseite offen (30 Tage, pro Gerät). Ihr könnt so auch echte Testbuchungen machen und die E-Mails prüfen.
 
-**Livegang:** Vercel → Projekt → **Settings → Environment Variables** → `COMING_SOON` auf `0` setzen (oder löschen) → **Deployments → … → Redeploy**. Danach in der Google Search Console die Sitemap `https://www.deine-domain.ch/sitemap.xml` einreichen.
+**Livegang:** Vercel → Projekt → **Settings → Environment Variables** → `COMING_SOON` auf `0` setzen (oder löschen) → **Deployments → … → Redeploy**. Danach in der Google Search Console die Sitemap `https://www.gyanhairsalon.ch/sitemap.xml` einreichen.
 
 ---
 
@@ -225,3 +225,9 @@ Die Live-Angaben auf der Startseite (offen/geschlossen, nächster freier Termin)
 - Kommt der Buchungscode nicht an, sieht der Kunde jetzt direkt eine Meldung mit der Bitte anzurufen.
 - Unter **E-Mails** zeigt die Test-E-Mail bei einem Fehler die Meldung von Resend an.
 - Vercel → **Logs**, Suche nach `E-Mail-Fehler`, zeigt jeden Fehler mit Empfänger.
+
+## 14. Admin: Kalender, Termine und Kunden
+
+- **Kalender** (Menü «Kalender»): Tag, Woche oder Monat. Auf einen Termin tippen öffnet ihn, auf eine freie Stelle tippen trägt einen neuen Termin zu dieser Zeit ein. Sperrzeiten und Pausen sind schraffiert, am Handy wischt man durch die Woche.
+- **Termin öffnen:** Leistung, Datum, Uhrzeit, Preis, Name, Telefon, E-Mail, Sprache und Notizen ändern. Beim Verschieben bekommt der Kunde auf Wunsch eine neue Bestätigung mit Kalendereintrag. Überschneidungen und Sperrzeiten werden geprüft. Dazu: Anrufen, WhatsApp, E-Mail, Bestätigung nochmals senden, Nicht gekommen, Stornieren und **Endgültig löschen**.
+- **Kundenkarte** (Kunden → Kundenkarte öffnen): alle Termine, Besuche, Umsatz, Kontaktdaten ändern (gilt für alle Termine), Notiz, Werbe-Abmeldung, Sperren, neuen Termin für den Kunden und **Kunde endgültig löschen** (mit allen Terminen, z. B. auf Wunsch nach Datenschutzgesetz).

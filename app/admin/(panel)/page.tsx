@@ -22,7 +22,7 @@ import {
   updateBookingDetails,
 } from "../actions";
 
-type Search = Promise<{ datum?: string; ok?: string; error?: string }>;
+type Search = Promise<{ datum?: string; zeit?: string; name?: string; tel?: string; mail?: string; ok?: string; error?: string }>;
 
 const keyOf = (b: Booking) => customerKey(b.customerEmail, b.customerPhone);
 
@@ -58,11 +58,12 @@ function BookingRow({ b, c, returnTo, showDate, t, locale }: { b: Booking; c?: C
           </div>
         )}
         <div className="bk-title">
-          <strong>{b.customerName}</strong>
+          <Link href={`/admin/termin/${b.id}`} className="bk-name"><strong>{b.customerName}</strong></Link>
           {cancelled && <span className="pill pill-muted">{b.lateCancel ? t.bookings.lateCancel : t.bookings.cancelled}</span>}
           {b.noShow && <span className="pill pill-warn">{t.bookings.noShow}</span>}
           {b.source === "admin" && <span className="pill">{t.bookings.manual}</span>}
           <span className="pill pill-lang">{b.locale.toUpperCase()}</span>
+          <Link href={`/admin/termin/${b.id}`} className="bk-open small">{t.common.edit} →</Link>
         </div>
         <CustomerBadges c={c} t={t} />
         <div className="bk-meta">
@@ -135,7 +136,8 @@ function BookingRow({ b, c, returnTo, showDate, t, locale }: { b: Booking; c?: C
 }
 
 export default async function AdminBookings({ searchParams }: { searchParams: Search }) {
-  const { datum, ok, error } = await searchParams;
+  const { datum, zeit, name: preName, tel: preTel, mail: preMail, ok, error } = await searchParams;
+  const preTime = zeit && /^([01]\d|2[0-3]):[0-5]\d$/.test(zeit) ? zeit : undefined;
   const { locale, t } = await getAdminText();
   const todayKey = toDateKey(new Date());
   const day = datum && isDateKey(datum) ? datum : todayKey;
@@ -238,7 +240,7 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
           )}
         </section>
 
-        <aside className="panel">
+        <aside className="panel" id="neu">
           <h2 className="h3">{t.bookings.createTitle}</h2>
           <p className="muted small">{t.bookings.createHint}</p>
           <form action={adminCreateBooking} className="stack">
@@ -250,11 +252,11 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
             </div>
             <div className="row2">
               <div className="field"><label>{t.bookings.date}</label><input type="date" name="date" defaultValue={day} className="input" required /></div>
-              <div className="field"><label>{t.bookings.time}</label><input type="time" name="time" step={300} className="input" required /></div>
+              <div className="field"><label>{t.bookings.time}</label><input type="time" name="time" step={300} defaultValue={preTime} className="input" required autoFocus={!!preTime} /></div>
             </div>
-            <div className="field"><label>{t.bookings.name}</label><input name="name" className="input" required /></div>
-            <div className="field"><label>{t.bookings.phone}</label><input name="phone" type="tel" className="input" /></div>
-            <div className="field"><label>{t.bookings.emailOptional}</label><input name="email" type="email" className="input" /></div>
+            <div className="field"><label>{t.bookings.name}</label><input name="name" defaultValue={preName?.slice(0, 80)} className="input" required /></div>
+            <div className="field"><label>{t.bookings.phone}</label><input name="phone" type="tel" defaultValue={preTel?.slice(0, 30)} className="input" /></div>
+            <div className="field"><label>{t.bookings.emailOptional}</label><input name="email" type="email" defaultValue={preMail?.slice(0, 120)} className="input" /></div>
             <div className="field"><label>{t.bookings.note}</label><input name="note" className="input" /></div>
             <div className="field">
               <label>{t.bookings.language}</label>

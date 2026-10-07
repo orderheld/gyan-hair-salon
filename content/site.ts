@@ -5,7 +5,7 @@ export const site = {
   shortName: "GYAN",
   owner: "Zana",
   founded: 2025,
-  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.gyan-hairsalon.ch").replace(/\/$/, ""), // PLATZHALTER bis Domain feststeht
+  url: (process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.gyanhairsalon.ch").replace(/\/$/, ""),
   address: {
     street: "Zentralstrasse 22",
     zip: "2502",
@@ -16,7 +16,7 @@ export const site = {
   },
   phone: "+41 76 505 74 47",
   phoneHref: "tel:+41765057447",
-  email: "info@gyan-hairsalon.ch", // PLATZHALTER
+  email: "info@gyanhairsalon.ch", // PLATZHALTER
   instagram: "https://www.instagram.com/gyan_hair_salon/",
   instagramHandle: "@gyan_hair_salon",
   googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=GYAN+Hair+Salon+Biel",

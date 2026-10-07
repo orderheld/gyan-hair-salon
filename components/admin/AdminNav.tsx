@@ -5,7 +5,8 @@ import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 
 const ICONS: Record<string, ReactNode> = {
-  "/admin": <><rect x="3.5" y="5" width="17" height="15" rx="3" /><path d="M3.5 10h17M8 3v4M16 3v4" /></>,
+  "/admin": <><path d="M8 6.5h12M8 12h12M8 17.5h12" /><circle cx="4.2" cy="6.5" r="1" /><circle cx="4.2" cy="12" r="1" /><circle cx="4.2" cy="17.5" r="1" /></>,
+  "/admin/kalender": <><rect x="3.5" y="5" width="17" height="15" rx="3" /><path d="M3.5 10h17M8 3v4M16 3v4M8 14h2M14 14h2M8 17h2" /></>,
   "/admin/kunden": <><circle cx="9" cy="8.5" r="3.2" /><path d="M3.5 19c.6-3 2.8-4.8 5.5-4.8s4.9 1.8 5.5 4.8" /><path d="M15.5 5.6a3 3 0 0 1 0 5.8M17.5 14.6c1.6.6 2.7 2.1 3 4.4" /></>,
   "/admin/leistungen": <><circle cx="6.5" cy="7" r="2.6" /><circle cx="6.5" cy="17" r="2.6" /><path d="M8.6 8.6 20 17.5M8.6 15.4 20 6.5" /></>,
   "/admin/zeiten": <><circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" /></>,
@@ -19,7 +20,7 @@ export function AdminNav({ links }: { links: { href: string; label: string; shor
   return (
     <nav className="admin-tabs" aria-label="Admin">
       {links.map((l) => (
-        <Link key={l.href} href={l.href} className={(l.href === "/admin" ? path === l.href : path.startsWith(l.href)) ? "active" : ""}>
+        <Link key={l.href} href={l.href} className={(l.href === "/admin" ? path === l.href : path.startsWith(l.href) || (l.href === "/admin/kalender" && path.startsWith("/admin/termin"))) ? "active" : ""}>
           <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
             {ICONS[l.href]}
           </svg>

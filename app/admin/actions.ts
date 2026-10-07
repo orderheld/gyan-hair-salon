@@ -6,15 +6,15 @@ import { redirect } from "next/navigation";
 import { LOCALES, type Locale } from "@/content/types";
 import { ADMIN_LANG_COOKIE, getAdminText, slugify } from "@/lib/admin";
 import { checkPassword, endSession, requireAdmin, startSession } from "@/lib/auth";
-import { cancelBooking, createBooking, SlotTakenError } from "@/lib/booking";
+import { cancelBooking, createBooking, deleteBooking, rescheduleBooking, SlotTakenError } from "@/lib/booking";
 import { getBookingById, getBookingsBetween, getService, SERVICE_CATEGORIES } from "@/lib/data";
 import { getSql } from "@/lib/db";
-import { customerKey, updateCustomer } from "@/lib/customers";
-import { resendConfirmationToCustomer, sendBookingConfirmation, sendCancellation, sendTestEmail } from "@/lib/email";
+import { customerKey, deleteCustomer, updateCustomer, updateCustomerContact } from "@/lib/customers";
+import { resendConfirmationToCustomer, sendBookingConfirmation, sendCancellation, sendRescheduled, sendTestEmail } from "@/lib/email";
 import { fill, getDict } from "@/lib/i18n";
 import { isLocale } from "@/lib/i18n/config";
 import { EMAIL_TYPES, getSettings, saveSettings, SLOT_STEPS, type EmailTemplate, type EmailType } from "@/lib/settings";
-import { isDateKey, isTimeKey, zurichToDate } from "@/lib/time";
+import { isDateKey, isTimeKey, toDateKey, zurichToDate } from "@/lib/time";
 
 const str = (fd: FormData, key: string, max = 500) => String(fd.get(key) ?? "").trim().slice(0, max);
 const num = (fd: FormData, key: string) => Number(String(fd.get(key) ?? "").replace(",", "."));
@@ -100,7 +100,7 @@ export async function resendConfirmation(fd: FormData) {
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const safeReturn = (fd: FormData) => {
   const to = str(fd, "returnTo", 200);
-  return /^\/admin(\/[\w-]*)*(\?[\w=&%.+-]*)?(#[\w-]+)?$/.test(to) ? to : "/admin";
+  return /^\/admin(\/[\w%.@+-]*)*(\?[\w=&%.+-]*)?(#[\w-]+)?$/.test(to) && !to.includes("//") ? to : "/admin";
 };
 
 /** Name, Telefon, E-Mail und Notizen eines Termins ändern (plus interne Kundennotiz) */
@@ -351,4 +351,88 @@ export async function sendEmailTest(lang: string, fd: FormData) {
   const failed = await sendTestEmail(type as EmailType, lang as Locale, s.notifyEmail);
   if (failed) back(`/admin/emails#${type}`, fill(t.emails.testFailed, { error: failed }), "error");
   back(`/admin/emails#${type}`, fill(t.emails.testSent, { email: s.notifyEmail }));
+}
+
+/* Termin-Detailseite: alles ändern, verschieben, löschen */
+export async function adminUpdateBooking(fd: FormData) {
+  await requireAdmin();
+  const { t } = await getAdminText();
+  const id = str(fd, "id", 40);
+  const page = `/admin/termin/${id}`;
+  const before = await getBookingById(id);
+  if (!before) back("/admin/kalender", t.booking.notFound, "error");
+  const name = str(fd, "name", 80);
+  const email = str(fd, "email", 120).toLowerCase();
+  const phone = str(fd, "phone", 30);
+  const date = str(fd, "date", 10);
+  const time = str(fd, "time", 5);
+  const lang = str(fd, "locale", 2);
+  const service = await getService(Number(fd.get("serviceId")));
+  const priceRaw = str(fd, "price", 12);
+  const price = priceRaw === "" ? null : num(fd, "price");
+  if (name.length < 2 || (email && !EMAIL.test(email)) || !service || !isDateKey(date) || !isTimeKey(time) || (price !== null && !(price >= 0))) {
+    back(page, t.common.checkInput, "error");
+  }
+  const sql = await getSql();
+  await sql`UPDATE bookings SET customer_name = ${name}, customer_email = ${email}, customer_phone = ${phone},
+            note = ${str(fd, "note", 500)}, locale = ${isLocale(lang) ? lang : before!.locale} WHERE id = ${id}::uuid`;
+  if (fd.has("customerNote")) await updateCustomer(customerKey(email, phone), { note: str(fd, "customerNote", 1000) });
+
+  const startsAt = zurichToDate(date, time);
+  const moved = startsAt.getTime() !== before!.startsAt.getTime() || service!.id !== before!.serviceId || price !== before!.priceChf;
+  let updated = await getBookingById(id);
+  if (moved) {
+    try {
+      updated = await rescheduleBooking(id, { service: service!, priceChf: price, startsAt });
+    } catch (error) {
+      if (error instanceof SlotTakenError) back(page, t.bookings.overlap, "error");
+      throw error;
+    }
+  }
+  const timeChanged = startsAt.getTime() !== before!.startsAt.getTime() || service!.id !== before!.serviceId;
+  let msg = t.booking.saved;
+  if (updated && timeChanged && updated.status === "confirmed" && updated.customerEmail && fd.get("notify") === "on") {
+    const failed = await sendRescheduled(updated);
+    msg = failed ? fill(t.emails.testFailed, { error: failed }) : t.booking.savedNotified;
+  }
+  revalidatePath("/admin", "layout");
+  back(page, msg);
+}
+
+export async function adminDeleteBooking(fd: FormData) {
+  await requireAdmin();
+  const { t } = await getAdminText();
+  const id = str(fd, "id", 40);
+  const booking = await getBookingById(id);
+  if (booking && booking.status === "confirmed" && booking.startsAt.getTime() > Date.now() && fd.get("notify") === "on") {
+    await sendCancellation(booking, "salon");
+  }
+  await deleteBooking(id);
+  revalidatePath("/admin", "layout");
+  const to = booking ? `/admin/kalender?datum=${toDateKey(booking.startsAt)}` : "/admin/kalender";
+  back(to, t.booking.deleted);
+}
+
+/* Kunden-Detailseite */
+export async function adminSaveCustomerContact(fd: FormData) {
+  await requireAdmin();
+  const { t } = await getAdminText();
+  const key = str(fd, "key", 140);
+  const name = str(fd, "name", 80);
+  const email = str(fd, "email", 120).toLowerCase();
+  const phone = str(fd, "phone", 30);
+  const page = `/admin/kunden/${encodeURIComponent(key)}`;
+  if (name.length < 2 || (email && !EMAIL.test(email)) || (!email && !phone.replace(/\D/g, ""))) back(page, t.common.checkInput, "error");
+  const newKey = await updateCustomerContact(key, { name, email, phone });
+  await updateCustomer(newKey, { note: str(fd, "note", 1000), noMarketing: fd.get("noMarketing") === "on" });
+  revalidatePath("/admin", "layout");
+  back(`/admin/kunden/${encodeURIComponent(newKey)}`, t.customers.saved);
+}
+
+export async function adminDeleteCustomer(fd: FormData) {
+  await requireAdmin();
+  const { t } = await getAdminText();
+  const n = await deleteCustomer(str(fd, "key", 140));
+  revalidatePath("/admin", "layout");
+  back("/admin/kunden", fill(t.customers.deleted, { n }));
 }
