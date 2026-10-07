@@ -399,9 +399,9 @@ A small tip: when you book online, you see free slots right away and can plan yo
       en: "Barber near Orpund – men's salon in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Orpund: GYAN im Zentrum von Biel, rund 6 km entfernt. Haarschnitt, Fade und Bart – jetzt online Termin buchen.",
-      fr: "Coiffeur homme près d'Orpund : GYAN au centre de Bienne, à environ 6 km. Coupe, dégradé et barbe – réserve en ligne.",
-      en: "Barber near Orpund: GYAN in the centre of Biel, about 6 km away. Haircuts, fades and beards – book your appointment online.",
+      de: "Herrencoiffeur für Orpund: GYAN im Zentrum von Biel, rund 6 km entfernt. Haarschnitt, Fade und Bart – online Termin buchen oder spontan vorbeikommen.",
+      fr: "Coiffeur homme près d'Orpund : GYAN au centre de Bienne, à environ 6 km. Coupe, dégradé et barbe – réserve en ligne ou passe sans rendez-vous.",
+      en: "Barber near Orpund: GYAN in the centre of Biel, about 6 km away. Haircuts, fades and beards – book your appointment online or simply walk in.",
     },
     h1: {
       de: "Herrencoiffeur für Orpund",

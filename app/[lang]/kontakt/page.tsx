@@ -44,7 +44,7 @@ export default async function Contact({ params }: Props) {
             <p className="small muted">{d.footer.walkInNote}</p>
           </div>
           <a className="contact-photo" href={site.address.mapsUrl} target="_blank" rel="noopener" data-reveal>
-            <Image src={site.images.reception} alt="GYAN Hair Salon, Zentralstrasse 22, Biel/Bienne" fill sizes="(max-width: 900px) 92vw, 40vw" />
+            <Image src={site.images.reception} alt={site.imageAlt[site.images.reception][locale]} fill sizes="(max-width: 900px) 92vw, 40vw" />
             <span className="contact-pin">
               <strong>GYAN</strong> {site.address.street}
             </span>

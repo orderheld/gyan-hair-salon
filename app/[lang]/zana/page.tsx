@@ -33,10 +33,10 @@ export default async function ZanaPage({ params }: Props) {
           </div>
           <div className="zana-hero-media rise" style={{ animationDelay: "200ms" }} data-progress>
             <div className="zana-frame sweep">
-              <Image src={site.images.zanaMain} alt={`${site.owner} · GYAN Hair Salon`} fill priority sizes="(max-width: 900px) 90vw, 40vw" />
+              <Image src={site.images.zanaMain} alt={site.imageAlt[site.images.zanaMain][locale]} fill priority sizes="(max-width: 900px) 90vw, 40vw" />
             </div>
             <div className="zana-art sweep-slow">
-              <Image src={site.images.zana} alt={site.owner} fill sizes="280px" />
+              <Image src={site.images.zana} alt={site.imageAlt[site.images.zana][locale]} fill sizes="280px" />
             </div>
           </div>
         </div>

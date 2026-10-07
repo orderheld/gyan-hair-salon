@@ -7,7 +7,10 @@ const fr: Dict = {
     siteDescription:
       "Coiffeur homme et barbier au centre de Biel/Bienne : coupe, skin fade, barbe et rasage avec Zana. Réservation en ligne, confirmée tout de suite.",
     titleSuffix: "GYAN Hair Salon Bienne",
-    serviceDesc: "{short} Avec Zana chez GYAN Hair Salon, {street} à Bienne. {price} · {duration}. Réserve en ligne.",
+    serviceDesc: "{short} Chez GYAN Hair Salon, coiffeur homme à la {street} à Bienne. {price} · {duration}.",
+    serviceCta: "Réserve en ligne ou passe sans rendez-vous.",
+    servicePay: "Paiement en espèces, par carte ou TWINT.",
+    serviceTitle: "{name} à Bienne · {price}",
   },
   common: {
     bookCta: "Réserver chez Zana",
@@ -61,7 +64,7 @@ const fr: Dict = {
     facebook: "Actualités, horaires et offres de GYAN Hair Salon à Bienne.",
     follow: "Suivre",
     metaTitle: "Réseaux sociaux : Instagram, TikTok, Facebook | GYAN Bienne",
-    metaDescription: "Suis GYAN Hair Salon à Bienne sur Instagram, TikTok et Facebook : nouvelles coupes, coulisses et offres.",
+    metaDescription: "Suis GYAN Hair Salon à Bienne sur Instagram, TikTok et Facebook : coupes fraîches, dégradés et barbes, coulisses du salon et offres du moment.",
   },
   loyalty: {
     eyebrow: "Bientôt",
@@ -72,7 +75,7 @@ const fr: Dict = {
     cardTitle: "Chaque 11e coupe offerte",
     cardText: "La carte de fidélité GYAN est en préparation. Dès son lancement, tu le sauras ici.",
     metaTitle: "Carte de fidélité : chaque 11e coupe offerte | GYAN Bienne",
-    metaDescription: "La carte de fidélité de GYAN Hair Salon à Bienne arrive bientôt : chaque 11e coupe est offerte.",
+    metaDescription: "La carte de fidélité de GYAN Hair Salon à Bienne arrive bientôt : chaque 11e coupe est offerte. Tu le sauras ici dès son lancement au salon.",
   },
   footer: {
     credit: "Webdesign par",
@@ -163,8 +166,8 @@ const fr: Dict = {
     finalText: "Réservé en moins d’une minute. Confirmé immédiatement.",
   },
   zana: {
-    metaTitle: "Zana, propriétaire et barbier",
-    metaDescription: "Fais connaissance avec Zana, propriétaire de GYAN Hair Salon à Bienne. Des racines kurdes, un nouveau chez-soi à Biel/Bienne et un salon homme qui aime la précision.",
+    metaTitle: "Zana – propriétaire et barbier à Bienne",
+    metaDescription: "Fais connaissance avec Zana, propriétaire de GYAN Hair Salon : des racines kurdes, un nouveau chez-soi à Biel/Bienne et un salon homme qui aime la précision.",
     eyebrow: "L’histoire",
     title: "Zana.",
     lead: "Pour Zana, couper les cheveux n’a jamais été un simple métier. C’est sa façon d’aller vers les gens : attentif, posé, avec un œil pour le détail que d’autres ne voient pas.",
@@ -188,8 +191,8 @@ const fr: Dict = {
     withAppt: "Avec rendez-vous",
     walkin: "Sans rendez-vous",
     priceNote: "Les grands prix s’appliquent avec rendez-vous. Sans rendez-vous, la coupe et les formules ont des prix plus bas.",
-    metaTitle: "Prestations & prix",
-    metaDescription: "Coupe homme, GYAN Signature Cut, barbe, Face Treatment et formules : toutes les prestations et tous les prix du coiffeur homme à Bienne, avec ou sans rendez-vous.",
+    metaTitle: "Prestations & prix : coiffeur homme Bienne",
+    metaDescription: "Coupe homme, GYAN Signature Cut, barbe, Face Treatment et formules : toutes les prestations et prix du coiffeur homme à Bienne, avec ou sans rendez-vous.",
     eyebrow: "Prestations & prix",
     title: "Pour chaque style, le bon savoir-faire.",
     lead: "Toutes les prestations sont réservables en ligne chez Zana. Tu peux aussi passer sans rendez-vous : la coupe et les formules ont alors leurs prix sans rendez-vous.",
@@ -199,8 +202,8 @@ const fr: Dict = {
     faqTitle: "Questions fréquentes",
   },
   salon: {
-    metaTitle: "Le salon",
-    metaDescription: "Découvre GYAN Hair Salon à la {street} à Bienne : miroirs sculpturaux, fauteuils en cuir et un lounge paisible.",
+    metaTitle: "Le salon à la Zentralstrasse à Bienne",
+    metaDescription: "Découvre GYAN Hair Salon à la {street} à Bienne : miroirs sculpturaux, fauteuils en cuir, bac à shampoing et un lounge paisible, près de la gare.",
     eyebrow: "Le salon",
     title: "Le calme au cœur de Bienne.",
     lead: "Des espaces lumineux, des matières chaleureuses et des détails qu’on n’oublie pas. Le salon est pensé pour que tu sois déjà détendu avant la première coupe.",
@@ -213,8 +216,8 @@ const fr: Dict = {
     galleryTitle: "Aperçus",
   },
   faq: {
-    metaTitle: "Questions fréquentes",
-    metaDescription: "Réponses sur les rendez-vous, le sans rendez-vous, le paiement, l’annulation et l’accès à GYAN Hair Salon à Biel/Bienne.",
+    metaTitle: "FAQ – coiffeur homme et barbier à Bienne",
+    metaDescription: "Réponses sur la réservation, le sans rendez-vous, les prix, le paiement (espèces, carte, TWINT), l’annulation et l’accès à GYAN Hair Salon à Biel/Bienne.",
     eyebrow: "FAQ",
     title: "Questions fréquentes.",
     items: [
@@ -229,8 +232,8 @@ const fr: Dict = {
     ],
   },
   contact: {
-    metaTitle: "Contact & accès",
-    metaDescription: "GYAN Hair Salon, Zentralstrasse 22, 2502 Biel/Bienne. Téléphone, horaires et accès au coiffeur homme au centre de Bienne.",
+    metaTitle: "Contact & accès : Zentralstrasse 22, Bienne",
+    metaDescription: "GYAN Hair Salon, Zentralstrasse 22, 2502 Biel/Bienne : téléphone, horaires et accès au coiffeur homme et barbier, à quelques minutes à pied de la gare.",
     eyebrow: "Contact",
     title: "Comment nous trouver.",
     lead: "Au centre de Bienne, à quelques minutes à pied de la gare. En train, en bus ou à pied.",
@@ -239,13 +242,14 @@ const fr: Dict = {
     mapCta: "Ouvrir dans Google Maps",
   },
   blog: {
-    metaTitle: "Journal",
-    metaDescription: "Conseils coiffure homme, fade, soin de la barbe et style par le coiffeur homme de Biel/Bienne.",
+    metaTitle: "Journal : conseils coiffure et barbe à Bienne",
+    metaDescription: "Conseils du coiffeur homme de Biel/Bienne : coupes tendance, variantes de dégradé, entretien de la barbe, bon rythme de coupe et style pour chaque occasion.",
     eyebrow: "Journal",
     title: "Style, soin, Bienne.",
     lead: "Conseils et savoir-faire du salon. Par Zana et l’équipe GYAN.",
     readTime: "min de lecture",
     related: "Autres articles",
+    fromJournal: "Du journal",
   },
   seo: {
     servicesHere: "Prestations populaires",
@@ -254,8 +258,8 @@ const fr: Dict = {
     faqTitle: "Questions fréquentes",
   },
   booking: {
-    metaTitle: "Prendre rendez-vous",
-    metaDescription: "Réserve en ligne ton rendez-vous avec Zana chez GYAN Hair Salon à Bienne. Choisis un créneau libre, confirmé immédiatement.",
+    metaTitle: "Prendre rendez-vous chez le coiffeur à Bienne",
+    metaDescription: "Réserve ton rendez-vous avec Zana chez GYAN Hair Salon à Bienne : choisis la prestation et un créneau libre, confirmé tout de suite. Paiement au salon.",
     eyebrow: "Prendre rendez-vous",
     title: "Ton moment avec Zana.",
     lead: "Les rendez-vous en ligne sont avec Zana, le propriétaire. Si le créneau est libre, il est confirmé immédiatement. Sans rendez-vous, passe simplement pendant les heures d’ouverture.",

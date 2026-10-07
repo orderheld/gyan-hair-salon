@@ -4,7 +4,7 @@ import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { CtaBand, PageHero, Visit } from "@/components/site/Blocks";
 import { getSalonHours } from "@/lib/data";
-import { getDict } from "@/lib/i18n";
+import { fill, getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 
@@ -13,7 +13,7 @@ type Props = { params: Promise<{ lang: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = (await params).lang as Locale;
   const d = getDict(locale);
-  return pageMetadata({ locale, title: d.salon.metaTitle, description: d.salon.metaDescription, path: (l) => href(l, "salon"), image: site.images.lounge });
+  return pageMetadata({ locale, title: d.salon.metaTitle, description: fill(d.salon.metaDescription, { street: site.address.street }), path: (l) => href(l, "salon"), image: site.images.lounge });
 }
 
 const FEATURE_IMAGES = [site.images.hero, site.images.reception, site.images.lounge, site.images.wash];
@@ -29,7 +29,7 @@ export default async function Salon({ params }: Props) {
         title={d.salon.title}
         lead={d.salon.lead}
         image={site.images.lounge}
-        imageAlt="GYAN Hair Salon Biel, Lounge"
+        imageAlt={site.imageAlt[site.images.lounge][locale]}
         crumbs={[{ label: d.nav.home, href: href(locale, "home") }, { label: d.nav.salon, href: href(locale, "salon") }]}
       />
       <section className="section">
@@ -38,7 +38,7 @@ export default async function Salon({ params }: Props) {
             <article key={f.title} className={`feature ${i % 2 ? "flip" : ""}`}>
               <div className="feature-img" data-reveal>
                 <div className="parallax-img" data-parallax="0.1">
-                  <Image src={FEATURE_IMAGES[i] ?? site.images.hero} alt={`${f.title} · GYAN Hair Salon Biel`} fill sizes="(max-width: 900px) 92vw, 50vw" />
+                  <Image src={FEATURE_IMAGES[i] ?? site.images.hero} alt={site.imageAlt[FEATURE_IMAGES[i] ?? site.images.hero][locale]} fill sizes="(max-width: 900px) 92vw, 50vw" />
                 </div>
               </div>
               <div className="feature-text" data-reveal style={{ transitionDelay: "120ms" }}>
@@ -56,7 +56,7 @@ export default async function Salon({ params }: Props) {
           <div className="gallery">
             {[site.images.reception, site.images.signature, "/images/cut-mulet.jpg", "/images/cut-standard.jpg"].map((src, i) => (
               <div key={src} className="gallery-item" data-reveal style={{ transitionDelay: `${i * 70}ms` }}>
-                <Image src={src} alt={`GYAN Hair Salon Biel · ${d.salon.galleryTitle} ${i + 1}`} fill sizes="(max-width: 760px) 50vw, 25vw" />
+                <Image src={src} alt={site.imageAlt[src][locale]} fill sizes="(max-width: 760px) 50vw, 25vw" />
               </div>
             ))}
           </div>
