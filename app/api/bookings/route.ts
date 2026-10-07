@@ -47,7 +47,12 @@ export async function POST(request: Request) {
   else if (phone.replace(/\D/g, "").length < 9) error = e.phone;
   if (error) return NextResponse.json({ error }, { status: 400 });
 
-  if (await isBlocked(email, phone)) return NextResponse.json({ error: e.blocked }, { status: 403 });
+  // Sperre und Leistung parallel prüfen (spart eine Runde zur Datenbank)
+  const [blocked, service] = await Promise.all([
+    isBlocked(email, phone),
+    Number.isInteger(serviceId) ? getService(serviceId) : null,
+  ]);
+  if (blocked) return NextResponse.json({ error: e.blocked }, { status: 403 });
 
   // E-Mail muss bestätigt sein: per Code oder weil dieser Browser sie schon bestätigt hat
   const jar = await cookies();
@@ -65,7 +70,6 @@ export async function POST(request: Request) {
     rememberCustomer(jar, email);
   }
 
-  const service = Number.isInteger(serviceId) ? await getService(serviceId) : null;
   if (!service || !service.active) return NextResponse.json({ error: e.service }, { status: 400 });
 
   if (!(await isSlotAvailable(date, time, service.durationMin))) {
@@ -85,8 +89,11 @@ export async function POST(request: Request) {
       marketingConsent: body.consent === true, // freiwillig, Buchen geht auch ohne
       emailVerified: true,
     });
-    await sendBookingConfirmation(booking);
-    after(runEmailJobsThrottled);
+    // Mails und Push erst nach der Antwort senden: der Kunde sieht sofort die Bestätigung
+    after(async () => {
+      await sendBookingConfirmation(booking).catch((err) => console.error("[GYAN] Bestätigung:", err));
+      await runEmailJobsThrottled();
+    });
     return NextResponse.json({ ok: true, id: booking.id });
   } catch (err) {
     if (err instanceof SlotTakenError) return NextResponse.json({ error: e.taken }, { status: 409 });

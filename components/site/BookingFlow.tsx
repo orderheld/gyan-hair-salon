@@ -26,7 +26,14 @@ type Props = {
   privacyHref: string;
   /** Angemeldeter Kunde («Meine Termine»): Kontaktdaten schon ausgefüllt */
   known?: { name: string; email: string; phone: string };
+  /** Freie Zeiten pro Dauer, schon vom Server mitgeliefert (spart eine Anfrage) */
+  initialAvailability?: ByDuration;
+  availabilityAt?: number;
 };
+type Days = Record<string, string[]>;
+type ByDuration = Record<number, Days>;
+/** Danach werden die freien Zeiten im Hintergrund aufgefrischt */
+const STALE_MS = 90_000;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 const parseKey = (key: string) => key.split("-").map(Number) as [number, number, number];
@@ -46,7 +53,7 @@ const PARTS = [
   { key: "evening", test: (t: string) => t >= "17:00" },
 ] as const;
 
-export function BookingFlow({ locale, t, common, services, serviceGroups, popularLabel, initialServiceId, phone, phoneHref, owner, cancelHours, okHref, privacyHref, known }: Props) {
+export function BookingFlow({ locale, t, common, services, serviceGroups, popularLabel, initialServiceId, phone, phoneHref, owner, cancelHours, okHref, privacyHref, known, initialAvailability, availabilityAt }: Props) {
   const router = useRouter();
   const MONTHS = common.months;
   const intl = locale === "de" ? "de-CH" : locale === "fr" ? "fr-CH" : "en-GB";
@@ -59,9 +66,14 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
   const initial = services.find((s) => s.id === initialServiceId) ?? null;
   const [service, setService] = useState<Service | null>(initial);
   const [step, setStep] = useState<1 | 2 | 3>(initial ? 2 : 1);
-  const [days, setDays] = useState<Record<string, string[]> | null>(null);
+  const [byDuration, setByDuration] = useState<ByDuration | null>(initialAvailability ?? null);
+  const loadedAt = useRef(initialAvailability ? availabilityAt ?? Date.now() : 0);
+  const days = service && byDuration ? byDuration[service.durationMin] ?? null : null;
   const [loading, setLoading] = useState(false);
-  const [date, setDate] = useState<string | null>(null);
+  const [date, setDate] = useState<string | null>(() => {
+    const d = initial && initialAvailability?.[initial.durationMin];
+    return d ? Object.keys(d).sort()[0] ?? null : null;
+  });
   const [time, setTime] = useState<string | null>(null);
   const [part, setPart] = useState<number>(0);
   const [form, setForm] = useState({ name: known?.name ?? "", email: known?.email ?? "", phone: known?.phone ?? "", note: "", website: "", consent: false });
@@ -74,28 +86,78 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
   const [resendAt, setResendAt] = useState(0);
   const [now, setNow] = useState(() => Date.now());
 
-  async function loadAvailability(s: Service, keepSelection = false) {
-    setLoading(true);
-    setError(null);
-    try {
-      const res = await fetch(`/api/availability?service=${s.id}`, { cache: "no-store" });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error);
-      setDays(data.days);
-      const first = Object.keys(data.days).sort()[0];
-      if (!keepSelection) {
-        setDate(first ?? null);
-        setTime(null);
+  /** Freie Zeiten für alle Leistungen auf einmal laden. Wechselt man die Leistung, ist alles schon da. */
+  const loadingRef = useRef<Promise<ByDuration | null> | null>(null);
+  async function loadAll(quiet = false): Promise<ByDuration | null> {
+    if (loadingRef.current) {
+      // Läuft schon (Vorladen): mitwarten und dabei «lädt» zeigen
+      if (!quiet) {
+        setLoading(true);
+        loadingRef.current.finally(() => setLoading(false));
       }
-    } catch {
-      setError(t.errors.load);
-    } finally {
-      setLoading(false);
+      return loadingRef.current;
+    }
+    if (!quiet) setLoading(true);
+    loadingRef.current = (async () => {
+      try {
+        const res = await fetch("/api/availability", { cache: "no-store" });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error);
+        loadedAt.current = Date.now();
+        setByDuration(data.byDuration);
+        return data.byDuration as ByDuration;
+      } catch {
+        if (!quiet) setError(t.errors.load);
+        return null;
+      } finally {
+        loadingRef.current = null;
+        if (!quiet) setLoading(false);
+      }
+    })();
+    return loadingRef.current;
+  }
+
+  /** Neu laden; mit keepSelection bleibt der Tag, die Zeit nur, wenn sie noch frei ist */
+  async function loadAvailability(s: Service, keepSelection = false) {
+    setError(null);
+    const all = await loadAll(keepSelection && !!byDuration);
+    const fresh = all?.[s.durationMin];
+    if (!fresh) return;
+    if (!keepSelection) {
+      setDate(Object.keys(fresh).sort()[0] ?? null);
+      setTime(null);
+    } else {
+      setTime((t0) => (t0 && date && fresh[date]?.includes(t0) ? t0 : null));
     }
   }
 
+  // Leistung gewählt: Zeiten sofort aus dem Vorrat zeigen, sonst laden; alte Daten still auffrischen
+  const firstService = useRef(true);
   useEffect(() => {
-    if (service) loadAvailability(service);
+    if (!service) return;
+    const have = byDuration?.[service.durationMin];
+    const keepDate = firstService.current && !!date;
+    firstService.current = false;
+    if (!have) {
+      loadAvailability(service);
+      return;
+    }
+    if (!keepDate) {
+      setDate(Object.keys(have).sort()[0] ?? null);
+      setTime(null);
+    }
+    if (Date.now() - loadedAt.current > STALE_MS) loadAvailability(service, true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [service?.id]);
+
+  // Schon auf der Seite, aber die Zeiten fehlen noch (z. B. Schritt 1): im Hintergrund vorladen
+  useEffect(() => {
+    if (!byDuration) loadAll(true);
+    const onShow = () => {
+      if (document.visibilityState === "visible" && Date.now() - loadedAt.current > STALE_MS && service) loadAvailability(service, true);
+    };
+    document.addEventListener("visibilitychange", onShow);
+    return () => document.removeEventListener("visibilitychange", onShow);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [service?.id]);
 
@@ -294,7 +356,7 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
 
           {step === 2 && service && (
             <div className="picker">
-              {loading && !days && <p className="muted">{t.loading}</p>}
+              {!days && (loading || !error) && <p className="muted">{t.loading}</p>}
               {days && dayList.length === 0 && (
                 <div className="empty">
                   <h3 className="h3">{t.noSlotsTitle}</h3>

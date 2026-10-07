@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
+import { after } from "next/server";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { cancelBooking } from "@/lib/booking";
@@ -20,14 +21,14 @@ async function cancel(formData: FormData) {
   const lang = String(formData.get("lang") ?? "de");
   const locale: Locale = isLocale(lang) ? lang : "de";
   const back = href(locale, "booking", "storno", token);
-  const booking = await getBookingByToken(token);
-  const { cancelNoticeHours } = await getSettings();
+  const [booking, { cancelNoticeHours }] = await Promise.all([getBookingByToken(token), getSettings()]);
   if (!booking || booking.status !== "confirmed") redirect(back);
   if (booking.startsAt.getTime() <= Date.now()) redirect(back);
   // Kurzfristig storniert: geht, aber die Kosten werden beim nächsten Besuch verrechnet
   const late = booking.startsAt.getTime() - Date.now() < cancelNoticeHours * 3600_000;
   const cancelled = await cancelBooking(booking.id, { late });
-  if (cancelled) await sendCancellation(cancelled, "customer");
+  // Mails und Push nach der Antwort senden, damit die Seite sofort weitergeht
+  if (cancelled) after(() => sendCancellation(cancelled, "customer").catch((err) => console.error("[GYAN] Storno:", err)));
   redirect(`${back}?ok=1`);
 }
 

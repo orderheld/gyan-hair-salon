@@ -33,5 +33,6 @@ export async function GET(request: Request) {
     : `${slot.dayOffset === 0 ? live.today : slot.dayOffset === 1 ? live.tomorrow : formatShortDate(slot.date, locale)}, ${formatTime(slot.date, locale)}`;
   // Ersatz, falls cron-job.org einmal ausfällt: Erinnerungs- und Feedback-Mails nachholen
   after(runEmailJobsThrottled);
-  return NextResponse.json({ status, isOpen: open.kind === "open", slot: slotText }, { headers: { "Cache-Control": "no-store" } });
+  // Kurz im Vercel-CDN zwischenspeichern: viele Seitenaufrufe, aber nur alle 30 Sekunden eine Datenbankabfrage
+  return NextResponse.json({ status, isOpen: open.kind === "open", slot: slotText }, { headers: { "Cache-Control": "public, max-age=0, s-maxage=30, stale-while-revalidate=60" } });
 }

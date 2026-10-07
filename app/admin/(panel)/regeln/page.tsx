@@ -1,5 +1,6 @@
 import { SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
+import { TechStatus } from "@/components/admin/TechStatus";
 import { getAdminText } from "@/lib/admin";
 import { getSettings, SLOT_STEPS } from "@/lib/settings";
 import { saveRules } from "../../actions";
@@ -9,7 +10,7 @@ const BUFFER = [0, 5, 10, 15, 20, 30, 45, 60];
 
 export default async function Rules({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
   const { ok, error } = await searchParams;
-  const { t } = await getAdminText();
+  const { locale, t } = await getAdminText();
   const r = t.rules;
   const s = await getSettings();
   const mins = (m: number) =>
@@ -78,6 +79,7 @@ export default async function Rules({ searchParams }: { searchParams: Promise<{ 
           <SubmitButton className="btn btn-dark" pendingLabel={t.common.saving}>{t.common.save}</SubmitButton>
         </div>
       </form>
+      <TechStatus locale={locale} />
     </>
   );
 }

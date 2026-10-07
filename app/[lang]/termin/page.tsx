@@ -9,6 +9,7 @@ import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
 import { getSettings } from "@/lib/settings";
+import { getAvailabilityFor } from "@/lib/availability";
 import { getCustomerBookings } from "@/lib/customers";
 import { CUSTOMER_COOKIE, readCustomerCookie } from "@/lib/verify";
 
@@ -28,7 +29,14 @@ export default async function Booking({ params, searchParams }: Props) {
   const { service } = await searchParams;
   const d = getDict(locale);
   const email = readCustomerCookie((await cookies()).get(CUSTOMER_COOKIE)?.value);
-  const [services, settings, mine] = await Promise.all([getServices(), getSettings(), email ? getCustomerBookings(email) : []]);
+  // Alles in einem Schritt laden, die freien Zeiten gleich mit (sonst wartet der Kunde danach nochmals)
+  const [services, settings, mine, availability] = await Promise.all([
+    getServices(),
+    getSettings(),
+    email ? getCustomerBookings(email) : [],
+    getAvailabilityFor(),
+  ]);
+  const availabilityAt = Date.now();
   // Angemeldet: Name und Telefon vom letzten Termin übernehmen
   const last = mine[0];
   const known = email ? { name: last?.customerName ?? "", email, phone: last?.customerPhone ?? "" } : undefined;
@@ -73,6 +81,8 @@ export default async function Booking({ params, searchParams }: Props) {
           okHref={href(locale, "booking", "ok")}
           privacyHref={href(locale, "privacy")}
           known={known}
+          initialAvailability={availability}
+          availabilityAt={availabilityAt}
         />
       </div>
     </section>

@@ -1,6 +1,7 @@
 import "server-only";
 import { neon } from "@neondatabase/serverless";
-import { syncCatalog } from "./catalog";
+import { createHash } from "node:crypto";
+import { CATALOG_VERSION, syncCatalog } from "./catalog";
 import { MIGRATIONS } from "./migrations";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -9,6 +10,9 @@ export type Sql = ((strings: TemplateStringsArray, ...values: unknown[]) => Prom
   /** Abfrage mit fertigem Text und $1, $2 … Platzhaltern */
   query: (text: string, params?: unknown[]) => Promise<Row[]>;
 };
+
+/** Fingerabdruck aller Migrationen und der Preislisten-Version */
+const SCHEMA_HASH = createHash("sha1").update(MIGRATIONS.join(";") + "|" + CATALOG_VERSION).digest("hex").slice(0, 16);
 
 const globalForDb = globalThis as unknown as { __gyanSql?: Promise<Sql> };
 
@@ -32,8 +36,18 @@ async function createSql(): Promise<Sql> {
   const url = process.env.DATABASE_URL;
   if (url) {
     const client = neon(url);
-    await client.transaction(MIGRATIONS.map((statement) => client.query(statement))); // eine Anfrage
-    await syncCatalog((text, params = []) => client.query(text, params) as Promise<Row[]>);
+    // Schema und Preisliste nur nachziehen, wenn sich etwas geändert hat.
+    // Sonst kostet ein Kaltstart nur diese eine kleine Abfrage statt aller Migrationen.
+    const current = await client.query(`SELECT value FROM settings WHERE key = 'schema_hash'`).catch(() => []) as Row[];
+    if (current[0]?.value !== SCHEMA_HASH) {
+      await client.transaction(MIGRATIONS.map((statement) => client.query(statement))); // eine Anfrage
+      await syncCatalog((text, params = []) => client.query(text, params) as Promise<Row[]>);
+      await client.query(
+        `INSERT INTO settings (key, value) VALUES ('schema_hash', $1::jsonb)
+         ON CONFLICT (key) DO UPDATE SET value = excluded.value, updated_at = now()`,
+        [JSON.stringify(SCHEMA_HASH)],
+      );
+    }
     const tagged = (strings: TemplateStringsArray, ...values: unknown[]) => client(strings, ...values) as Promise<Row[]>;
     return Object.assign(tagged, { query: (text: string, params: unknown[] = []) => client.query(text, params) as Promise<Row[]> });
   }
