@@ -98,7 +98,8 @@ export default async function LangLayout({ children, params }: { children: React
     geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
     hasMap: site.address.mapsUrl,
     areaServed: [
-      ...["Biel/Bienne", "Nidau", "Brügg", "Port", "Ipsach", "Evilard", "Orpund", "Lyss", "Pieterlen", "Studen"].map((n) => ({ "@type": "City", name: n })),
+      // Biel und alle Orte mit eigener Seite (content/seo/places.ts)
+      ...["Biel/Bienne", ...places.map((p) => p.name[locale])].map((n) => ({ "@type": "City", name: n })),
       { "@type": "AdministrativeArea", name: "Seeland" },
     ],
     knowsLanguage: ["de", "fr", "en"],
