@@ -17,6 +17,8 @@ export type NewBooking = {
   customerName: string;
   customerEmail: string;
   customerPhone: string;
+  /** JJJJ-MM-TT */
+  birthDate?: string;
   note: string;
   locale: Locale;
   source: "online" | "admin";
@@ -41,11 +43,11 @@ export async function createBooking(input: NewBooking): Promise<Booking> {
     const rows = await sql`
       INSERT INTO bookings (service_id, service_name, price_chf, duration_min, starts_at, ends_at, busy_until,
                             customer_name, customer_email, customer_phone, note, locale, source, cancel_token,
-                            marketing_consent, email_verified)
+                            marketing_consent, email_verified, birth_date)
       SELECT ${input.service.id}, ${input.service.name.de}, ${input.service.priceChf}, ${input.service.durationMin},
              ${start}::timestamptz, ${end}::timestamptz, ${busyUntil.toISOString()}::timestamptz,
              ${input.customerName}, ${input.customerEmail}, ${input.customerPhone}, ${input.note}, ${input.locale},
-             ${input.source}, ${token}, ${!!input.marketingConsent}, ${!!input.emailVerified}
+             ${input.source}, ${token}, ${!!input.marketingConsent}, ${!!input.emailVerified}, ${input.birthDate ?? ""}
       WHERE NOT EXISTS (
         SELECT 1 FROM blocked_times
         WHERE starts_at < ${end}::timestamptz AND ends_at > ${start}::timestamptz

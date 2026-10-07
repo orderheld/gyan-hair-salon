@@ -106,6 +106,7 @@ const adminFr: AdminDict = {
     name: "Nom",
     phone: "Téléphone",
     emailOptional: "E-mail (facultatif)",
+    birthDate: "Date de naissance",
     note: "Remarque",
     language: "Langue du client",
     notify: "Envoyer la confirmation par e-mail",

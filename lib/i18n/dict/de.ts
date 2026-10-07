@@ -266,6 +266,7 @@ const de = {
     name: "Vor- und Nachname",
     email: "E-Mail",
     phone: "Telefon",
+    birthDate: "Geburtsdatum",
     note: "Wunsch oder Hinweis (optional)",
     privacyNote: "Mit der Buchung erhältst du eine Bestätigung per E-Mail. Mehr dazu im Datenschutz.",
     submit: "Verbindlich buchen",
@@ -281,6 +282,7 @@ const de = {
     duration: "Dauer",
     noServices: "Zurzeit sind keine Leistungen online buchbar.",
     errors: {
+      birthDate: "Bitte dein Geburtsdatum angeben.",
       load: "Die freien Termine konnten nicht geladen werden. Bitte versuche es nochmals.",
       taken: "Dieser Termin wurde gerade vergeben. Bitte wähle eine andere Zeit.",
       network: "Verbindung fehlgeschlagen. Bitte versuche es nochmals.",
@@ -375,7 +377,7 @@ const de = {
     disclaimer: "Wir prüfen die Inhalte dieser Webseite sorgfältig, übernehmen aber keine Gewähr für Richtigkeit, Vollständigkeit und Aktualität. Preise und Öffnungszeiten können sich ändern.",
     privacy: [
       { title: "Verantwortlich", text: "GYAN SALON Inh. Ali (GYAN Hair Salon), Zana Ali, Zentralstrasse 22, 2502 Biel/Bienne. UID CHE-370.741.994." },
-      { title: "Welche Daten wir bearbeiten", text: "Wenn du online einen Termin buchst, bearbeiten wir Name, E-Mail-Adresse, Telefonnummer, gewählte Leistung, Termin, Sprache und eine allfällige Notiz. Wir verwenden diese Daten, um deinen Termin durchzuführen, dich daran zu erinnern und dich nach dem Termin um Feedback zu bitten. Mit deiner Einwilligung bei der Buchung nutzen wir sie zudem für eigene Werbung von GYAN Hair Salon, etwa Angebote per E-Mail. Diese Einwilligung kannst du jederzeit per E-Mail oder Telefon widerrufen. Damit niemand eine falsche Adresse angibt, schicken wir vor der Buchung einen Code an deine E-Mail-Adresse." },
+      { title: "Welche Daten wir bearbeiten", text: "Wenn du online einen Termin buchst, bearbeiten wir Name, Geburtsdatum, E-Mail-Adresse, Telefonnummer, gewählte Leistung, Termin, Sprache und eine allfällige Notiz. Wir verwenden diese Daten, um deinen Termin durchzuführen, dich daran zu erinnern und dich nach dem Termin um Feedback zu bitten. Mit deiner Einwilligung bei der Buchung nutzen wir sie zudem für eigene Werbung von GYAN Hair Salon, etwa Angebote per E-Mail. Diese Einwilligung kannst du jederzeit per E-Mail oder Telefon widerrufen. Damit niemand eine falsche Adresse angibt, schicken wir vor der Buchung einen Code an deine E-Mail-Adresse." },
       { title: "Dienstleister", text: "Hosting: Vercel Inc. Datenbank: Neon Inc. (Region EU). E-Mail-Versand: Resend Inc. Mit diesen Anbietern bestehen Verträge zur Auftragsbearbeitung; eine Bekanntgabe ins Ausland erfolgt nur mit angemessenen Garantien." },
       { title: "Aufbewahrung", text: "Termindaten löschen wir spätestens 24 Monate nach dem Termin, sofern keine gesetzliche Pflicht zur Aufbewahrung besteht." },
       { title: "Cookies", text: "Diese Webseite verwendet keine Tracking- oder Werbe-Cookies. Gespeichert werden nur deine Sprachwahl und, nach der Code-Bestätigung, ein Cookie, damit du deine E-Mail-Adresse 6 Monate lang nicht erneut bestätigen musst." },

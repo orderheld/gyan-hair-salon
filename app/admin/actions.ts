@@ -15,7 +15,7 @@ import { fill, getDict } from "@/lib/i18n";
 import { pushTestToAdmins } from "@/lib/push";
 import { isLocale } from "@/lib/i18n/config";
 import { EMAIL_TYPES, getSettings, saveSettings, SLOT_STEPS, type EmailTemplate, type EmailType } from "@/lib/settings";
-import { isDateKey, isTimeKey, toDateKey, zurichToDate } from "@/lib/time";
+import { isBirthDate, isDateKey, isTimeKey, toDateKey, zurichToDate } from "@/lib/time";
 
 const str = (fd: FormData, key: string, max = 500) => String(fd.get(key) ?? "").trim().slice(0, max);
 const num = (fd: FormData, key: string) => Number(String(fd.get(key) ?? "").replace(",", "."));
@@ -375,7 +375,9 @@ export async function adminUpdateBooking(fd: FormData) {
     back(page, t.common.checkInput, "error");
   }
   const sql = await getSql();
+  const birth = str(fd, "birthDate", 10);
   await sql`UPDATE bookings SET customer_name = ${name}, customer_email = ${email}, customer_phone = ${phone},
+            birth_date = ${isBirthDate(birth) ? birth : before!.birthDate},
             note = ${str(fd, "note", 500)}, locale = ${isLocale(lang) ? lang : before!.locale} WHERE id = ${id}::uuid`;
   if (fd.has("customerNote")) await updateCustomer(customerKey(email, phone), { note: str(fd, "customerNote", 1000) });
 
@@ -424,7 +426,8 @@ export async function adminSaveCustomerContact(fd: FormData) {
   const phone = str(fd, "phone", 30);
   const page = `/admin/kunden/${encodeURIComponent(key)}`;
   if (name.length < 2 || (email && !EMAIL.test(email)) || (!email && !phone.replace(/\D/g, ""))) back(page, t.common.checkInput, "error");
-  const newKey = await updateCustomerContact(key, { name, email, phone });
+  const birth = str(fd, "birthDate", 10);
+  const newKey = await updateCustomerContact(key, { name, email, phone, birthDate: isBirthDate(birth) ? birth : undefined });
   await updateCustomer(newKey, { note: str(fd, "note", 1000), noMarketing: fd.get("noMarketing") === "on" });
   revalidatePath("/admin", "layout");
   back(`/admin/kunden/${encodeURIComponent(newKey)}`, t.customers.saved);

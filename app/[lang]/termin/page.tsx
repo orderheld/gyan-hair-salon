@@ -39,7 +39,9 @@ export default async function Booking({ params, searchParams }: Props) {
   const availabilityAt = Date.now();
   // Angemeldet: Name und Telefon vom letzten Termin übernehmen
   const last = mine[0];
-  const known = email ? { name: last?.customerName ?? "", email, phone: last?.customerPhone ?? "" } : undefined;
+  const known = email
+    ? { name: last?.customerName ?? "", email, phone: last?.customerPhone ?? "", birthDate: mine.find((b) => b.birthDate)?.birthDate ?? "" }
+    : undefined;
   let initial = service && /^\d+$/.test(service) ? Number(service) : undefined;
   if (service && !initial) initial = (await getServiceBySlug(service))?.id;
 

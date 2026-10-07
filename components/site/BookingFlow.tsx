@@ -25,7 +25,7 @@ type Props = {
   okHref: string;
   privacyHref: string;
   /** Angemeldeter Kunde («Meine Termine»): Kontaktdaten schon ausgefüllt */
-  known?: { name: string; email: string; phone: string };
+  known?: { name: string; email: string; phone: string; birthDate?: string };
   /** Freie Zeiten pro Dauer, schon vom Server mitgeliefert (spart eine Anfrage) */
   initialAvailability?: ByDuration;
   availabilityAt?: number;
@@ -76,7 +76,7 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
   });
   const [time, setTime] = useState<string | null>(null);
   const [part, setPart] = useState<number>(0);
-  const [form, setForm] = useState({ name: known?.name ?? "", email: known?.email ?? "", phone: known?.phone ?? "", note: "", website: "", consent: false });
+  const [form, setForm] = useState({ name: known?.name ?? "", email: known?.email ?? "", phone: known?.phone ?? "", birthDate: known?.birthDate ?? "", note: "", website: "", consent: false });
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
@@ -458,9 +458,13 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
           {step === 3 && service && date && time && stage === "form" && (
             <form className="details" onSubmit={submitForm}>
               <div className="form-grid">
-                <div className="field full">
+                <div className="field">
                   <label htmlFor="name">{t.name}</label>
                   <input id="name" className="input" required autoComplete="name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                </div>
+                <div className="field">
+                  <label htmlFor="birthDate">{t.birthDate}</label>
+                  <input id="birthDate" type="date" className="input" required autoComplete="bday" min="1900-01-01" max={todayZurich()} value={form.birthDate} onChange={(e) => setForm({ ...form, birthDate: e.target.value })} />
                 </div>
                 <div className="field">
                   <label htmlFor="email">{t.email}</label>
@@ -480,7 +484,7 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
                 </div>
               </div>
               <label className="consent">
-                <input type="checkbox" checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} />
+                <input type="checkbox" required checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} />
                 <span>{t.consent}</span>
               </label>
               <p className="muted small" style={{ margin: "14px 0 0" }}>

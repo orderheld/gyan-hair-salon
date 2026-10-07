@@ -268,6 +268,7 @@ const en: Dict = {
     name: "First and last name",
     email: "Email",
     phone: "Phone",
+    birthDate: "Date of birth",
     note: "Request or note (optional)",
     privacyNote: "Once booked, you'll receive a confirmation by email. More in our privacy policy.",
     submit: "Confirm booking",
@@ -283,6 +284,7 @@ const en: Dict = {
     duration: "Duration",
     noServices: "No services are currently available to book online.",
     errors: {
+      birthDate: "Please enter your date of birth.",
       load: "We couldn't load the available times. Please try again.",
       taken: "This slot has just been taken. Please choose another time.",
       network: "Connection failed. Please try again.",
@@ -377,7 +379,7 @@ const en: Dict = {
     disclaimer: "We check the content of this website carefully but cannot guarantee its accuracy, completeness or timeliness. Prices and opening hours are subject to change.",
     privacy: [
       { title: "Controller", text: "GYAN SALON Inh. Ali (GYAN Hair Salon), Zana Ali, Zentralstrasse 22, 2502 Biel/Bienne. UID CHE-370.741.994." },
-      { title: "What data we process", text: "When you book an appointment online, we process your name, email address, phone number, chosen service, appointment, language and any note. We use this data to carry out your appointment, remind you of it and ask for your feedback afterwards. With your consent at booking, we also use it for GYAN Hair Salon's own marketing, such as offers by email. You can withdraw this consent at any time by email or phone. To prevent wrong addresses, we send a code to your email address before booking." },
+      { title: "What data we process", text: "When you book an appointment online, we process your name, date of birth, email address, phone number, chosen service, appointment, language and any note. We use this data to carry out your appointment, remind you of it and ask for your feedback afterwards. With your consent at booking, we also use it for GYAN Hair Salon's own marketing, such as offers by email. You can withdraw this consent at any time by email or phone. To prevent wrong addresses, we send a code to your email address before booking." },
       { title: "Service providers", text: "Hosting: Vercel Inc. Database: Neon Inc. (EU region). Email delivery: Resend Inc. Data processing agreements are in place with these providers; data is only transferred abroad with appropriate safeguards." },
       { title: "Retention", text: "We delete appointment data no later than 24 months after the appointment, unless we are legally required to keep it." },
       { title: "Cookies", text: "This website uses no tracking or advertising cookies. Only your language choice is stored and, after code confirmation, a cookie so you don't have to confirm your email again for 6 months." },

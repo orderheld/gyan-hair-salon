@@ -83,6 +83,7 @@ export default async function CustomerDetail({ params, searchParams }: Props) {
               <input type="hidden" name="key" value={x.key} />
               <div className="field"><label htmlFor="cd-name">{t.bookings.name}</label><input id="cd-name" name="name" defaultValue={x.name} className="input" required /></div>
               <div className="field"><label htmlFor="cd-phone">{t.bookings.phone}</label><input id="cd-phone" name="phone" type="tel" defaultValue={x.phone} className="input" /></div>
+              <div className="field"><label htmlFor="cd-birth">{t.bookings.birthDate}</label><input id="cd-birth" name="birthDate" type="date" min="1900-01-01" defaultValue={x.birthDate} className="input" /></div>
               <div className="field"><label htmlFor="cd-mail">{t.bookings.emailOptional}</label><input id="cd-mail" name="email" type="email" defaultValue={x.email} className="input" /></div>
               <div className="field"><label htmlFor="cd-note">{c.note}</label><textarea id="cd-note" name="note" defaultValue={x.note} className="textarea" rows={3} /></div>
               <label className="switch-row">

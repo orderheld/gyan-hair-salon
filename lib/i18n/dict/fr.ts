@@ -268,6 +268,7 @@ const fr: Dict = {
     name: "Prénom et nom",
     email: "E-mail",
     phone: "Téléphone",
+    birthDate: "Date de naissance",
     note: "Souhait ou remarque (facultatif)",
     privacyNote: "Après la réservation, tu reçois une confirmation par e-mail. Plus d’infos dans la politique de confidentialité.",
     submit: "Confirmer la réservation",
@@ -283,6 +284,7 @@ const fr: Dict = {
     duration: "Durée",
     noServices: "Aucune prestation n’est réservable en ligne pour le moment.",
     errors: {
+      birthDate: "Merci d’indiquer ta date de naissance.",
       load: "Impossible de charger les créneaux libres. Merci de réessayer.",
       taken: "Ce créneau vient d’être pris. Merci d’en choisir un autre.",
       network: "La connexion a échoué. Merci de réessayer.",
@@ -377,7 +379,7 @@ const fr: Dict = {
     disclaimer: "Nous vérifions soigneusement le contenu de ce site, mais ne garantissons pas son exactitude, son exhaustivité ni son actualité. Les prix et les horaires peuvent changer.",
     privacy: [
       { title: "Responsable", text: "GYAN SALON Inh. Ali (GYAN Hair Salon), Zana Ali, Zentralstrasse 22, 2502 Biel/Bienne. UID CHE-370.741.994." },
-      { title: "Données traitées", text: "Lorsque tu réserves un rendez-vous en ligne, nous traitons ton nom, ton adresse e-mail, ton numéro de téléphone, la prestation choisie, le rendez-vous, la langue et une éventuelle remarque. Nous utilisons ces données pour assurer ton rendez-vous, te le rappeler et te demander ton avis après coup. Avec ton consentement lors de la réservation, nous les utilisons aussi pour la publicité propre de GYAN Hair Salon, par exemple des offres par e-mail. Tu peux retirer ce consentement à tout moment par e-mail ou par téléphone. Pour éviter les adresses erronées, nous envoyons un code à ton adresse e-mail avant la réservation." },
+      { title: "Données traitées", text: "Lorsque tu réserves un rendez-vous en ligne, nous traitons ton nom, ta date de naissance, ton adresse e-mail, ton numéro de téléphone, la prestation choisie, le rendez-vous, la langue et une éventuelle remarque. Nous utilisons ces données pour assurer ton rendez-vous, te le rappeler et te demander ton avis après coup. Avec ton consentement lors de la réservation, nous les utilisons aussi pour la publicité propre de GYAN Hair Salon, par exemple des offres par e-mail. Tu peux retirer ce consentement à tout moment par e-mail ou par téléphone. Pour éviter les adresses erronées, nous envoyons un code à ton adresse e-mail avant la réservation." },
       { title: "Prestataires", text: "Hébergement : Vercel Inc. Base de données : Neon Inc. (région UE). Envoi d’e-mails : Resend Inc. Des contrats de sous-traitance existent avec ces prestataires ; une communication à l’étranger n’a lieu qu’avec des garanties appropriées." },
       { title: "Conservation", text: "Nous supprimons les données de rendez-vous au plus tard 24 mois après le rendez-vous, sauf obligation légale de conservation." },
       { title: "Cookies", text: "Ce site n’utilise aucun cookie de suivi ou publicitaire. Seuls ton choix de langue et, après confirmation du code, un cookie évitant de reconfirmer ton e-mail pendant 6 mois sont enregistrés." },

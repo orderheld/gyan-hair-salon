@@ -908,3 +908,7 @@ html.app .app-back:active { background: var(--cream); }
   .account-actions .btn { flex: 1; }
 }
 .film-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+
+/* Geburtsdatum: iPhone zeigt Datumsfelder sonst niedriger und zentriert */
+.details input[type="date"] { -webkit-appearance: none; appearance: none; min-height: 50px; text-align: left; }
+.details input[type="date"]::-webkit-date-and-time-value { text-align: left; }

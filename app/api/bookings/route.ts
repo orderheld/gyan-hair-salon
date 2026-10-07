@@ -10,7 +10,7 @@ import { sendBookingConfirmation } from "@/lib/email";
 import { getDict } from "@/lib/i18n";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n/config";
 import { runEmailJobsThrottled } from "@/lib/jobs";
-import { isDateKey, isTimeKey, zurichToDate } from "@/lib/time";
+import { isBirthDate, isDateKey, isTimeKey, zurichToDate } from "@/lib/time";
 
 export const dynamic = "force-dynamic";
 
@@ -39,12 +39,15 @@ export async function POST(request: Request) {
   const phone = clean(body.phone, 30);
   const note = clean(body.note, 500);
   const code = clean(body.code, 6);
+  const birthDate = clean(body.birthDate, 10);
 
   let error = "";
   if (!isDateKey(date) || !isTimeKey(time)) error = e.dateTime;
   else if (name.length < 2) error = e.name;
   else if (!EMAIL.test(email)) error = e.email;
   else if (phone.replace(/\D/g, "").length < 9) error = e.phone;
+  else if (!isBirthDate(birthDate)) error = e.birthDate;
+  else if (body.consent !== true) error = e.consent;
   if (error) return NextResponse.json({ error }, { status: 400 });
 
   // Sperre und Leistung parallel prüfen (spart eine Runde zur Datenbank)
@@ -86,7 +89,8 @@ export async function POST(request: Request) {
       note,
       locale,
       source: "online",
-      marketingConsent: body.consent === true, // freiwillig, Buchen geht auch ohne
+      marketingConsent: true, // Pflicht beim Online-Buchen (oben geprüft)
+      birthDate,
       emailVerified: true,
     });
     // Mails und Push erst nach der Antwort senden: der Kunde sieht sofort die Bestätigung

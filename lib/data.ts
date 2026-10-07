@@ -63,6 +63,8 @@ export type Booking = {
   customerName: string;
   customerEmail: string;
   customerPhone: string;
+  /** JJJJ-MM-TT oder leer */
+  birthDate: string;
   note: string;
   status: "confirmed" | "cancelled";
   source: "online" | "admin";
@@ -126,6 +128,7 @@ export const mapBooking = (r: Row): Booking => ({
   customerName: r.customer_name,
   customerEmail: r.customer_email,
   customerPhone: r.customer_phone,
+  birthDate: r.birth_date ?? "",
   note: r.note,
   status: r.status,
   source: r.source,

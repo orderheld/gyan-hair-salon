@@ -100,6 +100,7 @@ export default async function BookingDetail({ params, searchParams }: Props) {
               <div className="field"><label htmlFor="bd-phone">{t.bookings.phone}</label><input id="bd-phone" name="phone" type="tel" defaultValue={b.customerPhone} className="input" /></div>
               <div className="field"><label htmlFor="bd-mail">{t.bookings.emailOptional}</label><input id="bd-mail" name="email" type="email" defaultValue={b.customerEmail} className="input" /></div>
             </div>
+            <div className="field"><label htmlFor="bd-birth">{t.bookings.birthDate}</label><input id="bd-birth" name="birthDate" type="date" min="1900-01-01" defaultValue={b.birthDate} className="input" /></div>
             <div className="field">
               <label htmlFor="bd-lang">{t.bookings.language}</label>
               <select id="bd-lang" name="locale" className="select" defaultValue={b.locale}>

@@ -112,3 +112,4 @@ CREATE INDEX IF NOT EXISTS bookings_email_idx ON bookings (lower(customer_email)
 ALTER TABLE services ADD COLUMN IF NOT EXISTS walkin_price_chf numeric(8,2);
 ALTER TABLE services ADD COLUMN IF NOT EXISTS category text NOT NULL DEFAULT 'cut';
 ALTER TABLE services ADD COLUMN IF NOT EXISTS popular boolean NOT NULL DEFAULT false;
+ALTER TABLE bookings ADD COLUMN IF NOT EXISTS birth_date text NOT NULL DEFAULT '';

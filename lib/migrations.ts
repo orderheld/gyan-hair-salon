@@ -41,4 +41,6 @@ export const MIGRATIONS = [
     last_ok_at   timestamptz
   )`,
   `CREATE INDEX IF NOT EXISTS push_customer_idx ON push_subscriptions (customer_key)`,
+  // Geburtsdatum (JJJJ-MM-TT), bei Online-Buchungen Pflicht
+  `ALTER TABLE bookings ADD COLUMN IF NOT EXISTS birth_date text NOT NULL DEFAULT ''`,
 ];

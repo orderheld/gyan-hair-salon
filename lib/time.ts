@@ -97,3 +97,11 @@ export const formatLongDate = (date: Date, locale = "de") =>
 export const formatTime = (date: Date, locale = "de") => f(locale, { hour: "2-digit", minute: "2-digit" }).format(date);
 
 export const formatShortDate = (date: Date, locale = "de") => f(locale, { weekday: "short", day: "numeric", month: "numeric" }).format(date);
+
+/** Geburtsdatum JJJJ-MM-TT: gültiges Datum, ab 1900, nicht in der Zukunft */
+export function isBirthDate(value: string): boolean {
+  if (!isDateKey(value) || value < "1900-01-01") return false;
+  const d = new Date(`${value}T12:00:00Z`);
+  if (Number.isNaN(d.getTime()) || d.toISOString().slice(0, 10) !== value) return false; // z. B. 31.02.
+  return value <= toDateKey(new Date());
+}

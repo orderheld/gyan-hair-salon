@@ -104,6 +104,7 @@ const adminDe = {
     name: "Name",
     phone: "Telefon",
     emailOptional: "E-Mail (optional)",
+    birthDate: "Geburtsdatum",
     note: "Notiz",
     language: "Sprache des Kunden",
     notify: "Bestätigung per E-Mail senden",

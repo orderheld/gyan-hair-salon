@@ -363,6 +363,7 @@ export function sampleBooking(locale: Locale): Booking {
     customerName: "Luca Meier",
     customerEmail: "luca@example.com",
     customerPhone: "079 123 45 67",
+    birthDate: "",
     note: "",
     status: "confirmed",
     source: "online",

@@ -30,6 +30,8 @@ export type CustomerInfo = {
   firstAt: Date | null;
   lastVisitAt: Date | null;
   consent: boolean;
+  /** JJJJ-MM-TT oder leer */
+  birthDate: string;
   note: string;
   blocked: boolean;
   noMarketing: boolean;
@@ -52,7 +54,8 @@ const AGG_SQL = `
     count(*) FILTER (WHERE late_cancel) AS late_cancels,
     coalesce(sum(coalesce(price_chf, 0)) FILTER (WHERE fee_open), 0) AS open_fees,
     count(*) FILTER (WHERE fee_open) AS open_count,
-    bool_or(marketing_consent) AS consent
+    bool_or(marketing_consent) AS consent,
+    (array_agg(birth_date ORDER BY starts_at DESC) FILTER (WHERE birth_date <> ''))[1] AS birth_date
   FROM bookings
   WHERE customer_email <> '' OR customer_phone <> ''
   GROUP BY 1`;
@@ -74,6 +77,7 @@ const map = (r: Row): CustomerInfo => ({
   firstAt: toDate(r.first_at),
   lastVisitAt: toDate(r.last_visit_at),
   consent: !!r.consent,
+  birthDate: String(r.birth_date ?? ""),
   note: String(r.note ?? ""),
   blocked: !!r.blocked,
   noMarketing: !!r.no_marketing,
@@ -152,7 +156,7 @@ export async function getCustomerBookings(key: string) {
  * Ändert sich dadurch der Schlüssel (E-Mail/Telefon), ziehen Notiz und Sperre mit.
  * Gibt den neuen Schlüssel zurück.
  */
-export async function updateCustomerContact(key: string, contact: { name: string; email: string; phone: string }): Promise<string> {
+export async function updateCustomerContact(key: string, contact: { name: string; email: string; phone: string; birthDate?: string }): Promise<string> {
   const newKey = customerKey(contact.email, contact.phone);
   if (!key || !newKey) return key;
   await query(`UPDATE bookings SET customer_name = $2, customer_email = $3, customer_phone = $4 WHERE ${KEY_SQL} = $1`, [
@@ -161,6 +165,7 @@ export async function updateCustomerContact(key: string, contact: { name: string
     contact.email.trim().toLowerCase(),
     contact.phone,
   ]);
+  if (contact.birthDate) await query(`UPDATE bookings SET birth_date = $2 WHERE ${KEY_SQL} = $1`, [newKey, contact.birthDate]);
   if (newKey !== key) {
     const sql = await getSql();
     const taken = await sql`SELECT 1 FROM customers WHERE key = ${newKey}`;
