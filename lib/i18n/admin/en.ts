@@ -439,7 +439,7 @@ const adminEn: AdminDict = {
     typeHints: {
       confirmation: "Sent immediately after booking, with a calendar entry and cancellation link.",
       reminder: "Sent {hours} hours before the appointment.",
-      followup: "Sent {hours} hours after the appointment, with links to Google and Instagram.",
+      followup: "Sent {hours} hours after the appointment, without booking details: a big Google review button, plus Instagram and TikTok.",
       cancellation: "Confirms the client's own cancellation.",
       cancellationBySalon: "Sent when you cancel an appointment in the admin panel.",
       adminNotify: "A heads-up for you with every new booking and cancellation.",

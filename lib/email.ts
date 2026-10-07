@@ -123,7 +123,17 @@ async function varsFor(b: Booking, locale: Locale, settings: Settings): Promise<
 
 type Button = { label: string; href: string; primary?: boolean };
 
-function layout(opts: { locale: Locale; preheader: string; heading: string; body: string; details?: [string, string][]; buttons?: Button[]; logoSrc: string; highlight?: string }) {
+/** Grosser Bewertungs-Block für die Mail nach dem Besuch */
+function reviewBlock(t: { buttonReview: string; reviewNote: string; socialTitle: string }, url: string) {
+  return `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:8px 0 18px;background:#f6f0e6;border-radius:18px"><tr><td style="padding:26px 20px;text-align:center">
+<div style="font-size:26px;letter-spacing:6px;color:#6b5b4b;line-height:1">★★★★★</div>
+<a href="${esc(url)}" style="display:inline-block;margin:18px 0 10px;padding:16px 30px;border-radius:999px;background:#141210;color:#fbf8f3;font-size:16px;font-weight:600;text-decoration:none">${esc(t.buttonReview)}</a>
+<div style="font-size:13px;color:#8a8176">${esc(t.reviewNote)}</div>
+</td></tr></table>
+<p style="margin:22px 0 0;text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8a8176">${esc(t.socialTitle)}</p>`;
+}
+
+function layout(opts: { locale: Locale; preheader: string; heading: string; body: string; details?: [string, string][]; buttons?: Button[]; logoSrc: string; highlight?: string; after?: string }) {
   const d = getDict(opts.locale);
   const paragraphs = esc(opts.body)
     .split(/\n{2,}/)
@@ -154,7 +164,7 @@ function layout(opts: { locale: Locale; preheader: string; heading: string; body
 <tr><td style="padding:40px 36px 8px;text-align:center"><img src="${opts.logoSrc}" width="150" alt="GYAN" style="display:inline-block;width:150px;height:auto;border:0"></td></tr>
 <tr><td style="padding:4px 36px 0;text-align:center;font-size:10px;letter-spacing:.3em;text-transform:uppercase;color:#8a8176">Hair Salon · Biel/Bienne</td></tr>
 <tr><td style="padding:28px 36px 12px;text-align:center"><h1 style="margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;font-weight:600;letter-spacing:-0.02em;font-size:26px;line-height:1.2;color:#141210">${esc(opts.heading)}</h1></td></tr>
-<tr><td style="padding:12px 36px 8px">${opts.highlight ?? ""}${paragraphs}${details}</td></tr>
+<tr><td style="padding:12px 36px 8px">${opts.highlight ?? ""}${paragraphs}${details}${opts.after ?? ""}</td></tr>
 ${buttons ? `<tr><td style="padding:0 30px 36px;text-align:center">${buttons}</td></tr>` : ""}
 <tr><td style="padding:22px 36px;background:#efe8dc;font-size:12px;line-height:1.7;color:#6b635a;text-align:center">
 <strong style="color:#141210">${esc(site.name)}</strong><br>${esc(site.address.street)}, ${esc(site.address.zip)} ${esc(site.address.city)} · ${esc(site.phone)}<br>
@@ -199,16 +209,19 @@ export async function buildEmail(type: EmailType, b: Booking, opts: { locale?: L
   const subject = fill(t.subject, vars);
   const heading = fill(t.heading, vars);
   const body = fill(t.body, vars);
-  // Alle Angaben zum Termin stehen in jeder E-Mail
-  const details: [string, string][] = [
+  // Alle Angaben zum Termin stehen in jeder E-Mail, ausser im Dank nach dem Besuch (dort zählt nur die Bewertung)
+  const followup = type === "followup";
+  const details: [string, string][] = followup ? [] : [
     [d.emails.detailsService, vars.service],
     [d.emails.detailsDate, vars.date],
     [d.emails.detailsTime, `${vars.time} – ${vars.endTime}`],
     [d.emails.detailsDuration, vars.duration],
     [d.emails.detailsWith, staffName(b.staffId)],
   ];
-  if (vars.price) details.push([d.emails.detailsPrice, vars.price]);
-  details.push([d.emails.detailsAddress, vars.address], [d.emails.detailsPayment, vars.payment]);
+  if (!followup) {
+    if (vars.price) details.push([d.emails.detailsPrice, vars.price]);
+    details.push([d.emails.detailsAddress, vars.address], [d.emails.detailsPayment, vars.payment]);
+  }
   if (b.lateCancel && b.priceChf != null && (type === "cancellation" || type === "cancellationBySalon")) {
     details.push([d.emails.detailsFee, fill(d.emails.lateFee, { price: vars.price })]);
   }
@@ -233,9 +246,9 @@ export async function buildEmail(type: EmailType, b: Booking, opts: { locale?: L
       buttons.push({ label: d.emails.buttonRoute, href: site.address.mapsUrl, primary: true });
       break;
     case "followup":
-      buttons.push({ label: d.emails.buttonReview, href: settings.reviewUrl, primary: true });
+      // Bewertung steht als grosser Block im Text, hier nur noch Social Media
       buttons.push({ label: d.emails.buttonInstagram, href: settings.instagramUrl });
-      buttons.push({ label: d.emails.buttonRebook, href: bookUrl });
+      buttons.push({ label: d.emails.buttonTiktok, href: site.tiktok });
       break;
     case "cancellation":
     case "cancellationBySalon":
@@ -246,8 +259,13 @@ export async function buildEmail(type: EmailType, b: Booking, opts: { locale?: L
       break;
   }
   const logoSrc = opts.preview ? "/brand/logo-email.png" : "cid:gyan-logo";
-  const html = layout({ locale, preheader: subject, heading, body, details, buttons, logoSrc });
-  const text = [heading, "", body, "", ...details.map(([k, v]) => `${k}: ${v}`), "", ...buttons.map((x) => `${x.label}: ${x.href}`)].join("\n");
+  const after = followup ? reviewBlock(d.emails, settings.reviewUrl) : undefined;
+  const html = layout({ locale, preheader: subject, heading, body, details, buttons, logoSrc, after });
+  const text = [
+    heading, "", body, "",
+    ...(followup ? [`${d.emails.buttonReview}: ${settings.reviewUrl}`, "", d.emails.socialTitle] : details.map(([k, v]) => `${k}: ${v}`)),
+    "", ...buttons.map((x) => `${x.label}: ${x.href}`),
+  ].join("\n");
   return { subject, html, text, ics: type === "confirmation" ? ics(b, vars.service) : undefined };
 }
 

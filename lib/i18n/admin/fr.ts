@@ -439,7 +439,7 @@ const adminFr: AdminDict = {
     typeHints: {
       confirmation: "Envoyé immédiatement après la réservation, avec entrée d’agenda et lien d’annulation.",
       reminder: "Envoyé {hours} heures avant le rendez-vous.",
-      followup: "Envoyé {hours} heures après le rendez-vous, avec des liens vers Google et Instagram.",
+      followup: "Envoyé {hours} heures après le rendez-vous, sans détails du rendez-vous : un grand bouton pour l’avis Google, plus Instagram et TikTok.",
       cancellation: "Confirme au client sa propre annulation.",
       cancellationBySalon: "Envoyé lorsque tu annules un rendez-vous dans l’admin.",
       adminNotify: "Info pour toi à chaque nouvelle réservation et annulation.",

@@ -505,6 +505,9 @@ const de = {
     buttonRoute: "Route planen",
     buttonReview: "Google-Bewertung schreiben",
     buttonInstagram: "Auf Instagram folgen",
+    buttonTiktok: "Auf TikTok folgen",
+    reviewNote: "Dauert keine Minute und hilft uns sehr.",
+    socialTitle: "Folge uns",
     buttonRebook: "Neuen Termin buchen",
     footer: "Du erhältst diese E-Mail, weil du bei GYAN Hair Salon einen Termin gebucht hast.",
     templates: {
@@ -521,7 +524,7 @@ const de = {
       followup: {
         subject: "Wie war dein Besuch bei GYAN, {firstName}?",
         heading: "Danke für deinen Besuch.",
-        body: "Hallo {firstName}\n\nwir hoffen, du bist mit deinem neuen Look rundum zufrieden. Dein Feedback bedeutet uns sehr viel.\n\nWenn es dir gefallen hat, freuen wir uns riesig über eine Bewertung auf Google. Und auf Instagram siehst du, was im Salon gerade entsteht.\n\nBis zum nächsten Mal.",
+        body: "Hallo {firstName}\n\ndanke, dass du bei uns warst. Hat dir dein Schnitt gefallen? Dann freuen wir uns riesig über deine Bewertung auf Google. Sie hilft anderen, uns zu finden.\n\nBis zum nächsten Mal.",
       },
       cancellation: {
         subject: "Dein Termin bei GYAN wurde storniert",

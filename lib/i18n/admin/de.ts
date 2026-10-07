@@ -437,7 +437,7 @@ const adminDe = {
     typeHints: {
       confirmation: "Geht sofort nach der Buchung raus, mit Kalendereintrag und Storno-Link.",
       reminder: "Geht {hours} Stunden vor dem Termin raus.",
-      followup: "Geht {hours} Stunden nach dem Termin raus, mit Links zu Google und Instagram.",
+      followup: "Geht {hours} Stunden nach dem Termin raus, ohne Termindetails: grosser Knopf für die Google-Bewertung, dazu Instagram und TikTok.",
       cancellation: "Bestätigt dem Kunden seine eigene Stornierung.",
       cancellationBySalon: "Geht raus, wenn du einen Termin im Admin stornierst.",
       adminNotify: "Info an dich bei jeder neuen Buchung und Stornierung.",

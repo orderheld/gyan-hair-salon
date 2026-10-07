@@ -507,6 +507,9 @@ const en: Dict = {
     buttonRoute: "Get directions",
     buttonReview: "Write a Google review",
     buttonInstagram: "Follow on Instagram",
+    buttonTiktok: "Follow on TikTok",
+    reviewNote: "It takes less than a minute and helps us a lot.",
+    socialTitle: "Follow us",
     buttonRebook: "Book a new appointment",
     footer: "You're receiving this email because you booked an appointment at GYAN Hair Salon.",
     templates: {
@@ -523,7 +526,7 @@ const en: Dict = {
       followup: {
         subject: "How was your visit to GYAN, {firstName}?",
         heading: "Thank you for your visit.",
-        body: "Hi {firstName},\n\nwe hope you're completely happy with your new look. Your feedback means a lot to us.\n\nIf you enjoyed your visit, we'd be delighted if you left us a review on Google. And on Instagram you can see what's happening in the salon right now.\n\nUntil next time.",
+        body: "Hi {firstName},\n\nthanks for visiting us. Happy with your cut? Then we'd love a review on Google. It helps others find us.\n\nUntil next time.",
       },
       cancellation: {
         subject: "Your appointment at GYAN has been cancelled",
