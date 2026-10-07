@@ -905,3 +905,4 @@ html.app .app-back:active { background: var(--cream); }
   .account-actions { justify-content: stretch; }
   .account-actions .btn { flex: 1; }
 }
+.film-track:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }

@@ -240,10 +240,6 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
 
   function submitForm(e: React.FormEvent) {
     e.preventDefault();
-    if (!form.consent) {
-      setError(t.errors.consent);
-      return;
-    }
     // Direkt im Klick nach Push-Erlaubnis fragen (Erinnerung aufs Handy); die Buchung läuft parallel weiter
     if (!pushAsk.current) pushAsk.current = askPushPermission();
     requestCode();
@@ -422,7 +418,7 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
                 </div>
               </div>
               <label className="consent">
-                <input type="checkbox" required checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} />
+                <input type="checkbox" checked={form.consent} onChange={(e) => setForm({ ...form, consent: e.target.checked })} />
                 <span>{t.consent}</span>
               </label>
               <p className="muted small" style={{ margin: "14px 0 0" }}>

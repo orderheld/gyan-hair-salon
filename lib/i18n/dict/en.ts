@@ -6,7 +6,8 @@ const en: Dict = {
     siteTitle: "GYAN Hair Salon · Men's Hairdresser & Barber in Biel/Bienne",
     siteDescription:
       "Men's hairdresser and barber in the heart of Biel/Bienne. Haircuts, skin fades, beards and traditional wet shaves with owner Zana. Book online, confirmed instantly.",
-    titleSuffix: "GYAN Hair Salon Biel",
+    titleSuffix: "GYAN Barber Biel",
+    serviceDesc: "{short} With Zana at GYAN Hair Salon, {street} in Biel. {price} · {duration}. Book online.",
   },
   common: {
     bookCta: "Book with Zana",
@@ -172,7 +173,7 @@ const en: Dict = {
   },
   salon: {
     metaTitle: "The salon",
-    metaDescription: "A look inside GYAN Hair Salon at Zentralstrasse 22 in Biel: sculptural mirrors, leather chairs and a calm lounge.",
+    metaDescription: "A look inside GYAN Hair Salon at {street} in Biel: sculptural mirrors, leather chairs and a calm lounge.",
     eyebrow: "The salon",
     title: "Calm in the heart of Biel.",
     lead: "Bright rooms, warm materials and details you won't forget. The salon is designed so you've arrived before the first cut is made.",

@@ -58,8 +58,8 @@ export default async function Services({ params }: Props) {
                           </span>
                         </div>
                         <div className="svc-card-actions">
-                          <Link className="btn btn-dark btn-sm" href={`${href(locale, "booking")}?service=${s.id}`}>{d.common.bookShort}</Link>
-                          <Link className="arrow-link" href={href(locale, "services", s.slug)}>{d.common.more} →</Link>
+                          <Link className="btn btn-dark btn-sm" href={`${href(locale, "booking")}?service=${s.id}`} aria-label={`${d.common.bookShort}: ${s.name}`}>{d.common.bookShort}</Link>
+                          <Link className="arrow-link" href={href(locale, "services", s.slug)} aria-label={`${d.common.more}: ${s.name}`}>{d.common.more} →</Link>
                         </div>
                       </div>
                     </article>

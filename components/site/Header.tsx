@@ -130,10 +130,12 @@ export function Header({ locale, nav, bookHref, accountHref, labels, slugIndex, 
       </div>
 
       {!onBooking && (
-        <Link href={bookHref} className="sticky-book">
-          <span className="sticky-dot" aria-hidden />
-          {labels.book}
-        </Link>
+        <nav aria-label={labels.book}>
+          <Link href={bookHref} className="sticky-book">
+            <span className="sticky-dot" aria-hidden />
+            {labels.book}
+          </Link>
+        </nav>
       )}
     </>
   );

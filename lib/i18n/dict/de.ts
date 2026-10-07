@@ -5,6 +5,7 @@ const de = {
     siteDescription:
       "Herren Coiffeur und Barbier im Zentrum von Biel/Bienne. Haarschnitt, Skin Fade, Bart und Nassrasur bei Inhaber Zana. Online buchen, sofort bestätigt.",
     titleSuffix: "GYAN Hair Salon Biel",
+    serviceDesc: "{short} Bei Zana im GYAN Hair Salon, {street} in Biel. {price} · {duration}. Online buchen.",
   },
   common: {
     bookCta: "Termin bei Zana buchen",
@@ -170,7 +171,7 @@ const de = {
   },
   salon: {
     metaTitle: "Der Salon",
-    metaDescription: "Einblick in den GYAN Hair Salon an der Zentralstrasse 22 in Biel: skulpturale Spiegel, Ledersessel und eine ruhige Lounge.",
+    metaDescription: "Einblick in den GYAN Hair Salon an der {street} in Biel: skulpturale Spiegel, Ledersessel und eine ruhige Lounge.",
     eyebrow: "Der Salon",
     title: "Ruhe mitten in Biel.",
     lead: "Helle Räume, warme Materialien und Details, die man nicht vergisst. Der Salon ist so gestaltet, dass du ankommst, bevor der erste Schnitt fällt.",
@@ -192,7 +193,7 @@ const de = {
       { q: "Wie schnell ist mein Termin bestätigt?", a: "Sofort. Ist die Zeit frei, ist der Termin gebucht. Du bekommst direkt eine E-Mail mit allen Details und einem Kalendereintrag." },
       { q: "Kann ich meinen Termin stornieren?", a: "Ja, über den Link in deiner Bestätigungs-E-Mail. Bis 12 Stunden vorher ist das kostenlos. Stornierst du später oder kommst nicht, verrechnen wir die Leistung bei deinem nächsten Besuch." },
       { q: "Wie kann ich bezahlen?", a: "Bezahlt wird nach dem Termin im Salon, bar oder mit TWINT. Online musst du nichts bezahlen." },
-      { q: "Wo finde ich den Salon?", a: "An der Zentralstrasse 22 in 2502 Biel/Bienne, im Zentrum und wenige Gehminuten vom Bahnhof Biel. Öffentliche Parkplätze gibt es in der Innenstadt." },
+      { q: "Wo finde ich den Salon?", a: "An der {street} in 2502 Biel/Bienne, im Zentrum und wenige Gehminuten vom Bahnhof Biel. Öffentliche Parkplätze gibt es in der Innenstadt." },
       { q: "Kostet es ohne Termin gleich viel?", a: "Für den Haarschnitt und die Pakete gibt es ohne Termin eigene, etwas tiefere Preise. Du findest sie bei jeder Leistung unter «Ohne Termin»." },
       { q: "In welchen Sprachen kann ich buchen?", a: "Webseite, Buchung und E-Mails gibt es auf Deutsch, Französisch und Englisch." },
       { q: "Erinnert ihr mich an meinen Termin?", a: "Ja, du bekommst ein paar Stunden vorher eine Erinnerung per E-Mail." },

@@ -185,6 +185,7 @@ export default async function Home({ params }: Props) {
       </section>
 
       <Filmstrip
+        label={h.workTitle}
         head={
           <div className="film-headline">
             <div>

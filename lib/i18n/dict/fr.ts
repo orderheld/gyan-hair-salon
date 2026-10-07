@@ -5,8 +5,9 @@ const fr: Dict = {
   meta: {
     siteTitle: "GYAN Hair Salon · Coiffeur homme & barbier à Biel/Bienne",
     siteDescription:
-      "Coiffeur homme et barbier au centre de Biel/Bienne. Coupe, skin fade, barbe et rasage traditionnel avec Zana, le propriétaire. Réservation en ligne, confirmée immédiatement.",
+      "Coiffeur homme et barbier au centre de Biel/Bienne : coupe, skin fade, barbe et rasage avec Zana. Réservation en ligne, confirmée tout de suite.",
     titleSuffix: "GYAN Hair Salon Bienne",
+    serviceDesc: "{short} Avec Zana chez GYAN Hair Salon, {street} à Bienne. {price} · {duration}. Réserve en ligne.",
   },
   common: {
     bookCta: "Réserver chez Zana",
@@ -172,7 +173,7 @@ const fr: Dict = {
   },
   salon: {
     metaTitle: "Le salon",
-    metaDescription: "Découvre GYAN Hair Salon à la Zentralstrasse 22 à Bienne : miroirs sculpturaux, fauteuils en cuir et un lounge paisible.",
+    metaDescription: "Découvre GYAN Hair Salon à la {street} à Bienne : miroirs sculpturaux, fauteuils en cuir et un lounge paisible.",
     eyebrow: "Le salon",
     title: "Le calme au cœur de Bienne.",
     lead: "Des espaces lumineux, des matières chaleureuses et des détails qu’on n’oublie pas. Le salon est pensé pour que tu sois déjà détendu avant la première coupe.",

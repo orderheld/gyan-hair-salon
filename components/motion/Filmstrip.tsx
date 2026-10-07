@@ -9,7 +9,7 @@ type Item = { src: string; alt: string; caption: string };
  * Arbeiten als Filmstreifen. Desktop: läuft beim Scrollen horizontal durch (Sticky).
  * Mobile: natives Wischen mit Einrasten.
  */
-export function Filmstrip({ items, head }: { items: Item[]; head: ReactNode }) {
+export function Filmstrip({ items, head, label }: { items: Item[]; head: ReactNode; label?: string }) {
   const section = useRef<HTMLElement>(null);
   const track = useRef<HTMLDivElement>(null);
 
@@ -57,7 +57,7 @@ export function Filmstrip({ items, head }: { items: Item[]; head: ReactNode }) {
     <section ref={section} className="film">
       <div className="film-sticky">
         <div className="container film-head">{head}</div>
-        <div ref={track} className="film-track">
+        <div ref={track} className="film-track" tabIndex={0} role="region" aria-label={label}>
           {items.map((it, i) => (
             <figure key={it.src + i} className="film-item">
               <div className="film-img">

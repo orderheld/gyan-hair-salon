@@ -8,10 +8,10 @@ import { Markdown } from "@/components/Markdown";
 import { Breadcrumbs, CtaBand, JsonLd, ServiceRows } from "@/components/site/Blocks";
 import { getServiceBySlug, getServices, localize } from "@/lib/data";
 import { formatChf, formatDuration } from "@/lib/format";
-import { getDict } from "@/lib/i18n";
+import { fill, getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { servicePath } from "@/lib/i18n/paths";
-import { absolute, pageMetadata } from "@/lib/seo";
+import { absolute, clampDescription, pageMetadata } from "@/lib/seo";
 
 
 export function generateStaticParams() {
@@ -25,7 +25,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const s = await getServiceBySlug(decodeURIComponent(slug));
   if (!s || !s.active) return {};
   const l = localize(s, locale);
-  return pageMetadata({ locale, title: l.name, description: l.short, path: (x) => servicePath(x, s), image: s.image || undefined });
+  const d = getDict(locale);
+  const short = /[.!?]$/.test(l.short.trim()) ? l.short.trim() : `${l.short.trim()}.`;
+  const description = clampDescription(
+    fill(d.meta.serviceDesc, { short, price: `${s.priceFrom ? `${d.common.from} ` : ""}${formatChf(s.priceChf)}`, duration: formatDuration(s.durationMin, locale).replace(/\.$/, ""), street: site.address.street }),
+  );
+  return pageMetadata({ locale, title: l.name, description, path: (x) => servicePath(x, s), image: s.image || undefined });
 }
 
 export default async function ServicePage({ params }: Props) {

@@ -45,7 +45,6 @@ export async function POST(request: Request) {
   else if (name.length < 2) error = e.name;
   else if (!EMAIL.test(email)) error = e.email;
   else if (phone.replace(/\D/g, "").length < 9) error = e.phone;
-  else if (body.consent !== true) error = e.consent;
   if (error) return NextResponse.json({ error }, { status: 400 });
 
   if (await isBlocked(email, phone)) return NextResponse.json({ error: e.blocked }, { status: 403 });
@@ -83,7 +82,7 @@ export async function POST(request: Request) {
       note,
       locale,
       source: "online",
-      marketingConsent: true,
+      marketingConsent: body.consent === true, // freiwillig, Buchen geht auch ohne
       emailVerified: true,
     });
     await sendBookingConfirmation(booking);
