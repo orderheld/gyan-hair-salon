@@ -137,7 +137,7 @@ export default async function Home({ params }: Props) {
           <div className="story-media" data-progress>
             <div className="sweep">
               <div className="story-img">
-                <Image src={site.images.signature} alt={`${site.owner}, GYAN Hair Salon Biel`} fill sizes="(max-width: 900px) 90vw, 45vw" />
+                <Image src={site.images.zanaMain} alt={`${site.owner}, GYAN Hair Salon Biel`} fill sizes="(max-width: 900px) 90vw, 45vw" />
               </div>
             </div>
             <div className="story-inset sweep-slow">

@@ -34,7 +34,9 @@ export const site = {
     lounge: "/images/salon-lounge.jpg",
     wash: "/images/salon-wasch.jpg",
     reception: "/images/salon-empfang-2.jpg",
-    zana: "/images/zana-portrait-art.jpg",
+    zana: "/images/zana-illustration.jpg",
+    /** Grosses Bild im Zana-Teil (Startseite und Zana-Seite) */
+    zanaMain: "/images/zana-barbershop.jpg",
     signature: "/images/signatur.jpg",
     work: ["/images/cut-mulet.jpg", "/images/cut-standard.jpg", "/images/cut-fade.jpg", "/images/cut-bart.jpg", "/images/cut-nacken.jpg", "/images/signatur.jpg"],
     // Bild pro Leistung, falls im Admin keines gesetzt ist (Stichwort im deutschen Slug)

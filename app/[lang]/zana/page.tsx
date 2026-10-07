@@ -14,7 +14,7 @@ type Props = { params: Promise<{ lang: string }> };
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = (await params).lang as Locale;
   const d = getDict(locale);
-  return pageMetadata({ locale, title: d.zana.metaTitle, description: d.zana.metaDescription, path: (l) => href(l, "zana"), image: site.images.signature });
+  return pageMetadata({ locale, title: d.zana.metaTitle, description: d.zana.metaDescription, path: (l) => href(l, "zana"), image: site.images.zanaMain });
 }
 
 export default async function ZanaPage({ params }: Props) {
@@ -33,7 +33,7 @@ export default async function ZanaPage({ params }: Props) {
           </div>
           <div className="zana-hero-media rise" style={{ animationDelay: "200ms" }} data-progress>
             <div className="zana-frame sweep">
-              <Image src={site.images.signature} alt={`${site.owner} · GYAN Hair Salon`} fill priority sizes="(max-width: 900px) 90vw, 40vw" />
+              <Image src={site.images.zanaMain} alt={`${site.owner} · GYAN Hair Salon`} fill priority sizes="(max-width: 900px) 90vw, 40vw" />
             </div>
             <div className="zana-art sweep-slow">
               <Image src={site.images.zana} alt={site.owner} fill sizes="280px" />
