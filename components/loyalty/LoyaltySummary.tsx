@@ -6,7 +6,7 @@ import { ensureCard, getCardState, getLoyaltySettings } from "@/lib/loyalty";
 import { cardQrSvg } from "@/lib/loyalty-qr-svg";
 import { Stamps } from "./Stamps";
 
-/** «Meine Termine»: kurze Stempelkarte mit QR-Code (nur wenn die Karte für Kunden sichtbar ist) */
+/** «Mein Konto»: kurze Stempelkarte mit QR-Code (nur wenn die Karte für Kunden sichtbar ist) */
 export async function LoyaltySummary({ email, locale }: { email: string; locale: Locale }) {
   const settings = await getLoyaltySettings();
   if (!settings.loyaltyPublic) return null;
@@ -19,7 +19,7 @@ export async function LoyaltySummary({ email, locale }: { email: string; locale:
       <h2 className="h3 account-h">{t.accountTitle}</h2>
       <div className="lc-summary">
         <div className="lc-summary-main">
-          <Stamps onCard={s.onCard} needed={needed} freeLabel={t.free} label={fill(t.stampsOf, { n: s.onCard, total: needed })} compact />
+          <Stamps onCard={s.onCard} kinds={s.onCardKinds} legend={{ referral: t.bonusReferral, review: t.bonusReview }} needed={needed} freeLabel={t.free} label={fill(t.stampsOf, { n: s.onCard, total: needed })} compact />
           <p className="lc-count">
             <strong>{fill(t.stampsOf, { n: s.onCard, total: needed })}</strong>
             <span className="muted">{s.rewardsAvailable ? t.rewardReady : fill(t.toGo, { n: needed - s.onCard })}</span>

@@ -155,6 +155,8 @@ export type CardState = {
   seq: number;
   /** Stempel auf der aktuellen Karte (0 … stampsNeeded) */
   onCard: number;
+  /** Art jedes Stempels auf der aktuellen Karte, ältester zuerst: visit, referral, review … */
+  onCardKinds: string[];
   rewardsAvailable: number;
   visits: number;
   redeemed: number;
@@ -189,6 +191,24 @@ async function hadEarlierVisit(key: string) {
   return !!r;
 }
 
+/**
+ * Welche Stempel liegen gerade auf der Karte? Gutschriften kommen hinten dazu,
+ * eine Einlösung nimmt die ältesten weg, eine negative Korrektur die neuesten.
+ */
+function stampKinds(rows: Record<string, unknown>[], needed: number): string[] {
+  const q: string[] = [];
+  for (const r of rows) {
+    const delta = Number(r.delta);
+    const kind = String(r.kind);
+    if (delta > 0) for (let i = 0; i < delta; i++) q.push(kind);
+    else if (delta < 0) {
+      if (kind === "redeem") q.splice(0, -delta);
+      else q.splice(Math.max(0, q.length + delta), -delta);
+    }
+  }
+  return q.slice(0, needed);
+}
+
 export async function getCardState(card: Card, opts: { logLimit?: number } = {}): Promise<CardState> {
   const sql = await getSql();
   const settings = await getLoyaltySettings();
@@ -208,6 +228,7 @@ export async function getCardState(card: Card, opts: { logLimit?: number } = {})
     SELECT r.rewarded_at, c.name, c.ref_code FROM loyalty_referrals r JOIN loyalty_cards c ON c.id = r.referrer_card_id
     WHERE r.referred_card_id = ${card.id}`;
   const [refs] = await sql`SELECT count(*)::int AS n, count(rewarded_at)::int AS rewarded FROM loyalty_referrals WHERE referrer_card_id = ${card.id}`;
+  const all = await sql`SELECT kind, delta FROM loyalty_stamps WHERE card_id = ${card.id} ORDER BY seq`;
 
   const balance = Number(agg?.balance ?? 0);
   const needed = settings.stampsNeeded;
@@ -223,6 +244,7 @@ export async function getCardState(card: Card, opts: { logLimit?: number } = {})
     balance,
     seq: Number(agg?.seq ?? 0),
     onCard: rewardsAvailable ? needed : Math.max(0, balance),
+    onCardKinds: stampKinds(all, needed),
     rewardsAvailable,
     visits,
     redeemed: Number(agg?.redeemed ?? 0),

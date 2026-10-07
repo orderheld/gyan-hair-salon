@@ -779,3 +779,20 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .lc-live-text strong i { width: 9px; height: 9px; border-radius: 50%; background: var(--greige); }
 .lc-live.is-on .lc-live-text strong i { background: #7fc28e; }
 .lc-live-text p { margin: 4px 0 0; }
+
+.lc-stamp.is-on.is-bonus { background: var(--sand); border-color: var(--accent); color: var(--accent-deep); }
+.lc-legend { list-style: none; margin: 10px auto 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; }
+.lc-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.lc-legend .lc-stamp { width: 22px; aspect-ratio: 1; }
+.lc-legend .lc-stamp svg { width: 60%; height: 60%; }
+/* Stempel-Korrektur: Richtung als Auswahl, Felder mit Luft */
+.lc-corr { display: grid; grid-template-columns: minmax(0, 120px) minmax(0, 1fr); gap: 12px; }
+@media (max-width: 480px) { .lc-corr { grid-template-columns: 1fr; } }
+.lc-sep { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
+.lc-tools > form.stack { gap: 14px; }
+.lc-tools .seg-radio { max-width: 420px; }
+.lc-tools-sum { display: flex; align-items: center; justify-content: space-between; gap: 12px; cursor: pointer; list-style: none; min-height: 28px; }
+.lc-tools-sum::-webkit-details-marker { display: none; }
+.lc-tools-sum > span { font-size: 22px; line-height: 1; color: var(--stone); transition: transform 0.2s; }
+.lc-tools[open] > .lc-tools-sum { margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--line); }
+.lc-tools[open] > .lc-tools-sum > span { transform: rotate(90deg); }

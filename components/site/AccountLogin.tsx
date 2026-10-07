@@ -20,7 +20,7 @@ type Texts = {
   change: string;
 };
 
-/** Anmelden für «Meine Termine»: E-Mail, dann 6-stelliger Code. Kein Passwort. */
+/** Anmelden für «Mein Konto»: E-Mail, dann 6-stelliger Code. Kein Passwort. */
 export function AccountLogin({ locale, t }: { locale: string; t: Texts }) {
   const router = useRouter();
   const [stage, setStage] = useState<"email" | "code">("email");

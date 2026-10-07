@@ -85,7 +85,7 @@ export default async function StempelCard({ params, searchParams }: Props) {
             <span className="muted small">{card.customerKey}</span>
           </div>
         </div>
-        <Stamps onCard={s.onCard} needed={needed} freeLabel="✂" label={fill(t.stampsOf, { n: s.onCard, total: needed })} compact />
+        <Stamps onCard={s.onCard} kinds={s.onCardKinds} needed={needed} freeLabel="Gratis" label={fill(t.stampsOf, { n: s.onCard, total: needed })} compact />
         <p className="lc-count">
           <strong>{fill(t.stampsOf, { n: s.onCard, total: needed })}</strong>
           <span className={s.rewardsAvailable ? "lc-ready" : "muted"}>{s.rewardsAvailable ? fill(t.rewardsReady, { n: s.rewardsAvailable }) : fill(t.noReward, { n: needed - s.onCard })}</span>
@@ -161,15 +161,19 @@ export default async function StempelCard({ params, searchParams }: Props) {
         )}
       </section>
 
-      <details className="panel svc">
-        <summary className="svc-sum"><strong>{t.correction}</strong><span aria-hidden>›</span></summary>
+      <details className="panel lc-tools" key={`tools-${s.seq}`}>
+        <summary className="lc-tools-sum"><strong>{t.correction}</strong><span aria-hidden>›</span></summary>
         <form action={loyaltyCorrection} className="stack">
           {hidden}
           {actorHidden}
           <p className="muted small">{t.correctionHint}</p>
+          <div className="seg-radio" role="radiogroup" aria-label={t.delta}>
+            <label><input type="radio" name="dir" value="minus" defaultChecked /><span>{t.corrMinus}</span></label>
+            <label><input type="radio" name="dir" value="plus" /><span>{t.corrPlus}</span></label>
+          </div>
           <div className="lc-corr">
-            <div className="field"><label htmlFor="lc-delta">{t.delta}</label><input id="lc-delta" name="delta" className="input" inputMode="numeric" pattern="[+\-]?[0-9]{1,2}" required /></div>
-            <div className="field"><label htmlFor="lc-reason">{t.reason}</label><input id="lc-reason" name="reason" className="input" maxLength={300} required /></div>
+            <div className="field"><label htmlFor="lc-amount">{t.delta}</label><input id="lc-amount" name="amount" type="number" className="input" inputMode="numeric" min={1} max={20} step={1} defaultValue={1} required /></div>
+            <div className="field"><label htmlFor="lc-reason">{t.reason}</label><input id="lc-reason" name="reason" className="input" maxLength={300} placeholder={t.reasonPlaceholder} required /></div>
           </div>
           <SubmitButton className="btn btn-dark btn-sm">{t.saveCorrection}</SubmitButton>
         </form>

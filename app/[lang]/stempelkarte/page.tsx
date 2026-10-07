@@ -194,7 +194,7 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
               <span className="lc-brand">GYAN</span>
               <span className="lc-pass-name">{state.card.name || email}</span>
             </div>
-            <Stamps onCard={state.onCard} needed={needed} freeLabel={t.free} label={fill(t.stampsOf, { n: state.onCard, total: needed })} />
+            <Stamps onCard={state.onCard} kinds={state.onCardKinds} legend={{ referral: t.bonusReferral, review: t.bonusReview }} needed={needed} freeLabel={t.free} label={fill(t.stampsOf, { n: state.onCard, total: needed })} />
             <p className="lc-count">
               <strong>{fill(t.stampsOf, { n: state.onCard, total: needed })}</strong>
               <span>{state.rewardsAvailable ? (state.rewardsAvailable > 1 ? fill(t.rewardsReady, { n: state.rewardsAvailable }) : t.rewardReady) : fill(t.toGo, { n: needed - state.onCard })}</span>
@@ -207,7 +207,7 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
             <h2 className="h3">{t.qrTitle}</h2>
             <div className="lc-qr" role="img" aria-label={t.qrAlt} dangerouslySetInnerHTML={{ __html: qr }} />
             <p className="muted">{t.qrHint}</p>
-            <SaveQr svg={qr} label={t.saveQr} fileName="gyan-stempelkarte.png" title="GYAN Stempelkarte" />
+            <SaveQr svg={qr} label={t.saveQr} fileName="gyan-stempelkarte.png" title={t.title} name={state.card.name} hint={t.saveQrHint} address={`${site.address.street}, ${site.address.zip} ${site.address.city}`} />
             {(apple || google) && (
               <div className="lc-wallets">
                 {apple && <a className="btn btn-dark btn-sm" href={`/api/loyalty/apple?l=${locale}`}>{t.appleWallet}</a>}

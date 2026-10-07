@@ -83,7 +83,7 @@ export function cookieMatches(value: string | undefined, email: string) {
 }
 
 /**
- * «Meine Termine»: angemeldeter Kunde (E-Mail lesbar, signiert, 180 Tage).
+ * «Mein Konto»: angemeldeter Kunde (E-Mail lesbar, signiert, 180 Tage).
  * Wird gesetzt, sobald jemand seine E-Mail per Code bestätigt hat.
  */
 export const CUSTOMER_COOKIE = "gyan_kunde";
@@ -104,7 +104,7 @@ export function readCustomerCookie(value: string | undefined): string | null {
 
 type Jar = { set: (name: string, value: string, opts: Record<string, unknown>) => unknown };
 
-/** Bestätigte E-Mail merken: fürs Buchen ohne Code und für «Meine Termine» */
+/** Bestätigte E-Mail merken: fürs Buchen ohne Code und für «Mein Konto» */
 export function rememberCustomer(jar: Jar, email: string) {
   const opts = { httpOnly: true, secure: process.env.NODE_ENV === "production", sameSite: "lax", path: "/", maxAge: VERIFIED_MAX_AGE };
   jar.set(VERIFIED_COOKIE, verifiedCookieValue(email), opts);

@@ -13,7 +13,9 @@ type Props = {
   nav: NavItem[];
   bookHref: string;
   accountHref: string;
-  labels: { back: string; book: string; bookShort: string; menu: string; close: string; language: string; account: string };
+  /** Stempelkarte, nur wenn sie für Kunden eingeschaltet ist */
+  cardHref?: string;
+  labels: { card: string; back: string; book: string; bookShort: string; menu: string; close: string; language: string; account: string };
   slugIndex: L[];
   phone: string;
   phoneHref: string;
@@ -33,7 +35,7 @@ function translatePath(pathname: string, from: Locale, to: Locale, slugIndex: L[
   return "/" + [to, ...out].filter(Boolean).join("/");
 }
 
-export function Header({ locale, nav, bookHref, accountHref, labels, slugIndex, phone, phoneHref }: Props) {
+export function Header({ locale, nav, bookHref, accountHref, cardHref, labels, slugIndex, phone, phoneHref }: Props) {
   const pathname = usePathname() ?? `/${locale}`;
   const [open, setOpen] = useState(false);
   const router = useRouter();
@@ -104,6 +106,11 @@ export function Header({ locale, nav, bookHref, accountHref, labels, slugIndex, 
           </nav>
           <div className="header-actions">
             <div className="lang" aria-label={labels.language}>{langLinks}</div>
+            {cardHref && (
+              <Link href={cardHref} className="header-account header-card" aria-label={labels.card} title={labels.card} aria-current={pathname.startsWith(cardHref) ? "page" : undefined}>
+                <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2.5" /><circle cx="8" cy="10.5" r="1.3" /><circle cx="12" cy="10.5" r="1.3" /><circle cx="16" cy="10.5" r="1.3" /><path d="M7.5 15h9" /></svg>
+              </Link>
+            )}
             <Link href={accountHref} className="header-account" aria-label={labels.account} title={labels.account} aria-current={pathname.startsWith(accountHref) ? "page" : undefined}>
               <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="8.5" r="3.6" /><path d="M4.8 20c.9-3.6 3.7-5.6 7.2-5.6s6.3 2 7.2 5.6" /></svg>
             </Link>

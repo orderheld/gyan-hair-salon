@@ -77,8 +77,14 @@ export async function loyaltyReview(fd: FormData) {
 
 export async function loyaltyCorrection(fd: FormData) {
   const { t, token, state, actor, expectSeq } = await load(fd);
-  const delta = Math.trunc(Number(str(fd, "delta", 6).replace("+", "")));
-  await finish(token, await correctStamps({ state, expectSeq, actor }, delta, str(fd, "reason", 300)), t.done.correction, t);
+  // Richtung als Auswahl, Anzahl immer positiv: am Handy gibt es auf dem Zahlenfeld kein Minus
+  const amount = Math.trunc(Math.abs(Number(str(fd, "amount", 3))));
+  const delta = (str(fd, "dir", 5) === "plus" ? 1 : -1) * (Number.isFinite(amount) ? amount : 0);
+  const reason = str(fd, "reason", 300);
+  if (!delta || Math.abs(delta) > 20) go(cardPath(token), { error: t.corrAmount });
+  if (!reason) go(cardPath(token), { error: t.corrReason });
+  if (state.balance + delta < 0) go(cardPath(token), { error: t.corrTooMany.replace("{n}", String(state.balance)) });
+  await finish(token, await correctStamps({ state, expectSeq, actor }, delta, reason), t.done.correction, t);
 }
 
 export async function loyaltyReferral(fd: FormData) {

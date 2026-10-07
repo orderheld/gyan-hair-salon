@@ -46,6 +46,7 @@ html.menu-open .site-header::before { opacity: 1 !important; border-bottom-color
 .header-book { display: none; }
 .header-account { display: grid; place-items: center; width: 40px; height: 40px; margin-right: -4px; border-radius: 50%; color: inherit; opacity: 0.8; transition: opacity 0.2s, background 0.2s; }
 .header-account svg { width: 22px; height: 22px; }
+.header-card { margin-right: -10px; }
 .header-account:hover, .header-account[aria-current="page"] { opacity: 1; background: var(--cream); }
 .burger {
   width: 44px;
@@ -1038,6 +1039,8 @@ html.app .app-back:active { background: var(--cream); }
 .lc-save-qr { display: inline-flex; align-items: center; gap: 8px; margin-top: 4px; }
 .lc-save-qr svg { width: 18px; height: 18px; }
 
-/* Sechs Tabs (mit Stempelkarte): etwas enger, damit «Leistungen» ganz passt */
-.app-tabs:has(> .app-tab:nth-child(6)) { padding-left: 2px; padding-right: 2px; }
-.app-tabs:has(> .app-tab:nth-child(6)) .app-tab { font-size: 10px; letter-spacing: -0.01em; padding-left: 0; padding-right: 0; }
+.lc-stamp.is-on.is-bonus { background: var(--sand); border-color: var(--accent); color: var(--accent-deep); }
+.lc-legend { list-style: none; margin: 10px auto 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 16px; }
+.lc-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.lc-legend .lc-stamp { width: 22px; aspect-ratio: 1; }
+.lc-legend .lc-stamp svg { width: 60%; height: 60%; }

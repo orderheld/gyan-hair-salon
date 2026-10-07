@@ -152,7 +152,8 @@ export default async function LangLayout({ children, params }: { children: React
           nav={nav}
           bookHref={href(locale, "booking")}
           accountHref={href(locale, "account")}
-          labels={{ account: d.account.nav, back: d.common.back, book: d.common.book, bookShort: d.common.bookShort, menu: d.common.menu, close: d.common.close, language: d.common.language }}
+          cardHref={loyaltyOn ? href(locale, "loyalty") : undefined}
+          labels={{ card: d.loyalty.title, account: d.account.nav, back: d.common.back, book: d.common.book, bookShort: d.common.bookShort, menu: d.common.menu, close: d.common.close, language: d.common.language }}
           slugIndex={slugIndex}
           phone={site.phone}
           phoneHref={site.phoneHref}
@@ -164,9 +165,8 @@ export default async function LangLayout({ children, params }: { children: React
             { href: `/${locale}`, label: d.nav.home, icon: "home", exact: true },
             { href: href(locale, "services"), label: d.nav.services, icon: "services" },
             { href: href(locale, "booking"), label: d.common.bookShort, icon: "book" },
-            { href: href(locale, "zana"), label: d.nav.zana, icon: "zana" },
-            // Stempelkarte immer griffbereit in der Home-Bildschirm-App, sobald sie eingeschaltet ist
-            ...(loyaltyOn ? [{ href: href(locale, "loyalty"), label: d.common.cardShort, icon: "card" as const }] : []),
+            // Stempelkarte statt Zana (Wunsch Ferhat): Buchen bleibt in der Mitte
+            { href: href(locale, "loyalty"), label: d.common.cardShort, icon: "card" },
             { href: href(locale, "contact"), label: d.nav.contact, icon: "contact" },
           ]}
         />

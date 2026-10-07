@@ -24,9 +24,9 @@ type Props = {
   cancelHours: number;
   okHref: string;
   privacyHref: string;
-  /** Angemeldeter Kunde («Meine Termine»): Kontaktdaten schon ausgefüllt */
+  /** Angemeldeter Kunde («Mein Konto»): Kontaktdaten schon ausgefüllt */
   known?: { name: string; email: string; phone: string; birthDate?: string };
-  /** «Meine Termine»: dort ändern angemeldete Kunden ihre Angaben */
+  /** «Mein Konto»: dort ändern angemeldete Kunden ihre Angaben */
   accountHref: string;
   /** Freie Zeiten pro Dauer, schon vom Server mitgeliefert (spart eine Anfrage) */
   initialAvailability?: ByDuration;

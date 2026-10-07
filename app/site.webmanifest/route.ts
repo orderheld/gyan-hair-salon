@@ -1,8 +1,9 @@
 import { getDict } from "@/lib/i18n";
+import { isLoyaltyPublic } from "@/lib/loyalty";
 import { DEFAULT_LOCALE, href, isLocale } from "@/lib/i18n/config";
 
 // App-Manifest der Webseite: «Zum Home-Bildschirm» öffnet GYAN wie eine eigene App
-export function GET(request: Request) {
+export async function GET(request: Request) {
   const l = new URL(request.url).searchParams.get("l");
   const locale = isLocale(l) ? l : DEFAULT_LOCALE;
   const d = getDict(locale);
@@ -29,6 +30,8 @@ export function GET(request: Request) {
     shortcuts: [
       { name: d.common.book, short_name: d.common.bookShort, url: href(locale, "booking"), icons: [{ src: "/icons/app-192.png", sizes: "192x192" }] },
       { name: d.nav.services, url: href(locale, "services"), icons: [{ src: "/icons/app-192.png", sizes: "192x192" }] },
+      // Langes Tippen aufs App-Symbol: Stempelkarte direkt öffnen
+      ...((await isLoyaltyPublic().catch(() => false)) ? [{ name: d.loyalty.title, url: href(locale, "loyalty"), icons: [{ src: "/icons/app-192.png", sizes: "192x192" }] }] : []),
       { name: d.nav.contact, url: href(locale, "contact"), icons: [{ src: "/icons/app-192.png", sizes: "192x192" }] },
     ],
   };

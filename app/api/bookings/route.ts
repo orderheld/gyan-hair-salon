@@ -73,7 +73,7 @@ export async function POST(request: Request) {
     // Ab jetzt merkt sich dieser Browser die bestätigte Adresse (auch falls die Zeit gleich vergeben ist)
     rememberCustomer(jar, email);
   } else if (!readCustomerCookie(jar.get(CUSTOMER_COOKIE)?.value)) {
-    // Schon bestätigt, aber noch nicht für «Meine Termine» gemerkt
+    // Schon bestätigt, aber noch nicht für «Mein Konto» gemerkt
     rememberCustomer(jar, email);
   }
 

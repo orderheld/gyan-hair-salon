@@ -13,7 +13,7 @@ export const dynamic = "force-dynamic";
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /**
- * «Meine Termine» ohne Passwort:
+ * «Mein Konto» ohne Passwort:
  * { step: "code", email } schickt einen 6-stelligen Code,
  * { step: "login", email, code } prüft ihn und merkt sich den Kunden 180 Tage.
  */
