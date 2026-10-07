@@ -12,7 +12,7 @@ import { JsonLd } from "@/components/site/Blocks";
 import { getSalonHours, getServices, localize } from "@/lib/data";
 import { SCHEMA_DAYS } from "@/lib/hours";
 import { getDict } from "@/lib/i18n";
-import { href, isLocale } from "@/lib/i18n/config";
+import { HREFLANG, href, isLocale, LOCALES } from "@/lib/i18n/config";
 import { APP_ICONS } from "@/lib/app-icons";
 import { AppShell } from "@/components/site/AppShell";
 import "../styles/base.css";
@@ -66,16 +66,19 @@ export default async function LangLayout({ children, params }: { children: React
   ];
   const slugIndex = [...services, ...posts, ...topics, ...places].map((x) => x.slug);
 
+  // HairSalon ist der passende schema.org-Typ (einen Typ «BarberShop» gibt es dort nicht).
+  // Bewertungen (aggregateRating) bewusst nicht: Google zeigt eigene Bewertungen einer Firma
+  // auf ihrer Webseite nicht als Sterne, die echten Sterne kommen aus dem Unternehmensprofil.
   const business = {
     "@context": "https://schema.org",
-    "@type": ["HairSalon", "BarberShop"],
+    "@type": "HairSalon",
     "@id": `${site.url}/#salon`,
     legalName: site.legalName,
     taxID: site.uid,
     name: site.name,
     description: d.meta.siteDescription,
     url: `${site.url}/${locale}`,
-    image: [`${site.url}${site.images.hero}`, `${site.url}${site.images.lounge}`],
+    image: [site.images.hero, site.images.lounge, site.images.reception, site.images.wash].map((i) => `${site.url}${i}`),
     logo: `${site.url}/brand/logo-email.png`,
     telephone: site.phone,
     email: site.email,
@@ -92,8 +95,12 @@ export default async function LangLayout({ children, params }: { children: React
       addressRegion: site.address.region,
       addressCountry: site.address.country,
     },
+    geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
     hasMap: site.address.mapsUrl,
-    areaServed: ["Biel/Bienne", "Nidau", "Brügg", "Port", "Ipsach", "Evilard", "Orpund", "Lyss", "Pieterlen", "Studen", "Seeland"].map((n) => ({ "@type": "City", name: n })),
+    areaServed: [
+      ...["Biel/Bienne", "Nidau", "Brügg", "Port", "Ipsach", "Evilard", "Orpund", "Lyss", "Pieterlen", "Studen"].map((n) => ({ "@type": "City", name: n })),
+      { "@type": "AdministrativeArea", name: "Seeland" },
+    ],
     knowsLanguage: ["de", "fr", "en"],
     sameAs: [site.instagram, site.tiktok, site.facebook],
     openingHoursSpecification: hours
@@ -101,7 +108,7 @@ export default async function LangLayout({ children, params }: { children: React
       .map((h) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: SCHEMA_DAYS[h.weekday], opens: h.openTime, closes: h.closeTime })),
     potentialAction: {
       "@type": "ReserveAction",
-      target: { "@type": "EntryPoint", urlTemplate: `${site.url}${href(locale, "booking")}`, inLanguage: locale },
+      target: { "@type": "EntryPoint", urlTemplate: `${site.url}${href(locale, "booking")}`, inLanguage: HREFLANG[locale], actionPlatform: ["https://schema.org/DesktopWebPlatform", "https://schema.org/MobileWebPlatform"] },
       result: { "@type": "Reservation", name: d.common.bookCta },
     },
     hasOfferCatalog: {
@@ -111,7 +118,7 @@ export default async function LangLayout({ children, params }: { children: React
         const l = localize(s, locale);
         return {
           "@type": "Offer",
-          price: s.priceChf,
+          ...(s.priceFrom ? { priceSpecification: { "@type": "PriceSpecification", minPrice: s.priceChf, priceCurrency: "CHF" } } : { price: s.priceChf }),
           priceCurrency: "CHF",
           url: `${site.url}${href(locale, "services", l.slug)}`,
           itemOffered: { "@type": "Service", name: l.name, description: l.short },
@@ -119,9 +126,19 @@ export default async function LangLayout({ children, params }: { children: React
       }),
     },
   };
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${site.url}/#website`,
+    name: site.name,
+    alternateName: ["GYAN", "GYAN Salon Biel"],
+    url: `${site.url}/`,
+    inLanguage: LOCALES.map((l) => HREFLANG[l]),
+    publisher: { "@id": `${site.url}/#salon` },
+  };
 
   return (
-    <html suppressHydrationWarning data-scroll-behavior="smooth" lang={locale === "de" ? "de-CH" : locale === "fr" ? "fr-CH" : "en"} className={`${inter.variable} ${display.variable} ${serif.variable}`}>
+    <html suppressHydrationWarning data-scroll-behavior="smooth" lang={HREFLANG[locale]} className={`${inter.variable} ${display.variable} ${serif.variable}`}>
       <body>
         <a className="skip" href="#main">{d.common.skip}</a>
         <Motion />
@@ -146,7 +163,7 @@ export default async function LangLayout({ children, params }: { children: React
           ]}
         />
         <Footer locale={locale} d={d} services={services.map((s) => localize(s, locale))} hours={hours} />
-        <JsonLd data={business} />
+        <JsonLd data={[business, website]} />
       </body>
     </html>
   );

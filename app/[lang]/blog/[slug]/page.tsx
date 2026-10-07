@@ -9,7 +9,7 @@ import { Markdown, readingTime } from "@/components/Markdown";
 import { Breadcrumbs, CtaBand, JsonLd } from "@/components/site/Blocks";
 import { formatPostDate, PostCard } from "@/components/site/PostCard";
 import { getDict } from "@/lib/i18n";
-import { href } from "@/lib/i18n/config";
+import { HREFLANG, href } from "@/lib/i18n/config";
 import { postPath } from "@/lib/i18n/paths";
 import { absolute, pageMetadata } from "@/lib/seo";
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const locale = lang as Locale;
   const post = find(slug);
   if (!post) return {};
-  return pageMetadata({ locale, title: post.title[locale], description: post.description[locale], path: (l) => postPath(l, post), image: post.image, type: "article" });
+  return pageMetadata({ locale, title: post.title[locale], description: post.description[locale], path: (l) => postPath(l, post), image: post.image, type: "article", published: post.date });
 }
 
 export default async function PostPage({ params }: Props) {
@@ -57,7 +57,7 @@ export default async function PostPage({ params }: Props) {
             <p className="lead rise" style={{ animationDelay: "160ms" }}>{post.description[locale]}</p>
           </div>
           <div className="container post-cover rise" style={{ animationDelay: "220ms" }}>
-            <Image src={post.image} alt={post.title[locale]} fill priority sizes="(max-width: 1200px) 100vw, 1120px" />
+            <Image src={post.image} alt={site.imageAlt[post.image]?.[locale] ?? ""} fill priority sizes="(max-width: 1200px) 100vw, 1120px" />
           </div>
         </header>
         <div className="section-tight">
@@ -86,15 +86,19 @@ export default async function PostPage({ params }: Props) {
         data={{
           "@context": "https://schema.org",
           "@type": "BlogPosting",
+          "@id": `${absolute(postPath(locale, post))}#article`,
           headline: post.title[locale],
           description: post.description[locale],
-          image: absolute(post.image),
+          image: [absolute(post.image), absolute(post.image.replace("/images/", "/og/"))],
           datePublished: post.date,
-          dateModified: post.date,
-          inLanguage: locale,
-          mainEntityOfPage: absolute(postPath(locale, post)),
-          author: { "@type": "Organization", name: site.name, url: site.url },
-          publisher: { "@type": "Organization", name: site.name, logo: { "@type": "ImageObject", url: absolute("/brand/logo-email.png") } },
+          dateModified: post.updated ?? post.date,
+          inLanguage: HREFLANG[locale],
+          wordCount: post.body[locale].split(/\s+/).length,
+          mainEntityOfPage: { "@type": "WebPage", "@id": absolute(postPath(locale, post)) },
+          isPartOf: { "@type": "Blog", name: `${d.nav.blog} · ${site.name}`, url: absolute(href(locale, "blog")) },
+          about: { "@id": `${site.url}/#salon` },
+          author: { "@type": "Organization", name: site.name, url: `${site.url}/${locale}` },
+          publisher: { "@type": "Organization", name: site.name, url: `${site.url}/${locale}`, logo: { "@type": "ImageObject", url: absolute("/brand/logo-email.png") } },
         }}
       />
     </>
