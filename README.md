@@ -231,3 +231,19 @@ Die Live-Angaben auf der Startseite (offen/geschlossen, nächster freier Termin)
 - **Kalender** (Menü «Kalender»): Tag, Woche oder Monat. Auf einen Termin tippen öffnet ihn, auf eine freie Stelle tippen trägt einen neuen Termin zu dieser Zeit ein. Sperrzeiten und Pausen sind schraffiert, am Handy wischt man durch die Woche.
 - **Termin öffnen:** Leistung, Datum, Uhrzeit, Preis, Name, Telefon, E-Mail, Sprache und Notizen ändern. Beim Verschieben bekommt der Kunde auf Wunsch eine neue Bestätigung mit Kalendereintrag. Überschneidungen und Sperrzeiten werden geprüft. Dazu: Anrufen, WhatsApp, E-Mail, Bestätigung nochmals senden, Nicht gekommen, Stornieren und **Endgültig löschen**.
 - **Kundenkarte** (Kunden → Kundenkarte öffnen): alle Termine, Besuche, Umsatz, Kontaktdaten ändern (gilt für alle Termine), Notiz, Werbe-Abmeldung, Sperren, neuen Termin für den Kunden und **Kunde endgültig löschen** (mit allen Terminen, z. B. auf Wunsch nach Datenschutzgesetz).
+
+## 15. Push-Benachrichtigungen
+
+**Einmal einrichten (2 Minuten):**
+
+1. In PowerShell im Projektordner: `npx web-push generate-vapid-keys`
+2. Die zwei Schlüssel in Vercel → **Settings → Environment Variables** eintragen: `VAPID_PUBLIC_KEY` (Public Key) und `VAPID_PRIVATE_KEY` (Private Key). Danach **Redeploy**.
+3. Admin auf dem Handy öffnen und oben auf **Aktivieren** tippen. Am iPhone das Admin vorher über «Teilen → Zum Home-Bildschirm» als App ablegen und von dort öffnen (Apple erlaubt Push nur so).
+4. Unter **E-Mails → Push-Benachrichtigungen** eine Testnachricht senden.
+
+**Was kommt wann:**
+
+- Admin: sofort bei jeder neuen Online-Buchung und bei jeder Stornierung durch den Kunden. Antippen öffnet den Termin.
+- Kunde: Beim Buchen fragt der Browser direkt nach der Erlaubnis. Danach: «Termin bestätigt», Erinnerung vor dem Termin (gleiche Zeit wie die Erinnerungs-Mail), Dankeschön nach dem Termin mit Knöpfen für Google-Bewertung und Instagram (gleiche Zeit wie die Feedback-Mail), plus Hinweis bei Verschiebung oder Absage durch den Salon.
+- Push und E-Mail laufen immer zusammen und folgen denselben Schaltern unter **E-Mails**. Wer keine Push-Erlaubnis gibt, bekommt einfach nur die E-Mails.
+- Ein Browser darf Benachrichtigungen nie ohne Zustimmung erlauben. Die Abfrage kommt deshalb genau beim Klick auf «Buchen» bzw. «Aktivieren», wo die meisten zustimmen.

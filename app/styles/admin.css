@@ -503,3 +503,17 @@ form[data-dirty] .svc-unsaved { display: inline; }
 @media (max-width: 760px) {
   .cal-toggle, .bd-back, .bk-name, .bk-open { display: inline-flex; align-items: center; min-height: 36px; }
 }
+
+/* Push-Hinweis oben im Admin */
+.admin-push { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; margin: 0 0 20px; padding: 14px 18px; border-radius: 18px; background: var(--white, #fff); border: 1px solid var(--line); box-shadow: 0 6px 20px rgba(20, 18, 16, 0.06); }
+.admin-push strong { display: block; font-size: 15px; }
+.admin-push p { margin: 2px 0 0; font-size: 13.5px; color: var(--taupe); line-height: 1.45; }
+.admin-push .push-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--cream); color: var(--accent); }
+.admin-push .push-ico svg { width: 22px; height: 22px; }
+.admin-push-btns { display: flex; gap: 8px; }
+@media (max-width: 760px) {
+  .admin-push { grid-template-columns: auto 1fr; }
+  .admin-push-btns { grid-column: 1 / -1; }
+  .admin-push-btns .btn { flex: 1; min-height: 42px; }
+}
+.push-panel-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 10px; }

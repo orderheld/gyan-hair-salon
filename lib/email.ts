@@ -10,6 +10,7 @@ import { EMAIL_LOGO_BASE64 } from "./email-logo";
 import { formatChf, formatDuration } from "./format";
 import { customerKey, getCustomerInfos } from "./customers";
 import { getSql } from "./db";
+import { pushToAdmins, pushToCustomer } from "./push";
 import { getSettings, type EmailTemplate, type EmailType, type Settings } from "./settings";
 import { TIMEZONE } from "./config";
 
@@ -275,6 +276,7 @@ export async function sendBookingConfirmation(b: Booking) {
   await Promise.allSettled([
     sendType("confirmation", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined }),
     sendType("adminNotify", b, settings.notifyEmail, { replyTo: b.customerEmail || undefined, locale: "de", details: await customerWarning(b) }),
+    b.source === "online" ? pushToAdmins("new", b).catch((e) => console.error("[GYAN] Push:", e)) : null,
   ]);
 }
 
@@ -283,6 +285,7 @@ const CHANGED: Record<Locale, string> = { de: "Termin geändert", fr: "Rendez-vo
 /** Termin verschoben oder geändert: neue Bestätigung mit allen Angaben an den Kunden */
 export async function sendRescheduled(b: Booking) {
   const settings = await getSettings();
+  await pushToCustomer("rescheduled", b).catch((e) => console.error("[GYAN] Push:", e));
   if (!b.customerEmail) return null;
   const mail = await buildEmail("confirmation", b, { settings });
   return send({ to: b.customerEmail, replyTo: settings.notifyEmail || undefined, ...mail, subject: `${CHANGED[b.locale] ?? CHANGED.de}: ${mail.subject}` });
@@ -301,17 +304,24 @@ export async function sendCancellation(b: Booking, by: "customer" | "salon") {
     const mail = await buildEmail("cancellation", b, { settings, locale: "de" });
     tasks.push(send({ to: settings.notifyEmail, ...mail, ics: undefined, subject: `${b.lateCancel ? "Zu spät storniert" : "Storniert"}: ${mail.subject}` }));
   }
+  tasks.push(by === "customer" ? pushToAdmins("cancelled", b).catch((e) => console.error("[GYAN] Push:", e)) : pushToCustomer("cancelled", b).catch((e) => console.error("[GYAN] Push:", e)));
   await Promise.allSettled(tasks);
 }
 
 export async function sendReminder(b: Booking) {
   const settings = await getSettings();
-  await sendType("reminder", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined });
+  await Promise.allSettled([
+    sendType("reminder", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined }),
+    pushToCustomer("reminder", b).catch((e) => console.error("[GYAN] Push:", e)),
+  ]);
 }
 
 export async function sendFollowup(b: Booking) {
   const settings = await getSettings();
-  await sendType("followup", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined });
+  await Promise.allSettled([
+    sendType("followup", b, b.customerEmail, { replyTo: settings.notifyEmail || undefined }),
+    pushToCustomer("followup", b).catch((e) => console.error("[GYAN] Push:", e)),
+  ]);
 }
 
 /** Bestätigungscode für die E-Mail-Adresse (fester Text, kein Termin) */

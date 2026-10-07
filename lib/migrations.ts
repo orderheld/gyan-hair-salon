@@ -29,4 +29,16 @@ export const MIGRATIONS = [
   `ALTER TABLE services ADD COLUMN IF NOT EXISTS category text NOT NULL DEFAULT 'cut'`,
   `ALTER TABLE services ADD COLUMN IF NOT EXISTS popular boolean NOT NULL DEFAULT false`,
   `CREATE INDEX IF NOT EXISTS bookings_email_idx ON bookings (lower(customer_email))`,
+  // Push-Benachrichtigungen (Admin: neue Buchungen; Kunden: Bestätigung, Erinnerung, Dankeschön)
+  `CREATE TABLE IF NOT EXISTS push_subscriptions (
+    endpoint     text PRIMARY KEY,
+    p256dh       text NOT NULL,
+    auth         text NOT NULL,
+    role         text NOT NULL CHECK (role IN ('admin', 'customer')),
+    customer_key text NOT NULL DEFAULT '',
+    locale       text NOT NULL DEFAULT 'de',
+    created_at   timestamptz NOT NULL DEFAULT now(),
+    last_ok_at   timestamptz
+  )`,
+  `CREATE INDEX IF NOT EXISTS push_customer_idx ON push_subscriptions (customer_key)`,
 ];

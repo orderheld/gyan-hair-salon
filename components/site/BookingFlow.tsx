@@ -6,6 +6,7 @@ import type { Locale } from "@/content/types";
 import { formatChf, formatDuration } from "@/lib/format";
 import type { Dict } from "@/lib/i18n/dict/de";
 import { fill } from "@/lib/i18n/fill";
+import { askPushPermission } from "@/lib/push-client";
 
 type Service = { id: number; name: string; short: string; durationMin: number; priceChf: number; priceFrom: boolean; category: string; popular: boolean };
 type Props = {
@@ -132,6 +133,7 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
 
   // Bei jedem Schritt an den Anfang der Buchung springen (sonst landet man im Footer)
   const rootRef = useRef<HTMLDivElement>(null);
+  const pushAsk = useRef<Promise<unknown> | null>(null);
   const firstStep = useRef(true);
   useEffect(() => {
     if (firstStep.current) { firstStep.current = false; return; }
@@ -224,6 +226,8 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
         }
         return;
       }
+      // Offene Push-Abfrage nicht durch den Seitenwechsel abbrechen (höchstens 15 Sekunden warten)
+      if (pushAsk.current) await Promise.race([pushAsk.current, new Promise((r) => setTimeout(r, 15000))]);
       router.push(`${okHref}?id=${data.id}`);
     } catch {
       setError(t.errors.network);
@@ -238,6 +242,8 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
       setError(t.errors.consent);
       return;
     }
+    // Direkt im Klick nach Push-Erlaubnis fragen (Erinnerung aufs Handy); die Buchung läuft parallel weiter
+    if (!pushAsk.current) pushAsk.current = askPushPermission();
     requestCode();
   }
 

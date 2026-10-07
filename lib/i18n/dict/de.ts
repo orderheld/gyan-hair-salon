@@ -295,6 +295,13 @@ const de = {
       blocked: "Eine Online-Buchung ist mit diesen Angaben leider nicht möglich. Bitte ruf uns an.",
       consent: "Bitte bestätige die Einwilligung, um zu buchen.",
     },
+    push: {
+      title: "Erinnerung aufs Handy?",
+      text: "Wir erinnern dich kurz vor dem Termin und sagen danach Danke. Ganz ohne App.",
+      button: "Aktivieren",
+      active: "Erinnerung aufs Handy ist aktiv ✓",
+      iosHint: "Auf dem iPhone kommen Erinnerungen per E-Mail. Für Push: Seite teilen, «Zum Home-Bildschirm» und dort öffnen.",
+    },
     confirmed: {
       eyebrow: "Bestätigt",
       title: "Bis bald, {name}.",

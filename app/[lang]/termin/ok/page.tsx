@@ -8,6 +8,7 @@ import { formatChf, formatDuration } from "@/lib/format";
 import { fill, getDict } from "@/lib/i18n";
 import { href, INTL_LOCALE } from "@/lib/i18n/config";
 import { TIMEZONE } from "@/lib/config";
+import { PushOptIn } from "@/components/site/PushOptIn";
 
 export const metadata: Metadata = { robots: { index: false } };
 
@@ -47,6 +48,7 @@ export default async function Confirmed({ params, searchParams }: Props) {
             <div><dt>{d.booking.payment}</dt><dd>{d.booking.paymentText}</dd></div>
           </dl>
           <p className="note pay-note">{d.booking.confirmed.payNote}</p>
+          {booking.status === "confirmed" && <PushOptIn bookingId={booking.id} locale={locale} t={d.booking.push} />}
           <div className="btn-row center">
             <a className="btn btn-dark" href={site.address.mapsUrl} target="_blank" rel="noopener">{d.common.route}</a>
             <Link className="btn btn-light" href={href(locale, "home")}>{d.booking.confirmed.home}</Link>

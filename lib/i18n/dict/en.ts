@@ -297,6 +297,13 @@ const en: Dict = {
       blocked: "Online booking is not possible with these details. Please give us a call.",
       consent: "Please confirm your consent to book.",
     },
+    push: {
+      title: "Reminder on your phone?",
+      text: "We remind you shortly before your appointment and say thanks afterwards. No app needed.",
+      button: "Turn on",
+      active: "Phone reminder is on ✓",
+      iosHint: "On iPhone, reminders come by email. For push: share the page, «Add to Home Screen» and open it from there.",
+    },
     confirmed: {
       eyebrow: "Confirmed",
       title: "See you soon, {name}.",

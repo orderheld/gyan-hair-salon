@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { AdminNav } from "@/components/admin/AdminNav";
+import { AdminPush } from "@/components/admin/AdminPush";
+import { pushEnabled } from "@/lib/push";
 import { ReturnHere } from "@/components/admin/ReturnHere";
 import { Monogram } from "@/components/brand/Logo";
 import { LOCALES } from "@/content/types";
@@ -45,7 +47,10 @@ export default async function PanelLayout({ children }: { children: React.ReactN
           </div>
         </div>
       </header>
-      <main className="container admin-main">{children}</main>
+      <main className="container admin-main">
+        <AdminPush t={t.push} enabled={pushEnabled} />
+        {children}
+      </main>
     </div>
   );
 }

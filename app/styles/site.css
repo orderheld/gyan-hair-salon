@@ -863,3 +863,11 @@ html.app .app-back:active { background: var(--cream); }
 
 .live-fade { animation: liveIn .5s var(--ease) both; }
 @keyframes liveIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Push-Erinnerung auf der Bestätigungsseite */
+.push-card { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 14px; margin: 18px 0 0; padding: 16px 18px; border-radius: 18px; background: var(--cream); text-align: left; animation: liveIn 0.4s ease both; }
+.push-card strong { display: block; font-size: 15px; color: var(--ink); }
+.push-card p { margin: 2px 0 0; font-size: 13.5px; color: var(--taupe); line-height: 1.45; }
+.push-ico { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--ivory); color: var(--accent); }
+.push-ico svg { width: 22px; height: 22px; }
+@media (max-width: 520px) { .push-card { grid-template-columns: auto 1fr; } .push-card .btn { grid-column: 1 / -1; width: 100%; } }

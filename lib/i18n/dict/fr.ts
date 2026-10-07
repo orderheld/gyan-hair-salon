@@ -297,6 +297,13 @@ const fr: Dict = {
       blocked: "La réservation en ligne n’est malheureusement pas possible avec ces coordonnées. Merci de nous appeler.",
       consent: "Merci de confirmer ton consentement pour réserver.",
     },
+    push: {
+      title: "Rappel sur ton téléphone ?",
+      text: "On te rappelle ton rendez-vous peu avant et on te dit merci après. Sans application.",
+      button: "Activer",
+      active: "Rappel sur ton téléphone activé ✓",
+      iosHint: "Sur iPhone, les rappels arrivent par e-mail. Pour les notifications : partager la page, «Sur l’écran d’accueil» et l’ouvrir depuis là.",
+    },
     confirmed: {
       eyebrow: "Confirmé",
       title: "À bientôt, {name}.",

@@ -12,6 +12,7 @@ import { getSql } from "@/lib/db";
 import { customerKey, deleteCustomer, updateCustomer, updateCustomerContact } from "@/lib/customers";
 import { resendConfirmationToCustomer, sendBookingConfirmation, sendCancellation, sendRescheduled, sendTestEmail } from "@/lib/email";
 import { fill, getDict } from "@/lib/i18n";
+import { pushTestToAdmins } from "@/lib/push";
 import { isLocale } from "@/lib/i18n/config";
 import { EMAIL_TYPES, getSettings, saveSettings, SLOT_STEPS, type EmailTemplate, type EmailType } from "@/lib/settings";
 import { isDateKey, isTimeKey, toDateKey, zurichToDate } from "@/lib/time";
@@ -435,4 +436,12 @@ export async function adminDeleteCustomer(fd: FormData) {
   const n = await deleteCustomer(str(fd, "key", 140));
   revalidatePath("/admin", "layout");
   back("/admin/kunden", fill(t.customers.deleted, { n }));
+}
+
+/* Push: Testnachricht an alle Admin-Geräte */
+export async function adminPushTest() {
+  await requireAdmin();
+  const { t } = await getAdminText();
+  const n = await pushTestToAdmins();
+  back("/admin/emails#push", fill(t.push.tested, { n }));
 }

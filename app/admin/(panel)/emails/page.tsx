@@ -7,7 +7,8 @@ import { sampleVars, templateFor } from "@/lib/email";
 import { fill } from "@/lib/i18n";
 import { LOCALE_NAMES } from "@/lib/i18n/config";
 import { EMAIL_TYPES, getSettings } from "@/lib/settings";
-import { resetEmail, saveEmail, sendEmailTest } from "../../actions";
+import { countAdminDevices, pushEnabled } from "@/lib/push";
+import { adminPushTest, resetEmail, saveEmail, sendEmailTest } from "../../actions";
 
 
 export default async function Emails({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
@@ -16,6 +17,7 @@ export default async function Emails({ searchParams }: { searchParams: Promise<{
   const e = t.emails;
   const s = await getSettings();
   const examples = await sampleVars(locale, s);
+  const devices = pushEnabled ? await countAdminDevices().catch(() => 0) : 0;
 
   return (
     <>
@@ -24,6 +26,22 @@ export default async function Emails({ searchParams }: { searchParams: Promise<{
         <p className="muted">{e.hint}</p>
       </div>
       <Flash ok={ok} error={error} />
+      <section className="panel push-panel" id="push">
+        <h2 className="h3">🔔 {t.push.panelTitle}</h2>
+        <p className="muted small">{t.push.panelText}</p>
+        {!pushEnabled ? (
+          <p className="small"><strong>{t.push.notConfigured}</strong></p>
+        ) : (
+          <div className="push-panel-row">
+            <span className="small">{devices === 0 ? t.push.noDevices : devices === 1 ? t.push.devicesOne : fill(t.push.devices, { n: devices })}</span>
+            {devices > 0 && (
+              <form action={adminPushTest}>
+                <SubmitButton className="btn btn-light btn-sm">{t.push.test}</SubmitButton>
+              </form>
+            )}
+          </div>
+        )}
+      </section>
       <details className="panel legend">
         <summary className="h3">{e.legendTitle}</summary>
         <p className="muted small">{e.legendHint}</p>
