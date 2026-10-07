@@ -1,4 +1,5 @@
 // Kontaktangaben und feste Daten des Salons. Texte stehen in lib/i18n/dict/{de,fr,en}.ts.
+import type { L } from "./types";
 
 export const site = {
   name: "GYAN Hair Salon",
@@ -18,6 +19,8 @@ export const site = {
     country: "CH",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=GYAN+Hair+Salon+Zentralstrasse+22+2502+Biel",
   },
+  /** Koordinaten des Eingangs (geo.admin.ch, Gebäudeadresse Zentralstrasse 22) */
+  geo: { latitude: 47.13862, longitude: 7.24472 },
   phone: "+41 76 505 74 47",
   phoneHref: "tel:+41765057447",
   email: "contact@gyanhairsalon.ch",
@@ -78,6 +81,28 @@ export const site = {
     // Ausschnitte sind für grosse Flächen zu klein: dort das Originalbild nehmen
     large: { "/images/cut-fade.jpg": "/images/cut-mulet.jpg", "/images/cut-bart.jpg": "/images/cut-mulet.jpg", "/images/cut-nacken.jpg": "/images/cut-standard.jpg" } as Record<string, string>,
   },
+
+  /**
+   * Bildbeschreibungen (alt-Text) pro Bild: was darauf zu sehen ist, kurz und ohne Stichwortlisten.
+   * Wird für Bilder auf der Seite und für Vorschaubilder (Open Graph) verwendet.
+   */
+  imageAlt: {
+    "/images/cut-bart.jpg": { de: "Mann im Profil mit kurz getrimmtem Vollbart und scharfen Konturen", fr: "Homme de profil avec une barbe courte taillée et des contours nets", en: "Man in profile with a short, trimmed full beard and sharp lines" },
+    "/images/cut-fade.jpg": { de: "Nahaufnahme eines Low Fade, sauber bis auf die Haut verblendet", fr: "Gros plan d'un low fade, dégradé net jusqu'à la peau", en: "Close-up of a low fade, cleanly blended down to the skin" },
+    "/images/cut-mulet.jpg": { de: "Moderner Mullet mit Fade an den Seiten und Bart, frisch geschnitten bei GYAN", fr: "Mulet moderne avec dégradé sur les côtés et barbe, fraîchement coupé chez GYAN", en: "Modern mullet with faded sides and a beard, freshly cut at GYAN" },
+    "/images/cut-nacken.jpg": { de: "Sauber ausrasierter Nacken nach dem Haarschnitt", fr: "Nuque nette après la coupe", en: "Clean neckline after the haircut" },
+    "/images/cut-standard.jpg": { de: "Klassischer Herrenschnitt mit Taper an den Seiten, im Spiegel des Salons", fr: "Coupe homme classique avec taper sur les côtés, dans le miroir du salon", en: "Classic men's cut with a tapered side, seen in the salon mirror" },
+    "/images/hero-fade.jpg": { de: "Fade und Nackenkontur von hinten, im skulpturalen Spiegel", fr: "Dégradé et contour de nuque vus de dos, dans le miroir sculptural", en: "Fade and neckline from behind, in the sculptural mirror" },
+    "/images/salon-empfang.jpg": { de: "Empfang von GYAN Hair Salon mit Waschplatz und GYAN-Logo am Bildschirm", fr: "Accueil de GYAN Hair Salon avec bac à shampoing et logo GYAN à l'écran", en: "GYAN Hair Salon reception with wash station and the GYAN logo on screen" },
+    "/images/salon-empfang-2.jpg": { de: "Empfang von GYAN Hair Salon mit Waschplatz und GYAN-Logo am Bildschirm", fr: "Accueil de GYAN Hair Salon avec bac à shampoing et logo GYAN à l'écran", en: "GYAN Hair Salon reception with wash station and the GYAN logo on screen" },
+    "/images/salon-lounge.jpg": { de: "Heller Salon an der Zentralstrasse in Biel mit Lounge, Spiegeln und Barberstühlen", fr: "Salon lumineux à la Zentralstrasse à Bienne avec lounge, miroirs et fauteuils de barbier", en: "Bright salon on Zentralstrasse in Biel with lounge, mirrors and barber chairs" },
+    "/images/salon-spiegel.jpg": { de: "Skulpturale Spiegel und Barberstühle im GYAN Hair Salon Biel", fr: "Miroirs sculpturaux et fauteuils de barbier chez GYAN Hair Salon à Bienne", en: "Sculptural mirrors and barber chairs at GYAN Hair Salon in Biel" },
+    "/images/salon-wasch.jpg": { de: "Waschplatz mit Ledersessel für Haarwäsche und Pflege", fr: "Bac à shampoing avec fauteuil en cuir pour le lavage et les soins", en: "Wash station with leather chair for hair wash and care" },
+    "/images/signatur.jpg": { de: "GYAN-Schriftzug an der Wand mit Zanas Unterschrift", fr: "Lettrage GYAN au mur avec la signature de Zana", en: "GYAN lettering on the wall with Zana's signature" },
+    "/images/zana-barbershop.jpg": { de: "Barbershop-Ecke im GYAN Hair Salon mit Pflanzen und Teppichbild", fr: "Coin barbershop chez GYAN Hair Salon avec plantes et tapis encadré", en: "Barbershop corner at GYAN Hair Salon with plants and a framed rug" },
+    "/images/zana-illustration.jpg": { de: "Illustration von Zana, Inhaber von GYAN Hair Salon", fr: "Illustration de Zana, propriétaire de GYAN Hair Salon", en: "Illustration of Zana, owner of GYAN Hair Salon" },
+    "/images/zana-portrait-art.jpg": { de: "GYAN-Logo mit Zanas Porträt als Kunstwerk", fr: "Logo GYAN avec le portrait de Zana en œuvre d'art", en: "GYAN logo with Zana's portrait as artwork" },
+  } as Record<string, L>,
 };
 
 export type Site = typeof site;

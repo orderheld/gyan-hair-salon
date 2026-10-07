@@ -9,8 +9,11 @@ import { fill, getDict } from "@/lib/i18n";
 import { href, INTL_LOCALE } from "@/lib/i18n/config";
 import { TIMEZONE } from "@/lib/config";
 import { PushOptIn } from "@/components/site/PushOptIn";
+import { privateMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = { robots: { index: false } };
+export async function generateMetadata({ params }: { params: Promise<{ lang: string }> }): Promise<Metadata> {
+  return privateMetadata(getDict((await params).lang as Locale).booking.confirmed.eyebrow);
+}
 
 
 // Immer frisch (Buchungsstatus, Auswahl aus der Adresse)
