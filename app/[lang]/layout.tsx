@@ -80,6 +80,7 @@ export default async function LangLayout({ children, params }: { children: React
     email: site.email,
     priceRange: services.length ? `CHF ${Math.min(...services.map((s) => s.priceChf))}–${Math.max(...services.map((s) => s.priceChf))}` : undefined,
     currenciesAccepted: "CHF",
+    paymentAccepted: "Cash, Credit Card, Debit Card, TWINT",
     foundingDate: String(site.founded),
     founder: { "@type": "Person", name: site.owner },
     address: {
