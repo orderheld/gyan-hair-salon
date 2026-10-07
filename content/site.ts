@@ -47,7 +47,7 @@ export const site = {
   googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=GYAN+Hair+Salon+Biel",
   /** Direktlink «Bewertung schreiben» aus dem Google-Unternehmensprofil */
   googleWriteReviewUrl: "https://g.page/r/Cf88NjkyEn2REBM/review",
-  rating: { value: "4.9", count: "290" }, // vor Livegang mit Google abgleichen
+  rating: { value: "4.9", count: "290" }, // von Ferhat am 7.10.2026 bestätigt
 
   /** Online-Buchung: nur Zana buchbar, Hikmet folgt (bis dahin spontan) */
   team: [

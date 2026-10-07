@@ -17,7 +17,7 @@ export const topics: SeoTopic[] = [
     },
     description: {
       de: "Coiffeur in Biel an der Zentralstrasse 22: Haarschnitt, Fade und Bart, 4.9 Sterne auf Google. Online Termin buchen oder spontan vorbeikommen.",
-      fr: "Coiffeur à Bienne, Zentralstrasse 22 : coupe, dégradé et barbe, 4.9 étoiles sur Google. Réserve en ligne ou passe sans rendez-vous.",
+      fr: "Coiffeur à Bienne, Zentralstrasse 22 : coupe, dégradé et barbe, 4,9 étoiles sur Google. Réserve en ligne ou passe sans rendez-vous.",
       en: "Hairdresser in Biel at Zentralstrasse 22: haircuts, fades and beards, rated 4.9 on Google. Book online or simply walk in during opening hours.",
     },
     intro: {
@@ -63,7 +63,7 @@ En entrant, tu le sens tout de suite : ici, on ne fait pas de la coupe à la cha
 
 Chez GYAN, tu as deux options. Si tu veux un créneau fixe sans attente, tu [réserves en ligne](page:booking) – ta réservation est confirmée immédiatement, sans attendre de rappel. Si tu as un moment de libre, passe simplement pendant les heures d'ouverture : Zana, propriétaire et barbier, et son équipe accueillent aussi les clients sans rendez-vous. Sans rendez-vous, la coupe et les formules sont même un peu moins chères. En plus des coupes classiques, on propose des skin fades, l'entretien de la barbe, le soin du visage et des formules comme la formule GYAN Classic, coupe et barbe. Tu cherches spécifiquement une coupe homme ? Jette un œil à notre page [coiffeur homme à Bienne](seo:herrencoiffeur).
 
-Avec une note de 4.9 sur Google pour environ 290 avis, on peut le dire : nos clients reviennent volontiers. On se réjouit que tu en fasses partie.`,
+Avec une note de 4,9 sur Google pour environ 290 avis, on peut le dire : nos clients reviennent volontiers. On se réjouit que tu en fasses partie.`,
       en: `## A hairdresser who listens
 
 A good haircut doesn't start with scissors – it starts with a conversation. At GYAN we first take time to understand your hair type, your cowlicks, your daily routine and how much effort you want to put in each morning. Only then do we cut – with scissors, clippers and real patience for the transitions. The result: a [haircut](service:haarschnitt-biel) that looks great on day one and still holds its shape three weeks later.
@@ -123,7 +123,7 @@ With a 4.9 rating from around 290 Google reviews, it's fair to say our clients l
     },
     description: {
       de: "Barbier in Biel: Fades, Bartpflege und Nassrasur mit heissem Tuch an der Zentralstrasse 22. 4.9 Sterne auf Google – buch jetzt deinen Termin.",
-      fr: "Barbier à Bienne : dégradés, taille de barbe et rasage à la serviette chaude, Zentralstrasse 22. Noté 4.9 sur Google – réserve ton rendez-vous.",
+      fr: "Barbier à Bienne : dégradés, taille de barbe et rasage à la serviette chaude, Zentralstrasse 22. Noté 4,9 sur Google – réserve ton rendez-vous.",
       en: "Barber in Biel: fades, beard trims and hot towel shaves at Zentralstrasse 22. Rated 4.9 on Google – book your appointment online today.",
     },
     intro: {
@@ -169,7 +169,7 @@ Des barbershops, il y en a beaucoup, mais une atmosphère ne se copie pas. Chez 
 
 Notre salon est au centre de Bienne, à quelques minutes à pied de la gare. Nos clients viennent donc de la ville, mais aussi de toute la région : de [Lyss](seo:lyss) en train, d'[Ipsach](seo:ipsach) sur la rive sud du lac ou d'Evilard par le funiculaire. Le centre-ville dispose de places de parc publiques.
 
-Si tu veux t'installer sans attendre chez [Zana](page:zana), propriétaire et barbier, le mieux est de [réserver en ligne](page:booking). Ton rendez-vous est confirmé immédiatement. Sans rendez-vous, tu es tout de même le bienvenu pendant les heures d'ouverture – Zana et l'équipe accueillent aussi les clients sans rendez-vous, avec des prix un peu plus bas pour la coupe et les formules. Avec 4.9 étoiles pour environ 290 avis Google, tu sais sur quoi tu peux compter.`,
+Si tu veux t'installer sans attendre chez [Zana](page:zana), propriétaire et barbier, le mieux est de [réserver en ligne](page:booking). Ton rendez-vous est confirmé immédiatement. Sans rendez-vous, tu es tout de même le bienvenu pendant les heures d'ouverture – Zana et l'équipe accueillent aussi les clients sans rendez-vous, avec des prix un peu plus bas pour la coupe et les formules. Avec 4,9 étoiles pour environ 290 avis Google, tu sais sur quoi tu peux compter.`,
       en: `## What makes a barber
 
 A barber is more than a hairdresser with a razor. It's about precision at the edges, a feel for face shapes and the rituals that make a visit special: the hot towel that prepares the skin, the warm lather, the steady hand on the blade. That's exactly the craft we practise at GYAN on Zentralstrasse 22 in Biel – from the classic [hot towel shave](service:nassrasur-biel) to a razor-sharp fade.
@@ -229,7 +229,7 @@ If you want your time with [Zana](page:zana) – the owner and barber – reserv
     },
     description: {
       de: "Herrencoiffeur in Biel: klassische und moderne Männerschnitte, Fades und Bart im Zentrum. 4.9 Sterne auf Google – jetzt online buchen, sofort bestätigt.",
-      fr: "Coiffeur homme à Bienne : coupes classiques et modernes, dégradés et barbe au centre-ville. 4.9 sur Google – réserve en ligne, confirmation immédiate.",
+      fr: "Coiffeur homme à Bienne : coupes classiques et modernes, dégradés et barbe au centre-ville. 4,9 sur Google – réserve en ligne, confirmation immédiate.",
       en: "Men's hairdresser in Biel: classic and modern cuts, fades and beards in the centre. Rated 4.9 on Google – book online and get instant confirmation.",
     },
     intro: {
@@ -447,7 +447,7 @@ Appointments are booked online. Without an appointment you can walk in during op
     },
     description: {
       de: "Bartpflege in Biel: Bart trimmen, Konturen und Nassrasur mit heissem Tuch an der Zentralstrasse 22. 4.9 Sterne auf Google – jetzt online Termin buchen.",
-      fr: "Taille de barbe à Bienne : contours nets et rasage à la serviette chaude, Zentralstrasse 22. Noté 4.9 sur Google – réserve ton rendez-vous en ligne.",
+      fr: "Taille de barbe à Bienne : contours nets et rasage à la serviette chaude, Zentralstrasse 22. Noté 4,9 sur Google – réserve ton rendez-vous en ligne.",
       en: "Beard barber in Biel: beard trims, sharp lines and hot towel shaves at Zentralstrasse 22. Rated 4.9 on Google – book your appointment online now.",
     },
     intro: {
