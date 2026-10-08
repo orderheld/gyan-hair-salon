@@ -24,7 +24,7 @@ export default async function Blog({ params }: Props) {
       <section className="section-tight">
         <div className="container post-grid">
           {posts.map((p, i) => (
-            <PostCard key={p.key} post={p} locale={locale} d={d} delay={(i % 3) * 80} />
+            <PostCard key={p.key} post={p} locale={locale} d={d} delay={(i % 3) * 80} preload={i === 0} />
           ))}
         </div>
       </section>

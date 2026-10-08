@@ -10,11 +10,11 @@ import { readingTime } from "../Markdown";
 export const formatPostDate = (date: string, locale: Locale) =>
   new Intl.DateTimeFormat(INTL_LOCALE[locale], { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" }).format(new Date(`${date}T12:00:00Z`));
 
-export function PostCard({ post, locale, d, delay = 0 }: { post: BlogPost; locale: Locale; d: Dict; delay?: number }) {
+export function PostCard({ post, locale, d, delay = 0, preload = false }: { post: BlogPost; locale: Locale; d: Dict; delay?: number; preload?: boolean }) {
   return (
     <Link href={postPath(locale, post)} className="post-card" data-reveal style={{ transitionDelay: `${delay}ms` }}>
       <span className="post-img">
-        <Image src={post.image} alt={site.imageAlt[post.image]?.[locale] ?? post.title[locale]} fill sizes="(max-width: 760px) 90vw, 33vw" />
+        <Image src={post.image} alt={site.imageAlt[post.image]?.[locale] ?? post.title[locale]} fill preload={preload} sizes="(max-width: 760px) 90vw, 33vw" />
       </span>
       <span className="post-meta">
         {formatPostDate(post.date, locale)} · {readingTime(post.body[locale])} {d.blog.readTime}

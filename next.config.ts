@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   experimental: { globalNotFound: true },
   // Optimierte Bilder lange zwischenspeichern (die Dateien ändern sich kaum)
-  images: { minimumCacheTTL: 60 * 60 * 24 * 30 },
+  images: { formats: ["image/avif", "image/webp"], minimumCacheTTL: 60 * 60 * 24 * 30 },
   async headers() {
     const week = "public, max-age=604800, stale-while-revalidate=86400";
     return [

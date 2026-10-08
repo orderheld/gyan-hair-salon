@@ -33,7 +33,7 @@ export function generateStaticParams() {
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const display = Inter_Tight({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-tight", display: "swap" });
-const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", variable: "--font-serif-i", display: "swap" });
+const serif = Instrument_Serif({ subsets: ["latin"], weight: "400", style: "italic", variable: "--font-serif-i", display: "swap", preload: false });
 
 export const viewport: Viewport = { themeColor: "#fbf8f3", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
@@ -102,14 +102,14 @@ export default async function LangLayout({ children, params }: { children: React
       addressCountry: site.address.country,
     },
     geo: { "@type": "GeoCoordinates", latitude: site.geo.latitude, longitude: site.geo.longitude },
-    hasMap: site.address.mapsUrl,
+    hasMap: site.googleProfileUrl,
     areaServed: [
       // Biel und alle Orte mit eigener Seite (content/seo/places.ts)
       ...["Biel/Bienne", ...places.map((p) => p.name[locale])].map((n) => ({ "@type": "City", name: n })),
       { "@type": "AdministrativeArea", name: "Seeland" },
     ],
     knowsLanguage: ["de", "fr", "en"],
-    sameAs: [site.instagram, site.tiktok, site.facebook],
+    sameAs: [site.instagram, site.tiktok, site.facebook, site.googleProfileUrl],
     openingHoursSpecification: hours
       .filter((h) => h.isOpen)
       .map((h) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: SCHEMA_DAYS[h.weekday], opens: h.openTime, closes: h.closeTime })),

@@ -44,7 +44,9 @@ export const site = {
   tiktokHandle: "@gyan_hair_salon",
   facebook: "https://www.facebook.com/GyanHairSalon",
   facebookHandle: "GyanHairSalon",
-  googleReviewsUrl: "https://www.google.com/maps/search/?api=1&query=GYAN+Hair+Salon+Biel",
+  /** Google-Unternehmensprofil (gleiche ID wie der Bewertungslink): Bewertungen ansehen, sameAs/hasMap im JSON-LD */
+  googleProfileUrl: "https://g.page/r/Cf88NjkyEn2REBM",
+  googleReviewsUrl: "https://g.page/r/Cf88NjkyEn2REBM",
   /** Direktlink «Bewertung schreiben» aus dem Google-Unternehmensprofil */
   googleWriteReviewUrl: "https://g.page/r/Cf88NjkyEn2REBM/review",
   rating: { value: "4.9", count: "290" }, // von Ferhat am 7.10.2026 bestätigt

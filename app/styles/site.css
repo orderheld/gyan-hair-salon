@@ -251,7 +251,8 @@ html.no-intro { --intro-delay: 0.1s; }
 .hero-visual { position: relative; width: min(100%, 520px); margin: 0 0 0 auto; padding: 0 0 54px 13%; }
 .hero-arch { position: relative; aspect-ratio: 4 / 5; border-radius: 999px 999px 28px 28px; overflow: hidden; background: var(--sand); box-shadow: 0 40px 80px -40px rgba(79, 67, 54, 0.45); animation: arch-in 1.1s var(--ease) both; animation-delay: calc(var(--intro-delay) + 0.2s); }
 .hero-arch img { object-fit: cover; object-position: 50% 40%; animation: kenburns 20s ease-out both; animation-delay: var(--intro-delay); }
-@keyframes arch-in { from { clip-path: inset(100% 0 0 0 round 999px 999px 28px 28px); } to { clip-path: inset(0 0 0 0 round 999px 999px 28px 28px); } }
+/* Startet schon zu 60 % sichtbar: das Bild wird sofort gezeichnet (schnelleres LCP), der Bogen wächst danach auf */
+@keyframes arch-in { from { clip-path: inset(40% 0 0 0 round 999px 999px 28px 28px); } to { clip-path: inset(0 0 0 0 round 999px 999px 28px 28px); } }
 @keyframes kenburns { from { transform: scale(1.16); } to { transform: scale(1.02); } }
 .hero-small { position: absolute; left: 0; bottom: 20%; width: 38%; aspect-ratio: 3 / 4; border-radius: 20px; overflow: hidden; border: 6px solid var(--ivory); box-shadow: 0 24px 50px -24px rgba(20, 18, 16, 0.4); animation: rise 1.3s var(--ease) both, float 7s ease-in-out infinite; animation-delay: calc(var(--intro-delay) + 0.7s), calc(var(--intro-delay) + 2s); }
 .hero-small img { object-fit: cover; }
