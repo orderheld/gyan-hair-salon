@@ -77,7 +77,6 @@
 .login-sub { margin: 10px 0 32px; letter-spacing: 0.24em; text-transform: uppercase; }
 
 /* Leistungen */
-.svc-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
 .svc-form { display: grid; gap: 16px; }
 .svc-langs { display: grid; gap: 8px; }
 .svc-lang { border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--ivory); }
@@ -755,7 +754,6 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .lc-facts { list-style: none; margin: 0; padding: 12px 0 0; border-top: 1px solid var(--line); display: grid; gap: 6px; color: var(--taupe); }
 .lc-log { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 4px; }
 .lc-log li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
-.lc-corr { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 10px; }
 .lc-sep { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); }
 .lc-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
 .lc-stats .panel { display: grid; gap: 2px; padding: 14px 16px; }
@@ -767,7 +765,6 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .lc-num { max-width: 120px; }
 @media (max-width: 640px) {
   .lc-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .lc-corr { grid-template-columns: 1fr; }
 }
 /* «Stempelkarte» ist im Kopf länger als «Termine»: auf schmalen Handys nur das Logo zeigen */
 @media (max-width: 480px) { .admin-mode-stempel .admin-brand span { display: none; } }
@@ -786,8 +783,6 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .lc-legend .lc-stamp { width: 22px; aspect-ratio: 1; }
 .lc-legend .lc-stamp svg { width: 60%; height: 60%; }
 /* Stempel-Korrektur: Richtung als Auswahl, Felder mit Luft */
-.lc-corr { display: grid; grid-template-columns: minmax(0, 120px) minmax(0, 1fr); gap: 12px; }
-@media (max-width: 480px) { .lc-corr { grid-template-columns: 1fr; } }
 .lc-sep { margin-top: 18px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 10px; }
 .lc-tools > form.stack { gap: 14px; }
 .lc-tools .seg-radio { max-width: 420px; }

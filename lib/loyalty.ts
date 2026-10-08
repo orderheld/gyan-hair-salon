@@ -218,31 +218,35 @@ function stampKinds(rows: Record<string, unknown>[], needed: number): string[] {
 
 export async function getCardState(card: Card, opts: { logLimit?: number } = {}): Promise<CardState> {
   const sql = await getSql();
-  const settings = await getLoyaltySettings();
   const { year, month } = todayYm();
-  const [agg] = await sql`
+  // Alle Abfragen gleichzeitig (spart bei Neon mehrere Rundreisen)
+  const [settings, [agg], log, [refBy], [refs], all, profile] = await Promise.all([
+    getLoyaltySettings(),
+    sql`
     SELECT coalesce(sum(delta), 0)::int AS balance, coalesce(max(seq), 0)::int AS seq,
            count(*) FILTER (WHERE kind = 'visit')::int AS visits,
            count(*) FILTER (WHERE kind = 'redeem')::int AS redeemed,
            max(created_at) FILTER (WHERE kind = 'visit') AS last_visit_at,
            bool_or(kind = 'review') AS review_given,
            bool_or(kind = 'birthday' AND year = ${year}) AS birthday_redeemed
-    FROM loyalty_stamps WHERE card_id = ${card.id}`;
-  const log = await sql`
+    FROM loyalty_stamps WHERE card_id = ${card.id}`,
+    sql`
     SELECT s.*, rc.name AS ref_name FROM loyalty_stamps s LEFT JOIN loyalty_cards rc ON rc.id = s.ref_card_id
-    WHERE s.card_id = ${card.id} ORDER BY s.seq DESC LIMIT ${opts.logLimit ?? 50}`;
-  const [refBy] = await sql`
+    WHERE s.card_id = ${card.id} ORDER BY s.seq DESC LIMIT ${opts.logLimit ?? 50}`,
+    sql`
     SELECT r.rewarded_at, c.name, c.ref_code FROM loyalty_referrals r JOIN loyalty_cards c ON c.id = r.referrer_card_id
-    WHERE r.referred_card_id = ${card.id}`;
-  const [refs] = await sql`SELECT count(*)::int AS n, count(rewarded_at)::int AS rewarded FROM loyalty_referrals WHERE referrer_card_id = ${card.id}`;
-  const all = await sql`SELECT kind, delta FROM loyalty_stamps WHERE card_id = ${card.id} ORDER BY seq`;
+    WHERE r.referred_card_id = ${card.id}`,
+    sql`SELECT count(*)::int AS n, count(rewarded_at)::int AS rewarded FROM loyalty_referrals WHERE referrer_card_id = ${card.id}`,
+    sql`SELECT kind, delta FROM loyalty_stamps WHERE card_id = ${card.id} ORDER BY seq`,
+    card.birthDate ? null : bookingProfile(card.customerKey),
+  ]);
 
   const balance = Number(agg?.balance ?? 0);
   const needed = settings.stampsNeeded;
   const rewardsAvailable = Math.max(0, Math.floor(balance / needed));
   const visits = Number(agg?.visits ?? 0);
   const lastVisitAt = toDateOrNull(agg?.last_visit_at);
-  const birthDate = card.birthDate || (await bookingProfile(card.customerKey)).birthDate;
+  const birthDate = card.birthDate || profile?.birthDate || "";
   const birthdayInMonth = !!birthDate && Number(birthDate.slice(5, 7)) === month;
   const birthdayRedeemed = !!agg?.birthday_redeemed;
   return {

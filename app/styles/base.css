@@ -109,10 +109,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .btn-red:hover { background: var(--ink-2); }
 .btn-light { background: transparent; border-color: var(--greige); color: var(--ink); }
 .btn-light:hover { border-color: var(--ink); background: var(--paper); }
-.btn-ivory { background: var(--ivory); color: var(--ink); }
-.btn-ivory:hover { background: var(--white); box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25); }
-.btn-ghost-light { border-color: rgba(251, 248, 243, 0.45); color: var(--ivory); background: rgba(20, 18, 16, 0.12); backdrop-filter: blur(6px); }
-.btn-ghost-light:hover { border-color: var(--ivory); background: rgba(251, 248, 243, 0.12); }
 .btn-sm { min-height: 40px; padding: 0 18px; font-size: 14px; }
 .btn-block { width: 100%; }
 .btn[disabled] { opacity: 0.4; cursor: not-allowed; }
