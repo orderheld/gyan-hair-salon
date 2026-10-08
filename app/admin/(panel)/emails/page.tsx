@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import { SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { DirtyWatch } from "@/components/admin/Stepper";
@@ -12,6 +13,8 @@ import { adminPushTest, resetEmail, saveEmail, sendEmailTest } from "../../actio
 
 
 export default async function Emails({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { ok, error } = await searchParams;
   const { locale, t } = await getAdminText();
   const e = t.emails;

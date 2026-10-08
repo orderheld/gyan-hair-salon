@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import { DayPick } from "@/components/admin/DayPick";
 import Link from "next/link";
 import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
@@ -141,6 +142,8 @@ function BookingRow({ b, c, returnTo, showDate, showStaff, t, locale }: { b: Boo
 }
 
 export default async function AdminBookings({ searchParams }: { searchParams: Search }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { wer, datum, zeit, name: preName, tel: preTel, mail: preMail, ok, error } = await searchParams;
   // Zana, Hikmet oder beide
   const staff: BookingStaff | undefined = isBookingStaff(wer) ? wer : undefined;

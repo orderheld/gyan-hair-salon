@@ -7,6 +7,7 @@ const adminEn: AdminDict = {
     password: "Password",
     submit: "Sign in",
     submitting: "Signing in …",
+    locked: "Too many attempts. Please try again in 15 minutes.",
     wrong: "Incorrect password.",
   },
   nav: {
@@ -394,6 +395,8 @@ const adminEn: AdminDict = {
   rules: {
     title: "Booking rules",
     hint: "How online booking works. Changes apply immediately to new bookings.",
+    compact: "Book without gaps",
+    compactHint: "Online, only times are offered that follow straight on from other appointments or leave a gap the shortest service still fits into. No 5 or 10 minute gaps are lost.",
     slotStep: "Time slot interval",
     slotStepHint: "The intervals at which start times are offered.",
     minNotice: "Minimum notice",

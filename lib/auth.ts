@@ -107,7 +107,7 @@ export async function lockKasse() {
   (await cookies()).delete(KASSE_COOKIE);
 }
 
-async function isKasseUnlocked() {
+export async function isKasseUnlocked() {
   const value = (await cookies()).get(KASSE_COOKIE)?.value;
   if (!value) return false;
   const [expires, signature] = value.split(".");

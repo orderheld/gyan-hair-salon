@@ -1,4 +1,5 @@
 import "server-only";
+import { clientIp, overLimit } from "./ratelimit";
 import { createHmac, randomInt, timingSafeEqual } from "node:crypto";
 import { getSql } from "./db";
 
@@ -26,6 +27,8 @@ const same = (a: string, b: string) => {
 export type CodeRequest = { ok: true; code: string } | { ok: false; reason: "wait" | "tooMany"; seconds?: number };
 
 export async function createCode(email: string): Promise<CodeRequest> {
+  // Pro IP höchstens 20 Codes pro Stunde: schützt vor Massenversand an fremde Adressen
+  if (await overLimit(`code:${await clientIp()}`, 20, 3600)) return { ok: false, reason: "tooMany" };
   const sql = await getSql();
   const [row] = await sql`
     SELECT sends, extract(epoch FROM now() - window_start) AS window_age, extract(epoch FROM now() - last_sent_at) AS since

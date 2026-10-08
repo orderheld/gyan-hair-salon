@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import Link from "next/link";
 import { Flash } from "@/components/admin/Flash";
 import { StempelNav } from "@/components/admin/StempelNav";
@@ -11,6 +12,8 @@ type Search = Promise<{ q?: string; ok?: string; error?: string }>;
 
 /** Übersicht: alle Karten mit Stempeln, Prämien und Einladungen */
 export default async function StempelCustomers({ searchParams }: { searchParams: Search }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { q = "", ok, error } = await searchParams;
   const { locale, t: all } = await getAdminText();
   const t = all.loyalty;

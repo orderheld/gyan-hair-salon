@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import { SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { LoyaltyLiveSwitch } from "@/components/admin/LoyaltyLiveSwitch";
@@ -14,6 +15,8 @@ export const dynamic = "force-dynamic";
 type Search = Promise<{ ok?: string; error?: string }>;
 
 export default async function StempelSettings({ searchParams }: { searchParams: Search }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { ok, error } = await searchParams;
   const { locale, t: all } = await getAdminText();
   const t = all.loyalty;

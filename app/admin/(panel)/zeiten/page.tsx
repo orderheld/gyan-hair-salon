@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { getAdminText } from "@/lib/admin";
@@ -10,6 +11,8 @@ import { addBlockedTime, deleteBlockedTime, saveOpeningHours } from "../../actio
 const NAMES: Record<BookingStaff, string> = { zana: "Zana", hikmet: "Hikmet" };
 
 export default async function AdminTimes({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string; wer?: string }> }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { ok, error, wer } = await searchParams;
   // Zana, Hikmet oder das ganze Geschäft (nur Sperren)
   const staff: BookingStaff | null = wer === "geschaeft" ? null : isBookingStaff(wer) ? wer : "zana";

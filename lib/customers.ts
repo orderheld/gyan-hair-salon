@@ -100,14 +100,16 @@ export async function getCustomerInfos(keys: string[]): Promise<Map<string, Cust
 }
 
 /** Alle Kunden für die Kundenliste, zuletzt aktive zuerst */
-export async function listCustomers(search = ""): Promise<CustomerInfo[]> {
+export async function listCustomers(search = "", { limit = 500 }: { limit?: number | null } = {}): Promise<CustomerInfo[]> {
   const q = `%${search.trim().toLowerCase()}%`;
+  // Telefonsuche nur mit Ziffern: sonst würde «anna» zu «%%» und alle Kunden passen
+  const digits = search.replace(/\D/g, "");
   const rows = await query(
     `SELECT a.*, c.note, c.blocked, c.no_marketing FROM (${AGG_SQL}) a LEFT JOIN customers c ON c.key = a.key
-     WHERE $1 = '%%' OR lower(a.name) LIKE $1 OR a.key LIKE $1 OR regexp_replace(coalesce(a.phone, ''), '\\D', '', 'g') LIKE regexp_replace($1, '[^0-9%]', '', 'g')
+     WHERE $1 = '%%' OR lower(a.name) LIKE $1 OR a.key LIKE $1 OR ($2 <> '' AND regexp_replace(coalesce(a.phone, ''), '\\D', '', 'g') LIKE '%' || $2 || '%')
      ORDER BY greatest(a.first_at, coalesce(a.last_visit_at, a.first_at)) DESC
-     LIMIT 500`,
-    [q],
+     ${limit ? `LIMIT ${Math.trunc(limit)}` : ""}`,
+    [q, digits],
   );
   return rows.map(map);
 }

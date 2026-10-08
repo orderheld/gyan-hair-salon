@@ -175,4 +175,10 @@ export const MIGRATIONS = [
     fetched_at    timestamptz NOT NULL DEFAULT now()
   )`,
   `CREATE INDEX IF NOT EXISTS google_reviews_status_idx ON google_reviews (status, create_time DESC)`,
+  // Bremse gegen Massenversuche (Admin-Login, Code-Versand pro IP)
+  `CREATE TABLE IF NOT EXISTS rate_limits (
+    key          text PRIMARY KEY,
+    count        integer NOT NULL DEFAULT 0,
+    window_start timestamptz NOT NULL DEFAULT now()
+  )`,
 ];

@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { ActionButton } from "@/components/admin/ActionButton";
@@ -27,6 +28,8 @@ type Props = { params: Promise<{ token: string }>; searchParams: Promise<{ ok?: 
 
 /** Eine Karte: Stand, Stempeln, Prämien einlösen, Protokoll */
 export default async function StempelCard({ params, searchParams }: Props) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { token } = await params;
   const { ok, error, confirm } = await searchParams;
   const { locale, t: all } = await getAdminText();

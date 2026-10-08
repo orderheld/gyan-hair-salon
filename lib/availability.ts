@@ -49,12 +49,13 @@ export async function getAvailabilityFor(
   const rangeStart = zurichToDate(fromKey, "00:00");
   const rangeEnd = zurichToDate(addDays(fromKey, loadDays), "00:00");
 
-  const [list, settings, hours, bookings, blocked] = await Promise.all([
+  const [list, settings, hours, bookings, blocked, active] = await Promise.all([
     durations ?? getServices().then((all) => all.map((s) => s.durationMin)),
     getSettings(),
     getOpeningHours(staffId),
     getBookingsBetween(rangeStart, rangeEnd, { staffId }),
     getBlockedBetween(rangeStart, rangeEnd, staffId),
+    getServices(),
   ]);
 
   const lastKey = addDays(todayKey, settings.horizonDays);
@@ -66,6 +67,9 @@ export async function getAvailabilityFor(
   const byWeekday = new Map<number, OpeningDay>(hours.map((h) => [h.weekday, h]));
   const earliest = Math.max(now.getTime() + settings.minNoticeMin * 60_000, nightEarliest(now, settings));
   const step = settings.slotStepMin * 60_000;
+  // Lückenlos: eine Lücke ist nur erlaubt, wenn noch die kürzeste Leistung (plus Puffer) hineinpasst
+  const shortest = Math.min(...active.map((s) => s.durationMin).filter((n) => n > 0), ...list);
+  const minGap = (shortest + settings.bufferMin) * 60_000;
 
   const out: Record<number, Days> = {};
   for (const durationMin of new Set(list)) {
@@ -85,13 +89,24 @@ export async function getAvailabilityFor(
           ? { start: zurichToDate(key, day.breakStart).getTime(), end: zurichToDate(key, day.breakEnd).getTime() }
           : null;
 
+      // Startzeiten: das Raster, im lückenlosen Modus zusätzlich direkt nach und direkt vor belegten Zeiten
+      const dayBusy = busy.filter((b) => b.end > open && b.start < close);
+      const candidates = new Set<number>();
+      for (let t = open; t + duration <= close; t += step) candidates.add(t);
+      if (settings.compactSlots) {
+        for (const b of dayBusy) { candidates.add(b.end); candidates.add(b.start - occupied); }
+        if (pause) { candidates.add(pause.end); candidates.add(pause.start - duration); }
+        candidates.add(close - duration);
+      }
+
       const slots: string[] = [];
-      for (let t = open; t + duration <= close; t += step) {
-        if (t < earliest) continue;
+      for (const t of [...candidates].sort((a, b) => a - b)) {
+        if (t < open || t + duration > close || t < earliest) continue;
         // Der Termin selbst muss in die Öffnungszeit passen, der Puffer darf über das Ende hinausgehen.
         const slot = { start: t, end: t + occupied };
         if (pause && overlaps({ start: t, end: t + duration }, pause)) continue;
         if (busy.some((b) => overlaps(slot, b))) continue;
+        if (settings.compactSlots && !fitsWithoutGap(t, duration, occupied, { open, close, pause, busy: dayBusy, earliest, minGap })) continue;
         slots.push(toTimeKey(new Date(t)));
       }
       if (slots.length) result[key] = slots;
@@ -99,6 +114,28 @@ export async function getAvailabilityFor(
     out[durationMin] = result;
   }
   return out;
+}
+
+/**
+ * Lückenlos: links und rechts vom Termin bleibt entweder keine Lücke oder eine, in die noch die kürzeste Leistung passt.
+ * Zeit vor dem frühestmöglichen Online-Termin zählt nicht als Lücke (dort kommen ohnehin keine Online-Buchungen hin).
+ */
+function fitsWithoutGap(
+  t: number,
+  duration: number,
+  occupied: number,
+  d: { open: number; close: number; pause: Interval | null; busy: Interval[]; earliest: number; minGap: number },
+): boolean {
+  const ok = (gap: number) => gap <= 0 || gap >= d.minGap;
+  let prevEnd = d.open;
+  for (const b of d.busy) if (b.end <= t && b.end > prevEnd) prevEnd = b.end;
+  if (d.pause && d.pause.end <= t && d.pause.end > prevEnd) prevEnd = d.pause.end;
+  if (prevEnd >= d.earliest && !ok(t - prevEnd)) return false;
+  // Nach dem Termin: bis zum nächsten belegten Termin (inkl. Puffer), bis zur Pause oder bis Ladenschluss
+  let gapAfter = d.close - (t + duration);
+  if (d.pause && d.pause.start >= t + duration) gapAfter = Math.min(gapAfter, d.pause.start - (t + duration));
+  for (const b of d.busy) if (b.start >= t + occupied) gapAfter = Math.min(gapAfter, b.start - (t + occupied));
+  return ok(gapAfter);
 }
 
 /** Freie Startzeiten pro Tag für eine Leistung mit der gegebenen Dauer. */

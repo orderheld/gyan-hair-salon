@@ -7,6 +7,7 @@ const adminFr: AdminDict = {
     password: "Mot de passe",
     submit: "Se connecter",
     submitting: "Connexion …",
+    locked: "Trop de tentatives. Réessaie dans 15 minutes.",
     wrong: "Le mot de passe est incorrect.",
   },
   nav: {
@@ -394,6 +395,8 @@ const adminFr: AdminDict = {
   rules: {
     title: "Règles de réservation",
     hint: "Voici comment fonctionne la réservation en ligne. Les modifications s’appliquent immédiatement aux nouvelles réservations.",
+    compact: "Réservation sans trous",
+    compactHint: "En ligne, seuls les horaires qui suivent directement un autre rendez-vous ou laissent un créneau où la prestation la plus courte tient encore sont proposés. Ainsi, aucune minute n'est perdue.",
     slotStep: "Intervalle des créneaux",
     slotStepHint: "À quels intervalles les heures de début sont proposées.",
     minNotice: "Délai minimum",

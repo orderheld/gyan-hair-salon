@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { DirtyWatch, Stepper } from "@/components/admin/Stepper";
@@ -124,6 +125,8 @@ function ServiceForm({ s, t, nextSort }: { s?: Service; t: AdminDict; nextSort?:
 }
 
 export default async function AdminServices({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { ok, error } = await searchParams;
   const { t } = await getAdminText();
   const services = await getServices({ includeInactive: true });

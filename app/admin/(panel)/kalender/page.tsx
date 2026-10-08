@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import Link from "next/link";
 import { DayPick } from "@/components/admin/DayPick";
 import { Flash } from "@/components/admin/Flash";
@@ -112,6 +113,8 @@ function DayColumn({
 }
 
 export default async function CalendarPage({ searchParams }: { searchParams: Search }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const sp = await searchParams;
   const { locale, t } = await getAdminText();
   const today = toDateKey(new Date());

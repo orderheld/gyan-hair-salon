@@ -13,6 +13,8 @@ export type Settings = {
   minNoticeMin: number;
   horizonDays: number;
   bufferMin: number;
+  /** Lückenlos: online nur Zeiten, die keine zu kurzen Lücken (kürzer als die kürzeste Leistung) hinterlassen */
+  compactSlots: boolean;
   cancelNoticeHours: number;
   reminderHoursBefore: number;
   followupHoursAfter: number;
@@ -40,6 +42,7 @@ export const DEFAULT_SETTINGS: Settings = {
   minNoticeMin: 60,
   horizonDays: 60,
   bufferMin: 0,
+  compactSlots: true,
   cancelNoticeHours: 12,
   reminderHoursBefore: 3,
   followupHoursAfter: 5,

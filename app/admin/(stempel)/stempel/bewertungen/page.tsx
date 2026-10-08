@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import Link from "next/link";
 import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
@@ -45,6 +46,8 @@ const IconCheck = () => (
 
 /** Google-Bewertungen: neue Bewertungen einer Stempelkarte zuordnen und den Bewertungs-Stempel geben */
 export default async function StempelReviews({ searchParams }: { searchParams: Search }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { ok, error, pick = "", q = "" } = await searchParams;
   const { locale, t: all } = await getAdminText();
   const t = all.loyalty;

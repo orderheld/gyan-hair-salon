@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import { SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { TechStatus } from "@/components/admin/TechStatus";
@@ -9,6 +10,8 @@ const NOTICE = [0, 15, 30, 60, 120, 180, 240, 360, 720, 1440, 2880];
 const BUFFER = [0, 5, 10, 15, 20, 30, 45, 60];
 
 export default async function Rules({ searchParams }: { searchParams: Promise<{ ok?: string; error?: string }> }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { ok, error } = await searchParams;
   const { locale, t } = await getAdminText();
   const r = t.rules;
@@ -27,6 +30,10 @@ export default async function Rules({ searchParams }: { searchParams: Promise<{ 
 
       <form action={saveRules} className="rules">
         <section className="panel rules-grid">
+          <div className="rule">
+            <div><label htmlFor="compactSlots" className="rule-label">{r.compact}</label><p className="muted small">{r.compactHint}</p></div>
+            <input id="compactSlots" type="checkbox" name="compactSlots" defaultChecked={s.compactSlots} className="tgl" />
+          </div>
           <div className="rule">
             <div><label htmlFor="slotStepMin" className="rule-label">{r.slotStep}</label><p className="muted small">{r.slotStepHint}</p></div>
             <select id="slotStepMin" name="slotStepMin" defaultValue={s.slotStepMin} className="select">

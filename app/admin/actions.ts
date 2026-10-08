@@ -1,5 +1,6 @@
 "use server";
 
+import { clearLimit, clientIp, overLimit } from "@/lib/ratelimit";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
@@ -34,7 +35,11 @@ const staffOf = (fd: FormData): BookingStaff => {
 export async function login(_: { error?: string } | undefined, fd: FormData) {
   await new Promise((r) => setTimeout(r, 400)); // bremst Rateversuche
   const { t } = await getAdminText();
+  // Höchstens 10 Fehlversuche pro IP in 15 Minuten
+  const key = `login:${await clientIp()}`;
+  if (await overLimit(key, 10, 15 * 60)) return { error: t.login.locked };
   if (!checkPassword(str(fd, "password", 200))) return { error: t.login.wrong };
+  await clearLimit(key);
   await startSession();
   const next = str(fd, "next", 200);
   redirect(/^\/(de|fr|en)(\/[\w-]*)*$/.test(next) ? next : "/admin/start");
@@ -310,6 +315,7 @@ export async function saveRules(fd: FormData) {
     minNoticeMin: within(num(fd, "minNoticeMin"), 0, 60 * 24 * 14, s.minNoticeMin),
     horizonDays: within(num(fd, "horizonDays"), 1, 365, s.horizonDays),
     bufferMin: within(num(fd, "bufferMin"), 0, 120, s.bufferMin),
+    compactSlots: fd.get("compactSlots") === "on",
     cancelNoticeHours: within(num(fd, "cancelNoticeHours"), 0, 168, s.cancelNoticeHours),
     reminderHoursBefore: within(num(fd, "reminderHoursBefore"), 1, 48, s.reminderHoursBefore),
     followupHoursAfter: within(num(fd, "followupHoursAfter"), 1, 72, s.followupHoursAfter),

@@ -5,6 +5,7 @@ const adminDe = {
     password: "Passwort",
     submit: "Anmelden",
     submitting: "Anmelden …",
+    locked: "Zu viele Versuche. Bitte in 15 Minuten nochmals probieren.",
     wrong: "Passwort ist nicht korrekt.",
   },
   nav: {
@@ -392,6 +393,8 @@ const adminDe = {
   rules: {
     title: "Buchungsregeln",
     hint: "So funktioniert die Online-Buchung. Änderungen gelten sofort für neue Buchungen.",
+    compact: "Lückenlos buchen",
+    compactHint: "Online gibt es nur Zeiten, die direkt an andere Termine anschliessen oder eine Lücke lassen, in die noch die kürzeste Leistung passt. So gehen keine 5 oder 10 Minuten verloren.",
     slotStep: "Zeitraster",
     slotStepHint: "In welchen Abständen Startzeiten angeboten werden.",
     minNotice: "Mindestvorlauf",

@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { SubmitButton } from "@/components/admin/ConfirmButton";
@@ -19,6 +20,8 @@ const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /** Scanner: Kamera, Suche von Hand, zuletzt gestempelt */
 export default async function StempelScanner({ searchParams }: { searchParams: Search }) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const { q = "", ok, error } = await searchParams;
   const { locale, t: all } = await getAdminText();
   const t = all.loyalty;

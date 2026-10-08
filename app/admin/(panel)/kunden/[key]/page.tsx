@@ -1,3 +1,4 @@
+import { requireAdmin } from "@/lib/auth";
 import Link from "next/link";
 import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { CustomerBadges } from "@/components/admin/CustomerBadges";
@@ -12,6 +13,8 @@ import { adminDeleteCustomer, adminSaveCustomerContact, toggleBlock } from "../.
 type Props = { params: Promise<{ key: string }>; searchParams: Promise<{ ok?: string; error?: string }> };
 
 export default async function CustomerDetail({ params, searchParams }: Props) {
+  // Jede Seite prüft selbst: das Layout allein schützt nicht vor direkten RSC-Anfragen
+  await requireAdmin();
   const [{ key: raw }, { ok, error }] = await Promise.all([params, searchParams]);
   let key = raw;
   try {
