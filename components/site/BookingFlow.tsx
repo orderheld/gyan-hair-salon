@@ -331,6 +331,14 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
       </ol>
 
       <div className="booking-grid">
+        {/* Handy: Auswahl als eine Zeile über dem Formular, die volle Übersicht steht darunter */}
+        {service && step > 1 && (
+          <p className="summary-line" aria-hidden>
+            <strong>{service.name}</strong>
+            {date && <span>{fmtKey(date, { weekday: "short", day: "numeric", month: "numeric" })}{time ? ` · ${time}` : ""}</span>}
+            <span>{service.priceFrom ? `${common.from} ` : ""}{formatChf(service.priceChf)}</span>
+          </p>
+        )}
         <div className="booking-main">
           {error && <div className="alert alert-error" role="alert" style={{ marginBottom: 20 }}>{error}</div>}
           {info && !error && <div className="alert alert-ok" role="status" style={{ marginBottom: 20 }}>{info}</div>}

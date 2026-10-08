@@ -44,7 +44,7 @@ html.menu-open .site-header::before { opacity: 1 !important; border-bottom-color
 .lang a:hover, .lang a.active { opacity: 1; }
 .lang a.active { font-weight: 600; }
 .header-book { display: none; }
-.header-account { display: grid; place-items: center; width: 40px; height: 40px; margin-right: -4px; border-radius: 50%; color: inherit; opacity: 0.8; transition: opacity 0.2s, background 0.2s; }
+.header-account { display: grid; place-items: center; width: 44px; height: 44px; margin-right: -6px; border-radius: 50%; color: inherit; opacity: 0.8; transition: opacity 0.2s, background 0.2s; }
 .header-account svg { width: 22px; height: 22px; }
 .header-card { margin-right: -10px; }
 .header-account:hover, .header-account[aria-current="page"] { opacity: 1; background: var(--cream); }
@@ -638,7 +638,7 @@ html.no-intro { --intro-delay: 0.1s; }
 .contact-list > div { padding: 14px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; }
 .contact-list dt { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone); }
 .contact-list dd { margin: 0; font-size: 18px; }
-.contact-list a { text-decoration: none; }
+.contact-list a { display: inline-flex; align-items: center; min-height: 44px; margin: -10px 0; text-decoration: none; }
 .contact-card .btn-row { margin-top: 24px; }
 .contact-photo { position: relative; display: block; width: 100%; max-width: 520px; aspect-ratio: 1100 / 1953; border-radius: var(--radius); overflow: hidden; background: var(--sand); text-decoration: none; }
 .contact-photo img { object-fit: cover; }
@@ -660,7 +660,7 @@ html.no-intro { --intro-delay: 0.1s; }
 .booking-page { padding: calc(var(--header-h) + clamp(32px, 6vw, 80px)) 0 clamp(96px, 10vw, 140px); }
 .booking-intro { max-width: 720px; margin-bottom: 40px; }
 .steps { display: flex; gap: 4px; list-style: none; padding: 0; margin: 0 0 20px; overflow-x: auto; scrollbar-width: none; }
-.steps button { display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 8px 12px 8px 6px; border-radius: 999px; font-size: 14px; color: var(--stone); cursor: pointer; white-space: nowrap; }
+.steps button { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; background: none; border: 0; padding: 8px 12px 8px 6px; border-radius: 999px; font-size: 14px; color: var(--stone); cursor: pointer; white-space: nowrap; }
 .steps button:disabled { cursor: default; }
 .steps .dot { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font-size: 12px; border: 1px solid var(--greige); }
 .steps .active button { background: var(--cream); color: var(--ink); font-weight: 500; }
@@ -668,7 +668,10 @@ html.no-intro { --intro-delay: 0.1s; }
 .steps .done .dot { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
 .booking-grid { display: grid; gap: 16px; align-items: start; }
 .booking-main { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(16px, 3vw, 36px); min-width: 0; }
-.summary { order: -1; background: var(--cream); border-radius: var(--radius); padding: 20px 22px; }
+.summary { background: var(--cream); border-radius: var(--radius); padding: 20px 22px; }
+.summary-line { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; margin: 0; padding: 10px 16px; border-radius: 14px; background: var(--cream); font-size: 14px; color: var(--taupe); }
+.summary-line strong { color: var(--ink); font-weight: 600; }
+.summary-line span:last-child { margin-left: auto; color: var(--ink); font-weight: 500; }
 .summary dl { margin: 0; }
 .summary dl > div { display: flex; justify-content: space-between; gap: 16px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
 .summary dt { color: var(--stone); }
@@ -676,7 +679,8 @@ html.no-intro { --intro-delay: 0.1s; }
 .summary .total { border-bottom: 0; padding-top: 12px; font-size: 17px; }
 @media (min-width: 960px) {
   .booking-grid { grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; }
-  .summary { order: 0; position: sticky; top: calc(var(--header-h) + 20px); padding: 28px; }
+  .summary-line { display: none; }
+  .summary { position: sticky; top: calc(var(--header-h) + 20px); padding: 28px; }
 }
 .service-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; }
 .service-option > span:first-child { min-width: 0; }
@@ -839,7 +843,7 @@ html.app .app-back:active { background: var(--cream); }
 .times { display: grid; gap: 14px; align-content: start; }
 .times-title { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 20px; letter-spacing: -0.02em; }
 .seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 999px; background: var(--cream); }
-.seg button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 40px; padding: 0 8px; border: 0; border-radius: 999px; background: none; color: var(--taupe); font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.2s, color 0.2s; }
+.seg button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 8px; border: 0; border-radius: 999px; background: none; color: var(--taupe); font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.2s, color 0.2s; }
 .seg button.active { background: var(--white); color: var(--ink); box-shadow: 0 2px 8px rgba(20, 18, 16, 0.08); }
 .seg button:disabled { opacity: 0.4; cursor: default; }
 .seg-n { font-size: 11px; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; display: inline-grid; place-items: center; background: var(--sand); color: var(--taupe); font-variant-numeric: tabular-nums; }
@@ -868,7 +872,7 @@ html.app .app-back:active { background: var(--cream); }
 .code-input:focus { outline: none; border-color: var(--ink); box-shadow: 0 0 0 4px rgba(20, 18, 16, 0.06); }
 .verify-submit { width: min(100%, 300px); margin-top: 4px; }
 .verify-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; margin-top: 6px; }
-.link-btn { background: none; border: 0; padding: 8px 2px; min-height: 40px; color: var(--ink); font-size: 14px; text-decoration: underline; text-decoration-color: var(--greige); text-underline-offset: 4px; cursor: pointer; }
+.link-btn { background: none; border: 0; padding: 8px 2px; min-height: 44px; color: var(--ink); font-size: 14px; text-decoration: underline; text-decoration-color: var(--greige); text-underline-offset: 4px; cursor: pointer; }
 .link-btn:disabled { color: var(--stone); text-decoration: none; cursor: default; }
 .late-note { margin: 0 0 22px; padding: 14px 16px; border-radius: 14px; background: #f6ecdc; color: #6b4f2c; font-size: 15px; line-height: 1.55; text-align: left; }
 @media (max-width: 420px) {
@@ -943,8 +947,8 @@ html.app .app-back:active { background: var(--cream); }
 .social-name { font-family: var(--font-display); font-size: 24px; letter-spacing: -0.01em; }
 .social-handle { font-size: 14px; color: var(--accent); }
 .social-text { margin: 6px 0 18px; flex: 1; }
-.footer-social { display: inline-flex; gap: 14px; margin-top: 6px; }
-.footer-social a { display: inline-grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); }
+.footer-social { display: inline-flex; gap: 10px; margin-top: 6px; }
+.footer-social a { display: inline-grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); }
 .footer-social svg { width: 18px; height: 18px; }
 
 /* Online-Buchung: bei wem (Zana buchbar, Hikmet bald) */
@@ -959,7 +963,17 @@ html.app .app-back:active { background: var(--cream); }
 .team-txt strong { font-weight: 600; font-size: 16px; }
 .team-txt small { font-size: 13px; color: var(--taupe); line-height: 1.35; }
 .team-chosen { font-size: 12px; font-weight: 500; color: var(--ink); white-space: nowrap; }
-@media (max-width: 640px) { .team-pick { grid-template-columns: 1fr; margin-top: -16px; } }
+@media (max-width: 640px) {
+  .booking-intro { margin-bottom: 24px; }
+  .booking-intro .lead { font-size: 16px; }
+  .team-pick { grid-template-columns: 1fr; gap: 8px; margin: -8px 0 20px; }
+  .team-card { grid-template-columns: 32px minmax(0, 1fr); gap: 8px; padding: 8px 10px; border-radius: 12px; }
+  .team-av { width: 32px; height: 32px; }
+  .team-av-init { font-size: 15px; }
+  .team-txt strong { font-size: 14px; }
+  .team-txt small { font-size: 11.5px; }
+  .team-chosen { display: none; }
+}
 .team-av:not(.team-av-init) { background: #fff; border: 1px solid var(--line); }
 
 /* Angemeldet: Angaben aus dem Konto, im Formular nicht änderbar */
