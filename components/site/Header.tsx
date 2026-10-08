@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { L, Locale } from "@/content/types";
 import { LOCALES, ROUTES, type RouteKey } from "@/lib/i18n/config";
 import { Wordmark } from "../brand/Logo";
 
-type NavItem = { href: string; label: string };
+/** desktop: false = nur im Menü und in der Fusszeile, nicht in der Kopfzeile (zu wenig Platz) */
+type NavItem = { href: string; label: string; desktop?: boolean };
 type Props = {
   locale: Locale;
   nav: NavItem[];
@@ -38,6 +39,7 @@ function translatePath(pathname: string, from: Locale, to: Locale, slugIndex: L[
 export function Header({ locale, nav, bookHref, accountHref, cardHref, labels, slugIndex, phone, phoneHref }: Props) {
   const pathname = usePathname() ?? `/${locale}`;
   const [open, setOpen] = useState(false);
+  const navRef = useRef<HTMLElement>(null);
   const router = useRouter();
   // In der Home-Bildschirm-App gibt es keinen Zurück-Knopf des Browsers: ab der zweiten Ebene selber anbieten
   const depth = pathname.split("/").filter(Boolean).length;
@@ -51,11 +53,23 @@ export function Header({ locale, nav, bookHref, accountHref, cardHref, labels, s
     // Tipps aufs Menü vor dem Start von React übernimmt ein kleines Inline-Skript (Layout)
     const w = window as Window & { __gyanMenuEarly?: () => boolean };
     if (w.__gyanMenuEarly?.()) setOpen(true);
-    // breiter als 1360px gibt es kein Burger-Menü: sonst bliebe die Seite gesperrt
-    const mq = window.matchMedia("(min-width: 1360px)");
-    const onWide = () => mq.matches && setOpen(false);
-    mq.addEventListener("change", onWide);
-    return () => mq.removeEventListener("change", onWide);
+    // Passt das Menü nicht in die Kopfzeile (lange Wörter, z. B. Französisch), zeigen wir das Burger-Menü.
+    // Gemessen wird ohne die Klasse, im selben Frame, so flackert nichts.
+    const root = document.documentElement;
+    const fit = () => {
+      const navEl = navRef.current;
+      root.classList.remove("nav-tight");
+      if (!navEl || !navEl.offsetWidth) return;
+      const tight = navEl.scrollWidth > navEl.clientWidth + 1;
+      root.classList.toggle("nav-tight", tight);
+      // breit genug für das ganze Menü: Burger-Menü schliessen, sonst bliebe die Seite gesperrt
+      if (!tight) setOpen(false);
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(root);
+    document.fonts?.ready.then(fit);
+    return () => ro.disconnect();
   }, []);
   const close = () => setOpen(false);
   useEffect(() => {
@@ -97,8 +111,8 @@ export function Header({ locale, nav, bookHref, accountHref, cardHref, labels, s
             <Wordmark className="brand-mark" />
           </Link>
           </div>
-          <nav className="nav-desktop" aria-label="Hauptnavigation">
-            {nav.map((n) => (
+          <nav className="nav-desktop" aria-label="Hauptnavigation" ref={navRef}>
+            {nav.filter((n) => n.desktop !== false).map((n) => (
               <Link key={n.href} href={n.href} aria-current={pathname.startsWith(n.href) ? "page" : undefined}>
                 {n.label}
               </Link>

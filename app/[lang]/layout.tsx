@@ -66,8 +66,8 @@ export default async function LangLayout({ children, params }: { children: React
     { href: href(locale, "blog"), label: d.nav.blog },
     { href: href(locale, "voucher"), label: d.nav.voucher },
     { href: href(locale, "loyalty"), label: d.nav.loyalty },
-    { href: href(locale, "social"), label: d.nav.social },
-    { href: href(locale, "faq"), label: d.nav.faq },
+    { href: href(locale, "social"), label: d.nav.social, desktop: false },
+    { href: href(locale, "faq"), label: d.nav.faq, desktop: false },
     { href: href(locale, "contact"), label: d.nav.contact },
   ];
   const slugIndex = [...services, ...posts, ...topics, ...places].map((x) => x.slug);
