@@ -200,7 +200,7 @@ export function CtaBand({ locale, d, title, text }: { locale: Locale; d: Dict; t
     <section className="cta-band">
       <div className="cta-media" aria-hidden>
         <div className="parallax-img" data-parallax="0.2">
-          <Image src={site.images.lounge} alt="" fill sizes="100vw" />
+          <Image src={site.images.lounge} alt={site.imageAlt[site.images.lounge]?.[locale] ?? site.name} fill sizes="100vw" />
         </div>
       </div>
       <div className="container cta-inner" data-reveal>

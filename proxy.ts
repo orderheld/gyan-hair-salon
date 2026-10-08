@@ -30,10 +30,13 @@ export async function proxy(request: NextRequest) {
     return res;
   }
 
-  // Ohne Sprache: auf die passende Sprache weiterleiten
+  // Ohne Sprache: auf die passende Sprache weiterleiten.
+  // Startseite auf Deutsch direkt ausliefern (ohne Umleitung, schneller für Google und Handys; Canonical bleibt /de)
   if (!isLocale(first)) {
     const url = request.nextUrl.clone();
-    url.pathname = `/${preferredLocale(request)}${pathname === "/" ? "" : pathname}`;
+    const locale = preferredLocale(request);
+    url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
+    if (pathname === "/" && locale === DEFAULT_LOCALE) return NextResponse.rewrite(url);
     return NextResponse.redirect(url);
   }
 

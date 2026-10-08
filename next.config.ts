@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
       { source: "/images/:path*", headers: [{ key: "Cache-Control", value: week }] },
       { source: "/icons/:path*", headers: [{ key: "Cache-Control", value: week }] },
       { source: "/brand/:path*", headers: [{ key: "Cache-Control", value: week }] },
+      { source: "/og/:path*", headers: [{ key: "Cache-Control", value: week }] },
     ];
   },
 };

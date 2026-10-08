@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { site } from "@/content/site";
 import type { BlogPost, Locale } from "@/content/types";
 import type { Dict } from "@/lib/i18n";
 import { INTL_LOCALE } from "@/lib/i18n/config";
@@ -13,7 +14,7 @@ export function PostCard({ post, locale, d, delay = 0 }: { post: BlogPost; local
   return (
     <Link href={postPath(locale, post)} className="post-card" data-reveal style={{ transitionDelay: `${delay}ms` }}>
       <span className="post-img">
-        <Image src={post.image} alt="" fill sizes="(max-width: 760px) 90vw, 33vw" />
+        <Image src={post.image} alt={site.imageAlt[post.image]?.[locale] ?? post.title[locale]} fill sizes="(max-width: 760px) 90vw, 33vw" />
       </span>
       <span className="post-meta">
         {formatPostDate(post.date, locale)} · {readingTime(post.body[locale])} {d.blog.readTime}
