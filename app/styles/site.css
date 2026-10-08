@@ -841,12 +841,10 @@ html.app .app-back:active { background: var(--cream); }
 .day-mon { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); min-height: 13px; }
 .day-dow { font-size: 12px; color: var(--stone); }
 .day-num { font-family: var(--font-display); font-size: 22px; font-weight: 500; line-height: 1.1; font-variant-numeric: tabular-nums; }
-.day-free { font-size: 10.5px; color: #5f8a5a; white-space: nowrap; }
 .day.full { background: transparent; border-style: dashed; cursor: default; }
 .day.full .day-num, .day.full .day-dow { color: #c4bbb0; }
-.day.full .day-free { color: #c4bbb0; }
 .day.selected { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
-.day.selected .day-dow, .day.selected .day-free, .day.selected .day-mon { color: rgba(251, 248, 243, 0.75); }
+.day.selected .day-dow, .day.selected .day-mon { color: rgba(251, 248, 243, 0.75); }
 .times { display: grid; gap: 14px; align-content: start; }
 .times-title { margin: 0; font-family: var(--font-display); font-weight: 500; font-size: 20px; letter-spacing: -0.02em; }
 .seg { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px; padding: 4px; border-radius: 999px; background: var(--cream); }

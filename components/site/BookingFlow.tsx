@@ -416,8 +416,6 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
                           <span className="day-mon">{i === 0 || d === 1 ? MONTHS[m - 1].slice(0, 3) : " "}</span>
                           <span className="day-dow">{common.weekdaysShort[weekdayOf(k)]}</span>
                           <span className="day-num">{d}</span>
-                          {/* Keine Anzahl freier Zeiten zeigen, nur «ausgebucht» */}
-                          <span className="day-free">{n ? "\u00a0" : t.full}</span>
                         </button>
                       );
                     })}
