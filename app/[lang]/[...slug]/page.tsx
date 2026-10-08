@@ -11,7 +11,7 @@ import { Markdown } from "@/components/Markdown";
 import { PostCard } from "@/components/site/PostCard";
 import { CtaBand, FaqList, faqSchema, Hours, JsonLd, PageHero, ServiceRows } from "@/components/site/Blocks";
 import { getSalonHours, getServices, localize } from "@/lib/data";
-import { getDict } from "@/lib/i18n";
+import { fill, getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { seoPath } from "@/lib/i18n/paths";
 import { pageMetadata } from "@/lib/seo";
@@ -52,10 +52,10 @@ export default async function SeoPage({ params }: Props) {
   if (page.slug[locale] !== decodeURIComponent(slug[0])) permanentRedirect(seoPath(locale, page));
 
   const [all, hours] = await Promise.all([getServices(), getSalonHours()]);
-  const keys = hit.kind === "topic" ? hit.page.services : [];
+  const keys = hit.page.services ?? [];
   const picked = keys.length ? keys.map((k) => all.find((s) => s.slug.de === k)).filter((s) => !!s) : all.slice(0, 4);
   const services = picked.map((s) => localize(s, locale));
-  const faq = hit.kind === "topic" ? hit.page.faq[locale] : [];
+  const faq = hit.page.faq?.[locale] ?? [];
   const neighbors = hit.kind === "place" ? hit.page.neighbors.map((k) => places.find((p) => p.key === k)).filter((p) => !!p) : places.slice(0, 6);
   const otherTopics = topics.filter((t) => t.key !== page.key);
   const reading = relatedPosts({ seo: page.key, services: keys });
@@ -80,7 +80,19 @@ export default async function SeoPage({ params }: Props) {
 
       <section className="section-tight">
         <div className="container article-grid">
-          <Markdown text={page.body[locale]} locale={locale} className="prose prose-lg" />
+          <div className="article-main">
+            <Markdown text={page.body[locale]} locale={locale} className="prose prose-lg" />
+            {hit.kind === "place" && hit.page.transit && (
+              <div className="travel-card">
+                <p className="eyebrow">{fill(d.seo.travelTitle, { place: hit.page.name[locale] })}</p>
+                <dl className="travel-list">
+                  <div><dt>{d.seo.byCar}</dt><dd>{fill(d.seo.carValue, { min: hit.page.carMin, km: hit.page.km })}</dd></div>
+                  <div><dt>{d.seo.byTransit}</dt><dd>{hit.page.transit[locale]}</dd></div>
+                  <div><dt>{d.seo.onFoot}</dt><dd>{d.seo.onFootValue}</dd></div>
+                </dl>
+              </div>
+            )}
+          </div>
           <aside className="article-aside">
             <div className="aside-card">
               <p className="eyebrow">GYAN Hair Salon</p>
@@ -137,6 +149,19 @@ export default async function SeoPage({ params }: Props) {
           </div>
         </div>
       </section>
+      {hit.kind === "place" && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Service",
+            name: page.h1[locale],
+            serviceType: PLACE_PREFIX[locale],
+            url: `${site.url}${seoPath(locale, page)}`,
+            provider: { "@id": `${site.url}/#salon` },
+            areaServed: { "@type": "City", name: hit.page.name[locale] },
+          }}
+        />
+      )}
       <CtaBand locale={locale} d={d} />
     </>
   );

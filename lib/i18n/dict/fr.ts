@@ -348,6 +348,12 @@ const fr: Dict = {
     nearby: "Aussi pour les clients de",
     distance: "km jusqu’au salon",
     faqTitle: "Questions fréquentes",
+    travelTitle: "Venir depuis {place}",
+    byCar: "En voiture",
+    byTransit: "En train et en bus",
+    carValue: "env. {min} min · {km} km",
+    onFoot: "À pied depuis la gare de Bienne",
+    onFootValue: "quelques minutes jusqu’à la Zentralstrasse 22",
   },
   booking: {
     metaTitle: "Prendre rendez-vous chez le coiffeur à Bienne",

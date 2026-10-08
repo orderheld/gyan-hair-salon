@@ -348,6 +348,12 @@ const en: Dict = {
     nearby: "Also for clients from",
     distance: "km to the salon",
     faqTitle: "Frequently asked questions",
+    travelTitle: "Getting here from {place}",
+    byCar: "By car",
+    byTransit: "By train and bus",
+    carValue: "approx. {min} min · {km} km",
+    onFoot: "On foot from Biel station",
+    onFootValue: "a few minutes to Zentralstrasse 22",
   },
   booking: {
     metaTitle: "Book a barber appointment in Biel",

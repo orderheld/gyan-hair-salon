@@ -13,9 +13,9 @@ export const places: SeoPlace[] = [
       en: "Barber near Nidau – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Nidau: GYAN liegt nur rund 2 km entfernt im Zentrum von Biel. Haarschnitt, Fade und Bart – jetzt online Termin buchen.",
-      fr: "Coiffeur homme près de Nidau : GYAN est à environ 2 km, au centre de Bienne. Coupe, dégradé et barbe – réserve ton rendez-vous en ligne.",
-      en: "Barber near Nidau: GYAN is only about 2 km away in the centre of Biel. Haircuts, fades and beards – book your appointment online now.",
+      de: "Coiffeur für Nidau: GYAN in Biel, nur 2 km entfernt. Haarschnitt in rund 20 Minuten, passt in die Mittagspause. Jetzt online Termin buchen.",
+      fr: "Coiffeur homme près de Nidau : GYAN à Bienne, à 2 km. Une coupe en 20 minutes environ, idéale à midi. Réserve ton rendez-vous en ligne.",
+      en: "Barber near Nidau: GYAN in Biel is just 2 km away. A men's haircut takes about 20 minutes, ideal at lunchtime. Book your slot online now.",
     },
     h1: {
       de: "Herrencoiffeur für Nidau",
@@ -23,58 +23,94 @@ export const places: SeoPlace[] = [
       en: "Barber near Nidau",
     },
     intro: {
-      de: "Von Nidau bis zu GYAN sind es nur rund zwei Kilometer – fast schon ein Spaziergang. Unser Salon an der Zentralstrasse 22 ist für viele Nidauer der Coiffeur gleich um die Ecke.",
-      fr: "De Nidau à GYAN, il n'y a qu'environ deux kilomètres – presque une promenade. Pour beaucoup d'habitants de Nidau, notre salon à la Zentralstrasse 22 est le coiffeur d'à côté.",
-      en: "From Nidau to GYAN it's only about two kilometres – practically a stroll. For many people in Nidau, our salon at Zentralstrasse 22 is the barber just around the corner.",
+      de: "Von Nidau bis zu GYAN an der Zentralstrasse 22 sind es nur rund zwei Kilometer, zu Fuss, mit dem Velo oder mit der BTI-Bahn schnell gemacht.",
+      fr: "De Nidau à GYAN, à la Zentralstrasse 22, il n'y a qu'environ deux kilomètres : à pied, à vélo ou en train BTI, c'est vite fait.",
+      en: "From Nidau to GYAN on Zentralstrasse 22 it's only about two kilometres, a quick trip on foot, by bike or on the BTI line.",
     },
     body: {
-      de: `## Zwei Städte, die zusammengewachsen sind
+      de: `## Nidau und Biel: eine Grenze, die man kaum sieht
 
-Nidau liegt dort, wo der Bielersee in den Nidau-Büren-Kanal abfliesst. Das Städtchen mit seinem Schloss ist so eng mit Biel verbunden, dass man die Grenze oft gar nicht bemerkt. Wer in Nidau wohnt, ist für Arbeit, Einkauf oder einen Abend am See ohnehin oft in Biel – und genau dort, im Zentrum, findest du uns.
+Nidau ist ein kleines historisches Städtchen mit Schloss, gelegen dort, wo der Bielersee in den Nidau-Büren-Kanal abfliesst. Gegen Norden geht Nidau nahtlos in Biel über, und wer zwischen den beiden Orten unterwegs ist, merkt oft gar nicht, wann er die Gemeindegrenze überquert. Für viele, die in Nidau wohnen, ist Biel deshalb nicht einfach die Stadt nebenan, sondern Teil des Alltags: Arbeit, Bahnhof, Einkauf, alles liegt nur wenige Minuten entfernt.
 
-## So kommst du zu uns
+## Von Nidau an die Zentralstrasse
 
-Mit dem Auto bist du in wenigen Minuten im Bieler Stadtzentrum, wo es öffentliche Parkplätze gibt. Mit dem Bus fährst du bis zum Bahnhof Biel und läufst von dort ein paar Minuten bis zur Zentralstrasse 22. An schönen Tagen nehmen viele unserer Nidauer Kunden auch einfach das Velo oder gehen zu Fuss.
+Rund zwei Kilometer trennen Nidau von unserem Salon an der Zentralstrasse 22. Das ist eine Strecke, die du gut zu Fuss oder mit dem Velo schaffst, flach und ohne Steigung. Wer lieber den öffentlichen Verkehr nimmt, steigt in die BTI-Bahn Biel-Täuffelen-Ins, die durch Nidau fährt und am Bahnhof Biel endet; auch Busse verbinden Nidau mit dem Bahnhof. Von dort sind es nur ein paar Minuten zu Fuss bis zu uns. Mit dem Auto rechnest du mit rund zehn Minuten bis ins Bieler Zentrum, wo es öffentliche Parkplätze gibt.
 
-## Warum Nidauer zu GYAN kommen
+## Ein Schnitt, der in die Mittagspause passt
 
-Kurze Wege sind das eine. Das andere ist, was dich im Salon erwartet: Zeit für ein Gespräch, saubere Übergänge beim [Skin Fade](service:haarschnitt-biel) und eine ruhige Atmosphäre mit braunen Lederstühlen und einem roten Perserteppich an der Wand. Wenn du Haar und Bart kombinieren willst, frag nach [Haarschnitt und Bart](service:haarschnitt-und-bart).
+Weil der Weg so kurz ist, lässt sich der Coiffeur einfach in den Tag einbauen. Ein [Herren Haarschnitt](service:haarschnitt-biel) dauert bei uns rund 20 Minuten, ein Bart Trim rund 15 Minuten. Mit Hin- und Rückweg passt das gut in eine längere Mittagspause. Wer beides auf einmal erledigen will, nimmt das [GYAN Classic Paket](service:haarschnitt-und-bart) mit Haarschnitt und Bart, das rund 30 Minuten dauert.
 
-Einen Termin [buchst du online](page:booking) – die Bestätigung kommt sofort. Spontan geht auch: Während der Öffnungszeiten bedienen Zana und das Team auch Walk-in-Kunden. Wohnst du etwas weiter am Seeufer, lohnt sich auch ein Blick auf unsere Seite für [Ipsach](seo:ipsach).
+Du kannst deinen Termin [online buchen](page:booking) und bekommst sofort eine Bestätigung. Spontan vorbeikommen geht ebenfalls, denn während der Öffnungszeiten sind Walk-ins willkommen. Montag bis Mittwoch sind wir von 9 bis 19 Uhr da, am Donnerstag und Freitag bis 20 Uhr und am Samstag von 8.30 bis 18 Uhr. Sonntags bleibt der Salon geschlossen.
 
-Und weil die Wege so kurz sind, passt ein Termin bei uns problemlos in eine lange Mittagspause. Nach dem Schnitt lohnt sich an schönen Tagen ein Abstecher ans Seeufer – frisch geschnitten ein schöner Abschluss für den Tag.`,
-      fr: `## Deux villes qui se touchent
+## Was dich bei GYAN erwartet
 
-Nidau se trouve là où le lac de Bienne s'écoule dans le canal Nidau-Büren. La petite ville et son château sont si proches de Bienne qu'on ne remarque souvent même pas la frontière. Quand on habite Nidau, on vient de toute façon souvent à Bienne pour le travail, les courses ou une soirée au bord du lac – et c'est justement au centre que tu nous trouves.
+Im Salon sitzt du auf braunen Lederstühlen, an der Wand hängt ein roter Perserteppich. Bevor Schere und Maschine zum Einsatz kommen, schauen wir uns an, wie dein Haar wächst, wo die Wirbel sitzen und wie viel Zeit du morgens investieren willst. Ob kurzer Fade oder klassischer Seitenscheitel: Das Ziel ist ein Schnitt, der auch nach ein paar Wochen noch Form hat. Bezahlen kannst du bar, mit Karte oder mit TWINT.
 
-## Comment venir
+Nach dem Termin bist du in wenigen Minuten wieder in Nidau, vielleicht für einen Spaziergang am Seeufer oder entlang dem Kanal. Wohnst du weiter südlich am See, findest du auch eine eigene Seite für [Ipsach](seo:ipsach).`,
+      fr: `## Nidau et Bienne : une frontière qu'on ne voit presque pas
 
-En voiture, tu es au centre de Bienne en quelques minutes, où se trouvent des places de parc publiques. En bus, tu descends à la gare de Bienne, puis quelques minutes à pied jusqu'à la Zentralstrasse 22. Par beau temps, beaucoup de nos clients de Nidau viennent simplement à vélo ou à pied.
+Nidau est une petite ville historique avec son château, située là où le lac de Bienne s'écoule dans le canal Nidau-Büren. Au nord, Nidau se fond dans Bienne sans transition, et en passant de l'une à l'autre, on ne remarque souvent même pas la limite communale. Pour beaucoup d'habitants de Nidau, Bienne n'est donc pas simplement la ville d'à côté, mais une partie du quotidien : le travail, la gare, les courses, tout est à quelques minutes.
 
-## Pourquoi les gens de Nidau viennent chez GYAN
+## De Nidau à la Zentralstrasse
 
-La proximité, c'est une chose. L'autre, c'est ce qui t'attend au salon : du temps pour discuter, des transitions propres pour un [skin fade](service:haarschnitt-biel) et une ambiance calme avec des fauteuils en cuir brun et un tapis persan rouge au mur. Si tu veux combiner cheveux et barbe, demande la formule [coupe et barbe](service:haarschnitt-und-bart).
+Environ deux kilomètres séparent Nidau de notre salon à la Zentralstrasse 22. Une distance qui se fait très bien à pied ou à vélo, sur un terrain plat. Si tu préfères les transports publics, prends le train BTI Bienne-Täuffelen-Anet, qui traverse Nidau et arrive à la gare de Bienne ; des bus relient aussi Nidau à la gare. De là, il ne reste que quelques minutes à pied jusqu'au salon. En voiture, compte une dizaine de minutes jusqu'au centre de Bienne, où tu trouves des places de parc publiques.
 
-Pour un rendez-vous, [réserve en ligne](page:booking) – la confirmation est immédiate. Tu peux aussi passer spontanément : pendant les heures d'ouverture, Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites un peu plus loin sur la rive ? Jette un œil à notre page pour [Ipsach](seo:ipsach).
+## Une coupe qui tient dans la pause de midi
 
-Et comme le trajet est si court, un rendez-vous chez nous tient facilement dans une longue pause de midi. Après la coupe, par beau temps, un détour par les rives du lac est une belle façon de finir la journée.`,
-      en: `## Two towns that have grown together
+Comme le trajet est court, passer chez le coiffeur s'intègre facilement dans ta journée. Une [coupe homme](service:haarschnitt-biel) dure chez nous environ 20 minutes, une taille de barbe environ 15 minutes. Aller et retour compris, ça rentre bien dans une pause de midi un peu longue. Si tu veux faire les deux d'un coup, choisis la [formule GYAN Classic](service:haarschnitt-und-bart) avec coupe et barbe, en une trentaine de minutes.
 
-Nidau sits where Lake Biel flows out into the Nidau-Büren canal. The little town with its castle is so closely linked to Biel that you often don't even notice the border. If you live in Nidau, you're in Biel all the time anyway – for work, shopping or an evening by the lake – and that's exactly where you'll find us, right in the centre.
+Tu peux [réserver en ligne](page:booking) et recevoir ta confirmation immédiatement. Tu peux aussi passer spontanément : pendant les heures d'ouverture, les clients sans rendez-vous sont les bienvenus. Du lundi au mercredi, on est là de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, et le samedi de 8 h 30 à 18 h. Le dimanche, le salon est fermé.
 
-## Getting here
+## Ce qui t'attend chez GYAN
 
-By car you'll reach Biel city centre in a few minutes, where there is public parking. By bus, ride to Biel station and walk a few minutes to Zentralstrasse 22. On nice days many of our clients from Nidau simply cycle or walk over.
+Au salon, tu t'installes dans un fauteuil en cuir brun, avec un tapis persan rouge accroché au mur. Avant de sortir ciseaux et tondeuse, on regarde comment tes cheveux poussent, où se trouvent les épis et combien de temps tu veux y consacrer le matin. Dégradé court ou raie sur le côté classique : l'objectif est une coupe qui garde sa forme plusieurs semaines. Tu paies en espèces, par carte ou avec TWINT.
 
-## Why people from Nidau come to GYAN
+Après ton rendez-vous, tu es de retour à Nidau en quelques minutes, peut-être pour une balade au bord du lac ou le long du canal. Tu habites plus au sud, le long du lac ? Il existe aussi une page pour [Ipsach](seo:ipsach).`,
+      en: `## Nidau and Biel: a border you barely notice
 
-Short distances are one thing. The other is what awaits you in the salon: time for a proper chat, clean blends on a [skin fade](service:haarschnitt-biel) and a calm atmosphere with brown leather chairs and a red Persian carpet on the wall. Want hair and beard done together? Ask for our [haircut and beard](service:haarschnitt-und-bart) service.
+Nidau is a small historic town with a castle, sitting where Lake Biel drains into the Nidau-Büren canal. To the north it runs straight into Biel, and moving between the two you often won't notice where one municipality ends and the other begins. So if you live in Nidau, Biel isn't really the town next door, it's part of your daily routine: work, the station, shopping, all just minutes away.
 
-To secure your time slot, [book online](page:booking) – confirmation comes instantly. Walking in works too: during opening hours Zana and the team serve walk-in clients. Living a little further along the shore? Have a look at our page for [Ipsach](seo:ipsach).
+## From Nidau to Zentralstrasse
 
-And because the distance is so short, an appointment with us fits easily into a long lunch break. After your cut, on a nice day, a detour to the lakeshore is a great way to round things off.`,
+Around two kilometres separate Nidau from our salon at Zentralstrasse 22. That's an easy distance on foot or by bike, flat the whole way. If you'd rather take public transport, hop on the BTI line Biel-Täuffelen-Ins, which runs through Nidau and ends at Biel station; buses also link Nidau with the station. From there it's just a few minutes' walk to us. By car, allow about ten minutes into central Biel, where you'll find public parking.
+
+## A cut that fits into your lunch break
+
+Because the trip is so short, a haircut slots easily into your day. A [men's haircut](service:haarschnitt-biel) takes about 20 minutes with us, a beard trim about 15. Including the trip there and back, that fits into a longer lunch break. Want both at once? Go for the [GYAN Classic package](service:haarschnitt-und-bart), haircut and beard in about 30 minutes.
+
+You can [book online](page:booking) and get your confirmation right away. Dropping in works too, since walk-ins are welcome during opening hours. Monday to Wednesday we're open 9am to 7pm, Thursday and Friday until 8pm, and Saturday from 8:30am to 6pm. On Sundays the salon is closed.
+
+## What to expect at GYAN
+
+In the salon you sit in a brown leather chair, with a red Persian carpet hanging on the wall. Before the scissors and clippers come out, we look at how your hair grows, where the crowns sit and how much time you want to spend on it in the morning. Short fade or classic side part, the goal is a cut that still holds its shape a few weeks later. You can pay in cash, by card or with TWINT.
+
+After your appointment you're back in Nidau within minutes, maybe for a walk along the lakeshore or the canal. Living further south along the lake? There's also a page for [Ipsach](seo:ipsach).`,
     },
     neighbors: ["ipsach", "port", "bruegg", "sutz-lattrigen"],
+    carMin: 10,
+    transit: {
+      de: "Mit der BTI-Bahn Biel-Täuffelen-Ins oder dem Bus von Nidau zum Bahnhof Biel, dann wenige Minuten zu Fuss.",
+      fr: "Avec le train BTI Bienne-Täuffelen-Anet ou le bus de Nidau jusqu'à la gare de Bienne, puis quelques minutes à pied.",
+      en: "Take the BTI line Biel-Täuffelen-Ins or the bus from Nidau to Biel station, then walk a few minutes.",
+    },
+    services: ["haarschnitt-biel", "bart-trimmen-biel", "haarschnitt-und-bart"],
+    faq: {
+      de: [
+        { q: "Kann ich von Nidau aus zu Fuss oder mit dem Velo zu GYAN kommen?", a: "Ja. Von Nidau bis zur Zentralstrasse 22 in Biel sind es nur rund zwei Kilometer auf flachem Weg, das geht gut zu Fuss oder mit dem Velo." },
+        { q: "Passt ein Coiffeurtermin von Nidau aus in die Mittagspause?", a: "Meistens schon. Ein Herren Haarschnitt dauert rund 20 Minuten, ein Bart Trim rund 15 Minuten, und der Weg von Nidau ist kurz." },
+        { q: "Muss ich als Kunde aus Nidau vorher einen Termin buchen?", a: "Nein, während der Öffnungszeiten sind Walk-ins willkommen. Wenn du eine feste Zeit willst, buchst du online und bekommst sofort eine Bestätigung." },
+      ],
+      fr: [
+        { q: "Puis-je venir de Nidau chez GYAN à pied ou à vélo ?", a: "Oui. De Nidau à la Zentralstrasse 22 à Bienne, il n'y a qu'environ deux kilomètres sur un trajet plat, facile à pied ou à vélo." },
+        { q: "Un rendez-vous depuis Nidau tient-il dans la pause de midi ?", a: "En général, oui. Une coupe homme dure environ 20 minutes, une taille de barbe environ 15 minutes, et le trajet depuis Nidau est court." },
+        { q: "Dois-je réserver à l'avance si je viens de Nidau ?", a: "Non, pendant les heures d'ouverture tu peux passer sans rendez-vous. Si tu veux une heure fixe, réserve en ligne : la confirmation est immédiate." },
+      ],
+      en: [
+        { q: "Can I walk or cycle from Nidau to GYAN?", a: "Yes. It's only about two kilometres on flat ground from Nidau to Zentralstrasse 22 in Biel, an easy walk or bike ride." },
+        { q: "Does an appointment fit into a lunch break if I work or live in Nidau?", a: "Usually, yes. A men's haircut takes about 20 minutes and a beard trim about 15, and the trip from Nidau is short." },
+        { q: "Do I need to book ahead when coming from Nidau?", a: "No, walk-ins are welcome during opening hours. If you want a fixed time, book online and you'll get instant confirmation." },
+      ],
+    },
   },
 
   // ───────────────────────────── BRÜGG ─────────────────────────────
@@ -89,9 +125,9 @@ And because the distance is so short, an appointment with us fits easily into a 
       en: "Barber near Brügg – cuts & beards in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Brügg: GYAN im Zentrum von Biel, rund 5 km entfernt. Bartpflege, Fade und klassische Schnitte – buch deinen Termin online.",
-      fr: "Coiffeur homme près de Brügg : GYAN au centre de Bienne, à environ 5 km. Barbe, dégradé et coupes classiques – réserve ton rendez-vous en ligne.",
-      en: "Barber near Brügg: GYAN in the centre of Biel, about 5 km away. Beard care, fades and classic cuts – book your appointment online today.",
+      de: "Coiffeur für Brügg: mit dem Zug nach Biel, wenige Minuten zu GYAN. Bart Trim und Rasur, Do und Fr bis 20 Uhr offen. Jetzt online Termin buchen.",
+      fr: "Coiffeur pour Brügg : en train jusqu'à Bienne, puis GYAN à pied. Barbe et rasage, ouvert jusqu'à 20 h jeudi et vendredi. Réserve en ligne.",
+      en: "Barber for Brügg: a short train ride to Biel, then a few minutes to GYAN. Beard trims and shaves, open till 8pm Thu and Fri. Book online now.",
     },
     h1: {
       de: "Herrencoiffeur für Brügg",
@@ -99,58 +135,100 @@ And because the distance is so short, an appointment with us fits easily into a 
       en: "Barber near Brügg",
     },
     intro: {
-      de: "Brügg liegt am Nidau-Büren-Kanal, nur rund fünf Kilometer von unserem Salon entfernt. Für einen sauberen Schnitt oder eine Bartpflege bist du schnell im Zentrum von Biel.",
-      fr: "Brügg se trouve au bord du canal Nidau-Büren, à environ cinq kilomètres de notre salon. Pour une coupe nette ou une taille de barbe, tu es vite au centre de Bienne.",
-      en: "Brügg lies on the Nidau-Büren canal, only about five kilometres from our salon. For a sharp cut or a beard trim, you're in the centre of Biel in no time.",
+      de: "Brügg hat einen eigenen Bahnhof an der Linie Lyss-Biel. Mit dem Zug bist du schnell in Biel, und vom Bahnhof sind es nur wenige Minuten zu GYAN.",
+      fr: "Brügg a sa propre gare sur la ligne Lyss-Bienne. En train, tu es vite à Bienne, et de la gare il ne reste que quelques minutes jusqu'à GYAN.",
+      en: "Brügg has its own station on the Lyss-Biel line. The train gets you to Biel fast, and from the station GYAN is only a few minutes' walk.",
     },
     body: {
-      de: `## Zwischen Kanal und Stadt
+      de: `## Brügg: Bahnhof gleich um die Ecke
 
-Brügg ist ein typisches Seeländer Dorf am Rand der Stadt: ruhig am Nidau-Büren-Kanal gelegen, mit Feldern und Uferwegen, und trotzdem so nah an Biel, dass der Weg in die Stadt zum Alltag gehört. Viele Brügger arbeiten oder kaufen in Biel ein – ein Coiffeurbesuch lässt sich da bequem einbauen.
+Brügg grenzt im Osten direkt an Biel und liegt am Nidau-Büren-Kanal, der im Zuge der Juragewässerkorrektion gebaut wurde und das Wasser der Aare aus dem Bielersee weiterführt. Für den Weg in die Stadt hat Brügg einen grossen Vorteil: einen eigenen Bahnhof an der Linie zwischen Lyss und Biel. Damit bist du schneller am Bahnhof Biel als mancher, der in der Stadt selbst wohnt.
 
-## Der Weg zu GYAN
+Vom Bahnhof Biel gehst du nur ein paar Minuten bis zu GYAN an der Zentralstrasse 22. Mit dem Auto fährst du die rund fünf Kilometer ins Zentrum und parkierst auf einem der öffentlichen Parkplätze; rechne mit etwa einer Viertelstunde. Wer gerne Velo fährt, kommt flach und ohne grosse Umwege in die Stadt.
 
-Mit dem Auto fährst du ins Bieler Zentrum und nutzt die öffentlichen Parkplätze. Mit dem Zug oder Bus bist du rasch am Bahnhof Biel, von dort sind es nur wenige Minuten zu Fuss bis zur Zentralstrasse 22. Wer lieber in die Pedale tritt, folgt einfach dem Kanal Richtung Stadt.
+## Feierabend am Donnerstag und Freitag
 
-## Für Männer, die Wert auf den Bart legen
+Viele, die in Brügg wohnen, sind tagsüber ohnehin unterwegs, in Biel, in Bern oder anderswo entlang der Bahnlinie. Für einen Coiffeurtermin bietet sich deshalb der Abend an. Am Donnerstag und Freitag sind wir bis 20 Uhr im Salon, Montag bis Mittwoch bis 19 Uhr. Du steigst in Biel aus, gehst ein paar Minuten zu Fuss, lässt dir die Haare schneiden und nimmst danach den Zug zurück nach Brügg. Am Samstag öffnen wir schon um 8.30 Uhr, falls dir der Morgen lieber ist.
 
-Viele unserer Kunden aus Brügg kommen wegen der Bartpflege. Beim [Bart-Trimmen](service:bart-trimmen-biel) setzen wir klare Linien an Hals und Wangen und bringen die Länge in eine Form, die zu deinem Gesicht passt. Wer es klassisch mag, gönnt sich die Nassrasur mit heissem Tuch. Alles Wissenswerte dazu findest du auf unserer Seite zur [Bartpflege in Biel](seo:bart).
+## Wenn der Bart im Mittelpunkt steht
 
-Im Salon erwarten dich skulpturale, cremeweisse Spiegelrahmen, Lederstühle und eine ruhige Lounge mit Kunstbüchern. Termine [buchst du online](page:booking) und erhältst sofort eine Bestätigung. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Kommst du aus der Nachbarschaft, schau auch bei [Port](seo:port) vorbei.
+Ein gepflegter Bart braucht regelmässig Aufmerksamkeit, oft öfter als das Haar. Beim [Bart Trim](service:bart-trimmen-biel) bringen wir die Länge mit Maschine und Schere in Form und ziehen die Linien an Wange und Hals mit der Klinge. Das dauert rund 15 Minuten und eignet sich gut zwischen zwei Haarschnitten. Wer es glatt mag, wählt die [Bart Rasur mit heissem Tuch](service:nassrasur-biel): heisses Tuch, warmer Schaum, ruhige Klinge, danach ein kühles Tuch und Balsam.
 
-Praktisch für Pendler: Donnerstag und Freitag haben wir bis 20 Uhr geöffnet. So kommst du nach der Arbeit in Biel noch vorbei und bist trotzdem rechtzeitig zum Abendessen zurück in Brügg. Samstags öffnen wir bereits um 8:30 Uhr.`,
-      fr: `## Entre canal et ville
+Haar und Bart zusammen gibt es im GYAN Classic Paket. Wer zusätzlich Wäsche und Styling möchte, nimmt das GYAN Premium Paket.
 
-Brügg est un village typique du Seeland aux portes de la ville : tranquille au bord du canal Nidau-Büren, avec des champs et des chemins le long de l'eau, et pourtant si proche de Bienne que le trajet fait partie du quotidien. Beaucoup d'habitants de Brügg travaillent ou font leurs courses à Bienne – une visite chez le coiffeur s'y intègre facilement.
+## Planbar oder spontan
 
-## Le chemin jusqu'à GYAN
+Einen festen Termin [buchst du online](page:booking), die Bestätigung kommt sofort. Das ist praktisch, wenn du den Zug danach schon im Kopf hast. Spontan geht es auch: Während der Öffnungszeiten sind Walk-ins willkommen. Im Salon erwarten dich braune Lederstühle und ein roter Perserteppich an der Wand, bezahlt wird bar, mit Karte oder mit TWINT.
 
-En voiture, tu rejoins le centre de Bienne et ses places de parc publiques. En train ou en bus, tu arrives rapidement à la gare de Bienne, d'où il ne reste que quelques minutes à pied jusqu'à la Zentralstrasse 22. Si tu préfères pédaler, suis simplement le canal en direction de la ville.
+Wohnst du auf der anderen Seite des Kanals, schau auf unserer Seite für [Aegerten](seo:aegerten) vorbei.`,
+      fr: `## Brügg : la gare à deux pas
 
-## Pour les hommes qui soignent leur barbe
+Brügg touche Bienne à l'est et se trouve au bord du canal Nidau-Büren, creusé lors de la correction des eaux du Jura pour conduire l'Aar hors du lac de Bienne. Pour aller en ville, Brügg a un vrai atout : sa propre gare, sur la ligne entre Lyss et Bienne. Résultat : tu es parfois plus vite à la gare de Bienne que certains habitants de la ville.
 
-Beaucoup de nos clients de Brügg viennent pour la barbe. Lors de la [taille de barbe](service:bart-trimmen-biel), on trace des lignes nettes dans le cou et sur les joues et on donne à la longueur une forme adaptée à ton visage. Pour les amateurs de classique, il y a le rasage à la serviette chaude. Tout est expliqué sur notre page [taille de barbe à Bienne](seo:bart).
+De la gare de Bienne, il ne faut que quelques minutes à pied jusqu'à GYAN, à la Zentralstrasse 22. En voiture, tu parcours les quelque cinq kilomètres jusqu'au centre et tu te gares sur une place de parc publique ; compte environ un quart d'heure. À vélo, le trajet est plat et direct.
 
-Au salon t'attendent des cadres de miroir sculptés blanc crème, des fauteuils en cuir et un lounge calme avec des livres d'art. Les rendez-vous se [réservent en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites dans les environs ? Jette aussi un œil à la page pour [Port](seo:port).
+## Le soir, le jeudi et le vendredi
 
-Pratique pour les pendulaires : le jeudi et le vendredi, on est ouverts jusqu'à 20 h. Tu peux donc passer après le travail à Bienne et être quand même de retour à Brügg pour le souper. Le samedi, on ouvre dès 8 h 30.`,
-      en: `## Between canal and city
+Beaucoup d'habitants de Brügg passent la journée ailleurs, à Bienne, à Berne ou ailleurs le long de la ligne. Le soir est donc souvent le meilleur moment pour le coiffeur. Le jeudi et le vendredi, on est au salon jusqu'à 20 h, du lundi au mercredi jusqu'à 19 h. Tu descends du train à Bienne, quelques minutes à pied, la coupe, puis le train du retour vers Brügg. Le samedi, on ouvre dès 8 h 30 si tu préfères le matin.
 
-Brügg is a typical Seeland village on the edge of the city: quietly set on the Nidau-Büren canal, with fields and waterside paths, yet so close to Biel that the trip into town is part of everyday life. Many people from Brügg work or shop in Biel – fitting in a haircut is easy.
+## Quand la barbe passe en premier
 
-## The way to GYAN
+Une barbe soignée demande de l'attention régulière, souvent plus que les cheveux. Pour la [taille de barbe](service:bart-trimmen-biel), on ajuste la longueur à la tondeuse et aux ciseaux et on trace les lignes des joues et du cou au rasoir. Environ 15 minutes, idéal entre deux coupes. Tu préfères une peau lisse ? Le [rasage à la serviette chaude](service:nassrasur-biel) : serviette chaude, mousse tiède, lame précise, puis serviette fraîche et baume.
 
-By car, head into Biel city centre and use the public parking there. By train or bus you're quickly at Biel station, and from there it's just a few minutes' walk to Zentralstrasse 22. If you'd rather cycle, simply follow the canal towards town.
+Cheveux et barbe ensemble, c'est la formule GYAN Classic. Avec en plus shampooing et coiffage, choisis la formule GYAN Premium.
 
-## For men who care about their beard
+## Prévu ou improvisé
 
-Many of our clients from Brügg come for beard care. During a [beard trim](service:bart-trimmen-biel) we set clean lines at the neck and cheeks and shape the length to suit your face. If you like the classics, treat yourself to a hot towel shave. Everything you need to know is on our [beard barber in Biel](seo:bart) page.
+Pour une heure fixe, [réserve en ligne](page:booking) : la confirmation arrive tout de suite. Pratique quand tu as déjà ton train de retour en tête. Sans rendez-vous, c'est possible aussi : pendant les heures d'ouverture, les clients spontanés sont les bienvenus. Au salon t'attendent des fauteuils en cuir brun et un tapis persan rouge au mur ; tu paies en espèces, par carte ou avec TWINT.
 
-In the salon you'll find sculpted cream-white mirror frames, leather chairs and a calm lounge with art books. Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Live nearby? Have a look at our page for [Port](seo:port) too.
+Tu habites de l'autre côté du canal ? Va voir notre page pour [Aegerten](seo:aegerten).`,
+      en: `## Brügg: the station is right there
 
-Handy for commuters: on Thursdays and Fridays we're open until 8pm. So you can stop by after work in Biel and still be back in Brügg in time for dinner. On Saturdays we open as early as 8:30am.`,
+Brügg borders Biel to the east and sits on the Nidau-Büren canal, built during the Jura water correction to carry the Aare out of Lake Biel. When it comes to getting into town, Brügg has a real advantage: its own station on the line between Lyss and Biel. That can put you at Biel station faster than some people who actually live in the city.
+
+From Biel station it's just a few minutes on foot to GYAN at Zentralstrasse 22. By car you cover the roughly five kilometres into the centre and use one of the public car parks; allow about a quarter of an hour. On a bike, the ride is flat and direct.
+
+## After work on Thursday and Friday
+
+Lots of people in Brügg spend the day elsewhere, in Biel, in Bern or somewhere else along the line. So the evening is often the best time for a haircut. On Thursday and Friday we're in the salon until 8pm, Monday to Wednesday until 7pm. Get off the train in Biel, walk a few minutes, get your cut and catch the train back to Brügg. On Saturday we open at 8:30am if mornings suit you better.
+
+## When the beard comes first
+
+A well-kept beard needs regular attention, often more than your hair does. With a [beard trim](service:bart-trimmen-biel) we shape the length with clippers and scissors and set the cheek and neck lines with the razor. It takes about 15 minutes and works well between two haircuts. Prefer it smooth? Book the [hot towel shave](service:nassrasur-biel): hot towel, warm lather, a steady blade, then a cool towel and balm.
+
+Hair and beard together come as the GYAN Classic package. If you want a wash and styling on top, pick the GYAN Premium package.
+
+## Planned or spur of the moment
+
+For a fixed time, [book online](page:booking) and the confirmation lands straight away. Handy when you already know which train you're taking home. Dropping in works too, since walk-ins are welcome during opening hours. Inside you'll find brown leather chairs and a red Persian carpet on the wall, and you can pay in cash, by card or with TWINT.
+
+Living on the other side of the canal? Have a look at our page for [Aegerten](seo:aegerten).`,
     },
     neighbors: ["port", "nidau", "orpund", "aegerten"],
+    carMin: 15,
+    transit: {
+      de: "Mit dem Zug auf der Linie Lyss-Biel vom Bahnhof Brügg zum Bahnhof Biel, dann wenige Minuten zu Fuss.",
+      fr: "En train sur la ligne Lyss-Bienne depuis la gare de Brügg jusqu'à la gare de Bienne, puis quelques minutes à pied.",
+      en: "Take the train on the Lyss-Biel line from Brügg station to Biel station, then walk a few minutes.",
+    },
+    services: ["bart-trimmen-biel", "nassrasur-biel", "haarschnitt-und-bart", "gyan-premium-paket"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Brügg mit dem Zug zu GYAN?", a: "Vom Bahnhof Brügg fährst du mit dem Zug zum Bahnhof Biel. Von dort sind es nur wenige Minuten zu Fuss bis zur Zentralstrasse 22." },
+        { q: "Kann ich nach der Arbeit noch von Brügg aus zum Coiffeur kommen?", a: "Ja, am Donnerstag und Freitag ist der Salon bis 20 Uhr offen, Montag bis Mittwoch bis 19 Uhr. So bleibt nach Feierabend genug Zeit für den Weg von Brügg." },
+        { q: "Wo parke ich, wenn ich von Brügg mit dem Auto komme?", a: "Im Bieler Stadtzentrum gibt es öffentliche Parkplätze. Für die rund fünf Kilometer von Brügg rechnest du mit etwa einer Viertelstunde Fahrzeit." },
+      ],
+      fr: [
+        { q: "Comment venir de Brügg chez GYAN en train ?", a: "Depuis la gare de Brügg, tu prends le train jusqu'à la gare de Bienne. De là, il ne reste que quelques minutes à pied jusqu'à la Zentralstrasse 22." },
+        { q: "Puis-je encore passer après le travail si j'habite à Brügg ?", a: "Oui, le jeudi et le vendredi le salon est ouvert jusqu'à 20 h, du lundi au mercredi jusqu'à 19 h. Ça laisse assez de temps pour le trajet depuis Brügg." },
+        { q: "Où me garer si je viens de Brügg en voiture ?", a: "Le centre de Bienne dispose de places de parc publiques. Pour les quelque cinq kilomètres depuis Brügg, compte environ un quart d'heure de route." },
+      ],
+      en: [
+        { q: "How do I get from Brügg to GYAN by train?", a: "From Brügg station, take the train to Biel station. From there it's just a few minutes' walk to Zentralstrasse 22." },
+        { q: "Can I still make it after work if I live in Brügg?", a: "Yes, the salon is open until 8pm on Thursday and Friday and until 7pm Monday to Wednesday. That leaves enough time for the trip from Brügg after work." },
+        { q: "Where do I park when driving in from Brügg?", a: "There is public parking in central Biel. For the roughly five kilometres from Brügg, allow about a quarter of an hour." },
+      ],
+    },
   },
 
   // ───────────────────────────── PORT ─────────────────────────────
@@ -165,9 +243,9 @@ Handy for commuters: on Thursdays and Fridays we're open until 8pm. So you can s
       en: "Barber near Port – fades & cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Port: GYAN im Zentrum von Biel, rund 4 km entfernt. Skin Fade, Haarschnitt und Bart – jetzt online Termin buchen, sofort bestätigt.",
-      fr: "Coiffeur homme près de Port : GYAN au centre de Bienne, à environ 4 km. Skin fade, coupe et barbe – réserve en ligne, confirmation immédiate.",
-      en: "Barber near Port: GYAN in the centre of Biel, about 4 km away. Skin fades, haircuts and beards – book online now with instant confirmation.",
+      de: "Coiffeur für Port: per Bus oder Velo rund 4 km zu GYAN in Biel. Fade und Signature Cut, samstags schon ab 8.30 Uhr offen. Jetzt online buchen.",
+      fr: "Coiffeur près de Port : en bus ou à vélo, GYAN à Bienne est à 4 km. Dégradé et Signature Cut, ouvert dès 8 h 30 le samedi. Réserve en ligne.",
+      en: "Barber near Port: GYAN in Biel is about 4 km by bus or bike. Fades and the Signature Cut, open from 8:30am on Saturdays. Book online now.",
     },
     h1: {
       de: "Herrencoiffeur für Port",
@@ -175,58 +253,94 @@ Handy for commuters: on Thursdays and Fridays we're open until 8pm. So you can s
       en: "Barber near Port",
     },
     intro: {
-      de: "Port liegt am Nidau-Büren-Kanal, rund vier Kilometer von der Zentralstrasse 22 entfernt. Für einen frischen Fade bist du in wenigen Minuten bei GYAN im Herzen von Biel.",
-      fr: "Port se trouve au bord du canal Nidau-Büren, à environ quatre kilomètres de la Zentralstrasse 22. Pour un dégradé frais, tu es chez GYAN au cœur de Bienne en quelques minutes.",
-      en: "Port lies on the Nidau-Büren canal, about four kilometres from Zentralstrasse 22. For a fresh fade, you're at GYAN in the heart of Biel within minutes.",
+      de: "Port, die Gemeinde mit dem Regulierwehr am Nidau-Büren-Kanal, liegt rund vier Kilometer von GYAN entfernt. Mit Bus, Velo oder Auto bist du schnell in Biel.",
+      fr: "Port, la commune du barrage sur le canal Nidau-Büren, se trouve à environ quatre kilomètres de GYAN. En bus, à vélo ou en voiture, tu es vite à Bienne.",
+      en: "Port, home of the weir on the Nidau-Büren canal, is about four kilometres from GYAN. By bus, bike or car you're in Biel in no time.",
     },
     body: {
-      de: `## Wohnen am Wasser, schneiden in der Stadt
+      de: `## Port und das Wehr am Kanal
 
-Port ist bekannt für seine Lage am Nidau-Büren-Kanal und für das Wehr, das den Abfluss des Bielersees reguliert. Die Gemeinde ist ruhig und grün, viele Familien schätzen die Nähe zum Wasser. Und wer in Port lebt, weiss: Biel ist nur einen Katzensprung entfernt.
+Port liegt am Südufer des Nidau-Büren-Kanals, gleich hinter Nidau. Bekannt ist die Gemeinde vor allem für das Regulierwehr Port: Hier wird der Abfluss aus dem Bielersee gesteuert und damit der Wasserstand des Sees geregelt. Das Wehr ist Teil der Juragewässerkorrektion, die das Seeland grundlegend verändert hat. Rund um den Kanal ist Port ruhig und grün, ein Wohnort mit viel Wasser in der Nähe und der Stadt Biel nur wenige Kilometer entfernt.
 
-## So erreichst du den Salon
+## Ohne Bahnhof, aber mit Bus und Velo
 
-Mit dem Auto geht es über Nidau ins Zentrum von Biel, wo du öffentliche Parkplätze findest. Mit dem Bus fährst du zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss zur Zentralstrasse 22. Mit dem Velo führt dich der Weg entlang dem Kanal fast direkt in die Stadt.
+Einen Bahnhof hat Port nicht, das macht den Weg in die Stadt aber nicht komplizierter. Der Bus bringt dich zum Bahnhof Biel, und von dort gehst du nur wenige Minuten bis zu GYAN an der Zentralstrasse 22. Mit dem Velo fährst du durch Nidau Richtung Biel, flach und ohne Hektik. Mit dem Auto geht es ebenfalls über Nidau ins Bieler Zentrum, wo öffentliche Parkplätze zur Verfügung stehen. Für die rund vier Kilometer rechnest du mit etwa zehn Minuten.
 
-## Fades mit sauberem Übergang
+## Fade oder Signature Cut
 
-Besonders junge Kunden aus Port kommen zu uns für den [Skin Fade](service:haarschnitt-biel). Wir arbeiten den Übergang Schritt für Schritt aus – vom Nacken bis zum Deckhaar, ohne sichtbare Kante. Was die Unterschiede zwischen Low, Mid und High Fade sind, erklären wir auf unserer Seite zum [Fade-Haarschnitt in Biel](seo:fade).
+Ein Fade lebt von seinem Übergang. Beim [Herren Haarschnitt](service:haarschnitt-biel) schauen wir zuerst, wie dein Haar wächst und wo die Wirbel sitzen, und entscheiden dann, wo die Maschine arbeitet und wo die Schere. Ob Low Fade, Skin Fade oder klassischer Seitenscheitel: Das Ziel ist ein Schnitt, der auch nach drei Wochen noch Form hat. Das dauert rund 20 Minuten.
 
-Wer Haar und Bart in einem Termin erledigen will, wählt das [GYAN Classic Paket](service:haarschnitt-und-bart). Einen Termin [buchst du online](page:booking) – er wird sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du näher am Seeufer? Dann schau auf unserer Seite für [Nidau](seo:nidau) vorbei.
+Wenn du nach dem Schnitt wissen willst, wie du den Look selbst hinbekommst, nimm den [GYAN Signature Cut](service:gyan-signature). Wir stylen deine Haare und zeigen dir dabei, welches Produkt du brauchst, wie viel davon und mit welchen Handgriffen. Und wenn dein Gesicht nach einer langen Woche eine Pause braucht, gibt es das GYAN Face Treatment mit heissem Tuch, Reinigung und Pflege.
 
-Ein Tipp für Frühaufsteher: Samstags öffnen wir bereits um 8:30 Uhr. Wer früh kommt, hat den Coiffeur erledigt, bevor das Wochenende richtig losgeht – und kann danach noch einen Spaziergang am Kanal machen.`,
-      fr: `## Vivre au bord de l'eau, se faire couper en ville
+## Samstagmorgen, bevor das Wochenende losgeht
 
-Port est connu pour sa situation au bord du canal Nidau-Büren et pour le barrage qui régule l'écoulement du lac de Bienne. La commune est calme et verte, et beaucoup de familles apprécient la proximité de l'eau. Et quand on vit à Port, on le sait : Bienne n'est qu'à deux pas.
+Am Samstag öffnen wir bereits um 8.30 Uhr. Wer früh aus Port losfährt, hat den Coiffeur erledigt, bevor der Tag richtig beginnt, und ist danach schnell wieder zu Hause, vielleicht für einen Spaziergang am Kanal. Unter der Woche sind wir Montag bis Mittwoch von 9 bis 19 Uhr da, am Donnerstag und Freitag bis 20 Uhr. Sonntags ist geschlossen.
 
-## Comment rejoindre le salon
+Am Samstag lohnt es sich, den Termin [online zu buchen](page:booking), die Bestätigung kommt sofort. Walk-ins sind während der Öffnungszeiten trotzdem willkommen. Im Salon sitzt du auf braunen Lederstühlen vor einem roten Perserteppich an der Wand. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du näher an der Stadt, findest du auch unsere Seite für [Nidau](seo:nidau).`,
+      fr: `## Port et son barrage sur le canal
 
-En voiture, tu passes par Nidau jusqu'au centre de Bienne, où se trouvent des places de parc publiques. En bus, tu vas jusqu'à la gare de Bienne, puis quelques minutes à pied jusqu'à la Zentralstrasse 22. À vélo, le chemin le long du canal te mène presque directement en ville.
+Port se trouve sur la rive sud du canal Nidau-Büren, juste après Nidau. La commune est surtout connue pour son barrage de régulation : c'est ici qu'on contrôle l'écoulement du lac de Bienne, et donc son niveau. Le barrage fait partie de la correction des eaux du Jura, qui a profondément transformé le Seeland. Autour du canal, Port est calme et verdoyant, un lieu de vie proche de l'eau et à quelques kilomètres seulement de Bienne.
 
-## Des dégradés aux transitions nettes
+## Pas de gare, mais le bus et le vélo
 
-Beaucoup de jeunes clients de Port viennent chez nous pour le [skin fade](service:haarschnitt-biel). On travaille la transition étape par étape – de la nuque jusqu'au dessus, sans aucune marque visible. Les différences entre low, mid et high fade sont expliquées sur notre page [dégradé à Bienne](seo:fade).
+Port n'a pas de gare, ce qui ne complique pas le trajet pour autant. Le bus t'amène à la gare de Bienne, d'où il ne reste que quelques minutes à pied jusqu'à GYAN, à la Zentralstrasse 22. À vélo, tu traverses Nidau en direction de Bienne, sur un terrain plat et sans stress. En voiture, tu passes aussi par Nidau jusqu'au centre de Bienne, où se trouvent des places de parc publiques. Pour les quelque quatre kilomètres, compte une dizaine de minutes.
 
-Pour régler cheveux et barbe en un seul rendez-vous, choisis la [formule GYAN Classic](service:haarschnitt-und-bart). Pour un rendez-vous, [réserve en ligne](page:booking) – il est confirmé immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites plus près du lac ? Va voir notre page pour [Nidau](seo:nidau).
+## Dégradé ou Signature Cut
 
-Un conseil pour les lève-tôt : le samedi, on ouvre dès 8 h 30. En venant tôt, le coiffeur est fait avant que le week-end ne commence vraiment – et il reste du temps pour une balade le long du canal.`,
-      en: `## Living by the water, getting cut in town
+Un dégradé, c'est d'abord une transition réussie. Pour la [coupe homme](service:haarschnitt-biel), on regarde d'abord comment tes cheveux poussent et où sont les épis, puis on décide où travaille la tondeuse et où interviennent les ciseaux. Low fade, skin fade ou raie classique : le but est une coupe qui tient encore sa forme trois semaines plus tard. Compte environ 20 minutes.
 
-Port is known for its position on the Nidau-Büren canal and for the weir that regulates the outflow of Lake Biel. The municipality is quiet and green, and many families value being close to the water. And anyone who lives in Port knows: Biel is just a stone's throw away.
+Si tu veux savoir comment refaire le look toi-même, choisis le [GYAN Signature Cut](service:gyan-signature). On coiffe tes cheveux en te montrant quel produit utiliser, en quelle quantité et avec quels gestes. Et si ton visage a besoin d'une pause après une longue semaine, il y a le GYAN Face Treatment : serviette chaude, nettoyage et soin.
 
-## How to reach the salon
+## Le samedi matin, avant le week-end
 
-By car, drive through Nidau into Biel city centre, where you'll find public parking. By bus, ride to Biel station and walk a few minutes to Zentralstrasse 22. By bike, the path along the canal takes you almost straight into town.
+Le samedi, on ouvre dès 8 h 30. En partant tôt de Port, le coiffeur est réglé avant que la journée commence vraiment, et tu es vite de retour, pourquoi pas pour une balade le long du canal. En semaine, on est là du lundi au mercredi de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h. Le dimanche, c'est fermé.
 
-## Fades with clean blends
+Le samedi, mieux vaut [réserver en ligne](page:booking) : la confirmation est immédiate. Les clients sans rendez-vous restent les bienvenus pendant les heures d'ouverture. Au salon, tu t'assois dans un fauteuil en cuir brun, avec un tapis persan rouge au mur. Paiement en espèces, par carte ou avec TWINT. Tu habites plus près de la ville ? Voici notre page pour [Nidau](seo:nidau).`,
+      en: `## Port and the weir on the canal
 
-Many younger clients from Port come to us for a [skin fade](service:haarschnitt-biel). We work the blend step by step – from the nape to the top, without a visible line. The differences between low, mid and high fades are explained on our [fade haircut in Biel](seo:fade) page.
+Port lies on the south bank of the Nidau-Büren canal, just past Nidau. It's best known for the Port regulating weir, which controls the outflow from Lake Biel and so keeps the lake level in check. The weir is part of the Jura water correction that reshaped the whole Seeland region. Around the canal Port is quiet and green, a place to live close to the water and only a few kilometres from Biel.
 
-Want hair and beard done in one visit? Go for the [GYAN Classic package](service:haarschnitt-und-bart). To secure your time slot, [book online](page:booking) – it's confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Living closer to the lake shore? Check out our page for [Nidau](seo:nidau).
+## No station, but buses and bikes
 
-A tip for early risers: on Saturdays we open at 8:30am. Come early and the haircut is done before the weekend really gets going – leaving time for a walk along the canal afterwards.`,
+Port doesn't have a railway station, but that doesn't make getting into town any harder. The bus takes you to Biel station, and from there it's only a few minutes' walk to GYAN at Zentralstrasse 22. By bike you ride through Nidau towards Biel, flat and relaxed. Driving also takes you via Nidau into central Biel, where public parking is available. For the roughly four kilometres, allow about ten minutes.
+
+## Fade or Signature Cut
+
+A fade lives or dies by its blend. For a [men's haircut](service:haarschnitt-biel) we first check how your hair grows and where the crowns sit, then decide where the clippers work and where the scissors take over. Low fade, skin fade or a classic side part, the aim is a cut that still holds its shape three weeks later. It takes about 20 minutes.
+
+If you want to know how to recreate the look yourself, go for the [GYAN Signature Cut](service:gyan-signature). We style your hair and show you which product to use, how much and which moves. And if your face needs a break after a long week, there's the GYAN Face Treatment with hot towel, cleansing and care.
+
+## Saturday morning, before the weekend kicks off
+
+On Saturdays we open at 8:30am. Leave Port early and your haircut is done before the day really starts, with plenty of time left for a walk by the canal back home. During the week we're open Monday to Wednesday 9am to 7pm and Thursday and Friday until 8pm. Sundays we're closed.
+
+Saturdays are worth [booking online](page:booking), with instant confirmation. Walk-ins are still welcome during opening hours. In the salon you sit in a brown leather chair in front of a red Persian carpet on the wall. Pay in cash, by card or with TWINT. Living closer to town? Check out our page for [Nidau](seo:nidau).`,
     },
     neighbors: ["nidau", "bruegg", "ipsach"],
+    carMin: 10,
+    transit: {
+      de: "Mit dem Bus von Port zum Bahnhof Biel, dann wenige Minuten zu Fuss.",
+      fr: "En bus de Port jusqu'à la gare de Bienne, puis quelques minutes à pied.",
+      en: "Take the bus from Port to Biel station, then walk a few minutes.",
+    },
+    services: ["haarschnitt-biel", "gyan-signature", "gesichtspflege-biel"],
+    faq: {
+      de: [
+        { q: "Gibt es von Port eine Bahnverbindung zu GYAN?", a: "Port hat keinen eigenen Bahnhof. Du fährst mit dem Bus von Port zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss zur Zentralstrasse 22." },
+        { q: "Lohnt sich für Leute aus Port ein Termin am Samstagmorgen?", a: "Ja, am Samstag öffnen wir bereits um 8.30 Uhr und haben bis 18 Uhr offen. So ist der Coiffeur erledigt, bevor das Wochenende in Port richtig beginnt." },
+        { q: "Wie lange dauert ein Fade, wenn ich aus Port komme?", a: "Ein Herren Haarschnitt mit Fade dauert rund 20 Minuten, der GYAN Signature Cut mit Styling und Tipps rund 25 Minuten. Dazu kommt die kurze Fahrt von Port nach Biel." },
+      ],
+      fr: [
+        { q: "Y a-t-il un train de Port jusqu'à GYAN ?", a: "Port n'a pas de gare. Tu prends le bus de Port jusqu'à la gare de Bienne, puis quelques minutes à pied jusqu'à la Zentralstrasse 22." },
+        { q: "Un rendez-vous le samedi matin vaut-il le coup depuis Port ?", a: "Oui, le samedi on ouvre dès 8 h 30, jusqu'à 18 h. Le coiffeur est fait avant que le week-end ne commence vraiment à Port." },
+        { q: "Combien de temps dure un dégradé si je viens de Port ?", a: "Une coupe homme avec dégradé dure environ 20 minutes, le GYAN Signature Cut avec coiffage et conseils environ 25 minutes. Il faut y ajouter le court trajet de Port à Bienne." },
+      ],
+      en: [
+        { q: "Is there a train from Port to GYAN?", a: "Port has no railway station. Take the bus from Port to Biel station, then walk a few minutes to Zentralstrasse 22." },
+        { q: "Is a Saturday morning slot worth it if I live in Port?", a: "Yes, on Saturdays we open at 8:30am and stay open until 6pm. Your haircut is done before the weekend in Port really gets going." },
+        { q: "How long does a fade take if I'm coming from Port?", a: "A men's haircut with a fade takes about 20 minutes, the GYAN Signature Cut with styling and tips about 25. Add the short trip from Port to Biel." },
+      ],
+    },
   },
 
   // ───────────────────────────── IPSACH ─────────────────────────────
@@ -241,9 +355,9 @@ A tip for early risers: on Saturdays we open at 8:30am. Come early and the hairc
       en: "Barber near Ipsach – men's salon in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Ipsach: GYAN im Zentrum von Biel, rund 4 km entfernt. Haarschnitt, Nassrasur und GYAN Full Service – buch jetzt online deinen Termin.",
-      fr: "Coiffeur homme près d'Ipsach : GYAN au centre de Bienne, à environ 4 km. Coupe, rasage et GYAN Full Service – réserve ton rendez-vous en ligne.",
-      en: "Barber near Ipsach: GYAN in the centre of Biel, about 4 km away. Haircuts, hot towel shaves and the GYAN Full Service – book online now.",
+      de: "Coiffeur für Ipsach: mit der BTI nach Biel zu GYAN, rund 4 km. GYAN Full Service, Nassrasur und Face Treatment. Jetzt online Termin buchen.",
+      fr: "Coiffeur pour Ipsach : en train BTI jusqu'à Bienne chez GYAN, à 4 km. Full Service, rasage à la serviette chaude, soin visage. Réserve en ligne.",
+      en: "Barber for Ipsach: ride the BTI to GYAN in Biel, about 4 km. GYAN Full Service, hot towel shave and face treatment. Book your appointment online.",
     },
     h1: {
       de: "Herrencoiffeur für Ipsach",
@@ -251,64 +365,94 @@ A tip for early risers: on Saturdays we open at 8:30am. Come early and the hairc
       en: "Barber near Ipsach",
     },
     intro: {
-      de: "Ipsach liegt am Südufer des Bielersees, rund vier Kilometer von unserem Salon. Nach einem Tag am See ist der Weg zu einem frischen Schnitt bei GYAN in Biel kurz.",
-      fr: "Ipsach se trouve sur la rive sud du lac de Bienne, à environ quatre kilomètres de notre salon. Après une journée au bord du lac, une coupe fraîche chez GYAN à Bienne n'est jamais loin.",
-      en: "Ipsach sits on the south shore of Lake Biel, about four kilometres from our salon. After a day by the lake, a fresh cut at GYAN in Biel is never far away.",
+      de: "Ipsach liegt am Südufer des Bielersees, rund vier Kilometer von GYAN. Die BTI-Bahn bringt dich ohne Umsteigen zum Bahnhof Biel, von dort sind es wenige Minuten zu uns.",
+      fr: "Ipsach se trouve sur la rive sud du lac de Bienne, à environ quatre kilomètres de GYAN. Le train BTI t'amène sans changement à la gare de Bienne, à quelques minutes du salon.",
+      en: "Ipsach sits on the south shore of Lake Biel, about four kilometres from GYAN. The BTI line takes you to Biel station without changing, a few minutes from the salon.",
     },
     body: {
-      de: `## Am Südufer zu Hause
+      de: `## Ipsach: Seeblick vom Südufer
 
-Ipsach ist eine Seegemeinde mit Uferweg und Blick über den Bielersee hinüber auf die Jurahänge. Wer hier wohnt, schätzt die Ruhe – und die Nähe zu Biel, das über Nidau in wenigen Minuten erreichbar ist.
+Ipsach liegt am Südufer des Bielersees, zwischen Nidau und Sutz-Lattrigen. Vom Ufer aus schaust du über das Wasser hinüber auf die Rebhänge und den Jura am Nordufer. Die Gemeinde ist eher ruhig, ein Wohnort am See, und trotzdem ist Biel nur rund vier Kilometer entfernt. Der Weg dorthin führt dem See entlang über Nidau, ob mit Bahn, Auto oder Velo.
 
-## Anreise nach Biel
+## Mit der BTI direkt zum Bahnhof Biel
 
-Mit dem Auto fährst du dem Südufer entlang über Nidau ins Bieler Zentrum und parkierst auf einem der öffentlichen Parkplätze. Mit dem Bus oder Zug gelangst du zum Bahnhof Biel, von dort sind es wenige Minuten zu Fuss bis zur Zentralstrasse 22.
+Ipsach liegt an der BTI-Bahn, die von Ins über Täuffelen dem Südufer entlang nach Biel fährt. Du steigst in Ipsach ein und am Bahnhof Biel aus, umsteigen musst du nicht. Von dort sind es wenige Minuten zu Fuss bis zu GYAN an der Zentralstrasse 22. Mit dem Auto fährst du über Nidau ins Bieler Zentrum und parkierst auf einem der öffentlichen Parkplätze, rechne mit etwa zehn Minuten. Mit dem Velo ist die Strecke flach und angenehm.
 
-## Zeit nehmen statt durchhetzen
+## Ein Nachmittag für den Full Service
 
-Unsere Kunden aus Ipsach schätzen vor allem eines: dass bei uns nichts gehetzt wird. Wer es richtig geniessen will, bucht den [GYAN Full Service](service:gyan-full-service) mit Haarschnitt, Bart, Gesichtspflege, Waschen und Styling. Oder du gönnst dir eine klassische [Nassrasur mit heissem Tuch](service:nassrasur-biel), bei der das warme Tuch die Haut vorbereitet und die Klinge sanft gleitet.
+Wer am See wohnt, hat oft ein Gespür dafür, sich Zeit zu nehmen. Genau dafür ist der [GYAN Full Service](service:gyan-full-service) gedacht: Haarschnitt, Bart, Face Treatment, Wäsche und Styling in einem Termin von rund 50 Minuten. Plane ihn am besten für einen ruhigen Nachmittag oder einen Samstag, dann musst du danach nicht gleich weiter. Etwas kürzer ist das GYAN Premium Paket mit Haarschnitt, Bart, Wäsche und Styling in rund 40 Minuten.
 
-Dazu kommt der Raum selbst: braune Lederstühle, skulpturale Spiegelrahmen in Cremeweiss, ein roter Perserteppich an der Wand und eine Lounge mit Kunstbüchern. Mehr über die Arbeit als [Barbier in Biel](seo:barbier) erfährst du auf unserer Themenseite.
+Im Salon sitzt du auf einem braunen Lederstuhl, an der Wand hängt ein roter Perserteppich. Wir nehmen uns Zeit für die Beratung, bevor der erste Schnitt gesetzt wird.
 
-Termine [buchst du online](page:booking) und erhältst sofort eine Bestätigung. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden.
+## Rasur und Gesichtspflege einzeln
 
-Weil du dir beim GYAN Full Service Zeit lassen solltest, planst du ihn am besten für einen ruhigen Nachmittag oder einen Samstag. Danach bist du schnell wieder am Südufer – frisch geschnitten, frisch rasiert und entspannt. Online siehst du sofort, welche Zeiten noch frei sind.`,
-      fr: `## Chez soi sur la rive sud
+Nicht jeder Besuch muss das volle Programm sein. Die [Bart Rasur mit heissem Tuch](service:nassrasur-biel) ist ein kleines Ritual für sich: Ein heisses Tuch bereitet die Haut vor, warmer Schaum wird mit dem Pinsel aufgetragen, dann folgt die Klinge, Zug um Zug. Zum Schluss beruhigen ein kühles Tuch und Balsam die Haut. Das GYAN Face Treatment mit heissem Tuch, Reinigung und Pflege kannst du ebenfalls einzeln buchen, es dauert rund 20 Minuten.
 
-Ipsach est une commune lacustre avec son chemin riverain et une vue sur le lac de Bienne jusqu'aux pentes du Jura. Ceux qui y vivent apprécient le calme – et la proximité de Bienne, accessible en quelques minutes via Nidau.
+Termine [buchst du online](page:booking), auf Deutsch, Französisch oder Englisch, und bekommst sofort eine Bestätigung. Während der Öffnungszeiten sind auch Walk-ins willkommen, für den Full Service lohnt sich aber ein fester Termin. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du weiter dem Südufer entlang, findest du auch eine Seite für [Sutz-Lattrigen](seo:sutz-lattrigen).`,
+      fr: `## Ipsach : la vue depuis la rive sud
 
-## Venir à Bienne
+Ipsach se trouve sur la rive sud du lac de Bienne, entre Nidau et Sutz-Lattrigen. Depuis la rive, le regard traverse le lac jusqu'aux vignes et au Jura de la rive nord. La commune est plutôt calme, un lieu de vie au bord de l'eau, et pourtant Bienne n'est qu'à environ quatre kilomètres. Le trajet longe le lac et passe par Nidau, en train, en voiture ou à vélo.
 
-En voiture, tu longes la rive sud par Nidau jusqu'au centre de Bienne et tu te gares sur une des places de parc publiques. En bus ou en train, tu rejoins la gare de Bienne, d'où il ne faut que quelques minutes à pied jusqu'à la Zentralstrasse 22.
+## Avec le BTI jusqu'à la gare de Bienne
 
-## Prendre son temps plutôt que courir
+Ipsach est desservi par le train BTI, qui relie Anet à Bienne en passant par Täuffelen et en longeant la rive sud. Tu montes à Ipsach et tu descends à la gare de Bienne, sans changement. De là, il ne reste que quelques minutes à pied jusqu'à GYAN, à la Zentralstrasse 22. En voiture, tu passes par Nidau jusqu'au centre de Bienne et tu te gares sur une place de parc publique, compte une dizaine de minutes. À vélo, le trajet est plat et agréable.
 
-Nos clients d'Ipsach apprécient surtout une chose : chez nous, rien n'est précipité. Pour vraiment en profiter, réserve le [GYAN Full Service](service:gyan-full-service) : coupe, barbe, soin du visage, lavage et coiffage. Ou offre-toi un [rasage à la serviette chaude](service:nassrasur-biel), où la chaleur prépare la peau et la lame glisse en douceur.
+## Un après-midi pour le Full Service
 
-S'y ajoute le lieu lui-même : fauteuils en cuir brun, cadres de miroir sculptés blanc crème, tapis persan rouge au mur et lounge avec livres d'art. Pour en savoir plus sur notre travail de [barbier à Bienne](seo:barbier), visite notre page dédiée.
+Quand on vit au bord du lac, on sait souvent prendre son temps. C'est exactement l'idée du [GYAN Full Service](service:gyan-full-service) : coupe, barbe, Face Treatment, shampooing et coiffage, en un rendez-vous d'environ 50 minutes. Prévois-le pour un après-midi tranquille ou un samedi, pour ne pas devoir repartir en courant. Un peu plus court, la formule GYAN Premium réunit coupe, barbe, shampooing et coiffage en une quarantaine de minutes.
 
-Les rendez-vous se [réservent en ligne](page:booking), avec confirmation immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous.
+Au salon, tu prends place dans un fauteuil en cuir brun, sous un tapis persan rouge accroché au mur. On prend le temps de discuter avant le premier coup de ciseaux.
 
-Comme le GYAN Full Service se savoure sans se presser, le mieux est de le prévoir pour un après-midi tranquille ou un samedi. Ensuite, tu es vite de retour sur la rive sud – coupé, rasé et détendu. En ligne, tu vois tout de suite quels créneaux sont encore libres.`,
-      en: `## At home on the south shore
+## Rasage et soin du visage à la carte
 
-Ipsach is a lakeside community with a shore path and views across Lake Biel to the Jura slopes. People who live here value the peace and quiet – and how close Biel is, just a few minutes away via Nidau.
+Pas besoin de tout prendre à chaque fois. Le [rasage à la serviette chaude](service:nassrasur-biel) est un petit rituel en soi : la serviette chaude prépare la peau, la mousse tiède est appliquée au blaireau, puis vient la lame, passage après passage. Pour finir, une serviette fraîche et un baume apaisent la peau. Le GYAN Face Treatment, avec serviette chaude, nettoyage et soin, se réserve aussi seul et dure environ 20 minutes.
 
-## Getting to Biel
+Tu [réserves en ligne](page:booking), en français, en allemand ou en anglais, et la confirmation arrive tout de suite. Pendant les heures d'ouverture, tu peux aussi passer sans rendez-vous, mais pour le Full Service, une heure fixe est préférable. Paiement en espèces, par carte ou avec TWINT. Tu habites plus loin sur la rive sud ? Il existe aussi une page pour [Sutz-Lattrigen](seo:sutz-lattrigen).`,
+      en: `## Ipsach: lake views from the south shore
 
-By car, follow the south shore through Nidau into Biel city centre and use one of the public car parks. By bus or train, head to Biel station, from where it's only a few minutes' walk to Zentralstrasse 22.
+Ipsach sits on the south shore of Lake Biel, between Nidau and Sutz-Lattrigen. From the shore you look across the water to the vineyards and the Jura on the north side. It's a fairly quiet place to live by the lake, and yet Biel is only about four kilometres away. The way there follows the lake through Nidau, whether you go by train, car or bike.
 
-## Taking time instead of rushing
+## Straight to Biel station on the BTI
 
-Our clients from Ipsach appreciate one thing above all: nothing is rushed here. If you really want to enjoy it, book the [GYAN Full Service](service:gyan-full-service) – haircut, beard, face treatment, wash and styling. Or treat yourself to a classic [hot towel shave](service:nassrasur-biel), where the warmth prepares the skin and the blade glides gently.
+Ipsach is on the BTI line, which runs from Ins via Täuffelen along the south shore to Biel. You board in Ipsach and get off at Biel station, no change needed. From there it's a few minutes on foot to GYAN at Zentralstrasse 22. By car you drive via Nidau into central Biel and use one of the public car parks, allow about ten minutes. By bike the route is flat and pleasant.
 
-Then there's the space itself: brown leather chairs, sculpted cream-white mirror frames, a red Persian carpet on the wall and a lounge with art books. Find out more about our work as a [barber in Biel](seo:barbier) on our dedicated page.
+## An afternoon for the Full Service
 
-Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too.
+Living by the lake, you probably know how to take your time. That's exactly what the [GYAN Full Service](service:gyan-full-service) is for: haircut, beard, face treatment, wash and styling in one appointment of about 50 minutes. Plan it for a quiet afternoon or a Saturday so you don't have to rush off afterwards. A bit shorter, the GYAN Premium package covers haircut, beard, wash and styling in about 40 minutes.
 
-Since the GYAN Full Service is best enjoyed without rushing, it's best planned for a quiet afternoon or a Saturday. Afterwards you're quickly back on the south shore – freshly cut, freshly shaved and relaxed. Online you can see straight away which slots are still free.`,
+In the salon you settle into a brown leather chair beneath a red Persian carpet on the wall. We take time to talk things through before the first cut.
+
+## Shave and face care on their own
+
+Not every visit has to be the full works. The [hot towel shave](service:nassrasur-biel) is a small ritual of its own: a hot towel prepares the skin, warm lather goes on with a brush, then the blade follows, stroke by stroke. A cool towel and balm finish things off. The GYAN Face Treatment, with hot towel, cleansing and care, can also be booked on its own and takes about 20 minutes.
+
+You [book online](page:booking) in English, German or French and get your confirmation straight away. Walk-ins are welcome during opening hours, but for the Full Service a fixed slot is the better bet. Pay in cash, by card or with TWINT. Living further along the south shore? There's also a page for [Sutz-Lattrigen](seo:sutz-lattrigen).`,
     },
     neighbors: ["nidau", "port", "sutz-lattrigen", "taeuffelen"],
+    carMin: 10,
+    transit: {
+      de: "Mit der BTI-Bahn Biel-Täuffelen-Ins von Ipsach zum Bahnhof Biel, dann wenige Minuten zu Fuss.",
+      fr: "Avec le train BTI Bienne-Täuffelen-Anet d'Ipsach jusqu'à la gare de Bienne, puis quelques minutes à pied.",
+      en: "Take the BTI line Biel-Täuffelen-Ins from Ipsach to Biel station, then walk a few minutes.",
+    },
+    services: ["gyan-full-service", "nassrasur-biel", "gesichtspflege-biel", "gyan-premium-paket"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Ipsach mit der BTI zu GYAN?", a: "Die BTI-Bahn Biel-Täuffelen-Ins hält in Ipsach und fährt über Nidau zum Bahnhof Biel. Von dort gehst du wenige Minuten zu Fuss zur Zentralstrasse 22." },
+        { q: "Wie viel Zeit sollte ich von Ipsach aus für den GYAN Full Service einplanen?", a: "Der GYAN Full Service dauert rund 50 Minuten. Mit der Fahrt von Ipsach hin und zurück planst du am besten einen ruhigen Nachmittag oder einen Samstag ein." },
+        { q: "Kann ich als Kunde aus Ipsach auch auf Französisch oder Englisch buchen?", a: "Ja, die Website und die Online-Buchung gibt es auf Deutsch, Französisch und Englisch. Die Bestätigung kommt sofort." },
+      ],
+      fr: [
+        { q: "Comment venir d'Ipsach chez GYAN avec le BTI ?", a: "Le train BTI Bienne-Täuffelen-Anet s'arrête à Ipsach et rejoint la gare de Bienne en passant par Nidau. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22." },
+        { q: "Combien de temps prévoir depuis Ipsach pour le GYAN Full Service ?", a: "Le GYAN Full Service dure environ 50 minutes. Avec l'aller-retour depuis Ipsach, le mieux est de prévoir un après-midi tranquille ou un samedi." },
+        { q: "Si j'habite à Ipsach, puis-je réserver en français ?", a: "Oui, le site et la réservation en ligne sont disponibles en allemand, en français et en anglais. La confirmation est immédiate." },
+      ],
+      en: [
+        { q: "How do I get from Ipsach to GYAN on the BTI?", a: "The BTI line Biel-Täuffelen-Ins stops in Ipsach and runs via Nidau to Biel station. From there it's a few minutes' walk to Zentralstrasse 22." },
+        { q: "How much time should I plan from Ipsach for the GYAN Full Service?", a: "The GYAN Full Service takes about 50 minutes. Add the round trip from Ipsach and a quiet afternoon or a Saturday works best." },
+        { q: "Can I book in English if I live in Ipsach?", a: "Yes, the website and online booking are available in English, German and French. Confirmation comes instantly." },
+      ],
+    },
   },
 
   // ───────────────────────────── EVILARD / LEUBRINGEN ─────────────────────────────
@@ -323,9 +467,9 @@ Since the GYAN Full Service is best enjoyed without rushing, it's best planned f
       en: "Barber near Evilard – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Leubringen/Evilard: mit der Standseilbahn hinunter nach Biel zu GYAN. Haarschnitt, Fade und Bart – jetzt online Termin buchen.",
-      fr: "Coiffeur homme près d'Evilard : descends en funiculaire jusqu'à Bienne chez GYAN. Coupe, dégradé et barbe – réserve ton rendez-vous en ligne.",
-      en: "Barber near Evilard: take the funicular down to Biel and visit GYAN. Haircuts, fades and beards – book your appointment online now.",
+      de: "Coiffeur für Leubringen: mit der Standseilbahn hinunter nach Biel, Haarschnitt oder Signature Cut bei GYAN. Bis 20 Uhr offen, jetzt online Termin buchen.",
+      fr: "Coiffeur pour Evilard : descends en funiculaire à Bienne pour une coupe ou un Signature Cut chez GYAN. Ouvert jusqu'à 20 h, réserve en ligne.",
+      en: "Barber for Evilard: ride the funicular down to Biel for a haircut or Signature Cut at GYAN. Open until 8 pm on Thu and Fri, book your appointment online.",
     },
     h1: {
       de: "Herrencoiffeur für Leubringen",
@@ -333,58 +477,100 @@ Since the GYAN Full Service is best enjoyed without rushing, it's best planned f
       en: "Barber near Evilard",
     },
     intro: {
-      de: "Leubringen – oder Evilard – liegt auf der Jurahöhe direkt über Biel. Mit der Standseilbahn bist du in wenigen Minuten unten in der Stadt und kurz darauf bei GYAN an der Zentralstrasse 22.",
-      fr: "Evilard – ou Leubringen – surplombe Bienne sur les hauteurs du Jura. Grâce au funiculaire, tu es en ville en quelques minutes, et peu après chez GYAN à la Zentralstrasse 22.",
-      en: "Evilard – or Leubringen in German – sits on the Jura heights right above Biel. The funicular brings you down to the city in minutes, and shortly after you're at GYAN on Zentralstrasse 22.",
+      de: "Leubringen liegt am Jurahang direkt über Biel, nur rund vier Kilometer vom Zentrum. Mit der Standseilbahn bist du in wenigen Minuten unten in der Stadt und kurz darauf bei GYAN an der Zentralstrasse 22.",
+      fr: "Evilard surplombe Bienne à seulement quatre kilomètres environ du centre. Le funiculaire te descend en ville en quelques minutes, et peu après tu es chez GYAN à la Zentralstrasse 22.",
+      en: "Evilard sits on the Jura slope right above Biel, only about four kilometres from the centre. The funicular gets you down into town in minutes, and shortly after you're at GYAN on Zentralstrasse 22.",
     },
     body: {
-      de: `## Über der Stadt, mit der Stadt verbunden
+      de: `## Leubringen: wohnen am Hang, leben mit der Stadt
 
-Leubringen ist eine zweisprachige Gemeinde am Jurahang mit weitem Blick über Biel, den See und an klaren Tagen bis zu den Alpen. Seit über hundert Jahren verbindet eine Standseilbahn das Dorf mit der Stadt – für viele Leubringer der tägliche Weg zur Arbeit, zur Schule oder zum Einkaufen.
+Leubringen, auf Französisch Evilard, ist eine zweisprachige Gemeinde am Jurahang direkt oberhalb von Biel. Zur Gemeinde gehört auch Magglingen, das noch etwas höher am Berg liegt. Von vielen Ecken des Dorfes schaust du über die Dächer der Stadt auf den Bielersee und an klaren Tagen bis zu den Alpen. Trotzdem ist Leubringen so nah an Biel, dass ein grosser Teil des Alltags unten in der Stadt stattfindet: Arbeit, Schule, Einkauf und eben auch der Besuch beim Coiffeur.
 
-## Mit Bahn oder Auto zu GYAN
+## Mit der Standseilbahn zum Haarschnitt
 
-Am bequemsten nimmst du die Standseilbahn hinunter nach Biel und gehst von der Talstation zu Fuss oder fährst kurz mit dem Bus bis zum Bahnhof – von dort sind es nur wenige Minuten zur Zentralstrasse 22. Mit dem Auto führt die Strasse in Kurven hinunter ins Zentrum, wo du öffentliche Parkplätze findest.
+Seit über hundert Jahren verbindet eine Standseilbahn das Dorf mit Biel. Die Fahrt hinunter dauert nur wenige Minuten. Unten gehst du zu Fuss durch die Stadt oder nimmst den Bus bis zum Bahnhof, von wo du die Zentralstrasse 22 in wenigen Gehminuten erreichst. Der Vorteil: Dein Auto bleibt oben stehen, und in der Innenstadt musst du keinen Parkplatz suchen.
 
-## Ein Salon, der zur Zweisprachigkeit passt
+Fährst du lieber selbst, führt die kurvige Strasse den Hang hinunter direkt ins Bieler Zentrum. Für die rund vier Kilometer solltest du etwa zehn Minuten einrechnen, je nach Verkehr in der Stadt auch etwas mehr. In der Innenstadt parkierst du in einem öffentlichen Parkhaus oder auf einem öffentlichen Parkplatz.
 
-Wer in einer zweisprachigen Gemeinde lebt, schätzt es, wenn auch der Coiffeur mitzieht: Unsere Website, die Online-Buchung und alle E-Mails gibt es auf Deutsch, Französisch und Englisch. Im Salon selbst erwartet dich ein präziser [Haarschnitt](service:haarschnitt-biel), auf Wunsch kombiniert mit Bart – in einem ruhigen Raum mit Lederstühlen und einem roten Perserteppich an der Wand.
+## Ein Termin, der in den Pendleralltag passt
 
-Mehr über unser Angebot als [Coiffeur in Biel](seo:coiffeur) findest du auf unserer Themenseite. Termine [buchst du online](page:booking) – sofort bestätigt. Ohne Termin kannst du während der Öffnungszeiten einfach vorbeikommen; Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du eher Richtung Seeufer, schau bei [Nidau](seo:nidau) vorbei.
+Wer in Leubringen wohnt und in Biel arbeitet, fährt ohnehin fast täglich hinunter. Ein [Herren Haarschnitt](service:haarschnitt-biel) dauert bei uns rund 20 Minuten und lässt sich gut vor oder nach der Arbeit einplanen: Von Montag bis Mittwoch sind wir bis 19 Uhr da, am Donnerstag und Freitag sogar bis 20 Uhr. Wenn du nicht nur einen frischen Schnitt willst, sondern auch wissen möchtest, wie du ihn morgens selbst hinbekommst, wähle den [GYAN Signature Cut](service:gyan-signature) mit Styling und Tipps zu Produkt und Handgriffen.
 
-Ein kleiner Tipp: Wenn du online buchst, siehst du direkt, welche Zeiten frei sind, und kannst deine Fahrt mit der Standseilbahn danach planen. So wartest du oben nicht unnötig und musst unten in der Stadt nicht hetzen.`,
-      fr: `## Au-dessus de la ville, reliée à la ville
+Am Samstag öffnen wir schon um 8.30 Uhr. Das passt, wenn du den Vormittag in der Stadt verbringen und am Nachmittag wieder oben am Hang sein willst.
 
-Evilard est une commune bilingue sur le versant du Jura, avec une vue dégagée sur Bienne, le lac et, par temps clair, jusqu'aux Alpes. Depuis plus de cent ans, un funiculaire relie le village à la ville – pour beaucoup d'habitants, c'est le trajet quotidien vers le travail, l'école ou les commerces.
+## Zweisprachig online, ruhig im Salon
 
-## En funiculaire ou en voiture jusqu'à GYAN
+In einer zweisprachigen Gemeinde ist es praktisch, wenn auch die Buchung mitzieht: Unsere Website und die Online-Buchung gibt es auf Deutsch, Französisch und Englisch. Du [buchst online](page:booking) und bekommst sofort eine Bestätigung, so kannst du die Fahrt mit der Standseilbahn passend planen. Spontan geht es auch, während der Öffnungszeiten sind Walk-ins willkommen.
 
-Le plus pratique : descendre en funiculaire jusqu'à Bienne, puis rejoindre la gare à pied ou en bus – de là, la Zentralstrasse 22 n'est qu'à quelques minutes à pied. En voiture, la route descend en lacets jusqu'au centre, où se trouvent des places de parc publiques.
+Im Salon erwarten dich braune Lederstühle und ein roter Perserteppich an der Wand. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du weiter oben, ganz in der Nähe der Sportschule? Dann ist unsere Seite für [Magglingen](seo:magglingen) die passende.`,
+      fr: `## Evilard : habiter le coteau, vivre avec la ville
 
-## Un salon à l'image du bilinguisme
+Evilard, Leubringen en allemand, est une commune bilingue accrochée au versant du Jura, juste au-dessus de Bienne. Macolin, un peu plus haut sur la montagne, fait aussi partie de la commune. Depuis de nombreux coins du village, le regard passe par-dessus les toits de la ville jusqu'au lac de Bienne et, par temps clair, jusqu'aux Alpes. Evilard reste pourtant si proche de Bienne qu'une bonne partie du quotidien se passe en bas : travail, école, courses et, bien sûr, le passage chez le coiffeur.
 
-Quand on vit dans une commune bilingue, on apprécie que son coiffeur suive le mouvement : notre site, la réservation en ligne et tous les e-mails sont disponibles en allemand, en français et en anglais. Au salon t'attend une [coupe](service:haarschnitt-biel) précise, combinée avec la barbe si tu le souhaites – dans un espace calme avec des fauteuils en cuir et un tapis persan rouge au mur.
+## Le funiculaire comme chemin vers la coupe
 
-Découvre toute notre offre sur la page [coiffeur à Bienne](seo:coiffeur). Les rendez-vous se [réservent en ligne](page:booking) – confirmés immédiatement. Sans rendez-vous, tu peux passer pendant les heures d'ouverture ; Zana et l'équipe accueillent aussi les clients spontanés. Tu habites plutôt du côté du lac ? Va voir la page pour [Nidau](seo:nidau).
+Depuis plus de cent ans, un funiculaire relie le village à Bienne. La descente ne prend que quelques minutes. En bas, tu traverses la ville à pied ou tu prends le bus jusqu'à la gare, d'où la Zentralstrasse 22 est à quelques minutes à pied. L'avantage : ta voiture reste en haut et tu n'as pas à chercher de place en ville.
 
-Un petit conseil : en réservant en ligne, tu vois directement les créneaux libres et tu peux planifier ton trajet en funiculaire en conséquence. Pas d'attente inutile en haut, pas de course en bas.`,
-      en: `## Above the city, connected to it
+Si tu préfères conduire, la route en lacets descend le coteau directement jusqu'au centre de Bienne. Pour les quelque quatre kilomètres, compte environ dix minutes, un peu plus selon la circulation en ville. Au centre, tu te gares dans un parking public ou sur une place de parc publique.
 
-Evilard is a bilingual municipality on the Jura slope with sweeping views over Biel, the lake and, on clear days, all the way to the Alps. For more than a hundred years a funicular has linked the village with the city – for many residents it's the daily route to work, school or the shops.
+## Un rendez-vous qui colle au rythme des pendulaires
 
-## By funicular or car to GYAN
+Si tu habites Evilard et travailles à Bienne, tu descends de toute façon presque chaque jour. Une [coupe homme](service:haarschnitt-biel) dure chez nous une vingtaine de minutes et se glisse facilement avant ou après le travail : du lundi au mercredi, on est là jusqu'à 19 h, le jeudi et le vendredi même jusqu'à 20 h. Tu veux non seulement une coupe nette, mais aussi savoir la refaire le matin ? Choisis le [GYAN Signature Cut](service:gyan-signature), avec coiffage et conseils sur le produit et les gestes.
 
-The easiest way is to ride the funicular down to Biel, then walk or take a short bus ride to the station – from there Zentralstrasse 22 is just a few minutes on foot. By car, the winding road takes you down into the centre, where you'll find public parking.
+Le samedi, on ouvre dès 8 h 30. Pratique si tu veux passer la matinée en ville et être de retour sur les hauteurs l'après-midi.
 
-## A salon that fits a bilingual life
+## Bilingue en ligne, calme au salon
 
-If you live in a bilingual community, you'll appreciate a barber that keeps up: our website, online booking and all emails are available in German, French and English. In the salon, a precise [haircut](service:haarschnitt-biel) awaits you, combined with a beard trim if you like – in a calm room with leather chairs and a red Persian carpet on the wall.
+Dans une commune bilingue, c'est agréable quand la réservation suit : notre site et la réservation en ligne existent en allemand, en français et en anglais. Tu [réserves en ligne](page:booking) et reçois une confirmation immédiate, ce qui te permet de caler ton trajet en funiculaire. Tu peux aussi venir spontanément : pendant les heures d'ouverture, les clients sans rendez-vous sont les bienvenus.
 
-Find out more about everything we offer as a [hairdresser in Biel](seo:coiffeur). Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment you can walk in during opening hours; Zana and the team serve walk-in clients too. Living closer to the lake? See our page for [Nidau](seo:nidau).
+Au salon t'attendent des fauteuils en cuir brun et un tapis persan rouge au mur. Paiement en espèces, par carte ou avec TWINT. Tu habites plus haut, près de l'école de sport ? Alors c'est notre page pour [Macolin](seo:magglingen) qui te concerne.`,
+      en: `## Evilard: living on the slope, living with the city
 
-A small tip: when you book online, you see free slots right away and can plan your funicular ride around them. No needless waiting up the hill, no rushing down in town.`,
+Evilard, Leubringen in German, is a bilingual municipality on the Jura slope right above Biel. Magglingen, a little higher up the mountain, belongs to it as well. From many spots in the village you look out over the city rooftops to Lake Biel and, on clear days, all the way to the Alps. Yet Evilard is so close to Biel that much of everyday life happens down below: work, school, shopping and, of course, getting your hair cut.
+
+## The funicular as your route to a haircut
+
+For more than a hundred years a funicular has linked the village with Biel. The ride down takes only a few minutes. At the bottom you can walk through town or hop on a bus to the station, and from there Zentralstrasse 22 is a few minutes on foot. The upside: your car stays at home and you don't have to hunt for a parking space in the centre.
+
+If you'd rather drive, the winding road takes you down the slope straight into central Biel. Allow about ten minutes for the roughly four kilometres, a bit more depending on city traffic. In the centre you can use a public car park or public parking spaces.
+
+## An appointment that fits a commuter's day
+
+If you live in Evilard and work in Biel, you head down almost every day anyway. A [men's haircut](service:haarschnitt-biel) takes about 20 minutes here and slots easily in before or after work: Monday to Wednesday we're open until 19:00, Thursday and Friday even until 20:00. Want more than a fresh cut, like knowing how to recreate it yourself in the morning? Go for the [GYAN Signature Cut](service:gyan-signature), with styling plus tips on which product to use and how.
+
+On Saturdays we open at 8:30. Handy if you want to spend the morning in town and be back up the hill by the afternoon.
+
+## Bilingual online, calm in the chair
+
+In a bilingual community it helps when booking keeps up: our website and online booking are available in German, French and English. You [book online](page:booking) and get instant confirmation, so you can time your funicular ride around it. Dropping in works too, as walk-ins are welcome during opening hours.
+
+Inside the salon you'll find brown leather chairs and a red Persian carpet on the wall. Pay in cash, by card or with TWINT. Live further up, close to the sports school? Then our page for [Magglingen](seo:magglingen) is the one for you.`,
     },
     neighbors: ["nidau", "pieterlen", "magglingen", "orvin", "twann"],
+    carMin: 10,
+    transit: {
+      de: "Mit der Standseilbahn von Leubringen hinunter nach Biel, dann zu Fuss oder mit dem Bus zum Bahnhof und von dort wenige Minuten zu Fuss zum Salon.",
+      fr: "Descends en funiculaire d'Evilard à Bienne, puis rejoins la gare à pied ou en bus, et de là le salon en quelques minutes à pied.",
+      en: "Ride the funicular from Evilard down to Biel, walk or take a bus to the station, and from there it is a few minutes on foot to the salon.",
+    },
+    services: ["haarschnitt-biel", "gyan-signature", "bart-trimmen-biel"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Leubringen ohne Auto zu GYAN?", a: "Am einfachsten mit der Standseilbahn hinunter nach Biel. Von unten gehst du zu Fuss oder nimmst den Bus zum Bahnhof, von dort sind es nur wenige Gehminuten bis zur Zentralstrasse 22." },
+        { q: "Lohnt sich von Leubringen aus ein Termin am Samstagmorgen?", a: "Ja, am Samstag ist der Salon ab 8.30 Uhr bis 18 Uhr geöffnet. So kannst du früh mit der Standseilbahn hinunterfahren und den Rest des Tages in Biel oder wieder oben am Hang verbringen." },
+        { q: "Kann ich von Leubringen aus spontan vorbeikommen, ohne zu buchen?", a: "Ja, während der Öffnungszeiten sind Walk-ins willkommen. Wenn du die Fahrt mit der Standseilbahn genau planen willst, buchst du besser online, die Bestätigung kommt sofort." },
+      ],
+      fr: [
+        { q: "Comment venir d'Evilard chez GYAN sans voiture ?", a: "Le plus simple est de descendre en funiculaire à Bienne. En bas, rejoins la gare à pied ou en bus : de là, la Zentralstrasse 22 n'est qu'à quelques minutes à pied." },
+        { q: "Un rendez-vous le samedi matin, ça vaut la peine depuis Evilard ?", a: "Oui, le samedi le salon est ouvert de 8 h 30 à 18 h. Tu peux descendre tôt en funiculaire et profiter du reste de la journée à Bienne ou de retour sur les hauteurs." },
+        { q: "Depuis Evilard, puis-je passer sans réserver ?", a: "Oui, les clients sans rendez-vous sont les bienvenus pendant les heures d'ouverture. Si tu veux caler ton trajet en funiculaire, réserve plutôt en ligne : la confirmation est immédiate." },
+      ],
+      en: [
+        { q: "How do I get from Evilard to GYAN without a car?", a: "The easiest way is the funicular down to Biel. At the bottom, walk or take a bus to the station, and from there Zentralstrasse 22 is just a few minutes on foot." },
+        { q: "Is a Saturday morning appointment a good idea if I live in Evilard?", a: "Yes, on Saturdays the salon is open from 8:30 to 18:00. You can ride the funicular down early and still have the rest of the day in Biel or back up the hill." },
+        { q: "Can I just drop in from Evilard without booking?", a: "Yes, walk-ins are welcome during opening hours. If you want to time your funicular ride exactly, booking online is the better choice, and the confirmation is instant." },
+      ],
+    },
   },
 
   // ───────────────────────────── ORPUND ─────────────────────────────
@@ -399,9 +585,9 @@ A small tip: when you book online, you see free slots right away and can plan yo
       en: "Barber near Orpund – men's salon in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Orpund: GYAN im Zentrum von Biel, rund 6 km entfernt. Haarschnitt, Fade und Bart – online Termin buchen oder spontan vorbeikommen.",
-      fr: "Coiffeur homme près d'Orpund : GYAN au centre de Bienne, à environ 6 km. Coupe, dégradé et barbe – réserve en ligne ou passe sans rendez-vous.",
-      en: "Barber near Orpund: GYAN in the centre of Biel, about 6 km away. Haircuts, fades and beards – book your appointment online or simply walk in.",
+      de: "Herrencoiffeur für Orpund: GYAN in Biel, nur rund 6 km entfernt. Signature Cut, Haarschnitt oder Premium Paket. Jetzt online Termin buchen.",
+      fr: "Coiffeur homme pour Orpund : GYAN à Bienne, à environ 6 km seulement. Signature Cut, coupe ou formule Premium. Réserve ton rendez-vous en ligne.",
+      en: "Barber for Orpund: GYAN in Biel, only about 6 km away. Signature Cut, men's haircut or Premium package. Book your appointment online right now.",
     },
     h1: {
       de: "Herrencoiffeur für Orpund",
@@ -409,58 +595,106 @@ A small tip: when you book online, you see free slots right away and can plan yo
       en: "Barber near Orpund",
     },
     intro: {
-      de: "Orpund liegt zwischen Biel und dem weiten Seeland, rund sechs Kilometer von unserem Salon. Für viele Männer aus Orpund ist GYAN der Coiffeur, bei dem Haarschnitt und Bart in guten Händen sind.",
-      fr: "Orpund se situe entre Bienne et le vaste Seeland, à environ six kilomètres de notre salon. Pour beaucoup d'hommes d'Orpund, GYAN est le coiffeur où coupe et barbe sont entre de bonnes mains.",
-      en: "Orpund lies between Biel and the wide Seeland, about six kilometres from our salon. For many men in Orpund, GYAN is the barber where haircut and beard are in good hands.",
+      de: "Orpund liegt an der Aare, nur rund sechs Kilometer östlich vom Bieler Zentrum. Mit dem Auto oder Bus bist du in einer knappen Viertelstunde bei GYAN an der Zentralstrasse 22.",
+      fr: "Orpund se trouve au bord de l'Aar, à environ six kilomètres à l'est du centre de Bienne. En voiture ou en bus, tu es chez GYAN en un petit quart d'heure.",
+      en: "Orpund sits on the Aare, only about six kilometres east of central Biel. By car or bus you're at GYAN on Zentralstrasse 22 in under a quarter of an hour.",
     },
     body: {
-      de: `## Zwischen Stadt und Land
+      de: `## Orpund am Nidau-Büren-Kanal
 
-Orpund verbindet das Beste aus zwei Welten: ländliche Ruhe am Übergang ins Seeland und doch nur wenige Minuten vom Zentrum von Biel entfernt. Viele Orpunder pendeln täglich in die Stadt – und nutzen die Gelegenheit, den Coiffeurbesuch gleich mit Einkauf oder Feierabend zu verbinden.
+Orpund liegt östlich von Biel am Nidau-Büren-Kanal, auf dem die Aare vom Bielersee Richtung Büren an der Aare fliesst. Der Kanal entstand mit der Juragewässerkorrektion und prägt die Landschaft hier bis heute: flaches Land, Uferwege, Felder. Von allen Seeland-Gemeinden auf dieser Seite der Stadt gehört Orpund zu den nächsten am Bieler Zentrum. Rund sechs Kilometer sind es bis zu unserem Salon.
 
-## Anfahrt
+## Kurzer Weg, kurze Planung
 
-Mit dem Auto fährst du in rund zehn Minuten ins Bieler Zentrum, wo es öffentliche Parkplätze gibt. Mit dem Bus erreichst du den Bahnhof Biel, und von dort bist du in wenigen Gehminuten an der Zentralstrasse 22.
+Mit dem Auto fährst du von Orpund ins Bieler Zentrum und bist je nach Verkehr in einer Viertelstunde da. In der Innenstadt parkierst du in einem öffentlichen Parkhaus. Ohne Auto nimmst du den Bus zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss an die Zentralstrasse 22. Bei gutem Wetter ist auch das Velo eine Option, denn die Strecke ist flach.
 
-## Haar, Bart und Pflege aus einer Hand
+Weil der Weg so kurz ist, passt ein Termin gut zwischen andere Pläne. Samstags öffnen wir schon um 8.30 Uhr, unter der Woche um 9 Uhr. Donnerstags und freitags bleiben wir bis 20 Uhr, Montag bis Mittwoch bis 19 Uhr.
 
-Viele Orpunder kombinieren gerne: den klassischen oder modernen [Haarschnitt](service:haarschnitt-biel), auf Wunsch mit Bart im [GYAN Classic Paket](service:haarschnitt-und-bart). Wer zusätzlich Waschen und Styling möchte, wählt das [GYAN Premium Paket](service:gyan-premium-paket). Wartet ein Freund, blättert er in der Lounge in einem Kunstbuch.
+## Vater und Sohn, zwei Termine am Stück
 
-Was uns als [Herrencoiffeur in Biel](seo:herrencoiffeur) ausmacht, liest du auf unserer Themenseite. Am einfachsten [buchst du online](page:booking) deinen Termin – die Bestätigung kommt sofort. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Samstags öffnen wir schon um 8:30 Uhr – ideal vor dem Wochenendeinkauf. Aus der Nachbarschaft? Schau auch bei [Brügg](seo:bruegg) vorbei.
+Kommt ihr zu zweit aus Orpund, wählst du bei der [Online-Buchung](page:booking) einfach zwei freie Zeiten direkt nacheinander. Beide Termine werden sofort bestätigt, so wisst ihr genau, wann ihr losfahren müsst. Spontan vorbeikommen geht natürlich auch, Walk-ins sind während der Öffnungszeiten willkommen. Ohne Termin ist der Herren Haarschnitt sogar etwas günstiger: 35 statt 40 Franken.
 
-Zur Planung: Für zwei Haarschnitte hintereinander wählst du bei der Online-Buchung einfach zwei freie Zeiten direkt nacheinander. Beide Termine werden sofort bestätigt – so wisst ihr genau, wann ihr in Orpund losfahren müsst.`,
-      fr: `## Entre ville et campagne
+## Welcher Schnitt passt zu dir
 
-Orpund réunit le meilleur de deux mondes : le calme de la campagne aux portes du Seeland, et pourtant à quelques minutes seulement du centre de Bienne. Beaucoup d'habitants font chaque jour la navette vers la ville – et en profitent pour combiner la visite chez le coiffeur avec les courses ou la fin de journée.
+Der [Herren Haarschnitt](service:haarschnitt-biel) beginnt mit einer Beratung: Wie wächst dein Haar, wo sitzen die Wirbel, wie viel Zeit willst du morgens investieren? Danach arbeiten Schere und Maschine, vom klassischen Seitenscheitel bis zum Skin Fade. Willst du den Look auch zu Hause hinbekommen, buchst du den [GYAN Signature Cut](service:gyan-signature). Nach dem Schnitt stylen wir deine Haare und zeigen dir, welches Produkt du in welcher Menge brauchst. Mit Bart, Wäsche und Styling wird daraus das GYAN Premium Paket.
 
-## Accès
+Du sitzt auf braunen Ledersesseln, an der Wand hängt ein roter Perserteppich. Bezahlt wird bar, mit Karte oder mit TWINT.
 
-En voiture, tu rejoins le centre de Bienne en une dizaine de minutes ; des places de parc publiques s'y trouvent. En bus, tu arrives à la gare de Bienne, puis quelques minutes à pied jusqu'à la Zentralstrasse 22.
+Damit du besser planen kannst: Der GYAN Signature Cut dauert rund 25 Minuten und kostet 45 Franken. Das GYAN Premium Paket braucht rund 40 Minuten und kostet 75 Franken, ohne Termin 70 Franken. Im Salon arbeiten Zana und Hikmet, online buchen kannst du im Moment bei Zana.
 
-## Cheveux, barbe et soin au même endroit
+Wohnst du etwas weiter östlich am Büttenberg oder Richtung Grenchen? Dann schau auch auf den Seiten für [Safnern](seo:safnern) und Pieterlen vorbei.`,
+      fr: `## Orpund au bord du canal Nidau-Büren
 
-Beaucoup de clients d'Orpund aiment combiner : une [coupe](service:haarschnitt-biel) classique ou moderne, avec la barbe si souhaité dans la [formule GYAN Classic](service:haarschnitt-und-bart). Pour ajouter lavage et coiffage, il y a la [formule GYAN Premium](service:gyan-premium-paket). Un ami attend ? Il feuillette un livre d'art dans le lounge.
+Orpund se trouve à l'est de Bienne, au bord du canal Nidau-Büren, par lequel l'Aar s'écoule du lac de Bienne vers Büren an der Aare. Ce canal est né de la correction des eaux du Jura et marque encore le paysage : terrain plat, chemins le long de l'eau, champs. Parmi les communes du Seeland de ce côté de la ville, Orpund est l'une des plus proches du centre de Bienne, à environ six kilomètres de notre salon.
 
-Ce qui fait de nous un [coiffeur homme à Bienne](seo:herrencoiffeur) est expliqué sur notre page dédiée. Le plus simple : [réserver en ligne](page:booking) ton rendez-vous – la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Le samedi, on ouvre dès 8 h 30 – idéal avant les courses du week-end. Tu habites à côté ? Jette aussi un œil à la page pour [Brügg](seo:bruegg).
+## Un trajet court, une organisation simple
 
-Côté organisation : pour deux coupes à la suite, choisis simplement deux créneaux libres consécutifs lors de la réservation en ligne. Les deux rendez-vous sont confirmés immédiatement – vous savez ainsi exactement quand partir d'Orpund.`,
-      en: `## Between town and country
+En voiture, tu rejoins le centre de Bienne depuis Orpund en un quart d'heure environ, selon le trafic, et tu te gares dans un parking public. Sans voiture, tu prends le bus jusqu'à la gare de Bienne, puis quelques minutes à pied jusqu'à la Zentralstrasse 22. Par beau temps, le vélo est aussi une option, le trajet est plat.
 
-Orpund combines the best of both worlds: rural calm on the edge of the Seeland, yet only minutes from the centre of Biel. Many people from Orpund commute into the city every day – and use the chance to combine a haircut with shopping or the end of the working day.
+Comme c'est tout près, un rendez-vous se glisse facilement entre deux autres choses. Le samedi, on ouvre dès 8 h 30, en semaine à 9 h. Le jeudi et le vendredi, on reste jusqu'à 20 h, du lundi au mercredi jusqu'à 19 h.
 
-## Getting here
+## Père et fils, deux rendez-vous à la suite
 
-By car you'll reach Biel city centre in around ten minutes, where there is public parking. By bus, ride to Biel station, and from there it's a few minutes' walk to Zentralstrasse 22.
+Si vous venez à deux d'Orpund, choisis simplement deux créneaux libres consécutifs lors de la [réservation en ligne](page:booking). Les deux rendez-vous sont confirmés immédiatement, vous savez donc exactement quand partir. Passer sans rendez-vous reste possible pendant les heures d'ouverture, et la coupe homme est même un peu moins chère : 35 francs au lieu de 40.
 
-## Hair, beard and care in one place
+## Quelle coupe te va
 
-Many clients from Orpund like to combine services: a classic or modern [haircut](service:haarschnitt-biel), with the beard if wanted in the [GYAN Classic package](service:haarschnitt-und-bart). For a wash and styling on top, there's the [GYAN Premium package](service:gyan-premium-paket). If a friend is waiting, he can leaf through an art book in the lounge.
+La [coupe homme](service:haarschnitt-biel) commence par un conseil : comment poussent tes cheveux, où sont les épis, combien de temps tu veux y passer le matin. Ensuite, ciseaux et tondeuse entrent en jeu, de la raie sur le côté classique au skin fade. Si tu veux réussir le look aussi chez toi, réserve le [GYAN Signature Cut](service:gyan-signature) : après la coupe, on te coiffe et on te montre quel produit utiliser et en quelle quantité. Avec barbe, lavage et coiffage, ça devient la formule GYAN Premium.
 
-Read what makes us a [men's hairdresser in Biel](seo:herrencoiffeur) on our dedicated page. The easiest way is to [book online](page:booking) your appointment – confirmation is instant. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. On Saturdays we open at 8:30am – ideal before your weekend errands. Live nearby? Have a look at our page for [Brügg](seo:bruegg) too.
+Tu t'installes dans un fauteuil en cuir brun, sous un tapis persan rouge accroché au mur. Paiement en espèces, par carte ou avec TWINT.
 
-A note on planning: for two haircuts in a row, just pick two consecutive free slots when booking online. Both appointments are confirmed instantly – so you know exactly when to leave Orpund.`,
+Pour t'organiser : le GYAN Signature Cut dure environ 25 minutes et coûte 45 francs. La formule GYAN Premium prend environ 40 minutes et coûte 75 francs, 70 francs sans rendez-vous. Au salon travaillent Zana et Hikmet, et pour l'instant, la réservation en ligne se fait chez Zana.
+
+Tu habites un peu plus à l'est, au pied du Büttenberg ou vers Granges ? Jette aussi un œil aux pages pour [Safnern](seo:safnern) et Perles.`,
+      en: `## Orpund on the Nidau-Büren canal
+
+Orpund lies east of Biel on the Nidau-Büren canal, which carries the Aare from Lake Biel towards Büren an der Aare. The canal was built as part of the Jura water correction and still shapes the landscape here: flat land, waterside paths, fields. Of the Seeland villages on this side of the city, Orpund is one of the closest to central Biel, about six kilometres from our salon.
+
+## Short trip, easy planning
+
+By car you'll get from Orpund into central Biel in about a quarter of an hour, depending on traffic, and can park in a public car park. Without a car, take the bus to Biel station, then walk a few minutes to Zentralstrasse 22. In good weather, cycling works too, since the route is flat.
+
+Because it's so close, an appointment slots in easily between other plans. We open at 8:30am on Saturdays and 9am on weekdays. On Thursdays and Fridays we stay open until 8pm, Monday to Wednesday until 7pm.
+
+## Father and son, two slots back to back
+
+Coming in as a pair from Orpund? Just pick two free slots one after the other when you [book online](page:booking). Both appointments are confirmed instantly, so you know exactly when to set off. Walking in is fine too during opening hours, and a men's haircut is even a little cheaper without an appointment: CHF 35 instead of 40.
+
+## Which cut suits you
+
+The [men's haircut](service:haarschnitt-biel) starts with a consultation: how does your hair grow, where are the crowns, how much time do you want to spend on it in the morning? Then the scissors and clippers get to work, from a classic side part to a skin fade. If you want to pull off the look at home too, book the [GYAN Signature Cut](service:gyan-signature). After the cut we style your hair and show you which product to use and how much. Add beard, wash and styling and you've got the GYAN Premium package.
+
+You'll sit in a brown leather chair, with a red Persian carpet on the wall. Pay in cash, by card or with TWINT.
+
+To help you plan: the GYAN Signature Cut takes about 25 minutes and costs CHF 45. The GYAN Premium package takes around 40 minutes and costs CHF 75, or CHF 70 as a walk-in. Zana and Hikmet both work in the salon, and for now you can book Zana online.
+
+Live a little further east by the Büttenberg or towards Grenchen? Have a look at our pages for [Safnern](seo:safnern) and Pieterlen too.`,
     },
     neighbors: ["bruegg", "pieterlen", "port", "safnern"],
+    carMin: 15,
+    transit: {
+      de: "Mit dem Bus fährst du von Orpund zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss zum Salon.",
+      fr: "En bus, tu vas d'Orpund à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the bus from Orpund to Biel station, then it's a few minutes on foot to the salon.",
+    },
+    services: ["gyan-signature", "haarschnitt-biel", "gyan-premium-paket"],
+    faq: {
+      de: [
+        { q: "Kann ich aus Orpund mit meinem Sohn zwei Termine hintereinander buchen?", a: "Ja. Wähle bei der Online-Buchung einfach zwei freie Zeiten direkt nacheinander. Beide Termine werden sofort bestätigt." },
+        { q: "Passt ein Haarschnitt am Samstagmorgen, bevor ich in Orpund weitere Pläne habe?", a: "Samstags öffnen wir um 8.30 Uhr. Ein Herren Haarschnitt dauert rund 20 Minuten, so bist du früh wieder zurück in Orpund." },
+        { q: "Gibt es für Kunden aus Orpund einen Unterschied zwischen Walk-in und Buchung?", a: "Für alle gilt dasselbe: Walk-ins sind während der Öffnungszeiten willkommen, und einige Leistungen wie der Herren Haarschnitt sind ohne Termin etwas günstiger. Mit Online-Buchung hast du dafür eine feste, sofort bestätigte Zeit." },
+      ],
+      fr: [
+        { q: "Depuis Orpund, puis-je réserver deux rendez-vous à la suite avec mon fils ?", a: "Oui. Lors de la réservation en ligne, choisis simplement deux créneaux libres consécutifs. Les deux rendez-vous sont confirmés immédiatement." },
+        { q: "Une coupe le samedi matin, avant mes autres projets à Orpund, ça joue ?", a: "Le samedi, on ouvre à 8 h 30. Une coupe homme dure environ 20 minutes, tu es donc vite de retour à Orpund." },
+        { q: "Pour les clients d'Orpund, quelle différence entre passer sans rendez-vous et réserver ?", a: "C'est pareil pour tout le monde : sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture, et certaines prestations comme la coupe homme sont un peu moins chères. En réservant en ligne, tu as une heure fixe, confirmée tout de suite." },
+      ],
+      en: [
+        { q: "Can I book two appointments in a row with my son from Orpund?", a: "Yes. When booking online, just pick two free slots back to back. Both appointments are confirmed instantly." },
+        { q: "Does a Saturday morning haircut work before my other plans in Orpund?", a: "We open at 8:30am on Saturdays. A men's haircut takes about 20 minutes, so you'll be back in Orpund early." },
+        { q: "Is there a difference between walking in and booking for people from Orpund?", a: "It's the same for everyone: walk-ins are welcome during opening hours, and some services like the men's haircut are a little cheaper without an appointment. Booking online gets you a fixed time, confirmed instantly." },
+      ],
+    },
   },
 
   // ───────────────────────────── LYSS ─────────────────────────────
@@ -475,9 +709,9 @@ A note on planning: for two haircuts in a row, just pick two consecutive free sl
       en: "Barber near Lyss – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Lyss: mit dem Zug direkt nach Biel, wenige Minuten zu Fuss zu GYAN. Fade, Bart und GYAN Full Service – jetzt online Termin buchen.",
-      fr: "Coiffeur homme près de Lyss : train direct pour Bienne, puis quelques minutes à pied jusqu'à GYAN. Dégradé, barbe et Full Service – réserve en ligne.",
-      en: "Barber near Lyss: direct train to Biel, then a few minutes on foot to GYAN. Fades, beards and the GYAN Full Service – book your appointment online.",
+      de: "Herrencoiffeur für Lyss: mit dem Zug direkt nach Biel, dann kurz zu Fuss zu GYAN. Full Service, Premium Paket oder Haarschnitt, jetzt online buchen.",
+      fr: "Coiffeur homme pour Lyss : train direct pour Bienne, puis quelques pas jusqu'à GYAN. Full Service, formule Premium ou coupe, réserve en ligne.",
+      en: "Barber for Lyss: direct train to Biel, then a short walk to GYAN. Full Service, Premium package or a classic cut. Book your slot online today.",
     },
     h1: {
       de: "Herrencoiffeur für Lyss",
@@ -485,58 +719,112 @@ A note on planning: for two haircuts in a row, just pick two consecutive free sl
       en: "Barber near Lyss",
     },
     intro: {
-      de: "Lyss ist das Zentrum des Seelands – und dank direkter Zugverbindung nur eine kurze Fahrt von Biel entfernt. Vom Bahnhof Biel gehst du wenige Minuten bis zu GYAN an der Zentralstrasse 22.",
-      fr: "Lyss est le cœur du Seeland – et grâce au train direct, Bienne n'est qu'à un court trajet. Depuis la gare de Bienne, quelques minutes à pied te mènent chez GYAN à la Zentralstrasse 22.",
-      en: "Lyss is the hub of the Seeland – and thanks to the direct train, Biel is only a short ride away. From Biel station it's a few minutes' walk to GYAN at Zentralstrasse 22.",
+      de: "Lyss liegt rund 14 Kilometer von Biel entfernt, mit dem Zug aber nur eine kurze Fahrt ohne Umsteigen. Vom Bahnhof Biel gehst du wenige Minuten bis zu GYAN an der Zentralstrasse 22.",
+      fr: "Lyss est à environ 14 kilomètres de Bienne, mais le train direct en fait un court trajet. De la gare de Bienne, quelques minutes à pied te mènent chez GYAN, Zentralstrasse 22.",
+      en: "Lyss is about 14 km from Biel, but the direct train makes it a short ride. From Biel station it's a few minutes' walk to GYAN at Zentralstrasse 22.",
     },
     body: {
-      de: `## Vom Seeland-Zentrum in die Uhrenstadt
+      de: `## Lyss, der Bahnknoten im Seeland
 
-Lyss ist für viele im Seeland der wichtigste Knotenpunkt: Bahnhof, Einkaufen, Gewerbe. Gleichzeitig ist Biel mit seiner Altstadt, dem See und dem lebendigen Zentrum für viele Lysser das nächste grössere Ziel – sei es für die Arbeit, für Freizeit oder eben für einen guten Coiffeur.
+Lyss ist eine der grössten Gemeinden im Seeland und vor allem eines: gut angebunden. Am Bahnhof Lyss treffen mehrere Linien zusammen, und die wichtigste für dich ist die Strecke zwischen Bern und Biel. Wer in Lyss wohnt, ist damit in beide Richtungen schnell unterwegs. Seit 2011 gehört auch Busswil zur Gemeinde, das mit eigenem Bahnhof an derselben Strecke liegt.
 
-## Der schnellste Weg: der Zug
+Biel ist von Lyss aus die nächste grössere Stadt. Hier gibt es die Altstadt, den See und ein Zentrum mit vielen Geschäften rund um den Bahnhof. Genau dort, wenige Gehminuten vom Bahnhof entfernt, liegt unser Salon an der Zentralstrasse 22.
 
-Mit dem Zug fährst du direkt von Lyss nach Biel. Vom Bahnhof Biel sind es nur wenige Gehminuten bis zur Zentralstrasse 22 – du brauchst also kein Auto und musst keinen Parkplatz suchen. Wer trotzdem lieber fährt, kommt über die Autostrasse in rund einer Viertelstunde ins Zentrum und nutzt dort die öffentlichen Parkplätze.
+## Zug oder Autostrasse: zwei Wege nach Biel
 
-## Lohnt sich die Fahrt? Wir finden ja.
+Der bequemste Weg ist der Zug. Du steigst in Lyss ein, fährst ohne Umsteigen bis Biel und gehst vom Bahnhof zu Fuss weiter. Kein Parkplatz, keine Stadtrundfahrt, und die Fahrzeit kannst du nutzen, um Fotos deines Wunschschnitts herauszusuchen. Zeig sie uns zu Beginn, dann wissen wir sofort, wohin es gehen soll.
 
-Wer für einen Coiffeur 14 Kilometer fährt, will mehr als einen schnellen Schnitt. Bei GYAN bekommst du saubere Übergänge beim [Skin Fade](service:haarschnitt-biel), präzise Konturen am Bart und eine Atmosphäre, die zum Durchatmen einlädt. Wer den Weg ganz auskosten will, bucht den [GYAN Full Service](service:gyan-full-service): Haarschnitt, Bart, Gesichtspflege, Waschen und Styling.
+Mit dem Auto nimmst du die Autostrasse Richtung Biel. Rechne für die rund 14 Kilometer bis ins Zentrum mit etwa 25 Minuten, je nach Verkehr. In der Innenstadt parkierst du in einem der öffentlichen Parkhäuser und gehst die letzten Meter zu Fuss.
 
-Mehr über unsere Arbeit liest du auf der Seite zum [Barbier in Biel](seo:barbier). Damit du nach der Anreise nicht warten musst, [buchst du online](page:booking) einen fixen Termin – er wird sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du zwischen Lyss und Biel? Dann schau bei [Studen](seo:studen) vorbei.
+## Ein Termin, der die Anreise wert ist
 
-Ein Vorteil der Zuganreise: Du kannst die Fahrt nutzen, um Bilder deines Wunschschnitts herauszusuchen. Zeig sie uns zu Beginn – so wissen wir sofort, wohin die Reise gehen soll.`,
-      fr: `## Du cœur du Seeland à la ville horlogère
+Wenn du schon extra aus Lyss kommst, darf es ruhig etwas mehr sein als ein schneller Schnitt. Der [GYAN Full Service](service:gyan-full-service) ist unser umfangreichstes Angebot: Haarschnitt, Bart, Face Treatment, Wäsche und Styling in rund 50 Minuten. Etwas kürzer ist das [GYAN Premium Paket](service:gyan-premium-paket) mit Haarschnitt, Bart, Wäsche und Styling. Und wer nur die Haare machen will, bekommt beim Herren Haarschnitt Beratung, Schere, Maschine und saubere Konturen, ob Seitenscheitel, Low Fade oder Skin Fade.
 
-Pour beaucoup de gens du Seeland, Lyss est la plaque tournante : gare, commerces, artisanat. En même temps, Bienne – avec sa vieille ville, son lac et son centre animé – est la grande ville la plus proche, que ce soit pour le travail, les loisirs ou un bon coiffeur.
+Im Salon sitzt du auf braunen Ledersesseln, an der Wand hängt ein roter Perserteppich. Bezahlt wird bar, mit Karte oder mit TWINT.
 
-## Le plus rapide : le train
+## Planen statt warten
 
-Le train te mène directement de Lyss à Bienne. Depuis la gare de Bienne, il n'y a que quelques minutes à pied jusqu'à la Zentralstrasse 22 – pas besoin de voiture ni de chercher une place. Si tu préfères la voiture, tu rejoins le centre en un quart d'heure environ par la semi-autoroute et tu utilises les places de parc publiques.
+Bei einer längeren Anreise lohnt es sich, den Termin [online zu buchen](page:booking). Du wählst Leistung und Zeit, die Bestätigung kommt sofort, und du kannst deinen Zug passend dazu aussuchen. Spontan vorbeikommen geht natürlich auch: Während der Öffnungszeiten sind Walk-ins willkommen. Montag bis Mittwoch sind wir von 9 bis 19 Uhr da, Donnerstag und Freitag bis 20 Uhr, Samstag von 8.30 bis 18 Uhr. Gerade der lange Donnerstag oder Freitag passt gut, wenn du nach der Arbeit noch in Biel bist.
 
-## Ça vaut le trajet ? On pense que oui.
+Im Salon arbeiten Zana und Hikmet. Online buchen kannst du im Moment Termine bei Zana, spontan vorbeikommen geht während der Öffnungszeiten.
 
-Quand on fait 14 kilomètres pour un coiffeur, on attend plus qu'une coupe rapide. Chez GYAN, tu as des transitions nettes pour ton [skin fade](service:haarschnitt-biel), des contours précis pour la barbe et une ambiance qui invite à souffler. Pour profiter pleinement du déplacement, réserve le [GYAN Full Service](service:gyan-full-service) : coupe, barbe, soin du visage, lavage et coiffage.
+Wohnst du eher zwischen Lyss und Biel? Dann schau auf unseren Seiten für [Busswil](seo:busswil) und Studen vorbei.`,
+      fr: `## Lyss, carrefour ferroviaire du Seeland
 
-Découvre notre travail sur la page [barbier à Bienne](seo:barbier). Pour ne pas attendre après le trajet, [réserve en ligne](page:booking) un créneau fixe – confirmé immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites entre Lyss et Bienne ? Jette un œil à la page pour [Studen](seo:studen).
+Lyss est l'une des plus grandes communes du Seeland et surtout un endroit très bien relié. Plusieurs lignes se croisent à la gare de Lyss, et celle qui t'intéresse est la ligne entre Berne et Bienne. Quand tu habites à Lyss, tu vas vite dans les deux directions. Depuis 2011, Busswil fait aussi partie de la commune, avec sa propre gare sur la même ligne.
 
-Un avantage du train : tu peux profiter du trajet pour chercher des photos de la coupe que tu veux. Montre-les-nous au début – on saura tout de suite où tu veux aller.`,
-      en: `## From the Seeland hub to the watch city
+Depuis Lyss, Bienne est la grande ville la plus proche : vieille ville, lac et un centre plein de commerces autour de la gare. C'est justement là, à quelques minutes à pied de la gare, que se trouve notre salon, à la Zentralstrasse 22.
 
-For many in the Seeland, Lyss is the key hub: station, shops, local business. At the same time, Biel – with its old town, its lake and its lively centre – is the nearest bigger city, whether for work, leisure or a good barber.
+## Train ou semi-autoroute : deux façons de rejoindre Bienne
 
-## The fastest way: the train
+Le plus confortable, c'est le train. Tu montes à Lyss, tu arrives à Bienne sans changement et tu continues à pied depuis la gare. Pas de place à chercher, pas de tour de ville, et tu peux profiter du trajet pour trouver des photos de la coupe que tu veux. Montre-les-nous au début, on saura tout de suite dans quelle direction aller.
 
-The train takes you directly from Lyss to Biel. From Biel station it's just a few minutes on foot to Zentralstrasse 22 – no car needed, no parking to hunt for. If you'd still rather drive, the expressway gets you to the centre in about a quarter of an hour, where you can use the public car parks.
+En voiture, tu prends la semi-autoroute en direction de Bienne. Compte environ 25 minutes pour les quelque 14 kilomètres jusqu'au centre, selon le trafic. En ville, tu te gares dans un parking public et tu fais les derniers mètres à pied.
 
-## Is it worth the trip? We think so.
+## Un rendez-vous qui vaut le déplacement
 
-If you travel 14 kilometres for a barber, you want more than a quick cut. At GYAN you get clean blends on a [skin fade](service:haarschnitt-biel), precise beard lines and an atmosphere that lets you breathe. To make the most of the trip, book the [GYAN Full Service](service:gyan-full-service): haircut, beard, face treatment, wash and styling.
+Si tu viens exprès de Lyss, autant t'offrir plus qu'une coupe rapide. Le [GYAN Full Service](service:gyan-full-service) est notre offre la plus complète : coupe, barbe, soin du visage, lavage et coiffage en 50 minutes environ. Un peu plus court, la [formule GYAN Premium](service:gyan-premium-paket) réunit coupe, barbe, lavage et coiffage. Et si tu veux juste les cheveux, la coupe homme comprend conseil, ciseaux, tondeuse et contours nets, que ce soit une raie sur le côté, un low fade ou un skin fade.
 
-Read more about our work on the [barber in Biel](seo:barbier) page. So you don't have to wait after the trip, [book online](page:booking) – your time slot is confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Living between Lyss and Biel? Have a look at our page for [Studen](seo:studen).
+Au salon, tu t'installes dans un fauteuil en cuir brun, avec un tapis persan rouge accroché au mur. Tu paies en espèces, par carte ou avec TWINT.
 
-One perk of coming by train: you can use the ride to find photos of the cut you want. Show them to us at the start – and we'll know straight away where you're headed.`,
+## Organiser plutôt qu'attendre
+
+Avec un trajet plus long, mieux vaut [réserver en ligne](page:booking). Tu choisis la prestation et l'heure, la confirmation arrive tout de suite, et tu peux prendre le train qui va avec. Passer sans rendez-vous reste possible pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h, samedi de 8 h 30 à 18 h. Les soirées plus longues du jeudi et du vendredi sont pratiques si tu es encore à Bienne après le travail.
+
+Au salon travaillent Zana et Hikmet. Pour l'instant, la réservation en ligne se fait chez Zana, et tu peux aussi passer sans rendez-vous pendant les heures d'ouverture.
+
+Tu habites plutôt entre Lyss et Bienne ? Jette un œil à nos pages pour [Busswil](seo:busswil) et Studen.`,
+      en: `## Lyss, the rail hub of the Seeland
+
+Lyss is one of the largest municipalities in the Seeland, and above all it's well connected. Several lines meet at Lyss station, and the one that matters here is the route between Bern and Biel. Living in Lyss, you can head either way quickly. Since 2011 Busswil has also been part of the municipality, with its own station on the same line.
+
+From Lyss, Biel is the nearest bigger city: the old town, the lake and a busy centre full of shops around the station. That's exactly where you'll find us, a few minutes' walk from the station at Zentralstrasse 22.
+
+## Train or expressway: two ways into Biel
+
+The easiest option is the train. Hop on in Lyss, ride to Biel without changing and walk on from the station. No parking, no circling the city, and you can use the ride to dig out photos of the cut you want. Show them to us at the start and we'll know right away where you're headed.
+
+If you drive, take the expressway towards Biel. Allow about 25 minutes for the roughly 14 km into the centre, depending on traffic. In town, park in one of the public car parks and walk the last bit.
+
+## An appointment worth the trip
+
+If you're coming in specially from Lyss, you might as well get more than a quick trim. The [GYAN Full Service](service:gyan-full-service) is our most complete option: haircut, beard, face treatment, wash and styling in about 50 minutes. A little shorter, the [GYAN Premium package](service:gyan-premium-paket) covers haircut, beard, wash and styling. And if it's just your hair, the men's haircut includes a consultation, scissors, clippers and clean outlines, whether you want a side part, a low fade or a skin fade.
+
+You'll sit in a brown leather chair, with a red Persian carpet hanging on the wall. You can pay in cash, by card or with TWINT.
+
+## Plan it instead of waiting
+
+With a longer journey, it makes sense to [book online](page:booking). Pick your service and time, get instant confirmation, and choose your train to match. Walking in is still fine during opening hours: Monday to Wednesday 9am to 7pm, Thursday and Friday until 8pm, Saturday 8:30am to 6pm. The late Thursday and Friday evenings work well if you're still in Biel after work.
+
+Zana and Hikmet both work in the salon. For now you can book Zana online, and walking in works too during opening hours.
+
+Live somewhere between Lyss and Biel? Check out our pages for [Busswil](seo:busswil) and Studen.`,
     },
     neighbors: ["studen", "bruegg", "busswil"],
+    carMin: 25,
+    transit: {
+      de: "Mit dem Zug auf der Linie zwischen Bern und Biel fährst du ohne Umsteigen von Lyss zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss zum Salon.",
+      fr: "En train sur la ligne entre Berne et Bienne, tu vas sans changement de Lyss à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the train on the line between Bern and Biel straight from Lyss to Biel station, then it's a few minutes on foot to the salon.",
+    },
+    services: ["gyan-full-service", "gyan-premium-paket", "haarschnitt-biel"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Lyss am einfachsten zu GYAN?", a: "Mit dem Zug fährst du direkt von Lyss zum Bahnhof Biel, ohne Umsteigen. Vom Bahnhof gehst du wenige Minuten zu Fuss an die Zentralstrasse 22." },
+        { q: "Lohnt sich ein grösseres Paket, wenn ich extra aus Lyss anreise?", a: "Wenn du die Fahrt schon machst, kannst du mehr in einen Termin packen: Der GYAN Full Service umfasst Haarschnitt, Bart, Face Treatment, Wäsche und Styling und dauert rund 50 Minuten." },
+        { q: "Soll ich aus Lyss mit Termin oder spontan kommen?", a: "Spontan bist du während der Öffnungszeiten willkommen. Bei einer längeren Anreise aus Lyss ist ein online gebuchter Termin sicherer, weil er sofort bestätigt wird und du nicht warten musst." },
+      ],
+      fr: [
+        { q: "Quel est le moyen le plus simple pour venir de Lyss chez GYAN ?", a: "Le train te mène directement de Lyss à la gare de Bienne, sans changement. De la gare, quelques minutes à pied suffisent pour rejoindre la Zentralstrasse 22." },
+        { q: "Une formule plus complète vaut-elle la peine si je viens exprès de Lyss ?", a: "Puisque tu fais le trajet, tu peux en profiter : le GYAN Full Service comprend coupe, barbe, soin du visage, lavage et coiffage, pour environ 50 minutes." },
+        { q: "Depuis Lyss, vaut-il mieux réserver ou passer sans rendez-vous ?", a: "Tu es le bienvenu sans rendez-vous pendant les heures d'ouverture. Avec un trajet depuis Lyss, réserver en ligne est plus sûr : la confirmation est immédiate et tu n'attends pas." },
+      ],
+      en: [
+        { q: "What's the easiest way to get from Lyss to GYAN?", a: "Take the train straight from Lyss to Biel station, no change needed. From the station it's a few minutes' walk to Zentralstrasse 22." },
+        { q: "Is a bigger package worth it if I come all the way from Lyss?", a: "Since you're making the trip anyway, you can fit more into one visit: the GYAN Full Service covers haircut, beard, face treatment, wash and styling in about 50 minutes." },
+        { q: "Should I book or just walk in when coming from Lyss?", a: "Walk-ins are welcome during opening hours. With a longer trip from Lyss, booking online is the safer bet, since it's confirmed instantly and you won't have to wait." },
+      ],
+    },
   },
 
   // ───────────────────────────── PIETERLEN ─────────────────────────────
@@ -551,9 +839,9 @@ One perk of coming by train: you can use the ride to find photos of the cut you 
       en: "Barber near Pieterlen – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Pieterlen: GYAN im Zentrum von Biel, rund 9 km entfernt. Haarschnitt, Fade und Bart, auch samstags ab 8:30 – jetzt online buchen.",
-      fr: "Coiffeur homme près de Perles : GYAN au centre de Bienne, à environ 9 km. Coupe, dégradé et barbe, le samedi dès 8 h 30 – réserve en ligne.",
-      en: "Barber near Pieterlen: GYAN in the centre of Biel, about 9 km away. Haircuts, fades and beards, Saturdays from 8:30am – book online now.",
+      de: "Herrencoiffeur für Pieterlen: GYAN in Biel, rund 9 km entfernt und per Regionalzug direkt erreichbar. Signature Cut, Bart und Pflege. Jetzt online buchen.",
+      fr: "Coiffeur homme pour Perles : GYAN à Bienne, à 9 km, accessible en train régional direct. Signature Cut, barbe et soin du visage. Réserve en ligne.",
+      en: "Barber for Pieterlen: GYAN in Biel, about 9 km away and a direct regional train ride. Signature Cut, beard and face care. Book your slot online.",
     },
     h1: {
       de: "Herrencoiffeur für Pieterlen",
@@ -561,58 +849,100 @@ One perk of coming by train: you can use the ride to find photos of the cut you 
       en: "Barber near Pieterlen",
     },
     intro: {
-      de: "Pieterlen liegt am Jurasüdfuss zwischen Biel und Grenchen, rund neun Kilometer von unserem Salon. Ob vor der Arbeit, nach Feierabend oder am Samstagmorgen – zu GYAN ist es nicht weit.",
-      fr: "Perles se trouve au pied du Jura entre Bienne et Granges, à environ neuf kilomètres de notre salon. Avant le travail, après le boulot ou le samedi matin – GYAN n'est jamais loin.",
-      en: "Pieterlen lies at the foot of the Jura between Biel and Grenchen, about nine kilometres from our salon. Before work, after work or on a Saturday morning – GYAN is never far.",
+      de: "Pieterlen liegt am Jurasüdfuss nur rund neun Kilometer östlich von Biel. Mit dem Regionalzug oder in etwa einer Viertelstunde mit dem Auto bist du bei GYAN an der Zentralstrasse 22.",
+      fr: "Perles se trouve au pied du Jura, à seulement neuf kilomètres environ à l'est de Bienne. En train régional ou en un quart d'heure de voiture, tu es chez GYAN à la Zentralstrasse 22.",
+      en: "Pieterlen sits at the foot of the Jura only about nine kilometres east of Biel. A regional train or a quarter of an hour in the car gets you to GYAN on Zentralstrasse 22.",
     },
     body: {
-      de: `## Zwischen zwei Uhrenstädten
+      de: `## Pieterlen und Biel: Nachbarn am Jurasüdfuss
 
-Pieterlen liegt genau zwischen Biel und Grenchen – zwei Städten, die eng mit der Uhrenindustrie verbunden sind. Viele Pieterler arbeiten in der einen oder anderen Richtung und kennen die Strecke am Jurasüdfuss bestens. Für einen guten Haarschnitt lohnt sich der kurze Weg nach Biel.
+Pieterlen, auf Französisch Perles, gehört zum Verwaltungskreis Biel/Bienne und liegt am Jurasüdfuss zwischen Biel und Grenchen. Im Norden steigen die Jurahänge an, im Süden öffnet sich die Ebene Richtung Seeland. Von allen Gemeinden östlich von Biel ist Pieterlen eine der nächsten: Bis zu unserem Salon an der Zentralstrasse 22 sind es nur rund neun Kilometer. Für vieles, was ein Dorf nicht bietet, ist Biel ohnehin das naheliegende Ziel, und ein guter Herrenschnitt gehört dazu.
 
-## So kommst du zu uns
+## Zug oder Auto: dein Weg ab Pieterlen
 
-Mit dem Zug bist du in wenigen Minuten am Bahnhof Biel und läufst von dort kurz zur Zentralstrasse 22. Mit dem Auto fährst du auf der Hauptstrasse ins Bieler Zentrum und parkierst auf einem öffentlichen Parkplatz.
+Pieterlen hat einen eigenen Bahnhof an der Jurasüdfusslinie zwischen Biel und Solothurn. Der Regionalzug bringt dich direkt zum Bahnhof Biel, und von dort gehst du ein paar Minuten zu Fuss bis zum Salon. Umsteigen musst du nicht, und einen Parkplatz suchst du auch nicht. Die Fahrt ist so kurz, dass sie sich auch für einen schnellen Schnitt zwischendurch lohnt.
 
-## Termine, die in deinen Alltag passen
+Mit dem Auto fährst du auf der Hauptstrasse dem Jurafuss entlang westwärts, über Bözingen ins Bieler Zentrum. Rechne grosszügig mit etwa einer Viertelstunde und parkiere in einem der öffentlichen Parkhäuser in der Innenstadt. Von dort ist die Zentralstrasse schnell zu Fuss erreicht.
 
-Wer pendelt, braucht Flexibilität. Darum haben wir donnerstags und freitags bis 20 Uhr geöffnet und samstags schon ab 8:30 Uhr. Einen Termin [buchst du online](page:booking) – auch abends vom Sofa aus –, und die Bestätigung kommt sofort. Bist du spontan, kommst du einfach vorbei: Zana und das Team bedienen auch Walk-in-Kunden. Ohne Termin sind Haarschnitt und Pakete sogar etwas günstiger.
+## Mehr als nur kürzer: Signature Cut und Pflege
 
-Im Salon bekommst du einen [Haarschnitt](service:haarschnitt-biel), der zu deinem Alltag passt, oder die Kombination Haarschnitt und Bart. Was uns als [Herrencoiffeur in Biel](seo:herrencoiffeur) ausmacht, erfährst du auf unserer Themenseite. Und wenn du eher auf der anderen Seite von Biel wohnst, findest du auch eine Seite für [Orpund](seo:orpund).
+Wenn du schon nach Biel fährst, lohnt sich ein Schnitt, der länger hält als bis zum nächsten Wochenende. Beim [GYAN Signature Cut](service:gyan-signature) schneiden wir nicht nur, wir stylen deine Haare danach und zeigen dir, mit welchem Produkt und welchen Handgriffen du den Look zu Hause selbst hinbekommst. Trägst du Bart, nimmst du ihn im GYAN Classic Paket gleich mit. Und wer nach einer langen Woche abschalten will, ergänzt das [GYAN Face Treatment](service:gesichtspflege-biel) mit heissem Tuch, Reinigung und Pflege.
 
-Übrigens bist du aus Pieterlen oft schneller in Biel als gedacht: Mit dem Zug dauert die Fahrt nur wenige Minuten, und vom Bahnhof gehst du kurz zu Fuss zum Salon. Ein Termin vor Arbeitsbeginn oder auf dem Heimweg passt deshalb gut in den Tag.`,
-      fr: `## Entre deux villes horlogères
+Du sitzt dabei in einem unserer braunen Ledersessel, an der Wand hängt ein roter Perserteppich. Bezahlt wird bar, mit Karte oder mit TWINT.
 
-Perles se trouve exactement entre Bienne et Granges – deux villes étroitement liées à l'horlogerie. Beaucoup d'habitants travaillent dans l'une ou l'autre direction et connaissent par cœur la route au pied du Jura. Pour une bonne coupe, le court trajet jusqu'à Bienne en vaut la peine.
+## Vor der Arbeit, nach Feierabend oder am Samstag
 
-## Comment venir
+Montag bis Mittwoch sind wir von 9 bis 19 Uhr da, Donnerstag und Freitag bis 20 Uhr, am Samstag schon ab 8.30 Uhr bis 18 Uhr. Sonntags bleibt der Salon zu. Arbeitest du in Biel, passt ein Termin oft direkt vor der Heimfahrt nach Pieterlen. Am Samstagmorgen erledigst du den Schnitt, bevor der Tag richtig losgeht.
 
-En train, tu es à la gare de Bienne en quelques minutes, puis tu marches un instant jusqu'à la Zentralstrasse 22. En voiture, tu rejoins le centre de Bienne par la route principale et tu te gares sur une place de parc publique.
+Deinen Termin [buchst du online](page:booking) und bekommst sofort eine Bestätigung. Spontan geht es auch: Während der Öffnungszeiten kannst du ohne Termin vorbeikommen. Wohnst du etwas weiter östlich, findest du eine eigene Seite für [Lengnau](seo:lengnau).`,
+      fr: `## Perles et Bienne : voisins au pied du Jura
 
-## Des horaires qui collent à ton quotidien
+Perles, Pieterlen en allemand, fait partie de l'arrondissement administratif de Biel/Bienne et se trouve au pied du Jura, entre Bienne et Granges. Au nord, les pentes du Jura s'élèvent, au sud la plaine s'ouvre vers le Seeland. Parmi les communes à l'est de Bienne, Perles est l'une des plus proches : notre salon à la Zentralstrasse 22 n'est qu'à neuf kilomètres environ. Pour tout ce qu'un village n'offre pas, Bienne est de toute façon la destination logique, et une bonne coupe homme en fait partie.
 
-Quand on fait la navette, on a besoin de flexibilité. C'est pourquoi on est ouverts jusqu'à 20 h le jeudi et le vendredi, et dès 8 h 30 le samedi. Pour un rendez-vous fixe, [réserve en ligne](page:booking) – même le soir depuis ton canapé – et la confirmation est immédiate. Si tu es spontané, passe simplement : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Sans rendez-vous, la coupe et les formules sont même un peu moins chères.
+## Train ou voiture : ton trajet depuis Perles
 
-Au salon, tu reçois une [coupe](service:haarschnitt-biel) adaptée à ton quotidien, ou la formule coupe et barbe. Ce qui fait de nous un [coiffeur homme à Bienne](seo:herrencoiffeur) est expliqué sur notre page dédiée. Et si tu habites plutôt de l'autre côté de Bienne, il existe aussi une page pour [Orpund](seo:orpund).
+Perles a sa propre gare sur la ligne du pied du Jura entre Bienne et Soleure. Le train régional t'amène directement à la gare de Bienne, et de là tu marches quelques minutes jusqu'au salon. Pas de changement, pas de place de parc à chercher.
 
-D'ailleurs, depuis Perles, on est souvent plus vite à Bienne qu'on ne le pense : le train ne met que quelques minutes, et de la gare, le salon est à deux pas. Un rendez-vous avant le travail ou sur le chemin du retour s'intègre donc bien dans la journée.`,
-      en: `## Between two watchmaking towns
+En voiture, tu suis la route principale vers l'ouest le long du pied du Jura, puis tu passes par Boujean pour rejoindre le centre de Bienne. Compte large environ un quart d'heure et gare-toi dans un des parkings publics du centre-ville. De là, la Zentralstrasse est vite atteinte à pied.
 
-Pieterlen sits right between Biel and Grenchen – two towns closely tied to the watch industry. Many people here commute in one direction or the other and know the road along the foot of the Jura by heart. For a good haircut, the short trip to Biel is worth it.
+## Plus qu'une simple coupe : Signature Cut et soin
 
-## How to get here
+Tant qu'à venir à Bienne, autant repartir avec une coupe qui tient plus longtemps que jusqu'au week-end suivant. Avec le [GYAN Signature Cut](service:gyan-signature), on ne fait pas que couper : on coiffe tes cheveux ensuite et on te montre quel produit et quels gestes utiliser pour refaire le look toi-même. Si tu portes la barbe, prends-la avec la formule GYAN Classic. Et pour décrocher après une longue semaine, ajoute le [GYAN Face Treatment](service:gesichtspflege-biel) avec serviette chaude, nettoyage et soin.
 
-By train you're at Biel station in a few minutes, then it's a short walk to Zentralstrasse 22. By car, take the main road into Biel city centre and use one of the public car parks.
+Tu t'installes dans un de nos fauteuils en cuir brun, avec un tapis persan rouge accroché au mur. Paiement en espèces, par carte ou avec TWINT.
 
-## Appointments that fit your routine
+## Avant le travail, après le boulot ou le samedi
 
-Commuters need flexibility. That's why we're open until 8pm on Thursdays and Fridays and from 8:30am on Saturdays. To lock in your slot, [book online](page:booking) – even in the evening from your sofa – and confirmation is instant. Feeling spontaneous? Just drop in: Zana and the team serve walk-in clients too. Walk-in prices for haircuts and packages are even slightly lower.
+Du lundi au mercredi, on est là de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, et le samedi dès 8 h 30 jusqu'à 18 h. Le dimanche, le salon est fermé. Si tu travailles à Bienne, un rendez-vous juste avant de rentrer à Perles tombe souvent bien. Le samedi matin, ta coupe est faite avant que la journée commence vraiment.
 
-In the salon you'll get a [haircut](service:haarschnitt-biel) that fits your everyday life, or the haircut and beard combo. Find out what makes us a [men's hairdresser in Biel](seo:herrencoiffeur) on our dedicated page. And if you live more on the other side of Biel, there's also a page for [Orpund](seo:orpund).
+[Réserve en ligne](page:booking) et la confirmation arrive tout de suite. En mode spontané, ça marche aussi : pendant les heures d'ouverture, tu peux passer sans rendez-vous. Si tu habites un peu plus à l'est, il existe une page pour [Longeau](seo:lengnau).`,
+      en: `## Pieterlen and Biel: neighbours at the foot of the Jura
 
-By the way, from Pieterlen you're often in Biel faster than you'd think: the train takes just a few minutes, and from the station it's a short walk to the salon. So an appointment before work or on the way home fits nicely into the day.`,
+Pieterlen, Perles in French, belongs to the Biel/Bienne administrative district and sits at the foot of the Jura between Biel and Grenchen. The Jura slopes rise to the north, while to the south the plain opens out towards the Seeland. Of all the villages east of Biel, Pieterlen is one of the closest: our salon on Zentralstrasse 22 is only about nine kilometres away. Biel is the natural place to go for anything a village doesn't have, and a proper men's haircut is on that list.
+
+## Train or car: your route from Pieterlen
+
+Pieterlen has its own station on the Jura foot line between Biel and Solothurn. The regional train runs straight to Biel station, and from there it's a few minutes on foot to the salon. No changes, and no hunting for a parking space.
+
+If you drive, follow the main road west along the foot of the Jura and come into central Biel through Bözingen. Allow a generous quarter of an hour and leave the car in one of the public car parks in the city centre. Zentralstrasse is a short walk from there.
+
+## More than a trim: Signature Cut and some care
+
+Since you're making the trip, you might as well leave with a cut that lasts longer than the next weekend. With the [GYAN Signature Cut](service:gyan-signature) we don't just cut: we style your hair afterwards and show you which product and which moves recreate the look at home. Got a beard? Add it with the GYAN Classic package. And if you want to switch off after a long week, finish with the [GYAN Face Treatment](service:gesichtspflege-biel): hot towel, cleansing and care.
+
+You'll sit in one of our brown leather chairs, with a red Persian carpet hanging on the wall. Pay in cash, by card or with TWINT.
+
+## Before work, after work or on a Saturday
+
+We're open Monday to Wednesday from 9am to 7pm, Thursday and Friday until 8pm, and Saturday from 8:30am to 6pm. Sundays we're closed. If you work in Biel, an appointment right before you head home to Pieterlen often works well. On a Saturday morning, you can get the cut done before the day really gets going.
+
+[Book online](page:booking) and get instant confirmation. Spontaneous works too: during opening hours you can simply walk in. Living a little further east? There's a page for [Lengnau](seo:lengnau).`,
     },
     neighbors: ["orpund", "evilard", "lengnau", "safnern", "grenchen"],
+    carMin: 15,
+    transit: {
+      de: "Mit dem Regionalzug auf der Jurasüdfusslinie fährst du direkt zum Bahnhof Biel, von dort sind es ein paar Minuten zu Fuss zum Salon.",
+      fr: "Le train régional de la ligne du pied du Jura t'amène directement à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the regional train on the Jura foot line straight to Biel station, then it's a few minutes on foot to the salon.",
+    },
+    services: ["gyan-signature", "haarschnitt-und-bart", "gesichtspflege-biel"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Pieterlen am schnellsten zu GYAN?", a: "Mit dem Regionalzug fährst du direkt zum Bahnhof Biel und gehst von dort ein paar Minuten zu Fuss an die Zentralstrasse 22. Mit dem Auto rechnest du grosszügig mit rund 15 Minuten für die etwa neun Kilometer." },
+        { q: "Kann ich als Pendler aus Pieterlen auch nach der Arbeit kommen?", a: "Ja. Donnerstag und Freitag ist der Salon bis 20 Uhr offen, Montag bis Mittwoch bis 19 Uhr. So passt ein Termin gut zwischen Feierabend und Heimfahrt nach Pieterlen." },
+        { q: "Muss ich aus Pieterlen vorher einen Termin buchen?", a: "Nein, während der Öffnungszeiten kannst du auch ohne Termin vorbeikommen. Wer eine feste Zeit möchte, bucht online und bekommt sofort eine Bestätigung." },
+      ],
+      fr: [
+        { q: "Comment aller de Perles chez GYAN le plus rapidement ?", a: "Le train régional t'amène directement à la gare de Bienne, puis tu marches quelques minutes jusqu'à la Zentralstrasse 22. En voiture, compte large environ 15 minutes pour les quelque neuf kilomètres." },
+        { q: "En tant que pendulaire de Perles, je peux passer après le travail ?", a: "Oui. Le jeudi et le vendredi, le salon est ouvert jusqu'à 20 h, du lundi au mercredi jusqu'à 19 h. Un rendez-vous se glisse donc bien entre la fin du travail et le retour à Perles." },
+        { q: "Dois-je réserver avant de venir de Perles ?", a: "Non, pendant les heures d'ouverture tu peux aussi venir sans rendez-vous. Si tu veux une heure fixe, réserve en ligne et la confirmation est immédiate." },
+      ],
+      en: [
+        { q: "What's the quickest way from Pieterlen to GYAN?", a: "The regional train takes you straight to Biel station, then it's a few minutes' walk to Zentralstrasse 22. By car, allow around 15 minutes for the roughly nine kilometres." },
+        { q: "I commute from Pieterlen. Can I come after work?", a: "Yes. The salon is open until 8pm on Thursdays and Fridays and until 7pm Monday to Wednesday, so a cut fits nicely between finishing work and heading home to Pieterlen." },
+        { q: "Do I need to book before coming in from Pieterlen?", a: "No, walk-ins are welcome during opening hours. If you want a fixed time, book online and you get instant confirmation." },
+      ],
+    },
   },
 
   // ───────────────────────────── STUDEN ─────────────────────────────
@@ -627,9 +957,9 @@ By the way, from Pieterlen you're often in Biel faster than you'd think: the tra
       en: "Barber near Studen – beards & fades in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Studen: GYAN im Zentrum von Biel, rund 9 km entfernt. Bart trimmen, Fade und Haarschnitt – jetzt online Termin buchen.",
-      fr: "Coiffeur homme près de Studen : GYAN au centre de Bienne, à environ 9 km. Taille de barbe, dégradé et coupe – réserve ton rendez-vous en ligne.",
-      en: "Barber near Studen: GYAN in the centre of Biel, about 9 km away. Beard trims, fades and haircuts – book your appointment online now.",
+      de: "Barbier für Studen: GYAN in Biel, rund 9 km entfernt. Bart Trim, Hot Towel Rasur und Face Treatment für Männer. Jetzt online Termin buchen.",
+      fr: "Barbier pour Studen : GYAN à Bienne, à environ 9 km. Taille de barbe, rasage serviette chaude et soin du visage. Réserve ton rendez-vous en ligne.",
+      en: "Barber for Studen: GYAN in Biel, about 9 km away. Beard trims, hot towel shaves and face treatments for men. Book your appointment online today.",
     },
     h1: {
       de: "Herrencoiffeur für Studen",
@@ -637,58 +967,112 @@ By the way, from Pieterlen you're often in Biel faster than you'd think: the tra
       en: "Barber near Studen",
     },
     intro: {
-      de: "Studen liegt im Seeland am Fuss des Jensbergs, rund neun Kilometer von Biel. Für einen gepflegten Bart oder einen frischen Fade bist du schnell bei GYAN an der Zentralstrasse 22.",
-      fr: "Studen se trouve dans le Seeland, au pied du Jensberg, à environ neuf kilomètres de Bienne. Pour une barbe soignée ou un dégradé frais, tu es vite chez GYAN à la Zentralstrasse 22.",
-      en: "Studen lies in the Seeland at the foot of the Jensberg, about nine kilometres from Biel. For a well-kept beard or a fresh fade, you'll quickly be at GYAN on Zentralstrasse 22.",
+      de: "Studen liegt am Fuss des Jensbergs, rund neun Kilometer von Biel. Mit dem Auto bist du in etwa einer Viertelstunde im Zentrum, mit dem Bus am Bahnhof Biel, nur wenige Minuten von GYAN.",
+      fr: "Studen se trouve au pied du Jensberg, à environ neuf kilomètres de Bienne. En voiture, tu es au centre en un quart d'heure environ, en bus à la gare, à deux pas de GYAN.",
+      en: "Studen sits at the foot of the Jensberg, about nine kilometres from Biel. By car you're in the centre in around 15 minutes, by bus at Biel station, close to GYAN.",
     },
     body: {
-      de: `## Seeland mit Hügel
+      de: `## Der Jensberg und ein Stück Römerzeit
 
-Das Seeland ist bekannt für seine Ebenen, Gemüsefelder und Kanäle. Studen bildet da eine kleine Ausnahme: Gleich nebenan erhebt sich der bewaldete Jensberg, beliebt für Spaziergänge und Ausflüge. Trotzdem ist das Dorf eng mit Biel verbunden – viele Studener arbeiten, lernen oder verbringen ihre Freizeit in der Stadt.
+Das Seeland ist meist flach, doch bei Studen erhebt sich der bewaldete Jensberg. Er ist ein beliebtes Ziel für Spaziergänge, und auf ihm und an seinem Fuss lag in römischer Zeit die Siedlung Petinesca. Studen ist damit ein Ort, an dem Natur und Geschichte nah beieinander liegen. Für den Alltag aber orientieren sich viele hier Richtung Biel: zur Arbeit, zur Schule, zum Einkaufen.
 
-## Anreise
+## Von Studen ins Bieler Zentrum
 
-Mit dem Zug oder Bus fährst du zum Bahnhof Biel und gehst von dort in wenigen Minuten zur Zentralstrasse 22. Mit dem Auto erreichst du das Bieler Zentrum in etwa einer Viertelstunde und nutzt dort die öffentlichen Parkplätze.
+Die rund neun Kilometer nach Biel sind schnell gemacht. Mit dem Auto rechnest du mit etwa 15 Minuten bis ins Zentrum und parkierst dort in einem der öffentlichen Parkhäuser. Ohne Auto nimmst du den Bus zum Bahnhof Biel. Von dort gehst du wenige Minuten zu Fuss bis zur Zentralstrasse 22.
 
-## Bart, Fade und ein bisschen Ruhe
+## Bart im Fokus
 
-Viele Kunden aus Studen kombinieren bei uns Haar und Bart. Beim [Bart-Trimmen](service:bart-trimmen-biel) bringen wir Länge und Konturen in Form, beim Skin Fade arbeiten wir den Übergang sauber bis auf die Haut aus. Mehr Tipps für zwischen den Besuchen gibt es auf unserer Seite zur [Bartpflege in Biel](seo:bart).
+Auf dieser Seite geht es vor allem um eines: deinen Bart. Beim [Bart Trim](service:bart-trimmen-biel) bringen wir Länge und Form in Ordnung und ziehen die Konturen mit der Klinge nach. Das dauert rund 15 Minuten und kostet 20 Franken. Wer es klassischer mag, bucht die [Bart Rasur mit heissem Tuch](service:nassrasur-biel): eine Nassrasur mit Schaum, heissem Tuch und anschliessender Pflege.
 
-Und dann ist da der Salon selbst: Lederstühle, skulpturale Spiegelrahmen, ein roter Perserteppich an der Wand – ein Ort, an dem du für einen Moment abschalten kannst. Termine [buchst du online](page:booking), sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei – Zana und das Team bedienen auch Walk-in-Kunden. Wohnst du weiter Richtung Bern? Schau bei [Lyss](seo:lyss) vorbei.
+Willst du Haar und Bart in einem Termin erledigen, ist das GYAN Classic Paket die naheliegende Wahl. Und wenn die Haut nach Wind und Wetter etwas Pflege braucht, gibt es das GYAN Face Treatment mit heissem Tuch, Reinigung und Pflege.
 
-Und nach dem Termin? Wer am Wochenende kommt, verbindet den Besuch vielleicht mit einem Spaziergang am Jensberg. Frisch geschnitten und mit gepflegtem Bart macht der Ausflug gleich doppelt Freude.`,
-      fr: `## Le Seeland avec une colline
+Im Salon sitzt du auf braunen Ledersesseln, an der Wand hängt ein roter Perserteppich. Ein ruhiger Ort für eine Viertelstunde, in der nur dein Bart zählt.
 
-Le Seeland est connu pour ses plaines, ses champs de légumes et ses canaux. Studen fait un peu exception : juste à côté se dresse le Jensberg boisé, apprécié pour les balades et les excursions. Le village reste pourtant étroitement lié à Bienne – beaucoup de ses habitants y travaillent, y étudient ou y passent leurs loisirs.
+## Termin vor dem Ausflug
 
-## Accès
+Samstags öffnen wir schon um 8.30 Uhr. Ein früher Termin lässt dir den Rest des Tages frei, etwa für eine Runde am Jensberg. Unter der Woche sind wir Montag bis Mittwoch von 9 bis 19 Uhr da, Donnerstag und Freitag bis 20 Uhr. Sonntags ist geschlossen.
 
-En train ou en bus, tu rejoins la gare de Bienne, puis quelques minutes à pied jusqu'à la Zentralstrasse 22. En voiture, tu atteins le centre de Bienne en un quart d'heure environ et tu utilises les places de parc publiques.
+Einen festen Termin [buchst du online](page:booking), die Bestätigung kommt sofort. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen. Bezahlt wird bar, mit Karte oder mit TWINT.
 
-## Barbe, dégradé et un peu de calme
+Zur Orientierung bei den Preisen: Die Bart Rasur mit heissem Tuch kostet 28 Franken, das Face Treatment 25 Franken und dauert rund 20 Minuten. Das GYAN Classic Paket mit Haarschnitt und Bart kostet 65 Franken, ohne Termin 60 Franken, und dauert rund eine halbe Stunde. Im Salon arbeiten Zana und Hikmet, online buchbar ist derzeit Zana.
 
-Beaucoup de clients de Studen combinent cheveux et barbe chez nous. Avec la [taille de barbe](service:bart-trimmen-biel), on met en forme la longueur et les contours ; avec le skin fade, on travaille la transition proprement jusqu'à la peau. D'autres conseils pour entre deux visites se trouvent sur notre page [taille de barbe à Bienne](seo:bart).
+Wohnst du weiter Richtung Bern oder näher an der Aare? Dann schau auf unseren Seiten für [Lyss](seo:lyss) und Aegerten vorbei.`,
+      fr: `## Le Jensberg et un peu d'époque romaine
 
-Et puis il y a le salon lui-même : fauteuils en cuir, cadres de miroir sculptés, tapis persan rouge au mur – un endroit où tu peux décrocher un instant. Les rendez-vous se [réservent en ligne](page:booking), confirmés immédiatement. Sans rendez-vous, passe simplement pendant les heures d'ouverture : Zana et l'équipe accueillent aussi les clients sans rendez-vous. Tu habites plus loin en direction de Berne ? Va voir la page pour [Lyss](seo:lyss).
+Le Seeland est plutôt plat, mais près de Studen se dresse le Jensberg boisé. C'est un lieu de promenade apprécié, et à l'époque romaine, l'agglomération de Petinesca se trouvait sur la colline et à son pied. À Studen, nature et histoire sont donc toutes proches. Au quotidien, pourtant, beaucoup se tournent vers Bienne : pour le travail, l'école ou les courses.
 
-Et après le rendez-vous ? Si tu viens le week-end, tu peux combiner ta visite avec une balade sur le Jensberg. Avec une coupe fraîche et une barbe soignée, la sortie n'en est que plus agréable.`,
-      en: `## Seeland with a hill
+## De Studen au centre de Bienne
 
-The Seeland is known for its plains, vegetable fields and canals. Studen is a bit of an exception: right next door rises the wooded Jensberg, popular for walks and outings. Still, the village is closely tied to Biel – many people from Studen work, study or spend their free time in the city.
+Les quelque neuf kilomètres jusqu'à Bienne passent vite. En voiture, compte environ 15 minutes jusqu'au centre, où tu te gares dans un parking public. Sans voiture, tu prends le bus jusqu'à la gare de Bienne, puis quelques minutes à pied jusqu'à la Zentralstrasse 22.
 
-## Getting here
+## La barbe avant tout
 
-By train or bus, head to Biel station and walk a few minutes to Zentralstrasse 22. By car, you'll reach Biel city centre in around a quarter of an hour and can use the public parking there.
+Sur cette page, il est surtout question de ta barbe. Avec la [taille de barbe](service:bart-trimmen-biel), on remet en ordre la longueur et la forme, puis on trace les contours au rasoir. Compte environ 15 minutes et 20 francs. Si tu préfères le classique, réserve le [rasage à la serviette chaude](service:nassrasur-biel) : rasage traditionnel avec mousse, serviette chaude et soin.
 
-## Beard, fade and a bit of calm
+Pour régler cheveux et barbe en un seul rendez-vous, la formule GYAN Classic est le choix évident. Et si ta peau a besoin d'un peu d'attention après le vent et le froid, il y a le GYAN Face Treatment, avec serviette chaude, nettoyage et soin.
 
-Many clients from Studen combine hair and beard with us. With a [beard trim](service:bart-trimmen-biel) we shape length and lines; with a skin fade we work the blend cleanly down to the skin. More tips for between visits are on our [beard barber in Biel](seo:bart) page.
+Au salon, tu t'installes dans un fauteuil en cuir brun, sous un tapis persan rouge accroché au mur. Un endroit calme pour un quart d'heure consacré uniquement à ta barbe.
 
-And then there's the salon itself: leather chairs, sculpted mirror frames, a red Persian carpet on the wall – a place where you can switch off for a moment. Appointments are [booked online](page:booking) and confirmed instantly. Without an appointment, just drop in during opening hours – Zana and the team serve walk-in clients too. Living further towards Bern? Check out our page for [Lyss](seo:lyss).
+## Un rendez-vous avant la balade
 
-And after your appointment? If you come at the weekend, you might combine the visit with a walk on the Jensberg. With a fresh cut and a groomed beard, the outing is twice as nice.`,
+Le samedi, on ouvre dès 8 h 30. Un rendez-vous tôt te laisse le reste de la journée, par exemple pour faire un tour sur le Jensberg. En semaine, on est là du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h. Fermé le dimanche.
+
+Pour un créneau fixe, [réserve en ligne](page:booking) : la confirmation est immédiate. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT.
+
+Pour te repérer côté prix : le rasage à la serviette chaude coûte 28 francs, le Face Treatment 25 francs pour environ 20 minutes. La formule GYAN Classic avec coupe et barbe coûte 65 francs, 60 francs sans rendez-vous, et dure environ une demi-heure. Au salon travaillent Zana et Hikmet, et pour l'instant, c'est Zana qu'on réserve en ligne.
+
+Tu habites plus loin vers Berne ou plus près de l'Aar ? Va voir nos pages pour [Lyss](seo:lyss) et Aegerten.`,
+      en: `## The Jensberg and a slice of Roman history
+
+The Seeland is mostly flat, but near Studen the wooded Jensberg rises up. It's a popular spot for walks, and in Roman times the settlement of Petinesca stood on the hill and at its foot. So Studen is a place where nature and history sit close together. For everyday life, though, many people here look towards Biel: for work, school or shopping.
+
+## From Studen into central Biel
+
+The roughly nine kilometres to Biel go by quickly. By car, allow about 15 minutes into the centre and park in one of the public car parks. Without a car, take the bus to Biel station, then walk a few minutes to Zentralstrasse 22.
+
+## All about the beard
+
+This page is mostly about one thing: your beard. With a [beard trim](service:bart-trimmen-biel) we sort out length and shape, then sharpen the lines with the razor. It takes about 15 minutes and costs CHF 20. If you prefer something more traditional, book the [hot towel shave](service:nassrasur-biel): a wet shave with lather, a hot towel and aftercare.
+
+Want hair and beard done in one go? The GYAN Classic package is the obvious pick. And if your skin needs some attention after wind and weather, there's the GYAN Face Treatment with hot towel, cleansing and care.
+
+You'll sit in a brown leather chair, with a red Persian carpet on the wall. A calm spot for a quarter of an hour that's all about your beard.
+
+## A trim before your day out
+
+On Saturdays we open at 8:30am. An early slot leaves the rest of the day free, maybe for a loop around the Jensberg. During the week we're open Monday to Wednesday 9am to 7pm, and Thursday and Friday until 8pm. Closed on Sundays.
+
+To lock in a time, [book online](page:booking) and get instant confirmation. Walk-ins are welcome during opening hours as well. Pay in cash, by card or with TWINT.
+
+To give you an idea of prices: the hot towel shave is CHF 28, and the face treatment CHF 25 for about 20 minutes. The GYAN Classic package with haircut and beard is CHF 65, or CHF 60 as a walk-in, and takes around half an hour. Zana and Hikmet both work in the salon, and for now you can book Zana online.
+
+Live further towards Bern or closer to the Aare? Have a look at our pages for [Lyss](seo:lyss) and Aegerten.`,
     },
     neighbors: ["lyss", "bruegg", "aegerten", "busswil"],
+    carMin: 15,
+    transit: {
+      de: "Mit dem Bus fährst du von Studen zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss zum Salon.",
+      fr: "En bus, tu vas de Studen à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the bus from Studen to Biel station, then it's a few minutes on foot to the salon.",
+    },
+    services: ["bart-trimmen-biel", "gesichtspflege-biel", "haarschnitt-und-bart", "nassrasur-biel"],
+    faq: {
+      de: [
+        { q: "Wie lange fahre ich von Studen mit dem Auto zu GYAN?", a: "Für die rund neun Kilometer von Studen ins Bieler Zentrum rechnest du mit etwa 15 Minuten. Parkieren kannst du in einem der öffentlichen Parkhäuser in der Innenstadt." },
+        { q: "Kann ich aus Studen nur für den Bart vorbeikommen?", a: "Ja. Der Bart Trim dauert rund 15 Minuten und kostet 20 Franken, die Bart Rasur mit heissem Tuch rund 20 Minuten. Du kannst online buchen oder während der Öffnungszeiten spontan kommen." },
+        { q: "Passt ein Termin am Samstag gut zu einem Ausflug in Studen?", a: "Samstags öffnen wir um 8.30 Uhr. Ein früher Termin lässt dir den restlichen Tag frei, zum Beispiel für einen Spaziergang am Jensberg." },
+      ],
+      fr: [
+        { q: "Combien de temps faut-il en voiture de Studen jusqu'à GYAN ?", a: "Pour les quelque neuf kilomètres de Studen au centre de Bienne, compte environ 15 minutes. Tu peux te garer dans un des parkings publics du centre-ville." },
+        { q: "Puis-je venir de Studen seulement pour la barbe ?", a: "Oui. La taille de barbe dure environ 15 minutes et coûte 20 francs, le rasage à la serviette chaude environ 20 minutes. Réserve en ligne ou passe pendant les heures d'ouverture." },
+        { q: "Un rendez-vous le samedi se combine-t-il bien avec une sortie à Studen ?", a: "Le samedi, on ouvre à 8 h 30. Un rendez-vous tôt te laisse le reste de la journée libre, par exemple pour une balade sur le Jensberg." },
+      ],
+      en: [
+        { q: "How long is the drive from Studen to GYAN?", a: "For the roughly nine kilometres from Studen into central Biel, allow about 15 minutes. You can park in one of the public car parks in the city centre." },
+        { q: "Can I come in from Studen just for my beard?", a: "Yes. A beard trim takes about 15 minutes and costs CHF 20, a hot towel shave about 20 minutes. Book online or drop in during opening hours." },
+        { q: "Does a Saturday appointment fit with a day out in Studen?", a: "On Saturdays we open at 8:30am. An early slot leaves the rest of your day free, for example for a walk on the Jensberg." },
+      ],
+    },
   },
 
   // ───────────────────────────── LENGNAU ─────────────────────────────
@@ -703,9 +1087,9 @@ And after your appointment? If you come at the weekend, you might combine the vi
       en: "Barber near Lengnau – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Lengnau: GYAN im Zentrum von Biel, rund 12 km entfernt und per Regionalzug schnell erreichbar. Haarschnitt, Fade und Bart.",
-      fr: "Coiffeur homme près de Longeau : GYAN au centre de Bienne, à environ 12 km, vite accessible en train régional. Coupe, dégradé et barbe.",
-      en: "Barber near Lengnau: GYAN in the centre of Biel, about 12 km away and quick to reach by regional train. Haircuts, fades and beards.",
+      de: "Coiffeur für Lengnau: GYAN in Biel, rund 12 km entfernt, per Regionalzug ohne Umsteigen. Herrenschnitt, Bart Trim und Full Service. Termin online buchen.",
+      fr: "Coiffeur pour Longeau : GYAN à Bienne, à 12 km, en train régional sans changement. Coupe homme, taille de barbe et Full Service. Réserve en ligne.",
+      en: "Barber for Lengnau: GYAN in Biel, about 12 km away by regional train, no change needed. Men's cuts, beard trims and Full Service. Book online now.",
     },
     h1: {
       de: "Herrencoiffeur für Lengnau",
@@ -713,52 +1097,100 @@ And after your appointment? If you come at the weekend, you might combine the vi
       en: "Barber near Lengnau",
     },
     intro: {
-      de: "Lengnau liegt am Jurasüdfuss zwischen Pieterlen und Grenchen, rund zwölf Kilometer von Biel. Mit dem Zug oder dem Auto bist du schnell bei GYAN an der Zentralstrasse 22.",
-      fr: "Longeau se trouve au pied sud du Jura, entre Perles et Granges, à environ douze kilomètres de Bienne. En train ou en voiture, tu es vite chez GYAN à la Zentralstrasse 22.",
-      en: "Lengnau sits at the southern foot of the Jura between Pieterlen and Grenchen, about twelve kilometres from Biel. By train or car you'll quickly reach GYAN on Zentralstrasse 22.",
+      de: "Lengnau ist die östlichste Berner Gemeinde am Jurasüdfuss vor Grenchen, rund zwölf Kilometer von Biel. Der Regionalzug bringt dich ohne Umsteigen zum Bahnhof Biel und damit fast vor unsere Tür.",
+      fr: "Longeau est la dernière commune bernoise au pied du Jura avant Granges, à une douzaine de kilomètres de Bienne. Le train régional t'amène sans changement à la gare de Bienne, presque devant notre porte.",
+      en: "Lengnau is the last Bernese village at the foot of the Jura before Grenchen, about twelve kilometres from Biel. The regional train takes you to Biel station without changing, almost to our door.",
     },
     body: {
-      de: `## Das letzte Berner Dorf vor Grenchen
+      de: `## Ein Bahnknoten am Kantonsrand
 
-Lengnau liegt direkt an der Grenze zum Kanton Solothurn, gleich neben Grenchen. Das Dorf hat einen eigenen Bahnhof an der Jurasüdfusslinie, und viele Lengnauer pendeln täglich nach Biel, zur Arbeit, zur Schule oder zum Einkaufen.
+Lengnau, auf Französisch Longeau, ist die letzte Berner Gemeinde am Jurasüdfuss, bevor das Gebiet des Kantons Solothurn mit Grenchen beginnt. Das Dorf ist auch ein kleiner Bahnknoten: Hier trifft die Jurasüdfusslinie zwischen Biel und Solothurn auf die Linie, die durch den Grenchenbergtunnel aus Moutier kommt. Für dich heisst das vor allem eines: Biel ist mit der Bahn sehr gut erreichbar, und unser Salon an der Zentralstrasse 22 liegt nur ein paar Gehminuten vom Bahnhof Biel entfernt.
 
-## So kommst du zu uns
+## Zwölf Kilometer, zwei bequeme Wege
 
-Der Regionalzug bringt dich via Pieterlen in wenigen Minuten zum Bahnhof Biel. Von dort gehst du zu Fuss ein paar Minuten bis zur Zentralstrasse 22. Mit dem Auto fährst du über die Hauptstrasse oder die A5 ins Bieler Zentrum und parkierst in einem der öffentlichen Parkhäuser.
+Mit dem Regionalzug fährst du ab dem Bahnhof Lengnau über Pieterlen direkt nach Biel, ohne umzusteigen. Vom Bahnhof Biel gehst du zu Fuss zur Zentralstrasse, und schon bist du da. So kannst du den Schnitt gut mit einem Arbeitstag oder Besorgungen in der Stadt verbinden.
 
-## Ein Termin, der in den Pendleralltag passt
+Mit dem Auto folgst du der Hauptstrasse westwärts dem Jurafuss entlang, durch Pieterlen und über Bözingen ins Zentrum. Rechne grosszügig mit etwa 20 Minuten und stell den Wagen in eines der öffentlichen Parkhäuser in der Innenstadt. Alternativ bringt dich die A5 Richtung Biel. Und musst du nach dem Termin weiter, ist der Bahnhof Biel als grösster Knoten der Region der ideale Ausgangspunkt für deine nächste Verbindung.
 
-Weil der Salon so nah am Bahnhof liegt, lässt sich ein Haarschnitt gut vor oder nach der Arbeit einplanen. Donnerstag und Freitag haben wir bis 20 Uhr offen, am Samstag ab 8.30 Uhr. Beliebt sind der [Herren Haarschnitt](service:haarschnitt-biel) und das [GYAN Classic Paket](service:haarschnitt-und-bart) mit Haarschnitt und Bart.
+## Was du aus Lengnau mitnehmen kannst
 
-Deinen Termin [buchst du online](page:booking), die Bestätigung kommt sofort. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei. Bezahlt wird bar, mit Karte oder mit TWINT. Kommst du eher aus der Nachbargemeinde? Dann schau auf unserer Seite für [Pieterlen](seo:pieterlen) vorbei.`,
-      fr: `## Le dernier village bernois avant Granges
+Für den Alltag reicht oft der [Herren Haarschnitt](service:haarschnitt-biel): Beratung, Schere und Maschine, saubere Konturen, rund 20 Minuten. Ohne Termin kostet er 35 Franken, mit Termin 40 Franken. Ist dein Bart aus der Form geraten, bringen wir ihn beim Bart Trim zurück und ziehen die Konturen mit der Klinge nach.
 
-Longeau se trouve juste à la frontière avec le canton de Soleure, à côté de Granges. Le village a sa propre gare sur la ligne du pied du Jura, et beaucoup d'habitants font chaque jour la navette vers Bienne pour le travail, l'école ou les courses.
+Hast du dir einen ganzen Vormittag in Biel freigehalten, ist der [GYAN Full Service](service:gyan-full-service) die ausführlichste Variante: Haarschnitt, Bart, Face Treatment, Wäsche und Styling in rund 50 Minuten. Du sitzt dabei in einem braunen Ledersessel, mit dem roten Perserteppich an der Wand im Blick.
 
-## Comment venir
+## Wann es aus Lengnau am besten passt
 
-Le train régional t'amène via Perles en quelques minutes à la gare de Bienne. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22. En voiture, tu rejoins le centre de Bienne par la route principale ou l'A5 et tu te gares dans un des parkings publics.
+Montag bis Mittwoch haben wir von 9 bis 19 Uhr offen, Donnerstag und Freitag bis 20 Uhr, Samstag von 8.30 bis 18 Uhr. Sonntags ist geschlossen. Gerade die langen Abende am Donnerstag und Freitag passen, wenn du tagsüber arbeitest und danach noch Zeit in Biel hast.
 
-## Un rendez-vous qui s'intègre au quotidien des pendulaires
+Für eine feste Zeit [buchst du online](page:booking), die Bestätigung kommt sofort. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Für das Nachbardorf auf dem Weg nach Biel gibt es eine eigene Seite: [Pieterlen](seo:pieterlen).`,
+      fr: `## Un nœud ferroviaire à la limite du canton
 
-Comme le salon est tout près de la gare, une coupe se planifie facilement avant ou après le travail. Le jeudi et le vendredi, nous sommes ouverts jusqu'à 20 h, le samedi dès 8 h 30. Les plus demandés : la [coupe homme](service:haarschnitt-biel) et la [formule GYAN Classic](service:haarschnitt-und-bart) avec coupe et barbe.
+Longeau, Lengnau en allemand, est la dernière commune bernoise au pied du Jura avant le territoire soleurois et Granges. Le village est aussi un petit nœud ferroviaire : la ligne du pied du Jura entre Bienne et Soleure y rejoint la ligne qui arrive de Moutier par le tunnel du Grenchenberg. Pour toi, cela veut surtout dire une chose : Bienne est très bien desservie, et notre salon à la Zentralstrasse 22 n'est qu'à quelques minutes à pied de la gare de Bienne.
 
-[Réserve en ligne](page:booking) ton rendez-vous, la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu viens plutôt de la commune voisine ? Jette un œil à notre page pour [Perles](seo:pieterlen).`,
-      en: `## The last Bernese village before Grenchen
+## Douze kilomètres, deux trajets simples
 
-Lengnau sits right on the border with the canton of Solothurn, next to Grenchen. The village has its own station on the line along the foot of the Jura, and many people from Lengnau commute to Biel every day for work, school or shopping.
+En train régional, tu pars de la gare de Longeau, passes par Perles et arrives directement à Bienne, sans changement. De la gare de Bienne, tu rejoins la Zentralstrasse à pied et tu y es. Pratique pour combiner la coupe avec une journée de travail ou des courses en ville.
 
-## Getting here
+En voiture, tu suis la route principale vers l'ouest le long du pied du Jura, à travers Perles puis par Boujean jusqu'au centre. Compte large environ 20 minutes et laisse la voiture dans un des parkings publics du centre-ville. L'A5 en direction de Bienne est l'autre option. Et si tu repars ailleurs après ton rendez-vous, la gare de Bienne, le plus grand nœud ferroviaire de la région, est le point de départ idéal.
 
-The regional train takes you via Pieterlen to Biel station in a few minutes. From there it's a short walk to Zentralstrasse 22. By car, take the main road or the A5 into central Biel and use one of the public car parks.
+## Ce que tu peux t'offrir en venant de Longeau
 
-## An appointment that fits a commuter's day
+Pour le quotidien, la [coupe homme](service:haarschnitt-biel) suffit souvent : conseil, ciseaux et tondeuse, contours nets, environ 20 minutes. Sans rendez-vous, elle coûte 35 francs, avec rendez-vous 40 francs. Si ta barbe a perdu sa forme, la taille de barbe la remet en ordre, avec les contours repris au rasoir.
 
-Because the salon is so close to the station, a haircut is easy to plan before or after work. On Thursdays and Fridays we're open until 8 pm, on Saturdays from 8:30 am. Popular choices are the [men's haircut](service:haarschnitt-biel) and the [GYAN Classic package](service:haarschnitt-und-bart) with haircut and beard.
+Si tu t'es réservé une matinée entière à Bienne, le [GYAN Full Service](service:gyan-full-service) est la version la plus complète : coupe, barbe, Face Treatment, shampooing et coiffage en environ 50 minutes. Tu es installé dans un fauteuil en cuir brun, face au tapis persan rouge accroché au mur.
 
-[Book your appointment online](page:booking) and get instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live closer to the next village? Have a look at our page for [Pieterlen](seo:pieterlen).`,
+## Quand venir depuis Longeau
+
+Du lundi au mercredi, on est ouverts de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, le samedi de 8 h 30 à 18 h. Fermé le dimanche. Les soirées longues du jeudi et du vendredi tombent bien si tu travailles la journée et que tu as encore un moment à Bienne ensuite.
+
+Pour une heure fixe, [réserve en ligne](page:booking), la confirmation est immédiate. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Le village voisin sur la route de Bienne a sa propre page : [Perles](seo:pieterlen).`,
+      en: `## A rail junction on the cantonal border
+
+Lengnau, Longeau in French, is the last Bernese village at the foot of the Jura before you cross into the canton of Solothurn and reach Grenchen. It's also a small rail junction: the Jura foot line between Biel and Solothurn meets the line that comes from Moutier through the Grenchenberg tunnel. What that means for you is simple: Biel is easy to reach by train, and our salon on Zentralstrasse 22 is only a few minutes' walk from Biel station.
+
+## Twelve kilometres, two easy options
+
+The regional train leaves Lengnau station, stops in Pieterlen and runs straight into Biel, no change needed. From Biel station you walk over to Zentralstrasse and you're there. That makes it easy to combine a cut with a working day or some errands in town.
+
+If you drive, follow the main road west along the foot of the Jura, through Pieterlen and on through Bözingen into the centre. Allow a generous 20 minutes and leave the car in one of the public car parks in the city centre. The A5 towards Biel is the other option. And if you're travelling on after your appointment, Biel station is the biggest rail hub in the region, so your next connection is right there.
+
+## What to book when you come from Lengnau
+
+For everyday upkeep, the [men's haircut](service:haarschnitt-biel) is usually all you need: consultation, scissors and clippers, clean outlines, about 20 minutes. It's CHF 35 as a walk-in and CHF 40 with an appointment. If your beard has lost its shape, the beard trim sorts it out, with the lines finished using the razor.
+
+If you've set aside a whole morning in Biel, the [GYAN Full Service](service:gyan-full-service) is the most complete option: haircut, beard, Face Treatment, wash and styling in about 50 minutes. You'll be sitting in a brown leather chair, looking at the red Persian carpet on the wall.
+
+## When it suits you best from Lengnau
+
+We're open Monday to Wednesday from 9am to 7pm, Thursday and Friday until 8pm, and Saturday from 8:30am to 6pm. Closed on Sundays. The longer Thursday and Friday evenings work well if you're busy during the day and still have time in Biel afterwards.
+
+For a fixed time, [book online](page:booking) and get instant confirmation. Walk-ins are welcome during opening hours too. Pay in cash, by card or with TWINT. The neighbouring village on the way to Biel has its own page: [Pieterlen](seo:pieterlen).`,
     },
     neighbors: ["pieterlen", "grenchen", "safnern"],
+    carMin: 20,
+    transit: {
+      de: "Ab dem Bahnhof Lengnau fährt der Regionalzug über Pieterlen direkt zum Bahnhof Biel, von dort gehst du ein paar Minuten zu Fuss.",
+      fr: "Depuis la gare de Longeau, le train régional passe par Perles et va directement à la gare de Bienne, puis quelques minutes à pied.",
+      en: "From Lengnau station the regional train runs via Pieterlen straight to Biel station, then it's a few minutes on foot.",
+    },
+    services: ["haarschnitt-biel", "bart-trimmen-biel", "gyan-full-service"],
+    faq: {
+      de: [
+        { q: "Wie lange brauche ich von Lengnau mit dem Auto zu GYAN?", a: "Für die rund zwölf Kilometer rechnest du grosszügig mit etwa 20 Minuten bis ins Bieler Zentrum. Parkieren kannst du in einem der öffentlichen Parkhäuser in der Innenstadt." },
+        { q: "Lohnt sich ein Termin aus Lengnau am Samstag?", a: "Ja, am Samstag ist der Salon schon ab 8.30 Uhr und bis 18 Uhr offen. Am frühen Morgen hast du den Schnitt erledigt, bevor das Wochenende richtig beginnt." },
+        { q: "Kann ich aus Lengnau auch einfach ohne Termin vorbeikommen?", a: "Ja, Walk-ins sind während der Öffnungszeiten willkommen, und der Herren Haarschnitt kostet ohne Termin 35 statt 40 Franken. Mit einer Online-Buchung hast du dafür eine feste Zeit und sofortige Bestätigung." },
+      ],
+      fr: [
+        { q: "Combien de temps en voiture de Longeau jusqu'à GYAN ?", a: "Pour la douzaine de kilomètres, compte large environ 20 minutes jusqu'au centre de Bienne. Tu peux te garer dans un des parkings publics du centre-ville." },
+        { q: "Un rendez-vous le samedi depuis Longeau, ça vaut le coup ?", a: "Oui, le samedi le salon est ouvert dès 8 h 30 et jusqu'à 18 h. Tôt le matin, ta coupe est faite avant que le week-end commence vraiment." },
+        { q: "Je peux venir de Longeau sans rendez-vous ?", a: "Oui, les clients sans rendez-vous sont les bienvenus pendant les heures d'ouverture, et la coupe homme coûte alors 35 francs au lieu de 40. En réservant en ligne, tu as une heure fixe et une confirmation immédiate." },
+      ],
+      en: [
+        { q: "How long is the drive from Lengnau to GYAN?", a: "For the roughly twelve kilometres, allow a generous 20 minutes to central Biel. You can park in one of the public car parks in the city centre." },
+        { q: "Is a Saturday appointment worth it from Lengnau?", a: "Yes, on Saturdays the salon opens at 8:30am and stays open until 6pm. Come early and the cut is done before the weekend properly starts." },
+        { q: "Can I just walk in from Lengnau without booking?", a: "Yes, walk-ins are welcome during opening hours, and the men's haircut costs CHF 35 instead of 40 without an appointment. Booking online gets you a fixed time and instant confirmation." },
+      ],
+    },
   },
 
   // ───────────────────────────── GRENCHEN ─────────────────────────────
@@ -773,9 +1205,9 @@ Because the salon is so close to the station, a haircut is easy to plan before o
       en: "Barber near Grenchen – fades & beards in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Grenchen: GYAN in Biel, ab Grenchen Nord oder Süd mit dem Zug in wenigen Minuten erreichbar. Fade, Bart und Herrenschnitt.",
-      fr: "Coiffeur homme près de Granges : GYAN à Bienne, à quelques minutes en train depuis Granges-Nord ou Granges-Sud. Dégradé, barbe et coupe homme.",
-      en: "Barber near Grenchen: GYAN in Biel, just minutes by train from Grenchen Nord or Grenchen Süd. Fades, beards and men's haircuts, book online.",
+      de: "Barbier für Grenchen: GYAN in Biel, ab Grenchen Nord oder Süd direkt per Zug. Nassrasur mit heissem Tuch, Bart Trim und Signature Cut. Online buchen.",
+      fr: "Barbier pour Granges : GYAN à Bienne, en train direct depuis Granges-Nord ou Sud. Rasage à la serviette chaude, barbe et Signature Cut. Réserve en ligne.",
+      en: "Barber for Grenchen: GYAN in Biel, a direct train from Grenchen Nord or Süd. Hot towel shaves, beard trims and the Signature Cut. Book your visit online.",
     },
     h1: {
       de: "Herrencoiffeur für Grenchen",
@@ -783,52 +1215,100 @@ Because the salon is so close to the station, a haircut is easy to plan before o
       en: "Barber near Grenchen",
     },
     intro: {
-      de: "Grenchen, die Uhrenstadt im Kanton Solothurn, liegt rund sechzehn Kilometer von Biel. Dank zwei Bahnhöfen bist du schnell im Bieler Zentrum und bei GYAN an der Zentralstrasse 22.",
-      fr: "Granges, la ville horlogère du canton de Soleure, se trouve à environ seize kilomètres de Bienne. Grâce à ses deux gares, tu es vite au centre de Bienne et chez GYAN à la Zentralstrasse 22.",
-      en: "Grenchen, the watchmaking town in the canton of Solothurn, is about sixteen kilometres from Biel. With two railway stations, you'll quickly be in central Biel and at GYAN on Zentralstrasse 22.",
+      de: "Grenchen im Kanton Solothurn liegt rund 16 Kilometer von Biel, und gleich zwei Bahnhöfe verbinden die Stadt direkt mit dem Bahnhof Biel. Von dort sind es nur ein paar Gehminuten zu GYAN an der Zentralstrasse 22.",
+      fr: "Granges, dans le canton de Soleure, se trouve à environ 16 kilomètres de Bienne, et deux gares relient la ville directement à la gare de Bienne. De là, GYAN à la Zentralstrasse 22 n'est qu'à quelques minutes à pied.",
+      en: "Grenchen in the canton of Solothurn is about 16 kilometres from Biel, and two stations link the town directly to Biel station. From there, GYAN on Zentralstrasse 22 is just a few minutes' walk.",
     },
     body: {
-      de: `## Zwei Uhrenstädte, eng verbunden
+      de: `## Von der Uhrenstadt in die Uhrenstadt
 
-Grenchen und Biel teilen eine lange Geschichte in der Uhrenindustrie, und bis heute pendeln viele Menschen zwischen den beiden Städten. Grenchen liegt am Jurasüdfuss, mit dem Grenchenberg im Rücken und dem Regionalflugplatz in der Ebene.
+Grenchen, auf Französisch Granges, liegt im Kanton Solothurn am Jurasüdfuss, mit dem Grenchenberg im Rücken und dem Regionalflugplatz in der Ebene Richtung Aare. Wie Biel ist Grenchen seit langem eng mit der Uhrenindustrie verbunden, und zwischen den beiden Städten wird viel gependelt. Mit rund 16 Kilometern ist Grenchen einer der weiter entfernten Orte, für die wir eine eigene Seite haben. Umso mehr soll sich die Fahrt nach Biel lohnen. Arbeitest du ohnehin in Biel, verbindest du den Termin einfach mit deinem Arbeitsweg.
 
-## Mit dem Zug oder Auto nach Biel
+## Grenchen Nord oder Grenchen Süd?
 
-Grenchen hat zwei Bahnhöfe: Ab Grenchen Nord fahren die Fernverkehrszüge Richtung Biel, ab Grenchen Süd die Regionalzüge entlang des Jurasüdfusses. In beiden Fällen bist du in wenigen Minuten am Bahnhof Biel und läufst von dort kurz zur Zentralstrasse 22. Mit dem Auto führt die A5 direkt nach Biel.
+Grenchen hat zwei Bahnhöfe, und von beiden kommst du direkt nach Biel. Grenchen Nord liegt an der Linie, die durch den Grenchenbergtunnel aus dem Jura kommt, Grenchen Süd an der Jurasüdfusslinie zwischen Solothurn und Biel. Welchen du nimmst, hängt davon ab, in welchem Teil der Stadt du wohnst. Am Bahnhof Biel steigst du aus und gehst ein paar Minuten zu Fuss bis zur Zentralstrasse 22.
 
-## Fade und Bart in Ruhe
+Mit dem Auto führt die A5 von Grenchen nach Biel, alternativ die Hauptstrasse über Lengnau und Pieterlen. Rechne grosszügig mit etwa 25 Minuten und parkiere in einem öffentlichen Parkhaus im Bieler Zentrum.
 
-Bei GYAN nehmen wir uns Zeit für jeden Schnitt. Beim [Fade](seo:fade) arbeiten wir den Übergang sauber aus, beim [Bart Trim](service:bart-trimmen-biel) kommen Länge und Konturen in Form. Wer sich etwas Gutes tun will, gönnt sich die [Bart Rasur mit heissem Tuch](service:nassrasur-biel).
+## Bart und Rasur, wenn du schon da bist
 
-Termine [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Auf dem Weg nach Biel liegt übrigens [Lengnau](seo:lengnau), auch dafür haben wir eine eigene Seite.`,
-      fr: `## Deux villes horlogères, étroitement liées
+Wer eine längere Anfahrt hat, will mehr als nur kurz nachschneiden. Bei GYAN liegt ein Schwerpunkt auf dem Bart. Beim Bart Trim bringen wir Länge und Form in Ordnung und ziehen die Konturen mit der Klinge nach. Die [Bart Rasur](service:nassrasur-biel) ist die klassische Nassrasur mit heissem Tuch, Schaum und Pflege, rund 20 Minuten für 28 Franken.
 
-Granges et Bienne partagent une longue histoire horlogère, et aujourd'hui encore, beaucoup de gens font la navette entre les deux villes. Granges se trouve au pied sud du Jura, avec le Grenchenberg en toile de fond et l'aérodrome régional dans la plaine.
+Für die Haare empfehlen wir den [GYAN Signature Cut](service:gyan-signature): Haarschnitt plus Styling und konkrete Tipps, wie du die Frisur zu Hause selbst hinbekommst. Das spart dir zwischen zwei Besuchen in Biel manchen Ärger vor dem Spiegel. Alles zusammen gibt es im GYAN Premium Paket mit Haarschnitt, Bart, Wäsche und Styling.
 
-## En train ou en voiture jusqu'à Bienne
+## So planst du den Besuch aus Grenchen
 
-Granges a deux gares : depuis Granges-Nord partent les trains grandes lignes vers Bienne, depuis Granges-Sud les trains régionaux le long du pied du Jura. Dans les deux cas, tu es en quelques minutes à la gare de Bienne, puis à deux pas de la Zentralstrasse 22. En voiture, l'A5 mène directement à Bienne.
+Damit du nach der Anfahrt nicht warten musst, [buchst du am besten online](page:booking), die Bestätigung kommt sofort. Ohne Termin bist du während der Öffnungszeiten trotzdem willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag 9 bis 20 Uhr, Samstag 8.30 bis 18 Uhr, Sonntag geschlossen.
 
-## Dégradé et barbe en toute tranquillité
+Im Salon erwarten dich braune Ledersessel und ein roter Perserteppich an der Wand. Bezahlt wird bar, mit Karte oder mit TWINT. Auf dem Weg nach Biel liegt [Lengnau](seo:lengnau), auch dafür gibt es eine eigene Seite.`,
+      fr: `## D'une ville horlogère à l'autre
 
-Chez GYAN, on prend le temps pour chaque coupe. Pour un [dégradé](seo:fade), nous travaillons la transition avec soin ; avec la [taille de barbe](service:bart-trimmen-biel), longueur et contours sont remis en forme. Pour te faire plaisir, offre-toi le [rasage à la serviette chaude](service:nassrasur-biel).
+Granges, Grenchen en allemand, se trouve dans le canton de Soleure au pied du Jura, avec le Grenchenberg derrière elle et l'aérodrome régional dans la plaine en direction de l'Aar. Comme Bienne, Granges est liée depuis longtemps à l'horlogerie, et beaucoup de gens font la navette entre les deux villes. Avec environ 16 kilomètres, Granges fait partie des localités les plus éloignées pour lesquelles nous avons une page. Raison de plus pour que le trajet jusqu'à Bienne en vaille la peine.
 
-[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h, samedi de 8 h 30 à 18 h. Sur la route de Bienne se trouve [Longeau](seo:lengnau), qui a aussi sa propre page.`,
-      en: `## Two watchmaking towns, closely linked
+## Granges-Nord ou Granges-Sud ?
 
-Grenchen and Biel share a long history in watchmaking, and to this day many people commute between the two towns. Grenchen lies at the foot of the Jura, with the Grenchenberg behind it and the regional airfield on the plain.
+Granges a deux gares, et des deux tu arrives directement à Bienne. Granges-Nord se trouve sur la ligne qui sort du Jura par le tunnel du Grenchenberg, Granges-Sud sur la ligne du pied du Jura entre Soleure et Bienne. Le choix dépend simplement du quartier où tu habites. À la gare de Bienne, tu descends et tu marches quelques minutes jusqu'à la Zentralstrasse 22.
 
-## By train or car to Biel
+En voiture, l'A5 relie Granges à Bienne, sinon la route principale passe par Longeau et Perles. Compte large environ 25 minutes et gare-toi dans un parking public au centre de Bienne.
 
-Grenchen has two stations: long-distance trains to Biel leave from Grenchen Nord, regional trains along the foot of the Jura from Grenchen Süd. Either way you'll be at Biel station in a few minutes, with a short walk to Zentralstrasse 22. By car, the A5 takes you straight to Biel.
+## Barbe et rasage, tant que tu es là
 
-## Fades and beards without the rush
+Quand le trajet est plus long, on veut plus qu'une petite retouche. Chez GYAN, la barbe est un point fort. La taille de barbe remet longueur et forme en ordre, avec les contours repris au rasoir. Le [rasage à la serviette chaude](service:nassrasur-biel) est le rasage traditionnel avec serviette chaude, mousse et soin, environ 20 minutes pour 28 francs.
 
-At GYAN we take our time with every cut. On a [fade](seo:fade) we blend the transition carefully, and with the [beard trim](service:bart-trimmen-biel) length and lines get back into shape. If you want to treat yourself, try the [hot towel shave](service:nassrasur-biel).
+Pour les cheveux, on te conseille le [GYAN Signature Cut](service:gyan-signature) : coupe, coiffage et conseils concrets pour refaire la coiffure toi-même. De quoi t'éviter quelques soucis devant le miroir entre deux visites à Bienne. Pour tout réunir, il y a la formule GYAN Premium avec coupe, barbe, shampooing et coiffage.
 
-[Book your appointment online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours: Monday to Wednesday 9 am to 7 pm, Thursday and Friday until 8 pm, Saturday 8:30 am to 6 pm. On the way to Biel you'll pass [Lengnau](seo:lengnau), which has its own page too.`,
+## Organiser ta visite depuis Granges
+
+Pour ne pas attendre après le trajet, le mieux est de [réserver en ligne](page:booking), la confirmation est immédiate. Sans rendez-vous, tu es quand même le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h, samedi de 8 h 30 à 18 h, fermé le dimanche.
+
+Au salon t'attendent des fauteuils en cuir brun et un tapis persan rouge au mur. Paiement en espèces, par carte ou avec TWINT. Sur la route de Bienne, [Longeau](seo:lengnau) a aussi sa propre page.`,
+      en: `## From one watch town to another
+
+Grenchen, Granges in French, lies in the canton of Solothurn at the foot of the Jura, with the Grenchenberg behind it and the regional airfield out on the plain towards the Aare. Like Biel, Grenchen has long been tied to the watch industry, and plenty of people commute between the two towns. At around 16 kilometres, Grenchen is one of the furthest places we have a page for, so the trip to Biel should be worth your while.
+
+## Grenchen Nord or Grenchen Süd?
+
+Grenchen has two stations, and both get you straight to Biel. Grenchen Nord is on the line that comes out of the Jura through the Grenchenberg tunnel, and Grenchen Süd is on the Jura foot line between Solothurn and Biel. Which one you use just depends on which part of town you live in. Get off at Biel station and it's a few minutes' walk to Zentralstrasse 22.
+
+By car, the A5 links Grenchen and Biel, or you can take the main road through Lengnau and Pieterlen. Allow a generous 25 minutes and park in one of the public car parks in central Biel.
+
+## Beard and shave while you're here
+
+When the journey is a bit longer, a quick tidy-up isn't really enough. Beards are a big part of what we do at GYAN. The beard trim gets length and shape back in order, with the lines finished using the razor. The [hot towel shave](service:nassrasur-biel) is a traditional wet shave with hot towel, lather and aftercare, about 20 minutes for CHF 28.
+
+For your hair, go for the [GYAN Signature Cut](service:gyan-signature): a haircut plus styling and practical tips so you can recreate the look yourself. That saves you some frustration in front of the mirror between visits to Biel. If you want the lot, the GYAN Premium package bundles haircut, beard, wash and styling.
+
+## Planning your visit from Grenchen
+
+So you don't have to wait after the journey, it's best to [book online](page:booking), with instant confirmation. Walk-ins are still welcome during opening hours: Monday to Wednesday 9am to 7pm, Thursday and Friday 9am to 8pm, Saturday 8:30am to 6pm, closed on Sundays.
+
+Inside you'll find brown leather chairs and a red Persian carpet on the wall. Pay in cash, by card or with TWINT. On the way to Biel you'll pass [Lengnau](seo:lengnau), which has its own page too.`,
     },
     neighbors: ["lengnau", "pieterlen"],
+    carMin: 25,
+    transit: {
+      de: "Ab Grenchen Nord oder Grenchen Süd fährst du mit dem Zug direkt zum Bahnhof Biel und gehst von dort ein paar Minuten zu Fuss zum Salon.",
+      fr: "Depuis Granges-Nord ou Granges-Sud, le train t'amène directement à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "From Grenchen Nord or Grenchen Süd the train takes you straight to Biel station, then it's a few minutes on foot to the salon.",
+    },
+    services: ["nassrasur-biel", "bart-trimmen-biel", "gyan-signature", "gyan-premium-paket"],
+    faq: {
+      de: [
+        { q: "Welcher Bahnhof in Grenchen ist für die Fahrt zu GYAN besser?", a: "Beide funktionieren: Ab Grenchen Nord und ab Grenchen Süd fahren Züge direkt zum Bahnhof Biel. Nimm einfach den, der näher bei dir liegt, vom Bahnhof Biel sind es ein paar Minuten zu Fuss zum Salon." },
+        { q: "Wie lange fahre ich von Grenchen mit dem Auto nach Biel?", a: "Für die rund 16 Kilometer über die A5 oder die Hauptstrasse rechnest du grosszügig mit etwa 25 Minuten. Im Bieler Zentrum parkierst du in einem öffentlichen Parkhaus." },
+        { q: "Gibt es bei GYAN eine Nassrasur für Kunden aus Grenchen?", a: "Ja, die Bart Rasur mit heissem Tuch, Schaum und Pflege dauert rund 20 Minuten und kostet 28 Franken. Am besten buchst du sie online, damit nach der Anfahrt aus Grenchen deine Zeit reserviert ist." },
+      ],
+      fr: [
+        { q: "Quelle gare de Granges choisir pour venir chez GYAN ?", a: "Les deux conviennent : depuis Granges-Nord comme depuis Granges-Sud, des trains vont directement à la gare de Bienne. Prends celle qui est la plus proche de chez toi, puis quelques minutes à pied jusqu'au salon." },
+        { q: "Combien de temps en voiture de Granges à Bienne ?", a: "Pour les quelque 16 kilomètres par l'A5 ou la route principale, compte large environ 25 minutes. Au centre de Bienne, gare-toi dans un parking public." },
+        { q: "GYAN propose-t-il un rasage traditionnel aux clients de Granges ?", a: "Oui, le rasage à la serviette chaude avec mousse et soin dure environ 20 minutes et coûte 28 francs. Le mieux est de réserver en ligne pour que ton créneau t'attende à ton arrivée de Granges." },
+      ],
+      en: [
+        { q: "Which Grenchen station is better for getting to GYAN?", a: "Either works: trains run straight to Biel station from both Grenchen Nord and Grenchen Süd. Take whichever is closer to you, then it's a few minutes' walk from Biel station to the salon." },
+        { q: "How long does the drive from Grenchen to Biel take?", a: "For the roughly 16 kilometres via the A5 or the main road, allow a generous 25 minutes. In central Biel, park in one of the public car parks." },
+        { q: "Can I get a wet shave at GYAN if I come from Grenchen?", a: "Yes, the hot towel shave with lather and aftercare takes about 20 minutes and costs CHF 28. It's best to book online so your slot is waiting when you arrive from Grenchen." },
+      ],
+    },
   },
 
   // ───────────────────────────── MAGGLINGEN ─────────────────────────────
@@ -843,9 +1323,9 @@ At GYAN we take our time with every cut. On a [fade](seo:fade) we blend the tran
       en: "Barber near Magglingen – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Magglingen: mit der Standseilbahn hinunter nach Biel und in wenigen Minuten bei GYAN. Haarschnitt, Fade und Bart, online buchen.",
-      fr: "Coiffeur homme près de Macolin : descends en funiculaire à Bienne et tu es en quelques minutes chez GYAN. Coupe, dégradé et barbe, réserve en ligne.",
-      en: "Barber near Magglingen: take the funicular down to Biel and you're at GYAN within minutes. Haircuts, fades and beards, book your appointment online.",
+      de: "Coiffeur für Magglingen: mit der Standseilbahn nach Biel zu GYAN. Haarschnitt, Face Treatment oder Premium Paket nach dem Training. Jetzt online buchen.",
+      fr: "Coiffeur pour Macolin : en funiculaire jusqu'à Bienne chez GYAN. Coupe, Face Treatment ou formule Premium après l'entraînement. Réserve en ligne.",
+      en: "Barber for Magglingen: take the funicular down to GYAN in Biel. Haircut, Face Treatment or Premium package after training. Book your slot online now.",
     },
     h1: {
       de: "Herrencoiffeur für Magglingen",
@@ -853,52 +1333,100 @@ At GYAN we take our time with every cut. On a [fade](seo:fade) we blend the tran
       en: "Barber near Magglingen",
     },
     intro: {
-      de: "Magglingen liegt auf einer Sonnenterrasse hoch über Biel und dem See. Die Standseilbahn bringt dich direkt in die Stadt, von dort ist es nicht weit bis zu GYAN an der Zentralstrasse 22.",
-      fr: "Macolin se trouve sur une terrasse ensoleillée, bien au-dessus de Bienne et du lac. Le funiculaire t'amène directement en ville, d'où GYAN à la Zentralstrasse 22 n'est pas loin.",
-      en: "Magglingen sits on a sunny terrace high above Biel and the lake. The funicular takes you straight down into town, and from there GYAN on Zentralstrasse 22 isn't far.",
+      de: "Magglingen liegt auf einer Sonnenterrasse hoch über Biel, rund acht Kilometer vom Zentrum. Die Standseilbahn bringt dich in wenigen Minuten hinunter, von dort ist GYAN an der Zentralstrasse 22 nicht weit.",
+      fr: "Macolin domine Bienne depuis sa terrasse ensoleillée, à environ huit kilomètres du centre. Le funiculaire te descend en quelques minutes, et GYAN à la Zentralstrasse 22 n'est alors plus très loin.",
+      en: "Magglingen sits on a sunny terrace high above Biel, about eight kilometres from the centre. The funicular brings you down in a few minutes, and from there GYAN on Zentralstrasse 22 isn't far.",
     },
     body: {
-      de: `## Sport, Aussicht und frische Luft
+      de: `## Magglingen: Sportplateau hoch über dem See
 
-Magglingen gehört zur Gemeinde Leubringen und ist schweizweit als Sportort bekannt: Hier befindet sich die Eidgenössische Hochschule für Sport. Wer hier wohnt, trainiert oder studiert, geniesst den Blick über den Bielersee bis zu den Alpen und ist trotzdem schnell in der Stadt.
+Magglingen, auf Französisch Macolin, liegt auf einer Terrasse am Jurahang deutlich oberhalb von Leubringen und gehört zur Gemeinde Leubringen. Schweizweit bekannt ist der Ort als Zentrum des Sports: Hier befindet sich die Eidgenössische Hochschule für Sport. Rundherum gibt es Wald, Wiesen und Wanderwege, und von der Terrasse geht der Blick über Biel und den Bielersee bis zu den Alpen. Wer hier wohnt, studiert oder trainiert, lebt ruhig und doch nur eine kurze Fahrt von der Stadt entfernt.
 
-## Mit der Bahn ins Zentrum
+## Hinunter mit der Magglingenbahn
 
-Die Standseilbahn Biel–Magglingen verbindet das Plateau mit der Stadt. Von der Talstation erreichst du das Bieler Zentrum mit dem Bus oder zu Fuss, die Zentralstrasse 22 liegt nur wenige Gehminuten vom Bahnhof. Mit dem Auto fährst du über Leubringen hinunter nach Biel.
+Die Standseilbahn zwischen Biel und Magglingen gehört zu den ältesten der Region und überwindet den steilen Hang in wenigen Minuten. Unten in Biel gehst du zu Fuss oder fährst mit dem Bus bis zum Bahnhof. Von dort erreichst du die Zentralstrasse 22 in wenigen Gehminuten. So brauchst du in der Stadt weder Auto noch Parkplatz. Wer gerne zu Fuss unterwegs ist, kann an einem schönen Tag auch auf einem der Waldwege hinunter nach Biel wandern und nach dem Termin bequem mit der Bahn wieder hinauffahren.
 
-## Gepflegt nach dem Training
+Mit dem Auto fährst du über Leubringen den Hang hinunter ins Bieler Zentrum. Für die rund acht Kilometer solltest du etwa eine Viertelstunde einplanen. Parkieren kannst du in einem öffentlichen Parkhaus oder auf einem öffentlichen Parkplatz in der Innenstadt.
 
-Kurze, pflegeleichte Schnitte sind bei sportlichen Kunden besonders beliebt. Ein sauberer [Fade](seo:fade) oder ein klassischer [Herren Haarschnitt](service:haarschnitt-biel) sitzt auch nach dem Training. Fürs Gesicht nach einem langen Tag draussen gibt es das [GYAN Face Treatment](service:gesichtspflege-biel) mit heissem Tuch und Pflege.
+## Nach dem Training in den Stuhl
 
-[Online buchen](page:booking) geht schnell, die Bestätigung kommt sofort. Ohne Termin kommst du während der Öffnungszeiten einfach vorbei. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du weiter unten am Hang? Dann passt unsere Seite für [Leubringen](seo:evilard).`,
-      fr: `## Sport, vue et air pur
+Wer viel Sport treibt, will einen Schnitt, der unter der Mütze, nach dem Duschen und nach dem Lauf im Wald gut aussieht. Ein kurzer, sauber konturierter [Herren Haarschnitt](service:haarschnitt-biel) dauert bei uns rund 20 Minuten. Nach einem langen Tag an der frischen Luft tut das [GYAN Face Treatment](service:gesichtspflege-biel) gut: heisses Tuch, Reinigung und Pflege in etwa 20 Minuten.
 
-Macolin fait partie de la commune d'Evilard et est connu dans toute la Suisse comme haut lieu du sport : c'est ici que se trouve la Haute école fédérale de sport. Qui y habite, s'y entraîne ou y étudie profite de la vue sur le lac de Bienne jusqu'aux Alpes, tout en étant vite en ville.
+Wenn du dir mehr Zeit nehmen willst, kombiniert das [GYAN Premium Paket](service:gyan-premium-paket) Haarschnitt, Bart, Wäsche und Styling in rund 40 Minuten. Das passt gut an einem trainingsfreien Tag oder am Samstag, wenn wir schon um 8.30 Uhr öffnen.
 
-## En funiculaire jusqu'au centre
+## Zeiten, die zu Training und Studium passen
 
-Le funiculaire Bienne–Macolin relie le plateau à la ville. Depuis la station inférieure, tu rejoins le centre de Bienne en bus ou à pied ; la Zentralstrasse 22 est à quelques minutes à pied de la gare. En voiture, tu descends à Bienne par Evilard.
+Von Montag bis Mittwoch sind wir von 9 bis 19 Uhr da, am Donnerstag und Freitag bis 20 Uhr, am Samstag von 8.30 bis 18 Uhr. Am Sonntag ist geschlossen. Mit der [Online-Buchung](page:booking) siehst du freie Zeiten auf einen Blick und bekommst sofort eine Bestätigung, auf Deutsch, Französisch oder Englisch. Walk-ins sind während der Öffnungszeiten ebenfalls willkommen.
 
-## Soigné après l'entraînement
+Im Salon sitzt du auf braunen Lederstühlen, an der Wand hängt ein roter Perserteppich. Bezahlt wird bar, mit Karte oder mit TWINT.`,
+      fr: `## Macolin : le plateau du sport au-dessus du lac
 
-Les coupes courtes et faciles à entretenir sont particulièrement appréciées des sportifs. Un [dégradé](seo:fade) net ou une [coupe homme](service:haarschnitt-biel) classique tient aussi après l'entraînement. Pour le visage, après une longue journée dehors, il y a le [GYAN Face Treatment](service:gesichtspflege-biel) avec serviette chaude et soin.
+Macolin, Magglingen en allemand, s'étend sur une terrasse du versant jurassien, nettement au-dessus d'Evilard, et fait partie de la commune d'Evilard. Le lieu est connu dans toute la Suisse comme centre du sport : c'est ici que se trouve la Haute école fédérale de sport. Tout autour, forêts, prés et sentiers de randonnée, et depuis la terrasse la vue file au-dessus de Bienne et du lac jusqu'aux Alpes. Qui y habite, y étudie ou s'y entraîne vit au calme, tout en étant à un court trajet de la ville.
 
-[Réserver en ligne](page:booking) est rapide, la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu habites plus bas sur le coteau ? Alors notre page pour [Evilard](seo:evilard) te concerne.`,
-      en: `## Sport, views and fresh air
+## Descendre avec le funiculaire de Macolin
 
-Magglingen belongs to the municipality of Evilard and is known across Switzerland as a centre of sport: it's home to the Swiss Federal Institute of Sport. If you live, train or study here, you enjoy views across Lake Biel to the Alps and are still in town in no time.
+Le funiculaire entre Bienne et Macolin compte parmi les plus anciens de la région et avale la pente raide en quelques minutes. En bas, à Bienne, tu continues à pied ou en bus jusqu'à la gare. De là, la Zentralstrasse 22 est à quelques minutes à pied. Pas besoin de voiture ni de place de parc en ville. Si tu aimes marcher, tu peux aussi, par beau temps, descendre à Bienne par un des chemins forestiers et remonter tranquillement en funiculaire après ton rendez-vous.
 
-## By funicular into town
+En voiture, tu descends le coteau par Evilard jusqu'au centre de Bienne. Pour les quelque huit kilomètres, prévois environ un quart d'heure. Pour te garer, il y a des parkings publics et des places de parc publiques au centre-ville.
 
-The Biel–Magglingen funicular links the plateau with the city. From the valley station you can reach central Biel by bus or on foot, and Zentralstrasse 22 is just a few minutes' walk from the station. By car, drive down to Biel via Evilard.
+## De l'entraînement au fauteuil
 
-## Well groomed after training
+Quand on fait beaucoup de sport, on veut une coupe qui tient sous le bonnet, après la douche et après une course en forêt. Une [coupe homme](service:haarschnitt-biel) courte aux contours nets dure chez nous une vingtaine de minutes. Après une longue journée au grand air, le [GYAN Face Treatment](service:gesichtspflege-biel) fait du bien : serviette chaude, nettoyage et soin en environ 20 minutes.
 
-Short, low-maintenance cuts are especially popular with sporty clients. A clean [fade](seo:fade) or a classic [men's haircut](service:haarschnitt-biel) stays sharp after training too. For your face after a long day outdoors, there's the [GYAN Face Treatment](service:gesichtspflege-biel) with hot towel and care.
+Si tu as plus de temps, la [formule GYAN Premium](service:gyan-premium-paket) réunit coupe, barbe, shampoing et coiffage en une quarantaine de minutes. Idéal un jour sans entraînement ou le samedi, quand on ouvre dès 8 h 30.
 
-[Booking online](page:booking) is quick, with instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live further down the slope? Then our page for [Evilard](seo:evilard) is for you.`,
+## Des horaires compatibles avec l'entraînement et les études
+
+Du lundi au mercredi, on est là de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, le samedi de 8 h 30 à 18 h. Le dimanche, c'est fermé. Avec la [réservation en ligne](page:booking), tu vois les créneaux libres d'un coup d'œil et tu reçois une confirmation immédiate, en français, en allemand ou en anglais. Les clients sans rendez-vous sont aussi les bienvenus pendant les heures d'ouverture.
+
+Au salon, tu t'installes dans un fauteuil en cuir brun, avec un tapis persan rouge au mur. Paiement en espèces, par carte ou avec TWINT.`,
+      en: `## Magglingen: the sports plateau high above the lake
+
+Magglingen, Macolin in French, sits on a terrace on the Jura slope well above Evilard and is part of the municipality of Evilard. It's known across Switzerland as a hub of sport, being home to the Swiss Federal Institute of Sport. Around it you'll find forest, meadows and hiking trails, and from the terrace the view stretches over Biel and the lake to the Alps. If you live, study or train up here, life is quiet, yet the city is only a short trip away.
+
+## Down the hill on the Magglingen funicular
+
+The funicular between Biel and Magglingen is one of the oldest in the region and climbs the steep slope in a few minutes. Down in Biel, carry on on foot or by bus to the station. From there Zentralstrasse 22 is a few minutes' walk. No car and no parking space needed in town. If you like being on foot, on a nice day you can also hike down to Biel on one of the forest paths and ride the funicular back up after your appointment.
+
+By car, drive down the slope via Evilard into central Biel. Plan around a quarter of an hour for the roughly eight kilometres. For parking, there are public car parks and public spaces in the city centre.
+
+## From training session to barber chair
+
+When you do a lot of sport, you want a cut that looks right under a beanie, after a shower and after a run in the woods. A short, cleanly outlined [men's haircut](service:haarschnitt-biel) takes about 20 minutes here. After a long day outdoors, the [GYAN Face Treatment](service:gesichtspflege-biel) does your skin good: hot towel, cleansing and care in about 20 minutes.
+
+If you've got more time, the [GYAN Premium package](service:gyan-premium-paket) combines haircut, beard, wash and styling in around 40 minutes. A good fit for a rest day, or for Saturday, when we open at 8:30.
+
+## Hours that work around training and lectures
+
+Monday to Wednesday we're here from 9:00 to 19:00, Thursday and Friday until 20:00, Saturday from 8:30 to 18:00. Sunday we're closed. With [online booking](page:booking) you see free slots at a glance and get instant confirmation, in English, German or French. Walk-ins are welcome during opening hours too.
+
+In the salon you sit in a brown leather chair, with a red Persian carpet hanging on the wall. Pay in cash, by card or with TWINT.`,
     },
     neighbors: ["evilard", "orvin", "twann"],
+    carMin: 15,
+    transit: {
+      de: "Mit der Standseilbahn von Magglingen hinunter nach Biel, dann zu Fuss oder mit dem Bus zum Bahnhof und von dort wenige Minuten zu Fuss zum Salon.",
+      fr: "Descends en funiculaire de Macolin à Bienne, puis rejoins la gare à pied ou en bus, et de là le salon en quelques minutes à pied.",
+      en: "Take the funicular from Magglingen down to Biel, then walk or catch a bus to the station, and from there it is a few minutes on foot to the salon.",
+    },
+    services: ["haarschnitt-biel", "gesichtspflege-biel", "gyan-premium-paket"],
+    faq: {
+      de: [
+        { q: "Wie lange brauche ich von Magglingen bis zu GYAN?", a: "Mit dem Auto rechnest du für die rund acht Kilometer über Leubringen mit etwa einer Viertelstunde. Mit der Standseilbahn fährst du hinunter nach Biel und gehst dann zu Fuss oder nimmst den Bus zum Bahnhof, von dort sind es wenige Gehminuten." },
+        { q: "Kann ich in Magglingen trainieren und danach direkt zum Haarschnitt?", a: "Ja, am Donnerstag und Freitag sind wir bis 20 Uhr offen, von Montag bis Mittwoch bis 19 Uhr. Ein Herren Haarschnitt dauert rund 20 Minuten, das Premium Paket mit Wäsche und Styling rund 40 Minuten." },
+        { q: "Muss ich aus Magglingen einen Termin buchen?", a: "Nein, während der Öffnungszeiten sind Walk-ins willkommen. Mit der Online-Buchung bekommst du aber sofort eine Bestätigung und kannst die Fahrt hinunter genau planen." },
+      ],
+      fr: [
+        { q: "Combien de temps faut-il de Macolin jusqu'à GYAN ?", a: "En voiture, compte environ un quart d'heure pour les quelque huit kilomètres via Evilard. En funiculaire, tu descends à Bienne puis tu rejoins la gare à pied ou en bus, d'où le salon est à quelques minutes à pied." },
+        { q: "Puis-je m'entraîner à Macolin et aller me faire couper les cheveux juste après ?", a: "Oui, le jeudi et le vendredi on est ouverts jusqu'à 20 h, du lundi au mercredi jusqu'à 19 h. Une coupe homme dure une vingtaine de minutes, la formule Premium avec shampoing et coiffage environ 40 minutes." },
+        { q: "Faut-il réserver quand on vient de Macolin ?", a: "Non, les clients sans rendez-vous sont les bienvenus pendant les heures d'ouverture. Avec la réservation en ligne, tu as toutefois une confirmation immédiate et tu peux planifier ta descente." },
+      ],
+      en: [
+        { q: "How long does it take from Magglingen to GYAN?", a: "By car, allow about a quarter of an hour for the roughly eight kilometres via Evilard. By funicular, ride down to Biel, then walk or take a bus to the station, which is a few minutes on foot from the salon." },
+        { q: "Can I train in Magglingen and get a haircut straight after?", a: "Yes, we're open until 20:00 on Thursday and Friday and until 19:00 Monday to Wednesday. A men's haircut takes about 20 minutes, the Premium package with wash and styling about 40 minutes." },
+        { q: "Do I need to book if I'm coming from Magglingen?", a: "No, walk-ins are welcome during opening hours. Booking online does give you instant confirmation, though, so you can plan your trip down the hill." },
+      ],
+    },
   },
 
   // ───────────────────────────── TWANN ─────────────────────────────
@@ -913,9 +1441,9 @@ Short, low-maintenance cuts are especially popular with sporty clients. A clean 
       en: "Barber near Twann – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Twann und Tüscherz: mit Zug oder Schiff entlang des Bielersees nach Biel zu GYAN. Haarschnitt, Bart und Nassrasur, online buchen.",
-      fr: "Coiffeur homme près de Douanne et Daucher : en train ou en bateau le long du lac jusqu'à Bienne chez GYAN. Coupe, barbe et rasage, réserve en ligne.",
-      en: "Barber near Twann and Tüscherz: ride the train or boat along Lake Biel to GYAN in Biel. Haircuts, beards and hot towel shaves, book online.",
+      de: "Coiffeur für Twann: mit Regionalzug oder Schiff dem Bielersee entlang zu GYAN in Biel. Classic Paket oder Full Service mit Rasur. Jetzt online buchen.",
+      fr: "Coiffeur pour Douanne : en train ou en bateau le long du lac jusqu'à GYAN à Bienne. Formule Classic ou Full Service avec rasage. Réserve en ligne.",
+      en: "Barber for Twann: ride the train or boat along Lake Biel to GYAN in Biel. Classic package, Full Service or hot towel shave. Book your appointment online.",
     },
     h1: {
       de: "Herrencoiffeur für Twann und Tüscherz",
@@ -923,52 +1451,100 @@ Short, low-maintenance cuts are especially popular with sporty clients. A clean 
       en: "Barber near Twann and Tüscherz",
     },
     intro: {
-      de: "Twann und Tüscherz liegen zwischen Rebbergen und See am Nordufer des Bielersees, rund neun Kilometer vom Bieler Zentrum. Bis zu GYAN an der Zentralstrasse 22 ist es eine kurze, schöne Fahrt.",
-      fr: "Douanne et Daucher se trouvent entre vignes et lac, sur la rive nord du lac de Bienne, à environ neuf kilomètres du centre. Jusqu'à GYAN à la Zentralstrasse 22, le trajet est court et beau.",
-      en: "Twann and Tüscherz lie between vineyards and water on the north shore of Lake Biel, about nine kilometres from central Biel. The ride to GYAN on Zentralstrasse 22 is short and scenic.",
+      de: "Twann liegt zwischen Rebbergen und See am Nordufer des Bielersees, rund neun Kilometer von Biel. Mit dem Regionalzug oder im Sommer mit dem Schiff erreichst du GYAN an der Zentralstrasse 22 bequem.",
+      fr: "Douanne s'étire entre vignes et lac sur la rive nord du lac de Bienne, à environ neuf kilomètres de la ville. En train régional ou, l'été, en bateau, tu rejoins facilement GYAN à la Zentralstrasse 22.",
+      en: "Twann sits between vineyards and water on the north shore of Lake Biel, about nine kilometres from town. By regional train, or by boat in summer, GYAN on Zentralstrasse 22 is an easy trip.",
     },
     body: {
-      de: `## Weindörfer am Nordufer
+      de: `## Twann: Rebdorf am Nordufer des Bielersees
 
-Die Gemeinde Twann-Tüscherz ist geprägt von Rebbergen, schmalen Gassen und dem See. Bekannt ist auch die Twannbachschlucht, ein beliebter Wanderweg hinauf zum Tessenberg. Für Arbeit, Schule und Einkauf ist Biel aber das nächste Zentrum.
+Twann, auf Französisch Douanne, bildet zusammen mit Tüscherz-Alfermée die Gemeinde Twann-Tüscherz. Das Dorf liegt eingeklemmt zwischen dem Bielersee und den steilen Rebbergen am Jurafuss, mit einem alten Dorfkern und schmalen Gassen. Bekannt ist die Twannbachschlucht, durch die ein Wanderweg hinauf zum Tessenberg führt. Gegenüber im See liegt die St. Petersinsel. Für Arbeit, Schule und Einkauf ist Biel das nächste Zentrum, nur rund neun Kilometer seeaufwärts.
 
-## Mit Zug, Schiff oder Auto
+## Zug, Schiff oder Seestrasse
 
-Die Regionalzüge auf der Linie Biel–Neuenburg halten in Twann und bringen dich in wenigen Minuten zum Bahnhof Biel. Im Sommer fährt zudem das Kursschiff über den See nach Biel. Vom Bahnhof gehst du ein paar Minuten bis zur Zentralstrasse 22. Mit dem Auto führt die Seestrasse direkt in die Stadt.
+Die Bahnlinie zwischen Neuenburg und Biel führt direkt dem Nordufer entlang. Die Regionalzüge halten in Twann und bringen dich in kurzer Zeit zum Bahnhof Biel. Von dort gehst du wenige Minuten bis zur Zentralstrasse 22. Das ist der schnellste Weg ohne Auto, und unterwegs hast du auf der einen Seite die Rebberge und auf der anderen den See.
 
-## Zeit für Haar und Bart
+Im Sommer gibt es eine schönere Variante: Das Kursschiff fährt von Twann über den See nach Biel. Vom Hafen aus gehst du zu Fuss oder nimmst den Bus zum Bahnhof. Mit dem Auto folgst du der Strasse dem Seeufer entlang über Tüscherz direkt in die Stadt, rechne mit etwa einer Viertelstunde. Wer gerne wandert, kann auch auf dem Rebenweg durch die Weinberge nach Biel gehen.
 
-Wer zu uns kommt, soll nicht durchgeschleust werden. Wir nehmen uns Zeit für die Beratung und den Feinschliff mit der Klinge. Für Haar und Bart zusammen gibt es das [GYAN Classic Paket](service:haarschnitt-und-bart), für die volle Pflege den [GYAN Full Service](service:gyan-full-service) mit Face Treatment, Wäsche und Styling.
+## Haar und Bart ohne Eile
 
-Deinen Termin [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Wanderst du lieber von oben herunter? Dann wirf einen Blick auf unsere Seite für [Magglingen](seo:magglingen).`,
-      fr: `## Villages viticoles de la rive nord
+Wenn du schon den Weg dem See entlang machst, lohnt sich ein Termin, bei dem nichts gehetzt wird. Im [GYAN Classic Paket](service:haarschnitt-und-bart) bekommst du Haarschnitt und Bart in rund 30 Minuten. Für die volle Pflege gibt es den [GYAN Full Service](service:gyan-full-service): Haarschnitt, Bart, Face Treatment, Wäsche und Styling in etwa 50 Minuten.
 
-La commune de Douanne-Daucher est marquée par les vignes, les ruelles étroites et le lac. Les gorges de Douanne sont aussi connues, un sentier apprécié qui monte vers le Plateau de Diesse. Pour le travail, l'école et les courses, Bienne reste le centre le plus proche.
+Trägst du deinen Bart lang und willst nur die Form auffrischen, reicht ein Bart Trim mit Konturen an der Klinge, das dauert rund 15 Minuten. Lieber ganz glatt? Dann ist die Rasur mit heissem Tuch, Schaum und Pflege die richtige Wahl, in etwa 20 Minuten.
 
-## En train, en bateau ou en voiture
+## Vom Rebberg in den Lederstuhl
 
-Les trains régionaux de la ligne Bienne–Neuchâtel s'arrêtent à Douanne et t'amènent en quelques minutes à la gare de Bienne. En été, le bateau de ligne traverse aussi le lac jusqu'à Bienne. Depuis la gare, quelques minutes à pied jusqu'à la Zentralstrasse 22. En voiture, la route du lac mène directement en ville.
+Im Salon erwarten dich braune Lederstühle und ein roter Perserteppich an der Wand. Geöffnet ist von Montag bis Mittwoch von 9 bis 19 Uhr, am Donnerstag und Freitag bis 20 Uhr und am Samstag von 8.30 bis 18 Uhr. Deinen Termin [buchst du online](page:booking) mit sofortiger Bestätigung, so kannst du Zug oder Schiff passend wählen. Walk-ins sind während der Öffnungszeiten ebenfalls willkommen. Bezahlt wird bar, mit Karte oder mit TWINT.
 
-## Du temps pour les cheveux et la barbe
+Wohnst du weiter oben am Jurahang über Biel? Dann schau auf unsere Seite für [Magglingen](seo:magglingen).`,
+      fr: `## Douanne : village vigneron sur la rive nord
 
-Chez nous, tu ne passes pas à la chaîne. On prend le temps du conseil et des finitions au rasoir. Pour cheveux et barbe ensemble, il y a la [formule GYAN Classic](service:haarschnitt-und-bart) ; pour un soin complet, le [GYAN Full Service](service:gyan-full-service) avec Face Treatment, shampoing et coiffage.
+Douanne, Twann en allemand, forme avec Daucher-Alfermée la commune de Douanne-Daucher. Le village est serré entre le lac de Bienne et les vignes en pente du pied du Jura, avec un vieux noyau et des ruelles étroites. Les gorges de Douanne sont réputées : un sentier y monte jusqu'au Plateau de Diesse. En face, sur le lac, se trouve l'île Saint-Pierre. Pour le travail, l'école et les courses, Bienne est le centre le plus proche, à environ neuf kilomètres en remontant le lac.
 
-[Réserve en ligne](page:booking), confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu préfères descendre à pied depuis les hauteurs ? Jette un œil à notre page pour [Macolin](seo:magglingen).`,
-      en: `## Wine villages on the north shore
+## Train, bateau ou route du lac
 
-The municipality of Twann-Tüscherz is shaped by vineyards, narrow lanes and the lake. The Twannbach gorge is well known too, a popular trail leading up towards the Plateau de Diesse. For work, school and shopping, though, Biel is the nearest centre.
+La ligne de chemin de fer entre Neuchâtel et Bienne longe directement la rive nord. Les trains régionaux s'arrêtent à Douanne et t'amènent rapidement à la gare de Bienne. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22. C'est le moyen le plus rapide sans voiture, avec les vignes d'un côté et le lac de l'autre pendant tout le trajet.
 
-## By train, boat or car
+En été, il y a plus joli : le bateau de ligne traverse le lac de Douanne à Bienne. Depuis le port, tu continues à pied ou en bus jusqu'à la gare. En voiture, tu suis la route au bord du lac par Daucher jusqu'en ville, compte environ un quart d'heure. Si tu aimes marcher, le chemin des vignes à travers le vignoble mène aussi jusqu'à Bienne.
 
-Regional trains on the Biel–Neuchâtel line stop in Twann and take you to Biel station in a few minutes. In summer, the scheduled boat also crosses the lake to Biel. From the station it's a short walk to Zentralstrasse 22. By car, the lakeside road leads straight into town.
+## Cheveux et barbe sans se presser
 
-## Time for hair and beard
+Quand on fait le trajet le long du lac, autant s'offrir un rendez-vous où rien n'est bâclé. Avec la [formule GYAN Classic](service:haarschnitt-und-bart), tu as coupe et barbe en une trentaine de minutes. Pour le soin complet, il y a le [GYAN Full Service](service:gyan-full-service) : coupe, barbe, Face Treatment, shampoing et coiffage en une cinquantaine de minutes.
 
-You won't be rushed through here. We take time for the consultation and the finishing touches with the razor. For hair and beard together there's the [GYAN Classic package](service:haarschnitt-und-bart), and for the full treatment the [GYAN Full Service](service:gyan-full-service) with Face Treatment, wash and styling.
+Tu portes la barbe longue et veux juste rafraîchir la forme ? Une taille de barbe avec contours à la lame suffit. Tu préfères un visage parfaitement lisse ? Alors le rasage à la serviette chaude, avec mousse et soin, est le bon choix.
 
-[Book online](page:booking) with instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Prefer hiking down from above? Take a look at our page for [Magglingen](seo:magglingen).`,
+## Des vignes au fauteuil en cuir
+
+Au salon t'attendent des fauteuils en cuir brun et un tapis persan rouge au mur. On est ouverts du lundi au mercredi de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, et le samedi de 8 h 30 à 18 h. [Réserve en ligne](page:booking) avec confirmation immédiate, pour choisir ensuite le bon train ou le bon bateau. Les clients sans rendez-vous sont aussi les bienvenus pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT.
+
+Tu habites plus haut, sur les hauteurs du Jura au-dessus de Bienne ? Jette un œil à notre page pour [Macolin](seo:magglingen).`,
+      en: `## Twann: a wine village on Lake Biel's north shore
+
+Twann, Douanne in French, forms the municipality of Twann-Tüscherz together with Tüscherz-Alfermée. The village is squeezed between Lake Biel and the steep vineyards at the foot of the Jura, with an old core and narrow lanes. It's known for the Twannbach gorge, where a trail climbs up to the Plateau de Diesse. Out in the lake opposite lies St. Peter's Island. For work, school and shopping, Biel is the nearest centre, only about nine kilometres up the lake.
+
+## Train, boat or lakeside road
+
+The railway between Neuchâtel and Biel runs right along the north shore. Regional trains stop in Twann and get you to Biel station quickly. From there it's a few minutes on foot to Zentralstrasse 22. That's the fastest option without a car, with the vineyards on one side and the lake on the other the whole way.
+
+In summer there's a more scenic alternative: the scheduled boat crosses the lake from Twann to Biel. From the harbour, walk or take a bus to the station. By car, follow the road along the shore via Tüscherz straight into town, allowing about a quarter of an hour. If you enjoy hiking, the vineyard trail through the vines also leads to Biel.
+
+## Hair and beard, no rush
+
+If you're making the trip along the lake, it's worth booking an appointment where nothing gets rushed. The [GYAN Classic package](service:haarschnitt-und-bart) covers haircut and beard in about 30 minutes. For the full treatment there's the [GYAN Full Service](service:gyan-full-service): haircut, beard, Face Treatment, wash and styling in around 50 minutes.
+
+Wearing your beard long and just want to refresh the shape? A beard trim with razor-sharp outlines does the job in about 15 minutes. Prefer completely smooth? Then the hot towel shave with lather and aftercare is the one, taking around 20 minutes.
+
+## From the vineyards to the leather chair
+
+In the salon you'll find brown leather chairs and a red Persian carpet on the wall. We're open Monday to Wednesday from 9:00 to 19:00, Thursday and Friday until 20:00, and Saturday from 8:30 to 18:00. [Book online](page:booking) with instant confirmation, then pick the train or boat that fits. Walk-ins are welcome during opening hours too. Pay in cash, by card or with TWINT.
+
+Live higher up on the Jura slope above Biel? Take a look at our page for [Magglingen](seo:magglingen).`,
     },
     neighbors: ["magglingen", "evilard"],
+    carMin: 15,
+    transit: {
+      de: "Mit dem Regionalzug auf der Linie zwischen Neuenburg und Biel bis zum Bahnhof Biel oder im Sommer mit dem Kursschiff über den Bielersee, dann wenige Minuten zu Fuss zum Salon.",
+      fr: "En train régional sur la ligne entre Neuchâtel et Bienne jusqu'à la gare de Bienne, ou en été en bateau sur le lac de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the regional train on the line between Neuchâtel and Biel to Biel station, or in summer the boat across Lake Biel, then it is a few minutes on foot to the salon.",
+    },
+    services: ["haarschnitt-und-bart", "gyan-full-service", "nassrasur-biel", "bart-trimmen-biel"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Twann mit dem Zug zu GYAN?", a: "Die Regionalzüge Richtung Biel halten in Twann und fahren dem Nordufer entlang bis zum Bahnhof Biel. Von dort sind es nur wenige Gehminuten bis zur Zentralstrasse 22." },
+        { q: "Kann ich von Twann aus mit dem Schiff zum Coiffeur fahren?", a: "Im Sommer verkehrt das Kursschiff zwischen Twann und Biel. Vom Bieler Hafen gehst du dann durch die Stadt oder nimmst den Bus bis zum Bahnhof, von wo der Salon wenige Minuten entfernt ist." },
+        { q: "Lohnt sich von Twann aus ein längerer Termin?", a: "Wenn du dir Zeit nehmen willst, ja: Der GYAN Full Service mit Haarschnitt, Bart, Face Treatment, Wäsche und Styling dauert rund 50 Minuten. Buche ihn online, damit dein Platz nach der Anreise sicher ist." },
+      ],
+      fr: [
+        { q: "Comment venir de Douanne chez GYAN en train ?", a: "Les trains régionaux en direction de Bienne s'arrêtent à Douanne et longent la rive nord jusqu'à la gare de Bienne. De là, la Zentralstrasse 22 est à quelques minutes à pied." },
+        { q: "Peut-on venir de Douanne chez le coiffeur en bateau ?", a: "En été, le bateau de ligne relie Douanne à Bienne. Depuis le port de Bienne, traverse la ville à pied ou prends le bus jusqu'à la gare, à quelques minutes du salon." },
+        { q: "Un rendez-vous plus long vaut-il la peine depuis Douanne ?", a: "Si tu veux prendre ton temps, oui : le GYAN Full Service avec coupe, barbe, Face Treatment, shampoing et coiffage dure environ 50 minutes. Réserve-le en ligne pour être sûr de ta place à l'arrivée." },
+      ],
+      en: [
+        { q: "How do I get from Twann to GYAN by train?", a: "Regional trains towards Biel stop in Twann and run along the north shore to Biel station. From there it's only a few minutes' walk to Zentralstrasse 22." },
+        { q: "Can I take the boat from Twann to the barber?", a: "In summer, the scheduled boat runs between Twann and Biel. From Biel's harbour, walk through town or take a bus to the station, a few minutes from the salon." },
+        { q: "Is a longer appointment worth it if I come from Twann?", a: "If you want to take your time, yes: the GYAN Full Service with haircut, beard, Face Treatment, wash and styling takes about 50 minutes. Book it online so your slot is secured when you arrive." },
+      ],
+    },
   },
 
   // ───────────────────────────── SUTZ-LATTRIGEN ─────────────────────────────
@@ -983,9 +1559,9 @@ You won't be rushed through here. We take time for the consultation and the fini
       en: "Barber near Sutz-Lattrigen – cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Sutz-Lattrigen: mit der Seeland-Bahn oder dem Auto in rund 7 km bei GYAN in Biel. Haarschnitt, Fade und Bart, jetzt online buchen.",
-      fr: "Coiffeur homme près de Sutz-Lattrigen : en train du Seeland ou en voiture, GYAN à Bienne est à environ 7 km. Coupe, dégradé et barbe, réserve en ligne.",
-      en: "Barber near Sutz-Lattrigen: about 7 km to GYAN in Biel by Seeland train or car. Haircuts, fades and beards, book your appointment online now.",
+      de: "Coiffeur für Sutz-Lattrigen: mit der BTI-Bahn am Südufer entlang zu GYAN in Biel. Haarschnitt, Bart Trim oder Premium Paket. Jetzt online Termin buchen.",
+      fr: "Coiffeur pour Sutz-Lattrigen : en train BTI le long de la rive sud jusqu'à GYAN à Bienne. Coupe, barbe ou formule Premium. Réserve en ligne.",
+      en: "Barber for Sutz-Lattrigen: ride the BTI train along the south shore to GYAN in Biel. Haircut, beard trim or Premium package. Book your appointment online.",
     },
     h1: {
       de: "Herrencoiffeur für Sutz-Lattrigen",
@@ -993,52 +1569,100 @@ You won't be rushed through here. We take time for the consultation and the fini
       en: "Barber near Sutz-Lattrigen",
     },
     intro: {
-      de: "Sutz-Lattrigen liegt am Südufer des Bielersees, rund sieben Kilometer von Biel. Die Bahn entlang des Ufers bringt dich bequem in die Stadt und zu GYAN an der Zentralstrasse 22.",
-      fr: "Sutz-Lattrigen se trouve sur la rive sud du lac de Bienne, à environ sept kilomètres de Bienne. Le train qui longe la rive t'amène confortablement en ville et chez GYAN à la Zentralstrasse 22.",
-      en: "Sutz-Lattrigen lies on the south shore of Lake Biel, about seven kilometres from Biel. The train along the shore takes you comfortably into town and to GYAN on Zentralstrasse 22.",
+      de: "Sutz-Lattrigen liegt am Südufer des Bielersees, rund sieben Kilometer von Biel. Die BTI-Bahn bringt dich über Ipsach und Nidau zum Bahnhof Biel, von dort sind es wenige Minuten zu GYAN.",
+      fr: "Sutz-Lattrigen borde la rive sud du lac de Bienne, à environ sept kilomètres de la ville. Le train BTI t'amène par Ipsach et Nidau à la gare de Bienne, à quelques minutes de GYAN.",
+      en: "Sutz-Lattrigen sits on the south shore of Lake Biel, about seven kilometres from town. The BTI train takes you via Ipsach and Nidau to Biel station, a few minutes from GYAN.",
     },
     body: {
-      de: `## Am Südufer, mit langer Geschichte
+      de: `## Sutz-Lattrigen: Pfahlbauten, Felder und flaches Ufer
 
-Sutz-Lattrigen ist ein ruhiges Dorf mit Seeufer, Feldern und Blick auf die Jurakette. Vor der Küste wurden Reste prähistorischer Pfahlbausiedlungen gefunden, die zum UNESCO-Welterbe gehören. Heute schätzen die Einwohner vor allem die Nähe zum See und die kurzen Wege nach Biel.
+Sutz-Lattrigen liegt am Südufer des Bielersees, zwischen Ipsach und Mörigen. Das Dorf besteht aus den beiden Ortsteilen Sutz und Lattrigen, umgeben von Feldern des Seelands und mit Blick über das Wasser auf die Jurakette. Im flachen Wasser vor dem Ufer liegen Reste prähistorischer Pfahlbausiedlungen. Sie gehören zur Stätte «Prähistorische Pfahlbauten um die Alpen», die von der UNESCO als Welterbe anerkannt ist. Für Arbeit und Einkauf orientiert sich das Dorf vor allem nach Biel, das rund sieben Kilometer entfernt liegt.
 
-## So kommst du zu uns
+## Mit der BTI am Südufer entlang
 
-Die Bahn der Aare Seeland mobil zwischen Biel und Ins hält in Sutz-Lattrigen und fährt über Ipsach und Nidau nach Biel. Vom Bahnhof Biel sind es wenige Gehminuten bis zur Zentralstrasse 22. Mit dem Auto erreichst du das Zentrum über Nidau und parkierst in einem öffentlichen Parkhaus.
+Die BTI-Bahn verbindet Ins und Täuffelen mit Biel und hält auch in Sutz. Sie fährt dem Südufer entlang über Ipsach und Nidau bis zum Bahnhof Biel. Von dort gehst du wenige Minuten bis zur Zentralstrasse 22. Das ist praktisch, wenn du ohnehin in Biel arbeitest: Du kannst den Termin direkt an den Arbeitsweg hängen.
 
-## Frisch geschnitten zurück an den See
+Mit dem Auto fährst du über Ipsach und Nidau ins Bieler Zentrum. Für die rund sieben Kilometer solltest du etwa eine Viertelstunde einplanen. In der Innenstadt parkierst du in einem öffentlichen Parkhaus.
 
-Ob [Herren Haarschnitt](service:haarschnitt-biel) oder [Bart Trim](service:bart-trimmen-biel) mit Konturen an der Klinge: Bei GYAN bekommst du einen Schnitt, der zu dir passt, mit Beratung und Ruhe. Und wer im Sommer viel draussen ist, wählt oft einen kurzen, pflegeleichten [Fade](seo:fade).
+## Kurz und sauber für Sommer am See
 
-Einen Termin [buchst du online](page:booking), sofort bestätigt. Spontan geht auch: Während der Öffnungszeiten sind Walk-ins willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du näher an der Stadt? Dann schau bei [Ipsach](seo:ipsach) vorbei.`,
-      fr: `## Sur la rive sud, avec une longue histoire
+Wer im Sommer viel am See ist, schwimmt oder Velo fährt, will meist eine Frisur, die wenig Aufwand macht. Ein [Herren Haarschnitt](service:haarschnitt-biel) mit Schere und Maschine dauert rund 20 Minuten, ein Bart Trim mit Konturen an der Klinge etwa 15 Minuten. Beides passt auch in eine Mittagspause.
 
-Sutz-Lattrigen est un village calme avec rive, champs et vue sur la chaîne du Jura. Au large, on a trouvé des vestiges de villages palafittiques préhistoriques, inscrits au patrimoine mondial de l'UNESCO. Aujourd'hui, les habitants apprécient surtout la proximité du lac et les trajets courts vers Bienne.
+Nach Sonne, Wind und Wasser tut deiner Haut das GYAN Face Treatment gut, mit heissem Tuch, Reinigung und Pflege. Und wenn du alles in einem Termin willst, gibt es das [GYAN Premium Paket](service:gyan-premium-paket) mit Haarschnitt, Bart, Wäsche und Styling in rund 40 Minuten.
 
-## Comment venir
+## Wann es von Sutz aus am besten passt
 
-Le train d'Aare Seeland mobil entre Bienne et Anet s'arrête à Sutz-Lattrigen et rejoint Bienne via Ipsach et Nidau. Depuis la gare de Bienne, quelques minutes à pied jusqu'à la Zentralstrasse 22. En voiture, tu rejoins le centre par Nidau et tu te gares dans un parking public.
+Wir sind von Montag bis Mittwoch von 9 bis 19 Uhr da, am Donnerstag und Freitag bis 20 Uhr und am Samstag von 8.30 bis 18 Uhr. Am Sonntag ist geschlossen. Am Abend nach der Arbeit oder am Samstagmorgen lässt sich der Besuch gut mit einer Fahrt in die Stadt verbinden. Deinen Termin [buchst du online](page:booking), sofort bestätigt, auf Deutsch, Französisch oder Englisch. Walk-ins sind während der Öffnungszeiten ebenfalls willkommen.
 
-## Fraîchement coupé, retour au bord du lac
+Im Salon erwarten dich braune Lederstühle und ein roter Perserteppich an der Wand. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du ein paar Stationen weiter Richtung Ins? Dann passt unsere Seite für [Täuffelen](seo:taeuffelen).`,
+      fr: `## Sutz-Lattrigen : palafittes, champs et rive basse
 
-[Coupe homme](service:haarschnitt-biel) ou [taille de barbe](service:bart-trimmen-biel) avec contours au rasoir : chez GYAN, tu repars avec une coupe qui te correspond, avec conseil et calme. Et ceux qui passent beaucoup de temps dehors en été choisissent souvent un [dégradé](seo:fade) court et facile à entretenir.
+Sutz-Lattrigen se trouve sur la rive sud du lac de Bienne, entre Ipsach et Mörigen. Le village réunit les deux localités de Sutz et de Lattrigen, entourées des champs du Seeland, avec vue sur la chaîne du Jura de l'autre côté du lac. Dans les eaux peu profondes au large de la rive reposent des vestiges de villages palafittiques préhistoriques. Ils font partie du site « Sites palafittiques préhistoriques autour des Alpes », inscrit au patrimoine mondial de l'UNESCO. Pour le travail et les courses, le village se tourne surtout vers Bienne, à environ sept kilomètres.
 
-[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Tu peux aussi venir spontanément : pendant les heures d'ouverture, les clients sans rendez-vous sont les bienvenus. Paiement en espèces, par carte ou avec TWINT. Tu habites plus près de la ville ? Jette un œil à notre page pour [Ipsach](seo:ipsach).`,
-      en: `## On the south shore, with a long history
+## Le long de la rive sud avec le BTI
 
-Sutz-Lattrigen is a quiet village with lakeshore, fields and views of the Jura range. Remains of prehistoric pile-dwelling settlements were found offshore and are part of a UNESCO World Heritage site. Today, residents mainly value the closeness of the lake and the short trip to Biel.
+Le train BTI relie Anet et Täuffelen à Bienne et s'arrête aussi à Sutz. Il longe la rive sud par Ipsach et Nidau jusqu'à la gare de Bienne. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22. Pratique si tu travailles à Bienne : tu peux accrocher le rendez-vous à ton trajet quotidien.
 
-## Getting here
+En voiture, tu rejoins le centre de Bienne par Ipsach et Nidau. Pour les quelque sept kilomètres, prévois environ un quart d'heure. Au centre-ville, tu te gares dans un parking public.
 
-The Aare Seeland mobil train between Biel and Ins stops in Sutz-Lattrigen and runs via Ipsach and Nidau to Biel. From Biel station it's a few minutes' walk to Zentralstrasse 22. By car, reach the centre via Nidau and use a public car park.
+## Court et net pour l'été au bord du lac
 
-## Freshly cut, back to the lake
+Quand on passe l'été au lac, à nager ou à vélo, on veut en général une coiffure qui demande peu d'effort. Une [coupe homme](service:haarschnitt-biel) aux ciseaux et à la tondeuse dure une vingtaine de minutes, une taille de barbe avec contours à la lame environ 15 minutes. Les deux tiennent dans une pause de midi.
 
-Whether it's a [men's haircut](service:haarschnitt-biel) or a [beard trim](service:bart-trimmen-biel) with razor lines: at GYAN you get a cut that suits you, with a proper consultation and no rush. And if you spend a lot of time outdoors in summer, a short, low-maintenance [fade](seo:fade) is a popular choice.
+Après le soleil, le vent et l'eau, le GYAN Face Treatment fait du bien à ta peau, avec serviette chaude, nettoyage et soin. Et si tu veux tout en un seul rendez-vous, la [formule GYAN Premium](service:gyan-premium-paket) réunit coupe, barbe, shampoing et coiffage en une quarantaine de minutes.
 
-[Book your appointment online](page:booking), confirmed instantly. Walking in works too: walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live closer to town? Have a look at our page for [Ipsach](seo:ipsach).`,
+## Le meilleur moment pour venir de Sutz
+
+On est là du lundi au mercredi de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, et le samedi de 8 h 30 à 18 h. Fermé le dimanche. Le soir après le travail ou le samedi matin, la visite se combine facilement avec un passage en ville. [Réserve en ligne](page:booking), avec confirmation immédiate, en français, en allemand ou en anglais. Les clients sans rendez-vous sont aussi les bienvenus pendant les heures d'ouverture.
+
+Au salon t'attendent des fauteuils en cuir brun et un tapis persan rouge au mur. Paiement en espèces, par carte ou avec TWINT. Tu habites quelques arrêts plus loin vers Anet ? Alors notre page pour [Täuffelen](seo:taeuffelen) est pour toi.`,
+      en: `## Sutz-Lattrigen: pile dwellings, fields and a low shoreline
+
+Sutz-Lattrigen lies on the south shore of Lake Biel, between Ipsach and Mörigen. The village is made up of two parts, Sutz and Lattrigen, surrounded by Seeland farmland and looking across the water to the Jura range. In the shallow water off the shore lie the remains of prehistoric pile-dwelling settlements. They're part of the "Prehistoric Pile Dwellings around the Alps", a UNESCO World Heritage site. For work and shopping, the village mainly looks to Biel, about seven kilometres away.
+
+## Along the south shore on the BTI
+
+The BTI train links Ins and Täuffelen with Biel and also stops in Sutz. It runs along the south shore via Ipsach and Nidau to Biel station. From there it's a few minutes on foot to Zentralstrasse 22. Handy if you work in Biel anyway: you can tack your appointment onto your commute.
+
+By car, head via Ipsach and Nidau into central Biel. Plan around a quarter of an hour for the roughly seven kilometres. In the city centre you can park in a public car park.
+
+## Short and clean for summer by the lake
+
+If you spend your summers at the lake, swimming or cycling, you probably want a cut that's low effort. A [men's haircut](service:haarschnitt-biel) with scissors and clippers takes about 20 minutes, and a beard trim with razor outlines about 15. Both fit into a lunch break.
+
+After sun, wind and water, the GYAN Face Treatment is good for your skin, with hot towel, cleansing and care. And if you want everything in one go, the [GYAN Premium package](service:gyan-premium-paket) brings haircut, beard, wash and styling together in around 40 minutes.
+
+## When it works best from Sutz
+
+We're here Monday to Wednesday from 9:00 to 19:00, Thursday and Friday until 20:00, and Saturday from 8:30 to 18:00. Closed on Sundays. An evening after work or a Saturday morning pairs easily with a trip into town. [Book online](page:booking) with instant confirmation, in English, German or French. Walk-ins are welcome during opening hours too.
+
+Inside you'll find brown leather chairs and a red Persian carpet on the wall. Pay in cash, by card or with TWINT. Live a few stops further towards Ins? Then our page for [Täuffelen](seo:taeuffelen) is the one for you.`,
     },
     neighbors: ["ipsach", "taeuffelen", "nidau"],
+    carMin: 15,
+    transit: {
+      de: "Mit der BTI-Bahn von Ins über Täuffelen bis zum Bahnhof Biel, dann wenige Minuten zu Fuss zum Salon.",
+      fr: "Avec le train BTI qui vient d'Anet par Täuffelen jusqu'à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the BTI train from Ins via Täuffelen to Biel station, then it is a few minutes on foot to the salon.",
+    },
+    services: ["haarschnitt-biel", "bart-trimmen-biel", "gesichtspflege-biel", "gyan-premium-paket"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Sutz-Lattrigen mit der Bahn zu GYAN?", a: "Die BTI-Bahn fährt dem Südufer entlang über Ipsach und Nidau bis zum Bahnhof Biel. Von dort sind es nur wenige Gehminuten bis zur Zentralstrasse 22." },
+        { q: "Wo parkiere ich, wenn ich von Sutz-Lattrigen mit dem Auto komme?", a: "Du fährst über Ipsach und Nidau ins Bieler Zentrum und parkierst in einem öffentlichen Parkhaus. Für die rund sieben Kilometer rechnest du mit etwa einer Viertelstunde." },
+        { q: "Passt ein Haarschnitt in die Mittagspause, wenn ich in Sutz-Lattrigen wohne und in Biel arbeite?", a: "Ein Herren Haarschnitt dauert rund 20 Minuten, ein Bart Trim etwa 15 Minuten. Mit einer Online-Buchung sicherst du dir die passende Zeit und bekommst sofort eine Bestätigung." },
+      ],
+      fr: [
+        { q: "Comment venir de Sutz-Lattrigen chez GYAN en train ?", a: "Le train BTI longe la rive sud par Ipsach et Nidau jusqu'à la gare de Bienne. De là, la Zentralstrasse 22 n'est qu'à quelques minutes à pied." },
+        { q: "Où me garer si je viens de Sutz-Lattrigen en voiture ?", a: "Tu rejoins le centre de Bienne par Ipsach et Nidau et tu te gares dans un parking public. Pour les quelque sept kilomètres, compte environ un quart d'heure." },
+        { q: "Une coupe pendant la pause de midi, c'est possible si j'habite Sutz-Lattrigen et travaille à Bienne ?", a: "Une coupe homme dure une vingtaine de minutes, une taille de barbe environ 15 minutes. En réservant en ligne, tu bloques le bon créneau et reçois une confirmation immédiate." },
+      ],
+      en: [
+        { q: "How do I get from Sutz-Lattrigen to GYAN by train?", a: "The BTI train runs along the south shore via Ipsach and Nidau to Biel station. From there it's only a few minutes' walk to Zentralstrasse 22." },
+        { q: "Where do I park if I drive in from Sutz-Lattrigen?", a: "Drive via Ipsach and Nidau into central Biel and use a public car park. Allow about a quarter of an hour for the roughly seven kilometres." },
+        { q: "Can I fit a haircut into my lunch break if I live in Sutz-Lattrigen and work in Biel?", a: "A men's haircut takes about 20 minutes and a beard trim about 15. Booking online locks in the right time and you get instant confirmation." },
+      ],
+    },
   },
 
   // ───────────────────────────── TÄUFFELEN ─────────────────────────────
@@ -1053,9 +1677,9 @@ Whether it's a [men's haircut](service:haarschnitt-biel) or a [beard trim](servi
       en: "Barber near Täuffelen – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Täuffelen und Gerolfingen: GYAN in Biel, rund 12 km entfernt und direkt mit der Seeland-Bahn erreichbar. Haarschnitt, Fade, Bart.",
-      fr: "Coiffeur homme près de Täuffelen et Gerolfingen : GYAN à Bienne, à environ 12 km, en train direct depuis le Seeland. Coupe, dégradé et barbe.",
-      en: "Barber near Täuffelen and Gerolfingen: GYAN in Biel, about 12 km away with a direct Seeland train. Haircuts, fades and beards, book online now.",
+      de: "Coiffeur für Täuffelen und Gerolfingen: GYAN in Biel, mit der BTI-Bahn direkt erreichbar. Classic, Premium oder Full Service. Jetzt online Termin buchen.",
+      fr: "Coiffeur pour Täuffelen et Gerolfingen : GYAN à Bienne, accessible en train BTI direct. Formules Classic, Premium ou Full Service. Réserve en ligne.",
+      en: "Barber for Täuffelen and Gerolfingen: GYAN in Biel, a direct ride on the BTI train. Classic, Premium or Full Service packages. Book online today.",
     },
     h1: {
       de: "Herrencoiffeur für Täuffelen",
@@ -1063,52 +1687,100 @@ Whether it's a [men's haircut](service:haarschnitt-biel) or a [beard trim](servi
       en: "Barber near Täuffelen",
     },
     intro: {
-      de: "Täuffelen ist das Zentrum am Südufer des Bielersees, rund zwölf Kilometer von Biel. Mit der Bahn oder dem Auto bist du in kurzer Zeit bei GYAN an der Zentralstrasse 22.",
-      fr: "Täuffelen est le centre de la rive sud du lac de Bienne, à environ douze kilomètres de Bienne. En train ou en voiture, tu es rapidement chez GYAN à la Zentralstrasse 22.",
-      en: "Täuffelen is the hub of Lake Biel's south shore, about twelve kilometres from Biel. By train or car you'll soon be at GYAN on Zentralstrasse 22.",
+      de: "Täuffelen liegt am Südufer des Bielersees, rund zwölf Kilometer von Biel. Die BTI-Bahn bringt dich dem See entlang direkt zum Bahnhof Biel, nur ein paar Gehminuten von GYAN entfernt.",
+      fr: "Täuffelen se trouve sur la rive sud du lac de Bienne, à une douzaine de kilomètres de Bienne. Le train BTI longe le lac jusqu'à la gare de Bienne, à quelques minutes à pied de GYAN.",
+      en: "Täuffelen sits on the south shore of Lake Biel, about twelve kilometres from Biel. The BTI train follows the lake straight to Biel station, a few minutes' walk from GYAN.",
     },
     body: {
-      de: `## Zwischen See und Gemüsefeldern
+      de: `## Täuffelen-Gerolfingen am Südufer
 
-Zu Täuffelen gehört auch Gerolfingen direkt am See. Rundherum prägen die weiten Felder des Seelands die Landschaft, und nicht weit entfernt fliesst die Aare durch den Hagneckkanal in den Bielersee. Für vieles, was das Dorf nicht bietet, fährt man nach Biel.
+Täuffelen bildet zusammen mit Gerolfingen eine Gemeinde am Südufer des Bielersees. Gerolfingen liegt direkt am Wasser, Täuffelen etwas erhöht dahinter, und rundherum ziehen sich die Felder des Seelands. Nicht weit westlich mündet die Aare durch den Hagneckkanal in den See, ein Werk der Juragewässerkorrektion aus dem 19. Jahrhundert. Biel liegt am anderen Ende des Sees, rund zwölf Kilometer entfernt, und ist für das Südufer die nächste Stadt.
 
-## Direkte Verbindung nach Biel
+## Mit der BTI dem See entlang nach Biel
 
-Täuffelen liegt an der Bahnlinie der Aare Seeland mobil zwischen Biel und Ins. Die Bahn fährt dem Südufer entlang über Sutz, Ipsach und Nidau bis zum Bahnhof Biel, von dort sind es wenige Gehminuten bis zur Zentralstrasse 22. Mit dem Auto erreichst du das Bieler Zentrum in rund einer Viertelstunde.
+Die bequemste Verbindung ist die BTI-Bahn, die Biel, Täuffelen und Ins verbindet und heute von Aare Seeland mobil betrieben wird. Ab Täuffelen fährt sie dem Südufer entlang über Ipsach und Nidau bis zum Bahnhof Biel. Von dort gehst du ein paar Minuten zu Fuss bis zur Zentralstrasse 22. Unterwegs schaust du auf den See statt auf den Verkehr, und am Ziel musst du keinen Parkplatz suchen.
 
-## Lohnt sich die Fahrt?
+Mit dem Auto folgst du der Strasse am Südufer über Sutz und Ipsach nach Nidau und weiter ins Bieler Zentrum. Rechne grosszügig mit etwa 20 Minuten und parkiere in einem der öffentlichen Parkhäuser in der Innenstadt.
 
-Wir finden: ja. Bei GYAN nehmen wir uns Zeit für die Beratung und achten auf saubere Übergänge. Wer schon einmal in der Stadt ist, verbindet oft Haar und Bart im [GYAN Classic Paket](service:haarschnitt-und-bart) oder gönnt sich das [GYAN Premium Paket](service:gyan-premium-paket) mit Wäsche und Styling.
+## Eine Fahrt, alles erledigt
 
-Deinen Termin [buchst du online](page:booking), sofort bestätigt, so musst du nach der Anreise nicht warten. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Auf dem Weg liegt [Sutz-Lattrigen](seo:sutz-lattrigen), auch dafür gibt es eine eigene Seite.`,
-      fr: `## Entre lac et champs de légumes
+Wenn du extra vom Südufer nach Biel fährst, lohnt es sich, Haar und Bart in einem Besuch zu erledigen. Das [GYAN Classic Paket](service:haarschnitt-und-bart) verbindet Haarschnitt und Bart in rund 30 Minuten für 65 Franken, ohne Termin 60 Franken. Beim [GYAN Premium Paket](service:gyan-premium-paket) kommen Wäsche und Styling dazu, rund 40 Minuten für 75 Franken.
 
-Täuffelen comprend aussi Gerolfingen, directement au bord du lac. Tout autour, les vastes champs du Seeland marquent le paysage, et non loin de là, l'Aar se jette dans le lac de Bienne par le canal de Hagneck. Pour tout ce que le village n'offre pas, on va à Bienne.
+Willst du dir richtig Zeit nehmen, ist der GYAN Full Service mit Haarschnitt, Bart, Face Treatment, Wäsche und Styling die ausführlichste Wahl, rund 50 Minuten. Das Face Treatment mit heissem Tuch, Reinigung und Pflege kannst du auch einzeln buchen. Du sitzt dabei in einem braunen Ledersessel, an der Wand hängt ein roter Perserteppich.
 
-## Liaison directe avec Bienne
+## Den Biel-Tag planen
 
-Täuffelen se trouve sur la ligne d'Aare Seeland mobil entre Bienne et Anet. Le train longe la rive sud par Sutz, Ipsach et Nidau jusqu'à la gare de Bienne, d'où la Zentralstrasse 22 est à quelques minutes à pied. En voiture, tu rejoins le centre de Bienne en un quart d'heure environ.
+Montag bis Mittwoch sind wir von 9 bis 19 Uhr da, Donnerstag und Freitag bis 20 Uhr, Samstag von 8.30 bis 18 Uhr. Sonntags ist geschlossen. Ein früher Samstagstermin lässt sich gut mit Einkäufen in der Bieler Innenstadt verbinden, bevor du mit der BTI zurück ans Südufer fährst.
 
-## Le trajet en vaut-il la peine ?
+Deinen Termin [buchst du online](page:booking) und bekommst sofort eine Bestätigung, so ist deine Zeit nach der Anreise reserviert. Ohne Termin bist du während der Öffnungszeiten ebenfalls willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du näher an Biel, schau auf der Seite für [Sutz-Lattrigen](seo:sutz-lattrigen) vorbei.`,
+      fr: `## Täuffelen-Gerolfingen, sur la rive sud
 
-Nous pensons que oui. Chez GYAN, on prend le temps du conseil et on soigne les transitions. Une fois en ville, beaucoup combinent cheveux et barbe avec la [formule GYAN Classic](service:haarschnitt-und-bart) ou s'offrent la [formule GYAN Premium](service:gyan-premium-paket) avec shampoing et coiffage.
+Täuffelen forme avec Gerolfingen une commune sur la rive sud du lac de Bienne. Gerolfingen est au bord de l'eau, Täuffelen un peu plus haut derrière, et tout autour s'étendent les champs du Seeland. Un peu plus à l'ouest, l'Aar se jette dans le lac par le canal de Hagneck, un ouvrage de la correction des eaux du Jura au XIXe siècle. Bienne se trouve à l'autre bout du lac, à une douzaine de kilomètres, et c'est la ville la plus proche pour la rive sud.
 
-[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite : pas d'attente après le trajet. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Sur le chemin se trouve [Sutz-Lattrigen](seo:sutz-lattrigen), qui a aussi sa propre page.`,
-      en: `## Between lake and vegetable fields
+## En BTI le long du lac jusqu'à Bienne
 
-Täuffelen also includes Gerolfingen, right on the lake. All around, the wide fields of the Seeland shape the landscape, and not far away the Aare flows into Lake Biel through the Hagneck canal. For anything the village doesn't offer, people head to Biel.
+La liaison la plus confortable, c'est le train BTI, qui relie Bienne, Täuffelen et Anet et qui est aujourd'hui exploité par Aare Seeland mobil. Depuis Täuffelen, il longe la rive sud par Ipsach et Nidau jusqu'à la gare de Bienne. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22. En route, tu regardes le lac plutôt que les bouchons.
 
-## A direct link to Biel
+En voiture, tu suis la route de la rive sud par Sutz et Ipsach jusqu'à Nidau, puis vers le centre de Bienne. Compte large environ 20 minutes et gare-toi dans un des parkings publics du centre-ville.
 
-Täuffelen is on the Aare Seeland mobil line between Biel and Ins. The train runs along the south shore via Sutz, Ipsach and Nidau to Biel station, a few minutes' walk from Zentralstrasse 22. By car you'll reach central Biel in about a quarter of an hour.
+## Un trajet, tout est réglé
 
-## Is the trip worth it?
+Quand tu viens exprès de la rive sud, autant faire cheveux et barbe en une seule visite. La [formule GYAN Classic](service:haarschnitt-und-bart) réunit coupe et barbe en environ 30 minutes pour 65 francs, 60 francs sans rendez-vous. Avec la [formule GYAN Premium](service:gyan-premium-paket), shampooing et coiffage s'ajoutent, environ 40 minutes pour 75 francs.
 
-We think so. At GYAN we take time for a consultation and pay attention to clean blends. Once in town, many combine hair and beard in the [GYAN Classic package](service:haarschnitt-und-bart) or treat themselves to the [GYAN Premium package](service:gyan-premium-paket) with wash and styling.
+Si tu veux vraiment prendre ton temps, le GYAN Full Service avec coupe, barbe, Face Treatment, shampooing et coiffage est l'option la plus complète, environ 50 minutes. Le Face Treatment avec serviette chaude, nettoyage et soin se réserve aussi seul. Tu es installé dans un fauteuil en cuir brun, avec un tapis persan rouge au mur.
 
-[Book your appointment online](page:booking), confirmed instantly, so there's no waiting after the journey. Walk-ins are welcome during opening hours too. Pay in cash, by card or with TWINT. On the way you'll pass [Sutz-Lattrigen](seo:sutz-lattrigen), which has its own page as well.`,
+## Organiser ta journée à Bienne
+
+Du lundi au mercredi, on est là de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, le samedi de 8 h 30 à 18 h. Fermé le dimanche. Un rendez-vous tôt le samedi se combine bien avec des courses au centre de Bienne, avant de reprendre le BTI vers la rive sud.
+
+[Réserve en ligne](page:booking) et la confirmation arrive tout de suite : ton créneau t'attend à ton arrivée. Sans rendez-vous, tu es aussi le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Si tu habites plus près de Bienne, jette un œil à la page pour [Sutz-Lattrigen](seo:sutz-lattrigen).`,
+      en: `## Täuffelen-Gerolfingen on the south shore
+
+Täuffelen and Gerolfingen together form one municipality on the south shore of Lake Biel. Gerolfingen is right on the water, Täuffelen sits a little higher up behind it, and the fields of the Seeland stretch out all around. A short way to the west, the Aare flows into the lake through the Hagneck canal, built as part of the Jura water correction in the 19th century. Biel is at the other end of the lake, about twelve kilometres away, and is the nearest town for the whole south shore.
+
+## Along the lake to Biel on the BTI
+
+The easiest way in is the BTI train, which links Biel, Täuffelen and Ins and is run today by Aare Seeland mobil. From Täuffelen it follows the south shore through Ipsach and Nidau to Biel station. From there it's a few minutes' walk to Zentralstrasse 22. On the way you get a view of the lake instead of traffic.
+
+By car, take the south shore road through Sutz and Ipsach to Nidau and on into central Biel. Allow a generous 20 minutes and park in one of the public car parks in the city centre.
+
+## One trip, everything sorted
+
+If you're coming all the way from the south shore, it makes sense to get hair and beard done in one visit. The [GYAN Classic package](service:haarschnitt-und-bart) combines haircut and beard in about 30 minutes for CHF 65, or CHF 60 as a walk-in. The [GYAN Premium package](service:gyan-premium-paket) adds a wash and styling, about 40 minutes for CHF 75.
+
+If you really want to take your time, the GYAN Full Service with haircut, beard, Face Treatment, wash and styling is the most complete option, about 50 minutes. The Face Treatment, with hot towel, cleansing and care, can also be booked on its own. You'll be in a brown leather chair, with a red Persian carpet on the wall.
+
+## Planning your day in Biel
+
+We're open Monday to Wednesday from 9am to 7pm, Thursday and Friday until 8pm, and Saturday from 8:30am to 6pm. Closed on Sundays. An early Saturday slot pairs well with some shopping in central Biel before you take the BTI back to the south shore.
+
+[Book online](page:booking) and get instant confirmation, so your slot is waiting when you arrive. Walk-ins are welcome during opening hours too. Pay in cash, by card or with TWINT. Living closer to Biel? Have a look at the page for [Sutz-Lattrigen](seo:sutz-lattrigen).`,
     },
     neighbors: ["sutz-lattrigen", "ipsach"],
+    carMin: 20,
+    transit: {
+      de: "Mit der BTI-Bahn Biel-Täuffelen-Ins fährst du dem Südufer entlang direkt bis zum Bahnhof Biel, von dort sind es ein paar Minuten zu Fuss.",
+      fr: "Le train BTI Bienne-Täuffelen-Anet longe la rive sud jusqu'à la gare de Bienne, puis il reste quelques minutes à pied.",
+      en: "The BTI line Biel-Täuffelen-Ins runs along the south shore straight to Biel station, then it's a few minutes on foot.",
+    },
+    services: ["haarschnitt-und-bart", "gyan-premium-paket", "gesichtspflege-biel", "gyan-full-service"],
+    faq: {
+      de: [
+        { q: "Wie komme ich von Täuffelen ohne Auto zu GYAN?", a: "Die BTI-Bahn fährt von Täuffelen dem Südufer des Bielersees entlang bis zum Bahnhof Biel. Von dort gehst du ein paar Minuten zu Fuss zur Zentralstrasse 22." },
+        { q: "Passt ein Termin aus Täuffelen am Samstagmorgen?", a: "Ja, samstags öffnen wir schon um 8.30 Uhr und haben bis 18 Uhr offen. So kannst du den Schnitt mit dem Wocheneinkauf oder anderen Besorgungen in Biel verbinden." },
+        { q: "Welches Paket lohnt sich, wenn ich extra aus Täuffelen anreise?", a: "Wer Haare und Bart in einem Besuch erledigen will, nimmt das GYAN Classic Paket für 65 Franken. Mit Wäsche und Styling dazu ist es das GYAN Premium Paket für 75 Franken, mit Face Treatment der GYAN Full Service für 90 Franken." },
+      ],
+      fr: [
+        { q: "Comment venir de Täuffelen chez GYAN sans voiture ?", a: "Le train BTI part de Täuffelen et longe la rive sud du lac de Bienne jusqu'à la gare de Bienne. De là, tu marches quelques minutes jusqu'à la Zentralstrasse 22." },
+        { q: "Un rendez-vous le samedi matin depuis Täuffelen, c'est possible ?", a: "Oui, le samedi on ouvre dès 8 h 30 et jusqu'à 18 h. Tu peux ainsi combiner la coupe avec tes courses ou d'autres commissions à Bienne." },
+        { q: "Quelle formule choisir si je viens exprès de Täuffelen ?", a: "Pour régler cheveux et barbe en une visite, prends la formule GYAN Classic à 65 francs. Avec shampooing et coiffage, c'est la formule GYAN Premium à 75 francs, et avec le Face Treatment, le GYAN Full Service à 90 francs." },
+      ],
+      en: [
+        { q: "How do I get from Täuffelen to GYAN without a car?", a: "The BTI train runs from Täuffelen along the south shore of Lake Biel to Biel station. From there it's a few minutes' walk to Zentralstrasse 22." },
+        { q: "Does a Saturday morning appointment work from Täuffelen?", a: "Yes, on Saturdays we open at 8:30am and stay open until 6pm. That way you can combine the cut with your weekly shop or other errands in Biel." },
+        { q: "Which package makes sense if I come all the way from Täuffelen?", a: "To sort out hair and beard in one visit, go for the GYAN Classic package at CHF 65. Add wash and styling and it's the GYAN Premium package at CHF 75, or the GYAN Full Service at CHF 90 with a Face Treatment included." },
+      ],
+    },
   },
 
   // ───────────────────────────── AEGERTEN ─────────────────────────────
@@ -1123,9 +1795,9 @@ We think so. At GYAN we take time for a consultation and pay attention to clean 
       en: "Barber near Aegerten – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Aegerten: über den Kanal nach Brügg und weiter nach Biel zu GYAN, rund 6 km. Haarschnitt, Fade und Bart, online Termin buchen.",
-      fr: "Coiffeur homme près d'Aegerten : par Brügg jusqu'à Bienne chez GYAN, à environ 6 km. Coupe, dégradé et barbe, réserve ton rendez-vous en ligne.",
-      en: "Barber near Aegerten: cross the canal to Brügg and continue to GYAN in Biel, about 6 km. Haircuts, fades and beards, book your appointment online.",
+      de: "Coiffeur für Aegerten: über Brügg nach Biel zu GYAN, rund 6 km. Signature Cut mit Styling-Tipps für zu Hause. Jetzt online Termin buchen.",
+      fr: "Coiffeur pour Aegerten : par Brügg jusqu'à GYAN à Bienne, à 6 km. Signature Cut avec conseils de coiffage pour la maison. Réserve en ligne.",
+      en: "Barber for Aegerten: via Brügg to GYAN in Biel, about 6 km. Signature Cut with styling tips to recreate at home. Book your appointment online.",
     },
     h1: {
       de: "Herrencoiffeur für Aegerten",
@@ -1133,52 +1805,94 @@ We think so. At GYAN we take time for a consultation and pay attention to clean 
       en: "Barber near Aegerten",
     },
     intro: {
-      de: "Aegerten liegt gleich gegenüber von Brügg am Nidau-Büren-Kanal, rund sechs Kilometer vom Bieler Zentrum. Bis zu GYAN an der Zentralstrasse 22 ist es nur ein kurzer Weg.",
-      fr: "Aegerten se trouve juste en face de Brügg, au bord du canal Nidau-Büren, à environ six kilomètres du centre de Bienne. Jusqu'à GYAN à la Zentralstrasse 22, le trajet est court.",
-      en: "Aegerten sits right across from Brügg on the Nidau-Büren canal, about six kilometres from central Biel. Getting to GYAN on Zentralstrasse 22 is quick.",
+      de: "Aegerten liegt gegenüber von Brügg am Nidau-Büren-Kanal, rund sechs Kilometer von GYAN. Über die Brücke und mit dem Zug ab Brügg bist du schnell in Biel.",
+      fr: "Aegerten fait face à Brügg sur le canal Nidau-Büren, à environ six kilomètres de GYAN. Par le pont puis en train depuis Brügg, tu es vite à Bienne.",
+      en: "Aegerten faces Brügg across the Nidau-Büren canal, about six kilometres from GYAN. Cross the bridge, take the train from Brügg and you're soon in Biel.",
     },
     body: {
-      de: `## Ein Dorf am Kanal
+      de: `## Aegerten, Brügg und die Brücke über den Kanal
 
-Aegerten ist durch den Nidau-Büren-Kanal von Brügg getrennt und gleichzeitig eng damit verbunden: Über die Brücke bist du in wenigen Minuten auf der anderen Seite. Am Kanal entlang führen beliebte Velo- und Spazierwege Richtung Nidau und Biel.
+Aegerten liegt am Nidau-Büren-Kanal, auf der anderen Seite des Wassers gegenüber von Brügg, und grenzt an Studen. Durch den Kanal fliesst hier die Aare, nachdem sie den Bielersee verlassen hat. Über die Brücke bist du in wenigen Minuten in Brügg, und von dort ist es nicht mehr weit bis an den Stadtrand von Biel. Entlang dem Kanal führen Wege, die sich gut zu Fuss oder mit dem Velo nutzen lassen.
 
-## So kommst du zu uns
+## Der Weg über Brügg nach Biel
 
-Am schnellsten geht es über die Brücke zum Bahnhof Brügg. Von dort bringt dich die S-Bahn in wenigen Minuten zum Bahnhof Biel, und du gehst kurz zu Fuss zur Zentralstrasse 22. Mit dem Velo fährst du dem Kanal entlang in die Stadt, mit dem Auto über Brügg ins Zentrum.
+Bis zu GYAN an der Zentralstrasse 22 sind es rund sechs Kilometer. Ohne Auto gehst oder radelst du über die Kanalbrücke zum Bahnhof Brügg und nimmst den Zug zum Bahnhof Biel. Von dort sind es nur wenige Minuten zu Fuss bis in den Salon. Mit dem Auto fährst du über Brügg ins Bieler Zentrum, wo es öffentliche Parkplätze gibt; rechne mit etwa einer Viertelstunde. Mit dem Velo folgst du dem Kanal Richtung Stadt.
 
-## Kurzer Weg, sauberer Schnitt
+## Den Look zu Hause selbst hinbekommen
 
-Weil der Weg so kurz ist, passt ein Termin bei uns gut in den Feierabend, am Donnerstag und Freitag sind wir bis 20 Uhr da. Beliebt sind der [Herren Haarschnitt](service:haarschnitt-biel) und der [GYAN Signature Cut](service:gyan-signature) mit individuellem Styling und Tipps, wie du es selbst stylst.
+Ein Schnitt sieht im Salon meistens gut aus. Die Frage ist, wie er am nächsten Morgen vor deinem eigenen Spiegel in Aegerten aussieht. Genau dafür gibt es den [GYAN Signature Cut](service:gyan-signature): Nach dem Haarschnitt stylen wir deine Haare und zeigen dir dabei, welches Produkt passt, wie viel du davon brauchst und mit welchen Handgriffen du den Look selbst hinbekommst. Das dauert rund 25 Minuten.
 
-[Online buchen](page:booking) dauert nur einen Moment, die Bestätigung kommt sofort. Ohne Termin kommst du während der Öffnungszeiten einfach vorbei. Bezahlt wird bar, mit Karte oder mit TWINT. Für die Nachbarn auf der anderen Kanalseite haben wir die Seite für [Brügg](seo:bruegg).`,
-      fr: `## Un village au bord du canal
+Wenn du schon genau weisst, was du willst, reicht der [Herren Haarschnitt](service:haarschnitt-biel) mit Beratung, Schere und Maschine und sauberen Konturen in rund 20 Minuten. Und wer Haar und Bart in einem Termin erledigen und dazu Wäsche und Styling möchte, nimmt das GYAN Premium Paket in rund 40 Minuten.
 
-Aegerten est séparé de Brügg par le canal Nidau-Büren tout en y étant étroitement lié : par le pont, tu es de l'autre côté en quelques minutes. Le long du canal, des chemins appréciés à vélo et à pied mènent vers Nidau et Bienne.
+## Planen oder spontan vorbeikommen
 
-## Comment venir
+Weil der Weg über Brügg etwas länger ist als aus der Stadt, lohnt es sich, den Termin [online zu buchen](page:booking). Die Bestätigung kommt sofort, und du kannst deine Zugverbindung danach richten. Wer flexibel ist, kommt einfach während der Öffnungszeiten vorbei, Walk-ins sind willkommen. Montag bis Mittwoch sind wir von 9 bis 19 Uhr da, am Donnerstag und Freitag bis 20 Uhr, am Samstag von 8.30 bis 18 Uhr. Sonntags ist geschlossen.
 
-Le plus rapide est de traverser le pont jusqu'à la gare de Brügg. De là, le RER t'amène en quelques minutes à la gare de Bienne, puis quelques pas jusqu'à la Zentralstrasse 22. À vélo, tu longes le canal jusqu'en ville ; en voiture, tu passes par Brügg jusqu'au centre.
+Im Salon erwarten dich braune Lederstühle und ein roter Perserteppich an der Wand. Bezahlen kannst du bar, mit Karte oder mit TWINT. Für die Nachbarn auf der anderen Seite des Kanals gibt es die Seite für [Brügg](seo:bruegg).`,
+      fr: `## Aegerten, Brügg et le pont sur le canal
 
-## Trajet court, coupe nette
+Aegerten se trouve au bord du canal Nidau-Büren, de l'autre côté de l'eau face à Brügg, et touche Studen. C'est l'Aar qui coule ici dans le canal, après avoir quitté le lac de Bienne. Par le pont, tu es à Brügg en quelques minutes, et de là, la périphérie de Bienne n'est plus très loin. Le long du canal, des chemins se prêtent bien à la marche ou au vélo.
 
-Comme le trajet est court, un rendez-vous chez nous s'intègre bien après le travail ; le jeudi et le vendredi, nous sommes là jusqu'à 20 h. Les plus demandés : la [coupe homme](service:haarschnitt-biel) et le [GYAN Signature Cut](service:gyan-signature) avec coiffage personnalisé et conseils pour le refaire toi-même.
+## Par Brügg jusqu'à Bienne
 
-[Réserver en ligne](page:booking) ne prend qu'un instant, la confirmation est immédiate. Sans rendez-vous, passe simplement pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Pour les voisins de l'autre côté du canal, il y a la page pour [Brügg](seo:bruegg).`,
-      en: `## A village on the canal
+Jusqu'à GYAN, à la Zentralstrasse 22, il y a environ six kilomètres. Sans voiture, tu traverses le pont à pied ou à vélo jusqu'à la gare de Brügg, puis tu prends le train jusqu'à la gare de Bienne. De là, il ne reste que quelques minutes à pied jusqu'au salon. En voiture, tu passes par Brügg jusqu'au centre de Bienne, où se trouvent des places de parc publiques ; compte environ un quart d'heure. À vélo, suis le canal en direction de la ville.
 
-Aegerten is separated from Brügg by the Nidau-Büren canal and at the same time closely tied to it: cross the bridge and you're on the other side within minutes. Popular cycling and walking paths run along the canal towards Nidau and Biel.
+## Refaire le look toi-même à la maison
 
-## Getting here
+Au salon, une coupe a presque toujours belle allure. La vraie question, c'est à quoi elle ressemble le lendemain matin devant ton miroir à Aegerten. C'est pour ça qu'existe le [GYAN Signature Cut](service:gyan-signature) : après la coupe, on coiffe tes cheveux en te montrant quel produit convient, en quelle quantité et avec quels gestes tu refais le look toi-même. Compte environ 25 minutes.
 
-The quickest way is over the bridge to Brügg station. From there the S-Bahn takes you to Biel station in a few minutes, followed by a short walk to Zentralstrasse 22. By bike, follow the canal into town; by car, drive via Brügg to the centre.
+Si tu sais déjà exactement ce que tu veux, la [coupe homme](service:haarschnitt-biel) suffit : conseil, ciseaux et tondeuse, contours nets, en une vingtaine de minutes. Et pour régler cheveux et barbe en un seul rendez-vous, avec shampooing et coiffage en plus, il y a la formule GYAN Premium, en une quarantaine de minutes.
 
-## Short trip, clean cut
+## Réserver ou passer spontanément
 
-Because it's so close, an appointment with us fits nicely after work, and on Thursdays and Fridays we're here until 8 pm. Popular choices are the [men's haircut](service:haarschnitt-biel) and the [GYAN Signature Cut](service:gyan-signature) with individual styling and tips on how to style it yourself.
+Comme le trajet par Brügg est un peu plus long que depuis la ville, mieux vaut [réserver en ligne](page:booking). La confirmation est immédiate et tu peux caler ton train en fonction. Si tu es flexible, passe simplement pendant les heures d'ouverture : les clients sans rendez-vous sont les bienvenus. Du lundi au mercredi, on est là de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, le samedi de 8 h 30 à 18 h. Le dimanche, c'est fermé.
 
-[Booking online](page:booking) takes just a moment, with instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. For the neighbours across the canal, there's our page for [Brügg](seo:bruegg).`,
+Au salon t'attendent des fauteuils en cuir brun et un tapis persan rouge au mur. Tu paies en espèces, par carte ou avec TWINT. Pour les voisins de l'autre côté du canal, il y a la page pour [Brügg](seo:bruegg).`,
+      en: `## Aegerten, Brügg and the bridge over the canal
+
+Aegerten lies on the Nidau-Büren canal, across the water from Brügg, and borders Studen. The canal here carries the Aare after it leaves Lake Biel. Cross the bridge and you're in Brügg within minutes, and from there the edge of Biel isn't far. Paths run along the canal that work well on foot or by bike, so the first part of the trip into town can be a pleasant one even before you reach a station or a main road.
+
+## Via Brügg into Biel
+
+It's about six kilometres to GYAN at Zentralstrasse 22. Without a car, walk or cycle over the canal bridge to Brügg station and take the train to Biel station. From there it's just a few minutes' walk to the salon. By car you drive via Brügg into central Biel, where there's public parking; allow about a quarter of an hour. By bike, simply follow the canal towards town.
+
+## Getting the look right at home
+
+A cut almost always looks good in the salon. The real question is how it looks the next morning in front of your own mirror in Aegerten. That's what the [GYAN Signature Cut](service:gyan-signature) is for: after the haircut we style your hair and show you which product suits it, how much to use and which moves get you the look on your own. It takes about 25 minutes.
+
+Prefer to keep things simple? If you already know exactly what you want, the [men's haircut](service:haarschnitt-biel) does the job: consultation, scissors and clippers, clean outlines, in about 20 minutes. And if you want hair and beard done in one visit with a wash and styling on top, there's the GYAN Premium package, about 40 minutes.
+
+## Book ahead or just drop in
+
+Since the trip via Brügg takes a little longer than from inside the city, it's worth [booking online](page:booking). Confirmation comes instantly, so you can plan your train around it and know exactly when you need to leave Aegerten. If you're flexible, just drop in during opening hours, walk-ins are welcome. Monday to Wednesday we're open 9am to 7pm, Thursday and Friday until 8pm, and Saturday from 8:30am to 6pm. Sundays we're closed.
+
+Inside you'll find brown leather chairs and a red Persian carpet on the wall. Pay in cash, by card or with TWINT. For the neighbours across the canal, there's our page for [Brügg](seo:bruegg).`,
     },
     neighbors: ["bruegg", "studen", "busswil"],
+    carMin: 15,
+    transit: {
+      de: "Über die Kanalbrücke zum Bahnhof Brügg und mit dem Zug zum Bahnhof Biel, dann wenige Minuten zu Fuss.",
+      fr: "Par le pont sur le canal jusqu'à la gare de Brügg, puis en train jusqu'à la gare de Bienne et quelques minutes à pied.",
+      en: "Cross the canal bridge to Brügg station, take the train to Biel station, then walk a few minutes.",
+    },
+    services: ["gyan-signature", "haarschnitt-biel", "gyan-premium-paket"],
+    faq: {
+      de: [
+        { q: "Wie weit ist es von Aegerten bis zu GYAN?", a: "Von Aegerten bis zur Zentralstrasse 22 in Biel sind es rund sechs Kilometer. Mit dem Auto rechnest du mit etwa einer Viertelstunde, mit Zug ab Brügg plus Fussweg ähnlich." },
+        { q: "Wie bezahle ich als Kunde aus Aegerten im Salon?", a: "Du kannst bar, mit Karte oder mit TWINT bezahlen. Online buchst du deinen Termin und bekommst sofort eine Bestätigung." },
+        { q: "Kann ich von Aegerten aus auch am Wochenende kommen?", a: "Am Samstag sind wir von 8.30 bis 18 Uhr offen, am Sonntag ist geschlossen. Für einen Samstag von Aegerten aus lohnt sich eine Online-Buchung." },
+      ],
+      fr: [
+        { q: "À quelle distance se trouve GYAN depuis Aegerten ?", a: "D'Aegerten à la Zentralstrasse 22 à Bienne, il y a environ six kilomètres. En voiture, compte un quart d'heure environ, en train depuis Brügg avec la marche, c'est comparable." },
+        { q: "Comment payer au salon si je viens d'Aegerten ?", a: "Tu peux payer en espèces, par carte ou avec TWINT. En ligne, tu réserves ton rendez-vous et la confirmation est immédiate." },
+        { q: "Puis-je venir d'Aegerten le week-end ?", a: "Le samedi, on est ouverts de 8 h 30 à 18 h, le dimanche c'est fermé. Pour un samedi depuis Aegerten, mieux vaut réserver en ligne." },
+      ],
+      en: [
+        { q: "How far is GYAN from Aegerten?", a: "It's about six kilometres from Aegerten to Zentralstrasse 22 in Biel. By car allow about a quarter of an hour, and the train from Brügg plus the walk takes about the same." },
+        { q: "How do I pay at the salon if I come from Aegerten?", a: "You can pay in cash, by card or with TWINT. Book online and you get instant confirmation." },
+        { q: "Can I come from Aegerten at the weekend?", a: "On Saturday we're open from 8:30am to 6pm, and closed on Sunday. For a Saturday visit from Aegerten, booking online is a good idea." },
+      ],
+    },
   },
 
   // ───────────────────────────── SAFNERN ─────────────────────────────
@@ -1193,9 +1907,9 @@ Because it's so close, an appointment with us fits nicely after work, and on Thu
       en: "Barber near Safnern – men's salon in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Safnern: GYAN im Zentrum von Biel, rund 8 km entfernt über Orpund. Haarschnitt, Fade und Bart, online buchen oder spontan vorbei.",
-      fr: "Coiffeur homme près de Safnern : GYAN au centre de Bienne, à environ 8 km par Orpund. Coupe, dégradé et barbe, réserve en ligne ou passe sans rendez-vous.",
-      en: "Barber near Safnern: GYAN in the centre of Biel, about 8 km away via Orpund. Haircuts, fades and beards, book online or simply walk in during hours.",
+      de: "Herrencoiffeur für Safnern: GYAN in Biel, rund 8 km über Orpund. Hot Towel Rasur, Face Treatment und Full Service. Jetzt online Termin buchen.",
+      fr: "Coiffeur homme pour Safnern : GYAN à Bienne, à environ 8 km via Orpund. Rasage serviette chaude, soin du visage, Full Service. Réserve en ligne.",
+      en: "Barber for Safnern: GYAN in Biel, about 8 km away via Orpund. Hot towel shaves, face treatments and the Full Service. Book your appointment online.",
     },
     h1: {
       de: "Herrencoiffeur für Safnern",
@@ -1203,52 +1917,112 @@ Because it's so close, an appointment with us fits nicely after work, and on Thu
       en: "Barber near Safnern",
     },
     intro: {
-      de: "Safnern liegt am Fuss des Büttenbergs, östlich von Biel, rund acht Kilometer vom Zentrum. Über Orpund bist du schnell bei GYAN an der Zentralstrasse 22.",
-      fr: "Safnern se trouve au pied du Büttenberg, à l'est de Bienne, à environ huit kilomètres du centre. Par Orpund, tu es vite chez GYAN à la Zentralstrasse 22.",
-      en: "Safnern lies at the foot of the Büttenberg, east of Biel, about eight kilometres from the centre. Via Orpund you'll quickly reach GYAN on Zentralstrasse 22.",
+      de: "Safnern liegt am Fuss des Büttenbergs, rund acht Kilometer östlich von Biel. Über Orpund fährst du ins Zentrum, mit dem Bus kommst du zum Bahnhof Biel, nur wenige Minuten von GYAN.",
+      fr: "Safnern se trouve au pied du Büttenberg, à environ huit kilomètres à l'est de Bienne. Par Orpund, tu rejoins le centre, et le bus t'amène à la gare, tout près de GYAN.",
+      en: "Safnern lies at the foot of the Büttenberg, about eight kilometres east of Biel. Drive in via Orpund, or take the bus to Biel station, a few minutes from GYAN.",
     },
     body: {
-      de: `## Ländlich wohnen, nah an der Stadt
+      de: `## Zwischen Büttenberg und Aare-Ebene
 
-Safnern ist ein ruhiges Dorf zwischen dem bewaldeten Büttenberg und der Ebene der Aare. Hier wohnt man ländlich, ist aber in wenigen Minuten in Biel, ob zur Arbeit, zum Einkaufen oder für einen Termin im Salon.
+Safnern liegt östlich von Biel, angelehnt an den bewaldeten Büttenberg. Auf der einen Seite der Wald, auf der anderen die weite, flache Ebene Richtung Aare. Das Dorf ist ruhig und ländlich, und doch ist Biel nah genug für Arbeit, Einkauf oder einen Termin beim Coiffeur. Rund acht Kilometer sind es bis zu unserem Salon an der Zentralstrasse 22.
 
-## So kommst du zu uns
+## Über Orpund in die Stadt
 
-Mit dem Bus fährst du nach Biel bis zum Bahnhof. Von dort sind es wenige Gehminuten bis zur Zentralstrasse 22. Mit dem Auto erreichst du das Bieler Zentrum über Orpund und parkierst in einem der öffentlichen Parkhäuser. Mit dem Velo ist die Strecke durch die Ebene gut zu fahren.
+Mit dem Auto führt der Weg von Safnern über Orpund ins Bieler Zentrum. Rechne mit etwa 20 Minuten, je nach Verkehr, und parkiere in einem der öffentlichen Parkhäuser in der Innenstadt. Ohne Auto nimmst du den Bus zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss weiter.
 
-## Was dich bei GYAN erwartet
+Für Velofahrer ist die Strecke angenehm: grösstenteils flach durch die Ebene, vorbei an Orpund. Plane etwas Reserve ein, damit du entspannt ankommst.
 
-Im Salon arbeiten wir mit Schere, Maschine und Klinge und nehmen uns Zeit für die Beratung. Für den Bart gibt es den [Bart Trim](service:bart-trimmen-biel), für einen klassischen Moment die [Bart Rasur mit heissem Tuch](service:nassrasur-biel). Mehr über unsere Arbeit als [Herrencoiffeur in Biel](seo:herrencoiffeur) liest du auf der eigenen Seite.
+## Eine halbe Stunde nur für dich
 
-Deinen Termin [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen: Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Auf dem Weg liegt [Orpund](seo:orpund), auch dafür gibt es eine Seite.`,
-      fr: `## Vivre à la campagne, près de la ville
+Wer vom ruhigen Dorfleben in die Stadt kommt, muss sich nicht hetzen. Bei uns geht es nicht nur um den schnellen Schnitt. Die [Bart Rasur mit heissem Tuch](service:nassrasur-biel) ist eine klassische Nassrasur mit Schaum, heissem Tuch und Pflege, rund 20 Minuten lang. Das [GYAN Face Treatment](service:gesichtspflege-biel) setzt auf heisses Tuch, Reinigung und Pflege für die Haut. Und wer alles auf einmal möchte, bucht den GYAN Full Service: Haarschnitt, Bart, Face Treatment, Wäsche und Styling in rund 50 Minuten.
 
-Safnern est un village calme entre le Büttenberg boisé et la plaine de l'Aar. On y vit à la campagne, tout en étant à Bienne en quelques minutes, pour le travail, les courses ou un rendez-vous au salon.
+Natürlich gibt es auch den einfachen Herren Haarschnitt mit Beratung, Schere und Maschine. Im Salon arbeiten wir mit Schere, Maschine und Klinge und nehmen uns Zeit für das Gespräch vor dem ersten Schnitt. Du sitzt auf braunen Ledersesseln, an der Wand hängt ein roter Perserteppich.
 
-## Comment venir
+## Wann es am besten passt
 
-En bus, tu rejoins la gare de Bienne. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22. En voiture, tu rejoins le centre de Bienne par Orpund et tu te gares dans un des parkings publics. À vélo, le trajet à travers la plaine se fait facilement.
+Samstags öffnen wir um 8.30 Uhr und schliessen um 18 Uhr, ideal für einen Termin ohne Zeitdruck. Unter der Woche sind wir Montag bis Mittwoch von 9 bis 19 Uhr da, Donnerstag und Freitag bis 20 Uhr. Sonntags bleibt der Salon geschlossen.
 
-## Ce qui t'attend chez GYAN
+Deinen Termin [buchst du online](page:booking), die Bestätigung kommt sofort. Ohne Termin bist du während der Öffnungszeiten willkommen. Bezahlt wird bar, mit Karte oder mit TWINT.
 
-Au salon, on travaille aux ciseaux, à la tondeuse et au rasoir, en prenant le temps du conseil. Pour la barbe, il y a la [taille de barbe](service:bart-trimmen-biel) ; pour un moment classique, le [rasage à la serviette chaude](service:nassrasur-biel). Pour en savoir plus sur notre travail de [coiffeur homme à Bienne](seo:herrencoiffeur), consulte la page dédiée.
+Ein Überblick über die Preise: Die Bart Rasur mit heissem Tuch kostet 28 Franken, das Face Treatment 25 Franken. Der GYAN Full Service kostet 90 Franken, ohne Termin 85 Franken. Im Salon arbeiten Zana und Hikmet, online buchbar ist derzeit Zana.
 
-[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture : du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h, samedi de 8 h 30 à 18 h. Sur le chemin se trouve [Orpund](seo:orpund), qui a aussi sa page.`,
-      en: `## Country living, close to town
+Auf dem Weg nach Biel liegt [Orpund](seo:orpund), und weiter am Jurasüdfuss findest du Pieterlen. Für beide gibt es eine eigene Seite.`,
+      fr: `## Entre le Büttenberg et la plaine de l'Aar
 
-Safnern is a quiet village between the wooded Büttenberg and the Aare plain. Life here feels rural, yet you're in Biel within minutes, for work, shopping or an appointment at the salon.
+Safnern se trouve à l'est de Bienne, adossé au Büttenberg boisé. D'un côté la forêt, de l'autre la vaste plaine qui s'étend vers l'Aar. Le village est calme et campagnard, et pourtant Bienne est assez proche pour le travail, les courses ou un rendez-vous chez le coiffeur. Il y a environ huit kilomètres jusqu'à notre salon, à la Zentralstrasse 22.
 
-## Getting here
+## Par Orpund jusqu'en ville
 
-Take the bus to Biel station. From there it's a few minutes' walk to Zentralstrasse 22. By car, reach central Biel via Orpund and use one of the public car parks. By bike, the ride across the plain is an easy one.
+En voiture, la route va de Safnern au centre de Bienne en passant par Orpund. Compte une vingtaine de minutes selon le trafic, et gare-toi dans un des parkings publics du centre-ville. Sans voiture, tu prends le bus jusqu'à la gare de Bienne, puis tu continues quelques minutes à pied.
 
-## What to expect at GYAN
+À vélo, le trajet est agréable : presque tout plat à travers la plaine, en passant par Orpund. Prévois un peu de marge pour arriver détendu.
 
-In the salon we work with scissors, clippers and razor, and take time for the consultation. For your beard there's the [beard trim](service:bart-trimmen-biel), and for a classic moment the [hot towel shave](service:nassrasur-biel). Read more about our work as a [men's hairdresser in Biel](seo:herrencoiffeur) on its own page.
+## Une demi-heure rien que pour toi
 
-[Book your appointment online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours: Monday to Wednesday 9 am to 7 pm, Thursday and Friday until 8 pm, Saturday 8:30 am to 6 pm. On the way you'll pass [Orpund](seo:orpund), which has a page too.`,
+Quand on vient d'un village tranquille, pas besoin de se presser en ville. Chez nous, il ne s'agit pas seulement d'une coupe rapide. Le [rasage à la serviette chaude](service:nassrasur-biel) est un rasage traditionnel avec mousse, serviette chaude et soin, d'environ 20 minutes. Le [GYAN Face Treatment](service:gesichtspflege-biel) mise sur la serviette chaude, le nettoyage et le soin de la peau. Et si tu veux tout d'un coup, réserve le GYAN Full Service : coupe, barbe, soin du visage, lavage et coiffage en 50 minutes environ.
+
+Bien sûr, il y a aussi la simple coupe homme, avec conseil, ciseaux et tondeuse. Au salon, on travaille aux ciseaux, à la tondeuse et au rasoir, et on prend le temps d'échanger avant le premier coup de ciseaux. Tu t'installes dans un fauteuil en cuir brun, sous un tapis persan rouge accroché au mur.
+
+## Le bon moment pour venir
+
+Le samedi, on ouvre à 8 h 30 et on ferme à 18 h, parfait pour un rendez-vous sans stress. En semaine, on est là du lundi au mercredi de 9 h à 19 h, jeudi et vendredi jusqu'à 20 h. Le dimanche, le salon est fermé.
+
+[Réserve en ligne](page:booking) ton rendez-vous, la confirmation est immédiate. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT.
+
+Un aperçu des prix : le rasage à la serviette chaude coûte 28 francs, le Face Treatment 25 francs. Le GYAN Full Service coûte 90 francs, 85 francs sans rendez-vous. Au salon travaillent Zana et Hikmet, et pour l'instant, c'est Zana qu'on réserve en ligne.
+
+Sur la route de Bienne se trouve [Orpund](seo:orpund), et plus loin au pied du Jura, Perles. Les deux ont leur propre page.`,
+      en: `## Between the Büttenberg and the Aare plain
+
+Safnern lies east of Biel, tucked against the wooded Büttenberg. On one side the forest, on the other the wide, flat plain stretching towards the Aare. The village is quiet and rural, yet Biel is close enough for work, shopping or a trip to the barber. It's about eight kilometres to our salon at Zentralstrasse 22.
+
+## Into town via Orpund
+
+By car, the route from Safnern runs through Orpund into central Biel. Allow about 20 minutes depending on traffic, and park in one of the public car parks in the city centre. Without a car, take the bus to Biel station and walk the last few minutes.
+
+For cyclists the ride is a pleasant one: mostly flat across the plain, past Orpund. Leave a little extra time so you arrive relaxed.
+
+## Half an hour that's all yours
+
+Coming in from quiet village life, there's no need to rush. At GYAN it's not just about a quick cut. The [hot towel shave](service:nassrasur-biel) is a traditional wet shave with lather, a hot towel and aftercare, taking about 20 minutes. The [GYAN Face Treatment](service:gesichtspflege-biel) focuses on a hot towel, cleansing and skin care. And if you want the lot, book the GYAN Full Service: haircut, beard, face treatment, wash and styling in about 50 minutes.
+
+There's also the straightforward men's haircut with consultation, scissors and clippers. We work with scissors, clippers and razor, and take time to talk before the first snip. You'll sit in a brown leather chair, with a red Persian carpet on the wall.
+
+## When it suits you best
+
+On Saturdays we open at 8:30am and close at 6pm, perfect for an unhurried appointment. During the week we're open Monday to Wednesday 9am to 7pm, and Thursday and Friday until 8pm. The salon is closed on Sundays.
+
+[Book your appointment online](page:booking) and get instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT.
+
+A quick look at prices: the hot towel shave is CHF 28 and the face treatment CHF 25. The GYAN Full Service is CHF 90, or CHF 85 as a walk-in. Zana and Hikmet both work in the salon, and for now you can book Zana online.
+
+On the way to Biel you'll pass [Orpund](seo:orpund), and further along the foot of the Jura is Pieterlen. Both have their own page.`,
     },
     neighbors: ["orpund", "pieterlen", "lengnau"],
+    carMin: 20,
+    transit: {
+      de: "Mit dem Bus fährst du von Safnern zum Bahnhof Biel und gehst von dort wenige Minuten zu Fuss zum Salon.",
+      fr: "En bus, tu vas de Safnern à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the bus from Safnern to Biel station, then it's a few minutes on foot to the salon.",
+    },
+    services: ["nassrasur-biel", "gesichtspflege-biel", "gyan-full-service", "haarschnitt-biel"],
+    faq: {
+      de: [
+        { q: "Wo parkiere ich, wenn ich aus Safnern mit dem Auto komme?", a: "Du fährst über Orpund ins Bieler Zentrum und parkierst in einem der öffentlichen Parkhäuser. Von dort gehst du zu Fuss an die Zentralstrasse 22." },
+        { q: "Kann ich aus Safnern mit dem Velo zu GYAN fahren?", a: "Ja, die rund acht Kilometer führen grösstenteils durch die flache Ebene an der Aare. Plane etwas Zeit ein, damit du entspannt zu deinem Termin kommst." },
+        { q: "Welche Leistung lohnt sich für einen ruhigen Samstag aus Safnern?", a: "Für einen entspannten Termin passt die Bart Rasur mit heissem Tuch oder das GYAN Face Treatment, beide rund 20 Minuten. Samstags sind wir von 8.30 bis 18 Uhr da." },
+      ],
+      fr: [
+        { q: "Où me garer si je viens de Safnern en voiture ?", a: "Tu rejoins le centre de Bienne par Orpund et tu te gares dans un des parkings publics. De là, tu vas à pied jusqu'à la Zentralstrasse 22." },
+        { q: "Puis-je venir de Safnern à vélo chez GYAN ?", a: "Oui, les quelque huit kilomètres traversent surtout la plaine de l'Aar. Prévois un peu de marge pour arriver détendu à ton rendez-vous." },
+        { q: "Quelle prestation choisir pour un samedi tranquille depuis Safnern ?", a: "Pour un moment de détente, le rasage à la serviette chaude ou le GYAN Face Treatment, environ 20 minutes chacun. Le samedi, on est là de 8 h 30 à 18 h." },
+      ],
+      en: [
+        { q: "Where do I park if I drive in from Safnern?", a: "Drive into central Biel via Orpund and use one of the public car parks. From there it's a walk to Zentralstrasse 22." },
+        { q: "Can I cycle from Safnern to GYAN?", a: "Yes, the roughly eight kilometres run mostly across the flat Aare plain. Leave a bit of extra time so you arrive relaxed for your appointment." },
+        { q: "What's a good service for a slow Saturday when coming from Safnern?", a: "For something relaxing, try the hot towel shave or the GYAN Face Treatment, about 20 minutes each. On Saturdays we're open from 8:30am to 6pm." },
+      ],
+    },
   },
 
   // ───────────────────────────── BUSSWIL ─────────────────────────────
@@ -1263,9 +2037,9 @@ In the salon we work with scissors, clippers and razor, and take time for the co
       en: "Barber near Busswil – fades & beards in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Busswil: mit der S-Bahn in wenigen Minuten nach Biel und zu GYAN, rund 10 km. Haarschnitt, Fade und Bart, jetzt online Termin buchen.",
-      fr: "Coiffeur homme près de Busswil : en RER, quelques minutes jusqu'à Bienne et GYAN, à environ 10 km. Coupe, dégradé et barbe, réserve en ligne.",
-      en: "Barber near Busswil: a few minutes by S-Bahn to Biel and GYAN, about 10 km. Haircuts, fades and beards, book your appointment online now.",
+      de: "Herrencoiffeur für Busswil: mit der S-Bahn über Brügg nach Biel, dann kurz zu Fuss zu GYAN. Haar und Bart, Hot Towel Rasur. Jetzt online buchen.",
+      fr: "Coiffeur homme pour Busswil : RER via Brügg jusqu'à Bienne, puis quelques pas jusqu'à GYAN. Coupe et barbe, rasage serviette chaude. Réserve en ligne.",
+      en: "Barber for Busswil: S-Bahn via Brügg to Biel, then a short walk to GYAN. Haircut and beard or a hot towel shave. Book your appointment online now.",
     },
     h1: {
       de: "Herrencoiffeur für Busswil",
@@ -1273,52 +2047,112 @@ In the salon we work with scissors, clippers and razor, and take time for the co
       en: "Barber near Busswil",
     },
     intro: {
-      de: "Busswil gehört zur Gemeinde Lyss und liegt an der Bahnlinie nach Biel, rund zehn Kilometer vom Zentrum. Mit der S-Bahn bist du in wenigen Minuten bei GYAN an der Zentralstrasse 22.",
-      fr: "Busswil fait partie de la commune de Lyss et se trouve sur la ligne ferroviaire vers Bienne, à environ dix kilomètres du centre. En RER, tu es en quelques minutes chez GYAN à la Zentralstrasse 22.",
-      en: "Busswil is part of the municipality of Lyss and sits on the railway line to Biel, about ten kilometres from the centre. By S-Bahn you'll be at GYAN on Zentralstrasse 22 in minutes.",
+      de: "Busswil hat einen eigenen Bahnhof an der Strecke nach Biel. Mit der S-Bahn über Brügg bist du schnell am Bahnhof Biel und von dort in wenigen Gehminuten bei GYAN.",
+      fr: "Busswil a sa propre gare sur la ligne de Bienne. Avec le RER via Brügg, tu es vite à la gare de Bienne, puis à quelques minutes à pied de GYAN.",
+      en: "Busswil has its own station on the line to Biel. Ride the S-Bahn via Brügg to Biel station and you're a few minutes' walk from GYAN.",
     },
     body: {
-      de: `## Dorf mit eigenem Bahnhof
+      de: `## Ein Dorf mit Bahnhof vor der Tür
 
-Busswil ist seit 2011 ein Teil von Lyss, hat aber seinen dörflichen Charakter behalten. Der grosse Vorteil: ein eigener Bahnhof an der Linie Lyss–Biel. Wer hier wohnt, ist ohne Umsteigen in der Stadt.
+Busswil ist seit 2011 ein Ortsteil von Lyss, hat aber seinen eigenen Charakter behalten: ein Dorf im Seeland, umgeben von Feldern, mit einem eigenen Bahnhof an der Strecke zwischen Lyss und Biel. Genau dieser Bahnhof macht den Weg zum Coiffeur so einfach. Du gehst zu Fuss oder mit dem Velo zum Perron, steigst in die S-Bahn und bist ohne Umsteigen in Biel.
 
-## So kommst du zu uns
+Die Fahrt führt über Brügg in die Stadt. Am Bahnhof Biel steigst du aus und gehst wenige Minuten bis zur Zentralstrasse 22. Eine Parkplatzsuche entfällt komplett.
 
-Die S-Bahn fährt von Busswil über Brügg direkt zum Bahnhof Biel. Von dort gehst du wenige Minuten bis zur Zentralstrasse 22, ganz ohne Parkplatzsuche. Mit dem Auto führt der Weg über Brügg ins Bieler Zentrum, wo es öffentliche Parkhäuser gibt.
+## Feierabend in Biel, Haarschnitt inklusive
 
-## Haar und Bart, sauber gemacht
+Wer aus Busswil in Biel arbeitet oder zur Schule geht, kommt ohnehin am Bahnhof Biel vorbei. Da liegt es nahe, den Coiffeur einfach in den Heimweg einzubauen. Donnerstags und freitags sind wir bis 20 Uhr da, Montag bis Mittwoch bis 19 Uhr. Ein [Herren Haarschnitt](service:haarschnitt-biel) dauert rund 20 Minuten, das [GYAN Classic Paket](service:haarschnitt-und-bart) mit Haarschnitt und Bart rund 30 Minuten. Danach nimmst du die nächste S-Bahn zurück nach Busswil.
 
-Bei GYAN steht das Handwerk im Mittelpunkt: Beratung, ein Schnitt mit Schere und Maschine, Konturen mit der Klinge. Beliebt bei Kunden aus dem Seeland ist das [GYAN Classic Paket](service:haarschnitt-und-bart) mit Haarschnitt und Bart. Mehr zur Arbeit am Bart findest du auf der Seite [Bartpflege in Biel](seo:bart).
+Am Samstag öffnen wir schon um 8.30 Uhr und schliessen um 18 Uhr. Sonntags ist der Salon geschlossen.
 
-[Online buchen](page:booking) geht schnell, die Bestätigung kommt sofort. Ohne Termin bist du während der Öffnungszeiten willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Wohnst du im Zentrum von Lyss? Dann schau auf unserer Seite für [Lyss](seo:lyss) vorbei.`,
-      fr: `## Un village avec sa propre gare
+## Haar, Bart und ein Moment für dich
 
-Busswil fait partie de Lyss depuis 2011, mais a gardé son caractère villageois. Son grand atout : une gare sur la ligne Lyss–Bienne. Qui habite ici est en ville sans changement.
+Bei GYAN beginnt jeder Termin mit einer kurzen Beratung. Danach arbeiten wir mit Schere und Maschine, die Konturen am Bart ziehen wir mit der Klinge. Wer sich etwas Besonderes gönnen will, bucht die Bart Rasur mit heissem Tuch: Nassrasur mit Schaum, heissem Tuch und Pflege. Und wenn du lernen willst, deine Frisur zu Hause selbst hinzubekommen, ist der GYAN Signature Cut das Richtige. Nach dem Schnitt stylen wir deine Haare und zeigen dir, welches Produkt du wie verwendest.
 
-## Comment venir
+Du sitzt auf braunen Ledersesseln, an der Wand hängt ein roter Perserteppich. Bezahlt wird bar, mit Karte oder mit TWINT.
 
-Le RER relie Busswil directement à la gare de Bienne via Brügg. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22, sans chercher de place de parc. En voiture, la route passe par Brügg jusqu'au centre de Bienne, où se trouvent des parkings publics.
+## Buchen oder einfach vorbeikommen
 
-## Cheveux et barbe, travail soigné
+Einen fixen Termin [buchst du online](page:booking), die Bestätigung kommt sofort. So kannst du die passende S-Bahn gleich mitplanen. Die Website und die Buchung gibt es auf Deutsch, Französisch und Englisch. Spontan vorbeikommen geht während der Öffnungszeiten ebenfalls, Walk-ins sind willkommen.
 
-Chez GYAN, l'artisanat est au cœur : conseil, coupe aux ciseaux et à la tondeuse, contours au rasoir. Les clients du Seeland apprécient la [formule GYAN Classic](service:haarschnitt-und-bart) avec coupe et barbe. Pour en savoir plus sur le travail de la barbe, consulte la page [taille de barbe à Bienne](seo:bart).
+Ein kleiner Tipp für Spontane: Ohne Termin kostet der Herren Haarschnitt 35 statt 40 Franken und das GYAN Classic Paket 60 statt 65 Franken. Mit Termin bezahlst du etwas mehr, hast dafür aber deine feste Zeit und musst nicht warten, falls gerade viel los ist. Im Salon arbeiten Zana und Hikmet, online buchbar ist im Moment Zana.
 
-[Réserver en ligne](page:booking) est rapide, la confirmation est immédiate. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu habites au centre de Lyss ? Jette un œil à notre page pour [Lyss](seo:lyss).`,
-      en: `## A village with its own station
+Wohnst du im Zentrum von Lyss oder im Nachbardorf Studen? Dann findest du auch Seiten für [Lyss](seo:lyss) und Studen.`,
+      fr: `## Un village avec la gare à deux pas
 
-Busswil has been part of Lyss since 2011 but has kept its village character. Its big advantage: its own station on the Lyss–Biel line. Living here means getting into town without changing trains.
+Depuis 2011, Busswil fait partie de la commune de Lyss, mais il a gardé son caractère : un village du Seeland entouré de champs, avec sa propre gare sur la ligne entre Lyss et Bienne. C'est justement cette gare qui rend le trajet jusqu'au coiffeur si simple. Tu vas au quai à pied ou à vélo, tu montes dans le RER et tu arrives à Bienne sans changement.
 
-## Getting here
+Le trajet passe par Brügg. À la gare de Bienne, tu descends et tu marches quelques minutes jusqu'à la Zentralstrasse 22. Pas de place de parc à chercher.
 
-The S-Bahn runs from Busswil via Brügg straight to Biel station. From there it's a few minutes' walk to Zentralstrasse 22, with no need to look for parking. By car, the route goes via Brügg into central Biel, where there are public car parks.
+## Fin de journée à Bienne, coupe comprise
 
-## Hair and beard, done properly
+Si tu habites Busswil et que tu travailles ou étudies à Bienne, tu passes de toute façon par la gare. Autant glisser le coiffeur sur le chemin du retour. Le jeudi et le vendredi, on est là jusqu'à 20 h, du lundi au mercredi jusqu'à 19 h. Une [coupe homme](service:haarschnitt-biel) dure environ 20 minutes, la [formule GYAN Classic](service:haarschnitt-und-bart) avec coupe et barbe environ 30 minutes. Ensuite, tu prends le prochain RER pour Busswil.
 
-At GYAN, craft comes first: a consultation, a cut with scissors and clippers, lines with the razor. Clients from the Seeland like the [GYAN Classic package](service:haarschnitt-und-bart) with haircut and beard. Find out more about our beard work on the [beard barber in Biel](seo:bart) page.
+Le samedi, on ouvre dès 8 h 30 et on ferme à 18 h. Le dimanche, le salon est fermé.
 
-[Booking online](page:booking) is quick, with instant confirmation. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Live in central Lyss? Have a look at our page for [Lyss](seo:lyss).`,
+## Cheveux, barbe et un moment pour toi
+
+Chez GYAN, chaque rendez-vous commence par un court conseil. Ensuite, on travaille aux ciseaux et à la tondeuse, et on trace les contours de la barbe au rasoir. Pour te faire plaisir, réserve le rasage à la serviette chaude : rasage traditionnel avec mousse, serviette chaude et soin. Et si tu veux apprendre à refaire ta coiffure toi-même, le GYAN Signature Cut est fait pour toi : après la coupe, on te coiffe et on te montre quel produit utiliser et comment.
+
+Tu t'installes dans un fauteuil en cuir brun, sous un tapis persan rouge accroché au mur. Paiement en espèces, par carte ou avec TWINT.
+
+## Réserver ou passer spontanément
+
+Pour un créneau fixe, [réserve en ligne](page:booking) : la confirmation est immédiate et tu peux prévoir le bon RER. Le site et la réservation existent en allemand, en français et en anglais. Tu peux aussi passer sans rendez-vous pendant les heures d'ouverture.
+
+Un petit conseil si tu es spontané : sans rendez-vous, la coupe homme coûte 35 francs au lieu de 40, et la formule GYAN Classic 60 francs au lieu de 65. Avec rendez-vous, tu paies un peu plus, mais tu as ton heure fixe et tu n'attends pas s'il y a du monde. Au salon travaillent Zana et Hikmet, et pour l'instant, c'est Zana qu'on peut réserver en ligne.
+
+Tu habites au centre de Lyss ou dans le village voisin de Studen ? Il y a aussi des pages pour [Lyss](seo:lyss) et Studen.`,
+      en: `## A village with the station on its doorstep
+
+Busswil has been part of Lyss since 2011, but it has kept its own character: a Seeland village surrounded by fields, with its own station on the line between Lyss and Biel. That station is what makes getting to the barber so easy. Walk or cycle to the platform, hop on the S-Bahn and you're in Biel without changing.
+
+The ride runs via Brügg into town. Get off at Biel station and walk a few minutes to Zentralstrasse 22. No parking to worry about.
+
+## After work in Biel, haircut included
+
+If you live in Busswil and work or study in Biel, you pass through Biel station anyway. So why not fit the barber into your trip home? We're open until 8pm on Thursdays and Fridays, and until 7pm Monday to Wednesday. A [men's haircut](service:haarschnitt-biel) takes about 20 minutes, the [GYAN Classic package](service:haarschnitt-und-bart) with haircut and beard about 30. Then you catch the next S-Bahn back to Busswil.
+
+On Saturdays we open at 8:30am and close at 6pm. The salon is closed on Sundays.
+
+## Hair, beard and a moment for yourself
+
+Every appointment at GYAN starts with a short consultation. Then we work with scissors and clippers, and shape your beard lines with the razor. If you want a treat, book the hot towel shave: a wet shave with lather, hot towel and aftercare. And if you'd like to recreate your look at home, the GYAN Signature Cut is the one. After the cut we style your hair and show you which product to use and how.
+
+You'll sit in a brown leather chair, with a red Persian carpet on the wall. Pay in cash, by card or with TWINT.
+
+## Book ahead or just drop in
+
+To lock in a time, [book online](page:booking) and get instant confirmation, so you can plan the right train. The website and booking are available in German, French and English. Walk-ins are welcome during opening hours too.
+
+A quick tip if you like to be spontaneous: without an appointment, the men's haircut costs CHF 35 instead of 40, and the GYAN Classic package CHF 60 instead of 65. Booking costs a little more, but you get a fixed time and won't have to wait if it's busy. Zana and Hikmet both work in the salon, and for now Zana is the one you can book online.
+
+Live in central Lyss or next door in Studen? There are pages for [Lyss](seo:lyss) and Studen as well.`,
     },
     neighbors: ["lyss", "studen", "aegerten"],
+    carMin: 20,
+    transit: {
+      de: "Mit der S-Bahn fährst du vom Bahnhof Busswil über Brügg direkt zum Bahnhof Biel und gehst von dort wenige Minuten zum Salon.",
+      fr: "Le RER te mène de la gare de Busswil, via Brügg, directement à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the S-Bahn from Busswil station via Brügg straight to Biel station, then walk a few minutes to the salon.",
+    },
+    services: ["haarschnitt-und-bart", "nassrasur-biel", "gyan-signature"],
+    faq: {
+      de: [
+        { q: "Brauche ich aus Busswil ein Auto, um zu GYAN zu kommen?", a: "Nein. Busswil hat einen eigenen Bahnhof, und die S-Bahn fährt über Brügg direkt nach Biel. Vom Bahnhof Biel sind es nur wenige Gehminuten zur Zentralstrasse 22." },
+        { q: "Passt ein Termin auf dem Heimweg nach Busswil?", a: "Ja, donnerstags und freitags haben wir bis 20 Uhr geöffnet. Ein Haarschnitt dauert rund 20 Minuten, das GYAN Classic Paket mit Bart rund 30 Minuten, danach nimmst du die S-Bahn zurück nach Busswil." },
+        { q: "Kann ich aus Busswil auch online auf Französisch buchen?", a: "Die Website und die Online-Buchung gibt es auf Deutsch, Französisch und Englisch. Die Bestätigung deines Termins kommt sofort." },
+      ],
+      fr: [
+        { q: "Ai-je besoin d'une voiture pour venir de Busswil chez GYAN ?", a: "Non. Busswil a sa propre gare et le RER rejoint directement Bienne via Brügg. De la gare de Bienne, il n'y a que quelques minutes à pied jusqu'à la Zentralstrasse 22." },
+        { q: "Un rendez-vous sur le chemin du retour vers Busswil, c'est possible ?", a: "Oui, le jeudi et le vendredi, on est ouverts jusqu'à 20 h. Une coupe dure environ 20 minutes, la formule GYAN Classic avec barbe environ 30 minutes, puis tu reprends le RER pour Busswil." },
+        { q: "Depuis Busswil, puis-je réserver en ligne en français ?", a: "Oui, le site et la réservation en ligne existent en allemand, en français et en anglais. La confirmation de ton rendez-vous est immédiate." },
+      ],
+      en: [
+        { q: "Do I need a car to get from Busswil to GYAN?", a: "No. Busswil has its own station and the S-Bahn runs via Brügg straight to Biel. From Biel station it's just a few minutes' walk to Zentralstrasse 22." },
+        { q: "Can I fit an appointment in on the way home to Busswil?", a: "Yes, we're open until 8pm on Thursdays and Fridays. A haircut takes about 20 minutes, the GYAN Classic package with beard about 30, and then you catch the S-Bahn back to Busswil." },
+        { q: "Can I book in English or French from Busswil?", a: "Yes, the website and online booking are available in German, French and English. Your appointment is confirmed instantly." },
+      ],
+    },
   },
 
   // ───────────────────────────── ORVIN ─────────────────────────────
@@ -1333,9 +2167,9 @@ At GYAN, craft comes first: a consultation, a cut with scissors and clippers, li
       en: "Barber near Orvin – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Herrencoiffeur für Orvin und Frinvillier: GYAN im Zentrum von Biel, rund 8 km entfernt. Haarschnitt, Fade und Bart, online buchen oder spontan vorbei.",
-      fr: "Coiffeur homme près d'Orvin et Frinvillier : GYAN au centre de Bienne, à environ 8 km. Coupe, dégradé et barbe, réserve en ligne ou passe sans rendez-vous.",
-      en: "Barber near Orvin and Frinvillier: GYAN in the centre of Biel, about 8 km away. Haircuts, fades and beards, book online or simply walk in during hours.",
+      de: "Coiffeur für Orvin: über Frinvillier oder Leubringen nach Biel zu GYAN. Haar und Bart im Classic Paket oder Nassrasur. Online buchen, auch auf Französisch.",
+      fr: "Coiffeur pour Orvin : par Frinvillier ou Evilard jusqu'à GYAN à Bienne. Coupe et barbe, rasage à la serviette chaude. Réserve en ligne, en français.",
+      en: "Barber for Orvin: drive via Frinvillier or Evilard to GYAN in Biel. Hair and beard package or hot towel shave. Book online in French, German or English.",
     },
     h1: {
       de: "Herrencoiffeur für Orvin und Frinvillier",
@@ -1343,51 +2177,93 @@ At GYAN, craft comes first: a consultation, a cut with scissors and clippers, li
       en: "Barber near Orvin and Frinvillier",
     },
     intro: {
-      de: "Orvin, auf Deutsch Ilfingen, liegt in einem Juratal nördlich von Biel, rund acht Kilometer vom Zentrum. Über Frinvillier oder Leubringen bist du schnell bei GYAN an der Zentralstrasse 22.",
-      fr: "Orvin se trouve dans un vallon jurassien au nord de Bienne, à environ huit kilomètres du centre. Par Frinvillier ou Evilard, tu es vite chez GYAN à la Zentralstrasse 22.",
-      en: "Orvin, Ilfingen in German, lies in a Jura valley north of Biel, about eight kilometres from the centre. Via Frinvillier or Evilard you'll quickly reach GYAN on Zentralstrasse 22.",
+      de: "Orvin, auf Deutsch Ilfingen, liegt in einem Juratal rund acht Kilometer nördlich von Biel. Über Frinvillier oder Leubringen bist du in etwa einer Viertelstunde bei GYAN an der Zentralstrasse 22.",
+      fr: "Orvin se niche dans un vallon jurassien à environ huit kilomètres au nord de Bienne. Par Frinvillier ou Evilard, tu es chez GYAN à la Zentralstrasse 22 en un quart d'heure environ.",
+      en: "Orvin, Ilfingen in German, lies in a Jura valley about eight kilometres north of Biel. Via Frinvillier or Evilard you'll reach GYAN on Zentralstrasse 22 in roughly a quarter of an hour.",
     },
     body: {
-      de: `## Französischsprachiger Jura, gleich hinter der Stadt
+      de: `## Ein Juratal gleich hinter dem Hausberg
 
-Orvin ist ein französischsprachiges Dorf im Berner Jura, umgeben von Wiesen und Wäldern, mit den Prés-d'Orvin oberhalb des Dorfes. Frinvillier, auf Deutsch Friedliswart, liegt am oberen Ende der Taubenlochschlucht, durch die ein bekannter Wanderweg nach Biel-Bözingen führt. Biel ist für beide Dörfer das nächste Zentrum.
+Orvin, auf Deutsch Ilfingen, ist ein französischsprachiges Dorf im Berner Jura. Es liegt in einem Tal nördlich von Biel, hinter dem Hang, an dem Leubringen und Magglingen liegen. Rund um das Dorf gibt es Wiesen, Weiden und Wald, und oberhalb liegen die Prés-d'Orvin, eine offene Hochfläche, die zum Wandern und im Winter zum Langlaufen einlädt. Obwohl das Tal sich ländlich anfühlt, ist Biel das nächste Zentrum, für Arbeit, Einkauf und vieles mehr. Der Bahnhof, die Läden der Innenstadt und viele Arbeitsplätze liegen unten in der Stadt, und so führt der Weg fast automatisch regelmässig hinunter.
 
-## So kommst du zu uns
+## Zwei Strassen hinunter in die Stadt
 
-Mit dem Bus fährst du von Orvin und Frinvillier hinunter nach Biel bis zum Bahnhof. Von dort sind es wenige Gehminuten bis zur Zentralstrasse 22. Mit dem Auto erreichst du das Bieler Zentrum über Frinvillier oder über Leubringen.
+Von Orvin aus hast du zwei Wege nach Biel. Der eine führt durch das Tal hinunter nach Frinvillier, auf Deutsch Friedliswart, und von dort durch die Taubenlochschlucht in den Osten der Stadt. Die Strasse durch die Schlucht ist zugleich die Verbindung Richtung Sonceboz. Der andere führt über die Höhe nach Leubringen und dann den Hang hinunter ins Zentrum. Für die rund acht Kilometer solltest du je nach Weg und Verkehr etwa eine Viertelstunde einrechnen. In der Innenstadt parkierst du in einem öffentlichen Parkhaus.
 
-## Für Kunden aus dem Jura
+Ohne Auto fährst du mit dem Bus hinunter nach Biel bis zum Bahnhof. Von dort sind es wenige Gehminuten bis zur Zentralstrasse 22.
 
-Wir nehmen uns Zeit für jeden Kunden, und Webseite, Buchung und E-Mails gibt es auch auf Französisch. Ob [Herren Haarschnitt](service:haarschnitt-biel), [Bart Trim](service:bart-trimmen-biel) oder beides im [GYAN Classic Paket](service:haarschnitt-und-bart): Du kommst frisch geschnitten zurück ins Tal.
+## Haar und Bart in einem Besuch
 
-Deinen Termin [buchst du online](page:booking), sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten willkommen. Bezahlt wird bar, mit Karte oder mit TWINT. Fährst du über Leubringen? Dann passt auch unsere Seite für [Leubringen](seo:evilard).`,
-      fr: `## Le Jura francophone, juste derrière la ville
+Wer extra aus dem Tal herunterfährt, will den Termin gut nutzen. Im [GYAN Classic Paket](service:haarschnitt-und-bart) bekommst du Haarschnitt und Bart zusammen in rund 30 Minuten. Trägst du keinen Bart, sondern willst eine richtig glatte Rasur, ist die [Bart Rasur mit heissem Tuch](service:nassrasur-biel) das Richtige: Schaum, Klinge und Pflege in etwa 20 Minuten. Und wenn du nach dem Schnitt wissen willst, wie du die Frisur zu Hause hinbekommst, zeigt dir der [GYAN Signature Cut](service:gyan-signature) in rund 25 Minuten, welches Produkt und welche Handgriffe passen.
 
-Orvin est un village francophone du Jura bernois, entouré de prés et de forêts, avec les Prés-d'Orvin au-dessus du village. Frinvillier se trouve au sommet des gorges du Taubenloch, que traverse un sentier connu jusqu'à Bienne-Boujean. Pour les deux villages, Bienne est le centre le plus proche.
+## Auf Französisch buchen, in Biel geniessen
 
-## Comment venir
+Für viele in Orvin ist Französisch die Alltagssprache. Unsere Website und die [Online-Buchung](page:booking) gibt es deshalb auf Französisch, Deutsch und Englisch, und die Bestätigung kommt sofort. Du kannst aber auch ohne Termin vorbeikommen, während der Öffnungszeiten sind Walk-ins willkommen.
 
-En bus, tu descends d'Orvin et de Frinvillier jusqu'à la gare de Bienne. De là, quelques minutes à pied jusqu'à la Zentralstrasse 22. En voiture, tu rejoins le centre de Bienne par Frinvillier ou par Evilard.
+Geöffnet ist von Montag bis Mittwoch von 9 bis 19 Uhr, am Donnerstag und Freitag bis 20 Uhr und am Samstag von 8.30 bis 18 Uhr. Am Sonntag bleibt der Salon zu. Drinnen erwarten dich braune Lederstühle und ein roter Perserteppich an der Wand. Bezahlt wird bar, mit Karte oder mit TWINT.`,
+      fr: `## Un vallon jurassien juste derrière la montagne
 
-## Pour les clients du Jura
+Orvin, Ilfingen en allemand, est un village francophone du Jura bernois. Il se niche dans un vallon au nord de Bienne, derrière le versant où se trouvent Evilard et Macolin. Autour du village, des prés, des pâturages et des forêts, et plus haut les Prés-d'Orvin, un vaste plateau ouvert idéal pour la randonnée et, en hiver, pour le ski de fond. Même si le vallon a un air bien campagnard, Bienne reste le centre le plus proche pour le travail, les courses et le reste. La gare, les commerces du centre-ville et de nombreux emplois se trouvent en bas, si bien que le chemin y mène presque naturellement, et régulièrement.
 
-On prend le temps pour chaque client, et le site, la réservation et les e-mails existent aussi en français. [Coupe homme](service:haarschnitt-biel), [taille de barbe](service:bart-trimmen-biel) ou les deux avec la [formule GYAN Classic](service:haarschnitt-und-bart) : tu rentres au vallon fraîchement coiffé.
+## Deux routes pour descendre en ville
 
-[Réserve en ligne](page:booking) ton rendez-vous, confirmé tout de suite. Sans rendez-vous, tu es le bienvenu pendant les heures d'ouverture. Paiement en espèces, par carte ou avec TWINT. Tu passes par Evilard ? Alors notre page pour [Evilard](seo:evilard) te concerne aussi.`,
-      en: `## French-speaking Jura, just behind the city
+Depuis Orvin, deux chemins mènent à Bienne. Le premier descend le vallon jusqu'à Frinvillier, puis traverse les gorges du Taubenloch pour arriver dans l'est de la ville. Cette route des gorges est aussi l'axe vers Sonceboz. Le second passe par les hauteurs jusqu'à Evilard, puis descend le coteau vers le centre. Pour les quelque huit kilomètres, compte environ un quart d'heure selon l'itinéraire et la circulation. Au centre, tu te gares dans un parking public.
 
-Orvin is a French-speaking village in the Bernese Jura, surrounded by meadows and forest, with the Prés-d'Orvin above the village. Frinvillier, Friedliswart in German, sits at the top of the Taubenloch gorge, through which a well-known trail leads down to Biel-Bözingen. For both villages, Biel is the nearest centre.
+Sans voiture, tu prends le bus jusqu'à la gare de Bienne. De là, la Zentralstrasse 22 est à quelques minutes à pied.
 
-## Getting here
+## Cheveux et barbe en une seule visite
 
-Take the bus from Orvin and Frinvillier down to Biel station. From there it's a few minutes' walk to Zentralstrasse 22. By car, reach central Biel via Frinvillier or via Evilard.
+Quand on descend exprès du vallon, autant bien profiter du rendez-vous. Avec la [formule GYAN Classic](service:haarschnitt-und-bart), tu as coupe et barbe ensemble en une trentaine de minutes. Tu ne portes pas la barbe mais tu veux un visage vraiment net ? Le [rasage à la serviette chaude](service:nassrasur-biel) est fait pour toi : mousse, lame et soin en environ 20 minutes. Et si tu veux savoir comment refaire ta coiffure à la maison, le [GYAN Signature Cut](service:gyan-signature) te montre le bon produit et les bons gestes.
 
-## For clients from the Jura
+## Réserver en français, profiter à Bienne
 
-We take time for every client, and the website, booking and emails are available in French too. Whether it's a [men's haircut](service:haarschnitt-biel), a [beard trim](service:bart-trimmen-biel) or both in the [GYAN Classic package](service:haarschnitt-und-bart): you'll head back to the valley freshly cut.
+À Orvin, le français est la langue du quotidien. C'est pourquoi notre site et la [réservation en ligne](page:booking) existent en français, en allemand et en anglais, avec une confirmation immédiate. Tu peux aussi passer sans rendez-vous : pendant les heures d'ouverture, les clients spontanés sont les bienvenus.
 
-[Book your appointment online](page:booking), confirmed instantly. Walk-ins are welcome during opening hours. Pay in cash, by card or with TWINT. Driving via Evilard? Then our page for [Evilard](seo:evilard) is for you too.`,
+Le salon est ouvert du lundi au mercredi de 9 h à 19 h, le jeudi et le vendredi jusqu'à 20 h, et le samedi de 8 h 30 à 18 h. Fermé le dimanche. À l'intérieur t'attendent des fauteuils en cuir brun et un tapis persan rouge au mur. Paiement en espèces, par carte ou avec TWINT.`,
+      en: `## A Jura valley just over the hill
+
+Orvin, Ilfingen in German, is a French-speaking village in the Bernese Jura. It lies in a valley north of Biel, behind the slope where Evilard and Magglingen sit. Around the village there are meadows, pastures and forest, and above it lie the Prés-d'Orvin, an open upland that's great for hiking and, in winter, for cross-country skiing. The valley feels rural, but Biel is still the nearest centre for work, shopping and much else. The station, the city-centre shops and plenty of jobs are all down in town, so the road leads there almost by itself, and often.
+
+## Two roads down into town
+
+From Orvin, two routes lead to Biel. One runs down the valley to Frinvillier, Friedliswart in German, and on through the Taubenloch gorge into the east of the city. The gorge road is also the main link towards Sonceboz. The other climbs over to Evilard and then drops down the slope into the centre. Allow about a quarter of an hour for the roughly eight kilometres, depending on route and traffic. In the centre you can park in a public car park.
+
+Without a car, take the bus down to Biel station. From there it's a few minutes' walk to Zentralstrasse 22.
+
+## Hair and beard in one visit
+
+If you're coming down from the valley specially, you'll want to make the most of it. The [GYAN Classic package](service:haarschnitt-und-bart) gets you haircut and beard together in about 30 minutes. No beard, but after a properly smooth face? The [hot towel shave](service:nassrasur-biel) is your pick: lather, blade and aftercare in about 20 minutes. And if you want to know how to style your hair at home afterwards, the [GYAN Signature Cut](service:gyan-signature) shows you the right product and technique in about 25 minutes.
+
+## Book in French, enjoy it in Biel
+
+In Orvin, French is the everyday language. That's why our website and [online booking](page:booking) are available in French, German and English, with instant confirmation. You can also just drop in, since walk-ins are welcome during opening hours.
+
+We're open Monday to Wednesday from 9:00 to 19:00, Thursday and Friday until 20:00, and Saturday from 8:30 to 18:00. Closed on Sundays. Inside, brown leather chairs and a red Persian carpet on the wall are waiting for you. Pay in cash, by card or with TWINT.`,
     },
     neighbors: ["evilard", "magglingen"],
+    carMin: 15,
+    transit: {
+      de: "Mit dem Bus von Orvin hinunter nach Biel bis zum Bahnhof, dann wenige Minuten zu Fuss zum Salon.",
+      fr: "En bus d'Orvin jusqu'à la gare de Bienne, puis quelques minutes à pied jusqu'au salon.",
+      en: "Take the bus from Orvin down to Biel station, then it is a few minutes on foot to the salon.",
+    },
+    services: ["haarschnitt-und-bart", "nassrasur-biel", "gyan-signature"],
+    faq: {
+      de: [
+        { q: "Welche Strasse nehme ich von Orvin nach Biel?", a: "Du fährst entweder über Frinvillier hinunter nach Biel oder über Leubringen. Für die rund acht Kilometer solltest du etwa eine Viertelstunde einrechnen." },
+        { q: "Ist die Website auch für Kunden aus Orvin auf Französisch?", a: "Ja, Website und Online-Buchung gibt es auf Französisch, Deutsch und Englisch. Du kannst deinen Termin also in deiner Sprache buchen und bekommst sofort eine Bestätigung." },
+        { q: "Passt ein Termin für Haar und Bart, wenn ich von Orvin nur kurz nach Biel fahre?", a: "Ja, das GYAN Classic Paket mit Haarschnitt und Bart dauert rund 30 Minuten. Mit einer Online-Buchung weisst du vorher genau, wann du dran bist." },
+      ],
+      fr: [
+        { q: "Quelle route prendre d'Orvin à Bienne ?", a: "Tu descends soit par Frinvillier, soit par Evilard. Pour les quelque huit kilomètres, compte environ un quart d'heure." },
+        { q: "Le site est-il en français pour les clients d'Orvin ?", a: "Oui, le site et la réservation en ligne existent en français, en allemand et en anglais. Tu réserves donc dans ta langue et reçois une confirmation immédiate." },
+        { q: "Un rendez-vous cheveux et barbe, c'est faisable si je descends d'Orvin juste pour ça ?", a: "Oui, la formule GYAN Classic avec coupe et barbe dure environ 30 minutes. En réservant en ligne, tu sais à l'avance quand c'est ton tour." },
+      ],
+      en: [
+        { q: "Which road do I take from Orvin to Biel?", a: "You can drive down either via Frinvillier or via Evilard. Allow about a quarter of an hour for the roughly eight kilometres." },
+        { q: "Is the website available in French for people from Orvin?", a: "Yes, the website and online booking are available in French, German and English. So you can book in your own language and get instant confirmation." },
+        { q: "Does a hair and beard appointment work if I come down from Orvin just for that?", a: "Yes, the GYAN Classic package with haircut and beard takes about 30 minutes. Booking online means you know in advance exactly when it's your turn." },
+      ],
+    },
   },
 ];

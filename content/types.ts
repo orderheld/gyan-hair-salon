@@ -51,4 +51,8 @@ export type SeoPlace = {
   intro: L;
   body: L<Markdown>;
   neighbors: string[]; // andere Place-Keys
+  carMin: number; // Fahrzeit mit dem Auto bis Biel Zentrum (gerundet, eher grosszügig)
+  transit: L; // ein Satz: so kommst du mit Bahn/Bus hin
+  services: string[]; // Service-Slugs (de), die auf der Seite gezeigt werden
+  faq: L<Faq[]>; // drei ortsbezogene Fragen
 };

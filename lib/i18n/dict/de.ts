@@ -346,6 +346,12 @@ const de = {
     nearby: "Auch für Kunden aus",
     distance: "km bis zum Salon",
     faqTitle: "Häufige Fragen",
+    travelTitle: "Anfahrt aus {place}",
+    byCar: "Mit dem Auto",
+    byTransit: "Mit Bahn und Bus",
+    carValue: "ca. {min} Min. · {km} km",
+    onFoot: "Zu Fuss ab Bahnhof Biel",
+    onFootValue: "wenige Minuten bis zur Zentralstrasse 22",
   },
   booking: {
     metaTitle: "Termin buchen beim Coiffeur in Biel",

@@ -571,6 +571,13 @@ html.no-intro { --intro-delay: 0.1s; }
 .article-aside .aside-card { display: grid; gap: 12px; }
 .aside-title { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.03em; font-size: 26px; line-height: 1.2; margin: 0 0 6px; }
 .aside-card dl { margin: 0 0 8px; }
+.article-main { min-width: 0; }
+.travel-card { margin-top: 40px; padding: clamp(20px, 3vw, 28px); border-radius: var(--radius); background: var(--cream); }
+.travel-card .eyebrow { margin-bottom: 14px; }
+.travel-list { display: grid; gap: 14px; margin: 0; }
+@media (min-width: 760px) { .travel-list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+.travel-list dt { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--stone); }
+.travel-list dd { margin: 2px 0 0; font-size: 15px; line-height: 1.5; color: var(--ink); }
 .aside-card dl > div { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
 .aside-card dt { color: var(--stone); }
 .aside-card dd { margin: 0; font-weight: 500; }
