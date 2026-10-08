@@ -853,8 +853,6 @@ html.app .app-back:active { background: var(--cream); }
 .seg button { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-height: 44px; padding: 0 8px; border: 0; border-radius: 999px; background: none; color: var(--taupe); font-size: 14px; font-weight: 500; cursor: pointer; white-space: nowrap; transition: background 0.2s, color 0.2s; }
 .seg button.active { background: var(--white); color: var(--ink); box-shadow: 0 2px 8px rgba(20, 18, 16, 0.08); }
 .seg button:disabled { opacity: 0.4; cursor: default; }
-.seg-n { font-size: 11px; min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px; display: inline-grid; place-items: center; background: var(--sand); color: var(--taupe); font-variant-numeric: tabular-nums; }
-.seg button.active .seg-n { background: var(--ink); color: var(--ivory); }
 .slot-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 @media (min-width: 560px) { .slot-grid { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); } }
 .slot { min-height: 50px; border-radius: 14px; border: 1px solid var(--line); background: var(--white); color: var(--ink); cursor: pointer; font-size: 16px; font-weight: 500; font-variant-numeric: tabular-nums; transition: border-color 0.2s, background 0.2s, transform 0.15s; }
@@ -884,9 +882,7 @@ html.app .app-back:active { background: var(--cream); }
 .late-note { margin: 0 0 22px; padding: 14px 16px; border-radius: 14px; background: #f6ecdc; color: #6b4f2c; font-size: 15px; line-height: 1.55; text-align: left; }
 @media (max-width: 420px) {
   .seg button { font-size: 13px; gap: 4px; padding: 0 4px; }
-  .seg-n { min-width: 18px; height: 18px; padding: 0 5px; font-size: 10.5px; }
 }
-@media (max-width: 370px) { .seg-n { display: none; } }
 
 .reviews-btns { justify-content: center; gap: 12px; margin-top: 28px; }
 

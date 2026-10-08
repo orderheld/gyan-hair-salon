@@ -438,7 +438,6 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
                             onClick={() => setPart(i)}
                           >
                             {g.label}
-                            <span className="seg-n">{g.items.length}</span>
                           </button>
                         ))}
                       </div>
