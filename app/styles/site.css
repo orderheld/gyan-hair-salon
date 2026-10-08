@@ -624,6 +624,9 @@ html.no-intro { --intro-delay: 0.1s; }
 @media (min-width: 900px) { .gallery { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
 
 /* ---------- FAQ ---------- */
+.faq-group + .faq-group { margin-top: clamp(40px, 6vw, 64px); }
+.faq-group-title { margin: 0; }
+.faq-group .faq-list { margin-top: 16px; }
 .faq-list { margin-top: 32px; border-top: 1px solid var(--greige); }
 .faq-item { border-bottom: 1px solid var(--greige); }
 .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0; font-size: clamp(18px, 2vw, 21px); font-weight: 500; }

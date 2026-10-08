@@ -309,18 +309,57 @@ const fr: Dict = {
   },
   faq: {
     metaTitle: "FAQ – coiffeur homme et barbier à Bienne",
-    metaDescription: "Réponses sur la réservation, le sans rendez-vous, les prix, le paiement (espèces, carte, TWINT), l’annulation et l’accès à GYAN Hair Salon à Biel/Bienne.",
+    metaDescription: "Réponses du coiffeur homme à Bienne : prix avec et sans rendez-vous, réservation, annulation, barbe et dégradé, paiement TWINT et accès.",
     eyebrow: "FAQ",
     title: "Questions fréquentes.",
-    items: [
-      { q: "Ai-je besoin d’un rendez-vous ?", a: "Non. Avec un rendez-vous, ton créneau est réservé, en ligne et confirmé immédiatement. Sans rendez-vous, passe simplement pendant les heures d’ouverture : la coupe et les formules sont alors un peu moins chères." },
-      { q: "En combien de temps mon rendez-vous est-il confirmé ?", a: "Immédiatement. Si le créneau est libre, le rendez-vous est réservé. Tu reçois aussitôt un e-mail avec tous les détails et une entrée d’agenda." },
-      { q: "Puis-je annuler mon rendez-vous ?", a: "Oui, via le lien dans ton e-mail de confirmation. C’est gratuit jusqu’à 12 heures avant. Si tu annules plus tard ou ne viens pas, la prestation est facturée lors de ta prochaine visite." },
-      { q: "Comment puis-je payer ?", a: "Le paiement se fait au salon après le rendez-vous, en espèces, par carte ou avec TWINT. Rien à payer en ligne." },
-      { q: "Où se trouve le salon ?", a: "À la Zentralstrasse 22, 2502 Biel/Bienne, au centre-ville, à quelques minutes à pied de la gare de Bienne. Des places de parc publiques se trouvent au centre-ville." },
-      { q: "Le prix est-il le même sans rendez-vous ?", a: "Pour la coupe et les formules, il existe des prix sans rendez-vous un peu plus bas. Tu les trouves sous «Sans rendez-vous» pour chaque prestation." },
-      { q: "Dans quelles langues puis-je réserver ?", a: "Le site, la réservation et les e-mails sont disponibles en allemand, en français et en anglais." },
-      { q: "Me rappelez-vous mon rendez-vous ?", a: "Oui, tu reçois un rappel par e-mail quelques heures avant." },
+    groups: [
+      {
+        title: "Rendez-vous et réservation",
+        items: [
+          { q: "Faut-il un rendez-vous ou puis-je passer sans prévenir ?", a: "Les deux sont possibles. Avec rendez-vous, ton créneau est réservé et tu n'attends pas. Sans rendez-vous, passe simplement pendant les heures d'ouverture : pour la coupe et les formules, les prix sans rendez-vous sont un peu plus bas." },
+          { q: "Comment réserver en ligne ?", a: "Choisis la prestation, le jour et l'heure, puis remplis tes coordonnées. La première fois, tu confirmes ton e-mail avec un code à 6 chiffres. Si le créneau est libre, le rendez-vous est réservé immédiatement et tu reçois une confirmation par e-mail avec l'entrée de calendrier." },
+          { q: "Combien de temps à l'avance puis-je réserver ?", a: "En ligne jusqu'à {horizon} jours à l'avance. S'il reste de la place aujourd'hui, tu peux aussi réserver pour le jour même." },
+          { q: "Puis-je annuler ou déplacer mon rendez-vous ?", a: "Oui. Tu annules via le lien de ta confirmation ou dans « Mon compte », gratuitement jusqu'à {cancelH} heures avant. Pour déplacer, annule l'ancien rendez-vous et réserve un nouveau créneau, ou appelle-nous." },
+          { q: "Que se passe-t-il si j'annule tard ou si je ne viens pas ?", a: "Si tu annules moins de {cancelH} heures avant ou si tu ne viens pas, la prestation réservée est facturée lors de ta prochaine visite." },
+          { q: "Est-ce que je reçois un rappel ?", a: "Oui, tu reçois un rappel par e-mail {remindH} heures avant.", only: "reminder" as const },
+          { q: "Puis-je réserver pour plusieurs personnes ?", a: "Réserve un rendez-vous séparé pour chaque personne, idéalement l'un après l'autre. Ainsi, chacun a son créneau." },
+          { q: "Avec qui puis-je prendre rendez-vous ?", a: "En ligne, tu réserves pour le moment avec Zana. Hikmet travaille aussi au salon, la réservation en ligne pour lui arrive bientôt. Sans rendez-vous, tu peux passer pendant les heures d'ouverture." },
+        ],
+      },
+      {
+        title: "Prix et paiement",
+        items: [
+          { q: "Combien coûte une coupe homme ?", a: "La coupe homme coûte CHF {cut} avec rendez-vous et CHF {cutWalkin} sans rendez-vous. Elle dure environ {cutMin} minutes, conseil et contours nets compris." },
+          { q: "Combien coûtent la coupe et la barbe ensemble ?", a: "La formule GYAN Classic avec coupe et barbe coûte CHF {classic} avec rendez-vous et CHF {classicWalkin} sans rendez-vous, pour environ {classicMin} minutes." },
+          { q: "Comment puis-je payer ?", a: "Tu paies au salon après le rendez-vous, en espèces, par carte ou avec TWINT. Rien à payer en ligne." },
+          { q: "Pourquoi y a-t-il deux prix ?", a: "Pour la coupe et les formules, il y a un prix avec rendez-vous et un prix un peu plus bas sans rendez-vous. Avec rendez-vous, ton créneau est garanti. Sans rendez-vous, tu passes spontanément et tu es servi dès que quelqu'un est libre." },
+        ],
+      },
+      {
+        title: "Prestations",
+        items: [
+          { q: "Quelle différence entre skin fade, low fade et taper ?", a: "Avec le skin fade, le dégradé descend jusqu'à la peau sur les côtés. Le low fade commence bas, juste au-dessus des oreilles. Le taper est plus discret : seuls les pattes et la nuque sont dégradées court. Au salon, on regarde ensemble ce qui convient à tes cheveux et à ton visage." },
+          { q: "Faites-vous aussi la barbe et le rasage ?", a: "Oui. La taille de barbe dure environ {beardMin} minutes et coûte CHF {beard}. Le rasage traditionnel à la serviette chaude, avec mousse et soin, dure environ {shaveMin} minutes et coûte CHF {shave}." },
+          { q: "Le shampooing est-il inclus ?", a: "Le shampooing est inclus dans la formule GYAN Premium (CHF {premium}) et dans le GYAN Full Service (CHF {full}), avec un coiffage pour finir." },
+          { q: "À quelle fréquence aller chez le coiffeur ?", a: "En règle générale : un dégradé ou une coupe très courte perd de sa netteté après 2 à 3 semaines, une coupe courte classique après 3 à 5 semaines, les cheveux plus longs après 5 à 8 semaines." },
+          { q: "Que dois-je apporter au rendez-vous ?", a: "Rien de particulier. Si tu as une idée précise, une photo de la coupe souhaitée aide. Sinon, on te conseille avant la coupe." },
+        ],
+      },
+      {
+        title: "Salon et accès",
+        items: [
+          { q: "Où se trouve le salon et où me garer ?", a: "À la Zentralstrasse 22, 2502 Biel/Bienne, au centre et à quelques minutes à pied de la gare de Bienne. Des places de parc publiques se trouvent au centre-ville." },
+          { q: "Quels sont vos horaires ?", a: "{hours}. Les créneaux réservables en ligne s'affichent directement lors de la réservation." },
+          { q: "Où voir mes rendez-vous ?", a: "Dans « Mon compte ». Tu te connectes avec ton e-mail et un code, sans mot de passe, et tu y vois tous tes rendez-vous." },
+        ],
+      },
+      {
+        title: "Carte de fidélité et bon cadeau",
+        items: [
+          { q: "Y a-t-il une carte de fidélité ?", a: "Oui. Chaque visite avec coupe donne un tampon, et chaque {nth} coupe est offerte. En plus, un cadeau pendant ton mois d'anniversaire et un tampon bonus quand tu invites des amis.", only: "loyalty" as const },
+          { q: "Puis-je acheter un bon cadeau ?", a: "Oui, directement au salon. Le montant est libre. Il n'y a pas de bons en ligne." },
+        ],
+      },
     ],
   },
   contact: {

@@ -309,18 +309,57 @@ const en: Dict = {
   },
   faq: {
     metaTitle: "FAQ – men's hairdresser & barber in Biel",
-    metaDescription: "Answers about online booking, walk-ins, prices, payment (cash, card, TWINT), cancellations and directions to GYAN Hair Salon in Biel/Bienne.",
+    metaDescription: "Answers from the men's barber in Biel: prices with and without an appointment, booking, cancellation, beards and fades, TWINT payment and directions.",
     eyebrow: "FAQ",
     title: "Frequently asked questions.",
-    items: [
-      { q: "Do I need an appointment?", a: "No. With an appointment your time is reserved, booked online and confirmed instantly. Without one, simply drop in during opening hours; the haircut and packages then have slightly lower walk-in prices." },
-      { q: "How quickly is my appointment confirmed?", a: "Instantly. If the time is free, the appointment is booked. You'll receive an email straight away with all the details and a calendar entry." },
-      { q: "Can I cancel my appointment?", a: "Yes, via the link in your confirmation email. It is free up to 12 hours beforehand. If you cancel later or do not show up, we charge the service at your next visit." },
-      { q: "How can I pay?", a: "You pay at the salon after your appointment, in cash, by card or with TWINT. Nothing to pay online." },
-      { q: "Where is the salon?", a: "At Zentralstrasse 22, 2502 Biel/Bienne, in the town centre and a few minutes' walk from Biel station. Public parking is available in the town centre." },
-      { q: "Is the price the same without an appointment?", a: "For the haircut and the packages there are separate, slightly lower walk-in prices. You will find them under “Walk-in” for each service." },
-      { q: "In which languages can I book?", a: "The website, booking and emails are available in German, French and English." },
-      { q: "Will you remind me of my appointment?", a: "Yes, you'll receive a reminder by email a few hours beforehand." },
+    groups: [
+      {
+        title: "Appointments and booking",
+        items: [
+          { q: "Do I need an appointment or can I just walk in?", a: "Both work. With an appointment your time is reserved and you don't wait. Without one, just drop in during opening hours: haircuts and packages are a little cheaper as a walk-in." },
+          { q: "How do I book online?", a: "Pick a service, a day and a time, then fill in your details. The first time, you confirm your email with a 6-digit code. If the time is free, it's booked instantly and you get a confirmation email with a calendar entry." },
+          { q: "How far ahead can I book?", a: "Online up to {horizon} days ahead. If there's still a free slot today, you can book for the same day too." },
+          { q: "Can I cancel or move my appointment?", a: "Yes. Cancel via the link in your confirmation or under «My account», free of charge up to {cancelH} hours before. To move it, cancel the old appointment and book a new time, or give us a call." },
+          { q: "What happens if I cancel late or don't show up?", a: "If you cancel less than {cancelH} hours before or don't come, the booked service is charged at your next visit." },
+          { q: "Will I get a reminder?", a: "Yes, you get an email reminder {remindH} hours before.", only: "reminder" as const },
+          { q: "Can I book for several people?", a: "Book a separate appointment for each person, ideally back to back. That way everyone has their own time reserved." },
+          { q: "Who can I book with?", a: "Online booking is currently with Zana. Hikmet also works in the salon, online booking for him is coming soon. Without an appointment, you can drop in any time during opening hours." },
+        ],
+      },
+      {
+        title: "Prices and payment",
+        items: [
+          { q: "How much is a men's haircut?", a: "The men's haircut is CHF {cut} with an appointment and CHF {cutWalkin} as a walk-in. It takes about {cutMin} minutes, including advice and clean outlines." },
+          { q: "How much are haircut and beard together?", a: "The GYAN Classic package with haircut and beard is CHF {classic} with an appointment and CHF {classicWalkin} as a walk-in, and takes about {classicMin} minutes." },
+          { q: "How can I pay?", a: "You pay in the salon after your appointment, by cash, card or TWINT. Nothing is paid online." },
+          { q: "Why are there two prices?", a: "Haircuts and packages have one price with an appointment and a slightly lower one without. With an appointment your time is guaranteed; as a walk-in you come spontaneously and are served as soon as someone is free." },
+        ],
+      },
+      {
+        title: "Services",
+        items: [
+          { q: "What's the difference between a skin fade, low fade and taper?", a: "A skin fade blends the sides right down to the skin. A low fade starts low, just above the ears. A taper is more subtle: only the sideburns and neckline are faded short. In the salon we work out together what suits your hair and face." },
+          { q: "Do you do beards and hot towel shaves?", a: "Yes. A beard trim takes about {beardMin} minutes and costs CHF {beard}. The traditional wet shave with hot towel, lather and aftercare takes about {shaveMin} minutes and costs CHF {shave}." },
+          { q: "Is a hair wash included?", a: "A hair wash is included in the GYAN Premium package (CHF {premium}) and the GYAN Full Service (CHF {full}), each finished with styling." },
+          { q: "How often should I get a haircut?", a: "As a rule of thumb: fades and very short cuts lose their sharpness after 2 to 3 weeks, classic short cuts after 3 to 5 weeks, longer hair after 5 to 8 weeks." },
+          { q: "What should I bring to my appointment?", a: "Nothing special. If you have a clear idea, a photo of the style you want helps. Otherwise we'll advise you before the cut." },
+        ],
+      },
+      {
+        title: "Salon and getting here",
+        items: [
+          { q: "Where is the salon and where can I park?", a: "At Zentralstrasse 22, 2502 Biel/Bienne, in the centre and a few minutes' walk from Biel station. There is public parking in the city centre." },
+          { q: "What are your opening hours?", a: "{hours}. Times you can book online are shown directly when you book." },
+          { q: "Where can I see my appointments?", a: "Under «My account». You sign in with your email and a code, no password needed, and see all your appointments there." },
+        ],
+      },
+      {
+        title: "Loyalty card and gift voucher",
+        items: [
+          { q: "Is there a loyalty card?", a: "Yes. Every visit with a haircut earns a stamp, and every {nth} haircut is free. On top of that there's a gift in your birthday month and a bonus stamp when you invite friends.", only: "loyalty" as const },
+          { q: "Can I buy a gift voucher?", a: "Yes, directly in the salon. You choose the amount. There are no online vouchers." },
+        ],
+      },
     ],
   },
   contact: {

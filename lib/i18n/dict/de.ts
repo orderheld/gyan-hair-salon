@@ -307,18 +307,57 @@ const de = {
   },
   faq: {
     metaTitle: "Häufige Fragen zum Herren Coiffeur in Biel",
-    metaDescription: "Antworten zu Online-Termin, Walk-in, Preisen ohne Termin, Bezahlung (bar, Karte, TWINT), Stornierung und Anfahrt beim GYAN Hair Salon in Biel/Bienne.",
+    metaDescription: "Antworten vom Herren Coiffeur in Biel: Preise mit und ohne Termin, Online-Buchung, Absage, Bart und Fade, Bezahlung mit TWINT und Anfahrt.",
     eyebrow: "FAQ",
     title: "Häufige Fragen.",
-    items: [
-      { q: "Brauche ich einen Termin?", a: "Nein. Mit Termin ist deine Zeit fix reserviert, online buchbar und sofort bestätigt. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei, dann gelten für Haarschnitt und Pakete die etwas tieferen Preise ohne Termin." },
-      { q: "Wie schnell ist mein Termin bestätigt?", a: "Sofort. Ist die Zeit frei, ist der Termin gebucht. Du bekommst direkt eine E-Mail mit allen Details und einem Kalendereintrag." },
-      { q: "Kann ich meinen Termin stornieren?", a: "Ja, über den Link in deiner Bestätigungs-E-Mail. Bis 12 Stunden vorher ist das kostenlos. Stornierst du später oder kommst nicht, verrechnen wir die Leistung bei deinem nächsten Besuch." },
-      { q: "Wie kann ich bezahlen?", a: "Bezahlt wird nach dem Termin im Salon, bar, mit Karte oder mit TWINT. Online musst du nichts bezahlen." },
-      { q: "Wo finde ich den Salon?", a: "An der Zentralstrasse 22 in 2502 Biel/Bienne, im Zentrum und wenige Gehminuten vom Bahnhof Biel. Öffentliche Parkplätze gibt es in der Innenstadt." },
-      { q: "Kostet es ohne Termin gleich viel?", a: "Für den Haarschnitt und die Pakete gibt es ohne Termin eigene, etwas tiefere Preise. Du findest sie bei jeder Leistung unter «Ohne Termin»." },
-      { q: "In welchen Sprachen kann ich buchen?", a: "Webseite, Buchung und E-Mails gibt es auf Deutsch, Französisch und Englisch." },
-      { q: "Erinnert ihr mich an meinen Termin?", a: "Ja, du bekommst ein paar Stunden vorher eine Erinnerung per E-Mail." },
+    groups: [
+      {
+        title: "Termin und Buchung",
+        items: [
+          { q: "Brauche ich einen Termin oder kann ich spontan vorbeikommen?", a: "Beides geht. Mit Termin ist deine Zeit fix reserviert und du musst nicht warten. Ohne Termin kommst du einfach während der Öffnungszeiten vorbei, dann gelten für Haarschnitt und Pakete die etwas tieferen Preise ohne Termin." },
+          { q: "Wie buche ich einen Termin online?", a: "Leistung wählen, Tag und Uhrzeit wählen, Angaben ausfüllen. Beim ersten Mal bestätigst du deine E-Mail mit einem 6-stelligen Code. Ist die Zeit frei, ist der Termin sofort gebucht und du bekommst eine Bestätigung per E-Mail mit Kalendereintrag." },
+          { q: "Wie weit im Voraus kann ich buchen?", a: "Online bis zu {horizon} Tage im Voraus. Ist heute noch etwas frei, kannst du auch für den gleichen Tag buchen." },
+          { q: "Kann ich meinen Termin absagen oder verschieben?", a: "Ja. Absagen kannst du über den Link in deiner Bestätigung oder unter «Mein Konto», bis {cancelH} Stunden vorher kostenlos. Zum Verschieben sagst du den alten Termin ab und buchst einfach eine neue Zeit, oder du rufst uns an." },
+          { q: "Was passiert, wenn ich kurzfristig absage oder nicht komme?", a: "Sagst du weniger als {cancelH} Stunden vorher ab oder kommst nicht, verrechnen wir die gebuchte Leistung bei deinem nächsten Besuch." },
+          { q: "Bekomme ich eine Erinnerung an meinen Termin?", a: "Ja, du bekommst {remindH} Stunden vorher eine Erinnerung per E-Mail.", only: "reminder" as const },
+          { q: "Kann ich für mehrere Personen buchen?", a: "Buche für jede Person einen eigenen Termin, am besten direkt nacheinander. So ist für jeden die passende Zeit reserviert." },
+          { q: "Bei wem kann ich einen Termin buchen?", a: "Online buchst du zurzeit bei Zana. Hikmet ist ebenfalls im Salon, für ihn kommt die Online-Buchung bald. Ohne Termin kannst du jederzeit während der Öffnungszeiten vorbeikommen." },
+        ],
+      },
+      {
+        title: "Preise und Bezahlung",
+        items: [
+          { q: "Was kostet ein Herrenhaarschnitt?", a: "Der Herren Haarschnitt kostet CHF {cut} mit Termin und CHF {cutWalkin} ohne Termin. Er dauert rund {cutMin} Minuten, inklusive Beratung und sauberen Konturen." },
+          { q: "Was kostet Haarschnitt und Bart zusammen?", a: "Das GYAN Classic Paket mit Haarschnitt und Bart kostet CHF {classic} mit Termin und CHF {classicWalkin} ohne Termin und dauert rund {classicMin} Minuten." },
+          { q: "Wie kann ich bezahlen?", a: "Bezahlt wird nach dem Termin im Salon, bar, mit Karte oder mit TWINT. Online bezahlst du nichts." },
+          { q: "Warum gibt es zwei Preise?", a: "Für den Haarschnitt und die Pakete gibt es einen Preis mit Termin und einen etwas tieferen ohne Termin. Mit Termin ist deine Zeit garantiert, ohne Termin kommst du spontan und wirst bedient, sobald jemand frei ist." },
+        ],
+      },
+      {
+        title: "Leistungen",
+        items: [
+          { q: "Was ist der Unterschied zwischen Skin Fade, Low Fade und Taper?", a: "Beim Skin Fade geht der Übergang an den Seiten bis auf die Haut. Beim Low Fade beginnt der Verlauf tief, knapp über den Ohren. Ein Taper ist dezenter: Nur Koteletten und Nacken werden kurz ausgeblendet. Im Salon schauen wir gemeinsam, was zu deinem Haar und Gesicht passt." },
+          { q: "Macht ihr auch Bart und Nassrasur?", a: "Ja. Der Bart Trim dauert rund {beardMin} Minuten und kostet CHF {beard}. Die klassische Nassrasur mit heissem Tuch, Schaum und Pflege dauert rund {shaveMin} Minuten und kostet CHF {shave}." },
+          { q: "Ist eine Haarwäsche inbegriffen?", a: "Eine Haarwäsche ist im GYAN Premium Paket (CHF {premium}) und im GYAN Full Service (CHF {full}) inbegriffen, jeweils mit Styling zum Schluss." },
+          { q: "Wie oft sollte ich zum Coiffeur?", a: "Als Faustregel: Fades und sehr kurze Schnitte sehen nach 2 bis 3 Wochen nicht mehr ganz frisch aus, klassische kurze Schnitte nach 3 bis 5 Wochen, längere Haare nach 5 bis 8 Wochen." },
+          { q: "Was soll ich zum Termin mitbringen?", a: "Nichts Besonderes. Wenn du eine klare Vorstellung hast, hilft ein Foto der gewünschten Frisur. Sonst beraten wir dich vor dem Schnitt." },
+        ],
+      },
+      {
+        title: "Salon und Anfahrt",
+        items: [
+          { q: "Wo ist der Salon und wo kann ich parkieren?", a: "An der Zentralstrasse 22 in 2502 Biel/Bienne, im Zentrum und wenige Gehminuten vom Bahnhof Biel. Öffentliche Parkplätze gibt es in der Innenstadt." },
+          { q: "Wann habt ihr geöffnet?", a: "{hours}. Online buchbare Zeiten siehst du direkt bei der Terminbuchung." },
+          { q: "Wo sehe ich meine Termine?", a: "Unter «Mein Konto». Du meldest dich mit deiner E-Mail und einem Code an, ganz ohne Passwort, und siehst dort alle deine Termine." },
+        ],
+      },
+      {
+        title: "Stempelkarte und Gutschein",
+        items: [
+          { q: "Gibt es eine Stempelkarte?", a: "Ja. Bei jedem Besuch mit Haarschnitt gibt es einen Stempel, und jeder {nth} Haarschnitt ist gratis. Dazu gibt es ein Geschenk im Geburtsmonat und einen Bonusstempel, wenn du Freunde einlädst.", only: "loyalty" as const },
+          { q: "Kann ich einen Gutschein kaufen?", a: "Ja, direkt im Salon. Den Betrag wählst du frei. Online gibt es keine Gutscheine." },
+        ],
+      },
     ],
   },
   contact: {

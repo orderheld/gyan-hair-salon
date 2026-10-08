@@ -5,6 +5,7 @@ import type { Locale } from "@/content/types";
 import { CtaBand, FaqList, PageHero } from "@/components/site/Blocks";
 import { getServices, localize, SERVICE_CATEGORIES } from "@/lib/data";
 import { formatChf, formatDuration } from "@/lib/format";
+import { getFaq } from "@/lib/faq";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
@@ -20,6 +21,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function Services({ params }: Props) {
   const locale = (await params).lang as Locale;
   const d = getDict(locale);
+  // Preise und Bezahlung aus der FAQ (mit echten Preisen)
+  const faq = (await getFaq(locale))[1]?.items ?? [];
   const services = (await getServices()).map((s) => localize(s, locale));
   return (
     <>
@@ -73,7 +76,7 @@ export default async function Services({ params }: Props) {
       <section className="section bg-cream">
         <div className="container narrow">
           <h2 className="h2" data-reveal>{d.services.faqTitle}</h2>
-          <FaqList items={d.faq.items.slice(0, 4)} />
+          <FaqList items={faq} />
         </div>
       </section>
       <CtaBand locale={locale} d={d} />
