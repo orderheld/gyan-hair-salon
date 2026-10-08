@@ -9,7 +9,7 @@ export const post: BlogPost = {
   },
   date: "2026-10-07",
   related: { services: ["haarschnitt-biel", "gyan-signature", "haarschnitt-und-bart"], seo: ["fade", "barbier", "herrencoiffeur"] },
-  image: "/images/cut-fade.jpg",
+  image: "/images/hero-fade.jpg",
   title: {
     de: "Fade-Frisur pflegen: So bleibt dein Fade länger frisch",
     fr: "Entretenir un dégradé : les bons gestes au quotidien",
