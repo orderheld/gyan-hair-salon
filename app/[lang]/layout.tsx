@@ -49,6 +49,11 @@ export async function generateMetadata({ params }: { params: Promise<{ lang: str
     manifest: `/site.webmanifest?l=${isLocale(lang) ? lang : "de"}`,
     icons: APP_ICONS,
     appleWebApp: { capable: true, title: "GYAN", statusBarStyle: "default" },
+    // Besitznachweis für Google Search Console und Bing Webmaster Tools (Codes als Vercel-Umgebungsvariablen)
+    verification: {
+      google: process.env.GOOGLE_SITE_VERIFICATION || undefined,
+      other: process.env.BING_SITE_VERIFICATION ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION } : undefined,
+    },
   };
 }
 
