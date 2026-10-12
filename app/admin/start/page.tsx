@@ -2,13 +2,16 @@ import Link from "next/link";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { getAdminText } from "@/lib/admin";
 import { requireAdmin } from "@/lib/auth";
+import { fill } from "@/lib/i18n";
+import { countOpenVouchers } from "@/lib/vouchers";
 
 export const dynamic = "force-dynamic";
 
-/** Startbildschirm: Termine oder Kasse */
+/** Startbildschirm: Termine, Kasse, Stempelkarte oder Gutscheine */
 export default async function Start() {
   await requireAdmin();
   const { t } = await getAdminText();
+  const openVouchers = await countOpenVouchers().catch(() => 0);
   return (
     <AdminShell mode="start">
       <div className="start">
@@ -28,6 +31,12 @@ export default async function Start() {
             <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5" /><circle cx="7.5" cy="10.5" r="1.4" /><circle cx="12" cy="10.5" r="1.4" /><circle cx="16.5" cy="10.5" r="1.4" /><circle cx="7.5" cy="14.5" r="1.4" /><circle cx="12" cy="14.5" r="1.4" /><path d="m15.3 14.4 1 1 1.9-2" /></svg>
             <strong>{t.loyalty.tile}</strong>
             <span>{t.loyalty.tileHint}</span>
+          </Link>
+          <Link href="/admin/gutscheine" className="start-tile">
+            <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round"><rect x="3.5" y="8" width="17" height="12" rx="2" /><path d="M3.5 12h17M12 8v12M12 8c-1.5-3-5-3.5-5-1.5S10 8 12 8Zm0 0c1.5-3 5-3.5 5-1.5S14 8 12 8Z" /></svg>
+            <strong>{t.vouchers.tile}</strong>
+            <span>{t.vouchers.tileHint}</span>
+            {openVouchers > 0 && <em className="start-badge">{fill(t.vouchers.tileOpen, { n: openVouchers })}</em>}
           </Link>
         </div>
       </div>

@@ -27,7 +27,7 @@ export const post: BlogPost = {
 
 Den Betrag bestimmst du selbst. Ob für einen einzelnen Schnitt, für ein ganzes Paket oder einfach als Beitrag zum nächsten Besuch: Du wählst den Betrag frei, ganz nach Anlass und Budget.
 
-Unsere Gutscheine gibt es nur direkt im Salon, nicht online. Komm einfach während der Öffnungszeiten an der Zentralstrasse 22 vorbei, und wir stellen dir den Gutschein gerne aus. Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag 9 bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Alles Weitere findest du auch auf unserer [Gutschein-Seite](page:gutschein).
+Du kannst den Gutschein auf unserer [Gutschein-Seite](page:gutschein) online bestellen und beim Abholen im Salon bar, mit Karte oder TWINT bezahlen. Oder du kommst einfach während der Öffnungszeiten an der Zentralstrasse 22 vorbei, und wir stellen ihn dir direkt aus. Montag bis Mittwoch 9 bis 19 Uhr, Donnerstag und Freitag 9 bis 20 Uhr, Samstag 8.30 bis 18 Uhr. Alles Weitere findest du auch auf unserer [Gutschein-Seite](page:gutschein).
 
 ## Ein Geschenk, das man gern auspackt
 
@@ -70,7 +70,7 @@ Ein Gutschein von GYAN ist schnell besorgt und wird garantiert eingelöst. Komm 
 
 C'est toi qui fixes le montant. Pour une seule coupe, pour une formule complète ou simplement comme participation à la prochaine visite : tu choisis librement, selon l'occasion et ton budget.
 
-Nos bons cadeaux sont disponibles uniquement au salon, pas en ligne. Passe simplement à la Zentralstrasse 22 pendant les heures d'ouverture et nous te l'établissons avec plaisir. Du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h, samedi de 8 h 30 à 18 h. Tu trouveras toutes les infos sur notre [page bon cadeau](page:gutschein).
+Tu peux commander le bon en ligne sur notre [page bon cadeau](page:gutschein) et le payer au salon en le retirant, en espèces, par carte ou TWINT. Ou passe simplement à la Zentralstrasse 22 pendant les heures d'ouverture et nous te l'établissons sur place. Du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h, samedi de 8 h 30 à 18 h. Tu trouveras toutes les infos sur notre [page bon cadeau](page:gutschein).
 
 ## Un cadeau qu'on a envie d'ouvrir
 
@@ -113,7 +113,7 @@ Un bon cadeau GYAN, c'est vite trouvé et c'est sûr d'être utilisé. Passe au 
 
 You decide the amount. Whether it covers a single cut, a full package or simply a contribution towards the next visit, the value is entirely up to you, depending on the occasion and your budget.
 
-Our vouchers are only available in the salon, not online. Just drop by Zentralstrasse 22 during opening hours and we will happily make one out for you. Monday to Wednesday 9 am to 7 pm, Thursday and Friday 9 am to 8 pm, Saturday 8:30 am to 6 pm. You will find more details on our [gift card page](page:gutschein).
+You can order the voucher online on our [gift card page](page:gutschein) and pay when you pick it up in the salon, by cash, card or TWINT. Or just drop by Zentralstrasse 22 during opening hours and we will make one out for you on the spot. Monday to Wednesday 9 am to 7 pm, Thursday and Friday 9 am to 8 pm, Saturday 8:30 am to 6 pm. You will find more details on our [gift card page](page:gutschein).
 
 ## A gift worth unwrapping
 

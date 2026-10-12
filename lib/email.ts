@@ -6,7 +6,9 @@ import type { Locale } from "@/content/types";
 import type { Booking } from "./data";
 import { fill, getDict } from "./i18n";
 import { href, INTL_LOCALE } from "./i18n/config";
-import { getService } from "./data";
+import { getSalonHours, getService } from "./data";
+import { groupHours } from "./hours";
+import type { Voucher } from "./vouchers";
 import { EMAIL_LOGO_BASE64 } from "./email-logo";
 import { formatChf, formatDuration } from "./format";
 import { customerKey, getCustomerInfos } from "./customers";
@@ -426,4 +428,70 @@ export async function sendBirthdayGreeting(to: string, name: string, locale: Loc
   const html = layout({ locale, preheader: subject, heading: m.heading, body, buttons, logoSrc: "cid:gyan-logo" });
   const replyTo = (await getSettings().catch(() => null))?.notifyEmail || undefined;
   return send({ to, subject, html, replyTo, text: `${m.heading}\n\n${body}\n\n${m.button}: ${buttons[0].href}` });
+}
+
+/* ---------- Gutscheine ---------- */
+
+type VoucherMailKind = "ordered" | "picked" | "remind" | "cancelled";
+
+/** Gutschein-Mail an den Käufer (Texte aus lib/i18n/dict, voucher.mail) */
+export async function sendVoucherMail(kind: VoucherMailKind, v: Voucher) {
+  if (!v.buyerEmail) return null;
+  const locale = v.locale;
+  const d = getDict(locale);
+  const m = d.voucher.mail;
+  const vars = { firstName: v.buyerName.trim().split(" ")[0] ?? "", amount: formatChf(v.amountChf) };
+  const [subjectT, heading, bodyT] =
+    kind === "ordered" ? [m.subject, m.heading, m.body]
+    : kind === "picked" ? [m.pickedSubject, m.pickedHeading, m.pickedBody]
+    : kind === "remind" ? [m.remindSubject, m.remindHeading, m.remindBody]
+    : [m.cancelSubject, m.cancelHeading, m.cancelBody];
+  const subject = fill(subjectT, vars);
+  const body = fill(bodyT, vars);
+  const hours = groupHours(await getSalonHours(), d.common.weekdaysShort).map((r) => `${r.days} ${r.time ?? d.common.closed.toLowerCase()}`).join(", ");
+  const address = `${site.address.street}, ${site.address.zip} ${site.address.city}`;
+  const details: [string, string][] =
+    kind === "cancelled"
+      ? [[m.code, v.code], [m.amount, formatChf(v.amountChf)]]
+      : [
+          [m.code, v.code],
+          [m.amount, formatChf(v.amountChf)],
+          ...(v.recipientName ? [[m.for, v.recipientName] as [string, string]] : []),
+          ...(kind === "picked" ? [] : [[m.pay, m.payText], [m.where, address], [m.hours, hours]] as [string, string][]),
+        ];
+  const buttons =
+    kind === "picked"
+      ? [{ label: m.book, href: `${site.url}${href(locale, "booking")}`, primary: true }]
+      : kind === "cancelled"
+        ? []
+        : [{ label: m.route, href: site.address.mapsUrl, primary: true }, { label: m.call, href: site.phoneHref }];
+  const highlight =
+    kind === "cancelled"
+      ? ""
+      : `<div style="margin:0 0 24px;text-align:center"><span style="display:inline-block;padding:14px 22px;border-radius:16px;background:#f3ece1;font-size:22px;font-weight:700;letter-spacing:.12em;color:#141210;font-family:SFMono-Regular,Menlo,Consolas,monospace">${esc(v.code)}</span><div style="margin-top:8px;font-size:13px;color:#8a8176">${esc(m.code)} · ${esc(formatChf(v.amountChf))}</div></div>`;
+  const html = layout({ locale, preheader: subject, heading, body, details, buttons, logoSrc: "cid:gyan-logo", highlight });
+  const replyTo = (await getSettings().catch(() => null))?.notifyEmail || undefined;
+  const text = `${heading}\n\n${body}\n\n${details.map(([a, b]) => `${a}: ${b}`).join("\n")}`;
+  return send({ to: v.buyerEmail, subject, html, replyTo, text });
+}
+
+/** Neue Online-Bestellung: E-Mail an den Salon (Deutsch, wie die Morgen-Übersicht) */
+export async function sendVoucherAdminNotice(v: Voucher, to: string) {
+  if (!to) return null;
+  const subject = `Neue Gutschein-Bestellung: ${formatChf(v.amountChf)} von ${v.buyerName}`;
+  const body = "Jemand hat online einen Gutschein bestellt. Er wird beim Abholen im Salon bezahlt. Markiere ihn dann im Admin unter «Gutscheine» als abgeholt.";
+  const details: [string, string][] = [
+    ["Gutschein-Nummer", v.code],
+    ["Betrag", formatChf(v.amountChf)],
+    ["Besteller", v.buyerName],
+    ["E-Mail", v.buyerEmail],
+    ["Telefon", v.buyerPhone],
+    ...(v.recipientName ? [["Name auf dem Gutschein", v.recipientName] as [string, string]] : []),
+    ...(v.message ? [["Bemerkung", v.message] as [string, string]] : []),
+    ["Sprache", v.locale.toUpperCase()],
+  ];
+  const buttons = [{ label: "Im Admin öffnen", href: `${site.url}/admin/gutscheine/${v.id}`, primary: true }];
+  const html = layout({ locale: "de", preheader: subject, heading: "Neue Gutschein-Bestellung", body, details, buttons, logoSrc: "cid:gyan-logo" });
+  const text = `${subject}\n\n${details.map(([a, b]) => `${a}: ${b}`).join("\n")}\n\n${buttons[0].href}`;
+  return send({ to, subject, html, text, replyTo: v.buyerEmail });
 }

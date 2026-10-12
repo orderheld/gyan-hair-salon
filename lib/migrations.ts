@@ -181,4 +181,34 @@ export const MIGRATIONS = [
     count        integer NOT NULL DEFAULT 0,
     window_start timestamptz NOT NULL DEFAULT now()
   )`,
+  // Gutscheine (Oktober 2026): online bestellen, im Salon bezahlen und abholen, oder direkt im Salon verkaufen
+  `CREATE TABLE IF NOT EXISTS vouchers (
+    id             serial PRIMARY KEY,
+    code           text NOT NULL UNIQUE,
+    amount_chf     numeric(8,2) NOT NULL CHECK (amount_chf > 0),
+    source         text NOT NULL DEFAULT 'online' CHECK (source IN ('online', 'salon')),
+    status         text NOT NULL DEFAULT 'ordered' CHECK (status IN ('ordered', 'active', 'cancelled')),
+    buyer_name     text NOT NULL DEFAULT '',
+    buyer_email    text NOT NULL DEFAULT '',
+    buyer_phone    text NOT NULL DEFAULT '',
+    recipient_name text NOT NULL DEFAULT '',
+    message        text NOT NULL DEFAULT '',
+    locale         text NOT NULL DEFAULT 'de',
+    payment        text CHECK (payment IN ('cash', 'card', 'twint')),
+    note           text NOT NULL DEFAULT '',
+    created_at     timestamptz NOT NULL DEFAULT now(),
+    picked_up_at   timestamptz,
+    cancelled_at   timestamptz,
+    reminded_at    timestamptz
+  )`,
+  `CREATE INDEX IF NOT EXISTS vouchers_status_idx ON vouchers (status, created_at DESC)`,
+  // Einlösungen: der Restwert ist Betrag minus Summe der Einlösungen (Teil-Einlösung möglich)
+  `CREATE TABLE IF NOT EXISTS voucher_redemptions (
+    id          serial PRIMARY KEY,
+    voucher_id  integer NOT NULL REFERENCES vouchers(id) ON DELETE CASCADE,
+    amount_chf  numeric(8,2) NOT NULL CHECK (amount_chf > 0),
+    note        text NOT NULL DEFAULT '',
+    created_at  timestamptz NOT NULL DEFAULT now()
+  )`,
+  `CREATE INDEX IF NOT EXISTS voucher_redemptions_voucher_idx ON voucher_redemptions (voucher_id)`,
 ];

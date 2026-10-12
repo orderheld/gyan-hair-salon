@@ -6,16 +6,20 @@ import { fill, getDict } from "./i18n";
 import { getLoyaltySettings } from "./loyalty";
 import { freeNth } from "./loyalty-text";
 import { getSettings } from "./settings";
+import { getVoucherSettings } from "./vouchers";
 
 export type FaqGroup = { title: string; items: Faq[] };
 
 /**
  * FAQ mit echten Werten: Preise und Dauer aus den Leistungen, Absage- und Erinnerungsfrist aus den Regeln,
- * Öffnungszeiten aus content/site.ts. Die Stempelkarten-Frage nur, wenn die Karte für Kunden eingeschaltet ist.
+ * Öffnungszeiten aus content/site.ts. Die Stempelkarten-Frage nur, wenn die Karte für Kunden eingeschaltet ist,
+ * die Gutschein-Antwort je nachdem, ob Online-Bestellungen eingeschaltet sind.
  */
 export async function getFaq(locale: Locale): Promise<FaqGroup[]> {
   const d = getDict(locale);
-  const [services, settings, hours, loyalty] = await Promise.all([getServices(), getSettings(), getSalonHours(), getLoyaltySettings().catch(() => null)]);
+  const [services, settings, hours, loyalty, vouchers] = await Promise.all([getServices(), getSettings(), getSalonHours(), getLoyaltySettings().catch(() => null), getVoucherSettings().catch(() => null)]);
+  const show = (only: string) =>
+    only === "loyalty" ? !!loyalty?.loyaltyPublic : only === "reminder" ? settings.emailEnabled.reminder : (only === "voucherOnline") === (vouchers?.onlineEnabled ?? true);
   const svc = (slug: string) => services.find((s) => s.slug.de === slug);
   const price = (slug: string) => String(svc(slug)?.priceChf ?? "");
   const walkin = (slug: string) => String(svc(slug)?.walkinPriceChf ?? svc(slug)?.priceChf ?? "");
@@ -43,7 +47,7 @@ export async function getFaq(locale: Locale): Promise<FaqGroup[]> {
     .map((g) => ({
       title: g.title,
       items: g.items
-        .filter((f) => !("only" in f) || (f.only === "loyalty" ? !!loyalty?.loyaltyPublic : settings.emailEnabled.reminder))
+        .filter((f) => !("only" in f) || !f.only || show(f.only))
         .map((f) => ({ q: fill(f.q, vars), a: fill(f.a, vars) })),
     }))
     .filter((g) => g.items.length > 0);

@@ -205,3 +205,12 @@ export async function pushToCustomerKey(key: string, payload: Payload) {
   const rows = await sql`SELECT * FROM push_subscriptions WHERE role = 'customer' AND customer_key = ${key}`;
   return deliver(rows, payload);
 }
+
+/** Neue Gutschein-Bestellung an alle Admin-Geräte */
+export async function pushVoucherToAdmins(v: { id: number; amountChf: number; buyerName: string }) {
+  if (!pushEnabled) return 0;
+  const sql = await getSql();
+  const rows = await sql`SELECT * FROM push_subscriptions WHERE role = 'admin'`;
+  const amount = Number.isInteger(v.amountChf) ? `CHF ${v.amountChf}` : `CHF ${v.amountChf.toFixed(2)}`;
+  return deliver(rows, { title: "Neue Gutschein-Bestellung", body: `${amount} · ${v.buyerName}`, url: `/admin/gutscheine/${v.id}`, tag: `gyan-voucher-${v.id}` });
+}
