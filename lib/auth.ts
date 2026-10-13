@@ -120,9 +120,10 @@ export async function isKasseUnlocked() {
 }
 
 /** Für alle Seiten und Aktionen der Kasse: Admin-Login und entsperrte Kasse */
-export async function requireKasse() {
+/** next: wohin es nach der PIN weitergeht (nur innerhalb der Kasse) */
+export async function requireKasse(next = "") {
   await requireAdmin();
-  if (!(await isKasseUnlocked())) redirect("/admin/pin");
+  if (!(await isKasseUnlocked())) redirect(next.startsWith("/admin/kasse") ? `/admin/pin?next=${encodeURIComponent(next)}` : "/admin/pin");
 }
 
 export async function isAdmin() {

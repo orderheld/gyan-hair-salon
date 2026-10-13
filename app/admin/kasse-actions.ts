@@ -1,11 +1,13 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { after } from "next/server";
 import { redirect } from "next/navigation";
 import { getAdminText } from "@/lib/admin";
 import { isPin, requireAdmin, requireKasse, setKassePin, unlockKasse } from "@/lib/auth";
-import { createSale, deleteProduct, getStaff, PAYMENTS, PosError, saveProduct, saveStaff, stornoSale, type CartLine, type Payment } from "@/lib/pos";
-import { saveSettings } from "@/lib/settings";
+import { createSale, deleteProduct, getStaff, PAYMENTS, pickedUpVouchersOf, PosError, saveProduct, saveStaff, stornoSale, type CartLine, type Payment } from "@/lib/pos";
+import { sendVoucherMail } from "@/lib/email";
+import { getVoucher, getVoucherByCode } from "@/lib/vouchers";
 
 const str = (fd: FormData, key: string, max = 200) => String(fd.get(key) ?? "").trim().slice(0, max);
 const num = (fd: FormData, key: string) => Number(String(fd.get(key) ?? "").replace(",", "."));
@@ -22,7 +24,8 @@ export async function posCheckout(input: CheckoutInput): Promise<{ no?: number; 
   const { t } = await getAdminText();
   const e = t.kasse.errors;
   if (!input || !Array.isArray(input.lines) || !input.lines.length) return { error: e.empty };
-  if (!PAYMENTS.includes(input.payment)) return { error: e.payment };
+  // «voucher» nur als Platzhalter, wenn ein Gutschein alles deckt (die Kasse prüft das Total selbst)
+  if (!PAYMENTS.includes(input.payment as (typeof PAYMENTS)[number]) && input.payment !== "voucher") return { error: e.payment };
   try {
     const sale = await createSale({
       staffId: String(input.staffId ?? ""),
@@ -33,6 +36,16 @@ export async function posCheckout(input: CheckoutInput): Promise<{ no?: number; 
       note: String(input.note ?? ""),
     });
     revalidatePath("/admin/kasse", "layout");
+    // Online bestellte Gutscheine: Bestätigung an den Käufer, dass er bezahlt und gültig ist
+    const picked = pickedUpVouchersOf(sale);
+    if (picked.length) {
+      after(async () => {
+        for (const id of picked) {
+          const v = await getVoucher(id);
+          if (v?.buyerEmail) await sendVoucherMail("picked", v).catch((err) => console.error("[GYAN] Gutschein-Mail:", err));
+        }
+      });
+    }
     return { no: sale.no };
   } catch (error) {
     if (error instanceof PosError) {
@@ -55,7 +68,8 @@ export async function posStorno(fd: FormData) {
   try {
     stornoNo = (await stornoSale(no, reason)).no;
   } catch (error) {
-    back(path, error instanceof PosError && error.message === "storno" ? t.kasse.errors.storno : t.kasse.errors.generic, "error");
+    const msg = error instanceof PosError ? (error.message === "storno" ? t.kasse.errors.storno : error.message === "voucherUsed" ? t.kasse.errors.voucherUsed : t.kasse.errors.generic) : t.kasse.errors.generic;
+    back(path, msg, "error");
   }
   revalidatePath("/admin/kasse", "layout");
   back(`/admin/kasse/beleg/${stornoNo}`, t.kasse.stornoDone);
@@ -92,16 +106,17 @@ export async function posDeleteProduct(fd: FormData) {
   back("/admin/kasse/einstellungen#produkte", t.common.saved);
 }
 
-export async function posSaveVat(fd: FormData) {
+/** Kasse: Gutschein-Nummer prüfen, bevor er auf den Beleg kommt */
+export async function posFindVoucher(code: string): Promise<{ error?: string; voucher?: { code: string; state: string; amountChf: number; balanceChf: number; recipient: string; buyer: string } }> {
   await requireKasse();
   const { t } = await getAdminText();
-  const rate = num(fd, "vatRate");
-  if (!Number.isFinite(rate) || rate < 0 || rate > 30) back("/admin/kasse/einstellungen#mwst", t.common.checkInput, "error");
-  await saveSettings({ vatNumber: str(fd, "vatNumber", 40), vatRate: Math.round(rate * 100) / 100 });
-  back("/admin/kasse/einstellungen#mwst", t.common.saved);
+  const v = await getVoucherByCode(String(code ?? "").slice(0, 40));
+  if (!v) return { error: t.kasse.errors.voucher };
+  if (v.state === "cancelled") return { error: t.kasse.errors.voucherCancelled };
+  if (v.state === "redeemed") return { error: t.kasse.errors.voucherNothing };
+  return { voucher: { code: v.code, state: v.state, amountChf: v.amountChf, balanceChf: v.balanceChf, recipient: v.recipientName, buyer: v.buyerName } };
 }
 
-/** Sperrbildschirm: PIN prüfen. Kurze Pause bremst Rateversuche. */
 export async function posUnlock(pin: string): Promise<boolean> {
   await requireAdmin();
   await new Promise((r) => setTimeout(r, 350));

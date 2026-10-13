@@ -19,6 +19,7 @@ export default async function Report({ searchParams }: { searchParams: Promise<{
   const { start, end } = rangeDates(range.from, range.to);
   const [sales, staff, chain] = await Promise.all([getSalesBetween(start, end), getStaff({ includeInactive: true }), verifyChain()]);
   const sum = summarize(sales, staff);
+  const hasVouchers = sum.vouchersSold !== 0 || sum.vouchersRedeemed !== 0;
   const stornoed = new Set(sales.filter((s) => s.stornoOf !== null).map((s) => s.stornoOf));
   const exportHref = `/admin/kasse-export?von=${range.from}&bis=${range.to}`;
 
@@ -54,10 +55,10 @@ export default async function Report({ searchParams }: { searchParams: Promise<{
         <section className="panel">
           <h2 className="pos-h">{k.perStaff}</h2>
           <table className="report-table">
-            <thead><tr><th></th><th>{k.receipts}</th><th>{k.servicesSum}</th><th>{k.productsSum}</th><th>{k.total}</th></tr></thead>
+            <thead><tr><th></th><th>{k.receipts}</th><th>{k.servicesSum}</th><th>{k.productsSum}</th>{hasVouchers && <th>{k.vouchers}</th>}<th>{k.total}</th></tr></thead>
             <tbody>
               {sum.byStaff.map((r) => (
-                <tr key={r.id}><th>{r.name}</th><td>{r.count}</td><td>{chf(r.services)}</td><td>{chf(r.products)}</td><td><strong>{chf(r.total)}</strong></td></tr>
+                <tr key={r.id}><th>{r.name}</th><td>{r.count}</td><td>{chf(r.services)}</td><td>{chf(r.products)}</td>{hasVouchers && <td>{chf(r.vouchers)}</td>}<td><strong>{chf(r.total)}</strong></td></tr>
               ))}
             </tbody>
           </table>
@@ -67,7 +68,12 @@ export default async function Report({ searchParams }: { searchParams: Promise<{
           <table className="report-table">
             <tbody>
               {(["cash", "card", "twint"] as const).map((p) => <tr key={p}><th>{k.pay[p]}</th><td><strong>{chf(sum.byPayment[p])}</strong></td></tr>)}
-              {sum.vat !== 0 && <tr><th>{k.vatSum}</th><td>{chf(sum.vat)}</td></tr>}
+              {(sum.vouchersSold !== 0 || sum.vouchersRedeemed !== 0) && (
+                <>
+                  <tr><th>{k.vouchersSold}</th><td>{chf(sum.vouchersSold)}</td></tr>
+                  <tr><th>{k.vouchersRedeemed}</th><td>{chf(sum.vouchersRedeemed)}</td></tr>
+                </>
+              )}
             </tbody>
           </table>
         </section>

@@ -26,9 +26,6 @@ export type Settings = {
   /** Morgen-Übersicht der heutigen Termine (Push und E-Mail an den Salon) */
   digestEnabled: boolean;
   digestTime: string;
-  /** Kasse: MWST-Nummer (leer = nicht MWST-pflichtig, dann keine MWST auf den Belegen) */
-  vatNumber: string;
-  vatRate: number;
   reviewUrl: string;
   instagramUrl: string;
   notifyEmail: string;
@@ -51,8 +48,6 @@ export const DEFAULT_SETTINGS: Settings = {
   nightLeadMin: 120,
   digestEnabled: true,
   digestTime: "07:30",
-  vatNumber: "",
-  vatRate: 8.1,
   reviewUrl: site.googleWriteReviewUrl,
   instagramUrl: "https://www.instagram.com/gyan_hair_salon/",
   notifyEmail: process.env.SALON_NOTIFY_EMAIL || site.email,

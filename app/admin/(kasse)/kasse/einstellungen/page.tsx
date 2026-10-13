@@ -4,8 +4,7 @@ import { KasseNav } from "@/components/admin/KasseNav";
 import { getAdminText } from "@/lib/admin";
 import { requireKasse } from "@/lib/auth";
 import { getProducts, getStaff } from "@/lib/pos";
-import { getSettings } from "@/lib/settings";
-import { posDeleteProduct, posSaveKassePin, posSaveProduct, posSaveStaff, posSaveVat } from "@/app/admin/kasse-actions";
+import { posDeleteProduct, posSaveKassePin, posSaveProduct, posSaveStaff } from "@/app/admin/kasse-actions";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +13,7 @@ export default async function KasseSettings({ searchParams }: { searchParams: Pr
   const { ok, error } = await searchParams;
   const { t } = await getAdminText();
   const k = t.kasse;
-  const [staff, products, settings] = await Promise.all([getStaff({ includeInactive: true }), getProducts({ includeInactive: true }), getSettings()]);
+  const [staff, products] = await Promise.all([getStaff({ includeInactive: true }), getProducts({ includeInactive: true })]);
 
   return (
     <>
@@ -65,16 +64,6 @@ export default async function KasseSettings({ searchParams }: { searchParams: Pr
             <SubmitButton>{t.common.add}</SubmitButton>
           </form>
         </div>
-      </section>
-
-      <section className="panel" id="mwst">
-        <h2 className="pos-h">{k.vat}</h2>
-        <p className="muted small">{k.vatHint}</p>
-        <form action={posSaveVat} className="kset-row">
-          <input className="input" name="vatNumber" defaultValue={settings.vatNumber} placeholder="CHE-123.456.789 MWST" maxLength={40} aria-label={k.vatNo} />
-          <div className="unit"><input className="input kset-price" name="vatRate" defaultValue={settings.vatRate} inputMode="decimal" aria-label={k.vatRate} /><span>%</span></div>
-          <SubmitButton>{t.common.save}</SubmitButton>
-        </form>
       </section>
 
       <section className="panel" id="pin">

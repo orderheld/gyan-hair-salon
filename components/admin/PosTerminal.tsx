@@ -2,19 +2,21 @@
 
 import { useRouter } from "next/navigation";
 import { useMemo, useState, useTransition } from "react";
-import { posCheckout } from "@/app/admin/kasse-actions";
+import { posCheckout, posFindVoucher } from "@/app/admin/kasse-actions";
+import { fill } from "@/lib/i18n/fill";
 import type { AdminDict } from "@/lib/i18n/admin/de";
 import type { CartLine, Payment } from "@/lib/pos";
 
 type Svc = { id: number; name: string; priceChf: number; walkinChf: number | null };
 type Prod = { id: number; name: string; priceChf: number };
 type Bk = { id: string; time: string; serviceId: number | null; label: string; billed: boolean; staffId: string };
-type Line = CartLine & { key: string; name: string; unit: number };
+type Line = CartLine & { key: string; name: string; unit: number; balance?: number };
+type FoundVoucher = { code: string; state: string; amountChf: number; balanceChf: number; recipient: string; buyer: string };
 
 const chf = (n: number) => (Number.isInteger(n) ? `${n}.–` : n.toFixed(2));
 
 /** Kasse wie eine App: antippen, wer bedient hat, Zahlungsart, kassieren. */
-export function PosTerminal({ t, staff, services, products, bookings }: { t: AdminDict["kasse"]; staff: { id: string; name: string }[]; services: Svc[]; products: Prod[]; bookings: Bk[] }) {
+export function PosTerminal({ t, staff, services, products, bookings, initialVoucher, focusVoucher }: { t: AdminDict["kasse"]; staff: { id: string; name: string }[]; services: Svc[]; products: Prod[]; bookings: Bk[]; initialVoucher?: FoundVoucher | null; focusVoucher?: boolean }) {
   const router = useRouter();
   const [staffId, setStaffId] = useState(staff.length === 1 ? staff[0].id : "");
   const [walkin, setWalkin] = useState(true);
@@ -27,8 +29,25 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
   const [customPrice, setCustomPrice] = useState("");
   const [error, setError] = useState("");
   const [pending, start] = useTransition();
+  const [vAmount, setVAmount] = useState("");
+  const [vRecipient, setVRecipient] = useState("");
+  const [vCode, setVCode] = useState(initialVoucher?.code ?? "");
+  const [found, setFound] = useState<FoundVoucher | null>(initialVoucher ?? null);
+  const [checking, startCheck] = useTransition();
 
-  const total = useMemo(() => Math.round(lines.reduce((s, l) => s + l.unit * l.qty, 0) * 100) / 100, [lines]);
+  // Einlösen zieht höchstens den Restwert und höchstens das noch Offene ab (wie die Kasse auf dem Server)
+  const priced = useMemo(() => {
+    let open = Math.round(lines.filter((l) => l.kind !== "voucherRedeem").reduce((s, l) => s + l.unit * l.qty, 0) * 100) / 100;
+    return lines.map((l) => {
+      if (l.kind !== "voucherRedeem") return l;
+      const take = Math.round(Math.min(l.balance ?? 0, Math.max(0, open)) * 100) / 100;
+      open = Math.round((open - take) * 100) / 100;
+      return { ...l, unit: -take };
+    });
+  }, [lines]);
+  const total = useMemo(() => Math.round(priced.reduce((s, l) => s + l.unit * l.qty, 0) * 100) / 100, [priced]);
+  const hasRedeem = lines.some((l) => l.kind === "voucherRedeem");
+  const coveredByVoucher = hasRedeem && total === 0;
   const givenNum = Number(given.replace(",", "."));
   const change = payment === "cash" && given && Number.isFinite(givenNum) ? Math.round((givenNum - total) * 100) / 100 : null;
 
@@ -67,24 +86,65 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
     setCustomPrice("");
   }
 
+  function addVoucher() {
+    const amount = Math.round(Number(vAmount.replace(",", ".")) * 100) / 100;
+    if (!Number.isFinite(amount) || amount < 1 || amount > 2000) { setError(t.errors.voucherAmount); return; }
+    if (hasRedeem) { setError(t.errors.voucherMix); return; }
+    const recipient = vRecipient.trim().slice(0, 60);
+    add({ kind: "voucher", amountChf: amount, recipient, key: `v${Date.now()}`, name: `${t.voucherNew}${recipient ? ` · ${fill(t.voucherFor, { name: recipient })}` : ""}`, unit: amount } as Omit<Line, "qty">);
+    setVAmount("");
+    setVRecipient("");
+  }
+
+  function checkVoucher() {
+    setError("");
+    setFound(null);
+    if (!vCode.trim()) return;
+    startCheck(async () => {
+      const res = await posFindVoucher(vCode);
+      if (res.error || !res.voucher) { setError(res.error ?? t.errors.voucher); return; }
+      setFound(res.voucher);
+      setVCode(res.voucher.code);
+    });
+  }
+
+  function useVoucher(v: FoundVoucher) {
+    if (lines.some((l) => (l.kind === "voucherPickup" || l.kind === "voucherRedeem") && l.code === v.code)) { setError(t.errors.voucherTwice); return; }
+    if (v.state === "ordered") {
+      if (hasRedeem) { setError(t.errors.voucherMix); return; }
+      add({ kind: "voucherPickup", code: v.code, key: `vp${v.code}`, name: fill(t.voucherPickupLine, { code: v.code }), unit: v.amountChf } as Omit<Line, "qty">);
+    } else {
+      if (lines.some((l) => l.kind === "voucher" || l.kind === "voucherPickup")) { setError(t.errors.voucherMix); return; }
+      add({ kind: "voucherRedeem", code: v.code, key: `vr${v.code}`, name: fill(t.voucherRedeemLine, { code: v.code }), unit: 0, balance: v.balanceChf } as Omit<Line, "qty">);
+    }
+    setFound(null);
+    setVCode("");
+  }
+
   function clear() {
-    setLines([]); setPayment(""); setGiven(""); setNote(""); setBookingId(null); setError("");
+    setLines([]); setPayment(""); setGiven(""); setNote(""); setBookingId(null); setError(""); setFound(null);
   }
 
   function checkout() {
     if (!lines.length) return setError(t.errors.empty);
     if (!staffId) return setError(t.errors.staff);
-    if (!payment) return setError(t.errors.payment);
+    if (!payment && !coveredByVoucher) return setError(t.errors.payment);
     if (change !== null && change < 0) return setError(t.errors.given);
     setError("");
     start(async () => {
       const res = await posCheckout({
         staffId,
-        payment,
-        givenChf: payment === "cash" && given ? givenNum : null,
+        payment: coveredByVoucher ? "voucher" : (payment as Payment),
+        givenChf: !coveredByVoucher && payment === "cash" && given ? givenNum : null,
         bookingId,
         note,
-        lines: lines.map((l) => (l.kind === "service" ? { kind: "service", id: l.id, walkin: l.walkin, qty: l.qty } : l.kind === "product" ? { kind: "product", id: l.id, qty: l.qty } : { kind: "custom", name: l.name, priceChf: l.unit, qty: l.qty })),
+        lines: lines.map((l): CartLine => {
+          if (l.kind === "service") return { kind: "service", id: l.id, walkin: l.walkin, qty: l.qty };
+          if (l.kind === "product") return { kind: "product", id: l.id, qty: l.qty };
+          if (l.kind === "voucher") return { kind: "voucher", amountChf: l.amountChf, recipient: l.recipient, qty: l.qty };
+          if (l.kind === "voucherPickup" || l.kind === "voucherRedeem") return { kind: l.kind, code: l.code, qty: 1 };
+          return { kind: "custom", name: l.name, priceChf: l.unit, qty: l.qty };
+        }),
       });
       if (res.error || !res.no) { setError(res.error ?? t.errors.generic); return; }
       router.push(`/admin/kasse/beleg/${res.no}?neu=1`);
@@ -160,6 +220,42 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
             </div>
           </details>
         </section>
+
+        <section className="panel pos-sec" id="pos-gutschein">
+          <h2 className="pos-h">{t.vouchers}</h2>
+          <div className="pos-vc">
+            <div className="pos-vc-part">
+              <h3 className="pos-sub">{t.voucherSell}</h3>
+              <div className="pos-custom-row">
+                <input className="input" placeholder={t.voucherAmount} inputMode="decimal" value={vAmount} autoFocus={focusVoucher} onChange={(e) => setVAmount(e.target.value)} aria-label={t.voucherAmount} />
+                <input className="input" placeholder={t.voucherRecipient} value={vRecipient} maxLength={60} onChange={(e) => setVRecipient(e.target.value)} aria-label={t.voucherRecipient} />
+                <button type="button" className="btn btn-light" onClick={addVoucher}>{t.voucherAdd}</button>
+              </div>
+              <p className="muted small">{t.voucherHint}</p>
+            </div>
+            <div className="pos-vc-part">
+              <h3 className="pos-sub">{t.voucherUse}</h3>
+              <form className="pos-custom-row pos-vc-find" onSubmit={(e) => { e.preventDefault(); checkVoucher(); }}>
+                <input className="input pos-vc-code" placeholder="GYAN-XXXX-XXXX" value={vCode} autoCapitalize="characters" autoComplete="off" onChange={(e) => setVCode(e.target.value)} aria-label={t.voucherCode} />
+                <button type="submit" className="btn btn-light" disabled={checking}>{checking ? "…" : t.voucherCheck}</button>
+              </form>
+              {found && (
+                <div className="pos-vc-found">
+                  <div>
+                    <strong className="pos-vc-code">{found.code}</strong>
+                    <span className="muted small">
+                      {found.state === "ordered" ? t.voucherOrdered : `${t.voucherValid} · ${t.voucherBalance} CHF ${chf(found.balanceChf)}`}
+                      {found.recipient ? ` · ${fill(t.voucherFor, { name: found.recipient })}` : found.buyer ? ` · ${found.buyer}` : ""}
+                    </span>
+                  </div>
+                  <button type="button" className="btn btn-dark btn-sm" onClick={() => useVoucher(found)}>
+                    {found.state === "ordered" ? `${t.voucherPickup} · CHF ${chf(found.amountChf)}` : t.voucherRedeem}
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
       </div>
 
       {lines.length > 0 && (
@@ -175,14 +271,20 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
         </div>
         {lines.length === 0 ? <p className="muted small">{t.empty}</p> : (
           <ul className="pos-lines">
-            {lines.map((l) => (
+            {priced.map((l) => (
               <li key={l.key}>
                 <span className="pos-line-name">{l.name}</span>
-                <span className="pos-qty">
-                  <button type="button" aria-label="−" onClick={() => setQty(l.key, -1)}>−</button>
-                  <span>{l.qty}</span>
-                  <button type="button" aria-label="+" onClick={() => setQty(l.key, 1)}>+</button>
-                </span>
+                {l.kind === "voucherPickup" || l.kind === "voucherRedeem" ? (
+                  <span className="pos-qty">
+                    <button type="button" aria-label="−" onClick={() => setQty(l.key, -1)}>×</button>
+                  </span>
+                ) : (
+                  <span className="pos-qty">
+                    <button type="button" aria-label="−" onClick={() => setQty(l.key, -1)}>−</button>
+                    <span>{l.qty}</span>
+                    <button type="button" aria-label="+" onClick={() => setQty(l.key, 1)}>+</button>
+                  </span>
+                )}
                 <strong>{chf(Math.round(l.unit * l.qty * 100) / 100)}</strong>
               </li>
             ))}
@@ -190,6 +292,7 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
         )}
         <div className="pos-total"><span>{t.total}</span><strong>CHF {chf(total)}</strong></div>
 
+        {coveredByVoucher ? <p className="pos-covered">{t.paidByVoucher}</p> : <>
         <h3 className="pos-h">{t.payment}</h3>
         <div className="pos-pay">
           {(["cash", "card", "twint"] as const).map((p) => (
@@ -205,6 +308,7 @@ export function PosTerminal({ t, staff, services, products, bookings }: { t: Adm
             {change !== null && <p className={`pos-change${change < 0 ? " bad" : ""}`}>{t.change}: <strong>CHF {chf(Math.max(0, change))}</strong></p>}
           </div>
         )}
+        </>}
         <input className="input pos-note" placeholder={t.note} value={note} maxLength={200} onChange={(e) => setNote(e.target.value)} />
         {error && <div className="alert alert-error" role="alert">{error}</div>}
         <button type="button" className="btn btn-dark pos-go" disabled={pending} onClick={checkout}>

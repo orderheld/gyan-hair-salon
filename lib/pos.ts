@@ -2,19 +2,31 @@ import "server-only";
 import { createHash } from "node:crypto";
 import { getSql, type Row } from "./db";
 import { getServices } from "./data";
-import { getSettings } from "./settings";
+import { getVoucherByCode, markPickedUp, newVoucherCode, redeemVoucher, createVoucher, revertSaleVouchers, voucherEffectsOfSale, type Voucher } from "./vouchers";
 
 /* Kasse: Team, Produkte, Belege.
    Belege sind fortlaufend nummeriert und über eine Prüfsumme verkettet (jeder Beleg enthält die
    Prüfsumme des vorherigen). Die Datenbank verbietet Ändern und Löschen; korrigiert wird nur mit
-   einem Storno-Beleg. So bleiben die Aufzeichnungen vollständig und unverändert (GeBüV). */
+   einem Storno-Beleg. So bleiben die Aufzeichnungen vollständig und unverändert (GeBüV).
+   Der Salon ist nicht MWST-pflichtig: Belege haben keine MWST (vat_rate/vat_chf bleiben 0, nur für die Prüfsumme).
+   Gutscheine: verkaufen (neuer Code), online bestellten abholen und einlösen (als Abzug auf dem Beleg).
+   Deckt ein Gutschein alles, ist die Zahlungsart «voucher» und das Total 0. */
 
 export const PAYMENTS = ["cash", "card", "twint"] as const;
-export type Payment = (typeof PAYMENTS)[number];
+/** «voucher» nur, wenn ein Gutschein den ganzen Betrag deckt (Total 0) */
+export type Payment = (typeof PAYMENTS)[number] | "voucher";
 
 export type Staff = { id: string; name: string; sort: number; active: boolean };
 export type Product = { id: number; name: string; priceChf: number; active: boolean; sort: number };
-export type SaleItem = { kind: "service" | "product" | "custom"; refId: number | null; name: string; qty: number; unitChf: number; totalChf: number; walkin?: boolean };
+export type SaleItem = {
+  kind: "service" | "product" | "custom" | "voucher" | "voucherPickup" | "voucherRedeem";
+  refId: number | null;
+  name: string;
+  qty: number;
+  unitChf: number;
+  totalChf: number;
+  walkin?: boolean;
+};
 export type Sale = {
   no: number;
   createdAt: Date;
@@ -36,7 +48,10 @@ export type Sale = {
 export type CartLine =
   | { kind: "service"; id: number; walkin: boolean; qty: number }
   | { kind: "product"; id: number; qty: number }
-  | { kind: "custom"; name: string; priceChf: number; qty: number };
+  | { kind: "custom"; name: string; priceChf: number; qty: number }
+  | { kind: "voucher"; amountChf: number; recipient: string; qty: number }
+  | { kind: "voucherPickup"; code: string; qty: number }
+  | { kind: "voucherRedeem"; code: string; qty: number };
 
 export class PosError extends Error {}
 
@@ -127,18 +142,32 @@ async function insertSale(data: Omit<Sale, "no" | "createdAt" | "hash">): Promis
   throw new PosError("busy");
 }
 
-function vatFor(total: number, rate: number) {
-  return rate > 0 ? money((total * rate) / (100 + rate)) : 0;
-}
-
 export async function createSale(input: { staffId: string; payment: Payment; lines: CartLine[]; givenChf: number | null; bookingId: string | null; note: string }): Promise<Sale> {
-  if (!PAYMENTS.includes(input.payment)) throw new PosError("payment");
   if (!input.lines.length || input.lines.length > 40) throw new PosError("empty");
-  const [staff, services, products, settings] = await Promise.all([getStaff(), getServices({ includeInactive: true }), getProducts({ includeInactive: true }), getSettings()]);
+  const [staff, services, products] = await Promise.all([getStaff(), getServices({ includeInactive: true }), getProducts({ includeInactive: true })]);
   const member = staff.find((s) => s.id === input.staffId);
   if (!member) throw new PosError("staff");
 
-  const items: SaleItem[] = input.lines.map((line) => {
+  // Gutscheine vorab prüfen; jeder Code nur einmal pro Beleg
+  const codes = new Set<string>();
+  const found = new Map<string, Voucher>();
+  for (const line of input.lines) {
+    if (line.kind !== "voucherPickup" && line.kind !== "voucherRedeem") continue;
+    const v = await getVoucherByCode(String(line.code ?? ""));
+    if (!v || codes.has(v.code)) throw new PosError("voucher");
+    if (line.kind === "voucherPickup" && v.status !== "ordered") throw new PosError("voucherState");
+    if (line.kind === "voucherRedeem" && (v.status !== "active" || v.balanceChf <= 0)) throw new PosError("voucherState");
+    codes.add(v.code);
+    found.set(v.code, v);
+  }
+  const hasRedeem = input.lines.some((l) => l.kind === "voucherRedeem");
+  // Einen Gutschein mit einem Gutschein bezahlen geht nicht
+  if (hasRedeem && input.lines.some((l) => l.kind === "voucher" || l.kind === "voucherPickup")) throw new PosError("voucherMix");
+
+  const newVouchers: { code: string; amount: number; recipient: string }[] = [];
+  const items: SaleItem[] = [];
+  for (const line of input.lines) {
+    if (line.kind === "voucherRedeem") continue; // kommt am Schluss, abhängig vom Total
     const qty = Math.round(Number(line.qty));
     if (!Number.isFinite(qty) || qty < 1 || qty > 99) throw new PosError("qty");
     if (line.kind === "service") {
@@ -146,38 +175,95 @@ export async function createSale(input: { staffId: string; payment: Payment; lin
       if (!s) throw new PosError("item");
       const walkin = line.walkin && s.walkinPriceChf !== null;
       const unit = walkin ? s.walkinPriceChf! : s.priceChf;
-      return { kind: "service", refId: s.id, name: s.name.de, qty, unitChf: unit, totalChf: money(unit * qty), walkin };
-    }
-    if (line.kind === "product") {
+      items.push({ kind: "service", refId: s.id, name: s.name.de, qty, unitChf: unit, totalChf: money(unit * qty), walkin });
+    } else if (line.kind === "product") {
       const p = products.find((x) => x.id === line.id);
       if (!p) throw new PosError("item");
-      return { kind: "product", refId: p.id, name: p.name, qty, unitChf: p.priceChf, totalChf: money(p.priceChf * qty) };
+      items.push({ kind: "product", refId: p.id, name: p.name, qty, unitChf: p.priceChf, totalChf: money(p.priceChf * qty) });
+    } else if (line.kind === "voucher") {
+      const amount = money(Number(line.amountChf));
+      if (!Number.isFinite(amount) || amount < 1 || amount > 2000) throw new PosError("voucherAmount");
+      const recipient = String(line.recipient ?? "").trim().slice(0, 60);
+      // Mehrere gleiche Gutscheine: je ein eigener Code und eine eigene Zeile
+      for (let i = 0; i < qty; i++) {
+        let code = newVoucherCode();
+        while (codes.has(code)) code = newVoucherCode();
+        codes.add(code);
+        newVouchers.push({ code, amount, recipient });
+        items.push({ kind: "voucher", refId: null, name: `Gutschein ${code}${recipient ? ` (${recipient})` : ""}`, qty: 1, unitChf: amount, totalChf: amount });
+      }
+    } else if (line.kind === "voucherPickup") {
+      const v = found.get(normalize(line.code));
+      if (!v) throw new PosError("voucher");
+      items.push({ kind: "voucherPickup", refId: v.id, name: `Gutschein ${v.code} (online bestellt)`, qty: 1, unitChf: v.amountChf, totalChf: v.amountChf });
+    } else {
+      const name = String(line.name ?? "").trim().slice(0, 80);
+      const unit = money(Number(line.priceChf));
+      if (!name || !Number.isFinite(unit) || unit < -2000 || unit > 5000 || unit === 0) throw new PosError("custom");
+      items.push({ kind: "custom", refId: null, name, qty, unitChf: unit, totalChf: money(unit * qty) });
     }
-    const name = String(line.name ?? "").trim().slice(0, 80);
-    const unit = money(Number(line.priceChf));
-    if (!name || !Number.isFinite(unit) || unit < -2000 || unit > 5000 || unit === 0) throw new PosError("custom");
-    return { kind: "custom", refId: null, name, qty, unitChf: unit, totalChf: money(unit * qty) };
-  });
+  }
 
-  const total = money(items.reduce((sum, i) => sum + i.totalChf, 0));
+  let total = money(items.reduce((sum, i) => sum + i.totalChf, 0));
   if (total < 0) throw new PosError("negative");
-  const given = input.payment === "cash" && input.givenChf !== null && Number.isFinite(input.givenChf) ? money(input.givenChf) : null;
-  if (given !== null && given < total) throw new PosError("given");
-  const rate = settings.vatNumber ? settings.vatRate : 0;
+  // Einlösen: höchstens der Restwert und höchstens das, was noch offen ist
+  const redeems: { voucher: Voucher; amount: number }[] = [];
+  for (const line of input.lines) {
+    if (line.kind !== "voucherRedeem") continue;
+    const v = found.get(normalize(line.code));
+    if (!v) throw new PosError("voucher");
+    const amount = money(Math.min(v.balanceChf, total));
+    if (amount <= 0) throw new PosError("voucherNothing");
+    redeems.push({ voucher: v, amount });
+    items.push({ kind: "voucherRedeem", refId: v.id, name: `Gutschein ${v.code} eingelöst`, qty: 1, unitChf: -amount, totalChf: -amount });
+    total = money(total - amount);
+  }
 
-  return insertSale({
+  const payment: Payment = total === 0 && redeems.length ? "voucher" : input.payment;
+  if (payment !== "voucher" && !PAYMENTS.includes(payment as (typeof PAYMENTS)[number])) throw new PosError("payment");
+  const given = payment === "cash" && input.givenChf !== null && Number.isFinite(input.givenChf) ? money(input.givenChf) : null;
+  if (given !== null && given < total) throw new PosError("given");
+
+  const sale = await insertSale({
     staffId: member.id,
     staffName: member.name,
-    payment: input.payment,
+    payment,
     items,
     totalChf: total,
-    vatRate: rate,
-    vatChf: vatFor(total, rate),
+    vatRate: 0,
+    vatChf: 0,
     givenChf: given,
     bookingId: input.bookingId && /^[0-9a-f-]{36}$/i.test(input.bookingId) ? input.bookingId : null,
     stornoOf: null,
     note: input.note.trim().slice(0, 200),
   });
+
+  // Gutscheine nachführen (der Beleg steht schon; ein Fehler hier wird protokolliert, der Beleg bleibt gültig)
+  const voucherPay = payment === "voucher" ? null : (payment as (typeof PAYMENTS)[number]);
+  try {
+    for (const nv of newVouchers) {
+      await createVoucher({ code: nv.code, saleNo: sale.no, amountChf: nv.amount, source: "salon", payment: voucherPay, buyerName: "", buyerEmail: "", buyerPhone: "", recipientName: nv.recipient, message: "", locale: "de" });
+    }
+    for (const item of items) {
+      if (item.kind === "voucherPickup" && item.refId && voucherPay) await markPickedUp(item.refId, voucherPay, sale.no);
+    }
+    for (const r of redeems) {
+      if (!(await redeemVoucher(r.voucher.id, r.amount, `Beleg ${sale.no}`, sale.no))) console.error(`[GYAN] Gutschein ${r.voucher.code}: Einlösung zu Beleg ${sale.no} fehlgeschlagen`);
+    }
+  } catch (error) {
+    console.error(`[GYAN] Gutscheine zu Beleg ${sale.no}:`, error);
+  }
+  return sale;
+}
+
+const normalize = (code: unknown) => {
+  const raw = String(code ?? "").toUpperCase().replace(/[^A-Z0-9]/g, "").replace(/^GYAN/, "");
+  return raw.length === 8 ? `GYAN-${raw.slice(0, 4)}-${raw.slice(4)}` : "";
+};
+
+/** Online bestellte Gutscheine, die mit diesem Beleg abgeholt wurden (für die Bestätigungsmail) */
+export function pickedUpVouchersOf(sale: Sale) {
+  return sale.items.filter((i) => i.kind === "voucherPickup" && i.refId).map((i) => i.refId as number);
 }
 
 /** Storno: neuer Beleg mit umgekehrten Beträgen. Der ursprüngliche Beleg bleibt unverändert. */
@@ -188,7 +274,10 @@ export async function stornoSale(no: number, reason: string): Promise<Sale> {
   const sql = await getSql();
   const [done] = await sql`SELECT no FROM pos_sales WHERE storno_of = ${no}`;
   if (done) throw new PosError("storno");
-  return insertSale({
+  // Ein verkaufter oder abgeholter Gutschein, der schon eingelöst wurde, kann nicht mehr storniert werden
+  const effects = await voucherEffectsOfSale(no);
+  if (effects.vouchers.some((v) => v.usedChf > 0)) throw new PosError("voucherUsed");
+  const storno = await insertSale({
     staffId: original.staffId,
     staffName: original.staffName,
     payment: original.payment,
@@ -201,6 +290,8 @@ export async function stornoSale(no: number, reason: string): Promise<Sale> {
     stornoOf: original.no,
     note: reason.trim().slice(0, 200),
   });
+  await revertSaleVouchers(no);
+  return storno;
 }
 
 export async function getSale(no: number): Promise<Sale | null> {
@@ -240,35 +331,40 @@ export type Summary = {
   total: number;
   services: number;
   products: number;
-  vat: number;
+  /** Gutscheine verkauft oder abgeholt (Geld eingenommen) */
+  vouchersSold: number;
+  /** mit Gutschein bezahlt (negativ: kein Geld eingenommen) */
+  vouchersRedeemed: number;
   byPayment: Record<Payment, number>;
-  byStaff: { id: string; name: string; count: number; services: number; products: number; total: number }[];
+  byStaff: { id: string; name: string; count: number; services: number; products: number; vouchers: number; total: number }[];
 };
 
 /** Auswertung: Stornos zählen negativ, so stimmt jede Summe mit den Belegen überein. */
 export function summarize(sales: Sale[], staff: Staff[]): Summary {
-  const byPayment = { cash: 0, card: 0, twint: 0 } as Record<Payment, number>;
-  const rows = new Map(staff.map((s) => [s.id, { id: s.id, name: s.name, count: 0, services: 0, products: 0, total: 0 }]));
+  const byPayment = { cash: 0, card: 0, twint: 0, voucher: 0 } as Record<Payment, number>;
+  const rows = new Map(staff.map((s) => [s.id, { id: s.id, name: s.name, count: 0, services: 0, products: 0, vouchers: 0, total: 0 }]));
   let services = 0;
   let products = 0;
-  let vat = 0;
+  let vouchersSold = 0;
+  let vouchersRedeemed = 0;
   let count = 0;
   for (const sale of sales) {
-    const row = rows.get(sale.staffId) ?? { id: sale.staffId, name: sale.staffName, count: 0, services: 0, products: 0, total: 0 };
+    const row = rows.get(sale.staffId) ?? { id: sale.staffId, name: sale.staffName, count: 0, services: 0, products: 0, vouchers: 0, total: 0 };
     rows.set(sale.staffId, row);
     const sign = sale.stornoOf === null ? 1 : -1;
     count += sign;
     row.count += sign;
     byPayment[sale.payment] = money(byPayment[sale.payment] + sale.totalChf);
-    vat = money(vat + sale.vatChf);
     for (const item of sale.items) {
       // Freie Beträge zählen zu den Leistungen (z. B. Rabatt auf einen Schnitt)
       if (item.kind === "product") { products = money(products + item.totalChf); row.products = money(row.products + item.totalChf); }
+      else if (item.kind === "voucher" || item.kind === "voucherPickup") { vouchersSold = money(vouchersSold + item.totalChf); row.vouchers = money(row.vouchers + item.totalChf); }
+      else if (item.kind === "voucherRedeem") { vouchersRedeemed = money(vouchersRedeemed + item.totalChf); row.vouchers = money(row.vouchers + item.totalChf); }
       else { services = money(services + item.totalChf); row.services = money(row.services + item.totalChf); }
     }
-    row.total = money(row.services + row.products);
+    row.total = money(row.services + row.products + row.vouchers);
   }
-  return { count, total: money(services + products), services, products, vat, byPayment, byStaff: [...rows.values()] };
+  return { count, total: money(services + products + vouchersSold + vouchersRedeemed), services, products, vouchersSold, vouchersRedeemed, byPayment, byStaff: [...rows.values()] };
 }
 
 /** Prüft die ganze Belegkette: Nummern lückenlos, jede Prüfsumme passt. Gibt die erste fehlerhafte Nummer zurück. */
@@ -294,11 +390,11 @@ const csvCell = (v: unknown) => {
 
 /** Export für Treuhand und Buchhaltung: eine Zeile pro Position, alle Belege vollständig. */
 export function salesCsv(sales: Sale[], dateTime: (d: Date) => string): string {
-  const head = ["Beleg", "Datum/Zeit", "Mitarbeiter", "Zahlung", "Art", "Position", "Menge", "Einzelpreis CHF", "Betrag CHF", "Beleg total CHF", "MWST %", "MWST CHF", "Storno von Beleg", "Notiz", "Prüfsumme"];
+  const head = ["Beleg", "Datum/Zeit", "Mitarbeiter", "Zahlung", "Art", "Position", "Menge", "Einzelpreis CHF", "Betrag CHF", "Beleg total CHF", "Storno von Beleg", "Notiz", "Prüfsumme"];
   const lines = [head.join(";")];
   for (const s of sales) {
     for (const i of s.items) {
-      lines.push([s.no, dateTime(s.createdAt), s.staffName, s.payment, i.kind, i.name + (i.walkin ? " (ohne Termin)" : ""), i.qty, i.unitChf.toFixed(2), i.totalChf.toFixed(2), s.totalChf.toFixed(2), s.vatRate.toFixed(2), s.vatChf.toFixed(2), s.stornoOf ?? "", s.note, s.hash].map(csvCell).join(";"));
+      lines.push([s.no, dateTime(s.createdAt), s.staffName, s.payment, i.kind, i.name + (i.walkin ? " (ohne Termin)" : ""), i.qty, i.unitChf.toFixed(2), i.totalChf.toFixed(2), s.totalChf.toFixed(2), s.stornoOf ?? "", s.note, s.hash].map(csvCell).join(";"));
     }
   }
   return "﻿" + lines.join("\r\n") + "\r\n";

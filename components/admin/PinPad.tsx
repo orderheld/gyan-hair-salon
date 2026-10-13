@@ -8,7 +8,7 @@ import { posUnlock } from "@/app/admin/kasse-actions";
 type Texts = { title: string; hint: string; wrong: string; back: string; del: string };
 
 /** 6-stellige PIN wie beim Handy-Sperrbildschirm. Bei 6 Ziffern wird automatisch geprüft. */
-export function PinPad({ t }: { t: Texts }) {
+export function PinPad({ t, next = "/admin/kasse" }: { t: Texts; next?: string }) {
   const router = useRouter();
   const [pin, setPin] = useState("");
   const [wrong, setWrong] = useState(false);
@@ -25,14 +25,14 @@ export function PinPad({ t }: { t: Texts }) {
     if (pin.length !== 6) return;
     start(async () => {
       const ok = await posUnlock(pin);
-      if (ok) router.replace("/admin/kasse");
+      if (ok) router.replace(next);
       else {
         setWrong(true);
         setPin("");
         if (navigator.vibrate) navigator.vibrate(200);
       }
     });
-  }, [pin, router]);
+  }, [pin, router, next]);
 
   // Tastatur am Computer
   useEffect(() => {

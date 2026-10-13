@@ -4,7 +4,7 @@ import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { VoucherNav } from "@/components/admin/VoucherNav";
 import { getAdminText } from "@/lib/admin";
-import { requireAdmin } from "@/lib/auth";
+import { isKasseUnlocked, requireAdmin } from "@/lib/auth";
 import { TIMEZONE } from "@/lib/config";
 import { formatChf } from "@/lib/format";
 import { fill } from "@/lib/i18n";
@@ -34,6 +34,9 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
   const t = all.vouchers;
   const v = await getVoucher(Number(id));
   if (!v) notFound();
+  // Kasse mit diesem Gutschein öffnen (gesperrt: zuerst PIN, danach direkt dorthin)
+  const kasse = `/admin/kasse?gutschein=${encodeURIComponent(v.code)}`;
+  const kasseHref = (await isKasseUnlocked()) ? kasse : `/admin/pin?next=${encodeURIComponent(kasse)}`;
   const when = (d: Date) =>
     new Intl.DateTimeFormat(INTL_LOCALE[locale], { day: "numeric", month: "numeric", year: "numeric", hour: "2-digit", minute: "2-digit", timeZone: TIMEZONE }).format(d);
   const hidden = <input type="hidden" name="id" value={v.id} />;
@@ -48,6 +51,7 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
     ...(v.payment ? [[t.field.payment, t.payment[v.payment]] as [string, React.ReactNode]] : []),
     ...(v.remindedAt && v.status === "ordered" ? [[t.field.reminded, when(v.remindedAt)] as [string, React.ReactNode]] : []),
     ...(v.cancelledAt && v.status === "cancelled" ? [[t.field.cancelled, when(v.cancelledAt)] as [string, React.ReactNode]] : []),
+    ...(v.saleNo ? [[t.receipt, <Link key="r" className="link" href={`/admin/kasse/beleg/${v.saleNo}`}>{fill(t.receiptNo, { no: String(v.saleNo).padStart(6, "0") })}</Link>] as [string, React.ReactNode]] : []),
     [t.field.language, v.locale.toUpperCase()],
   ];
 
@@ -75,9 +79,14 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
       </section>
 
       {v.status === "ordered" && (
-        <form action={voucherPickUp} className="panel stack">
-          {hidden}
+        <section className="panel stack">
           <h2 className="h3" style={{ margin: 0 }}>{t.pickupTitle}</h2>
+          <p className="muted small" style={{ margin: 0 }}>{t.kasseHint}</p>
+          <Link className="btn btn-dark" href={kasseHref}>{t.kasseBtn} · {formatChf(v.amountChf)}</Link>
+          <details className="vc-alt">
+            <summary>{t.withoutKasse}</summary>
+        <form action={voucherPickUp} className="stack">
+          {hidden}
           <p className="muted small" style={{ margin: 0 }}>{t.pickupHint}</p>
           <div className="vc-pay" role="radiogroup" aria-label={t.field.payment}>
             {VOUCHER_PAYMENTS.map((p) => (
@@ -87,17 +96,23 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
           {v.buyerEmail && (
             <label className="vc-check"><input type="checkbox" name="sendMail" defaultChecked /> {t.sendMail}</label>
           )}
-          <SubmitButton pendingLabel={all.common.saving} className="btn btn-dark">{t.pickupBtn} · {formatChf(v.amountChf)}</SubmitButton>
+          <SubmitButton pendingLabel={all.common.saving} className="btn btn-light">{t.pickupBtn} · {formatChf(v.amountChf)}</SubmitButton>
         </form>
+          </details>
+        </section>
       )}
 
       {v.status === "active" && (
         <section className="panel stack">
           <h2 className="h3" style={{ margin: 0 }}>{t.redeemTitle}</h2>
           {v.balanceChf > 0 ? (
-            <form action={voucherRedeem} className="stack" style={{ marginTop: 0 }}>
+            <>
+            <p className="muted small" style={{ margin: 0 }}>{fill(t.redeemHint, { balance: formatChf(v.balanceChf) })}</p>
+            <Link className="btn btn-dark" href={kasseHref}>{t.kasseRedeem}</Link>
+            <details className="vc-alt">
+              <summary>{t.withoutKasseRedeem}</summary>
+            <form action={voucherRedeem} className="stack">
               {hidden}
-              <p className="muted small" style={{ margin: 0 }}>{fill(t.redeemHint, { balance: formatChf(v.balanceChf) })}</p>
               <div className="vc-redeem-row">
                 <div className="field">
                   <label htmlFor="vc-amount">{t.redeemAmount}</label>
@@ -110,6 +125,8 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
                 <input id="vc-rnote" name="note" className="input" maxLength={120} />
               </div>
             </form>
+            </details>
+            </>
           ) : (
             <p className="muted" style={{ margin: 0 }}>{t.fullyRedeemed}</p>
           )}
@@ -124,11 +141,15 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
                       {r.note && <span className="muted small"> · {r.note}</span>}
                     </span>
                     <strong>{formatChf(r.amountChf)}</strong>
-                    <form action={voucherUndoRedemption}>
-                      {hidden}
-                      <input type="hidden" name="redemption" value={r.id} />
-                      <ConfirmButton message={t.undoConfirm}>{t.undo}</ConfirmButton>
-                    </form>
+                    {r.saleNo ? (
+                      <Link className="link small" href={`/admin/kasse/beleg/${r.saleNo}`}>{fill(t.receiptNo, { no: String(r.saleNo).padStart(6, "0") })}</Link>
+                    ) : (
+                      <form action={voucherUndoRedemption}>
+                        {hidden}
+                        <input type="hidden" name="redemption" value={r.id} />
+                        <ConfirmButton message={t.undoConfirm}>{t.undo}</ConfirmButton>
+                      </form>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -161,13 +182,13 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
               <ConfirmButton message={t.remindConfirm}>{t.remindBtn}</ConfirmButton>
             </form>
           )}
-          {v.status === "active" && v.source === "online" && v.usedChf === 0 && (
+          {v.status === "active" && v.source === "online" && v.usedChf === 0 && !v.saleNo && (
             <form action={voucherNotPickedUp}>
               {hidden}
               <ConfirmButton message={t.notPickedConfirm}>{t.notPickedBtn}</ConfirmButton>
             </form>
           )}
-          {v.status !== "cancelled" && v.usedChf === 0 && (
+          {v.status !== "cancelled" && v.usedChf === 0 && !v.saleNo && (
             <form action={voucherCancel}>
               {hidden}
               {v.buyerEmail && v.status === "ordered" && (
@@ -176,7 +197,8 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
               <ConfirmButton message={t.cancelConfirm}>{t.cancelBtn}</ConfirmButton>
             </form>
           )}
-          {v.status === "cancelled" && (
+          {v.saleNo && v.status !== "cancelled" && <p className="muted small" style={{ margin: 0 }}>{t.viaKasse}</p>}
+          {v.status === "cancelled" && !(v.source === "salon" && v.saleNo) && (
             <form action={voucherRestore}>
               {hidden}
               <ConfirmButton message={t.restoreBtn + "?"}>{t.restoreBtn}</ConfirmButton>

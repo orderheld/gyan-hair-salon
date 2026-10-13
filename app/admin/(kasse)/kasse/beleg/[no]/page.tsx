@@ -8,7 +8,6 @@ import { getAdminText } from "@/lib/admin";
 import { requireKasse } from "@/lib/auth";
 import { fill } from "@/lib/i18n";
 import { getSale, getStornoFor } from "@/lib/pos";
-import { getSettings } from "@/lib/settings";
 import { formatTime } from "@/lib/time";
 import { posStorno } from "@/app/admin/kasse-actions";
 
@@ -23,7 +22,7 @@ export default async function Receipt({ params, searchParams }: { params: Promis
   const k = t.kasse;
   const sale = await getSale(Number(no));
   if (!sale) notFound();
-  const [storno, settings] = await Promise.all([sale.stornoOf === null ? getStornoFor(sale.no) : null, getSettings()]);
+  const storno = sale.stornoOf === null ? await getStornoFor(sale.no) : null;
   const date = new Intl.DateTimeFormat("de-CH", { timeZone: "Europe/Zurich", day: "2-digit", month: "2-digit", year: "numeric" }).format(sale.createdAt);
 
   return (
@@ -41,7 +40,6 @@ export default async function Receipt({ params, searchParams }: { params: Promis
           <span>{site.legalName}</span>
           <span>{site.address.street}, {site.address.zip} {site.address.city}</span>
           <span>{site.phone}</span>
-          {settings.vatNumber && <span>{k.vatNo} {settings.vatNumber}</span>}
         </header>
         <dl className="receipt-meta">
           <div><dt>{k.receiptNo}</dt><dd>{String(sale.no).padStart(6, "0")}</dd></div>
@@ -62,7 +60,6 @@ export default async function Receipt({ params, searchParams }: { params: Promis
           <div><dt>{k.payment}</dt><dd>{k.pay[sale.payment]}</dd></div>
           {sale.givenChf !== null && <div><dt>{k.given}</dt><dd>{chf(sale.givenChf)}</dd></div>}
           {sale.givenChf !== null && <div><dt>{k.change}</dt><dd>{chf(sale.givenChf - sale.totalChf)}</dd></div>}
-          {sale.vatRate > 0 && <div><dt>{fill(k.vatIncl, { rate: String(sale.vatRate) })}</dt><dd>{chf(sale.vatChf)}</dd></div>}
         </dl>
         {sale.stornoOf === null && sale.note && <p className="receipt-note">{sale.note}</p>}
         {sale.stornoOf === null && <p className="receipt-thanks">{k.thanks}</p>}

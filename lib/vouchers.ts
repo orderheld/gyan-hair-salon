@@ -30,7 +30,7 @@ export type VoucherSettings = {
 
 export const DEFAULT_VOUCHER_SETTINGS: VoucherSettings = { onlineEnabled: true, presets: [30, 50, 80, 100], minChf: 20, maxChf: 500 };
 
-export type Redemption = { id: number; amountChf: number; note: string; createdAt: Date };
+export type Redemption = { id: number; amountChf: number; note: string; createdAt: Date; saleNo: number | null };
 export type Voucher = {
   id: number;
   code: string;
@@ -49,6 +49,8 @@ export type Voucher = {
   pickedUpAt: Date | null;
   cancelledAt: Date | null;
   remindedAt: Date | null;
+  /** Kassenbeleg, mit dem er verkauft oder abgeholt wurde */
+  saleNo: number | null;
   usedChf: number;
   balanceChf: number;
   state: VoucherState;
@@ -85,6 +87,7 @@ const mapVoucher = (r: Row): Voucher => {
     pickedUpAt: date(r.picked_up_at),
     cancelledAt: date(r.cancelled_at),
     remindedAt: date(r.reminded_at),
+    saleNo: r.sale_no === null || r.sale_no === undefined ? null : Number(r.sale_no),
     usedChf,
     balanceChf: status === "cancelled" ? 0 : money(Math.max(0, amountChf - usedChf)),
     state: stateOf(status, amountChf, usedChf),
@@ -141,7 +144,7 @@ export async function getVoucher(id: number): Promise<(Voucher & { redemptions: 
   if (!rows[0]) return null;
   return {
     ...mapVoucher(rows[0]),
-    redemptions: reds.map((r) => ({ id: Number(r.id), amountChf: Number(r.amount_chf), note: String(r.note ?? ""), createdAt: date(r.created_at)! })),
+    redemptions: reds.map((r) => ({ id: Number(r.id), amountChf: Number(r.amount_chf), note: String(r.note ?? ""), createdAt: date(r.created_at)!, saleNo: r.sale_no === null || r.sale_no === undefined ? null : Number(r.sale_no) })),
   };
 }
 
@@ -225,17 +228,20 @@ type NewVoucher = {
   locale: Locale;
   payment?: VoucherPayment | null;
   note?: string;
+  /** Kasse: Code steht schon auf dem Beleg */
+  code?: string;
+  saleNo?: number | null;
 };
 
 export async function createVoucher(v: NewVoucher): Promise<Voucher> {
   const sql = await getSql();
   const active = v.source === "salon";
   for (let attempt = 0; attempt < 5; attempt++) {
-    const code = newVoucherCode();
+    const code = attempt === 0 && v.code ? v.code : newVoucherCode();
     const rows = await sql`
-      INSERT INTO vouchers (code, amount_chf, source, status, buyer_name, buyer_email, buyer_phone, recipient_name, message, locale, payment, note, picked_up_at)
+      INSERT INTO vouchers (code, amount_chf, source, status, buyer_name, buyer_email, buyer_phone, recipient_name, message, locale, payment, note, picked_up_at, sale_no)
       VALUES (${code}, ${money(v.amountChf)}, ${v.source}, ${active ? "active" : "ordered"}, ${v.buyerName}, ${v.buyerEmail.toLowerCase()}, ${v.buyerPhone},
-              ${v.recipientName}, ${v.message}, ${v.locale}, ${active ? (v.payment ?? null) : null}, ${v.note ?? ""}, ${active ? new Date().toISOString() : null})
+              ${v.recipientName}, ${v.message}, ${v.locale}, ${active ? (v.payment ?? null) : null}, ${v.note ?? ""}, ${active ? new Date().toISOString() : null}, ${v.saleNo ?? null})
       ON CONFLICT (code) DO NOTHING
       RETURNING *, 0 AS used_chf`;
     if (rows[0]) return mapVoucher(rows[0]);
@@ -244,9 +250,9 @@ export async function createVoucher(v: NewVoucher): Promise<Voucher> {
 }
 
 /** Bezahlt und abgeholt (nur aus «bestellt») */
-export async function markPickedUp(id: number, payment: VoucherPayment): Promise<boolean> {
+export async function markPickedUp(id: number, payment: VoucherPayment, saleNo: number | null = null): Promise<boolean> {
   const sql = await getSql();
-  const rows = await sql`UPDATE vouchers SET status = 'active', payment = ${payment}, picked_up_at = now() WHERE id = ${id} AND status = 'ordered' RETURNING id`;
+  const rows = await sql`UPDATE vouchers SET status = 'active', payment = ${payment}, picked_up_at = now(), sale_no = ${saleNo} WHERE id = ${id} AND status = 'ordered' RETURNING id`;
   return rows.length > 0;
 }
 
@@ -254,8 +260,8 @@ export async function markPickedUp(id: number, payment: VoucherPayment): Promise
 export async function markNotPickedUp(id: number): Promise<boolean> {
   const sql = await getSql();
   const rows = await sql`
-    UPDATE vouchers SET status = 'ordered', payment = NULL, picked_up_at = NULL
-    WHERE id = ${id} AND status = 'active' AND source = 'online' AND NOT EXISTS (SELECT 1 FROM voucher_redemptions WHERE voucher_id = ${id})
+    UPDATE vouchers SET status = 'ordered', payment = NULL, picked_up_at = NULL, sale_no = NULL
+    WHERE id = ${id} AND status = 'active' AND source = 'online' AND sale_no IS NULL AND NOT EXISTS (SELECT 1 FROM voucher_redemptions WHERE voucher_id = ${id})
     RETURNING id`;
   return rows.length > 0;
 }
@@ -264,7 +270,7 @@ export async function cancelVoucher(id: number): Promise<boolean> {
   const sql = await getSql();
   const rows = await sql`
     UPDATE vouchers SET status = 'cancelled', cancelled_at = now()
-    WHERE id = ${id} AND status <> 'cancelled' AND NOT EXISTS (SELECT 1 FROM voucher_redemptions WHERE voucher_id = ${id})
+    WHERE id = ${id} AND status <> 'cancelled' AND sale_no IS NULL AND NOT EXISTS (SELECT 1 FROM voucher_redemptions WHERE voucher_id = ${id})
     RETURNING id`;
   return rows.length > 0;
 }
@@ -274,28 +280,28 @@ export async function restoreVoucher(id: number): Promise<boolean> {
   const sql = await getSql();
   const rows = await sql`
     UPDATE vouchers SET status = CASE WHEN picked_up_at IS NULL THEN 'ordered' ELSE 'active' END, cancelled_at = NULL
-    WHERE id = ${id} AND status = 'cancelled' RETURNING id`;
+    WHERE id = ${id} AND status = 'cancelled' AND NOT (source = 'salon' AND sale_no IS NOT NULL) RETURNING id`;
   return rows.length > 0;
 }
 
 /** Einlösen (ganz oder teilweise). Nur gültige Gutscheine, nie mehr als der Restwert. */
-export async function redeemVoucher(id: number, amountChf: number, note: string): Promise<boolean> {
+export async function redeemVoucher(id: number, amountChf: number, note: string, saleNo: number | null = null): Promise<boolean> {
   const amount = money(amountChf);
   if (!(amount > 0)) return false;
   const sql = await getSql();
   const rows = await sql`
-    INSERT INTO voucher_redemptions (voucher_id, amount_chf, note)
-    SELECT v.id, ${amount}, ${note} FROM vouchers v
+    INSERT INTO voucher_redemptions (voucher_id, amount_chf, note, sale_no)
+    SELECT v.id, ${amount}, ${note}, ${saleNo} FROM vouchers v
     WHERE v.id = ${id} AND v.status = 'active'
       AND v.amount_chf - coalesce((SELECT sum(r.amount_chf) FROM voucher_redemptions r WHERE r.voucher_id = v.id), 0) >= ${amount}
     RETURNING id`;
   return rows.length > 0;
 }
 
-/** Eine Einlösung zurücknehmen (Vertipper) */
+/** Eine Einlösung zurücknehmen (Vertipper). Einlösungen aus der Kasse nur per Storno des Belegs. */
 export async function undoRedemption(voucherId: number, redemptionId: number): Promise<boolean> {
   const sql = await getSql();
-  const rows = await sql`DELETE FROM voucher_redemptions WHERE id = ${redemptionId} AND voucher_id = ${voucherId} RETURNING id`;
+  const rows = await sql`DELETE FROM voucher_redemptions WHERE id = ${redemptionId} AND voucher_id = ${voucherId} AND sale_no IS NULL RETURNING id`;
   return rows.length > 0;
 }
 
@@ -307,4 +313,29 @@ export async function updateVoucherNote(id: number, note: string, recipientName:
 export async function markReminded(id: number) {
   const sql = await getSql();
   await sql`UPDATE vouchers SET reminded_at = now() WHERE id = ${id}`;
+}
+
+/* ---------- Kasse ---------- */
+
+/** Was ein Kassenbeleg mit Gutscheinen gemacht hat (für den Storno) */
+export async function voucherEffectsOfSale(saleNo: number) {
+  const sql = await getSql();
+  const [vs, reds] = await Promise.all([
+    sql.query(`${SELECT} WHERE v.sale_no = $1`, [saleNo]),
+    sql`SELECT id FROM voucher_redemptions WHERE sale_no = ${saleNo}`,
+  ]);
+  return { vouchers: vs.map(mapVoucher), redemptionIds: reds.map((r) => Number(r.id)) };
+}
+
+/**
+ * Storno eines Kassenbelegs: Einlösungen zurücknehmen, abgeholte Online-Gutscheine wieder auf «nicht abgeholt»,
+ * im Salon verkaufte stornieren. Wurde ein verkaufter Gutschein schon eingelöst, geht der Storno nicht (vorher prüfen).
+ */
+export async function revertSaleVouchers(saleNo: number) {
+  const sql = await getSql();
+  await sql`DELETE FROM voucher_redemptions WHERE sale_no = ${saleNo}`;
+  await sql`
+    UPDATE vouchers SET status = 'ordered', payment = NULL, picked_up_at = NULL, sale_no = NULL
+    WHERE sale_no = ${saleNo} AND source = 'online' AND status = 'active'`;
+  await sql`UPDATE vouchers SET status = 'cancelled', cancelled_at = now() WHERE sale_no = ${saleNo} AND source = 'salon' AND status = 'active'`;
 }

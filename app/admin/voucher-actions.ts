@@ -9,7 +9,6 @@ import { formatChf } from "@/lib/format";
 import { fill } from "@/lib/i18n";
 import {
   cancelVoucher,
-  createVoucher,
   getVoucher,
   getVoucherSettings,
   markNotPickedUp,
@@ -26,7 +25,6 @@ import {
 
 const str = (fd: FormData, key: string, max = 300) => String(fd.get(key) ?? "").trim().slice(0, max);
 const num = (fd: FormData, key: string) => Number(str(fd, key, 20).replace(",", "."));
-const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const go = (path: string, params: Record<string, string>): never => redirect(`${path}?${new URLSearchParams(params)}`);
 const detail = (id: number) => `/admin/gutscheine/${id}`;
 const payment = (fd: FormData): VoucherPayment | null => {
@@ -117,36 +115,6 @@ export async function voucherSaveNote(fd: FormData) {
   const { t, v } = await load(fd);
   await updateVoucherNote(v.id, str(fd, "note", 500), str(fd, "recipientName", 60));
   go(detail(v.id), { ok: t.done.saved });
-}
-
-/** Im Salon verkauft: sofort bezahlt und gültig */
-export async function voucherSell(fd: FormData) {
-  await requireAdmin();
-  const { locale, t: all } = await getAdminText();
-  const t = all.vouchers;
-  const amount = Math.round(num(fd, "amount") * 100) / 100;
-  const pay = payment(fd);
-  const email = str(fd, "email", 120).toLowerCase();
-  if (!(amount >= 1 && amount <= 2000)) go("/admin/gutscheine/verkaufen", { error: t.errors.sellAmount });
-  if (!pay) go("/admin/gutscheine/verkaufen", { error: t.errors.payment });
-  if (email && !EMAIL.test(email)) go("/admin/gutscheine/verkaufen", { error: t.errors.email });
-  const v = await createVoucher({
-    amountChf: amount,
-    source: "salon",
-    payment: pay,
-    buyerName: str(fd, "buyerName", 80),
-    buyerEmail: email,
-    buyerPhone: str(fd, "buyerPhone", 30),
-    recipientName: str(fd, "recipientName", 60),
-    message: "",
-    note: str(fd, "note", 500),
-    locale: (["de", "fr", "en"] as const).find((l) => l === str(fd, "locale", 2)) ?? locale,
-  });
-  if (email) {
-    const error = await sendVoucherMail("picked", v);
-    if (error) go(detail(v.id), { error: fill(t.errors.mail, { error }) });
-  }
-  go(detail(v.id), { ok: fill(t.done.created, { code: v.code }) });
 }
 
 export async function voucherSaveSettings(fd: FormData) {
