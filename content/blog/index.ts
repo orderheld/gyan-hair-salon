@@ -1,4 +1,5 @@
 import type { BlogPost } from "../types";
+import { post as slickBack } from "./slick-back-frisur-biel";
 import { post as nassrasurBarbier } from "./nassrasur-barbier-biel";
 import { post as gutscheinVerschenken } from "./gutschein-verschenken-biel";
 import { post as hochzeitBewerbungHaarschnitt } from "./haarschnitt-hochzeit-bewerbung-biel";
@@ -11,6 +12,7 @@ import { post as wieOftZumCoiffeur } from "./wie-oft-zum-coiffeur";
 
 // Neueste zuerst
 export const posts: BlogPost[] = [
+  slickBack,
   nassrasurBarbier,
   gutscheinVerschenken,
   hochzeitBewerbungHaarschnitt,
