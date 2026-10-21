@@ -5,10 +5,11 @@ import { ActionButton } from "@/components/admin/ActionButton";
 import { ConfirmButton, SubmitButton } from "@/components/admin/ConfirmButton";
 import { Flash } from "@/components/admin/Flash";
 import { StempelNav } from "@/components/admin/StempelNav";
+import { ContactLinks } from "@/components/admin/ContactLinks";
 import { Stamps } from "@/components/loyalty/Stamps";
 import { getAdminText } from "@/lib/admin";
 import { fill } from "@/lib/i18n";
-import { ensureCard, getCardByToken, getCardState, listStaffNames, STAFF_COOKIE } from "@/lib/loyalty";
+import { cardPhone, ensureCard, getCardByToken, getCardState, listStaffNames, STAFF_COOKIE } from "@/lib/loyalty";
 import { freeNth } from "@/lib/loyalty-text";
 import { formatShortDate, formatTime, toDateKey } from "@/lib/time";
 import {
@@ -46,7 +47,7 @@ export default async function StempelCard({ params, searchParams }: Props) {
   }
   // Name aus den Buchungen aktuell halten
   const card = found.customerKey.includes("@") ? await ensureCard(found.customerKey, found.name) : found;
-  const [s, staff] = await Promise.all([getCardState(card), listStaffNames()]);
+  const [s, staff, phone] = await Promise.all([getCardState(card), listStaffNames(), cardPhone(card)]);
   const chosen = (await cookies()).get(STAFF_COOKIE)?.value ?? "";
   const needed = s.settings.stampsNeeded;
   const name = card.name || card.customerKey;
@@ -85,9 +86,9 @@ export default async function StempelCard({ params, searchParams }: Props) {
           <span className="cust-avatar" aria-hidden>{(name.trim()[0] ?? "?").toUpperCase()}</span>
           <div className="lc-card-name">
             <strong>{name}</strong>
-            <span className="muted small">{card.customerKey}</span>
           </div>
         </div>
+        <ContactLinks phone={phone} email={card.customerKey.includes("@") ? card.customerKey : ""} t={all.booking} />
         <Stamps onCard={s.onCard} kinds={s.onCardKinds} needed={needed} freeLabel="Gratis" label={fill(t.stampsOf, { n: s.onCard, total: needed })} compact />
         <p className="lc-count">
           <strong>{fill(t.stampsOf, { n: s.onCard, total: needed })}</strong>

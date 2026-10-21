@@ -2,6 +2,7 @@ import { requireAdmin } from "@/lib/auth";
 import Link from "next/link";
 import { Flash } from "@/components/admin/Flash";
 import { StempelNav } from "@/components/admin/StempelNav";
+import { ContactLinks } from "@/components/admin/ContactLinks";
 import { getAdminText } from "@/lib/admin";
 import { getLoyaltySettings, listCards } from "@/lib/loyalty";
 import { formatShortDate } from "@/lib/time";
@@ -50,12 +51,12 @@ export default async function StempelCustomers({ searchParams }: { searchParams:
           {cards.map((c) => {
             const onCard = c.balance >= needed ? needed : Math.max(0, c.balance);
             return (
-              <li key={c.id}>
-                <Link href={`/admin/stempel/karte/${encodeURIComponent(c.token)}`} className="lc-row panel">
+              <li key={c.id} className="panel lc-item">
+                <Link href={`/admin/stempel/karte/${encodeURIComponent(c.token)}`} className="lc-row">
                   <span className="cust-avatar" aria-hidden>{(c.name.trim()[0] ?? c.customerKey[0] ?? "?").toUpperCase()}</span>
                   <span className="lc-row-main">
                     <strong>{c.name || c.customerKey}</strong>
-                    <span className="muted small">{c.customerKey}{c.referredBy ? ` · ← ${c.referredBy}` : ""}</span>
+                    {c.referredBy && <span className="muted small">← {c.referredBy}</span>}
                     <span className="lc-meta small">
                       <span>{t.col.visits}: {c.visits}</span>
                       <span>{t.col.redeemed}: {c.redeemed + c.birthdays}</span>
@@ -68,6 +69,7 @@ export default async function StempelCustomers({ searchParams }: { searchParams:
                     {c.balance >= needed && <small>✂</small>}
                   </span>
                 </Link>
+                <ContactLinks phone={c.phone} email={c.customerKey.includes("@") ? c.customerKey : ""} t={all.booking} />
               </li>
             );
           })}

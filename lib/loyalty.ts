@@ -419,7 +419,22 @@ export type CardRow = Card & {
   referralsRewarded: number;
   referredBy: string;
   lastAt: Date | null;
+  phone: string;
 };
+
+/** Telefon zur Karte: eigene Angaben im Konto, sonst die Nummer der letzten Buchung */
+const PHONE_SQL = `coalesce(nullif(cu.phone, ''), (SELECT customer_phone FROM bookings
+    WHERE customer_email <> '' AND lower(customer_email) = c.customer_key AND customer_phone <> ''
+    ORDER BY starts_at DESC LIMIT 1), '')`;
+
+export async function cardPhone(card: Card): Promise<string> {
+  const sql = await getSql();
+  const rows = await sql.query(
+    `SELECT ${PHONE_SQL} AS phone FROM loyalty_cards c LEFT JOIN customers cu ON cu.key = c.customer_key WHERE c.id = $1`,
+    [card.id],
+  );
+  return String(rows[0]?.phone ?? "");
+}
 
 export async function listCards(search = ""): Promise<CardRow[]> {
   const sql = await getSql();
@@ -427,8 +442,10 @@ export async function listCards(search = ""): Promise<CardRow[]> {
   const rows = await sql.query(
     `SELECT c.*, coalesce(s.balance, 0)::int AS balance, coalesce(s.visits, 0)::int AS visits, coalesce(s.redeemed, 0)::int AS redeemed,
             coalesce(s.birthdays, 0)::int AS birthdays, coalesce(s.reviews, 0)::int AS reviews, s.last_at,
-            coalesce(r.made, 0)::int AS referrals_made, coalesce(r.rewarded, 0)::int AS referrals_rewarded, rc.name AS referred_by
+            coalesce(r.made, 0)::int AS referrals_made, coalesce(r.rewarded, 0)::int AS referrals_rewarded, rc.name AS referred_by,
+            ${PHONE_SQL} AS phone
      FROM loyalty_cards c
+     LEFT JOIN customers cu ON cu.key = c.customer_key
      LEFT JOIN (SELECT card_id, sum(delta) AS balance, count(*) FILTER (WHERE kind = 'visit') AS visits,
                        count(*) FILTER (WHERE kind = 'redeem') AS redeemed, count(*) FILTER (WHERE kind = 'birthday') AS birthdays,
                        count(*) FILTER (WHERE kind = 'review') AS reviews, max(created_at) AS last_at
@@ -452,6 +469,7 @@ export async function listCards(search = ""): Promise<CardRow[]> {
     referralsRewarded: Number(r.referrals_rewarded),
     referredBy: String(r.referred_by ?? ""),
     lastAt: toDateOrNull(r.last_at),
+    phone: String(r.phone ?? ""),
   }));
 }
 

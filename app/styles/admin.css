@@ -732,6 +732,15 @@ form[data-dirty] .svc-unsaved { display: inline; }
 .lc-row-main > span { overflow: hidden; text-overflow: ellipsis; }
 .lc-row-count { font-weight: 600; font-variant-numeric: tabular-nums; display: grid; justify-items: end; }
 .lc-row-count.is-ready { color: var(--accent-deep); }
+.lc-item { padding: 0; display: grid; }
+.lc-item .lc-contact { padding: 0 16px 14px; }
+.lc-contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 8px; }
+.lc-contact-btn { display: flex; align-items: center; gap: 10px; min-height: 48px; padding: 8px 14px; border-radius: 12px; background: var(--cream); color: var(--ink); text-decoration: none; min-width: 0; }
+.lc-contact-btn:hover { background: var(--ivory); box-shadow: inset 0 0 0 1px var(--cream); }
+.lc-contact-btn svg { flex: none; width: 20px; height: 20px; fill: none; stroke: var(--accent-deep); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.lc-contact-btn span { display: grid; min-width: 0; font-weight: 600; font-size: 15px; }
+.lc-contact-btn span, .lc-contact-btn small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lc-contact-btn small { font-weight: 400; font-size: 12px; color: var(--taupe); }
 .lc-meta { display: flex; flex-wrap: wrap; gap: 2px 12px; color: var(--taupe); }
 .lc-kind { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--cream); color: var(--accent-deep); font-weight: 600; font-size: 13px; font-variant-numeric: tabular-nums; }
 .lc-kind-visit, .lc-kind-review, .lc-kind-referral { background: var(--accent-deep); color: var(--ivory); }
