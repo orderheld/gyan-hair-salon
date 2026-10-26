@@ -285,7 +285,7 @@ const fr: Dict = {
     storyLink: "L’histoire de Zana",
     quote: "Une bonne coupe ne commence pas avec les ciseaux, mais avec l’écoute.",
     quoteBy: "Zana, propriétaire",
-    promisesEyebrow: "Le GYAN Standard",
+    promisesEyebrow: "Le standard GYAN",
     promisesTitle: "Moins de cadence. Plus de soin.",
     promises: [
       { title: "Réservé pour toi", text: "Réservé en ligne, ton créneau est fixe et confirmé immédiatement. Pas d’attente, pas de hasard." },
@@ -402,7 +402,7 @@ const fr: Dict = {
       {
         title: "Prestations",
         items: [
-          { q: "Quelle différence entre skin fade, low fade et taper ?", a: "Avec le skin fade, le dégradé descend jusqu'à la peau sur les côtés. Le low fade commence bas, juste au-dessus des oreilles. Le taper est plus discret : seuls les pattes et la nuque sont dégradées court. Au salon, on regarde ensemble ce qui convient à tes cheveux et à ton visage." },
+          { q: "Quelle différence entre skin fade, low fade et taper ?", a: "Avec le skin fade, le dégradé descend jusqu'à la peau sur les côtés. Le low fade commence bas, juste au-dessus des oreilles. Le taper est plus discret : seules les pattes et la nuque sont dégradées court. Au salon, on regarde ensemble ce qui convient à tes cheveux et à ton visage." },
           { q: "Faites-vous aussi la barbe et le rasage ?", a: "Oui. La taille de barbe dure environ {beardMin} minutes et coûte CHF {beard}. Le rasage traditionnel à la serviette chaude, avec mousse et soin, dure environ {shaveMin} minutes et coûte CHF {shave}." },
           { q: "Le shampooing est-il inclus ?", a: "Le shampooing est inclus dans la formule GYAN Premium (CHF {premium}) et dans le GYAN Full Service (CHF {full}), avec un coiffage pour finir." },
           { q: "À quelle fréquence aller chez le coiffeur ?", a: "En règle générale : un dégradé ou une coupe très courte perd de sa netteté après 2 à 3 semaines, une coupe courte classique après 3 à 5 semaines, les cheveux plus longs après 5 à 8 semaines." },
@@ -466,7 +466,7 @@ const fr: Dict = {
     title: "Ton moment chez GYAN.",
     lead: "Choisis un créneau libre, confirmé tout de suite. Sans rendez-vous, passe simplement.",
     steps: ["Prestation", "Date & heure", "Coordonnées"],
-    team: { title: "Avec qui ?", zana: "Réservable en ligne · mardi à samedi", hikmet: "En ligne bientôt · passe sans rendez-vous", chosen: "Choisi" },
+    team: { title: "Avec qui ?", zana: "Réservable en ligne · {days}", daysRange: "du {from} au {to}", hikmet: "En ligne bientôt · passe sans rendez-vous", chosen: "Choisi" },
     locked: "Tu es connecté. Tes coordonnées viennent de ton compte. Tu peux les modifier sous {account}.",
     lockedAccount: "Mon compte",
     birthOnce: "À renseigner une seule fois, ensuite c’est enregistré dans ton compte.",
@@ -624,10 +624,13 @@ const fr: Dict = {
     disclaimerTitle: "Exclusion de responsabilité",
     disclaimer: "Nous vérifions soigneusement le contenu de ce site, mais ne garantissons pas son exactitude, son exhaustivité ni son actualité. Les prix et les horaires peuvent changer.",
     privacy: [
-      { title: "Responsable", text: "GYAN SALON Inh. Ali (GYAN Hair Salon), Zana Ali, Zentralstrasse 22, 2502 Biel/Bienne. UID CHE-370.741.994." },
+      { title: "Responsable", text: "GYAN SALON Inh. Ali (GYAN Hair Salon), Zana Ali, Zentralstrasse 22, 2502 Biel/Bienne. IDE CHE-370.741.994." },
       { title: "Données traitées", text: "Lorsque tu réserves un rendez-vous en ligne, nous traitons ton nom, ta date de naissance, ton adresse e-mail, ton numéro de téléphone, la prestation choisie, le rendez-vous, la langue et une éventuelle remarque. Nous utilisons ces données pour assurer ton rendez-vous, te le rappeler et te demander ton avis après coup. Avec ton consentement lors de la réservation, nous les utilisons aussi pour la publicité propre de GYAN Hair Salon, par exemple des offres par e-mail. Tu peux retirer ce consentement à tout moment par e-mail ou par téléphone. Pour éviter les adresses erronées, nous envoyons un code à ton adresse e-mail avant la réservation." },
       { title: "Prestataires", text: "Hébergement : Vercel Inc. Base de données : Neon Inc. (région UE). Envoi d’e-mails : Resend Inc. Des contrats de sous-traitance existent avec ces prestataires ; une communication à l’étranger n’a lieu qu’avec des garanties appropriées." },
       { title: "Conservation", text: "Nous supprimons les données de rendez-vous au plus tard 24 mois après le rendez-vous, sauf obligation légale de conservation." },
+      { title: "Compte client", text: "Si tu te connectes dans « Mon compte », nous enregistrons avec ton adresse e-mail ton nom, ton numéro de téléphone et ta date de naissance, pour que tu n’aies pas à les saisir à chaque réservation. Tu peux modifier ces données à tout moment dans « Mon compte »." },
+      { title: "Bons cadeaux", text: "Si tu commandes un bon cadeau en ligne, nous traitons ton nom, ton adresse e-mail, ton numéro de téléphone, le montant, le nom inscrit sur le bon et une éventuelle remarque. Nous utilisons ces données pour préparer le bon, t’informer de ta commande par e-mail et enregistrer les utilisations de manière vérifiable. Nous conservons les données du bon tant qu’il reste un solde, puis dans le cadre de l’obligation légale de conservation." },
+      { title: "Notifications sur le téléphone", text: "Si tu actives le rappel sur ton téléphone, nous enregistrons l’adresse push technique de ton navigateur avec ta langue et ton compte. Les notifications sont transmises par le service push du fabricant de ton navigateur ou de ton appareil, par exemple Apple, Google ou Mozilla. Tu peux les désactiver à tout moment dans les réglages de ton navigateur ou de ton appareil." },
       { title: "Cookies", text: "Ce site n’utilise aucun cookie de suivi ou publicitaire. Seuls ton choix de langue et, après confirmation du code, un cookie évitant de reconfirmer ton e-mail pendant 6 mois sont enregistrés." },
       { title: "Carte de fidélité", text: "Pour la carte de fidélité, nous enregistrons avec ton adresse e-mail chaque tampon et chaque récompense utilisée, avec la date et le type (visite, invitation, avis Google, anniversaire, correction avec motif), afin que le solde reste vérifiable. S’y ajoutent un code aléatoire pour ton code QR et ton lien d’invitation personnel. Si tu invites quelqu’un, nous enregistrons qui a invité qui. Si tu ouvres un lien d’invitation, ton navigateur garde le code pendant 30 jours dans un cookie. Pour le cadeau d’anniversaire, nous utilisons la date de naissance de tes réservations. Si tu ajoutes la carte à Apple Wallet ou Google Wallet, les conditions de ces fournisseurs s’appliquent en plus. Sur demande, nous supprimons ta carte avec tous les tampons." },
       { title: "Tes droits", text: "Tu peux à tout moment demander l’accès à tes données, leur rectification ou leur suppression. Écris-nous un e-mail." },
@@ -666,7 +669,7 @@ const fr: Dict = {
       confirmation: {
         subject: "Ton rendez-vous chez GYAN est confirmé · {date}, {time}",
         heading: "Ton rendez-vous est confirmé.",
-        body: "Bonjour {firstName},\n\nmerci de prendre du temps pour toi. Ton rendez-vous est bien réservé. Tu trouveras tous les détails ci-dessous et l’entrée d’agenda en pièce jointe.\n\nMerci d’arriver quelques minutes avant ton rendez-vous. En cas d’imprévu, tu peux annuler gratuitement en ligne jusqu’à {cancelHours} heures avant. En cas d’annulation plus tardive ou d’absence, la prestation est facturée lors de ta prochaine visite.\n\nNous nous réjouissons de te voir.",
+        body: "Bonjour {firstName},\n\nMerci de prendre du temps pour toi. Ton rendez-vous est bien réservé. Tu trouveras tous les détails ci-dessous et l’entrée d’agenda en pièce jointe.\n\nMerci d’arriver quelques minutes avant ton rendez-vous. En cas d’imprévu, tu peux annuler gratuitement en ligne jusqu’à {cancelHours} heures avant. En cas d’annulation plus tardive ou d’absence, la prestation est facturée lors de ta prochaine visite.\n\nNous nous réjouissons de te voir.",
       },
       reminder: {
         subject: "À tout à l’heure chez GYAN · aujourd’hui à {time}",
@@ -676,17 +679,17 @@ const fr: Dict = {
       followup: {
         subject: "Comment s’est passée ta visite chez GYAN, {firstName} ?",
         heading: "Merci pour ta visite.",
-        body: "Bonjour {firstName},\n\nmerci pour ta visite. Ta coupe t’a plu ? Alors un avis sur Google nous ferait très plaisir. Il aide d’autres personnes à nous trouver.\n\nÀ la prochaine.",
+        body: "Bonjour {firstName},\n\nMerci pour ta visite. Ta coupe t’a plu ? Alors un avis sur Google nous ferait très plaisir. Il aide d’autres personnes à nous trouver.\n\nÀ la prochaine.",
       },
       cancellation: {
         subject: "Ton rendez-vous chez GYAN a été annulé",
         heading: "Ton rendez-vous est annulé.",
-        body: "Bonjour {firstName},\n\nton rendez-vous du {date} à {time} est annulé. Dommage que ça ne marche pas cette fois.\n\nTu peux réserver un nouveau rendez-vous en ligne à tout moment.",
+        body: "Bonjour {firstName},\n\nTon rendez-vous du {date} à {time} est annulé. Dommage que ça ne marche pas cette fois.\n\nTu peux réserver un nouveau rendez-vous en ligne à tout moment.",
       },
       cancellationBySalon: {
         subject: "Important : ton rendez-vous chez GYAN doit malheureusement être annulé",
         heading: "Nous devons annuler ton rendez-vous.",
-        body: "Bonjour {firstName},\n\nnous devons malheureusement annuler ton rendez-vous du {date} à {time}. Toutes nos excuses pour ce désagrément.\n\nN’hésite pas à réserver un nouveau rendez-vous en ligne ou à nous appeler au {phone}. Nous trouverons certainement une solution.",
+        body: "Bonjour {firstName},\n\nNous devons malheureusement annuler ton rendez-vous du {date} à {time}. Toutes nos excuses pour ce désagrément.\n\nN’hésite pas à réserver un nouveau rendez-vous en ligne ou à nous appeler au {phone}. Nous trouverons certainement une solution.",
       },
       adminNotify: {
         subject: "Nouveau rendez-vous : {date}, {time} · {name}",

@@ -385,7 +385,7 @@ const de = {
           { q: "Was passiert, wenn ich kurzfristig absage oder nicht komme?", a: "Sagst du weniger als {cancelH} Stunden vorher ab oder kommst nicht, verrechnen wir die gebuchte Leistung bei deinem nächsten Besuch." },
           { q: "Bekomme ich eine Erinnerung an meinen Termin?", a: "Ja, du bekommst {remindH} Stunden vorher eine Erinnerung per E-Mail.", only: "reminder" as const },
           { q: "Kann ich für mehrere Personen buchen?", a: "Buche für jede Person einen eigenen Termin, am besten direkt nacheinander. So ist für jeden die passende Zeit reserviert." },
-          { q: "Bei wem kann ich einen Termin buchen?", a: "Online buchst du zurzeit bei Zana. Hikmet ist ebenfalls im Salon, für ihn kommt die Online-Buchung bald. Ohne Termin kannst du jederzeit während der Öffnungszeiten vorbeikommen." },
+          { q: "Bei wem kann ich einen Termin buchen?", a: "Online buchst du zurzeit bei Zana. Hikmet arbeitet ebenfalls im Salon, für ihn kommt die Online-Buchung bald. Ohne Termin kannst du jederzeit während der Öffnungszeiten vorbeikommen." },
         ],
       },
       {
@@ -464,7 +464,7 @@ const de = {
     title: "Deine Zeit bei GYAN.",
     lead: "Freie Zeit wählen, sofort bestätigt. Ohne Termin kommst du einfach vorbei.",
     steps: ["Leistung", "Datum & Zeit", "Angaben"],
-    team: { title: "Bei wem?", zana: "Online buchbar · Dienstag bis Samstag", hikmet: "Online bald · spontan vorbeikommen", chosen: "Gewählt" },
+    team: { title: "Bei wem?", zana: "Online buchbar · {days}", daysRange: "{from} bis {to}", hikmet: "Online bald · spontan vorbeikommen", chosen: "Gewählt" },
     locked: "Du bist angemeldet. Deine Angaben kommen aus deinem Konto. Ändern kannst du sie unter {account}.",
     lockedAccount: "Mein Konto",
     birthOnce: "Bitte einmalig hinterlegen, danach ist es in deinem Konto gespeichert.",
@@ -626,6 +626,9 @@ const de = {
       { title: "Welche Daten wir bearbeiten", text: "Wenn du online einen Termin buchst, bearbeiten wir Name, Geburtsdatum, E-Mail-Adresse, Telefonnummer, gewählte Leistung, Termin, Sprache und eine allfällige Notiz. Wir verwenden diese Daten, um deinen Termin durchzuführen, dich daran zu erinnern und dich nach dem Termin um Feedback zu bitten. Mit deiner Einwilligung bei der Buchung nutzen wir sie zudem für eigene Werbung von GYAN Hair Salon, etwa Angebote per E-Mail. Diese Einwilligung kannst du jederzeit per E-Mail oder Telefon widerrufen. Damit niemand eine falsche Adresse angibt, schicken wir vor der Buchung einen Code an deine E-Mail-Adresse." },
       { title: "Dienstleister", text: "Hosting: Vercel Inc. Datenbank: Neon Inc. (Region EU). E-Mail-Versand: Resend Inc. Mit diesen Anbietern bestehen Verträge zur Auftragsbearbeitung; eine Bekanntgabe ins Ausland erfolgt nur mit angemessenen Garantien." },
       { title: "Aufbewahrung", text: "Termindaten löschen wir spätestens 24 Monate nach dem Termin, sofern keine gesetzliche Pflicht zur Aufbewahrung besteht." },
+      { title: "Kundenkonto", text: "Meldest du dich unter «Mein Konto» an, speichern wir zu deiner E-Mail-Adresse deinen Namen, deine Telefonnummer und dein Geburtsdatum, damit du sie beim Buchen nicht jedes Mal eingeben musst. Ändern kannst du diese Angaben jederzeit unter «Mein Konto»." },
+      { title: "Gutscheine", text: "Bestellst du online einen Gutschein, bearbeiten wir deinen Namen, deine E-Mail-Adresse, deine Telefonnummer, den Betrag, den Namen auf dem Gutschein und eine allfällige Bemerkung. Wir nutzen diese Angaben, um den Gutschein bereitzulegen, dich per E-Mail über die Bestellung zu informieren und Einlösungen nachvollziehbar zu erfassen. Gutscheindaten bewahren wir auf, solange ein Guthaben besteht, und danach im Rahmen der gesetzlichen Aufbewahrungspflicht." },
+      { title: "Mitteilungen aufs Handy", text: "Schaltest du die Erinnerung aufs Handy ein, speichern wir die technische Push-Adresse deines Browsers zusammen mit deiner Sprache und deinem Konto. Zugestellt werden die Mitteilungen über den Push-Dienst deines Browser- oder Geräteherstellers, zum Beispiel Apple, Google oder Mozilla. Ausschalten kannst du sie jederzeit in den Einstellungen deines Browsers oder Geräts." },
       { title: "Cookies", text: "Diese Webseite verwendet keine Tracking- oder Werbe-Cookies. Gespeichert werden nur deine Sprachwahl und, nach der Code-Bestätigung, ein Cookie, damit du deine E-Mail-Adresse 6 Monate lang nicht erneut bestätigen musst." },
       { title: "Stempelkarte", text: "Für die Stempelkarte speichern wir zu deiner E-Mail-Adresse jeden Stempel und jede eingelöste Prämie mit Datum und Art (Besuch, Einladung, Google-Bewertung, Geburtstag, Korrektur mit Grund), damit der Stand nachvollziehbar bleibt. Dazu kommen ein zufälliger Code für deinen QR-Code und dein persönlicher Einladungslink. Lädst du jemanden ein, speichern wir, wer wen eingeladen hat. Öffnest du einen Einladungslink, merkt sich dein Browser den Code 30 Tage lang in einem Cookie. Für das Geburtstagsgeschenk nutzen wir das Geburtsdatum aus deinen Buchungen. Fügst du die Karte zu Apple Wallet oder Google Wallet hinzu, gelten zusätzlich die Bestimmungen dieser Anbieter. Auf Wunsch löschen wir deine Karte mit allen Stempeln." },
       { title: "Deine Rechte", text: "Du kannst jederzeit Auskunft, Berichtigung oder Löschung deiner Daten verlangen. Schreib uns eine E-Mail." },
@@ -664,7 +667,7 @@ const de = {
       confirmation: {
         subject: "Dein Termin bei GYAN ist bestätigt · {date}, {time}",
         heading: "Dein Termin ist bestätigt.",
-        body: "Hallo {firstName}\n\nschön, dass du dir Zeit für dich nimmst. Dein Termin ist fest reserviert. Alle Details findest du unten, den Kalendereintrag im Anhang.\n\nBitte sei ein paar Minuten vor deinem Termin da. Falls etwas dazwischenkommt, kannst du bis {cancelHours} Stunden vorher kostenlos online stornieren. Bei späterer Stornierung oder wenn du nicht kommst, verrechnen wir die Leistung beim nächsten Besuch.\n\nWir freuen uns auf dich.",
+        body: "Hallo {firstName}\n\nSchön, dass du dir Zeit für dich nimmst. Dein Termin ist fest reserviert. Alle Details findest du unten, den Kalendereintrag im Anhang.\n\nBitte sei ein paar Minuten vor deinem Termin da. Falls etwas dazwischenkommt, kannst du bis {cancelHours} Stunden vorher kostenlos online stornieren. Bei späterer Stornierung oder wenn du nicht kommst, verrechnen wir die Leistung beim nächsten Besuch.\n\nWir freuen uns auf dich.",
       },
       reminder: {
         subject: "Bis gleich bei GYAN · heute um {time}",
@@ -674,17 +677,17 @@ const de = {
       followup: {
         subject: "Wie war dein Besuch bei GYAN, {firstName}?",
         heading: "Danke für deinen Besuch.",
-        body: "Hallo {firstName}\n\ndanke, dass du bei uns warst. Hat dir dein Schnitt gefallen? Dann freuen wir uns riesig über deine Bewertung auf Google. Sie hilft anderen, uns zu finden.\n\nBis zum nächsten Mal.",
+        body: "Hallo {firstName}\n\nDanke, dass du bei uns warst. Hat dir dein Schnitt gefallen? Dann freuen wir uns riesig über deine Bewertung auf Google. Sie hilft anderen, uns zu finden.\n\nBis zum nächsten Mal.",
       },
       cancellation: {
         subject: "Dein Termin bei GYAN wurde storniert",
         heading: "Dein Termin ist storniert.",
-        body: "Hallo {firstName}\n\ndein Termin am {date} um {time} ist storniert. Schade, dass es diesmal nicht klappt.\n\nEinen neuen Termin kannst du jederzeit online buchen.",
+        body: "Hallo {firstName}\n\nDein Termin am {date} um {time} ist storniert. Schade, dass es diesmal nicht klappt.\n\nEinen neuen Termin kannst du jederzeit online buchen.",
       },
       cancellationBySalon: {
         subject: "Wichtig: Dein Termin bei GYAN muss leider ausfallen",
         heading: "Wir müssen deinen Termin absagen.",
-        body: "Hallo {firstName}\n\nleider müssen wir deinen Termin am {date} um {time} absagen. Bitte entschuldige die Umstände.\n\nBuch dir gerne online einen neuen Termin oder ruf uns an unter {phone}. Wir finden bestimmt eine Lösung.",
+        body: "Hallo {firstName}\n\nLeider müssen wir deinen Termin am {date} um {time} absagen. Bitte entschuldige die Umstände.\n\nBuch dir gerne online einen neuen Termin oder ruf uns an unter {phone}. Wir finden bestimmt eine Lösung.",
       },
       adminNotify: {
         subject: "Neuer Termin: {date}, {time} · {name}",

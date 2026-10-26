@@ -30,7 +30,7 @@ export default async function Imprint({ params }: Props) {
           <br />
           {d.common.phone}: <a href={site.phoneHref}>{site.phone}</a>
           <br />
-          E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+          {d.contact.email}: <a href={`mailto:${site.email}`}>{site.email}</a>
         </p>
         <h2>{d.legal.company}</h2>
         <p>

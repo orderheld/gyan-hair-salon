@@ -467,8 +467,8 @@ You [book online](page:booking) in English, German or French and get your confir
       en: "Barber near Evilard – men's cuts in Biel | GYAN",
     },
     description: {
-      de: "Coiffeur für Leubringen: mit der Standseilbahn hinunter nach Biel, Haarschnitt oder Signature Cut bei GYAN. Bis 20 Uhr offen, jetzt online Termin buchen.",
-      fr: "Coiffeur pour Evilard : descends en funiculaire à Bienne pour une coupe ou un Signature Cut chez GYAN. Ouvert jusqu'à 20 h, réserve en ligne.",
+      de: "Coiffeur für Leubringen: mit der Standseilbahn hinunter nach Biel, Haarschnitt oder Signature Cut bei GYAN. Do/Fr bis 20 Uhr offen, jetzt online buchen.",
+      fr: "Coiffeur pour Evilard : descends en funiculaire à Bienne pour une coupe ou un Signature Cut chez GYAN. Jeudi et vendredi jusqu'à 20 h, réserve en ligne.",
       en: "Barber for Evilard: ride the funicular down to Biel for a haircut or Signature Cut at GYAN. Open until 8 pm on Thu and Fri, book your appointment online.",
     },
     h1: {

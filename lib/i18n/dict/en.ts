@@ -387,7 +387,7 @@ const en: Dict = {
           { q: "What happens if I cancel late or don't show up?", a: "If you cancel less than {cancelH} hours before or don't come, the booked service is charged at your next visit." },
           { q: "Will I get a reminder?", a: "Yes, you get an email reminder {remindH} hours before.", only: "reminder" as const },
           { q: "Can I book for several people?", a: "Book a separate appointment for each person, ideally back to back. That way everyone has their own time reserved." },
-          { q: "Who can I book with?", a: "Online booking is currently with Zana. Hikmet also works in the salon, online booking for him is coming soon. Without an appointment, you can drop in any time during opening hours." },
+          { q: "Who can I book with?", a: "Online booking is currently with Zana. Hikmet also works in the salon; online booking with him is coming soon. Without an appointment, you can drop in any time during opening hours." },
         ],
       },
       {
@@ -466,7 +466,7 @@ const en: Dict = {
     title: "Your time at GYAN.",
     lead: "Pick a free time, confirmed instantly. Or just drop in without an appointment.",
     steps: ["Service", "Date & time", "Details"],
-    team: { title: "With whom?", zana: "Bookable online · Tuesday to Saturday", hikmet: "Online soon · just drop in", chosen: "Selected" },
+    team: { title: "With whom?", zana: "Bookable online · {days}", daysRange: "{from} to {to}", hikmet: "Online soon · just drop in", chosen: "Selected" },
     locked: "You are signed in. Your details come from your account. You can change them under {account}.",
     lockedAccount: "My account",
     birthOnce: "Please add it once, then it is saved in your account.",
@@ -628,6 +628,9 @@ const en: Dict = {
       { title: "What data we process", text: "When you book an appointment online, we process your name, date of birth, email address, phone number, chosen service, appointment, language and any note. We use this data to carry out your appointment, remind you of it and ask for your feedback afterwards. With your consent at booking, we also use it for GYAN Hair Salon's own marketing, such as offers by email. You can withdraw this consent at any time by email or phone. To prevent wrong addresses, we send a code to your email address before booking." },
       { title: "Service providers", text: "Hosting: Vercel Inc. Database: Neon Inc. (EU region). Email delivery: Resend Inc. Data processing agreements are in place with these providers; data is only transferred abroad with appropriate safeguards." },
       { title: "Retention", text: "We delete appointment data no later than 24 months after the appointment, unless we are legally required to keep it." },
+      { title: "Customer account", text: "If you sign in under «My account», we store your name, phone number and date of birth with your email address so you don't have to enter them every time you book. You can change these details at any time under «My account»." },
+      { title: "Gift vouchers", text: "If you order a gift voucher online, we process your name, email address, phone number, the amount, the name on the voucher and any note. We use this data to prepare the voucher, keep you informed about your order by email and record redemptions in a traceable way. We keep voucher data as long as there is a balance left, and after that as required by law." },
+      { title: "Phone notifications", text: "If you turn on reminders on your phone, we store your browser's technical push address together with your language and your account. The notifications are delivered through the push service of your browser or device maker, for example Apple, Google or Mozilla. You can turn them off at any time in your browser or device settings." },
       { title: "Cookies", text: "This website uses no tracking or advertising cookies. Only your language choice is stored and, after code confirmation, a cookie so you don't have to confirm your email again for 6 months." },
       { title: "Loyalty card", text: "For the loyalty card we store, with your email address, every stamp and every redeemed reward with its date and type (visit, invitation, Google review, birthday, correction with reason) so that the balance stays traceable. We also store a random code for your QR code and your personal invite link. If you invite someone, we store who invited whom. If you open an invite link, your browser keeps the code in a cookie for 30 days. For the birthday gift we use the date of birth from your bookings. If you add the card to Apple Wallet or Google Wallet, the terms of these providers also apply. On request we delete your card with all stamps." },
       { title: "Your rights", text: "You can request access to, correction or deletion of your data at any time. Just send us an email." },
@@ -666,7 +669,7 @@ const en: Dict = {
       confirmation: {
         subject: "Your appointment at GYAN is confirmed · {date}, {time}",
         heading: "Your appointment is confirmed.",
-        body: "Hi {firstName},\n\ngreat that you're taking some time for yourself. Your appointment is reserved. You'll find all the details below and the calendar entry attached.\n\nPlease arrive a few minutes before your appointment. If something comes up, you can cancel online free of charge up to {cancelHours} hours beforehand. If you cancel later or do not show up, we charge the service at your next visit.\n\nWe look forward to seeing you.",
+        body: "Hi {firstName},\n\nGreat that you're taking some time for yourself. Your appointment is reserved. You'll find all the details below and the calendar entry attached.\n\nPlease arrive a few minutes before your appointment. If something comes up, you can cancel online free of charge up to {cancelHours} hours beforehand. If you cancel later or do not show up, we charge the service at your next visit.\n\nWe look forward to seeing you.",
       },
       reminder: {
         subject: "See you soon at GYAN · today at {time}",
@@ -676,17 +679,17 @@ const en: Dict = {
       followup: {
         subject: "How was your visit to GYAN, {firstName}?",
         heading: "Thank you for your visit.",
-        body: "Hi {firstName},\n\nthanks for visiting us. Happy with your cut? Then we'd love a review on Google. It helps others find us.\n\nUntil next time.",
+        body: "Hi {firstName},\n\nThanks for visiting us. Happy with your cut? Then we'd love a review on Google. It helps others find us.\n\nUntil next time.",
       },
       cancellation: {
         subject: "Your appointment at GYAN has been cancelled",
         heading: "Your appointment has been cancelled.",
-        body: "Hi {firstName},\n\nyour appointment on {date} at {time} has been cancelled. A shame it didn't work out this time.\n\nYou can book a new appointment online at any time.",
+        body: "Hi {firstName},\n\nYour appointment on {date} at {time} has been cancelled. A shame it didn't work out this time.\n\nYou can book a new appointment online at any time.",
       },
       cancellationBySalon: {
         subject: "Important: unfortunately we have to cancel your appointment at GYAN",
         heading: "We have to cancel your appointment.",
-        body: "Hi {firstName},\n\nunfortunately we have to cancel your appointment on {date} at {time}. Please accept our apologies for the inconvenience.\n\nFeel free to book a new appointment online or call us on {phone}. We're sure to find a solution.",
+        body: "Hi {firstName},\n\nUnfortunately we have to cancel your appointment on {date} at {time}. Please accept our apologies for the inconvenience.\n\nFeel free to book a new appointment online or call us on {phone}. We're sure to find a solution.",
       },
       adminNotify: {
         subject: "New appointment: {date}, {time} · {name}",

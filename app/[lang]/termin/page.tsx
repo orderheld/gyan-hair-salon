@@ -5,7 +5,7 @@ import Link from "next/link";
 import { site } from "@/content/site";
 import type { Locale } from "@/content/types";
 import { BookingFlow } from "@/components/site/BookingFlow";
-import { getServiceBySlug, getServices, localize } from "@/lib/data";
+import { getOpeningHours, getServiceBySlug, getServices, localize } from "@/lib/data";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
 import { pageMetadata } from "@/lib/seo";
@@ -31,17 +31,20 @@ export default async function Booking({ params, searchParams }: Props) {
   const d = getDict(locale);
   const email = readCustomerCookie((await cookies()).get(CUSTOMER_COOKIE)?.value);
   // Alles in einem Schritt laden, die freien Zeiten gleich mit (sonst wartet der Kunde danach nochmals)
-  const [services, settings, profile, availability] = await Promise.all([
+  const [services, settings, profile, availability, zanaHours] = await Promise.all([
     getServices(),
     getSettings(),
     email ? getAccountProfile(email) : null,
     getAvailabilityFor(),
+    getOpeningHours("zana").catch(() => []),
   ]);
   const availabilityAt = Date.now();
   // Angemeldet: die Angaben des Kontos übernehmen
   const known = email && profile ? { email, ...profile } : undefined;
   let initial = service && /^\d+$/.test(service) ? Number(service) : undefined;
   if (service && !initial) initial = (await getServiceBySlug(service))?.id;
+  // Buchbare Tage aus dem Admin-Panel, z. B. «Dienstag bis Samstag»
+  const zanaDays = bookableDays(zanaHours.filter((h) => h.isOpen).map((h) => h.weekday), d.common.weekdays, d.booking.team.daysRange, locale);
 
   return (
     <section className="booking-page">
@@ -63,7 +66,7 @@ export default async function Booking({ params, searchParams }: Props) {
                 : <span className="team-av team-av-init" aria-hidden>{m.name[0]}</span>}
               <span className="team-txt">
                 <strong>{m.name}</strong>
-                <small>{d.booking.team[m.id]}</small>
+                <small>{m.id === "zana" ? d.booking.team.zana.replace("{days}", zanaDays).replace(/ · $/, "") : d.booking.team[m.id]}</small>
               </span>
               {m.bookable && <span className="team-chosen">✓ {d.booking.team.chosen}</span>}
             </div>
@@ -103,4 +106,17 @@ export default async function Booking({ params, searchParams }: Props) {
       </div>
     </section>
   );
+}
+
+/** Offene Wochentage als Text: zusammenhängend «Dienstag bis Samstag», sonst «Di, Do, Sa» */
+function bookableDays(open: number[], names: string[], range: string, locale: Locale): string {
+  const order = [1, 2, 3, 4, 5, 6, 0].filter((w) => open.includes(w));
+  if (order.length === 0) return "";
+  const name = (w: number) => (locale === "fr" ? names[w].toLowerCase() : names[w]);
+  const all = [1, 2, 3, 4, 5, 6, 0];
+  const start = all.indexOf(order[0]);
+  const contiguous = order.every((w, i) => all[start + i] === w);
+  if (order.length === 1) return name(order[0]);
+  if (contiguous && order.length > 2) return range.replace("{from}", name(order[0])).replace("{to}", name(order[order.length - 1]));
+  return order.map(name).join(", ");
 }
