@@ -19,11 +19,8 @@ import { getEmailLastError } from "@/lib/email";
 import {
   adminCancelBooking,
   adminCreateBooking,
-  resendConfirmation,
   settleFee,
-  toggleBlock,
   toggleNoShow,
-  updateBookingDetails,
 } from "../actions";
 
 type Search = Promise<{ wer?: string; datum?: string; zeit?: string; name?: string; tel?: string; mail?: string; ok?: string; error?: string }>;
@@ -31,10 +28,28 @@ type Search = Promise<{ wer?: string; datum?: string; zeit?: string; name?: stri
 const keyOf = (b: Booking) => customerKey(b.customerEmail, b.customerPhone);
 const STAFF_NAMES: Record<BookingStaff, string> = { zana: "Zana", hikmet: "Hikmet" };
 
-function BookingRow({ b, c, returnTo, showDate, showStaff, t, locale }: { b: Booking; c?: CustomerInfo; returnTo: string; showDate?: boolean; showStaff?: boolean; t: AdminDict; locale: Locale }) {
+/** «14.03.1988», Alter am Termintag und ob genau dann Geburtstag ist */
+function birthInfo(birthDate: string, on: Date) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(birthDate);
+  if (!m) return null;
+  const day = toDateKey(on);
+  const [y, mo, d] = day.split("-").map(Number);
+  const age = y - Number(m[1]) - (mo < Number(m[2]) || (mo === Number(m[2]) && d < Number(m[3])) ? 1 : 0);
+  return { label: `${m[3]}.${m[2]}.${m[1]}`, age, birthday: day.slice(5) === `${m[2]}-${m[3]}` };
+}
+
+const Icon = ({ d }: { d: string }) => <svg viewBox="0 0 24 24" aria-hidden><path d={d} /></svg>;
+const ICON_TEL = "M6.6 3.5h2.6l1.4 4.2-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.2 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z";
+const ICON_MAIL = "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm-1.5 1.5 8.5 6.5 8.5-6.5";
+const ICON_CAKE = "M4 20h16M5 20v-7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7M5 15.5c1.2 1 2.3 1 3.5 0s2.3-1 3.5 0 2.3 1 3.5 0 2.3-1 3.5 0M12 11V8m0-2.5c-.8-.8-.8-1.7 0-2.5.8.8.8 1.7 0 2.5Z";
+
+function BookingRow({ b, c, returnTo, showStaff, t, locale }: { b: Booking; c?: CustomerInfo; returnTo: string; showStaff?: boolean; t: AdminDict; locale: Locale }) {
   const cancelled = b.status === "cancelled";
   const started = b.startsAt.getTime() <= Date.now();
   const warn = !cancelled && !started && needsAttention(c) && (c!.noShows > 0 || c!.lateCancels > 0 || c!.openCount > 0 || c!.blocked);
+  // Geburtsdatum vom Termin, sonst aus dem Kundenprofil
+  const birth = birthInfo(b.birthDate || c?.birthDate || "", b.startsAt);
+  const tel = b.customerPhone.replace(/[^\d+]/g, "");
   const hidden = (
     <>
       <input type="hidden" name="id" value={b.id} />
@@ -44,7 +59,6 @@ function BookingRow({ b, c, returnTo, showDate, showStaff, t, locale }: { b: Boo
   return (
     <li className={`bk ${cancelled ? "cancelled" : ""} ${b.noShow ? "noshow" : ""} ${warn ? "bk-attn" : ""}`} id={`b-${b.id.slice(0, 8)}`}>
       <div className="bk-time">
-        {showDate && <span className="bk-date">{formatShortDate(b.startsAt, locale)}</span>}
         <strong>{formatTime(b.startsAt, locale)}</strong>
         <span>{formatTime(b.endsAt, locale)}</span>
       </div>
@@ -63,80 +77,49 @@ function BookingRow({ b, c, returnTo, showDate, showStaff, t, locale }: { b: Boo
           </div>
         )}
         <div className="bk-title">
-          <Link href={`/admin/termin/${b.id}`} className="bk-name"><strong>{b.customerName}</strong></Link>
+          <Link href={`/admin/termin/${b.id}`} className="bk-name">{b.customerName}</Link>
+          {showStaff && <span className={`pill pill-staff pill-${b.staffId}`}>{STAFF_NAMES[b.staffId]}</span>}
           {cancelled && <span className="pill pill-muted">{b.lateCancel ? t.bookings.lateCancel : t.bookings.cancelled}</span>}
           {b.noShow && <span className="pill pill-warn">{t.bookings.noShow}</span>}
-          {showStaff && <span className={`pill pill-staff pill-${b.staffId}`}>{STAFF_NAMES[b.staffId]}</span>}
           {b.source === "admin" && <span className="pill">{t.bookings.manual}</span>}
-          <span className="pill pill-lang">{b.locale.toUpperCase()}</span>
-          <Link href={`/admin/termin/${b.id}`} className="bk-open small">{t.common.edit} →</Link>
+          {b.locale !== "de" && <span className="pill pill-lang">{b.locale.toUpperCase()}</span>}
         </div>
-        <CustomerBadges c={c} t={t} />
         <div className="bk-meta">
           {b.serviceName}{b.priceChf != null && ` · ${formatChf(b.priceChf)}`}
         </div>
-        <div className="bk-contact">
-          {b.customerPhone && <a href={`tel:${b.customerPhone.replace(/\s/g, "")}`}>{b.customerPhone}</a>}
-          {b.customerEmail && <a href={`mailto:${b.customerEmail}`}>{b.customerEmail}</a>}
+        <CustomerBadges c={c} t={t} />
+        <div className="bk-facts">
+          {tel && <a href={`tel:${tel}`} aria-label={`${t.booking.call}: ${b.customerPhone}`}><Icon d={ICON_TEL} />{b.customerPhone}</a>}
+          {birth ? (
+            <span className={birth.birthday ? "bk-bday" : ""} title={t.bookings.birthDate}>
+              <Icon d={ICON_CAKE} />{birth.label} · {fill(t.bookings.age, { n: birth.age })}{birth.birthday && ` · ${t.bookings.birthday}`}
+            </span>
+          ) : (
+            <span className="bk-missing"><Icon d={ICON_CAKE} />{t.bookings.noBirthDate}</span>
+          )}
+          {b.customerEmail && <a href={`mailto:${b.customerEmail}`} className="bk-mail" aria-label={`${t.booking.mail}: ${b.customerEmail}`}><Icon d={ICON_MAIL} /><span>{b.customerEmail}</span></a>}
         </div>
         {b.note && <p className="bk-note">«{b.note}»</p>}
         {c?.note && <p className="bk-cnote">{c.note}</p>}
-
-        <details className="bk-more">
-          <summary>{t.bookings.more}</summary>
-          <form action={updateBookingDetails} className="bk-edit">
-            {hidden}
-            <p className="bk-edit-title">{t.bookings.edit}</p>
-            <div className="field"><label>{t.bookings.name}</label><input name="name" defaultValue={b.customerName} className="input" required /></div>
-            <div className="row2">
-              <div className="field"><label>{t.bookings.phone}</label><input name="phone" type="tel" defaultValue={b.customerPhone} className="input" /></div>
-              <div className="field"><label>{t.bookings.emailOptional}</label><input name="email" type="email" defaultValue={b.customerEmail} className="input" /></div>
-            </div>
-            <div className="field"><label>{t.bookings.bookingNote}</label><input name="note" defaultValue={b.note} className="input" /></div>
-            <div className="field"><label>{t.bookings.customerNote}</label><textarea name="customerNote" defaultValue={c?.note ?? ""} className="textarea" rows={2} /></div>
-            <SubmitButton pendingLabel={t.common.saving} className="btn btn-dark btn-sm">{t.bookings.saveDetails}</SubmitButton>
-          </form>
-          <div className="bk-more-actions">
-            {!cancelled && !started && b.customerEmail && (
-              <form action={resendConfirmation}>
-                {hidden}
-                <ConfirmButton message={fill(t.bookings.resendConfirm, { email: b.customerEmail })}>{t.bookings.resend}</ConfirmButton>
-              </form>
-            )}
-            <form action={toggleBlock}>
-              {hidden}
-              <input type="hidden" name="email" value={b.customerEmail} />
-              <input type="hidden" name="phone" value={b.customerPhone} />
-              <input type="hidden" name="key" value={keyOf(b)} />
-              <input type="hidden" name="value" value={c?.blocked ? "0" : "1"} />
-              {c?.blocked ? (
-                <SubmitButton className="btn btn-light btn-sm">{t.bookings.unblock}</SubmitButton>
-              ) : (
-                <ConfirmButton message={fill(t.bookings.blockConfirm, { name: b.customerName })} className="btn btn-light btn-sm btn-danger-text">{t.bookings.block}</ConfirmButton>
-              )}
-            </form>
-          </div>
-        </details>
       </div>
-      {!cancelled && (
-        <div className="bk-actions">
-          {started ? (
-            <form action={toggleNoShow}>
-              {hidden}
-              <input type="hidden" name="value" value={b.noShow ? "0" : "1"} />
-              <SubmitButton className={`btn btn-sm ${b.noShow ? "btn-light" : "btn-light btn-danger-text"}`}>{b.noShow ? t.bookings.noShowUndo : t.bookings.noShow}</SubmitButton>
-            </form>
-          ) : (
-            <form action={adminCancelBooking}>
-              {hidden}
-              <input type="hidden" name="notify" value="on" />
-              <ConfirmButton message={fill(t.bookings.cancelConfirm, { name: b.customerName, time: formatTime(b.startsAt, locale) })}>
-                {t.common.cancel}
-              </ConfirmButton>
-            </form>
-          )}
-        </div>
-      )}
+      <div className="bk-actions">
+        <Link href={`/admin/termin/${b.id}`} className="btn btn-light btn-sm">{t.common.edit}</Link>
+        {!cancelled && (started ? (
+          <form action={toggleNoShow}>
+            {hidden}
+            <input type="hidden" name="value" value={b.noShow ? "0" : "1"} />
+            <SubmitButton className={`btn btn-sm ${b.noShow ? "btn-light" : "btn-light btn-danger-text"}`}>{b.noShow ? t.bookings.noShowUndo : t.bookings.noShow}</SubmitButton>
+          </form>
+        ) : (
+          <form action={adminCancelBooking}>
+            {hidden}
+            <input type="hidden" name="notify" value="on" />
+            <ConfirmButton message={fill(t.bookings.cancelConfirm, { name: b.customerName, time: formatTime(b.startsAt, locale) })}>
+              {t.common.cancel}
+            </ConfirmButton>
+          </form>
+        ))}
+      </div>
     </li>
   );
 }
@@ -178,12 +161,19 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
     const list = sales.filter((x) => x.createdAt >= from && x.createdAt < to && (!staff || x.staffId === staff));
     return summarize(list, staffList).total;
   };
-  const chf = (n: number) => `CHF ${n.toLocaleString("de-CH", { minimumFractionDigits: 0, maximumFractionDigits: 2 })}`;
+  const chf = (n: number) => n.toLocaleString("de-CH", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
   // Kommende Termine von Kunden mit Vorgeschichte: oben gross anzeigen
   const attention = upcoming.filter((b) => {
     const c = info(b);
     return !!c && (c.noShows > 0 || c.lateCancels > 0 || c.openCount > 0 || c.blocked);
   });
+
+  // Nächste 14 Tage nach Tag gruppiert, ohne den oben gezeigten Tag (sonst doppelt)
+  const later = [...upcoming.reduce((m, b) => {
+    const k = toDateKey(b.startsAt);
+    if (k !== day) m.set(k, [...(m.get(k) ?? []), b]);
+    return m;
+  }, new Map<string, Booking[]>())];
 
   return (
     <>
@@ -239,14 +229,16 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
         href={(k) => `/admin?${day !== todayKey ? `datum=${day}&` : ""}${k === "alle" ? "" : `wer=${k}`}`.replace(/[?&]$/, "")}
       />
 
-      <div className="stats stats-6">
-        <div className="stat"><span>{t.bookings.statToday}</span><strong>{counts.today}</strong></div>
-        <div className="stat"><span>{t.bookings.statWeek}</span><strong>{counts.week}</strong></div>
-        <div className="stat"><span>{t.bookings.statMonth}</span><strong>{counts.month}</strong></div>
-        <div className="stat stat-money"><span>{t.bookings.revToday}</span><strong>{chf(revenue(...periods.today))}</strong></div>
-        <div className="stat stat-money"><span>{t.bookings.revWeek}</span><strong>{chf(revenue(...periods.week))}</strong></div>
-        <div className="stat stat-money"><span>{t.bookings.revMonth}</span><strong>{chf(revenue(...periods.month))}</strong></div>
-      </div>
+      {/* Kompakt: eine Zeile Termine, eine Zeile Umsatz */}
+      <table className="kpi">
+        <thead>
+          <tr><th scope="col"><span className="sr-only">{t.bookings.title}</span></th><th scope="col">{t.bookings.periodToday}</th><th scope="col">{t.bookings.periodWeek}</th><th scope="col">{t.bookings.periodMonth}</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">{t.bookings.statBookings}</th><td>{counts.today}</td><td>{counts.week}</td><td>{counts.month}</td></tr>
+          <tr><th scope="row">{t.bookings.revenueShort} <small>CHF</small></th><td>{chf(revenue(...periods.today))}</td><td>{chf(revenue(...periods.week))}</td><td>{chf(revenue(...periods.month))}</td></tr>
+        </tbody>
+      </table>
 
       <div className="admin-cols">
         <section className="panel">
@@ -256,10 +248,10 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
             <Link className="btn btn-light btn-sm" href={`/admin?datum=${addDays(day, 1)}${werQ}`} aria-label={t.bookings.nextDay}>›</Link>
             {day !== todayKey && <Link className="btn btn-light btn-sm" href={staff ? `/admin?wer=${staff}` : "/admin"}>{t.bookings.today}</Link>}
           </div>
-          <h2 className="h3" style={{ margin: "20px 0 4px" }}>{formatLongDate(dayStart, locale)}</h2>
-          <p className="muted small" style={{ margin: 0 }}>
-            {(() => { const n = dayBookings.filter((b) => b.status === "confirmed").length; return n === 1 ? t.bookings.countOne : fill(t.bookings.count, { n }); })()}
-          </p>
+          <h2 className="day-head">
+            {formatLongDate(dayStart, locale)}
+            <span>{(() => { const n = dayBookings.filter((b) => b.status === "confirmed").length; return n === 1 ? t.bookings.countOne : fill(t.bookings.count, { n }); })()}</span>
+          </h2>
           {dayBookings.length ? (
             <ul className="bk-list">
               {dayBookings.map((b) => <BookingRow key={b.id} b={b} c={info(b)} returnTo={returnTo} showStaff={!staff} t={t} locale={locale} />)}
@@ -269,8 +261,9 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
           )}
         </section>
 
-        <aside className="panel" id="neu">
-          <h2 className="h3">{t.bookings.createTitle}</h2>
+        {/* Zugeklappt, damit die Termine auf dem Handy gleich oben stehen; offen, wenn der Kalender eine Zeit mitgibt */}
+        <details className="panel bk-new" id="neu" open={!!(preTime || preName || preTel || preMail)}>
+          <summary><span className="h3">+ {t.bookings.createTitle}</span></summary>
           <p className="muted small">{t.bookings.createHint}</p>
           <form action={adminCreateBooking} className="stack">
             <div className="field">
@@ -304,15 +297,23 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
             <label className="check-row"><input type="checkbox" name="notify" defaultChecked /> {t.bookings.notify}</label>
             <SubmitButton className="btn btn-dark">{t.bookings.create}</SubmitButton>
           </form>
-        </aside>
+        </details>
       </div>
 
       <section className="panel" style={{ marginTop: 24 }}>
         <h2 className="h3">{t.bookings.upcoming}</h2>
-        {upcoming.length ? (
-          <ul className="bk-list">
-            {upcoming.map((b) => <BookingRow key={b.id} b={b} c={info(b)} returnTo={returnTo} showDate showStaff={!staff} t={t} locale={locale} />)}
-          </ul>
+        {later.length ? (
+          later.map(([key, list]) => (
+            <div key={key} className="bk-day">
+              <h3 className="day-head day-head-sm">
+                <Link href={`/admin?datum=${key}${werQ}`}>{formatLongDate(zurichToDate(key, "12:00"), locale)}</Link>
+                <span>{list.length === 1 ? t.bookings.countOne : fill(t.bookings.count, { n: list.length })}</span>
+              </h3>
+              <ul className="bk-list">
+                {list.map((b) => <BookingRow key={b.id} b={b} c={info(b)} returnTo={returnTo} showStaff={!staff} t={t} locale={locale} />)}
+              </ul>
+            </div>
+          ))
         ) : (
           <p className="empty-state">{t.bookings.noneUpcoming}</p>
         )}
