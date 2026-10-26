@@ -45,9 +45,13 @@ export default async function StempelCard({ params, searchParams }: Props) {
       </>
     );
   }
-  // Name aus den Buchungen aktuell halten
-  const card = found.customerKey.includes("@") ? await ensureCard(found.customerKey, found.name) : found;
-  const [s, staff, phone] = await Promise.all([getCardState(card), listStaffNames(), cardPhone(card)]);
+  // Name aus den Buchungen aktuell halten, gleichzeitig mit dem Kartenstand (spart Rundreisen zur Datenbank)
+  const [card, s, staff, phone] = await Promise.all([
+    found.customerKey.includes("@") ? ensureCard(found.customerKey, found.name) : found,
+    getCardState(found),
+    listStaffNames(),
+    cardPhone(found),
+  ]);
   const chosen = (await cookies()).get(STAFF_COOKIE)?.value ?? "";
   const needed = s.settings.stampsNeeded;
   const name = card.name || card.customerKey;

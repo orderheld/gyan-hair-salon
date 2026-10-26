@@ -22,14 +22,17 @@ export default async function Vouchers({ searchParams }: { searchParams: Search 
   const { locale, t: all } = await getAdminText();
   const t = all.vouchers;
   const term = q.trim().slice(0, 80);
+  // Alles gleichzeitig laden; ohne gewählten Filter zeigt die Liste offene Bestellungen, sonst die gültigen
+  const chosen = FILTERS.includes(f as VoucherFilter) ? (f as VoucherFilter) : null;
+  const [exact, stats, first] = await Promise.all([
+    term ? getVoucherByCode(term) : null,
+    getVoucherStats(),
+    listVouchers(chosen ?? "open", term),
+  ]);
   // Genaue Nummer eingegeben: direkt zum Gutschein
-  if (term) {
-    const exact = await getVoucherByCode(term);
-    if (exact) redirect(`/admin/gutscheine/${exact.id}`);
-  }
-  const stats = await getVoucherStats();
-  const filter: VoucherFilter = FILTERS.includes(f as VoucherFilter) ? (f as VoucherFilter) : stats.open > 0 ? "open" : "valid";
-  const list = await listVouchers(filter, term);
+  if (exact) redirect(`/admin/gutscheine/${exact.id}`);
+  const filter: VoucherFilter = chosen ?? (stats.open > 0 ? "open" : "valid");
+  const list = filter === (chosen ?? "open") ? first : await listVouchers(filter, term);
   const counts: Partial<Record<VoucherFilter, number>> = { open: stats.open, valid: stats.valid };
 
   return (

@@ -28,14 +28,18 @@ export default async function StempelScanner({ searchParams }: { searchParams: S
   const query = q.trim().slice(0, 120);
 
   // Eindeutige Treffer direkt öffnen: Karten-Code, E-Mail, Einladungscode
-  let results: Awaited<ReturnType<typeof listCards>> = [];
-  if (query) {
-    const token = parseCardPayload(query);
-    const direct = (token && (await getCardByToken(token))) || (EMAIL.test(query) && (await getCardByKey(query))) || (await getCardByRef(query));
-    if (direct) redirect(`/admin/stempel/karte/${encodeURIComponent(direct.token)}`);
-    results = await listCards(query);
-  }
-  const [recent, settings] = await Promise.all([query ? [] : recentStamps(8), getLoyaltySettings()]);
+  // Alle Abfragen gleichzeitig: jede Rundreise zur Datenbank kostet am Handy spürbar Zeit
+  const token = query ? parseCardPayload(query) : null;
+  const [byToken, byKey, byRef, results, recent, settings] = await Promise.all([
+    token ? getCardByToken(token) : null,
+    query && EMAIL.test(query) ? getCardByKey(query) : null,
+    query ? getCardByRef(query) : null,
+    query ? listCards(query) : [],
+    query ? [] : recentStamps(8),
+    getLoyaltySettings(),
+  ]);
+  const direct = byToken || byKey || byRef;
+  if (direct) redirect(`/admin/stempel/karte/${encodeURIComponent(direct.token)}`);
   const newEmail = EMAIL.test(query) ? query.toLowerCase() : "";
 
   return (
