@@ -63,7 +63,7 @@ export const DEFAULT_SETTINGS: Settings = {
 };
 
 /** Geheime Werte in der settings-Tabelle, die nie über getSettings() an Seiten gehen */
-const PRIVATE_KEYS = new Set(["kassePin", "kassePassword", "googleReviews", "googleReviewsSyncedAt", "googleBusiness", "googleBusinessSyncedAt"]);
+const PRIVATE_KEYS = new Set(["kassePin", "kassePassword", "googleReviews", "googleReviewsSyncedAt", "googleBusiness", "googleBusinessSyncedAt", "indexNow"]);
 
 export const SLOT_STEPS = [5, 10, 15, 20, 30, 45, 60];
 

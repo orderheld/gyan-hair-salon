@@ -6,6 +6,7 @@ import { pushDigestToAdmins } from "./push";
 import { runLoyaltyJobs } from "./loyalty-jobs";
 import { syncGoogleReviewsThrottled } from "./google-reviews";
 import { syncBusinessProfileThrottled } from "./google-business";
+import { pingIndexNowThrottled } from "./indexnow";
 import { formatTime, toDateKey, toTimeKey, zurichToDate, addDays } from "./time";
 import { getSettings } from "./settings";
 
@@ -54,6 +55,8 @@ export async function runEmailJobs() {
   await syncGoogleReviewsThrottled().catch((e) => console.error("[GYAN] Google-Bewertungen:", e));
   // Google-Profil: Öffnungszeiten, Webseite und neue Journal-Beiträge, höchstens alle 6 Stunden
   await syncBusinessProfileThrottled().catch((e) => console.error("[GYAN] Google-Profil:", e));
+  // Bing & Co. über geänderte Seiten informieren (IndexNow), nur bei Änderungen
+  await pingIndexNowThrottled().catch((e) => console.error("[GYAN] IndexNow:", e));
   return result;
 }
 
