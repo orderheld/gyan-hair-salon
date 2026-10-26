@@ -230,7 +230,7 @@ export async function getBookingByToken(token: string): Promise<Booking | null> 
   return rows[0] ? mapBooking(rows[0]) : null;
 }
 
-/** Anzahl bestätigter Termine heute, diese Woche (Mo–So) und diesen Monat, optional pro Mitarbeiter */
+/** Anzahl Termine und Umsatz (Summe der Terminpreise, ob bezahlt oder nicht) heute, diese Woche (Mo–So) und diesen Monat, ohne stornierte, optional pro Mitarbeiter */
 export async function getBookingCounts(r: { today: [Date, Date]; week: [Date, Date]; month: [Date, Date] }, staffId?: BookingStaff) {
   const sql = await getSql();
   const iso = (d: Date) => d.toISOString();
@@ -240,9 +240,15 @@ export async function getBookingCounts(r: { today: [Date, Date]; week: [Date, Da
     SELECT
       count(*) FILTER (WHERE starts_at >= ${iso(r.today[0])}::timestamptz AND starts_at < ${iso(r.today[1])}::timestamptz) AS today,
       count(*) FILTER (WHERE starts_at >= ${iso(r.week[0])}::timestamptz AND starts_at < ${iso(r.week[1])}::timestamptz) AS week,
-      count(*) FILTER (WHERE starts_at >= ${iso(r.month[0])}::timestamptz AND starts_at < ${iso(r.month[1])}::timestamptz) AS month
+      count(*) FILTER (WHERE starts_at >= ${iso(r.month[0])}::timestamptz AND starts_at < ${iso(r.month[1])}::timestamptz) AS month,
+      coalesce(sum(price_chf) FILTER (WHERE starts_at >= ${iso(r.today[0])}::timestamptz AND starts_at < ${iso(r.today[1])}::timestamptz), 0) AS rev_today,
+      coalesce(sum(price_chf) FILTER (WHERE starts_at >= ${iso(r.week[0])}::timestamptz AND starts_at < ${iso(r.week[1])}::timestamptz), 0) AS rev_week,
+      coalesce(sum(price_chf) FILTER (WHERE starts_at >= ${iso(r.month[0])}::timestamptz AND starts_at < ${iso(r.month[1])}::timestamptz), 0) AS rev_month
     FROM bookings
     WHERE status = 'confirmed' AND starts_at >= ${iso(from)}::timestamptz AND starts_at < ${iso(to)}::timestamptz
       AND (${staffId ?? null}::text IS NULL OR staff_id = ${staffId ?? null}::text)`;
-  return { today: Number(row.today), week: Number(row.week), month: Number(row.month) };
+  return {
+    today: Number(row.today), week: Number(row.week), month: Number(row.month),
+    revenue: { today: Number(row.rev_today), week: Number(row.rev_week), month: Number(row.rev_month) },
+  };
 }

@@ -9,7 +9,6 @@ import { CustomerBadges } from "@/components/admin/CustomerBadges";
 import { customerKey, getCustomerInfos, getOpenFeeBookings, needsAttention, type CustomerInfo } from "@/lib/customers";
 import { StaffSwitch } from "@/components/admin/StaffSwitch";
 import { BOOKING_STAFF, getBookingCounts, getBookingsBetween, getServices, isBookingStaff, localize, type Booking, type BookingStaff } from "@/lib/data";
-import { getSalesBetween, getStaff, summarize } from "@/lib/pos";
 import { currentPeriods } from "@/lib/pos-period";
 import { fill, type AdminDict } from "@/lib/i18n";
 import { LOCALE_NAMES } from "@/lib/i18n/config";
@@ -141,12 +140,10 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
   const upcomingEnd = zurichToDate(addDays(todayKey, 15), "00:00");
 
   const periods = currentPeriods();
-  const [dayBookings, upcoming, counts, sales, staffList, services, fees, mailError] = await Promise.all([
+  const [dayBookings, upcoming, counts, services, fees, mailError] = await Promise.all([
     getBookingsBetween(dayStart, dayEnd, { includeCancelled: true, staffId: staff }),
     getBookingsBetween(new Date(Math.max(Date.now(), upcomingStart.getTime())), upcomingEnd, { staffId: staff }),
     getBookingCounts(periods, staff),
-    getSalesBetween(new Date(Math.min(periods.week[0].getTime(), periods.month[0].getTime())), new Date(Math.max(periods.week[1].getTime(), periods.month[1].getTime()))),
-    getStaff({ includeInactive: true }),
     getServices({ includeInactive: true }),
     getOpenFeeBookings(),
     getEmailLastError().catch(() => null),
@@ -156,11 +153,6 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
   const infos = await getCustomerInfos([...dayBookings, ...upcoming, ...fees].map(keyOf));
   const info = (b: Booking) => infos.get(keyOf(b));
   const returnTo = `/admin?datum=${day}${werQ}`;
-  // Umsatz aus der Kasse (Stornos zählen negativ), bei Auswahl nur dieser Mitarbeiter
-  const revenue = (from: Date, to: Date) => {
-    const list = sales.filter((x) => x.createdAt >= from && x.createdAt < to && (!staff || x.staffId === staff));
-    return summarize(list, staffList).total;
-  };
   const chf = (n: number) => n.toLocaleString("de-CH", { minimumFractionDigits: 0, maximumFractionDigits: 2 });
   // Kommende Termine von Kunden mit Vorgeschichte: oben gross anzeigen
   const attention = upcoming.filter((b) => {
@@ -236,7 +228,7 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
         </thead>
         <tbody>
           <tr><th scope="row">{t.bookings.statBookings}</th><td>{counts.today}</td><td>{counts.week}</td><td>{counts.month}</td></tr>
-          <tr><th scope="row">{t.bookings.revenueShort} <small>CHF</small></th><td>{chf(revenue(...periods.today))}</td><td>{chf(revenue(...periods.week))}</td><td>{chf(revenue(...periods.month))}</td></tr>
+          <tr><th scope="row">{t.bookings.revenueShort} <small>CHF</small></th><td>{chf(counts.revenue.today)}</td><td>{chf(counts.revenue.week)}</td><td>{chf(counts.revenue.month)}</td></tr>
         </tbody>
       </table>
 
