@@ -165,7 +165,7 @@ const adminDe = {
     periodMonth: "Monat",
     age: "{n} J.",
     birthday: "Geburtstag",
-    noBirthDate: "Geb.-Datum fehlt",
+    noBirthDate: "Fehlt noch",
     revMonth: "Umsatz diesen Monat",
     revWeek: "Umsatz diese Woche",
     revToday: "Umsatz heute",

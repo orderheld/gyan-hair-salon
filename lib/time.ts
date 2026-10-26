@@ -96,6 +96,16 @@ export const formatLongDate = (date: Date, locale = "de") =>
 
 export const formatTime = (date: Date, locale = "de") => f(locale, { hour: "2-digit", minute: "2-digit" }).format(date);
 
+/** Geburtsdatum JJJJ-MM-TT als «14.03.1988», Alter an einem Tag (Zürich) und ob genau dann Geburtstag ist */
+export function birthInfo(birthDate: string, on: Date = new Date()) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(birthDate);
+  if (!m) return null;
+  const day = toDateKey(on);
+  const [y, mo, d] = day.split("-").map(Number);
+  const age = y - Number(m[1]) - (mo < Number(m[2]) || (mo === Number(m[2]) && d < Number(m[3])) ? 1 : 0);
+  return { label: `${m[3]}.${m[2]}.${m[1]}`, age, birthday: day.slice(5) === `${m[2]}-${m[3]}` };
+}
+
 export const formatShortDate = (date: Date, locale = "de") => f(locale, { weekday: "short", day: "numeric", month: "numeric" }).format(date);
 
 /** Geburtsdatum JJJJ-MM-TT: gültiges Datum, ab 1900, nicht in der Zukunft */

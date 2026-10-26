@@ -428,6 +428,11 @@ const PHONE_SQL = `coalesce(nullif(cu.phone, ''), (SELECT customer_phone FROM bo
     WHERE customer_email <> '' AND lower(customer_email) = c.customer_key AND customer_phone <> ''
     ORDER BY starts_at DESC LIMIT 1), '')`;
 
+/** Geburtsdatum zur Karte: Karte, eigene Angaben im Konto, sonst die letzte Buchung mit Datum */
+const BIRTH_SQL = `coalesce(nullif(c.birth_date, ''), nullif(cu.birth_date, ''), (SELECT birth_date FROM bookings
+    WHERE customer_email <> '' AND lower(customer_email) = c.customer_key AND birth_date <> ''
+    ORDER BY starts_at DESC LIMIT 1), '')`;
+
 export async function cardPhone(card: Card): Promise<string> {
   const sql = await getSql();
   const rows = await sql.query(
@@ -444,7 +449,7 @@ export async function listCards(search = ""): Promise<CardRow[]> {
     `SELECT c.*, coalesce(s.balance, 0)::int AS balance, coalesce(s.visits, 0)::int AS visits, coalesce(s.redeemed, 0)::int AS redeemed,
             coalesce(s.birthdays, 0)::int AS birthdays, coalesce(s.reviews, 0)::int AS reviews, s.last_at,
             coalesce(r.made, 0)::int AS referrals_made, coalesce(r.rewarded, 0)::int AS referrals_rewarded, rc.name AS referred_by,
-            ${PHONE_SQL} AS phone
+            ${PHONE_SQL} AS phone, ${BIRTH_SQL} AS birth_any
      FROM loyalty_cards c
      LEFT JOIN customers cu ON cu.key = c.customer_key
      LEFT JOIN (SELECT card_id, sum(delta) AS balance, count(*) FILTER (WHERE kind = 'visit') AS visits,
@@ -461,6 +466,7 @@ export async function listCards(search = ""): Promise<CardRow[]> {
   );
   return rows.map((r) => ({
     ...mapCard(r),
+    birthDate: String(r.birth_any ?? ""),
     balance: Number(r.balance),
     visits: Number(r.visits),
     redeemed: Number(r.redeemed),

@@ -167,7 +167,7 @@ const adminFr: AdminDict = {
     periodMonth: "Mois",
     age: "{n} ans",
     birthday: "Anniversaire",
-    noBirthDate: "Date de naissance manquante",
+    noBirthDate: "Pas encore indiquée",
     revMonth: "CA ce mois",
     revWeek: "CA cette semaine",
     revToday: "CA aujourd’hui",

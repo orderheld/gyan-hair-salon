@@ -27,27 +27,14 @@ type Search = Promise<{ wer?: string; datum?: string; zeit?: string; name?: stri
 const keyOf = (b: Booking) => customerKey(b.customerEmail, b.customerPhone);
 const STAFF_NAMES: Record<BookingStaff, string> = { zana: "Zana", hikmet: "Hikmet" };
 
-/** «14.03.1988», Alter am Termintag und ob genau dann Geburtstag ist */
-function birthInfo(birthDate: string, on: Date) {
-  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(birthDate);
-  if (!m) return null;
-  const day = toDateKey(on);
-  const [y, mo, d] = day.split("-").map(Number);
-  const age = y - Number(m[1]) - (mo < Number(m[2]) || (mo === Number(m[2]) && d < Number(m[3])) ? 1 : 0);
-  return { label: `${m[3]}.${m[2]}.${m[1]}`, age, birthday: day.slice(5) === `${m[2]}-${m[3]}` };
-}
-
 const Icon = ({ d }: { d: string }) => <svg viewBox="0 0 24 24" aria-hidden><path d={d} /></svg>;
 const ICON_TEL = "M6.6 3.5h2.6l1.4 4.2-2 1.4a12 12 0 0 0 6.3 6.3l1.4-2 4.2 1.4v2.6a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z";
 const ICON_MAIL = "M5 5h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Zm-1.5 1.5 8.5 6.5 8.5-6.5";
-const ICON_CAKE = "M4 20h16M5 20v-7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v7M5 15.5c1.2 1 2.3 1 3.5 0s2.3-1 3.5 0 2.3 1 3.5 0 2.3-1 3.5 0M12 11V8m0-2.5c-.8-.8-.8-1.7 0-2.5.8.8.8 1.7 0 2.5Z";
 
 function BookingRow({ b, c, returnTo, showStaff, t, locale }: { b: Booking; c?: CustomerInfo; returnTo: string; showStaff?: boolean; t: AdminDict; locale: Locale }) {
   const cancelled = b.status === "cancelled";
   const started = b.startsAt.getTime() <= Date.now();
   const warn = !cancelled && !started && needsAttention(c) && (c!.noShows > 0 || c!.lateCancels > 0 || c!.openCount > 0 || c!.blocked);
-  // Geburtsdatum vom Termin, sonst aus dem Kundenprofil
-  const birth = birthInfo(b.birthDate || c?.birthDate || "", b.startsAt);
   const tel = b.customerPhone.replace(/[^\d+]/g, "");
   const hidden = (
     <>
@@ -89,13 +76,6 @@ function BookingRow({ b, c, returnTo, showStaff, t, locale }: { b: Booking; c?: 
         <CustomerBadges c={c} t={t} />
         <div className="bk-facts">
           {tel && <a href={`tel:${tel}`} aria-label={`${t.booking.call}: ${b.customerPhone}`}><Icon d={ICON_TEL} />{b.customerPhone}</a>}
-          {birth ? (
-            <span className={birth.birthday ? "bk-bday" : ""} title={t.bookings.birthDate}>
-              <Icon d={ICON_CAKE} />{birth.label} · {fill(t.bookings.age, { n: birth.age })}{birth.birthday && ` · ${t.bookings.birthday}`}
-            </span>
-          ) : (
-            <span className="bk-missing"><Icon d={ICON_CAKE} />{t.bookings.noBirthDate}</span>
-          )}
           {b.customerEmail && <a href={`mailto:${b.customerEmail}`} className="bk-mail" aria-label={`${t.booking.mail}: ${b.customerEmail}`}><Icon d={ICON_MAIL} /><span>{b.customerEmail}</span></a>}
         </div>
         {b.note && <p className="bk-note">«{b.note}»</p>}

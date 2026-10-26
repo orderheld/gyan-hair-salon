@@ -167,7 +167,7 @@ const adminEn: AdminDict = {
     periodMonth: "Month",
     age: "{n} y",
     birthday: "Birthday",
-    noBirthDate: "No date of birth",
+    noBirthDate: "Not given yet",
     revMonth: "Revenue this month",
     revWeek: "Revenue this week",
     revToday: "Revenue today",

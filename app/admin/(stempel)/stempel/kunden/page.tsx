@@ -69,7 +69,7 @@ export default async function StempelCustomers({ searchParams }: { searchParams:
                     {c.balance >= needed && <small>✂</small>}
                   </span>
                 </Link>
-                <ContactLinks phone={c.phone} email={c.customerKey.includes("@") ? c.customerKey : ""} t={all.booking} />
+                <ContactLinks phone={c.phone} email={c.customerKey.includes("@") ? c.customerKey : ""} t={all.booking} birthDate={c.birthDate} tb={all.bookings} />
               </li>
             );
           })}

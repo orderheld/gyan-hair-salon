@@ -92,7 +92,7 @@ export default async function StempelCard({ params, searchParams }: Props) {
             <strong>{name}</strong>
           </div>
         </div>
-        <ContactLinks phone={phone} email={card.customerKey.includes("@") ? card.customerKey : ""} t={all.booking} />
+        <ContactLinks phone={phone} email={card.customerKey.includes("@") ? card.customerKey : ""} t={all.booking} birthDate={s.birthDate} tb={all.bookings} />
         <Stamps onCard={s.onCard} kinds={s.onCardKinds} needed={needed} freeLabel="Gratis" label={fill(t.stampsOf, { n: s.onCard, total: needed })} compact />
         <p className="lc-count">
           <strong>{fill(t.stampsOf, { n: s.onCard, total: needed })}</strong>
