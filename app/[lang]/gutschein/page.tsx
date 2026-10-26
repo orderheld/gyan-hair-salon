@@ -48,7 +48,7 @@ export default async function Voucher({ params }: Props) {
         <div className="container vc-grid">
           <div className="vc-visual" data-reveal>
             <div className="vc-photo">
-              <Image src={site.images.voucher} alt={site.imageAlt[site.images.voucher][locale]} fill sizes="(max-width: 900px) 92vw, 50vw" preload />
+              <Image src={site.images.voucher} alt={site.imageAlt[site.images.voucher][locale]} fill sizes="(max-width: 900px) 92vw, 50vw" preload fetchPriority="high" />
             </div>
             {/* Beispiel-Gutschein, nachgebaut nach den Karten aus Kraftpapier mit geprägtem Monogramm */}
             <div className="vc-card" aria-label={`${t.cardLabel} ${t.cardFor} ${t.cardName}, ${t.cardAmount}`} role="img">

@@ -85,6 +85,11 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
   const locale = (await params).lang as Locale;
   const d = getDict(locale);
   const t = d.loyalty;
+  // Einstellungen, Anmeldung und Kundenangaben gleichzeitig laden (spart Rundreisen zur Datenbank)
+  const jar = await cookies();
+  const email = readCustomerCookie(jar.get(CUSTOMER_COOKIE)?.value);
+  const profilePromise = email ? getAccountProfile(email) : null;
+  profilePromise?.catch(() => {});
   const s = await getLoyaltySettings();
   const nth = freeNth(s.stampsNeeded, locale);
   const crumbs = [{ label: d.nav.home, href: href(locale, "home") }, { label: d.nav.loyalty, href: href(locale, "loyalty") }];
@@ -118,8 +123,6 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
     );
   }
 
-  const jar = await cookies();
-  const email = readCustomerCookie(jar.get(CUSTOMER_COOKIE)?.value);
   const refParam = normalizeRefCode((await searchParams).ref ?? "");
   const privacy = (
     <p className="lc-privacy small muted">
@@ -165,7 +168,7 @@ export default async function LoyaltyPage({ params, searchParams }: Props) {
   }
 
   // Angemeldet: zuerst einmalig Name, Telefon und Geburtsdatum, dann Karte holen oder anlegen und Einladung verknüpfen
-  const profile = await getAccountProfile(email);
+  const profile = await profilePromise!;
   if (!profileComplete(profile)) return <ProfileGate locale={locale} d={d} email={email} profile={profile} />;
   const card = await ensureCard(email, profile.name);
   const ref = refParam || normalizeRefCode(jar.get("gyan_ref")?.value ?? "");

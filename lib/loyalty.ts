@@ -129,9 +129,10 @@ export async function ensureCard(email: string, fallbackName = ""): Promise<Card
   const key = email.trim().toLowerCase();
   if (!key || key.startsWith("tel:")) throw new Error("Stempelkarte braucht eine E-Mail");
   const sql = await getSql();
-  const profile = await bookingProfile(key);
+  // Name und Karte gleichzeitig holen (eine Rundreise weniger)
+  const [profile, existing] = await Promise.all([bookingProfile(key), getCardByKey(key)]);
   const name = (profile.name || fallbackName).slice(0, 80);
-  let card = await getCardByKey(key);
+  let card = existing;
   for (let attempt = 0; !card && attempt < 5; attempt++) {
     try {
       await sql`INSERT INTO loyalty_cards (customer_key, token, ref_code, name)

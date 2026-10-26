@@ -1,12 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Inter_Tight } from "next/font/google";
+import { display, inter } from "@/lib/fonts";
 import { AdminResume } from "@/components/admin/AdminResume";
 import { getAdminLocale } from "@/lib/admin";
 import "../styles/base.css";
 import "../styles/admin.css";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
-const display = Inter_Tight({ subsets: ["latin"], weight: ["400", "500", "600"], variable: "--font-tight", display: "swap" });
 
 export const metadata: Metadata = {
   title: "GYAN Admin",
