@@ -536,4 +536,146 @@ GYAN is at Zentralstrasse 22, a few minutes' walk from Biel station. Our clients
     },
     services: ["bart-trimmen-biel", "nassrasur-biel", "haarschnitt-und-bart", "gyan-full-service"],
   },
+
+  // ───────────────────────────── OHNE TERMIN ─────────────────────────────
+  {
+    key: "ohne-termin",
+    slug: { de: "coiffeur-ohne-termin-biel", fr: "coiffeur-sans-rendez-vous-bienne", en: "walk-in-barber-biel" },
+    h1: {
+      de: "Coiffeur ohne Termin in Biel – einfach vorbeikommen",
+      fr: "Coiffeur sans rendez-vous à Bienne – passe simplement",
+      en: "Walk-in barber in Biel – just drop by",
+    },
+    title: {
+      de: "Coiffeur ohne Termin Biel – Walk-in ab CHF 35 | GYAN",
+      fr: "Coiffeur sans rendez-vous Bienne – dès CHF 35 | GYAN",
+      en: "Walk-in Barber Biel – haircuts from CHF 35 | GYAN",
+    },
+    description: {
+      de: "Coiffeur ohne Termin in Biel: Während der Öffnungszeiten einfach vorbeikommen, Haarschnitt ab CHF 35. Zentralstrasse 22, Do/Fr bis 20 Uhr offen.",
+      fr: "Coiffeur sans rendez-vous à Bienne : passe pendant les heures d'ouverture, coupe dès CHF 35. Zentralstrasse 22, ouvert jusqu'à 20 h jeudi et vendredi.",
+      en: "Walk-in barber in Biel: drop by during opening hours, haircuts from CHF 35 without an appointment. Zentralstrasse 22, open until 8 pm Thu and Fri.",
+    },
+    intro: {
+      de: "Kein freier Termin im Kalender, aber jetzt gerade Zeit? Bei GYAN an der Zentralstrasse 22 in Biel kommst du während der Öffnungszeiten auch ohne Voranmeldung vorbei. Haarschnitt und Pakete sind ohne Termin sogar etwas günstiger.",
+      fr: "Pas de créneau dans l'agenda, mais du temps maintenant ? Chez GYAN, Zentralstrasse 22 à Bienne, tu passes aussi sans rendez-vous pendant les heures d'ouverture. Sans rendez-vous, la coupe et les formules sont même un peu moins chères.",
+      en: "No time slot in your calendar, but free right now? At GYAN on Zentralstrasse 22 in Biel you can come in without an appointment during opening hours. Haircuts and packages are even slightly cheaper as a walk-in.",
+    },
+    body: {
+      de: `## So funktioniert es ohne Termin
+
+Du kommst während der Öffnungszeiten in den Salon, sagst, was du dir wünschst, und nimmst in der Lounge Platz. Sobald ein Stuhl frei ist, bist du dran. Eine Anmeldung, einen Anruf oder eine App brauchst du dafür nicht. Gebucht wird nur, wer einen fixen Zeitpunkt will, alle anderen kommen einfach vorbei.
+
+Ohne Termin bekommst du dieselbe Sorgfalt wie mit Termin: zuerst ein kurzes Gespräch über Länge, Übergänge und Styling, dann der Schnitt mit Schere und Maschine und zum Schluss saubere Konturen am Nacken und an den Ohren. Es gibt keinen schnellen Schnitt zweiter Klasse.
+
+## Preise ohne Termin
+
+Für Haarschnitt und Pakete gilt ohne Termin ein etwas tieferer Preis:
+
+- [Herren Haarschnitt](service:haarschnitt-biel): CHF 35 ohne Termin, CHF 40 mit Termin.
+- [GYAN Classic Paket](service:haarschnitt-und-bart) mit Haarschnitt und Bart: CHF 60 ohne Termin, CHF 65 mit Termin.
+- [GYAN Premium Paket](service:gyan-premium-paket) mit Haarschnitt, Bart, Wäsche und Styling: CHF 70 ohne Termin, CHF 75 mit Termin.
+- [GYAN Full Service](service:gyan-full-service): CHF 85 ohne Termin, CHF 90 mit Termin.
+
+Bezahlt wird bar, mit Karte oder mit TWINT. Alle Leistungen und Preise findest du auf der Seite [Leistungen](page:services).
+
+## Wann ist am wenigsten los?
+
+Am ruhigsten ist es meistens am Vormittag unter der Woche. Am Donnerstag und Freitag haben wir bis 20 Uhr offen, das passt nach Feierabend, ist aber auch beliebt. Am Samstag öffnen wir um 8.30 Uhr: Wer früh kommt, wartet am wenigsten. Kurz vor Feiertagen, vor Hochzeiten im Sommer und im Dezember ist der Salon voller, dann lohnt sich ein Termin.
+
+## Ohne Termin oder mit Termin?
+
+- **Ohne Termin**, wenn du flexibel bist, gerade in der Nähe bist und ein paar Franken sparen willst.
+- **Mit Termin**, wenn du keine Minute warten willst, nur ein kurzes Zeitfenster hast oder einen bestimmten Tag brauchst. Die [Online-Buchung](page:booking) ist sofort bestätigt, und eine Absage ist online möglich.
+
+Mehr zur Frage, wie oft sich ein Besuch lohnt, liest du im Artikel [Wie oft zum Coiffeur?](blog:wie-oft-zum-coiffeur).
+
+## Mitten in Biel, gut erreichbar
+
+Der Salon liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof Biel. Damit bist du auch spontan aus [Nidau](seo:nidau), [Brügg](seo:bruegg) oder [Evilard](seo:evilard) schnell bei uns. Geöffnet ist Montag bis Mittwoch von 9 bis 19 Uhr, Donnerstag und Freitag von 9 bis 20 Uhr und Samstag von 8.30 bis 18 Uhr. Mehr über den Salon erfährst du auf der Seite [Herrencoiffeur in Biel](seo:herrencoiffeur).`,
+      fr: `## Comment ça marche sans rendez-vous
+
+Tu passes au salon pendant les heures d'ouverture, tu dis ce que tu souhaites et tu prends place dans le lounge. Dès qu'un fauteuil se libère, c'est ton tour. Pas besoin de t'inscrire, d'appeler ou d'installer une application. Seul celui qui veut une heure fixe réserve, les autres passent simplement.
+
+Sans rendez-vous, tu reçois le même soin qu'avec rendez-vous : d'abord une courte discussion sur la longueur, les transitions et le coiffage, puis la coupe aux ciseaux et à la tondeuse, et pour finir des contours nets à la nuque et autour des oreilles. Il n'y a pas de coupe rapide de seconde classe.
+
+## Prix sans rendez-vous
+
+Pour la coupe et les formules, un prix un peu plus bas s'applique sans rendez-vous :
+
+- [Coupe homme](service:haarschnitt-biel) : CHF 35 sans rendez-vous, CHF 40 avec rendez-vous.
+- [Formule GYAN Classic](service:haarschnitt-und-bart) avec coupe et barbe : CHF 60 sans rendez-vous, CHF 65 avec rendez-vous.
+- [Formule GYAN Premium](service:gyan-premium-paket) avec coupe, barbe, shampooing et coiffage : CHF 70 sans rendez-vous, CHF 75 avec rendez-vous.
+- [GYAN Full Service](service:gyan-full-service) : CHF 85 sans rendez-vous, CHF 90 avec rendez-vous.
+
+Paiement en espèces, par carte ou TWINT. Toutes les prestations et tous les prix se trouvent sur la page [prestations](page:services).
+
+## Quand y a-t-il le moins de monde ?
+
+C'est en général le plus calme en matinée en semaine. Le jeudi et le vendredi, nous sommes ouverts jusqu'à 20 h, pratique après le travail, mais aussi très demandé. Le samedi, nous ouvrons à 8 h 30 : qui vient tôt attend le moins. Avant les jours fériés, avant les mariages en été et en décembre, le salon est plus plein, et un rendez-vous vaut alors la peine.
+
+## Avec ou sans rendez-vous ?
+
+- **Sans rendez-vous** si tu es flexible, si tu es dans le coin et si tu veux économiser quelques francs.
+- **Avec rendez-vous** si tu ne veux pas attendre une minute, si tu n'as qu'un court créneau ou si tu as besoin d'un jour précis. La [réservation en ligne](page:booking) est confirmée immédiatement, et l'annulation se fait aussi en ligne.
+
+Le bon rythme entre deux coupes est expliqué dans l'article [à quelle fréquence aller chez le coiffeur](blog:wie-oft-zum-coiffeur).
+
+## Au centre de Bienne, facile d'accès
+
+Le salon se trouve à la Zentralstrasse 22, à quelques minutes à pied de la gare de Bienne. Depuis [Nidau](seo:nidau), [Brügg](seo:bruegg) ou [Evilard](seo:evilard), tu es vite chez nous, même à l'improviste. Nous sommes ouverts du lundi au mercredi de 9 h à 19 h, jeudi et vendredi de 9 h à 20 h et samedi de 8 h 30 à 18 h. Plus d'informations sur le salon sur la page [coiffeur homme à Bienne](seo:herrencoiffeur).`,
+      en: `## How walk-ins work
+
+Come into the salon during opening hours, tell us what you would like and take a seat in the lounge. As soon as a chair is free, it's your turn. No sign-up, no phone call and no app needed. Only people who want a fixed time book, everyone else simply drops by.
+
+As a walk-in you get the same care as with an appointment: first a short chat about length, blending and styling, then the cut with scissors and clippers, and finally clean lines at the neck and around the ears. There is no rushed second-class cut.
+
+## Walk-in prices
+
+Haircuts and packages are slightly cheaper without an appointment:
+
+- [Men's haircut](service:haarschnitt-biel): CHF 35 as a walk-in, CHF 40 with an appointment.
+- [GYAN Classic package](service:haarschnitt-und-bart) with haircut and beard: CHF 60 as a walk-in, CHF 65 with an appointment.
+- [GYAN Premium package](service:gyan-premium-paket) with haircut, beard, wash and styling: CHF 70 as a walk-in, CHF 75 with an appointment.
+- [GYAN Full Service](service:gyan-full-service): CHF 85 as a walk-in, CHF 90 with an appointment.
+
+Pay by cash, card or TWINT. All services and prices are on the [services](page:services) page.
+
+## When is it quietest?
+
+Weekday mornings are usually the calmest. On Thursdays and Fridays we are open until 8 pm, which suits after-work visits but is also popular. On Saturdays we open at 8.30 am: the earlier you come, the shorter the wait. Before public holidays, before summer weddings and in December the salon is busier, so an appointment is worth it then.
+
+## Walk-in or appointment?
+
+- **Walk in** if you are flexible, nearby and want to save a few francs.
+- **Book** if you don't want to wait a minute, only have a short window or need a specific day. [Online booking](page:booking) is confirmed instantly, and you can cancel online too.
+
+How often a visit makes sense is explained in the article [how often to get a haircut](blog:wie-oft-zum-coiffeur).
+
+## In the centre of Biel, easy to reach
+
+The salon is at Zentralstrasse 22, a few minutes' walk from Biel station. From [Nidau](seo:nidau), [Brügg](seo:bruegg) or [Evilard](seo:evilard) you can get here quickly on the spur of the moment. We are open Monday to Wednesday 9 am to 7 pm, Thursday and Friday 9 am to 8 pm and Saturday 8.30 am to 6 pm. Find out more about the salon on the page [men's hairdresser in Biel](seo:herrencoiffeur).`,
+    },
+    faq: {
+      de: [
+        { q: "Kann ich ohne Termin zum Coiffeur in Biel?", a: "Ja. Bei GYAN an der Zentralstrasse 22 kommst du während der Öffnungszeiten ohne Voranmeldung vorbei und wirst bedient, sobald ein Stuhl frei ist." },
+        { q: "Was kostet ein Haarschnitt ohne Termin?", a: "Der Herren Haarschnitt kostet ohne Termin CHF 35, mit Termin CHF 40. Auch die Pakete sind ohne Termin je CHF 5 günstiger." },
+        { q: "Wie lange muss ich ohne Termin warten?", a: "Das hängt vom Tag ab. Unter der Woche am Vormittag und am Samstag früh ist es meistens ruhig. Wer nicht warten will, bucht online einen Termin, der sofort bestätigt ist." },
+        { q: "Bis wann kann ich spontan vorbeikommen?", a: "Montag bis Mittwoch bis 19 Uhr, Donnerstag und Freitag bis 20 Uhr, Samstag bis 18 Uhr. Komm am besten nicht erst kurz vor Ladenschluss, damit genug Zeit für deinen Schnitt bleibt." },
+      ],
+      fr: [
+        { q: "Puis-je aller chez le coiffeur sans rendez-vous à Bienne ?", a: "Oui. Chez GYAN, Zentralstrasse 22, tu passes sans t'annoncer pendant les heures d'ouverture et tu es servi dès qu'un fauteuil se libère." },
+        { q: "Combien coûte une coupe sans rendez-vous ?", a: "La coupe homme coûte CHF 35 sans rendez-vous et CHF 40 avec rendez-vous. Les formules sont aussi CHF 5 moins chères sans rendez-vous." },
+        { q: "Combien de temps faut-il attendre sans rendez-vous ?", a: "Cela dépend du jour. En semaine le matin et le samedi tôt, c'est en général calme. Si tu ne veux pas attendre, réserve en ligne, la confirmation est immédiate." },
+        { q: "Jusqu'à quelle heure puis-je passer ?", a: "Du lundi au mercredi jusqu'à 19 h, jeudi et vendredi jusqu'à 20 h, samedi jusqu'à 18 h. Évite d'arriver juste avant la fermeture, pour qu'il reste assez de temps pour ta coupe." },
+      ],
+      en: [
+        { q: "Can I go to a barber in Biel without an appointment?", a: "Yes. At GYAN on Zentralstrasse 22 you can walk in during opening hours and you will be served as soon as a chair is free." },
+        { q: "How much is a walk-in haircut?", a: "A men's haircut costs CHF 35 as a walk-in and CHF 40 with an appointment. Packages are also CHF 5 cheaper without an appointment." },
+        { q: "How long will I wait as a walk-in?", a: "It depends on the day. Weekday mornings and early Saturdays are usually quiet. If you don't want to wait, book online and your appointment is confirmed instantly." },
+        { q: "Until when can I walk in?", a: "Monday to Wednesday until 7 pm, Thursday and Friday until 8 pm, Saturday until 6 pm. Try not to arrive right before closing so there is enough time for your cut." },
+      ],
+    },
+    services: ["haarschnitt-biel", "haarschnitt-und-bart", "gyan-premium-paket", "gyan-full-service"],
+  },
 ];

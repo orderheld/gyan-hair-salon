@@ -23,6 +23,7 @@ const FOCUS = {
   "hero-fade.jpg": 0.35,
   "salon-barbershop.jpg": 0.5,
   "cut-slick-back.jpg": 0.4,
+  "gyan-tasche.jpg": 0.6,
 };
 
 for (const file of await readdir(src)) {

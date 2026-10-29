@@ -1,4 +1,7 @@
 import type { BlogPost } from "../types";
+import { post as weihnachtenSilvester } from "./haarschnitt-weihnachten-silvester-biel";
+import { post as haarpflegeWinter } from "./haarpflege-winter-maenner";
+import { post as wunschfrisurErklaeren } from "./coiffeur-wunschfrisur-erklaeren";
 import { post as slickBack } from "./slick-back-frisur-biel";
 import { post as nassrasurBarbier } from "./nassrasur-barbier-biel";
 import { post as gutscheinVerschenken } from "./gutschein-verschenken-biel";
@@ -12,6 +15,9 @@ import { post as wieOftZumCoiffeur } from "./wie-oft-zum-coiffeur";
 
 // Neueste zuerst
 export const posts: BlogPost[] = [
+  weihnachtenSilvester,
+  haarpflegeWinter,
+  wunschfrisurErklaeren,
   slickBack,
   nassrasurBarbier,
   gutscheinVerschenken,

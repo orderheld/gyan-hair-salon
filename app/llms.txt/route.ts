@@ -1,9 +1,11 @@
 import { posts } from "@/content/blog";
+import { places } from "@/content/seo/places";
+import { topics } from "@/content/seo/topics";
 import { site } from "@/content/site";
 import services from "@/db/services.json";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
-import { postPath, servicePath } from "@/lib/i18n/paths";
+import { postPath, seoPath, servicePath } from "@/lib/i18n/paths";
 
 // Kurzüberblick für KI-Suchdienste (llms.txt): nur feste Angaben aus content/site.ts, keine Preise (die pflegt das Admin-Panel)
 export const dynamic = "force-static";
@@ -26,6 +28,7 @@ export function GET() {
 - E-Mail: ${site.email}
 - Öffnungszeiten: ${hours}
 - Sprachen der Webseite: Deutsch, Französisch, Englisch
+- Termin: online buchen (sofort bestätigt) oder ohne Termin während der Öffnungszeiten vorbeikommen
 - Bezahlung im Salon: bar, Karte oder TWINT
 - Instagram: ${site.instagram}
 
@@ -35,6 +38,7 @@ export function GET() {
 - [Leistungen und Preise](${u(href("de", "services"))})
 - [Der Salon](${u(href("de", "salon"))})
 - [Zana, Inhaber](${u(href("de", "zana"))})
+- [Gutschein](${u(href("de", "voucher"))})
 - [Häufige Fragen](${u(href("de", "faq"))})
 - [Kontakt und Anfahrt](${u(href("de", "contact"))})
 - [Français](${u("/fr")}) · [English](${u("/en")})
@@ -42,6 +46,14 @@ export function GET() {
 ## Leistungen
 
 ${services.map((s) => `- [${s.name.de}](${u(servicePath("de", s))}): ${s.short.de}`).join("\n")}
+
+## Themen
+
+${topics.map((t) => `- [${t.h1.de.split(" – ")[0]}](${u(seoPath("de", t))}): ${t.description.de}`).join("\n")}
+
+## Einzugsgebiet
+
+${places.map((p) => `[${p.name.de}](${u(seoPath("de", p))})`).join(" · ")}
 
 ## Journal
 
