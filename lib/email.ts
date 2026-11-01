@@ -16,11 +16,16 @@ import { getSql } from "./db";
 import { pushToAdmins, pushToCustomer } from "./push";
 import { getSettings, type EmailTemplate, type EmailType, type Settings } from "./settings";
 import { TIMEZONE } from "./config";
+import { randomUUID } from "node:crypto";
+import { isOptedOut, unsubscribeHeaders, unsubscribeUrl } from "./unsubscribe";
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 const FROM = process.env.EMAIL_FROM ?? `${site.name} <termin@gyanhairsalon.ch>`;
 
-type Mail = { to: string; subject: string; html: string; text: string; ics?: string; replyTo?: string };
+type Mail = { to: string; subject: string; html: string; text: string; ics?: string; replyTo?: string; headers?: Record<string, string> };
+
+/** Fusszeile der Text-Version: wer schreibt, Adresse, Telefon, Webseite (wie im HTML) */
+const TEXT_FOOTER = `\n\n--\n${site.name}\n${site.address.street}, ${site.address.zip} ${site.address.city}\n${site.phone} · ${site.url.replace(/^https?:\/\//, "")}`;
 
 /** Letzter Versandfehler (für die Warnung im Admin) */
 async function rememberError(mail: Mail, message: string) {
@@ -55,8 +60,13 @@ async function send(mail: Mail): Promise<string | null> {
     to: mail.to,
     subject: mail.subject,
     html: mail.html,
-    text: mail.text,
+    text: mail.text + TEXT_FOOTER,
     replyTo: mail.replyTo || site.email, // Antworten landen immer im Salon-Postfach
+    headers: {
+      // eigene ID pro Mail: Gmail fasst ähnliche Mails (z. B. Codes) sonst zu einem Verlauf zusammen
+      "X-Entity-Ref-ID": randomUUID(),
+      ...mail.headers,
+    },
     attachments: [
       { filename: "gyan-logo.png", content: EMAIL_LOGO_BASE64, contentType: "image/png", contentId: "gyan-logo" },
       ...(mail.ics ? [{ filename: "gyan-termin.ics", content: Buffer.from(mail.ics).toString("base64"), contentType: "text/calendar" }] : []),
@@ -135,7 +145,7 @@ function reviewBlock(t: { buttonReview: string; reviewNote: string; socialTitle:
 <p style="margin:22px 0 0;text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:#8a8176">${esc(t.socialTitle)}</p>`;
 }
 
-function layout(opts: { locale: Locale; preheader: string; heading: string; body: string; details?: [string, string][]; buttons?: Button[]; logoSrc: string; highlight?: string; after?: string }) {
+function layout(opts: { locale: Locale; preheader: string; heading: string; body: string; details?: [string, string][]; buttons?: Button[]; logoSrc: string; highlight?: string; after?: string; unsubscribe?: string }) {
   const d = getDict(opts.locale);
   const paragraphs = esc(opts.body)
     .split(/\n{2,}/)
@@ -170,7 +180,9 @@ function layout(opts: { locale: Locale; preheader: string; heading: string; body
 ${buttons ? `<tr><td style="padding:0 30px 36px;text-align:center">${buttons}</td></tr>` : ""}
 <tr><td style="padding:22px 36px;background:#efe8dc;font-size:12px;line-height:1.7;color:#6b635a;text-align:center">
 <strong style="color:#141210">${esc(site.name)}</strong><br>${esc(site.address.street)}, ${esc(site.address.zip)} ${esc(site.address.city)} · ${esc(site.phone)}<br>
-<span style="color:#9a9187">${esc(d.emails.footer)}</span></td></tr>
+<span style="color:#9a9187">${esc(d.emails.footer)}</span>${
+  opts.unsubscribe ? `<br><a href="${esc(opts.unsubscribe)}" style="color:#9a9187;text-decoration:underline">${esc(d.emails.unsubscribe)}</a>` : ""
+}</td></tr>
 </table></td></tr></table></body></html>`;
 }
 
@@ -202,7 +214,7 @@ function ics(b: Booking, summary: string) {
 }
 
 /** Baut eine E-Mail eines Typs (für Versand und für die Vorschau im Admin). */
-export async function buildEmail(type: EmailType, b: Booking, opts: { locale?: Locale; settings?: Settings; template?: EmailTemplate; preview?: boolean; extraDetails?: [string, string][] } = {}) {
+export async function buildEmail(type: EmailType, b: Booking, opts: { locale?: Locale; settings?: Settings; template?: EmailTemplate; preview?: boolean; extraDetails?: [string, string][]; unsubscribeFor?: string } = {}) {
   const settings = opts.settings ?? (await getSettings());
   const locale = opts.locale ?? b.locale;
   const d = getDict(locale);
@@ -262,19 +274,28 @@ export async function buildEmail(type: EmailType, b: Booking, opts: { locale?: L
   }
   const logoSrc = opts.preview ? "/brand/logo-email.png" : "cid:gyan-logo";
   const after = followup ? reviewBlock(d.emails, settings.reviewUrl) : undefined;
-  const html = layout({ locale, preheader: subject, heading, body, details, buttons, logoSrc, after });
+  const unsubscribe = opts.unsubscribeFor ? unsubscribeUrl(opts.unsubscribeFor) : undefined;
+  const html = layout({ locale, preheader: subject, heading, body, details, buttons, logoSrc, after, unsubscribe });
   const text = [
     heading, "", body, "",
     ...(followup ? [`${d.emails.buttonReview}: ${settings.reviewUrl}`, "", d.emails.socialTitle] : details.map(([k, v]) => `${k}: ${v}`)),
     "", ...buttons.map((x) => `${x.label}: ${x.href}`),
+    ...(unsubscribe ? ["", `${d.emails.unsubscribe}: ${unsubscribe}`] : []),
   ].join("\n");
-  return { subject, html, text, ics: type === "confirmation" ? ics(b, vars.service) : undefined };
+  return {
+    subject, html, text,
+    ics: type === "confirmation" ? ics(b, vars.service) : undefined,
+    headers: opts.unsubscribeFor ? unsubscribeHeaders(opts.unsubscribeFor) : undefined,
+  };
 }
 
 async function sendType(type: EmailType, b: Booking, to: string, extra: { replyTo?: string; locale?: Locale; details?: [string, string][] } = {}) {
   const settings = await getSettings();
   if (!settings.emailEnabled[type] || !to) return;
-  const mail = await buildEmail(type, b, { settings, locale: extra.locale, extraDetails: extra.details });
+  // Dank nach dem Besuch ist freiwillig: abmeldbar, und wer abgemeldet ist, bekommt ihn nicht mehr
+  const optional = type === "followup";
+  if (optional && (await isOptedOut(to))) return;
+  const mail = await buildEmail(type, b, { settings, locale: extra.locale, extraDetails: extra.details, unsubscribeFor: optional ? to : undefined });
   await send({ to, replyTo: extra.replyTo, ...mail });
 }
 
@@ -359,7 +380,7 @@ export async function sendVerifyCode(to: string, code: string, locale: Locale, p
 
 /** Test-E-Mail aus dem Admin (unabhängig davon, ob der Typ aktiv ist). */
 export async function sendTestEmail(type: EmailType, locale: Locale, to: string) {
-  const mail = await buildEmail(type, sampleBooking(locale), { locale });
+  const mail = await buildEmail(type, sampleBooking(locale), { locale, unsubscribeFor: type === "followup" ? to : undefined });
   return send({ to, ...mail, subject: `[Test] ${mail.subject}` });
 }
 
@@ -424,10 +445,13 @@ export async function sendBirthdayGreeting(to: string, name: string, locale: Loc
   const vars = { firstName: name.trim().split(" ")[0] ?? "" };
   const subject = fill(m.subject, vars);
   const body = fill(m.body, vars);
+  if (await isOptedOut(to)) return null;
   const buttons = [{ label: m.button, href: `${site.url}${href(locale, "booking")}`, primary: true }];
-  const html = layout({ locale, preheader: subject, heading: m.heading, body, buttons, logoSrc: "cid:gyan-logo" });
+  const unsubscribe = unsubscribeUrl(to);
+  const html = layout({ locale, preheader: subject, heading: m.heading, body, buttons, logoSrc: "cid:gyan-logo", unsubscribe });
   const replyTo = (await getSettings().catch(() => null))?.notifyEmail || undefined;
-  return send({ to, subject, html, replyTo, text: `${m.heading}\n\n${body}\n\n${m.button}: ${buttons[0].href}` });
+  const text = `${m.heading}\n\n${body}\n\n${m.button}: ${buttons[0].href}\n\n${getDict(locale).emails.unsubscribe}: ${unsubscribe}`;
+  return send({ to, subject, html, replyTo, text, headers: unsubscribeHeaders(to) });
 }
 
 /* ---------- Gutscheine ---------- */

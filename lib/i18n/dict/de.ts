@@ -664,6 +664,7 @@ const de = {
     socialTitle: "Folge uns",
     buttonRebook: "Neuen Termin buchen",
     footer: "Du erhältst diese E-Mail, weil du bei GYAN Hair Salon einen Termin gebucht hast.",
+    unsubscribe: "Keine Dankes- und Geburtstags-Mails mehr? Hier abmelden",
     templates: {
       confirmation: {
         subject: "Dein Termin bei GYAN ist bestätigt · {date}, {time}",

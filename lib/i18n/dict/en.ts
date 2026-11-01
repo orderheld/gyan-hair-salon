@@ -666,6 +666,7 @@ const en: Dict = {
     socialTitle: "Follow us",
     buttonRebook: "Book a new appointment",
     footer: "You're receiving this email because you booked an appointment at GYAN Hair Salon.",
+    unsubscribe: "No more thank-you and birthday emails? Unsubscribe here",
     templates: {
       confirmation: {
         subject: "Your appointment at GYAN is confirmed · {date}, {time}",

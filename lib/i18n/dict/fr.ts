@@ -666,6 +666,7 @@ const fr: Dict = {
     socialTitle: "Suis-nous",
     buttonRebook: "Prendre un nouveau rendez-vous",
     footer: "Tu reçois cet e-mail parce que tu as réservé un rendez-vous chez GYAN Hair Salon.",
+    unsubscribe: "Plus de mails de remerciement et d'anniversaire ? Se désinscrire",
     templates: {
       confirmation: {
         subject: "Ton rendez-vous chez GYAN est confirmé · {date}, {time}",

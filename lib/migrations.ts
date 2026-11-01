@@ -216,6 +216,11 @@ export const MIGRATIONS = [
   `ALTER TABLE voucher_redemptions ADD COLUMN IF NOT EXISTS sale_no integer`,
   `CREATE INDEX IF NOT EXISTS vouchers_sale_idx ON vouchers (sale_no) WHERE sale_no IS NOT NULL`,
   `CREATE INDEX IF NOT EXISTS voucher_redemptions_sale_idx ON voucher_redemptions (sale_no) WHERE sale_no IS NOT NULL`,
+  // Abmeldung von freiwilligen E-Mails (Dank nach dem Besuch, Geburtstagsgruss), List-Unsubscribe (November 2026)
+  `CREATE TABLE IF NOT EXISTS email_optout (
+    email       text PRIMARY KEY,
+    created_at  timestamptz NOT NULL DEFAULT now()
+  )`,
   `DO $$ BEGIN
     ALTER TABLE pos_sales DROP CONSTRAINT IF EXISTS pos_sales_payment_check;
     ALTER TABLE pos_sales ADD CONSTRAINT pos_sales_payment_check CHECK (payment IN ('cash', 'card', 'twint', 'voucher'));

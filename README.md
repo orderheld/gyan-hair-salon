@@ -226,6 +226,13 @@ Die Live-Angaben auf der Startseite (offen/geschlossen, nächster freier Termin)
 - Unter **E-Mails** zeigt die Test-E-Mail bei einem Fehler die Meldung von Resend an.
 - Vercel → **Logs**, Suche nach `E-Mail-Fehler`, zeigt jeden Fehler mit Empfänger.
 
+**Damit E-Mails nicht im Spam landen** (Stand November 2026):
+- DNS bei cyon: DKIM `resend._domainkey`, SPF/MX auf `send.` (von Resend) und DMARC `_dmarc` sind gesetzt. Nichts davon löschen.
+- In Resend unter **Domains → gyanhairsalon.ch** Open- und Click-Tracking ausgeschaltet lassen (umgeschriebene Links wirken auf Spamfilter verdächtig).
+- `EMAIL_FROM` muss auf `@gyanhairsalon.ch` enden, sonst passt DKIM nicht zum Absender.
+- Jede Mail hat eine Text-Version mit Adresse, Antworten gehen ans Salon-Postfach (Reply-To).
+- Dank nach dem Besuch und Geburtstagsgruss haben einen Abmelde-Link und `List-Unsubscribe` (Ein-Klick, `/api/abmelden`). Abgemeldete Adressen stehen in der Tabelle `email_optout` und bekommen diese beiden Mails nicht mehr, Termin-Mails aber weiterhin.
+
 ## 14. Admin: Kalender, Termine und Kunden
 
 - **Kalender** (Menü «Kalender»): Tag, Woche oder Monat. Auf einen Termin tippen öffnet ihn, auf eine freie Stelle tippen trägt einen neuen Termin zu dieser Zeit ein. Sperrzeiten und Pausen sind schraffiert, am Handy wischt man durch die Woche.

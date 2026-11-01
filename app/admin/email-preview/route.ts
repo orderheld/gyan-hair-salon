@@ -12,6 +12,6 @@ export async function GET(request: Request) {
   const type = url.searchParams.get("type") ?? "confirmation";
   const locale = url.searchParams.get("locale") ?? "de";
   if (!(EMAIL_TYPES as readonly string[]).includes(type) || !isLocale(locale)) return new Response("Bad request", { status: 400 });
-  const mail = await buildEmail(type as EmailType, sampleBooking(locale), { locale, preview: true });
+  const mail = await buildEmail(type as EmailType, sampleBooking(locale), { locale, preview: true, unsubscribeFor: type === "followup" ? "luca@example.com" : undefined });
   return new Response(mail.html, { headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
 }
