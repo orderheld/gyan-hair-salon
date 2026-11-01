@@ -10,6 +10,8 @@ import { sendBookingConfirmation } from "@/lib/email";
 import { getDict } from "@/lib/i18n";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n/config";
 import { runEmailJobsThrottled } from "@/lib/jobs";
+import { clientIp, overLimit } from "@/lib/ratelimit";
+import { checkFormToken, hasLink, logSpam } from "@/lib/spam";
 import { isBirthDate, isDateKey, isTimeKey, zurichToDate } from "@/lib/time";
 
 export const dynamic = "force-dynamic";
@@ -29,7 +31,15 @@ export async function POST(request: Request) {
   const e = getDict(locale).booking.errors;
 
   // Honeypot gegen Spam-Bots
-  if (clean(body.website, 100)) return NextResponse.json({ ok: true });
+  if (clean(body.website, 100)) {
+    logSpam("Buchung", "Honeypot");
+    return NextResponse.json({ ok: true });
+  }
+  const guard = checkFormToken(body.formToken);
+  if (guard !== "ok") {
+    logSpam("Buchung", guard);
+    return NextResponse.json({ error: e.generic, formRetry: true }, { status: 400 });
+  }
 
   const serviceId = Number(body.serviceId);
   const date = clean(body.date, 10);
@@ -48,12 +58,16 @@ export async function POST(request: Request) {
 
   let error = "";
   if (!isDateKey(date) || !isTimeKey(time)) error = e.dateTime;
-  else if (name.length < 2) error = e.name;
+  else if (name.length < 2 || hasLink(name)) error = e.name;
   else if (!EMAIL.test(email)) error = e.email;
   else if (phone.replace(/\D/g, "").length < 9) error = e.phone;
   else if (!isBirthDate(birthDate)) error = e.birthDate;
   else if (body.consent !== true) error = e.consent;
   if (error) return NextResponse.json({ error }, { status: 400 });
+  if (await overLimit(`book:${await clientIp()}`, 20, 60 * 60)) {
+    logSpam("Buchung", "Rate-Limit");
+    return NextResponse.json({ error: e.tooMany }, { status: 429 });
+  }
 
   // Sperre und Leistung parallel prüfen (spart eine Runde zur Datenbank)
   const [blocked, service] = await Promise.all([

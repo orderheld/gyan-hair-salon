@@ -5,6 +5,7 @@ import { isBlocked } from "@/lib/customers";
 import { sendVerifyCode } from "@/lib/email";
 import { fill, getDict } from "@/lib/i18n";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n/config";
+import { checkFormToken, logSpam } from "@/lib/spam";
 import { cookieMatches, createCode, RESEND_SECONDS, VERIFIED_COOKIE } from "@/lib/verify";
 
 export const dynamic = "force-dynamic";
@@ -22,6 +23,16 @@ export async function POST(request: Request) {
   }
   const locale = isLocale(String(body.locale)) ? (body.locale as "de" | "fr" | "en") : DEFAULT_LOCALE;
   const e = getDict(locale).booking.errors;
+  // Honeypot und Formular-Token: Bots sollen keine Code-Mails an fremde Adressen auslösen
+  if (typeof body.website === "string" && body.website.trim()) {
+    logSpam("Code", "Honeypot");
+    return NextResponse.json({ error: e.generic }, { status: 400 });
+  }
+  const guard = checkFormToken(body.formToken);
+  if (guard !== "ok") {
+    logSpam("Code", guard);
+    return NextResponse.json({ error: e.generic, formRetry: true }, { status: 400 });
+  }
   const email = typeof body.email === "string" ? body.email.trim().toLowerCase().slice(0, 120) : "";
   const phone = typeof body.phone === "string" ? body.phone.slice(0, 30) : "";
   if (!EMAIL.test(email)) return NextResponse.json({ error: e.email }, { status: 400 });

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useFormGuard } from "@/lib/form-guard";
 import { fill } from "@/lib/i18n/fill";
 
 type Texts = {
@@ -31,6 +32,7 @@ export function AccountLogin({ locale, t }: { locale: string; t: Texts }) {
   const [info, setInfo] = useState<string | null>(null);
   const [resendAt, setResendAt] = useState(0);
   const [now, setNow] = useState(() => Date.now());
+  const guard = useFormGuard();
 
   useEffect(() => {
     if (resendAt <= now) return;
@@ -43,9 +45,11 @@ export function AccountLogin({ locale, t }: { locale: string; t: Texts }) {
     const res = await fetch("/api/account", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ locale, email, ...payload }),
+      body: JSON.stringify({ locale, email, ...payload, formToken: await guard.token() }),
     });
-    return { status: res.status, data: (await res.json().catch(() => ({}))) as { ok?: boolean; sent?: boolean; resendIn?: number; seconds?: number; error?: string } };
+    const data = (await res.json().catch(() => ({}))) as { ok?: boolean; sent?: boolean; resendIn?: number; seconds?: number; error?: string; formRetry?: boolean };
+    if (data.formRetry) guard.renew();
+    return { status: res.status, data };
   }
 
   async function requestCode(again = false) {

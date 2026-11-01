@@ -7,6 +7,7 @@ import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n/config";
 import { pushVoucherToAdmins } from "@/lib/push";
 import { clientIp, overLimit } from "@/lib/ratelimit";
 import { getSettings } from "@/lib/settings";
+import { checkFormToken, hasLink, logSpam } from "@/lib/spam";
 import { createVoucher, getVoucherSettings } from "@/lib/vouchers";
 
 export const dynamic = "force-dynamic";
@@ -27,7 +28,15 @@ export async function POST(request: Request) {
   const e = getDict(locale).voucher.form.errors;
 
   // Honeypot gegen Spam-Bots
-  if (clean(body.website, 100)) return NextResponse.json({ ok: true, code: "", amount: 0 });
+  if (clean(body.website, 100)) {
+    logSpam("Gutschein", "Honeypot");
+    return NextResponse.json({ ok: true, code: "", amount: 0 });
+  }
+  const guard = checkFormToken(body.formToken);
+  if (guard !== "ok") {
+    logSpam("Gutschein", guard);
+    return NextResponse.json({ error: e.generic, formRetry: true }, { status: 400 });
+  }
 
   const settings = await getVoucherSettings();
   if (!settings.onlineEnabled) return NextResponse.json({ error: e.off }, { status: 403 });
@@ -41,13 +50,18 @@ export async function POST(request: Request) {
 
   let error = "";
   if (!Number.isFinite(amount) || amount < settings.minChf || amount > settings.maxChf || !Number.isInteger(amount)) error = fill(e.amount, { min: settings.minChf, max: settings.maxChf });
-  else if (name.length < 2) error = e.name;
+  else if (name.length < 2 || hasLink(name)) error = e.name;
   else if (!EMAIL.test(email)) error = e.email;
   else if (phone.replace(/\D/g, "").length < 9) error = e.phone;
+  else if (hasLink(recipientName) || hasLink(message)) error = e.noLinks;
   else if (body.consent !== true) error = e.consent;
   if (error) return NextResponse.json({ error }, { status: 400 });
 
-  if (await overLimit(`voucher:${await clientIp()}`, 5, 60 * 60)) return NextResponse.json({ error: e.tooMany }, { status: 429 });
+  // Pro IP 5 pro Stunde, pro E-Mail 3 pro Tag (sonst landen Mails an fremde Adressen)
+  if ((await overLimit(`voucher:${await clientIp()}`, 5, 60 * 60)) || (await overLimit(`voucher-mail:${email}`, 3, 60 * 60 * 24))) {
+    logSpam("Gutschein", "Rate-Limit");
+    return NextResponse.json({ error: e.tooMany }, { status: 429 });
+  }
   if (await isBlocked(email, phone)) return NextResponse.json({ error: e.blocked }, { status: 403 });
 
   try {

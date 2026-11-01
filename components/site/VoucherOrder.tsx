@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { Locale } from "@/content/types";
 import type { Dict } from "@/lib/i18n/dict/de";
 import { fill } from "@/lib/i18n/fill";
+import { useFormGuard } from "@/lib/form-guard";
 
 type Props = {
   locale: Locale;
@@ -22,6 +23,7 @@ export function VoucherOrder({ locale, t, presets, min, max, privacyHref, addres
   const [other, setOther] = useState("");
   const [form, setForm] = useState({ name: "", email: "", phone: "", recipientName: "", message: "", website: "", consent: false });
   const [sending, setSending] = useState(false);
+  const guard = useFormGuard();
   const [error, setError] = useState("");
   const [done, setDone] = useState<{ code: string; amount: number; email: string } | null>(null);
 
@@ -40,11 +42,12 @@ export function VoucherOrder({ locale, t, presets, min, max, privacyHref, addres
       const res = await fetch("/api/vouchers", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...form, amount, locale }),
+        body: JSON.stringify({ ...form, amount, locale, formToken: await guard.token() }),
       });
       const data = await res.json().catch(() => ({}));
       if (!res.ok || !data.ok) {
         setError(data.error || t.errors.generic);
+        if (data.formRetry) guard.renew();
       } else {
         setDone({ code: data.code, amount: data.amount, email: form.email });
       }

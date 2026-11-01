@@ -113,6 +113,7 @@ const en: Dict = {
         email: "Please enter a valid email address.",
         phone: "Please enter a valid phone number.",
         consent: "Please accept the privacy policy.",
+        noLinks: "Please don’t include links in the name or message.",
         tooMany: "Too many orders in a short time. Please try again later or call us.",
         blocked: "Ordering online is not possible, sorry. Please call us.",
         off: "Online orders are not possible right now. Vouchers are still available in the salon.",

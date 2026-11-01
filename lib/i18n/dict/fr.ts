@@ -113,6 +113,7 @@ const fr: Dict = {
         email: "Indique une adresse e-mail valable.",
         phone: "Indique un numéro de téléphone valable.",
         consent: "Accepte la déclaration de confidentialité.",
+        noLinks: "Merci de ne pas mettre de liens dans le nom ou le message.",
         tooMany: "Trop de commandes en peu de temps. Réessaie plus tard ou appelle-nous.",
         blocked: "La commande en ligne n'est malheureusement pas possible. Appelle-nous.",
         off: "Les commandes en ligne ne sont pas possibles pour le moment. Les bons restent disponibles au salon.",

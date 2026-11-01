@@ -5,6 +5,7 @@ import { sendVerifyCode } from "@/lib/email";
 import { fill, getDict } from "@/lib/i18n";
 import { DEFAULT_LOCALE, isLocale } from "@/lib/i18n/config";
 import { saveAccountProfile } from "@/lib/customers";
+import { checkFormToken, logSpam } from "@/lib/spam";
 import { isBirthDate } from "@/lib/time";
 import { checkCode, cookieMatches, createCode, CUSTOMER_COOKIE, readCustomerCookie, RESEND_SECONDS, rememberCustomer, VERIFIED_COOKIE } from "@/lib/verify";
 
@@ -48,6 +49,12 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  // Code-Mail nur mit Formular-Token (Bots sollen keine Mails an fremde Adressen auslösen)
+  const guard = checkFormToken(body.formToken, 1);
+  if (guard !== "ok") {
+    logSpam("Konto", guard);
+    return NextResponse.json({ error: e.generic, formRetry: true }, { status: 400 });
+  }
   const result = await createCode(email);
   if (!result.ok) {
     return result.reason === "wait"

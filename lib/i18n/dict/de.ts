@@ -111,6 +111,7 @@ const de = {
         email: "Bitte gib eine gültige E-Mail-Adresse ein.",
         phone: "Bitte gib eine gültige Telefonnummer ein.",
         consent: "Bitte akzeptiere die Datenschutzerklärung.",
+        noLinks: "Bitte keine Links im Namen oder in der Nachricht.",
         tooMany: "Zu viele Bestellungen in kurzer Zeit. Bitte versuch es später nochmals oder ruf uns an.",
         blocked: "Eine Online-Bestellung ist leider nicht möglich. Bitte ruf uns an.",
         off: "Online-Bestellungen sind gerade nicht möglich. Gutscheine gibt es weiterhin direkt im Salon.",

@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Fragment, useEffect, useMemo, useRef, useState } from "react";
+import { useFormGuard } from "@/lib/form-guard";
 import type { Locale } from "@/content/types";
 import { formatChf, formatDuration } from "@/lib/format";
 import type { Dict } from "@/lib/i18n/dict/de";
@@ -78,6 +79,7 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
   });
   const [time, setTime] = useState<string | null>(null);
   const [part, setPart] = useState<number>(0);
+  const guard = useFormGuard();
   const [form, setForm] = useState({ name: known?.name ?? "", email: known?.email ?? "", phone: known?.phone ?? "", birthDate: known?.birthDate ?? "", note: "", website: "", consent: false });
   const [error, setError] = useState<string | null>(null);
   const [info, setInfo] = useState<string | null>(null);
@@ -241,11 +243,12 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
       const res = await fetch("/api/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: form.email, phone: form.phone, locale }),
+        body: JSON.stringify({ email: form.email, phone: form.phone, website: form.website, locale, formToken: await guard.token() }),
       });
       const data = await res.json();
       if (!res.ok) {
         setError(data.error ?? t.errors.generic);
+        if (data.formRetry) guard.renew();
         if (data.seconds) {
           setResendAt(Date.now() + data.seconds * 1000);
           setNow(Date.now());
@@ -277,11 +280,12 @@ export function BookingFlow({ locale, t, common, services, serviceGroups, popula
       const res = await fetch("/api/bookings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ serviceId: service.id, date, time, locale, ...form, code: withCode }),
+        body: JSON.stringify({ serviceId: service.id, date, time, locale, ...form, code: withCode, formToken: await guard.token() }),
       });
       const data = await res.json();
       if (!res.ok) {
         setError(data.error ?? t.errors.generic);
+        if (data.formRetry) guard.renew();
         if (data.needCode) setStage("form");
         if (data.codeError === "wrong") setCode("");
         if (res.status === 409) {
