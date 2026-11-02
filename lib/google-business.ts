@@ -1,6 +1,7 @@
 import "server-only";
 import { createHash } from "node:crypto";
 import { posts } from "@/content/blog";
+import { googlePosts } from "@/content/google-posts";
 import { site } from "@/content/site";
 import { getSql } from "./db";
 import { postPath } from "./i18n/paths";
@@ -11,10 +12,13 @@ import { toDateKey } from "./time";
  * Google-Unternehmensprofil von der Webseite aus aktuell halten (gleicher Google-Zugang wie die Bewertungen):
  * - Öffnungszeiten und Webseite aus content/site.ts, nur wenn sich etwas geändert hat.
  * - Journal: jeder neue Beitrag wird einmal als Google-Beitrag gepostet (Text, Foto, Link «Mehr erfahren»).
+ * - Sonst höchstens ein Tagesbeitrag pro Tag aus content/google-posts.ts, der Reihe nach.
  * Läuft mit den Cron-Jobs höchstens alle 6 Stunden. Fasst keine Kundendaten an.
  */
 
 const SYNC_EVERY_HOURS = 6;
+/** Abstand zwischen zwei Google-Beiträgen (knapp ein Tag, damit der 6-Stunden-Takt nicht wandert) */
+const POST_EVERY_HOURS = 20;
 const DAYS = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
 
 type BusinessState = {
@@ -24,6 +28,8 @@ type BusinessState = {
   postedKeys?: string[];
   lastPostAt?: string;
   lastPostTitle?: string;
+  /** nächster Tagesbeitrag in googlePosts (läuft im Kreis) */
+  dailyIndex?: number;
   lastError?: string;
 };
 
@@ -65,26 +71,46 @@ async function syncProfile(c: StoredConfig, token: string, state: BusinessState)
   await mergeState({ profileHash: hash, profileAt: new Date().toISOString() });
 }
 
-/** Höchstens einen neuen Journal-Beitrag pro Lauf posten. Beim allerersten Lauf nur den neusten, ältere gelten als erledigt. */
-async function syncPosts(c: StoredConfig, token: string, state: BusinessState) {
-  const today = toDateKey(new Date());
-  const live = posts.filter((p) => p.date <= today).sort((a, b) => b.date.localeCompare(a.date));
-  const done = new Set(state.postedKeys ?? []);
-  const next = live.find((p) => !done.has(p.key));
-  if (!next) return;
+async function createPost(c: StoredConfig, token: string, body: { summary: string; actionType: "BOOK" | "LEARN_MORE"; path: string; image: string }) {
   await googleFetch(`https://mybusiness.googleapis.com/v4/accounts/${encodeURIComponent(c.accountId!)}/locations/${encodeURIComponent(c.locationId!)}/localPosts`, {
     method: "POST",
     headers: { ...auth(token).headers, "Content-Type": "application/json" },
     body: JSON.stringify({
       languageCode: "de",
       topicType: "STANDARD",
-      summary: `${next.title.de}\n\n${next.description.de}`.slice(0, 1450),
-      callToAction: { actionType: "LEARN_MORE", url: `${site.url}${postPath("de", next)}` },
-      media: [{ mediaFormat: "PHOTO", sourceUrl: `${site.url}${next.image.replace("/images/", "/og/")}` }],
+      summary: body.summary.slice(0, 1450),
+      callToAction: { actionType: body.actionType, url: `${site.url}${body.path}` },
+      media: [{ mediaFormat: "PHOTO", sourceUrl: `${site.url}${body.image}` }],
     }),
   });
-  const posted = state.postedKeys ? [...done, next.key] : live.map((p) => p.key);
-  await mergeState({ postedKeys: posted, lastPostAt: new Date().toISOString(), lastPostTitle: next.title.de });
+}
+
+/**
+ * Höchstens ein Google-Beitrag pro Tag: zuerst ein neuer Journal-Beitrag, sonst der nächste Tagesbeitrag.
+ * Beim allerersten Lauf nur den neusten Journal-Beitrag, ältere gelten als erledigt.
+ */
+async function syncPosts(c: StoredConfig, token: string, state: BusinessState) {
+  if (state.lastPostAt && Date.now() - new Date(state.lastPostAt).getTime() < POST_EVERY_HOURS * 3600_000) return;
+  const today = toDateKey(new Date());
+  const live = posts.filter((p) => p.date <= today).sort((a, b) => b.date.localeCompare(a.date));
+  const done = new Set(state.postedKeys ?? []);
+  const next = live.find((p) => !done.has(p.key));
+  if (next) {
+    await createPost(c, token, {
+      summary: `${next.title.de}\n\n${next.description.de}`,
+      actionType: "LEARN_MORE",
+      path: postPath("de", next),
+      image: next.image.replace("/images/", "/og/"),
+    });
+    const posted = state.postedKeys ? [...done, next.key] : live.map((p) => p.key);
+    await mergeState({ postedKeys: posted, lastPostAt: new Date().toISOString(), lastPostTitle: next.title.de });
+    return;
+  }
+  if (!googlePosts.length) return;
+  const index = (state.dailyIndex ?? 0) % googlePosts.length;
+  const daily = googlePosts[index];
+  await createPost(c, token, { summary: daily.text, actionType: daily.action, path: daily.path, image: daily.image });
+  await mergeState({ dailyIndex: index + 1, lastPostAt: new Date().toISOString(), lastPostTitle: daily.text.split(":")[0].slice(0, 80) });
 }
 
 export async function syncBusinessProfile() {
