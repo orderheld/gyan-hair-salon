@@ -1,4 +1,5 @@
 import type { BlogPost } from "../types";
+import { post as gesichtspflegeMaenner } from "./gesichtspflege-maenner-biel";
 import { post as weihnachtenSilvester } from "./haarschnitt-weihnachten-silvester-biel";
 import { post as haarpflegeWinter } from "./haarpflege-winter-maenner";
 import { post as wunschfrisurErklaeren } from "./coiffeur-wunschfrisur-erklaeren";
@@ -15,6 +16,7 @@ import { post as wieOftZumCoiffeur } from "./wie-oft-zum-coiffeur";
 
 // Neueste zuerst
 export const posts: BlogPost[] = [
+  gesichtspflegeMaenner,
   weihnachtenSilvester,
   haarpflegeWinter,
   wunschfrisurErklaeren,

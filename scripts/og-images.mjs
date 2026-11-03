@@ -26,8 +26,11 @@ const FOCUS = {
   "gyan-tasche.jpg": 0.6,
 };
 
+// Von Hand gestaltet (Plakat ganz sichtbar auf unscharfem Hintergrund), hier nicht überschreiben
+const KEEP = new Set(["gyan-time-for-luxury.jpg"]);
+
 for (const file of await readdir(src)) {
-  if (!/\.jpe?g$/i.test(file)) continue;
+  if (!/\.jpe?g$/i.test(file) || KEEP.has(file)) continue;
   const path = new URL(file, src).pathname;
   const target = new URL(file.replace(/\.jpe?g$/i, ".jpg"), out).pathname;
   const { width, height } = await sharp(path).metadata();
