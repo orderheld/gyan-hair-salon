@@ -106,4 +106,11 @@ export const googlePosts: GooglePost[] = [
     path: "/de/termin",
     action: "BOOK",
   },
+  {
+    key: "ohne-termin",
+    image: "/og/cut-nacken.jpg",
+    text: "Kein Termin frei, aber gerade Zeit? Bei GYAN kommst du während der Öffnungszeiten auch ohne Voranmeldung vorbei. Ohne Termin kostet der Herren Haarschnitt CHF 35, das Classic Paket CHF 60. Einfach vorbeikommen und in der Lounge Platz nehmen. Sobald ein Stuhl frei ist, bist du dran. Zentralstrasse 22, Biel.",
+    path: "/de/coiffeur-ohne-termin-biel",
+    action: "LEARN_MORE",
+  },
 ];
