@@ -49,7 +49,7 @@ export const site = {
   googleReviewsUrl: "https://g.page/r/Cf88NjkyEn2REBM",
   /** Direktlink «Bewertung schreiben» aus dem Google-Unternehmensprofil */
   googleWriteReviewUrl: "https://g.page/r/Cf88NjkyEn2REBM/review",
-  rating: { value: "4.9", count: "290" }, // von Ferhat am 7.10.2026 bestätigt
+  rating: { value: "4.9", count: "326" }, // Google-Profil am 6.11.2026 (vorher 290, von Ferhat am 7.10. bestätigt)
 
   /** Online-Buchung: nur Zana buchbar, Hikmet folgt (bis dahin spontan) */
   team: [

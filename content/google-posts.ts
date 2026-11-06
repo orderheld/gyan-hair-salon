@@ -102,7 +102,7 @@ export const googlePosts: GooglePost[] = [
   {
     key: "bewertungen",
     image: "/og/zana-barbershop.jpg",
-    text: "Danke für 4,9 Sterne aus 290 Google-Bewertungen! Euer Feedback treibt uns jeden Tag an. Wir freuen uns auf deinen nächsten Besuch an der Zentralstrasse 22 in Biel.",
+    text: "Danke für 4,9 Sterne aus über 320 Google-Bewertungen! Euer Feedback treibt uns jeden Tag an. Wir freuen uns auf deinen nächsten Besuch an der Zentralstrasse 22 in Biel.",
     path: "/de/termin",
     action: "BOOK",
   },

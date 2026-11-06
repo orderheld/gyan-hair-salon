@@ -44,7 +44,7 @@ Wer bei uns reinkommt, merkt schnell: Das ist kein Durchlauf-Salon. Skulpturale,
 
 Bei GYAN hast du zwei Wege. Willst du einen fixen Zeitpunkt ohne Wartezeit, buchst du deinen [Termin online](page:booking) – die Buchung wird sofort bestätigt, ohne Warten auf Rückruf. Hast du spontan Zeit, kommst du einfach während der Öffnungszeiten vorbei: Zana, Inhaber und Barber, und sein Team bedienen auch Walk-in-Kunden. Ohne Termin sind Haarschnitt und Pakete sogar etwas günstiger. Neben klassischen Schnitten bieten wir auch Skin Fades, Bartpflege, Gesichtspflege und Pakete wie das GYAN Classic Paket mit Haarschnitt und Bart an. Wenn du speziell einen Herrenschnitt suchst, findest du mehr dazu auf unserer Seite zum [Herrencoiffeur in Biel](seo:herrencoiffeur).
 
-Mit 4.9 Sternen bei rund 290 Google-Bewertungen dürfen wir sagen: Unsere Kunden kommen gerne wieder. Wir freuen uns, wenn du einer von ihnen wirst.`,
+Mit 4.9 Sternen bei über 320 Google-Bewertungen dürfen wir sagen: Unsere Kunden kommen gerne wieder. Wir freuen uns, wenn du einer von ihnen wirst.`,
       fr: `## Un coiffeur qui écoute
 
 Une bonne coupe ne commence pas avec les ciseaux, mais avec une discussion. Chez GYAN, on prend d'abord le temps de comprendre la nature de tes cheveux, tes épis, ton quotidien et le temps que tu veux passer devant le miroir le matin. Ensuite seulement on coupe – aux ciseaux, à la tondeuse et avec beaucoup de patience pour les transitions. Le résultat : une [coupe](service:haarschnitt-biel) qui a fière allure le premier jour, et qui garde sa forme trois semaines plus tard.
@@ -63,7 +63,7 @@ En entrant, tu le sens tout de suite : ici, on ne fait pas de la coupe à la cha
 
 Chez GYAN, tu as deux options. Si tu veux un créneau fixe sans attente, tu [réserves en ligne](page:booking) – ta réservation est confirmée immédiatement, sans attendre de rappel. Si tu as un moment de libre, passe simplement pendant les heures d'ouverture : Zana, propriétaire et barbier, et son équipe accueillent aussi les clients sans rendez-vous. Sans rendez-vous, la coupe et les formules sont même un peu moins chères. En plus des coupes classiques, on propose des skin fades, l'entretien de la barbe, le soin du visage et des formules comme la formule GYAN Classic, coupe et barbe. Tu cherches spécifiquement une coupe homme ? Jette un œil à notre page [coiffeur homme à Bienne](seo:herrencoiffeur).
 
-Avec une note de 4,9 sur Google pour environ 290 avis, on peut le dire : nos clients reviennent volontiers. On se réjouit que tu en fasses partie.`,
+Avec une note de 4,9 sur Google pour plus de 320 avis, on peut le dire : nos clients reviennent volontiers. On se réjouit que tu en fasses partie.`,
       en: `## A hairdresser who listens
 
 A good haircut doesn't start with scissors – it starts with a conversation. At GYAN we first take time to understand your hair type, your cowlicks, your daily routine and how much effort you want to put in each morning. Only then do we cut – with scissors, clippers and real patience for the transitions. The result: a [haircut](service:haarschnitt-biel) that looks great on day one and still holds its shape three weeks later.
@@ -82,7 +82,7 @@ The moment you walk in, you'll notice this isn't a conveyor-belt salon. Sculpted
 
 At GYAN you have two options. If you want a fixed time slot with no waiting, [book your appointment online](page:booking) and it's confirmed instantly, no waiting for a callback. If you have a spare moment, just walk in during opening hours: Zana – the owner and barber – and his team serve walk-in clients too. Walk-in prices for haircuts and packages are even slightly lower. Besides classic cuts we also do skin fades, beard grooming, face treatments and packages such as the GYAN Classic package with haircut and beard. Looking specifically for a men's cut? Have a look at our [men's hairdresser in Biel](seo:herrencoiffeur) page.
 
-With a 4.9 rating from around 290 Google reviews, it's fair to say our clients like coming back. We'd be glad to welcome you as one of them.`,
+With a 4.9 rating from more than 320 Google reviews, it's fair to say our clients like coming back. We'd be glad to welcome you as one of them.`,
     },
     faq: {
       de: [
@@ -150,7 +150,7 @@ Barbershops gibt es viele, aber Atmosphäre lässt sich nicht kopieren. Bei uns 
 
 Unser Salon liegt im Zentrum von Biel, wenige Gehminuten vom Bahnhof. Darum kommen unsere Kunden nicht nur aus der Stadt selbst, sondern aus der ganzen Region: aus [Lyss](seo:lyss) mit dem Zug, aus [Ipsach](seo:ipsach) am Südufer des Sees oder aus Leubringen mit der Standseilbahn. Im Stadtzentrum findest du öffentliche Parkplätze.
 
-Willst du ohne Wartezeit bei [Zana](page:zana), dem Inhaber und Barber, Platz nehmen, buchst du am besten [online](page:booking). Dein Termin ist sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten trotzdem willkommen – Zana und das Team bedienen auch Walk-in-Kunden, zu etwas günstigeren Preisen für Haarschnitt und Pakete. Mit 4.9 Sternen bei rund 290 Google-Bewertungen weisst du, worauf du dich verlassen kannst.`,
+Willst du ohne Wartezeit bei [Zana](page:zana), dem Inhaber und Barber, Platz nehmen, buchst du am besten [online](page:booking). Dein Termin ist sofort bestätigt. Ohne Termin bist du während der Öffnungszeiten trotzdem willkommen – Zana und das Team bedienen auch Walk-in-Kunden, zu etwas günstigeren Preisen für Haarschnitt und Pakete. Mit 4.9 Sternen bei über 320 Google-Bewertungen weisst du, worauf du dich verlassen kannst.`,
       fr: `## Ce qui fait un barbier
 
 Un barbier, c'est plus qu'un coiffeur avec un rasoir. C'est la précision des contours, le sens des formes du visage et les rituels qui rendent une visite unique : la serviette chaude qui prépare la peau, la mousse tiède, la main sûre sur la lame. C'est exactement cet artisanat qu'on cultive chez GYAN, à la Zentralstrasse 22 à Bienne – du [rasage traditionnel](service:nassrasur-biel) au dégradé parfaitement net.
@@ -169,7 +169,7 @@ Des barbershops, il y en a beaucoup, mais une atmosphère ne se copie pas. Chez 
 
 Notre salon est au centre de Bienne, à quelques minutes à pied de la gare. Nos clients viennent donc de la ville, mais aussi de toute la région : de [Lyss](seo:lyss) en train, d'[Ipsach](seo:ipsach) sur la rive sud du lac ou d'Evilard par le funiculaire. Le centre-ville dispose de places de parc publiques.
 
-Si tu veux t'installer sans attendre chez [Zana](page:zana), propriétaire et barbier, le mieux est de [réserver en ligne](page:booking). Ton rendez-vous est confirmé immédiatement. Sans rendez-vous, tu es tout de même le bienvenu pendant les heures d'ouverture – Zana et l'équipe accueillent aussi les clients sans rendez-vous, avec des prix un peu plus bas pour la coupe et les formules. Avec 4,9 étoiles pour environ 290 avis Google, tu sais sur quoi tu peux compter.`,
+Si tu veux t'installer sans attendre chez [Zana](page:zana), propriétaire et barbier, le mieux est de [réserver en ligne](page:booking). Ton rendez-vous est confirmé immédiatement. Sans rendez-vous, tu es tout de même le bienvenu pendant les heures d'ouverture – Zana et l'équipe accueillent aussi les clients sans rendez-vous, avec des prix un peu plus bas pour la coupe et les formules. Avec 4,9 étoiles pour plus de 320 avis Google, tu sais sur quoi tu peux compter.`,
       en: `## What makes a barber
 
 A barber is more than a hairdresser with a razor. It's about precision at the edges, a feel for face shapes and the rituals that make a visit special: the hot towel that prepares the skin, the warm lather, the steady hand on the blade. That's exactly the craft we practise at GYAN on Zentralstrasse 22 in Biel – from the classic [hot towel shave](service:nassrasur-biel) to a razor-sharp fade.
@@ -188,7 +188,7 @@ There are plenty of barbershops, but atmosphere can't be copied. Here you sit in
 
 Our salon is in the centre of Biel, a few minutes' walk from the station. That's why our clients come not only from the city itself but from across the region: from [Lyss](seo:lyss) by train, from [Ipsach](seo:ipsach) on the south shore of the lake, or from Evilard via the funicular. There is public parking in the city centre.
 
-If you want your time with [Zana](page:zana) – the owner and barber – reserved with no waiting, it's best to [book online](page:booking). Your appointment is confirmed instantly. Without an appointment you're still welcome during opening hours – Zana and the team serve walk-in clients too, at slightly lower prices for haircuts and packages. With a 4.9 rating from around 290 Google reviews, you know what you can count on.`,
+If you want your time with [Zana](page:zana) – the owner and barber – reserved with no waiting, it's best to [book online](page:booking). Your appointment is confirmed instantly. Without an appointment you're still welcome during opening hours – Zana and the team serve walk-in clients too, at slightly lower prices for haircuts and packages. With a 4.9 rating from more than 320 Google reviews, you know what you can count on.`,
     },
     faq: {
       de: [
