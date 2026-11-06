@@ -10,7 +10,7 @@ import { checkPassword, endSession, lockKasse, requireAdmin, startSession } from
 import { cancelBooking, createBooking, deleteBooking, rescheduleBooking, SlotTakenError } from "@/lib/booking";
 import { getBookingById, getBookingsBetween, getService, isBookingStaff, SERVICE_CATEGORIES, type BookingStaff } from "@/lib/data";
 import { getSql } from "@/lib/db";
-import { customerKey, deleteCustomer, updateCustomer, updateCustomerContact } from "@/lib/customers";
+import { customerKey, deleteCustomer, getCustomer, updateCustomer, updateCustomerContact } from "@/lib/customers";
 import { resendConfirmationToCustomer, sendBookingConfirmation, sendCancellation, sendRescheduled, sendTestEmail } from "@/lib/email";
 import { fill, getDict } from "@/lib/i18n";
 import { pushTestToAdmins } from "@/lib/push";
@@ -465,7 +465,11 @@ export async function adminSaveCustomerContact(fd: FormData) {
 export async function adminDeleteCustomer(fd: FormData) {
   await requireAdmin();
   const { t } = await getAdminText();
-  const n = await deleteCustomer(str(fd, "key", 140));
+  const key = str(fd, "key", 140);
+  // Kommende Termine nie still löschen: der Kunde hätte sonst eine Bestätigung für einen Termin, den es nicht mehr gibt
+  const c = await getCustomer(key);
+  if (c && c.upcoming > 0) back(`/admin/kunden/${encodeURIComponent(key)}`, fill(t.customers.deleteHasUpcoming, { name: c.name, n: c.upcoming }), "error");
+  const n = await deleteCustomer(key);
   revalidatePath("/admin", "layout");
   back("/admin/kunden", fill(t.customers.deleted, { n }));
 }

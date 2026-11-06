@@ -33,7 +33,8 @@ export async function POST(request: Request) {
   // Honeypot gegen Spam-Bots
   if (clean(body.website, 100)) {
     logSpam("Buchung", "Honeypot");
-    return NextResponse.json({ ok: true });
+    // Nie «ok» ohne Termin melden: sonst sähe ein Mensch mit Autofill im versteckten Feld eine Bestätigung ohne Buchung
+    return NextResponse.json({ error: e.generic }, { status: 400 });
   }
   const guard = checkFormToken(body.formToken);
   if (guard !== "ok") {

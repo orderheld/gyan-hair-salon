@@ -414,6 +414,7 @@ export function sampleBooking(locale: Locale): Booking {
     createdAt: new Date(),
     reminderSentAt: null,
     followupSentAt: null,
+    cancelledAt: null,
     noShow: false,
     marketingConsent: true,
     emailVerified: true,

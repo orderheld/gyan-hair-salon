@@ -76,6 +76,7 @@ export type Booking = {
   source: "online" | "admin";
   cancelToken: string;
   createdAt: Date;
+  cancelledAt: Date | null;
   reminderSentAt: Date | null;
   followupSentAt: Date | null;
   noShow: boolean;
@@ -142,6 +143,7 @@ export const mapBooking = (r: Row): Booking => ({
   source: r.source,
   cancelToken: r.cancel_token,
   createdAt: toDate(r.created_at),
+  cancelledAt: r.cancelled_at ? toDate(r.cancelled_at) : null,
   reminderSentAt: r.reminder_sent_at ? toDate(r.reminder_sent_at) : null,
   followupSentAt: r.followup_sent_at ? toDate(r.followup_sent_at) : null,
   noShow: !!r.no_show,
@@ -251,4 +253,21 @@ export async function getBookingCounts(r: { today: [Date, Date]; week: [Date, Da
     today: Number(row.today), week: Number(row.week), month: Number(row.month),
     revenue: { today: Number(row.rev_today), week: Number(row.rev_week), month: Number(row.rev_month) },
   };
+}
+
+/**
+ * Online-Termine, die in den letzten Stunden gebucht oder storniert wurden, egal für welches Datum.
+ * Damit im Admin nichts untergeht, auch wenn der Termin weit weg liegt.
+ */
+export async function getRecentOnlineBookings(hours: number, staffId?: BookingStaff): Promise<Booking[]> {
+  const sql = await getSql();
+  const since = new Date(Date.now() - hours * 3600_000).toISOString();
+  const rows = await sql`
+    SELECT * FROM bookings
+    WHERE source = 'online'
+      AND (created_at >= ${since}::timestamptz OR (status = 'cancelled' AND cancelled_at >= ${since}::timestamptz))
+      AND (${staffId ?? null}::text IS NULL OR staff_id = ${staffId ?? null}::text)
+    ORDER BY greatest(created_at, coalesce(cancelled_at, created_at)) DESC
+    LIMIT 50`;
+  return rows.map(mapBooking);
 }

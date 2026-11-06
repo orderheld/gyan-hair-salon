@@ -8,13 +8,14 @@ import { getAdminText } from "@/lib/admin";
 import { CustomerBadges } from "@/components/admin/CustomerBadges";
 import { customerKey, getCustomerInfos, getOpenFeeBookings, needsAttention, type CustomerInfo } from "@/lib/customers";
 import { StaffSwitch } from "@/components/admin/StaffSwitch";
-import { BOOKING_STAFF, getBookingCounts, getBookingsBetween, getServices, isBookingStaff, localize, type Booking, type BookingStaff } from "@/lib/data";
+import { BOOKING_STAFF, getBookingCounts, getBookingsBetween, getRecentOnlineBookings, getServices, isBookingStaff, localize, type Booking, type BookingStaff } from "@/lib/data";
 import { currentPeriods } from "@/lib/pos-period";
 import { fill, type AdminDict } from "@/lib/i18n";
 import { LOCALE_NAMES } from "@/lib/i18n/config";
 import { formatChf } from "@/lib/format";
 import { addDays, formatLongDate, formatShortDate, formatTime, isDateKey, toDateKey, zurichToDate } from "@/lib/time";
 import { getEmailLastError } from "@/lib/email";
+import { getSettings } from "@/lib/settings";
 import {
   adminCancelBooking,
   adminCreateBooking,
@@ -117,16 +118,18 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
   const dayStart = zurichToDate(day, "00:00");
   const dayEnd = zurichToDate(addDays(day, 1), "00:00");
   const upcomingStart = zurichToDate(addDays(todayKey, 0), "00:00");
-  const upcomingEnd = zurichToDate(addDays(todayKey, 15), "00:00");
-
   const periods = currentPeriods();
-  const [dayBookings, upcoming, counts, services, fees, mailError] = await Promise.all([
+  const settings = await getSettings();
+  // Alle kommenden Termine bis zum Buchungshorizont (mindestens 14 Tage), damit kein weit entfernter Termin fehlt
+  const upcomingEnd = zurichToDate(addDays(todayKey, Math.max(15, settings.horizonDays + 2)), "00:00");
+  const [dayBookings, upcoming, counts, services, fees, mailError, recent] = await Promise.all([
     getBookingsBetween(dayStart, dayEnd, { includeCancelled: true, staffId: staff }),
     getBookingsBetween(new Date(Math.max(Date.now(), upcomingStart.getTime())), upcomingEnd, { staffId: staff }),
     getBookingCounts(periods, staff),
     getServices({ includeInactive: true }),
     getOpenFeeBookings(),
     getEmailLastError().catch(() => null),
+    getRecentOnlineBookings(48, staff),
   ]);
   // Versandfehler der letzten 3 Tage oben anzeigen
   const showMailError = !!mailError && Date.now() - new Date(mailError.at).getTime() < 3 * 24 * 3600 * 1000;
@@ -140,7 +143,7 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
     return !!c && (c.noShows > 0 || c.lateCancels > 0 || c.openCount > 0 || c.blocked);
   });
 
-  // Nächste 14 Tage nach Tag gruppiert, ohne den oben gezeigten Tag (sonst doppelt)
+  // Kommende Termine nach Tag gruppiert, ohne den oben gezeigten Tag (sonst doppelt)
   const later = [...upcoming.reduce((m, b) => {
     const k = toDateKey(b.startsAt);
     if (k !== day) m.set(k, [...(m.get(k) ?? []), b]);
@@ -190,6 +193,27 @@ export default async function AdminBookings({ searchParams }: { searchParams: Se
                 </li>
               );
             })}
+          </ul>
+        </section>
+      )}
+
+      {recent.length > 0 && (
+        <section className="panel recent" aria-labelledby="recent-h">
+          <h2 className="h3" id="recent-h">{t.bookings.recentTitle} <span className="pill">{recent.length}</span></h2>
+          <p className="muted small" style={{ margin: "4px 0 0" }}>{t.bookings.recentHint}</p>
+          <ul className="attn-list">
+            {recent.map((b) => (
+              <li key={b.id}>
+                <Link href={`/admin?datum=${toDateKey(b.startsAt)}${werQ}#b-${b.id.slice(0, 8)}`}>
+                  <span className="attn-when">{t.bookings.recentFor} {formatShortDate(b.startsAt, locale)} · {formatTime(b.startsAt, locale)}</span>
+                  <strong>{b.customerName}</strong>
+                  <span className="attn-why">
+                    {(() => { const at = b.status === "cancelled" ? b.cancelledAt ?? b.createdAt : b.createdAt; return `${b.status === "cancelled" ? t.bookings.recentCancelled : t.bookings.recentBooked} ${formatShortDate(at, locale)} ${formatTime(at, locale)}`; })()}
+                    {!staff && ` · ${STAFF_NAMES[b.staffId]}`} · {b.serviceName}
+                  </span>
+                </Link>
+              </li>
+            ))}
           </ul>
         </section>
       )}
