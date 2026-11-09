@@ -113,4 +113,11 @@ export const googlePosts: GooglePost[] = [
     path: "/de/coiffeur-ohne-termin-biel",
     action: "LEARN_MORE",
   },
+  {
+    key: "zentrum",
+    image: "/og/cut-fade.jpg",
+    text: "Mitten im Zentrum von Biel: Der GYAN Hair Salon liegt an der Zentralstrasse 22, wenige Gehminuten vom Bahnhof. Perfekt für einen frischen Schnitt in der Mittagspause oder nach der Arbeit, Donnerstag und Freitag bis 20 Uhr. Bezahlen kannst du bar, mit Karte oder mit TWINT.",
+    path: "/de/kontakt",
+    action: "LEARN_MORE",
+  },
 ];
