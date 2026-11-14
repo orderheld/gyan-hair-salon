@@ -120,4 +120,11 @@ export const googlePosts: GooglePost[] = [
     path: "/de/kontakt",
     action: "LEARN_MORE",
   },
+  {
+    key: "gutschein-weihnachten",
+    image: "/og/gyan-tasche.jpg",
+    text: "Weihnachten kommt näher: Ein GYAN Gutschein ist das Geschenk, das wirklich genutzt wird. Den Betrag wählst du frei, zum Beispiel CHF 40 für einen Herren Haarschnitt oder CHF 65 für Haarschnitt und Bart. Du bekommst ihn als Karte in einem schönen Kuvert mit Wachssiegel. Erhältlich im Salon an der Zentralstrasse 22 in Biel, bezahlt wird bar, mit Karte oder mit TWINT.",
+    path: "/de/gutschein",
+    action: "LEARN_MORE",
+  },
 ];
