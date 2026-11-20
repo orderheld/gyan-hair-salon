@@ -127,4 +127,11 @@ export const googlePosts: GooglePost[] = [
     path: "/de/gutschein",
     action: "LEARN_MORE",
   },
+  {
+    key: "festtage",
+    image: "/og/salon-lounge.jpg",
+    text: "Weihnachtsessen, Firmenfeier, Silvester: Im Dezember wollen viele frisch geschnitten sein. Buch deinen Termin bei GYAN früh, ideal zwei bis fünf Tage vor dem Anlass, damit der Schnitt am Fest perfekt sitzt. Donnerstag und Freitag bis 20 Uhr, Samstag ab 8.30 Uhr. Zentralstrasse 22, Biel.",
+    path: "/de/blog/haarschnitt-weihnachten-silvester-biel",
+    action: "LEARN_MORE",
+  },
 ];
