@@ -1,7 +1,7 @@
 // Deutsche Texte. fr.ts und en.ts haben exakt dieselbe Struktur.
 const de = {
   meta: {
-    siteTitle: "GYAN Hair Salon · Herren Coiffeur & Barbier in Biel/Bienne",
+    siteTitle: "Coiffeur Biel · Herren Coiffeur & Barbier · GYAN Hair Salon",
     siteDescription:
       "Herren Coiffeur und Barbier im Zentrum von Biel/Bienne. Haarschnitt, Skin Fade, Bart und Nassrasur. Online buchen, sofort bestätigt, oder spontan vorbeikommen.",
     titleSuffix: "GYAN Hair Salon Biel",

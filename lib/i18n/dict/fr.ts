@@ -3,7 +3,7 @@ import type { Dict } from "./de";
 
 const fr: Dict = {
   meta: {
-    siteTitle: "GYAN Hair Salon · Coiffeur homme & barbier à Biel/Bienne",
+    siteTitle: "Coiffeur Bienne · coiffeur homme & barbier · GYAN Hair Salon",
     siteDescription:
       "Coiffeur homme et barbier au centre de Biel/Bienne : coupe, skin fade, barbe et rasage. Réserve en ligne, confirmé tout de suite, ou passe sans rendez-vous.",
     titleSuffix: "GYAN Hair Salon Bienne",
