@@ -32,11 +32,11 @@ export const rankingChecks: RankingCheck[] = [
     date: "2026-11-25",
     results: {
       "coiffeur biel": { maps: 1 },
-      "biel coiffeur": { maps: 3 },
-      "herrencoiffeur biel": { organic: 1 },
+      "biel coiffeur": { maps: 3, organic: null },
+      "herrencoiffeur biel": { maps: 3, organic: 1 },
       "barbier biel": { maps: null, organic: 5 },
-      "coiffeur homme bienne": { organic: 3 },
+      "coiffeur homme bienne": { maps: null, organic: 3 },
     },
-    note: "Search Console (28 Tage): «coiffeur biel» Ø Position 1,7 · 24 Klicks · 349 Impressionen",
+    note: "Geprüft in Ferhats Chrome (angemeldet). Search Console (28 Tage): «coiffeur biel» Ø Position 1,7 · 24 Klicks · 349 Impressionen",
   },
 ];
