@@ -292,3 +292,39 @@ export async function getTechStats(days: number): Promise<TechStats> {
     notFound: notFound.map((r) => ({ path: String(r.path), refHost: String(r.ref_host ?? ""), count: n(r.c), last: new Date(r.last) })),
   };
 }
+
+/* ---------- Buchungen seit dem Start (aus der Termin-Datenbank, rückwirkend vollständig) ---------- */
+
+export type BookingHistory = {
+  first: string | null;
+  totals: { online: number; admin: number; cancelled: number; customers: number };
+  weeks: { week: string; online: number; admin: number; cancelled: number }[];
+  byLocale: { key: string; count: number }[];
+  byWeekday: number[];
+};
+
+export async function getBookingHistory(): Promise<BookingHistory> {
+  const sql = await getSql();
+  const [[tot], weeks, locales, weekdays] = await Promise.all([
+    sql`SELECT min(created_at AT TIME ZONE 'Europe/Zurich')::date::text AS first,
+               count(*) FILTER (WHERE source = 'online') AS online, count(*) FILTER (WHERE source = 'admin') AS admin,
+               count(*) FILTER (WHERE status = 'cancelled') AS cancelled,
+               count(DISTINCT lower(customer_email)) FILTER (WHERE source = 'online' AND customer_email <> '') AS customers
+        FROM bookings`,
+    sql`SELECT date_trunc('week', created_at AT TIME ZONE 'Europe/Zurich')::date::text AS week,
+               count(*) FILTER (WHERE source = 'online') AS online, count(*) FILTER (WHERE source = 'admin') AS admin,
+               count(*) FILTER (WHERE status = 'cancelled') AS cancelled
+        FROM bookings GROUP BY 1 ORDER BY 1`,
+    sql`SELECT locale AS key, count(*) AS c FROM bookings WHERE source = 'online' GROUP BY 1 ORDER BY 2 DESC`,
+    sql`SELECT extract(isodow FROM created_at AT TIME ZONE 'Europe/Zurich')::int AS d, count(*) AS c FROM bookings WHERE source = 'online' GROUP BY 1`,
+  ]);
+  const byWeekday = Array.from({ length: 7 }, () => 0);
+  for (const r of weekdays) byWeekday[n(r.d) - 1] = n(r.c);
+  return {
+    first: tot?.first ?? null,
+    totals: { online: n(tot?.online), admin: n(tot?.admin), cancelled: n(tot?.cancelled), customers: n(tot?.customers) },
+    weeks: weeks.map((r) => ({ week: String(r.week), online: n(r.online), admin: n(r.admin), cancelled: n(r.cancelled) })),
+    byLocale: locales.map((r) => ({ key: String(r.key), count: n(r.c) })),
+    byWeekday,
+  };
+}

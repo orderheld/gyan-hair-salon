@@ -1056,3 +1056,5 @@ form[data-dirty] .svc-unsaved { display: inline; }
   .dev-jump { top: 56px; overflow-x: auto; flex-wrap: nowrap; }
   .dev-jump a { white-space: nowrap; }
 }
+.dev-history { display: grid; gap: 20px; scroll-margin-top: 120px; }
+.dev-history .h3 { margin: 0; }

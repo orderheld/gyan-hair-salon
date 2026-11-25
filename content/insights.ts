@@ -32,7 +32,7 @@ export const citations: Citation[] = [
   { id: "A1", name: "Google Unternehmensprofil", url: "https://business.google.com", status: "live", link: "citation", note: "4,9 Sterne / 330 Bewertungen (25.11.)" },
   { id: "A2", name: "Apple Business Connect", url: "https://businessconnect.apple.com", status: "open", link: "citation" },
   { id: "A3", name: "Bing Places", url: "https://www.bing.com/forbusiness", status: "open", link: "citation" },
-  { id: "A4", name: "local.ch / search.ch", url: "https://customercenter.local.ch/de/update", status: "check", link: "nofollow" },
+  { id: "A4", name: "local.ch / search.ch", url: "https://customercenter.local.ch/de/update", status: "live", link: "nofollow", note: "Eintrag «GYAN Hair Salon - Herren Coiffeur Biel» gefunden (25.11.), Webseite-Link prüfen" },
   { id: "A5", name: "Instagram @gyan_hair_salon", url: "https://www.instagram.com/gyan_hair_salon/", status: "live", link: "nofollow", note: "Link in Bio auf /de/termin" },
   { id: "A6", name: "Facebook GyanHairSalon", url: "https://www.facebook.com/GyanHairSalon", status: "check", link: "nofollow" },
   { id: "A7", name: "Moneyhouse / Zefix", url: "https://www.moneyhouse.ch/de/company/gyan-salon-inh-ali-4933313481", status: "live", link: "citation" },
@@ -45,6 +45,8 @@ export const citations: Citation[] = [
   { id: "B7", name: "TomTom MapShare", url: "https://www.tomtom.com/mapshare/tools", status: "open", link: "citation" },
   { id: "C1", name: "coiffureSUISSE", url: "https://www.coiffuresuisse.ch/de/services/mitglied-werden", status: "open", link: "follow", note: "Mitgliedschaft, Entscheid offen" },
   { id: "C2", name: "Bieler KMU", url: "https://www.bielerkmu.ch/mitglied-werden", status: "open", link: "follow", note: "CHF 180/Jahr, Entscheid offen" },
+  { id: "X1", name: "swissbarbers.ch", url: "https://swissbarbers.ch", status: "check", link: "unclear", note: "Eintrag existiert schon (25.11.), Angaben und Link prüfen" },
+  { id: "X2", name: "gyan-hair-salon.localo.site (alte Seite)", url: "https://gyan-hair-salon.localo.site", status: "check", link: "unclear", note: "Noch bei Google sichtbar, sollte gelöscht werden" },
   { id: "C4", name: "Yelp", url: "https://biz.yelp.com", status: "open", link: "nofollow" },
 ];
 
