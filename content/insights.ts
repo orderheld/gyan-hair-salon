@@ -53,7 +53,7 @@ export const citations: Citation[] = [
 /** Gesamtbewertung SEO (gyan/seo-analyse.md), die tägliche SEO-Routine hält sie aktuell */
 export const seoScore = {
   date: "2026-11-25",
-  total: 83,
+  total: 84,
   parts: [
     { name: "Technik (Indexierung, Sitemap, hreflang)", value: 97 },
     { name: "Titel und Beschreibungen", value: 95 },
@@ -61,7 +61,7 @@ export const seoScore = {
     { name: "Strukturierte Daten", value: 92 },
     { name: "Performance und Cache", value: 85 },
     { name: "Inhalt und Keywords", value: 85 },
-    { name: "Lokales SEO (Google-Profil)", value: 60 },
+    { name: "Lokales SEO (Google-Profil)", value: 68 },
     { name: "Backlinks", value: 25 },
   ],
 };
