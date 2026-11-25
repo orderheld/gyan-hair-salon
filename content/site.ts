@@ -49,6 +49,13 @@ export const site = {
   googleReviewsUrl: "https://g.page/r/Cf88NjkyEn2REBM",
   /** Direktlink «Bewertung schreiben» aus dem Google-Unternehmensprofil */
   googleWriteReviewUrl: "https://g.page/r/Cf88NjkyEn2REBM/review",
+  /** Einträge in Verzeichnissen (gleiche NAP), für sameAs im JSON-LD. Nur echte, geprüfte Einträge (25.11.2026). */
+  listings: [
+    "https://www.local.ch/de/d/bielbienne/2502/gyan-hair-salon-herren-coiffeur-biel-brELoXq9nPvtuE7SI0Ytcg",
+    "https://search.ch/tel/biel-bienne/zentralstrasse-22/gyan-hair-salon-herren-coiffeur-biel",
+    "https://swissbarbers.ch/de/bern/biel-bienne/gyan-hair-salon-coiffeur-biel",
+    "https://www.moneyhouse.ch/de/company/gyan-salon-inh-ali-4933313481",
+  ],
   rating: { value: "4.9", count: "330" }, // Google-Profil am 25.11.2026 (vorher 290, von Ferhat am 7.10. bestätigt)
 
   /** Online-Buchung: nur Zana buchbar, Hikmet folgt (bis dahin spontan) */

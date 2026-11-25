@@ -112,7 +112,7 @@ export default async function LangLayout({ children, params }: { children: React
       { "@type": "AdministrativeArea", name: "Seeland" },
     ],
     knowsLanguage: ["de", "fr", "en"],
-    sameAs: [site.instagram, site.tiktok, site.facebook, site.googleProfileUrl],
+    sameAs: [site.instagram, site.tiktok, site.facebook, site.googleProfileUrl, ...site.listings],
     openingHoursSpecification: hours
       .filter((h) => h.isOpen)
       .map((h) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: SCHEMA_DAYS[h.weekday], opens: h.openTime, closes: h.closeTime })),

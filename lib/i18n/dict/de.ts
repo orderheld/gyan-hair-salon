@@ -323,7 +323,7 @@ const de = {
   zana: {
     metaTitle: "Zana – Inhaber und Barbier in Biel",
     metaDescription: "Lerne Zana kennen, den Inhaber von GYAN Hair Salon in Biel. Kurdische Wurzeln, ein neues Zuhause in Biel/Bienne und ein Herrensalon mit Liebe zur Präzision.",
-    eyebrow: "Die Geschichte",
+    eyebrow: "Inhaber und Barbier in Biel",
     title: "Zana.",
     lead: "Für Zana war Haareschneiden nie einfach ein Beruf. Es ist die Art, wie er Menschen begegnet: aufmerksam, ruhig und mit einem Auge für das Detail, das andere übersehen.",
     paragraphs: [
@@ -374,7 +374,7 @@ const de = {
     metaTitle: "Häufige Fragen zum Herren Coiffeur in Biel",
     metaDescription: "Antworten vom Herren Coiffeur in Biel: Preise mit und ohne Termin, Online-Buchung, Absage, Bart und Fade, Bezahlung mit TWINT und Anfahrt.",
     eyebrow: "FAQ",
-    title: "Häufige Fragen.",
+    title: "Häufige Fragen zum Coiffeur in Biel.",
     groups: [
       {
         title: "Termin und Buchung",

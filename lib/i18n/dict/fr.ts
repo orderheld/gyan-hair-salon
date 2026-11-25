@@ -325,7 +325,7 @@ const fr: Dict = {
   zana: {
     metaTitle: "Zana – propriétaire et barbier à Bienne",
     metaDescription: "Fais connaissance avec Zana, propriétaire de GYAN Hair Salon : des racines kurdes, un nouveau chez-soi à Biel/Bienne et un salon homme qui aime la précision.",
-    eyebrow: "L’histoire",
+    eyebrow: "Propriétaire et barbier à Bienne",
     title: "Zana.",
     lead: "Pour Zana, couper les cheveux n’a jamais été un simple métier. C’est sa façon d’aller vers les gens : attentif, posé, avec un œil pour le détail que d’autres ne voient pas.",
     paragraphs: [
@@ -376,7 +376,7 @@ const fr: Dict = {
     metaTitle: "FAQ – coiffeur homme et barbier à Bienne",
     metaDescription: "Réponses du coiffeur homme à Bienne : prix avec et sans rendez-vous, réservation, annulation, barbe et dégradé, paiement TWINT et accès.",
     eyebrow: "FAQ",
-    title: "Questions fréquentes.",
+    title: "Questions fréquentes sur le coiffeur à Bienne.",
     groups: [
       {
         title: "Rendez-vous et réservation",

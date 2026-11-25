@@ -27,8 +27,11 @@ export default async function ZanaPage({ params }: Props) {
         <div className="container zana-hero-grid">
           <div className="zana-hero-text">
             <Breadcrumbs items={[{ label: d.nav.home, href: href(locale, "home") }, { label: d.nav.zana, href: href(locale, "zana") }]} />
-            <p className="eyebrow rise">{z.eyebrow}</p>
-            <h1 className="h-giant rise" style={{ animationDelay: "80ms" }}>{z.title}</h1>
+            {/* Eine H1 mit Name und Suchbegriff: Augenbraue und grosser Name bleiben optisch wie vorher */}
+            <h1 style={{ margin: 0, font: "inherit" }}>
+              <span className="eyebrow rise" style={{ display: "block" }}>{z.eyebrow}</span>
+              <span className="h-giant rise" style={{ display: "block", animationDelay: "80ms" }}>{z.title}</span>
+            </h1>
             <p className="lead rise" style={{ animationDelay: "160ms" }}>{z.lead}</p>
           </div>
           <div className="zana-hero-media rise" style={{ animationDelay: "200ms" }} data-progress>

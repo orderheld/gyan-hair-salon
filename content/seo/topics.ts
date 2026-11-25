@@ -112,14 +112,14 @@ With a 4.9 rating from more than 320 Google reviews, it's fair to say our client
     key: "barbier",
     slug: { de: "barbier-biel", fr: "barbier-bienne", en: "barber-biel" },
     h1: {
-      de: "Barbier in Biel – Handwerk für Haar und Bart",
-      fr: "Barbier à Bienne – l'artisanat du cheveu et de la barbe",
-      en: "Barber in Biel – craftsmanship for hair and beard",
+      de: "Barbier und Barbershop in Biel – Handwerk für Haar und Bart",
+      fr: "Barbier et barbershop à Bienne – l'artisanat du cheveu et de la barbe",
+      en: "Barber and barbershop in Biel – craftsmanship for hair and beard",
     },
     title: {
-      de: "Barbier Biel – Fade, Bart & Nassrasur | GYAN",
-      fr: "Barbier Bienne – dégradé, barbe & rasage | GYAN",
-      en: "Barber Biel – fades, beards & hot towel shaves | GYAN",
+      de: "Barbier & Barbershop Biel – Fade, Bart, Rasur | GYAN",
+      fr: "Barbier & barbershop Bienne – dégradé, barbe | GYAN",
+      en: "Barber & barbershop Biel – fades, beards, shaves | GYAN",
     },
     description: {
       de: "Barbier in Biel: Fades, Bartpflege und Nassrasur mit heissem Tuch an der Zentralstrasse 22. 4.9 Sterne auf Google – buch jetzt deinen Termin.",

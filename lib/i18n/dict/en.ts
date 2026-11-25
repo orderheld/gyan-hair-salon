@@ -325,7 +325,7 @@ const en: Dict = {
   zana: {
     metaTitle: "Zana – owner and barber in Biel",
     metaDescription: "Meet Zana, owner of GYAN Hair Salon in Biel. Kurdish roots, a new home in Biel/Bienne and a men's salon built on precision and calm.",
-    eyebrow: "The story",
+    eyebrow: "Owner and barber in Biel",
     title: "Zana.",
     lead: "For Zana, cutting hair has never been just a job. It's the way he meets people: attentive, calm and with an eye for the details others overlook.",
     paragraphs: [
@@ -376,7 +376,7 @@ const en: Dict = {
     metaTitle: "FAQ – men's hairdresser & barber in Biel",
     metaDescription: "Answers from the men's barber in Biel: prices with and without an appointment, booking, cancellation, beards and fades, TWINT payment and directions.",
     eyebrow: "FAQ",
-    title: "Frequently asked questions.",
+    title: "Questions about our barbershop in Biel.",
     groups: [
       {
         title: "Appointments and booking",
