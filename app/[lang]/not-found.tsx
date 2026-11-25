@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Wordmark } from "@/components/brand/Logo";
 import { getDict } from "@/lib/i18n";
 import { href } from "@/lib/i18n/config";
+import { NotFoundBeacon } from "@/components/site/VisitBeacon";
 
 // Wird bei notFound() innerhalb einer Sprache angezeigt. Sprache ist hier nicht bekannt -> Deutsch mit Links.
 export default function NotFound() {
@@ -17,6 +18,7 @@ export default function NotFound() {
           <Link className="btn btn-light" href="/de">GYAN</Link>
         </div>
         <Wordmark className="nf-mark" />
+        <NotFoundBeacon />
       </div>
     </section>
   );

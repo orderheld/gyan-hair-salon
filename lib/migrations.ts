@@ -225,4 +225,50 @@ export const MIGRATIONS = [
     ALTER TABLE pos_sales DROP CONSTRAINT IF EXISTS pos_sales_payment_check;
     ALTER TABLE pos_sales ADD CONSTRAINT pos_sales_payment_check CHECK (payment IN ('cash', 'card', 'twint', 'voucher'));
   END $$`,
+  // Besucherstatistik (November 2026): ein Eintrag pro Seitenaufruf, ohne IP-Adresse und ohne Cookie.
+  // visitor = Tages-Prüfsumme (wechselt jeden Tag), session = Zufallswert pro Browser-Tab
+  `CREATE TABLE IF NOT EXISTS visits (
+    id        bigserial PRIMARY KEY,
+    at        timestamptz NOT NULL DEFAULT now(),
+    day       date NOT NULL,
+    path      text NOT NULL,
+    locale    text NOT NULL DEFAULT '',
+    landing   boolean NOT NULL DEFAULT false,
+    source    text NOT NULL DEFAULT 'direct',
+    ref_host  text NOT NULL DEFAULT '',
+    campaign  text NOT NULL DEFAULT '',
+    country   text NOT NULL DEFAULT '',
+    region    text NOT NULL DEFAULT '',
+    city      text NOT NULL DEFAULT '',
+    device    text NOT NULL DEFAULT '',
+    visitor   text NOT NULL DEFAULT '',
+    session   text NOT NULL DEFAULT ''
+  )`,
+  `CREATE INDEX IF NOT EXISTS visits_day_idx ON visits (day)`,
+  `CREATE INDEX IF NOT EXISTS visits_at_idx ON visits (at DESC)`,
+  // Ladezeiten echter Besucher (Core Web Vitals) und Fehler/404 auf der Webseite, für Admin → Developer
+  `CREATE TABLE IF NOT EXISTS vitals (
+    id      bigserial PRIMARY KEY,
+    day     date NOT NULL,
+    path    text NOT NULL,
+    device  text NOT NULL DEFAULT '',
+    lcp     integer,
+    cls     numeric(6,3),
+    inp     integer,
+    fcp     integer,
+    ttfb    integer
+  )`,
+  `CREATE INDEX IF NOT EXISTS vitals_day_idx ON vitals (day)`,
+  `CREATE TABLE IF NOT EXISTS site_events (
+    id      bigserial PRIMARY KEY,
+    at      timestamptz NOT NULL DEFAULT now(),
+    day     date NOT NULL,
+    kind    text NOT NULL,
+    path    text NOT NULL,
+    message text NOT NULL DEFAULT '',
+    detail  text NOT NULL DEFAULT '',
+    ref_host text NOT NULL DEFAULT '',
+    device  text NOT NULL DEFAULT ''
+  )`,
+  `CREATE INDEX IF NOT EXISTS site_events_day_idx ON site_events (day)`,
 ];

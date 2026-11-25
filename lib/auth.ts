@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { ADMIN_COOKIE as COOKIE, comingSoon } from "./coming-soon";
+import { KASSE_ON } from "./config";
 import { getSql } from "./db";
 
 const KASSE_COOKIE = "gyan_kasse_pin";
@@ -123,6 +124,7 @@ export async function isKasseUnlocked() {
 /** next: wohin es nach der PIN weitergeht (nur innerhalb der Kasse) */
 export async function requireKasse(next = "") {
   await requireAdmin();
+  if (!KASSE_ON) redirect("/admin/start");
   if (!(await isKasseUnlocked())) redirect(next.startsWith("/admin/kasse") ? `/admin/pin?next=${encodeURIComponent(next)}` : "/admin/pin");
 }
 

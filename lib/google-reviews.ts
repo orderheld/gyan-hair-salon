@@ -13,7 +13,8 @@ import type { CardCandidate } from "./review-match";
  * und geht nie an eine Seite (siehe PRIVATE_KEYS in lib/settings.ts).
  */
 
-export const GOOGLE_SCOPE = "https://www.googleapis.com/auth/business.manage";
+// Unternehmensprofil (Bewertungen, Beiträge) und Search Console (nur lesen, für Admin → Developer)
+export const GOOGLE_SCOPE = "https://www.googleapis.com/auth/business.manage https://www.googleapis.com/auth/webmasters.readonly";
 export const STATE_COOKIE = "gyan_google_state";
 /** Höchstens so viele Bewertungen pro Abruf (die neusten) */
 const MAX_REVIEWS = 200;

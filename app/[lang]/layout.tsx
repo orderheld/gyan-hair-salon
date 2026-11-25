@@ -17,6 +17,7 @@ import { HREFLANG, href, isLocale, LOCALES } from "@/lib/i18n/config";
 import { APP_ICONS } from "@/lib/app-icons";
 import { AppShell } from "@/components/site/AppShell";
 import { Toaster } from "@/components/ui/Toast";
+import { VisitBeacon } from "@/components/site/VisitBeacon";
 import "../styles/base.css";
 import "../styles/site.css";
 
@@ -177,6 +178,7 @@ export default async function LangLayout({ children, params }: { children: React
         />
         <Footer locale={locale} d={d} services={services.map((s) => localize(s, locale))} hours={hours} />
         <JsonLd data={[business, website]} />
+        <VisitBeacon />
       </body>
     </html>
   );

@@ -2,12 +2,13 @@ import Link from "next/link";
 import { AdminShell } from "@/components/admin/AdminShell";
 import { getAdminText } from "@/lib/admin";
 import { requireAdmin } from "@/lib/auth";
+import { KASSE_ON } from "@/lib/config";
 import { fill } from "@/lib/i18n";
 import { countOpenVouchers } from "@/lib/vouchers";
 
 export const dynamic = "force-dynamic";
 
-/** Startbildschirm: Termine, Kasse, Stempelkarte oder Gutscheine */
+/** Startbildschirm: Termine, Stempelkarte, Gutscheine und «Für Ferhat» (Kasse ausgeblendet, siehe KASSE_ON) */
 export default async function Start() {
   await requireAdmin();
   const { t } = await getAdminText();
@@ -22,11 +23,13 @@ export default async function Start() {
             <strong>{t.start.bookings}</strong>
             <span>{t.start.bookingsHint}</span>
           </Link>
+          {KASSE_ON && (
           <Link href="/admin/kasse" className="start-tile">
-            <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="10" width="16" height="10" rx="2.5" /><path d="M7 10V5.5A1.5 1.5 0 0 1 8.5 4h7A1.5 1.5 0 0 1 17 5.5V10M9 7h6M8 14h2M14 14h2M8 17h8" /></svg>
-            <strong>{t.start.pos}</strong>
-            <span>{t.start.posHint}</span>
-          </Link>
+              <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="10" width="16" height="10" rx="2.5" /><path d="M7 10V5.5A1.5 1.5 0 0 1 8.5 4h7A1.5 1.5 0 0 1 17 5.5V10M9 7h6M8 14h2M14 14h2M8 17h8" /></svg>
+              <strong>{t.start.pos}</strong>
+              <span>{t.start.posHint}</span>
+            </Link>
+          )}
           <Link href="/admin/stempel" className="start-tile">
             <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5" /><circle cx="7.5" cy="10.5" r="1.4" /><circle cx="12" cy="10.5" r="1.4" /><circle cx="16.5" cy="10.5" r="1.4" /><circle cx="7.5" cy="14.5" r="1.4" /><circle cx="12" cy="14.5" r="1.4" /><path d="m15.3 14.4 1 1 1.9-2" /></svg>
             <strong>{t.loyalty.tile}</strong>
@@ -37,6 +40,11 @@ export default async function Start() {
             <strong>{t.vouchers.tile}</strong>
             <span>{t.vouchers.tileHint}</span>
             {openVouchers > 0 && <em className="start-badge">{fill(t.vouchers.tileOpen, { n: openVouchers })}</em>}
+          </Link>
+          <Link href="/admin/developer" className="start-tile">
+            <svg viewBox="0 0 24 24" aria-hidden fill="none" stroke="currentColor" strokeWidth={1.4} strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5h16" /><path d="M6.5 16v-4M10.5 16V8M14.5 16v-6M18.5 16V5" /></svg>
+            <strong>{t.dev.tile}</strong>
+            <span>{t.dev.tileHint}</span>
           </Link>
         </div>
       </div>

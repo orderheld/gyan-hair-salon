@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { KASSE_ON } from "@/lib/config";
 
 /** Unterteilung der Gutscheine im Admin (gleicher Stil wie Kasse und Stempelkarte) */
 export function VoucherNav({ active, t }: { active: "list" | "sell" | "settings" | null; t: { list: string; sell: string; settings: string } }) {
@@ -6,7 +7,7 @@ export function VoucherNav({ active, t }: { active: "list" | "sell" | "settings"
     { key: "list", href: "/admin/gutscheine", label: t.list },
     { key: "sell", href: "/admin/gutscheine/verkaufen", label: t.sell }, // führt in die Kasse
     { key: "settings", href: "/admin/gutscheine/einstellungen", label: t.settings },
-  ] as const;
+  ].filter((i) => KASSE_ON || i.key !== "sell");
   return (
     <nav className="kasse-nav" aria-label="Gutscheine">
       {items.map((i) => (

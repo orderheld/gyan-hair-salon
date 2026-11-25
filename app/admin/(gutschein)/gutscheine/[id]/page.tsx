@@ -5,6 +5,7 @@ import { Flash } from "@/components/admin/Flash";
 import { VoucherNav } from "@/components/admin/VoucherNav";
 import { getAdminText } from "@/lib/admin";
 import { isKasseUnlocked, requireAdmin } from "@/lib/auth";
+import { KASSE_ON } from "@/lib/config";
 import { TIMEZONE } from "@/lib/config";
 import { formatChf } from "@/lib/format";
 import { fill } from "@/lib/i18n";
@@ -51,7 +52,7 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
     ...(v.payment ? [[t.field.payment, t.payment[v.payment]] as [string, React.ReactNode]] : []),
     ...(v.remindedAt && v.status === "ordered" ? [[t.field.reminded, when(v.remindedAt)] as [string, React.ReactNode]] : []),
     ...(v.cancelledAt && v.status === "cancelled" ? [[t.field.cancelled, when(v.cancelledAt)] as [string, React.ReactNode]] : []),
-    ...(v.saleNo ? [[t.receipt, <Link key="r" className="link" href={`/admin/kasse/beleg/${v.saleNo}`}>{fill(t.receiptNo, { no: String(v.saleNo).padStart(6, "0") })}</Link>] as [string, React.ReactNode]] : []),
+    ...(v.saleNo ? [[t.receipt, KASSE_ON ? <Link key="r" className="link" href={`/admin/kasse/beleg/${v.saleNo}`}>{fill(t.receiptNo, { no: String(v.saleNo).padStart(6, "0") })}</Link> : fill(t.receiptNo, { no: String(v.saleNo).padStart(6, "0") })] as [string, React.ReactNode]] : []),
     [t.field.language, v.locale.toUpperCase()],
   ];
 
@@ -81,9 +82,9 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
       {v.status === "ordered" && (
         <section className="panel stack">
           <h2 className="h3" style={{ margin: 0 }}>{t.pickupTitle}</h2>
-          <p className="muted small" style={{ margin: 0 }}>{t.kasseHint}</p>
-          <Link className="btn btn-dark" href={kasseHref}>{t.kasseBtn} · {formatChf(v.amountChf)}</Link>
-          <details className="vc-alt">
+          {KASSE_ON && <p className="muted small" style={{ margin: 0 }}>{t.kasseHint}</p>}
+          {KASSE_ON && <Link className="btn btn-dark" href={kasseHref}>{t.kasseBtn} · {formatChf(v.amountChf)}</Link>}
+          <details className="vc-alt" open={!KASSE_ON}>
             <summary>{t.withoutKasse}</summary>
         <form action={voucherPickUp} className="stack">
           {hidden}
@@ -108,8 +109,8 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
           {v.balanceChf > 0 ? (
             <>
             <p className="muted small" style={{ margin: 0 }}>{fill(t.redeemHint, { balance: formatChf(v.balanceChf) })}</p>
-            <Link className="btn btn-dark" href={kasseHref}>{t.kasseRedeem}</Link>
-            <details className="vc-alt">
+            {KASSE_ON && <Link className="btn btn-dark" href={kasseHref}>{t.kasseRedeem}</Link>}
+            <details className="vc-alt" open={!KASSE_ON}>
               <summary>{t.withoutKasseRedeem}</summary>
             <form action={voucherRedeem} className="stack">
               {hidden}
@@ -142,7 +143,7 @@ export default async function VoucherDetail({ params, searchParams }: Props) {
                     </span>
                     <strong>{formatChf(r.amountChf)}</strong>
                     {r.saleNo ? (
-                      <Link className="link small" href={`/admin/kasse/beleg/${r.saleNo}`}>{fill(t.receiptNo, { no: String(r.saleNo).padStart(6, "0") })}</Link>
+                      KASSE_ON ? <Link className="link small" href={`/admin/kasse/beleg/${r.saleNo}`}>{fill(t.receiptNo, { no: String(r.saleNo).padStart(6, "0") })}</Link> : <span className="small">{fill(t.receiptNo, { no: String(r.saleNo).padStart(6, "0") })}</span>
                     ) : (
                       <form action={voucherUndoRedemption}>
                         {hidden}

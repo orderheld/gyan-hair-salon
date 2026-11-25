@@ -18,7 +18,6 @@ export function GET() {
     ],
     shortcuts: [
       { name: "Termine", url: "/admin", icons: [{ src: "/icons/admin-192.png", sizes: "192x192" }] },
-      { name: "Kasse", url: "/admin/kasse", icons: [{ src: "/icons/admin-192.png", sizes: "192x192" }] },
       { name: "Leistungen & Preise", url: "/admin/leistungen", icons: [{ src: "/icons/admin-192.png", sizes: "192x192" }] },
       { name: "Zeiten & Sperren", url: "/admin/zeiten", icons: [{ src: "/icons/admin-192.png", sizes: "192x192" }] },
     ],

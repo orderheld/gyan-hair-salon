@@ -2,12 +2,15 @@ import { AdminShell } from "@/components/admin/AdminShell";
 import { PinPad } from "@/components/admin/PinPad";
 import { getAdminText } from "@/lib/admin";
 import { requireAdmin } from "@/lib/auth";
+import { KASSE_ON } from "@/lib/config";
+import { redirect } from "next/navigation";
 
 export const dynamic = "force-dynamic";
 
 /** Sperrbildschirm der Kasse */
 export default async function Pin({ searchParams }: { searchParams: Promise<{ next?: string }> }) {
   await requireAdmin();
+  if (!KASSE_ON) redirect("/admin/start");
   const { next = "" } = await searchParams;
   // Nur Ziele innerhalb der Kasse (z. B. ein Gutschein aus dem Gutschein-Bereich)
   const target = next.startsWith("/admin/kasse") && !next.startsWith("//") ? next.slice(0, 200) : "/admin/kasse";
