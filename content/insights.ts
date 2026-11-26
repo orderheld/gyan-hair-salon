@@ -10,6 +10,7 @@ export type LighthouseRun = { date: string; commit?: string; home: number; booki
 
 /** Neueste zuerst */
 export const lighthouse: LighthouseRun[] = [
+  { date: "2026-11-26", commit: "2f6cc0b", home: 91, booking: 94, seo: 100, lcpHome: "3,5 s (Lab), echte Besucher 0,95 s", note: "Next.js 16.4.6" },
   { date: "2026-11-23", commit: "d322a77", home: 92, booking: 94, seo: 100 },
   { date: "2026-11-19", commit: "d1d80e5", home: 90, booking: 98, seo: 100 },
   { date: "2026-11-16", commit: "d1d80e5", home: 90, booking: 98, seo: 100 },
