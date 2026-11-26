@@ -6,9 +6,9 @@
  */
 
 export const scHistory = {
-  asOf: "2026-11-25",
+  asOf: "2026-11-26",
   /** Gesamter Zeitraum laut Google (bis zum letzten Tag in daily) */
-  totals: { clicks: 479, impressions: 5790, ctr: 0.083, position: 4.7 },
+  totals: { clicks: 485, impressions: 6000, ctr: 0.081, position: 4.7 },
   /** [Tag, Klicks, Impressionen, Ø Position]; vor dem 6.10.2026 war die Seite noch nicht bei Google */
   daily: [
   ["2026-10-06", 7, 53, 3.6],
@@ -60,6 +60,7 @@ export const scHistory = {
   ["2026-11-21", 7, 140, 5.6],
   ["2026-11-22", 5, 154, 6.7],
   ["2026-11-23", 13, 220, 5.1],
+  ["2026-11-24", 6, 207, 6.3],
   ] as [string, number, number, number][],
   /** [Suchbegriff, Klicks, Impressionen, Ø Position], ganzer Zeitraum, nach Impressionen */
   queries: [

@@ -29,6 +29,15 @@ export const keywords = [
 /** Neueste Prüfung zuerst */
 export const rankingChecks: RankingCheck[] = [
   {
+    date: "2026-11-26",
+    results: {
+      "coiffeur biel": { maps: 1, organic: null },
+      "biel coiffeur": { maps: 3, organic: null },
+      "barbier biel": { maps: null, organic: 9 },
+    },
+    note: "Geprüft in Ferhats Chrome (angemeldet). Search Console bis 24.11.: 485 Klicks, 6000 Impressionen, Ø Position 4,7",
+  },
+  {
     date: "2026-11-25",
     results: {
       "coiffeur biel": { maps: 1 },
