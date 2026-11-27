@@ -12,6 +12,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   return (
     <main className="admin-login">
       <div className="login-card">
+        <h1 className="sr-only">GYAN Admin</h1>
         <Wordmark className="login-mark" />
         <p className="muted small login-sub">{t.login.title}</p>
         <LoginForm labels={t.login} next={next} />

@@ -48,7 +48,7 @@ Ein gepflegter Bart braucht keine Stunde vor dem Spiegel. Diese Routine reicht:
 
 ## Wann solltest du zum Barbier?
 
-Auch die beste Pflege ersetzt keinen sauberen Schnitt. Konturen an Wange und Hals wachsen schnell heraus, und ohne Form wirkt ein Bart schnell ungepflegt. Für die meisten Bärte empfehlen wir alle drei bis vier Wochen ein professionelles [Bart trimmen](service:bart-trimmen-biel). Wer es besonders glatt mag, gönnt sich eine klassische [Nassrasur](service:nassrasur-biel) mit heissem Tuch. Und wer Haar und Bart in einem Termin erledigen will, wählt [Haarschnitt und Bart](service:haarschnitt-und-bart). Mehr zum Thema findest du auf unserer Seite [Bartpflege in Biel](seo:bart).
+Auch die beste Pflege ersetzt keinen sauberen Schnitt beim [Barbier in Biel](seo:barbier). Konturen an Wange und Hals wachsen schnell heraus, und ohne Form wirkt ein Bart schnell ungepflegt. Für die meisten Bärte empfehlen wir alle drei bis vier Wochen ein professionelles [Bart trimmen](service:bart-trimmen-biel). Wer es besonders glatt mag, gönnt sich eine klassische [Nassrasur](service:nassrasur-biel) mit heissem Tuch. Und wer Haar und Bart in einem Termin erledigen will, wählt [Haarschnitt und Bart](service:haarschnitt-und-bart). Mehr zum Thema findest du auf unserer Seite [Bartpflege in Biel](seo:bart).
 
 ## Gönn deinem Bart den Profi-Schnitt
 
@@ -80,7 +80,7 @@ Une barbe soignée ne demande pas une heure devant le miroir. Cette routine suff
 
 ## Quand passer chez le barbier ?
 
-Même le meilleur soin ne remplace pas une coupe nette. Les contours sur les joues et le cou repoussent vite, et sans forme une barbe paraît rapidement négligée. Pour la plupart des barbes, nous recommandons une [taille de barbe](service:bart-trimmen-biel) professionnelle toutes les trois à quatre semaines. Si tu aimes une peau parfaitement lisse, offre-toi un [rasage traditionnel](service:nassrasur-biel) à la serviette chaude. Et pour régler cheveux et barbe en un seul rendez-vous, choisis la formule [coupe et barbe](service:haarschnitt-und-bart). Plus d'informations sur notre page [barbe à Bienne](seo:bart).
+Même le meilleur soin ne remplace pas une coupe nette chez le [barbier à Bienne](seo:barbier). Les contours sur les joues et le cou repoussent vite, et sans forme une barbe paraît rapidement négligée. Pour la plupart des barbes, nous recommandons une [taille de barbe](service:bart-trimmen-biel) professionnelle toutes les trois à quatre semaines. Si tu aimes une peau parfaitement lisse, offre-toi un [rasage traditionnel](service:nassrasur-biel) à la serviette chaude. Et pour régler cheveux et barbe en un seul rendez-vous, choisis la formule [coupe et barbe](service:haarschnitt-und-bart). Plus d'informations sur notre page [barbe à Bienne](seo:bart).
 
 ## Offre à ta barbe la main d'un pro
 
@@ -112,7 +112,7 @@ A well-kept beard does not need an hour in front of the mirror. This routine is 
 
 ## When should you see your barber?
 
-Even the best care cannot replace a clean cut. The lines on your cheeks and neck grow out quickly, and without shape a beard soon looks untidy. For most beards we recommend a professional [beard trim](service:bart-trimmen-biel) every three to four weeks. If you love a perfectly smooth finish, treat yourself to a classic [hot towel shave](service:nassrasur-biel). And if you want hair and beard sorted in one visit, choose [haircut and beard](service:haarschnitt-und-bart). Find out more on our page about [beard care in Biel](seo:bart).
+Even the best care cannot replace a clean cut from a [barber in Biel](seo:barbier). The lines on your cheeks and neck grow out quickly, and without shape a beard soon looks untidy. For most beards we recommend a professional [beard trim](service:bart-trimmen-biel) every three to four weeks. If you love a perfectly smooth finish, treat yourself to a classic [hot towel shave](service:nassrasur-biel). And if you want hair and beard sorted in one visit, choose [haircut and beard](service:haarschnitt-und-bart). Find out more on our page about [beard care in Biel](seo:bart).
 
 ## Give your beard a professional touch
 
